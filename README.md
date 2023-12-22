@@ -7,12 +7,7 @@ XAdmin is a free and open-source admin dashboard template built on **Flutter** p
 With XAdmin Flutter, you get access to all the necessary dashboard UI components, elements, and pages required to build a high-quality and complete dashboard or admin panel. Whether you're building a dashboard or admin panel for a complex web application or a simple website. 
 
 
-### [🚀 FREE Demo](https://nextjs-free-demo.tailadmin.com/)
-
-
-### [🖌️ TailAdmin Figma Free Sample](https://www.figma.com/community/file/1214477970819985778)
-
-### [👉 TailAdmin HTML Version](https://github.com/TailAdmin/tailadmin-free-tailwind-dashboard-template)
+### [🚀 FREE Demo](https://free-flutter-admin-dashboard.vercel.app/)
 
 
 ## Installation
