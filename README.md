@@ -1,16 +1,40 @@
-# free_flutter_admin_dashboard
+# XAdmin Flutter - Free Flutter Admin Dashboard Template
 
-A new Flutter project.
+XAdmin is a free and open-source admin dashboard template built on **Flutter** providing developers with everything they need to create a feature-rich and data-driven: back-end, dashboard, or admin panel solution for any sort of web/mac/windows/android/iOS project.
 
-## Getting Started
+[![xadmin flutter admin template](https://github.com/TailAdmin/free-nextjs-admin-dashboard/blob/main/tailadmin-nextjs.jpg)](https://nextjs-demo.tailadmin.com/)
 
-This project is a starting point for a Flutter application.
+With XAdmin Flutter, you get access to all the necessary dashboard UI components, elements, and pages required to build a high-quality and complete dashboard or admin panel. Whether you're building a dashboard or admin panel for a complex web application or a simple website. 
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+### [🚀 FREE Demo](https://nextjs-free-demo.tailadmin.com/)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+
+### [🖌️ TailAdmin Figma Free Sample](https://www.figma.com/community/file/1214477970819985778)
+
+### [👉 TailAdmin HTML Version](https://github.com/TailAdmin/tailadmin-free-tailwind-dashboard-template)
+
+
+## Installation
+
+Here are the steps you need to follow to install the dependencies.
+
+1. Download and extract the template from Templates.
+
+2. After that **cd** into the template directory then run this command to install all the dependencies
+
+```
+flutter pub get
+```
+
+3. Now run this command to start the developement server
+
+```
+flutter run -d chrome
+```
+
+### 📄 License
+XAdmin Flutter Free is 100% free and open-source; feel free to use it with your personal and commercial projects.
+
+### 💜 Support
+If you like the template, please star this repository to inspire the team to create more stuff like this and reach more users like you!
