@@ -48,7 +48,9 @@ class HomePage extends StatelessWidget {
             ),
           ),
         ),
-        SizedBox(width: 6.w,),
+        SizedBox(
+          width: 6.w,
+        ),
         Expanded(
             child: Text(
           'XAdmin',
