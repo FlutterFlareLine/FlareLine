@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:free_flutter_admin_dashboard/home.dart';
+import 'package:free_flutter_admin_dashboard/provider/main_provider.dart';
+import 'package:provider/provider.dart';
 
 void main() {
   runApp(MyApp());
@@ -15,7 +17,10 @@ class MyApp extends StatelessWidget{
       splitScreenMode: true,
       // Use builder only if you need to use library outside ScreenUtilInit context
       builder: (_ , child) {
-        return MaterialApp(
+        return MultiProvider(providers: [
+          ChangeNotifierProvider(create: (_)=>MainProvider())
+        ],
+        child: MaterialApp(
           debugShowCheckedModeBanner: false,
           title: 'XAdmin',
           // You can use the library anywhere in the app even in theme
@@ -24,7 +29,7 @@ class MyApp extends StatelessWidget{
             textTheme: Typography.englishLike2018.apply(fontSizeFactor: 1.sp),
           ),
           home: child,
-        );
+        ),);
       },
       child:  HomePage(),
     );

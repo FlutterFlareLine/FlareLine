@@ -42,6 +42,10 @@ dependencies:
 
   get_storage: ^2.1.1
 
+  provider: ^6.1.1
+
+  popover: ^0.2.9
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
