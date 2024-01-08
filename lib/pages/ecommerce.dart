@@ -1,33 +1,63 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:free_flutter_admin_dashboard/components/BarChart.dart';
+import 'package:free_flutter_admin_dashboard/components/CircularChart.dart';
 import 'package:free_flutter_admin_dashboard/components/LineChart.dart';
+import 'package:free_flutter_admin_dashboard/components/MapChart.dart';
 
 class EcommercePage extends StatelessWidget {
-  const  EcommercePage({super.key});
+  const EcommercePage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 10.h),
-      child: Column(children: [
+      child: SingleChildScrollView(
+          child: Column(children: [
         _cardPages(),
         SizedBox(
           height: 16.h,
         ),
-        SizedBox(height: 350.h, child:  Row(
-          children: [
-            Expanded(
-              child: _lineChart(),
-              flex: 2,
-            ),
-            Expanded(
-              child: _barChart(),
-              flex: 1,
-            ),
-          ],
-        ),)
-      ]),
+        SizedBox(
+          height: 350.h,
+          child: Row(
+            children: [
+              Expanded(
+                child: _lineChart(),
+                flex: 2,
+              ),
+              Expanded(
+                child: _barChart(),
+                flex: 1,
+              ),
+            ],
+          ),
+        ),
+        SizedBox(
+          height: 16.h,
+        ),
+        SizedBox(
+          height: 350.h,
+          child: Row(
+            children: [
+              Expanded(
+                child: Card(
+                  color: Colors.white,
+                  child: CircularhartWidget(),
+                ),
+                flex: 2,
+              ),
+              Expanded(
+                child: Card(
+                  color: Colors.white,
+                  child: MapChartWidget(),
+                ),
+                flex: 1,
+              ),
+            ],
+          ),
+        ),
+      ])),
     );
   }
 
@@ -111,8 +141,6 @@ class EcommercePage extends StatelessWidget {
   }
 
   _barChart() {
-    return Card(
-      color: Colors.white,
-      child:BarChartWidget());
+    return Card(color: Colors.white, child: BarChartWidget());
   }
 }
