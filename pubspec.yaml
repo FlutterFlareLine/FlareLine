@@ -46,6 +46,8 @@ dependencies:
 
   popover: ^0.2.9
 
+  syncfusion_flutter_charts: ^24.1.44+1
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

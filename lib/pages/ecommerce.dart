@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:free_flutter_admin_dashboard/components/BarChart.dart';
+import 'package:free_flutter_admin_dashboard/components/LineChart.dart';
 
 class EcommercePage extends StatelessWidget {
-  const EcommercePage({super.key});
+  const  EcommercePage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -10,6 +12,21 @@ class EcommercePage extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 10.h),
       child: Column(children: [
         _cardPages(),
+        SizedBox(
+          height: 16.h,
+        ),
+        SizedBox(height: 350.h, child:  Row(
+          children: [
+            Expanded(
+              child: _lineChart(),
+              flex: 2,
+            ),
+            Expanded(
+              child: _barChart(),
+              flex: 1,
+            ),
+          ],
+        ),)
       ]),
     );
   }
@@ -64,7 +81,12 @@ class EcommercePage extends StatelessWidget {
                   style: TextStyle(fontSize: 10.sp, color: Colors.grey),
                 ),
                 Spacer(),
-                Text(percentText,style: TextStyle(fontSize: 10.sp, color: isGrow ? Colors.green : Colors.lightBlue),),
+                Text(
+                  percentText,
+                  style: TextStyle(
+                      fontSize: 10.sp,
+                      color: isGrow ? Colors.green : Colors.lightBlue),
+                ),
                 SizedBox(
                   width: 3.w,
                 ),
@@ -79,5 +101,18 @@ class EcommercePage extends StatelessWidget {
         ),
       ),
     ));
+  }
+
+  _lineChart() {
+    return Card(
+      color: Colors.white,
+      child: LineChartWidget(),
+    );
+  }
+
+  _barChart() {
+    return Card(
+      color: Colors.white,
+      child:BarChartWidget());
   }
 }
