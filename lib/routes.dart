@@ -5,6 +5,7 @@ import 'package:free_flutter_admin_dashboard/pages/FormLayout.dart';
 import 'package:free_flutter_admin_dashboard/pages/Kanban.dart';
 import 'package:free_flutter_admin_dashboard/pages/ListPage.dart';
 import 'package:free_flutter_admin_dashboard/pages/analytics.dart';
+import 'package:free_flutter_admin_dashboard/pages/auth/sign_in.dart';
 import 'package:free_flutter_admin_dashboard/pages/calendar.dart';
 import 'package:free_flutter_admin_dashboard/pages/crm.dart';
 import 'package:free_flutter_admin_dashboard/pages/ecommerce.dart';
@@ -57,6 +58,11 @@ class RouteConfiguration {
     Path(
       r'^/',
       (context, match) => HomePage(),
+      openInSecondScreen: false,
+    ),
+    Path(
+      r'^/signIn',
+      (context, match) => const SignInWidget(),
       openInSecondScreen: false,
     ),
   ];
