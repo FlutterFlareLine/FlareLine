@@ -50,6 +50,7 @@ const List<Map<String, Object>> MAIN_PAGES = [
   {'routerPath': '/kanban', 'widget': KanbanPage()},
   {'routerPath': '/formElements', 'widget': FormElementsPage()},
   {'routerPath': '/formLayout', 'widget': FormLayoutPage()},
+  {'routerPath': '/signIn', 'widget': SignInWidget()},
 ];
 
 class RouteConfiguration {
