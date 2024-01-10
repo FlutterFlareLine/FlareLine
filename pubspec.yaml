@@ -50,6 +50,12 @@ dependencies:
 
   syncfusion_flutter_datagrid: ^24.1.45
 
+  transparent_image: ^2.0.1
+
+  dual_screen: ^1.0.4
+
+  google_fonts: ^6.1.0
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

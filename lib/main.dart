@@ -1,38 +1,39 @@
+import 'package:dual_screen/dual_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:free_flutter_admin_dashboard/home.dart';
 import 'package:free_flutter_admin_dashboard/provider/main_provider.dart';
+import 'package:free_flutter_admin_dashboard/routes.dart';
+import 'package:free_flutter_admin_dashboard/themes/global_theme.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:provider/provider.dart';
 
-void main() {
+void main() async {
+  await GetStorage.init();
   runApp(MyApp());
 }
 
-class MyApp extends StatelessWidget{
+class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
       designSize: const Size(1080, 720),
       minTextAdapt: true,
       splitScreenMode: true,
-      // Use builder only if you need to use library outside ScreenUtilInit context
-      builder: (_ , child) {
-        return MultiProvider(providers: [
-          ChangeNotifierProvider(create: (_)=>MainProvider())
-        ],
-        child: MaterialApp(
-          debugShowCheckedModeBanner: false,
-          title: 'XAdmin',
-          // You can use the library anywhere in the app even in theme
-          theme: ThemeData(
-            primarySwatch: Colors.blue,
-            textTheme: Typography.englishLike2018.apply(fontSizeFactor: 1.sp),
-          ),
-          home: child,
-        ),);
-      },
-      child:  HomePage(),
+      child: MultiProvider(
+          providers: [ChangeNotifierProvider(create: (_) => MainProvider())],
+          child: Builder(builder: (context) {
+            final hasHinge = MediaQuery.of(context).hinge?.bounds != null;
+            return MaterialApp(
+              restorationScopeId: 'rootXAdmin',
+              title: 'XAdmin',
+              debugShowCheckedModeBanner: false,
+              // You can use the library anywhere in the app even in theme
+              theme: GlobalTheme.lightThemeData,
+              darkTheme: GlobalTheme.darkThemeData,
+              onGenerateRoute: (settings) =>
+                  RouteConfiguration.onGenerateRoute(settings, hasHinge),
+            );
+          })),
     );
   }
 }
-
