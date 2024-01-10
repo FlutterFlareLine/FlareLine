@@ -4,6 +4,7 @@ import 'package:free_flutter_admin_dashboard/components/BarChart.dart';
 import 'package:free_flutter_admin_dashboard/components/CircularChart.dart';
 import 'package:free_flutter_admin_dashboard/components/LineChart.dart';
 import 'package:free_flutter_admin_dashboard/components/MapChart.dart';
+import 'package:free_flutter_admin_dashboard/components/TopChannel.dart';
 
 class EcommercePage extends StatelessWidget {
   const EcommercePage({super.key});
@@ -57,6 +58,10 @@ class EcommercePage extends StatelessWidget {
             ],
           ),
         ),
+        SizedBox(
+          height: 16.h,
+        ),
+        TopChannelWidget()
       ])),
     );
   }
