@@ -10,7 +10,7 @@ class TopChannelWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
         color: Colors.white,
-        child: Column(
+        child: Padding(padding: EdgeInsets.all(16.w), child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
@@ -23,7 +23,7 @@ class TopChannelWidget extends StatelessWidget {
               builder: (ctx, child) => _buildWidget(ctx),
             ),
           ],
-        ));
+        ),));
   }
 
   _buildWidget(BuildContext context) {
