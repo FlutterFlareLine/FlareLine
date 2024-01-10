@@ -18,7 +18,7 @@ class BarChartWidget extends StatelessWidget {
       children: [
         Row(
           children: [
-            Text('Profit this week')
+            Text('Profit this week',style: TextStyle(fontSize: 14.sp,fontWeight: FontWeight.bold),)
           ],
         ),
         SizedBox(height: 16.h,),

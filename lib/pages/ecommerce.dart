@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:free_flutter_admin_dashboard/components/BarChart.dart';
+import 'package:free_flutter_admin_dashboard/components/Chats.dart';
 import 'package:free_flutter_admin_dashboard/components/CircularChart.dart';
 import 'package:free_flutter_admin_dashboard/components/LineChart.dart';
 import 'package:free_flutter_admin_dashboard/components/MapChart.dart';
@@ -61,7 +62,17 @@ class EcommercePage extends StatelessWidget {
         SizedBox(
           height: 16.h,
         ),
-        TopChannelWidget()
+        SizedBox(
+            height: 450.h,
+            child: Row(
+              children: [
+                Expanded(
+                  child: TopChannelWidget(),
+                  flex: 2,
+                ),
+                Expanded(child: ChatsWidget(), flex: 1),
+              ],
+            ))
       ])),
     );
   }

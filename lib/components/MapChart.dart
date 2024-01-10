@@ -19,7 +19,7 @@ class MapChartWidget extends StatelessWidget {
       child: Column(
         children: [
           Row(
-            children: [Text('Profit this week')],
+            children: [Text('Region labels',style: TextStyle(fontSize: 14.sp,fontWeight: FontWeight.bold),)],
           ),
           SizedBox(
             height: 16.h,
