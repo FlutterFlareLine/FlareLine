@@ -52,8 +52,8 @@ class ChatsWidget extends StatelessWidget {
 
   Widget itemBuilder(
       BuildContext context, int index, Conversation conversation) {
-    return SizedBox(
-      height: 50.h,
+    return Container(
+      padding: EdgeInsets.symmetric(vertical: 8.h),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
