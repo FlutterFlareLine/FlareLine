@@ -1,9 +1,7 @@
-import 'package:dual_screen/dual_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:free_flutter_admin_dashboard/provider/main_provider.dart';
 import 'package:free_flutter_admin_dashboard/routes.dart';
-import 'package:free_flutter_admin_dashboard/themes/global_theme.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:provider/provider.dart';
 
@@ -22,7 +20,6 @@ class MyApp extends StatelessWidget {
       child: MultiProvider(
           providers: [ChangeNotifierProvider(create: (_) => MainProvider())],
           child: Builder(builder: (context) {
-            final hasHinge = MediaQuery.of(context).hinge?.bounds != null;
             return MaterialApp(
               restorationScopeId: 'rootXAdmin',
               title: 'XAdmin',
@@ -31,7 +28,7 @@ class MyApp extends StatelessWidget {
               // theme: GlobalTheme.lightThemeData,
               // darkTheme: GlobalTheme.darkThemeData,
               onGenerateRoute: (settings) =>
-                  RouteConfiguration.onGenerateRoute(settings, hasHinge),
+                  RouteConfiguration.onGenerateRoute(settings),
             );
           })),
     );

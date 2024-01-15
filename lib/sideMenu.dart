@@ -38,11 +38,7 @@ class SideMenuWidget extends StatelessWidget {
             if (childList != null && childList.length > 0) {
               expanded.value = !expanded.value;
             } else {
-              if (e['blank'] != null && true == e['blank']) {
-                Navigator.of(context).push(e['path']);
-                return;
-              }
-              context.read<MainProvider>().setSelectedPath(e['path']);
+              pushOrJump(context, e);
             }
           },
         ),
@@ -78,12 +74,16 @@ class SideMenuWidget extends StatelessWidget {
         ),
       ),
       onTap: () {
-        if (e['blank'] != null && true == e['blank']) {
-          Navigator.of(context).push(e['path']);
-          return;
-        }
-        context.read<MainProvider>().setSelectedPath(e['path']);
+        pushOrJump(context, e);
       },
     );
+  }
+
+  pushOrJump(BuildContext context, e) {
+    if (e['blank'] != null && true == e['blank']) {
+      Navigator.of(context).pushNamed(e['path']);
+      return;
+    }
+    context.read<MainProvider>().setSelectedPath(e['path']);
   }
 }

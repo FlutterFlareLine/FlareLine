@@ -1,4 +1,5 @@
 import 'package:dual_screen/dual_screen.dart';
+import 'package:flutter/material.dart';
 import 'package:free_flutter_admin_dashboard/home.dart';
 import 'package:free_flutter_admin_dashboard/pages/FormElements.dart';
 import 'package:free_flutter_admin_dashboard/pages/FormLayout.dart';
@@ -6,13 +7,13 @@ import 'package:free_flutter_admin_dashboard/pages/Kanban.dart';
 import 'package:free_flutter_admin_dashboard/pages/ListPage.dart';
 import 'package:free_flutter_admin_dashboard/pages/analytics.dart';
 import 'package:free_flutter_admin_dashboard/pages/auth/sign_in.dart';
+import 'package:free_flutter_admin_dashboard/pages/auth/sign_up.dart';
 import 'package:free_flutter_admin_dashboard/pages/calendar.dart';
 import 'package:free_flutter_admin_dashboard/pages/crm.dart';
 import 'package:free_flutter_admin_dashboard/pages/ecommerce.dart';
 import 'package:free_flutter_admin_dashboard/pages/marketing.dart';
 import 'package:free_flutter_admin_dashboard/pages/profile.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/foundation.dart';
+import 'package:free_flutter_admin_dashboard/pages/resetpwd/reset_pwd.dart';
 
 typedef PathWidgetBuilder = Widget Function(BuildContext, String?);
 
@@ -55,7 +56,9 @@ const List<Map<String, Object>> MAIN_PAGES = [
 class RouteConfiguration {
   static Map<String, PathWidgetBuilder> paths = {
     '/': (context, match) => HomePage(),
-    '/signIn': (context, match) => const SignInWidget()
+    '/signIn': (context, match) => const SignInWidget(),
+    '/signUp': (context, match) => const SignUpWidget(),
+    '/resetPwd':(p0, p1) => const ResetPwdWidget(),
   };
 
   // static List<Path> paths = [
@@ -77,7 +80,6 @@ class RouteConfiguration {
   /// matching.
   static Route<dynamic>? onGenerateRoute(
     RouteSettings settings,
-    bool hasHinge,
   ) {
     // for (final path in paths) {
     //   final regExpPattern = RegExp(path.pattern);
@@ -108,6 +110,7 @@ class RouteConfiguration {
     // return null;
 
     String path = settings.name!;
+    print(path);
     if (!paths.containsKey(path)) {
       return null;
     }
