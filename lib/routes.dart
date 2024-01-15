@@ -17,28 +17,6 @@ import 'package:free_flutter_admin_dashboard/pages/resetpwd/reset_pwd.dart';
 
 typedef PathWidgetBuilder = Widget Function(BuildContext, String?);
 
-class Path {
-  const Path(this.pattern, this.builder, {this.openInSecondScreen = false});
-
-  /// A RegEx string for route matching.
-  final String pattern;
-
-  /// The builder for the associated pattern route. The first argument is the
-  /// [BuildContext] and the second argument a RegEx match if that is included
-  /// in the pattern.
-  ///
-  /// ```dart
-  /// Path(
-  ///   'r'^/demo/([\w-]+)$',
-  ///   (context, matches) => Page(argument: match),
-  /// )
-  /// ```
-  final PathWidgetBuilder builder;
-
-  /// If the route should open on the second screen on foldables.
-  final bool openInSecondScreen;
-}
-
 const List<Map<String, Object>> MAIN_PAGES = [
   {'routerPath': '/dashboard', 'widget': EcommercePage()},
   {'routerPath': '/analytics', 'widget': AnalyticsPage()},
@@ -58,57 +36,12 @@ class RouteConfiguration {
     '/': (context, match) => HomePage(),
     '/signIn': (context, match) => const SignInWidget(),
     '/signUp': (context, match) => const SignUpWidget(),
-    '/resetPwd':(p0, p1) => const ResetPwdWidget(),
+    '/resetPwd': (p0, p1) => const ResetPwdWidget(),
   };
 
-  // static List<Path> paths = [
-  //   Path(
-  //     r'^/',
-  //     (context, match) => HomePage(),
-  //     openInSecondScreen: false,
-  //   ),
-  //   Path(
-  //     r'^/signIn',
-  //     (context, match) => const SignInWidget(),
-  //     openInSecondScreen: false,
-  //   ),
-  // ];
-
-  /// The route generator callback used when the app is navigated to a named
-  /// route. Set it on the [MaterialApp.onGenerateRoute] or
-  /// [WidgetsApp.onGenerateRoute] to make use of the [paths] for route
-  /// matching.
   static Route<dynamic>? onGenerateRoute(
     RouteSettings settings,
   ) {
-    // for (final path in paths) {
-    //   final regExpPattern = RegExp(path.pattern);
-    //   if (regExpPattern.hasMatch(settings.name!)) {
-    //     final firstMatch = regExpPattern.firstMatch(settings.name!)!;
-    //     final match = (firstMatch.groupCount == 1) ? firstMatch.group(1) : null;
-    //     if (kIsWeb) {
-    //       return NoAnimationMaterialPageRoute<void>(
-    //         builder: (context) => path.builder(context, match),
-    //         settings: settings,
-    //       );
-    //     }
-    //     if (path.openInSecondScreen && hasHinge) {
-    //       return TwoPanePageRoute<void>(
-    //         builder: (context) => path.builder(context, match),
-    //         settings: settings,
-    //       );
-    //     } else {
-    //       return MaterialPageRoute<void>(
-    //         builder: (context) => path.builder(context, match),
-    //         settings: settings,
-    //       );
-    //     }
-    //   }
-    // }
-
-    // // If no match was found, we let [WidgetsApp.onUnknownRoute] handle it.
-    // return null;
-
     String path = settings.name!;
     print(path);
     if (!paths.containsKey(path)) {
