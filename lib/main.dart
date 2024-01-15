@@ -28,8 +28,8 @@ class MyApp extends StatelessWidget {
               title: 'XAdmin',
               debugShowCheckedModeBanner: false,
               // You can use the library anywhere in the app even in theme
-              theme: GlobalTheme.lightThemeData,
-              darkTheme: GlobalTheme.darkThemeData,
+              // theme: GlobalTheme.lightThemeData,
+              // darkTheme: GlobalTheme.darkThemeData,
               onGenerateRoute: (settings) =>
                   RouteConfiguration.onGenerateRoute(settings, hasHinge),
             );

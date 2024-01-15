@@ -92,9 +92,9 @@ class SideBarWidger extends StatelessWidget {
         {
           'menuName': 'Authentication',
           'childList': [
-            {'menuName': 'Sign In', 'path': '/signIn'},
-            {'menuName': 'Sign Up', 'path': '/signUp'},
-            {'menuName': 'Reset Password', 'path': '/resetPwd'},
+            {'menuName': 'Sign In', 'path': '/signIn', 'blank': true},
+            {'menuName': 'Sign Up', 'path': '/signUp', 'blank': true},
+            {'menuName': 'Reset Password', 'path': '/resetPwd', 'blank': true},
           ]
         },
       ]

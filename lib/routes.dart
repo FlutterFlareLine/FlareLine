@@ -38,7 +38,6 @@ class Path {
   final bool openInSecondScreen;
 }
 
-
 const List<Map<String, Object>> MAIN_PAGES = [
   {'routerPath': '/dashboard', 'widget': EcommercePage()},
   {'routerPath': '/analytics', 'widget': AnalyticsPage()},
@@ -54,21 +53,25 @@ const List<Map<String, Object>> MAIN_PAGES = [
 ];
 
 class RouteConfiguration {
+  static Map<String, PathWidgetBuilder> paths = {
+    '/': (context, match) => HomePage(),
+    '/signIn': (context, match) => const SignInWidget()
+  };
 
-  static List<Path> paths = [
-    Path(
-      r'^/',
-      (context, match) => HomePage(),
-      openInSecondScreen: false,
-    ),
-    Path(
-      r'^/signIn',
-      (context, match) => const SignInWidget(),
-      openInSecondScreen: false,
-    ),
-  ];
+  // static List<Path> paths = [
+  //   Path(
+  //     r'^/',
+  //     (context, match) => HomePage(),
+  //     openInSecondScreen: false,
+  //   ),
+  //   Path(
+  //     r'^/signIn',
+  //     (context, match) => const SignInWidget(),
+  //     openInSecondScreen: false,
+  //   ),
+  // ];
 
-/// The route generator callback used when the app is navigated to a named
+  /// The route generator callback used when the app is navigated to a named
   /// route. Set it on the [MaterialApp.onGenerateRoute] or
   /// [WidgetsApp.onGenerateRoute] to make use of the [paths] for route
   /// matching.
@@ -76,33 +79,44 @@ class RouteConfiguration {
     RouteSettings settings,
     bool hasHinge,
   ) {
-    for (final path in paths) {
-      final regExpPattern = RegExp(path.pattern);
-      if (regExpPattern.hasMatch(settings.name!)) {
-        final firstMatch = regExpPattern.firstMatch(settings.name!)!;
-        final match = (firstMatch.groupCount == 1) ? firstMatch.group(1) : null;
-        if (kIsWeb) {
-          return NoAnimationMaterialPageRoute<void>(
-            builder: (context) => path.builder(context, match),
-            settings: settings,
-          );
-        }
-        if (path.openInSecondScreen && hasHinge) {
-          return TwoPanePageRoute<void>(
-            builder: (context) => path.builder(context, match),
-            settings: settings,
-          );
-        } else {
-          return MaterialPageRoute<void>(
-            builder: (context) => path.builder(context, match),
-            settings: settings,
-          );
-        }
-      }
+    // for (final path in paths) {
+    //   final regExpPattern = RegExp(path.pattern);
+    //   if (regExpPattern.hasMatch(settings.name!)) {
+    //     final firstMatch = regExpPattern.firstMatch(settings.name!)!;
+    //     final match = (firstMatch.groupCount == 1) ? firstMatch.group(1) : null;
+    //     if (kIsWeb) {
+    //       return NoAnimationMaterialPageRoute<void>(
+    //         builder: (context) => path.builder(context, match),
+    //         settings: settings,
+    //       );
+    //     }
+    //     if (path.openInSecondScreen && hasHinge) {
+    //       return TwoPanePageRoute<void>(
+    //         builder: (context) => path.builder(context, match),
+    //         settings: settings,
+    //       );
+    //     } else {
+    //       return MaterialPageRoute<void>(
+    //         builder: (context) => path.builder(context, match),
+    //         settings: settings,
+    //       );
+    //     }
+    //   }
+    // }
+
+    // // If no match was found, we let [WidgetsApp.onUnknownRoute] handle it.
+    // return null;
+
+    String path = settings.name!;
+    if (!paths.containsKey(path)) {
+      return null;
     }
 
-    // If no match was found, we let [WidgetsApp.onUnknownRoute] handle it.
-    return null;
+    PathWidgetBuilder builder = paths[path]!;
+    return MaterialPageRoute<void>(
+      builder: (context) => builder(context, null),
+      settings: settings,
+    );
   }
 }
 

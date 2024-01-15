@@ -63,7 +63,7 @@ class EcommercePage extends StatelessWidget {
           height: 16.h,
         ),
         SizedBox(
-            height: 450.h,
+            height: 380.h,
             child: Row(
               children: [
                 Expanded(
