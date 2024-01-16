@@ -1,4 +1,3 @@
-import 'package:dual_screen/dual_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:free_flutter_admin_dashboard/home.dart';
 import 'package:free_flutter_admin_dashboard/pages/FormElements.dart';
@@ -17,7 +16,7 @@ import 'package:free_flutter_admin_dashboard/pages/resetpwd/reset_pwd.dart';
 
 typedef PathWidgetBuilder = Widget Function(BuildContext, String?);
 
-const List<Map<String, Object>> MAIN_PAGES = [
+final List<Map<String, Object>> MAIN_PAGES = [
   {'routerPath': '/dashboard', 'widget': EcommercePage()},
   {'routerPath': '/analytics', 'widget': AnalyticsPage()},
   {'routerPath': '/marketing', 'widget': MarketingPage()},
@@ -49,7 +48,7 @@ class RouteConfiguration {
     }
 
     PathWidgetBuilder builder = paths[path]!;
-    return MaterialPageRoute<void>(
+    return NoAnimationMaterialPageRoute<void>(
       builder: (context) => builder(context, null),
       settings: settings,
     );
@@ -70,31 +69,5 @@ class NoAnimationMaterialPageRoute<T> extends MaterialPageRoute<T> {
     Widget child,
   ) {
     return child;
-  }
-}
-
-class TwoPanePageRoute<T> extends OverlayRoute<T> {
-  TwoPanePageRoute({
-    required this.builder,
-    super.settings,
-  });
-
-  final WidgetBuilder builder;
-
-  @override
-  Iterable<OverlayEntry> createOverlayEntries() sync* {
-    yield OverlayEntry(builder: (context) {
-      final hinge = MediaQuery.of(context).hinge?.bounds;
-      if (hinge == null) {
-        return builder.call(context);
-      } else {
-        return Positioned(
-            top: 0,
-            left: hinge.right,
-            right: 0,
-            bottom: 0,
-            child: builder.call(context));
-      }
-    });
   }
 }

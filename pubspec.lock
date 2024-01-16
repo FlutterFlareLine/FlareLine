@@ -360,6 +360,14 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "1.2.0"
+  syncfusion_flutter_calendar:
+    dependency: "direct main"
+    description:
+      name: syncfusion_flutter_calendar
+      sha256: "12c9750dc5b728cb2eee251533a7bcc0b66171f9c7d2c5a3ed665494534148f0"
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "24.1.45"
   syncfusion_flutter_charts:
     dependency: "direct main"
     description:
@@ -384,6 +392,14 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "24.1.45"
+  syncfusion_flutter_datepicker:
+    dependency: transitive
+    description:
+      name: syncfusion_flutter_datepicker
+      sha256: "22e9845e3389a7554f5ccf683032ba4ce4cf9a19f656f5e811a075df31f78c9e"
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "24.1.45"
   term_glyph:
     dependency: transitive
     description:
@@ -400,6 +416,14 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "0.6.1"
+  timezone:
+    dependency: transitive
+    description:
+      name: timezone
+      sha256: "1cfd8ddc2d1cfd836bc93e67b9be88c3adaeca6f40a00ca999104c30693cdca0"
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "0.9.2"
   transparent_image:
     dependency: "direct main"
     description:

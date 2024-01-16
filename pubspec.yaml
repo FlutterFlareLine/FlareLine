@@ -58,6 +58,9 @@ dependencies:
 
   flutter_svg: ^2.0.9
 
+  syncfusion_flutter_calendar: ^24.1.45
+
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
