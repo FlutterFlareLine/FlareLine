@@ -14,6 +14,7 @@ class SignUpWidget extends StatelessWidget {
         width: ScreenUtil().screenWidth * 0.8,
         height: ScreenUtil().screenHeight * 0.8,
         child: Card(
+          color: Colors.white,
           child: Padding(
             padding: EdgeInsets.only(
               top: 30.h,

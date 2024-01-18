@@ -27,6 +27,7 @@ class MyApp extends StatelessWidget {
               // You can use the library anywhere in the app even in theme
               // theme: GlobalTheme.lightThemeData,
               // darkTheme: GlobalTheme.darkThemeData,
+              initialRoute: '/',
               onGenerateRoute: (settings) =>
                   RouteConfiguration.onGenerateRoute(settings),
             );

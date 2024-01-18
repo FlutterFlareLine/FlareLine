@@ -10,6 +10,7 @@ import 'package:free_flutter_admin_dashboard/pages/auth/sign_up.dart';
 import 'package:free_flutter_admin_dashboard/pages/calendar.dart';
 import 'package:free_flutter_admin_dashboard/pages/crm.dart';
 import 'package:free_flutter_admin_dashboard/pages/ecommerce.dart';
+import 'package:free_flutter_admin_dashboard/pages/invoice.dart';
 import 'package:free_flutter_admin_dashboard/pages/marketing.dart';
 import 'package:free_flutter_admin_dashboard/pages/profile.dart';
 import 'package:free_flutter_admin_dashboard/pages/resetpwd/reset_pwd.dart';
@@ -17,6 +18,7 @@ import 'package:free_flutter_admin_dashboard/pages/resetpwd/reset_pwd.dart';
 typedef PathWidgetBuilder = Widget Function(BuildContext, String?);
 
 final List<Map<String, Object>> MAIN_PAGES = [
+  {'routerPath': '/', 'widget': HomePage()},
   {'routerPath': '/dashboard', 'widget': EcommercePage()},
   {'routerPath': '/analytics', 'widget': AnalyticsPage()},
   {'routerPath': '/marketing', 'widget': MarketingPage()},
@@ -28,26 +30,30 @@ final List<Map<String, Object>> MAIN_PAGES = [
   {'routerPath': '/formElements', 'widget': FormElementsPage()},
   {'routerPath': '/formLayout', 'widget': FormLayoutPage()},
   {'routerPath': '/signIn', 'widget': SignInWidget()},
+  {'routerPath': '/signUp', 'widget': SignUpWidget()},
+  {'routerPath': '/resetPwd', 'widget': ResetPwdWidget()},
+  {'routerPath': '/invoice', 'widget': InvoicePage()},
 ];
 
 class RouteConfiguration {
-  static Map<String, PathWidgetBuilder> paths = {
-    '/': (context, match) => HomePage(),
-    '/signIn': (context, match) => const SignInWidget(),
-    '/signUp': (context, match) => const SignUpWidget(),
-    '/resetPwd': (p0, p1) => const ResetPwdWidget(),
-  };
 
   static Route<dynamic>? onGenerateRoute(
     RouteSettings settings,
   ) {
     String path = settings.name!;
     print(path);
-    if (!paths.containsKey(path)) {
+
+    dynamic map =
+        MAIN_PAGES.firstWhere((element) => element['routerPath'] == path);
+    if (map == null) {
       return null;
     }
+    Widget targetPage = map['widget'];
 
-    PathWidgetBuilder builder = paths[path]!;
+    PathWidgetBuilder builder = (context, match) {
+      return targetPage;
+    };
+
     return NoAnimationMaterialPageRoute<void>(
       builder: (context) => builder(context, null),
       settings: settings,
