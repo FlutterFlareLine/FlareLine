@@ -84,36 +84,74 @@ class ProfilePage extends LayoutWidget {
               style: TextStyle(fontSize: 16.sp),
             ),
             SizedBox(
-              height: 10.h,
+              height: 16.h,
             ),
             Text(
               'Ui/Ux Designer',
               style: TextStyle(fontSize: 10.sp),
             ),
+            SizedBox(
+              height: 16.h,
+            ),
             Container(
               width: 220.w,
+              padding: EdgeInsets.symmetric(vertical: 8.h),
               decoration: BoxDecoration(
                   border: Border.all(color: Colors.grey, width: 1)),
               child: Row(children: [
                 Expanded(
-                    child: Text.rich(
-                  TextSpan(text: '259', children: [TextSpan(text: 'Posts')]),
+                    child: Container(
+                  child: Text.rich(
+                    TextSpan(text: '259', children: [TextSpan(text: ' Posts')]),
+                  ),
+                  alignment: Alignment.center,
+                )),
+                VerticalDivider(
+                  width: 1,
+                ),
+                Expanded(
+                    child: Container(
+                  child: Text.rich(
+                    TextSpan(
+                        text: '129K', children: [TextSpan(text: ' Followers')]),
+                  ),
+                  alignment: Alignment.center,
+                )),
+                VerticalDivider(
+                  width: 1,
+                ),
+                Expanded(
+                    child: Container(
+                  child: Text.rich(
+                    TextSpan(
+                        text: '2K', children: [TextSpan(text: ' Following')]),
+                  ),
+                  alignment: Alignment.center,
                 ))
               ]),
+            ),
+            SizedBox(
+              height: 16.h,
             ),
             Text(
               'About Me',
               style: TextStyle(fontSize: 10.sp),
             ),
             SizedBox(
-              height: 10.h,
+              height: 16.h,
             ),
-            Text(
-              'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque posuere fermentum urna, eu condimentum mauris tempus ut. Donec fermentum blandit aliquet. Etiam dictum dapibus ultricies. Sed vel aliquet libero. Nunc a augue fermentum, pharetra ligula sed, aliquam lacus.',
-              style: TextStyle(fontSize: 10.sp),
+            Container(
+              alignment: Alignment.center,
+              width: 400.w,
+              child: Text(
+              
+                'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque posuere fermentum urna, eu condimentum mauris tempus ut. Donec fermentum blandit aliquet. Etiam dictum dapibus ultricies. Sed vel aliquet libero. Nunc a augue fermentum, pharetra ligula sed, aliquam lacus.',
+                style: TextStyle(fontSize: 10.sp),
+                textAlign: TextAlign.center,
+              ),
             ),
             SizedBox(
-              height: 10.h,
+              height: 16.h,
             ),
             Text(
               'Follow me on',
