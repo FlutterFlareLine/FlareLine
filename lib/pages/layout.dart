@@ -10,12 +10,9 @@ abstract class LayoutWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.all(10.w),
+      padding: EdgeInsets.symmetric(horizontal: 20.w,vertical: 16.h),
       child: Column(
         children: [
-          SizedBox(
-            height: 10.h,
-          ),
           BreakTab(title()),
           SizedBox(
             height: 10.h,

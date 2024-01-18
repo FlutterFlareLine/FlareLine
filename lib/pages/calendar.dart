@@ -12,12 +12,15 @@ class CalendarPage extends LayoutWidget {
 
   @override
   Widget contentWidget(BuildContext context) {
-    return SfCalendar(
+    return Container(
+      color: Colors.white,
+      child: SfCalendar(
       view: CalendarView.month,
       viewHeaderStyle: ViewHeaderStyle(
         backgroundColor: Colors.blue,
         dayTextStyle: TextStyle(color: Colors.grey, fontSize: 20),
       ),
+    ),
     );
   }
 }
