@@ -10,6 +10,7 @@ import 'package:free_flutter_admin_dashboard/pages/auth/sign_up.dart';
 import 'package:free_flutter_admin_dashboard/pages/calendar.dart';
 import 'package:free_flutter_admin_dashboard/pages/crm.dart';
 import 'package:free_flutter_admin_dashboard/pages/ecommerce.dart';
+import 'package:free_flutter_admin_dashboard/pages/inbox/index.dart';
 import 'package:free_flutter_admin_dashboard/pages/invoice.dart';
 import 'package:free_flutter_admin_dashboard/pages/marketing.dart';
 import 'package:free_flutter_admin_dashboard/pages/profile.dart';
@@ -33,6 +34,7 @@ final List<Map<String, Object>> MAIN_PAGES = [
   {'routerPath': '/signUp', 'widget': SignUpWidget()},
   {'routerPath': '/resetPwd', 'widget': ResetPwdWidget()},
   {'routerPath': '/invoice', 'widget': InvoicePage()},
+  {'routerPath': '/inbox', 'widget': InboxWidget()},
 ];
 
 class RouteConfiguration {
