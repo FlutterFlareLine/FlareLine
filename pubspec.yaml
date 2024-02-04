@@ -60,6 +60,8 @@ dependencies:
 
   syncfusion_flutter_calendar: ^24.1.45
 
+  calendar_date_picker2: ^0.5.3
+
 
 dev_dependencies:
   flutter_test:
