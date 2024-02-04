@@ -1,6 +1,7 @@
 import 'package:calendar_date_picker2/calendar_date_picker2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:free_flutter_admin_dashboard/components/forms/form_file_picker.dart';
 import 'package:free_flutter_admin_dashboard/pages/layout.dart';
 import 'package:getwidget/getwidget.dart';
 
@@ -230,31 +231,14 @@ class FormElementsPage extends LayoutWidget {
           child: _titleWidget(
               'File upload',
               Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                TextFormField(
-                  decoration: InputDecoration(
-                      labelText: 'Default Input',
-                      floatingLabelBehavior: FloatingLabelBehavior.always,
-                      hintText: 'Default Input'),
-                ),
+                FormFilePicker(title: 'Attach file',),
                 SizedBox(
                   height: 16.h,
                 ),
-                TextFormField(
-                  decoration: InputDecoration(
-                      labelText: 'Active Input',
-                      floatingLabelBehavior: FloatingLabelBehavior.always,
-                      hintText: 'Active Input'),
+                FormFilePicker(
+                  title: 'Select Image',
+                  allowExtention: ['jpg','jpeg','png','gif'],
                 ),
-                SizedBox(
-                  height: 16.h,
-                ),
-                TextFormField(
-                  enabled: false,
-                  decoration: InputDecoration(
-                      labelText: 'Disabled label',
-                      floatingLabelBehavior: FloatingLabelBehavior.always,
-                      hintText: 'Disabled label'),
-                )
               ])),
         )
       ],
