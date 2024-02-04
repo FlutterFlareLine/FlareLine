@@ -13,20 +13,20 @@ class SideBarWidger extends StatelessWidget {
           'menuName': 'Dashboard',
           'childList': [
             {'menuName': 'eCommerce', 'path': '/dashboard'},
-            {'menuName': 'Analytics', 'path': '/analytics'},
-            {'menuName': 'Marketing', 'path': '/marketing'},
-            {'menuName': 'CRM', 'path': '/crm'}
+            // {'menuName': 'Analytics', 'path': '/analytics'},
+            // {'menuName': 'Marketing', 'path': '/marketing'},
+            // {'menuName': 'CRM', 'path': '/crm'}
           ]
         },
         {'menuName': 'Calendar', 'path': '/calendar'},
         {'menuName': 'Profile', 'path': '/profile'},
-        {
-          'menuName': 'Task',
-          'childList': [
-            {'menuName': 'List', 'path': '/list'},
-            {'menuName': 'Kanban', 'path': '/kanban'},
-          ]
-        },
+        // {
+        //   'menuName': 'Task',
+        //   'childList': [
+        //     {'menuName': 'List', 'path': '/list'},
+        //     {'menuName': 'Kanban', 'path': '/kanban'},
+        //   ]
+        // },
         {
           'menuName': 'Forms',
           'childList': [
@@ -39,23 +39,23 @@ class SideBarWidger extends StatelessWidget {
           'menuName': 'Pages',
           'childList': [
             {'menuName': 'Settings', 'path': '/settings'},
-            {'menuName': 'File Manager', 'path': '/fileManager'},
-            {'menuName': 'Data Tables', 'path': '/dataTables'},
-            {'menuName': 'Pricing Tables', 'path': '/pricingTables'},
-            {'menuName': 'Error Page', 'path': '/errorPage'},
-            {'menuName': 'Mail Success', 'path': '/mailSuccess'},
+            // {'menuName': 'File Manager', 'path': '/fileManager'},
+            // {'menuName': 'Data Tables', 'path': '/dataTables'},
+            // {'menuName': 'Pricing Tables', 'path': '/pricingTables'},
+            // {'menuName': 'Error Page', 'path': '/errorPage'},
+            // {'menuName': 'Mail Success', 'path': '/mailSuccess'},
           ]
         },
       ]
     },
-    {
-      'groupName': 'SUPPORT',
-      'menuList': [
-        {'menuName': 'Messages', 'path': '/messages'},
-        {'menuName': 'Inbox', 'path': '/inbox'},
-        {'menuName': 'Invoice', 'path': '/invoice'},
-      ]
-    },
+    // {
+    //   'groupName': 'SUPPORT',
+    //   'menuList': [
+    //     {'menuName': 'Messages', 'path': '/messages'},
+    //     {'menuName': 'Inbox', 'path': '/inbox'},
+    //     {'menuName': 'Invoice', 'path': '/invoice'},
+    //   ]
+    // },
     {
       'groupName': 'OTHERS',
       'menuList': [
@@ -63,7 +63,7 @@ class SideBarWidger extends StatelessWidget {
           'menuName': 'Chart',
           'childList': [
             {'menuName': 'Basic Chart', 'path': '/basicChart'},
-            {'menuName': 'Advanced Chart', 'path': '/advancedChart'},
+            // {'menuName': 'Advanced Chart', 'path': '/advancedChart'},
           ]
         },
         {
@@ -71,22 +71,22 @@ class SideBarWidger extends StatelessWidget {
           'childList': [
             {'menuName': 'Alerts', 'path': '/alerts'},
             {'menuName': 'Buttons', 'path': '/buttons'},
-            {'menuName': 'Buttons Group', 'path': '/buttonsGroup'},
-            {'menuName': 'Badge', 'path': '/badge'},
-            {'menuName': 'Breadcrumbs', 'path': '/Breadcrumbs'},
-            {'menuName': 'Cards', 'path': '/cards'},
-            {'menuName': 'Dropdowns', 'path': '/dropdowns'},
-            {'menuName': 'Modals', 'path': '/modals'},
-            {'menuName': 'Tabs', 'path': '/tabs'},
-            {'menuName': 'Tooltips', 'path': '/tooltips'},
-            {'menuName': 'Popovers', 'path': '/popovers'},
-            {'menuName': 'Accordion', 'path': '/accordion'},
-            {'menuName': 'Notifications', 'path': '/notifications'},
-            {'menuName': 'Pagination', 'path': '/pagination'},
-            {'menuName': 'Progress', 'path': '/progress'},
-            {'menuName': 'Carousel', 'path': '/Carousel'},
-            {'menuName': 'Images', 'path': '/images'},
-            {'menuName': 'Videos', 'path': '/videos'},
+            // {'menuName': 'Buttons Group', 'path': '/buttonsGroup'},
+            // {'menuName': 'Badge', 'path': '/badge'},
+            // {'menuName': 'Breadcrumbs', 'path': '/Breadcrumbs'},
+            // {'menuName': 'Cards', 'path': '/cards'},
+            // {'menuName': 'Dropdowns', 'path': '/dropdowns'},
+            // {'menuName': 'Modals', 'path': '/modals'},
+            // {'menuName': 'Tabs', 'path': '/tabs'},
+            // {'menuName': 'Tooltips', 'path': '/tooltips'},
+            // {'menuName': 'Popovers', 'path': '/popovers'},
+            // {'menuName': 'Accordion', 'path': '/accordion'},
+            // {'menuName': 'Notifications', 'path': '/notifications'},
+            // {'menuName': 'Pagination', 'path': '/pagination'},
+            // {'menuName': 'Progress', 'path': '/progress'},
+            // {'menuName': 'Carousel', 'path': '/Carousel'},
+            // {'menuName': 'Images', 'path': '/images'},
+            // {'menuName': 'Videos', 'path': '/videos'},
           ]
         },
         {

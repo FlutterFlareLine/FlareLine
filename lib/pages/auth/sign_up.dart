@@ -62,26 +62,6 @@ class SignUpWidget extends StatelessWidget {
                           fontSize: 20.sp, fontWeight: FontWeight.bold),
                     ),
                     SizedBox(
-                      height: 20.h,
-                    ),
-                    Text('Name'),
-                    SizedBox(
-                      height: 8.h,
-                    ),
-                    TextField(
-                      decoration: InputDecoration(
-                        border: InputBorder.none,
-                        fillColor: Colors.grey.shade200,
-                        suffixIcon: Icon(Icons.email),
-
-                        hintStyle: TextStyle(fontSize: 10.sp),
-                        // labelText: 'Type to search...',
-                        hintText: 'Enter your name',
-                        // helperText: 'Type to search...',
-                        filled: true,
-                      ),
-                    ),
-                    SizedBox(
                       height: 16.h,
                     ),
                     Text('Email'),
