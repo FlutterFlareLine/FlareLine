@@ -14,6 +14,8 @@ With XAdmin Flutter, you get access to all the necessary dashboard UI components
 
 Here are the steps you need to follow to install the dependencies.
 
+Flutter version is 3.19.3
+
 1. Download and extract the template from Templates.
 
 2. After that **cd** into the template directory then run this command to install all the dependencies

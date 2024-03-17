@@ -46,21 +46,21 @@ dependencies:
 
   popover: ^0.2.9
 
-  syncfusion_flutter_charts: ^24.1.44+1
+  syncfusion_flutter_charts: ^25.1.35
 
-  syncfusion_flutter_datagrid: ^24.1.45
+  syncfusion_flutter_datagrid: ^25.1.35
 
   transparent_image: ^2.0.1
 
   dual_screen: ^1.0.4
 
-  google_fonts: ^6.1.0
+  google_fonts: ^6.2.1
 
   flutter_svg: ^2.0.9
 
-  syncfusion_flutter_calendar: ^24.1.45
+  syncfusion_flutter_calendar: ^25.1.35
 
-  calendar_date_picker2: ^0.5.3
+  calendar_date_picker2: ^0.5.5
 
   file_picker: ^6.1.1
 
