@@ -5,7 +5,7 @@ import 'package:free_flutter_admin_dashboard/components/Chats.dart';
 import 'package:free_flutter_admin_dashboard/components/CircularChart.dart';
 import 'package:free_flutter_admin_dashboard/components/LineChart.dart';
 import 'package:free_flutter_admin_dashboard/components/MapChart.dart';
-import 'package:free_flutter_admin_dashboard/components/TopChannel.dart';
+import 'package:free_flutter_admin_dashboard/components/tables/TopChannel.dart';
 
 class EcommercePage extends StatelessWidget {
   const EcommercePage({super.key});
