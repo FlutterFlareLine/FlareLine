@@ -1,10 +1,12 @@
 import 'package:calendar_date_picker2/calendar_date_picker2.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:free_flutter_admin_dashboard/components/forms/form_file_picker.dart';
 import 'package:free_flutter_admin_dashboard/pages/layout.dart';
 import 'package:getwidget/components/checkbox/gf_checkbox.dart';
+import 'package:getwidget/components/dropdown/gf_dropdown.dart';
 import 'package:getwidget/getwidget.dart';
 
 class FormElementsPage extends LayoutWidget {
@@ -47,6 +49,8 @@ class FormElementsPage extends LayoutWidget {
   ValueNotifier<String> dateNotifier = ValueNotifier("");
 
   ValueNotifier<bool> checkNotifier = ValueNotifier(false);
+  ValueNotifier<bool> checkNotifier1 = ValueNotifier(false);
+  ValueNotifier<bool> checkNotifier3 = ValueNotifier(false);
 
   _leftWidget(BuildContext context) {
     return Column(
@@ -319,29 +323,44 @@ class FormElementsPage extends LayoutWidget {
                       ValueListenableBuilder(
                           valueListenable: checkNotifier,
                           builder: (ctx, res, widget) {
-                            return GFCheckbox(
-                              size: GFSize.SMALL,
-                              activeBgColor: GFColors.DANGER,
-                              onChanged: (value) {
-                                checkNotifier.value = value;
-                              },
-                              value: res,
+                            return Container(
+                              child: GFCheckbox(
+                                size: GFSize.SMALL,
+                                activeBgColor: GFColors.DANGER,
+                                onChanged: (value) {
+                                  checkNotifier.value = value;
+                                },
+                                value: res,
+                              ),
                             );
                           }),
                       SizedBox(
                         height: 16,
                       ),
-                      GFCheckbox(
-                        value: false,
-                        onChanged: (r) {},
-                      ),
+                      ValueListenableBuilder(
+                          valueListenable: checkNotifier1,
+                          builder: (ctx, res, widget) {
+                            return Checkbox(
+                              value: res,
+                              activeColor: Colors.red, //选中时的颜色
+                              onChanged: (value) {
+                                checkNotifier1.value = value ?? false;
+                              },
+                            );
+                          }),
                       SizedBox(
                         height: 16,
                       ),
-                      CupertinoCheckbox(
-                        value: false,
-                        onChanged: (r) {},
-                      )
+                      ValueListenableBuilder(
+                          valueListenable: checkNotifier3,
+                          builder: (ctx, res, widget) {
+                            return CupertinoCheckbox(
+                              value: res,
+                              onChanged: (r) {
+                                checkNotifier3.value = r ?? false;
+                              },
+                            );
+                          })
                     ])),
           ),
           SizedBox(
@@ -352,41 +371,95 @@ class FormElementsPage extends LayoutWidget {
             child: _titleWidget(
                 'Select input',
                 Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                  Switch(value: false, onChanged: (r) {}),
+                  Text('Select country'),
                   SizedBox(
-                    height: 16,
+                    height: 12.h,
                   ),
-                  SwitchListTile(
-                    title: Text('Switch Label'),
-                    value: false,
-                    onChanged: (r) {},
-                  ),
+                  _dropDownWidget(context),
                   SizedBox(
-                    height: 16,
+                    height: 16.h,
                   ),
-                  GFToggle(
-                    onChanged: (val) {},
-                    value: true,
-                    type: GFToggleType.ios,
-                  ),
+                  Text('Multiselect Dropdown'),
                   SizedBox(
-                    height: 16,
+                    height: 12.h,
                   ),
-                  GFToggle(
-                    onChanged: (val) {},
-                    value: true,
-                    type: GFToggleType.square,
-                  ),
-                  SizedBox(
-                    height: 16,
-                  ),
-                  GFToggle(
-                    onChanged: (val) {},
-                    value: true,
-                    type: GFToggleType.custom,
-                  ),
+                  _multiSelectWidget(context)
                 ])),
           ),
         ]);
+  }
+
+  ValueNotifier<String?> dropDownNotifier = ValueNotifier(null);
+
+  Widget _dropDownWidget(BuildContext context) {
+    return Container(
+      height: 50,
+      width: MediaQuery.of(context).size.width,
+      margin: EdgeInsets.all(20),
+      child: DropdownButtonHideUnderline(
+        child: ValueListenableBuilder(
+            valueListenable: dropDownNotifier,
+            builder: (ctx, res, widget) {
+              return GFDropdown(
+                borderRadius: BorderRadius.circular(5),
+                border: const BorderSide(color: Colors.black12, width: 1),
+                dropdownButtonColor: Colors.white,
+                value: res,
+                onChanged: (newValue) {
+                  dropDownNotifier.value = newValue;
+                },
+                items: [
+                  'FC Barcelona',
+                  'Real Madrid',
+                  'Villareal',
+                  'Manchester City'
+                ]
+                    .map((value) => DropdownMenuItem(
+                          value: value,
+                          child: Text(value),
+                        ))
+                    .toList(),
+              );
+            }),
+      ),
+    );
+  }
+
+  List<String> dropList = ['China', 'USA', 'England', "Russia", 'Japan'];
+
+  Widget _multiSelectWidget(BuildContext context) {
+    return GFMultiSelect(
+      items: dropList,
+      onSelect: (value) {
+        print('selected $value ');
+      },
+      dropdownTitleTileText: 'Messi, Griezmann, Coutinho ',
+      dropdownTitleTileMargin:
+          EdgeInsets.only(top: 22, left: 18, right: 18, bottom: 5),
+      dropdownTitleTilePadding: EdgeInsets.all(10),
+      dropdownUnderlineBorder:
+          const BorderSide(color: Colors.transparent, width: 2),
+      dropdownTitleTileBorder:
+          Border.all(color: Colors.grey.shade200, width: 1),
+      dropdownTitleTileBorderRadius: BorderRadius.circular(5),
+      expandedIcon: const Icon(
+        Icons.keyboard_arrow_down,
+        color: Colors.black54,
+      ),
+      collapsedIcon: const Icon(
+        Icons.keyboard_arrow_up,
+        color: Colors.black54,
+      ),
+      submitButton: Text('OK'),
+      cancelButton: Text('Cancel'),
+      dropdownTitleTileTextStyle:
+          const TextStyle(fontSize: 14, color: Colors.black54),
+      padding: const EdgeInsets.all(6),
+      margin: const EdgeInsets.all(6),
+      type: GFCheckboxType.basic,
+      activeBgColor: GFColors.SUCCESS,
+      activeBorderColor: GFColors.SUCCESS,
+      inactiveBorderColor: Colors.grey.shade200,
+    );
   }
 }
