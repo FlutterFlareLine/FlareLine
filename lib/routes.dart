@@ -15,6 +15,7 @@ import 'package:free_flutter_admin_dashboard/pages/invoice.dart';
 import 'package:free_flutter_admin_dashboard/pages/marketing.dart';
 import 'package:free_flutter_admin_dashboard/pages/profile.dart';
 import 'package:free_flutter_admin_dashboard/pages/resetpwd/reset_pwd.dart';
+import 'package:free_flutter_admin_dashboard/pages/settings.dart';
 import 'package:free_flutter_admin_dashboard/pages/tables.dart';
 
 typedef PathWidgetBuilder = Widget Function(BuildContext, String?);
@@ -37,6 +38,7 @@ final List<Map<String, Object>> MAIN_PAGES = [
   {'routerPath': '/invoice', 'widget': InvoicePage()},
   {'routerPath': '/inbox', 'widget': InboxWidget()},
   {'routerPath': '/tables', 'widget': TablesPage()},
+  {'routerPath': '/settings', 'widget': SettingsPage()},
 ];
 
 class RouteConfiguration {

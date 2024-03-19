@@ -35,17 +35,17 @@ class SideBarWidger extends StatelessWidget {
           ]
         },
         {'menuName': 'Tables', 'path': '/tables'},
-        {
-          'menuName': 'Pages',
-          'childList': [
-            {'menuName': 'Settings', 'path': '/settings'},
-            // {'menuName': 'File Manager', 'path': '/fileManager'},
-            // {'menuName': 'Data Tables', 'path': '/dataTables'},
-            // {'menuName': 'Pricing Tables', 'path': '/pricingTables'},
-            // {'menuName': 'Error Page', 'path': '/errorPage'},
-            // {'menuName': 'Mail Success', 'path': '/mailSuccess'},
-          ]
-        },
+        // {
+        // 'menuName': 'Pages',
+        // 'childList': [
+        {'menuName': 'Settings', 'path': '/settings'},
+        // {'menuName': 'File Manager', 'path': '/fileManager'},
+        // {'menuName': 'Data Tables', 'path': '/dataTables'},
+        // {'menuName': 'Pricing Tables', 'path': '/pricingTables'},
+        // {'menuName': 'Error Page', 'path': '/errorPage'},
+        // {'menuName': 'Mail Success', 'path': '/mailSuccess'},
+        // ]
+        // },
       ]
     },
     // {
