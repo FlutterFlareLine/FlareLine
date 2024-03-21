@@ -32,7 +32,7 @@
     <title>free_flutter_admin_dashboard</title>
     <link rel="manifest" href="manifest.json">
 
-    <style >
+    <style>
         .preloader {
           position: fixed;
           top: 0;
@@ -44,7 +44,8 @@
           /*#ee6736*/
           ;
           z-index: 9999;
-          transition: opacity .65s
+          transition: opacity .65s;
+          display: flex;
         }
 
         .preloader-hidden-add {
@@ -69,65 +70,14 @@
         }
 
         .cs-loader-inner {
-          transform: translateY(-50%);
-          top: 50%;
-          position: absolute;
-          width: 100%;
-          color: #50DC04;
-          text-align: center
+           transform: translateY(-50%) translateX(-50%);
+              top: 50%;
+              left: 50%;
+              position: absolute;
+
+              text-align: center
         }
 
-        .cs-loader-inner label {
-          font-size: 20px;
-          opacity: 0;
-          display: inline-block
-        }
-
-        @keyframes lol {
-          0% {
-            opacity: 0;
-            transform: translateX(-300px)
-          }
-
-          33% {
-            opacity: 1;
-            transform: translateX(0)
-          }
-
-          66% {
-            opacity: 1;
-            transform: translateX(0)
-          }
-
-          100% {
-            opacity: 0;
-            transform: translateX(300px)
-          }
-        }
-
-        .cs-loader-inner label:nth-child(6) {
-          animation: lol 3s infinite ease-in-out
-        }
-
-        .cs-loader-inner label:nth-child(5) {
-          animation: lol 3s .1s infinite ease-in-out
-        }
-
-        .cs-loader-inner label:nth-child(4) {
-          animation: lol 3s .2s infinite ease-in-out
-        }
-
-        .cs-loader-inner label:nth-child(3) {
-          animation: lol 3s .3s infinite ease-in-out
-        }
-
-        .cs-loader-inner label:nth-child(2) {
-          animation: lol 3s .4s infinite ease-in-out
-        }
-
-        .cs-loader-inner label:nth-child(1) {
-          animation: lol 3s .5s infinite ease-in-out
-        }
     </style>
     <script>
         // The value below is injected by flutter build, do not touch.
@@ -135,6 +85,8 @@
     </script>
     <!-- This script adds the flutter initialization JS code -->
     <script src="flutter.js" defer></script>
+    <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs"
+            type="module"></script>
 </head>
 <body>
 
@@ -142,12 +94,8 @@
     <div class="preloader">
         <div class="cs-loader">
             <div class="cs-loader-inner">
-                <label> ●</label>
-                <label> ●</label>
-                <label> ●</label>
-                <label> ●</label>
-                <label> ●</label>
-                <label> ●</label>
+
+                <dotlottie-player src="https://lottie.host/3fba3880-2499-45db-819b-eef34a915721/q9LFeAwczy.json" background="transparent" speed="1" style="width: 300px; height: 300px;" loop autoplay></dotlottie-player>
             </div>
         </div>
     </div>
@@ -163,7 +111,7 @@
 
 
               engineInitializer.initializeEngine().then(function(appRunner) {
-                document.getElementById("app_splash")?.remove();
+                //document.getElementById("app_splash")?.remove();
                 appRunner.runApp();
               });
         }
