@@ -4,6 +4,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:free_flutter_admin_dashboard/components/forms/form_file_picker.dart';
+import 'package:free_flutter_admin_dashboard/components/forms/outborder_text_form_field.dart';
 import 'package:free_flutter_admin_dashboard/pages/layout.dart';
 import 'package:getwidget/components/checkbox/gf_checkbox.dart';
 import 'package:getwidget/components/dropdown/gf_dropdown.dart';
@@ -60,30 +61,20 @@ class FormElementsPage extends LayoutWidget {
           child: _titleWidget(
               'Input Fields',
               Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                TextFormField(
-                  decoration: InputDecoration(
-                      labelText: 'Default Input',
-                      floatingLabelBehavior: FloatingLabelBehavior.always,
-                      hintText: 'Default Input'),
-                ),
+                OutBorderTextFormField(
+                    labelText: 'Default Input', hintText: 'Default Input'),
                 SizedBox(
                   height: 16.h,
                 ),
-                TextFormField(
-                  decoration: InputDecoration(
-                      labelText: 'Active Input',
-                      floatingLabelBehavior: FloatingLabelBehavior.always,
-                      hintText: 'Active Input'),
-                ),
+                OutBorderTextFormField(
+                    labelText: 'Active Input', hintText: 'Active Input'),
                 SizedBox(
                   height: 16.h,
                 ),
-                TextFormField(
+                OutBorderTextFormField(
+                  labelText: 'Disabled label',
+                  hintText: 'Disabled label',
                   enabled: false,
-                  decoration: InputDecoration(
-                      labelText: 'Disabled label',
-                      floatingLabelBehavior: FloatingLabelBehavior.always,
-                      hintText: 'Disabled label'),
                 )
               ])),
         ),
@@ -276,37 +267,26 @@ class FormElementsPage extends LayoutWidget {
             child: _titleWidget(
                 'Textarea Fields',
                 Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                  TextFormField(
+                  OutBorderTextFormField(
+                    labelText: 'Default textarea',
+                    hintText: 'Default textarea',
                     maxLines: 5,
-                    decoration: InputDecoration(
-                        border: OutlineInputBorder(),
-                        labelText: 'Default textarea',
-                        floatingLabelBehavior: FloatingLabelBehavior.always,
-                        hintText: 'Default textarea'),
                   ),
                   SizedBox(
                     height: 16.h,
                   ),
-                  TextFormField(
-                    maxLines: 5,
-                    decoration: InputDecoration(
-                        border: OutlineInputBorder(),
-                        labelText: 'Active textarea',
-                        floatingLabelBehavior: FloatingLabelBehavior.always,
-                        hintText: 'Active textarea'),
-                  ),
+                  OutBorderTextFormField(
+                      maxLines: 5,
+                      labelText: 'Active textarea',
+                      hintText: 'Active textarea'),
                   SizedBox(
                     height: 16.h,
                   ),
-                  TextFormField(
-                    enabled: false,
-                    maxLines: 5,
-                    decoration: InputDecoration(
-                        border: OutlineInputBorder(),
-                        labelText: 'Disabled textarea',
-                        floatingLabelBehavior: FloatingLabelBehavior.always,
-                        hintText: 'Disabled textarea'),
-                  )
+                  OutBorderTextFormField(
+                      enabled: false,
+                      maxLines: 5,
+                      labelText: 'Disabled textarea',
+                      hintText: 'Disabled textarea')
                 ])),
           ),
           SizedBox(

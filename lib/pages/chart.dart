@@ -2,9 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:free_flutter_admin_dashboard/components/BarChart.dart';
-import 'package:free_flutter_admin_dashboard/components/CircularChart.dart';
-import 'package:free_flutter_admin_dashboard/components/LineChart.dart';
+import 'package:free_flutter_admin_dashboard/components/charts/bar_chart.dart';
+import 'package:free_flutter_admin_dashboard/components/charts/circular_chart.dart';
+import 'package:free_flutter_admin_dashboard/components/charts/line_chart.dart';
 import 'package:free_flutter_admin_dashboard/pages/layout.dart';
 
 class ChartPage extends LayoutWidget {

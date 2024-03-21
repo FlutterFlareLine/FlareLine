@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:free_flutter_admin_dashboard/components/buttons/primary_btn.dart';
 import 'package:free_flutter_admin_dashboard/components/forms/form_file_picker.dart';
+import 'package:free_flutter_admin_dashboard/components/forms/outborder_text_form_field.dart';
 import 'package:free_flutter_admin_dashboard/pages/layout.dart';
 import 'package:getwidget/components/checkbox/gf_checkbox.dart';
 import 'package:getwidget/components/dropdown/gf_dropdown.dart';
@@ -64,60 +65,40 @@ class FormLayoutPage extends LayoutWidget {
                 Row(
                   children: [
                     Expanded(
-                        child: TextFormField(
-                      decoration: InputDecoration(
-                          labelText: 'First name',
-                          floatingLabelBehavior: FloatingLabelBehavior.always,
-                          hintText: 'Enter your first name'),
-                    )),
+                        child: OutBorderTextFormField(
+                            labelText: 'First name',
+                            hintText: 'Enter your first name')),
                     SizedBox(
                       width: 12.w,
                     ),
                     Expanded(
-                        child: TextFormField(
-                      decoration: InputDecoration(
-                          labelText: 'Last name',
-                          floatingLabelBehavior: FloatingLabelBehavior.always,
-                          hintText: 'Enter your last name'),
-                    ))
+                        child: OutBorderTextFormField(
+                            labelText: 'Last name',
+                            hintText: 'Enter your last name'))
                   ],
                 ),
                 SizedBox(
                   height: 16.h,
                 ),
-                TextFormField(
-                  decoration: InputDecoration(
-                      labelText: 'Email',
-                      floatingLabelBehavior: FloatingLabelBehavior.always,
-                      hintText: 'Enter your email address'),
-                ),
+                OutBorderTextFormField(
+                    labelText: 'Email', hintText: 'Enter your email address'),
                 SizedBox(
                   height: 16.h,
                 ),
-                TextFormField(
-                  decoration: InputDecoration(
-                      labelText: 'Subject',
-                      floatingLabelBehavior: FloatingLabelBehavior.always,
-                      hintText: 'Enter your subject'),
-                ),
+                OutBorderTextFormField(
+                    labelText: 'Subject', hintText: 'Enter your subject'),
                 SizedBox(
                   height: 16.h,
                 ),
-                TextFormField(
-                  decoration: InputDecoration(
-                      labelText: 'Subject',
-                      floatingLabelBehavior: FloatingLabelBehavior.always,
-                      hintText: 'Select your subject'),
-                ),
+                OutBorderTextFormField(
+                    labelText: 'Subject', hintText: 'Select your subject'),
                 SizedBox(
                   height: 16.h,
                 ),
-                TextFormField(
+                OutBorderTextFormField(
+                  labelText: 'Message',
+                  hintText: 'Type your message',
                   maxLines: 5,
-                  decoration: InputDecoration(
-                      labelText: 'Message',
-                      floatingLabelBehavior: FloatingLabelBehavior.always,
-                      hintText: 'Type your message'),
                 ),
                 SizedBox(
                   height: 16.h,
@@ -147,21 +128,13 @@ class FormLayoutPage extends LayoutWidget {
       child: _titleWidget(
           'Sign In Form',
           Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-            TextFormField(
-              decoration: InputDecoration(
-                  labelText: 'Email',
-                  floatingLabelBehavior: FloatingLabelBehavior.always,
-                  hintText: 'Enter your email address'),
-            ),
+            OutBorderTextFormField(
+                labelText: 'Email', hintText: 'Enter your email address'),
             SizedBox(
               height: 16.h,
             ),
-            TextFormField(
-              decoration: InputDecoration(
-                  labelText: 'Password',
-                  floatingLabelBehavior: FloatingLabelBehavior.always,
-                  hintText: 'Enter password'),
-            ),
+            OutBorderTextFormField(
+                labelText: 'Password', hintText: 'Enter password'),
             SizedBox(
               height: 16.h,
             ),
@@ -197,39 +170,23 @@ class FormLayoutPage extends LayoutWidget {
       child: _titleWidget(
           'Sign Up Form',
           Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-            TextFormField(
-              decoration: InputDecoration(
-                  labelText: 'Name',
-                  floatingLabelBehavior: FloatingLabelBehavior.always,
-                  hintText: 'Enter your full name'),
-            ),
+            OutBorderTextFormField(
+                labelText: 'Name', hintText: 'Enter your full name'),
             SizedBox(
               height: 16.h,
             ),
-            TextFormField(
-              decoration: InputDecoration(
-                  labelText: 'Email',
-                  floatingLabelBehavior: FloatingLabelBehavior.always,
-                  hintText: 'Enter your email address'),
-            ),
+            OutBorderTextFormField(
+                labelText: 'Email', hintText: 'Enter your email address'),
             SizedBox(
               height: 16.h,
             ),
-            TextFormField(
-              decoration: InputDecoration(
-                  labelText: 'Password',
-                  floatingLabelBehavior: FloatingLabelBehavior.always,
-                  hintText: 'Enter password'),
-            ),
+            OutBorderTextFormField(
+                labelText: 'Password', hintText: 'Enter password'),
             SizedBox(
               height: 16.h,
             ),
-            TextFormField(
-              decoration: InputDecoration(
-                  labelText: 'Re-type Password',
-                  floatingLabelBehavior: FloatingLabelBehavior.always,
-                  hintText: 'Re-enter password'),
-            ),
+            OutBorderTextFormField(
+                labelText: 'Re-type Password', hintText: 'Re-enter password'),
             SizedBox(
               height: 16.h,
             ),

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:free_flutter_admin_dashboard/components/BarChart.dart';
-import 'package:free_flutter_admin_dashboard/components/Chats.dart';
-import 'package:free_flutter_admin_dashboard/components/CircularChart.dart';
-import 'package:free_flutter_admin_dashboard/components/LineChart.dart';
-import 'package:free_flutter_admin_dashboard/components/MapChart.dart';
+import 'package:free_flutter_admin_dashboard/components/charts/bar_chart.dart';
+import 'package:free_flutter_admin_dashboard/components/chats.dart';
+import 'package:free_flutter_admin_dashboard/components/charts/circular_chart.dart';
+import 'package:free_flutter_admin_dashboard/components/charts/line_chart.dart';
+import 'package:free_flutter_admin_dashboard/components/charts/map_chart.dart';
 import 'package:free_flutter_admin_dashboard/components/tables/TopChannel.dart';
 
 class EcommercePage extends StatelessWidget {

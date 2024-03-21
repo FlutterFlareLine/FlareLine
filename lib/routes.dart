@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:free_flutter_admin_dashboard/home.dart';
-import 'package:free_flutter_admin_dashboard/pages/FormElements.dart';
-import 'package:free_flutter_admin_dashboard/pages/FormLayout.dart';
-import 'package:free_flutter_admin_dashboard/pages/Kanban.dart';
-import 'package:free_flutter_admin_dashboard/pages/ListPage.dart';
+import 'package:free_flutter_admin_dashboard/pages/form_elements.dart';
+import 'package:free_flutter_admin_dashboard/pages/form_layout.dart';
+import 'package:free_flutter_admin_dashboard/pages/kanban.dart';
+import 'package:free_flutter_admin_dashboard/pages/list_page.dart';
 import 'package:free_flutter_admin_dashboard/pages/analytics.dart';
 import 'package:free_flutter_admin_dashboard/pages/auth/sign_in.dart';
 import 'package:free_flutter_admin_dashboard/pages/auth/sign_up.dart';
