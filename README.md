@@ -38,4 +38,3 @@ If you like the template, please star this repository to inspire the team to cre
 
 <a href="https://info.flagcounter.com/RW8W"><img src="https://s01.flagcounter.com/map/RW8W/size_s/txt_000000/border_3CCC08/pageviews_1/viewers_0/flags_0/" alt="Flag Counter" border="0"></a>
 
-<a href="https://info.flagcounter.com/RW8W"><img src="https://s11.flagcounter.com/count2/RW8W/bg_FFFFFF/txt_000000/border_CCCCCC/columns_2/maxflags_10/viewers_0/labels_1/pageviews_1/flags_0/percent_0/" alt="Flag Counter" border="0"></a>
