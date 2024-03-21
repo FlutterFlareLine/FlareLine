@@ -160,6 +160,7 @@ class ProfilePage extends LayoutWidget {
                 'Follow me on',
                 style: TextStyle(fontSize: 10.sp),
               ),
+              SizedBox(height: 30.h,)
             ],
           ),
         )

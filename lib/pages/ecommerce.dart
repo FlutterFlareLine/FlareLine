@@ -29,6 +29,7 @@ class EcommercePage extends StatelessWidget {
                 child: _lineChart(),
                 flex: 2,
               ),
+              SizedBox(width: 16.w,),
               Expanded(
                 child: _barChart(),
                 flex: 1,
@@ -49,6 +50,7 @@ class EcommercePage extends StatelessWidget {
                 ),
                 flex: 2,
               ),
+              SizedBox(width: 16.w,),
               Expanded(
                 child: WhiteCard(
                   child: MapChartWidget(),
@@ -69,6 +71,7 @@ class EcommercePage extends StatelessWidget {
                   child: TopChannelWidget(),
                   flex: 2,
                 ),
+                SizedBox(width: 16.w,),
                 Expanded(child: ChatsWidget(), flex: 1),
               ],
             ))
@@ -81,9 +84,12 @@ class EcommercePage extends StatelessWidget {
       children: [
         _itemCardWidget(
             Icons.data_object, '\$3.456K', 'Total views', '0.43%', true),
+        SizedBox(width: 16.w,),
         _itemCardWidget(
             Icons.shopping_cart, '\$45.2K', 'Total Profit', '0.43%', true),
+        SizedBox(width: 16.w,),
         _itemCardWidget(Icons.group, '2.450', 'Total Product', '0.43%', true),
+        SizedBox(width: 16.w,),
         _itemCardWidget(
             Icons.security_rounded, '3.456', 'Total Users', '0.43%', false),
       ],
