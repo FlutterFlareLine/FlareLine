@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:free_flutter_admin_dashboard/components/card/white_card.dart';
 import 'package:free_flutter_admin_dashboard/pages/layout.dart';
 
 class InboxWidget extends LayoutWidget {
@@ -12,7 +13,7 @@ class InboxWidget extends LayoutWidget {
   @override
   Widget contentWidget(BuildContext context) {
     // TODO: implement contentWidget
-    return Card(
+    return WhiteCard(
       child: Row(children: [
         SizedBox(
           width: 150.w,

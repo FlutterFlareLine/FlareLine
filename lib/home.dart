@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:free_flutter_admin_dashboard/provider/main_provider.dart';
 import 'package:free_flutter_admin_dashboard/routes.dart';
-import 'package:free_flutter_admin_dashboard/sideBar.dart';
+import 'package:free_flutter_admin_dashboard/side_bar.dart';
 import 'package:free_flutter_admin_dashboard/toolbar.dart';
 import 'package:provider/provider.dart';
 

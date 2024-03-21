@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:free_flutter_admin_dashboard/components/card/white_card.dart';
 import 'package:provider/provider.dart';
 
 class TopChannelWidget extends StatelessWidget {
@@ -7,8 +8,7 @@ class TopChannelWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-        color: Colors.white,
+    return WhiteCard(
         child: Padding(
           padding: EdgeInsets.all(16.w),
           child: Column(

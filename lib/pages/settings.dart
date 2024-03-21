@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_dropzone/flutter_dropzone.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:free_flutter_admin_dashboard/components/buttons/primary_btn.dart';
+import 'package:free_flutter_admin_dashboard/components/card/white_card.dart';
 import 'package:free_flutter_admin_dashboard/components/forms/form_file_picker.dart';
 import 'package:free_flutter_admin_dashboard/pages/layout.dart';
 import 'package:getwidget/components/checkbox/gf_checkbox.dart';
@@ -57,8 +58,7 @@ class SettingsPage extends LayoutWidget {
   _leftWidget(BuildContext context) {
     return Column(
       children: [
-        Card(
-          color: Colors.white,
+        WhiteCard(
           child: _titleWidget(
               'Personal Information',
               Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
@@ -137,8 +137,7 @@ class SettingsPage extends LayoutWidget {
   DropzoneViewController? dropzoneViewController;
 
   _rightWidget(BuildContext context) {
-    return Card(
-      color: Colors.white,
+    return WhiteCard(
       child: _titleWidget(
           'Your Photo',
           Column(crossAxisAlignment: CrossAxisAlignment.start, children: [

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:free_flutter_admin_dashboard/components/buttons/primary_btn.dart';
+import 'package:free_flutter_admin_dashboard/components/card/white_card.dart';
 import 'package:free_flutter_admin_dashboard/pages/layout.dart';
 
 class InvoicePage extends LayoutWidget {
@@ -12,8 +13,7 @@ class InvoicePage extends LayoutWidget {
 
   @override
   Widget contentWidget(BuildContext context) {
-    return Card(
-        color: Colors.white,
+    return WhiteCard(
         child: Padding(
           padding: EdgeInsets.all(20.w),
           child: Column(children: [

@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:free_flutter_admin_dashboard/components/card/white_card.dart';
 import 'package:free_flutter_admin_dashboard/components/charts/bar_chart.dart';
 import 'package:free_flutter_admin_dashboard/components/charts/circular_chart.dart';
 import 'package:free_flutter_admin_dashboard/components/charts/line_chart.dart';
@@ -14,22 +15,20 @@ class ChartPage extends LayoutWidget {
       children: [
         SizedBox(
           height: 350.h,
-          child: Card(
-            color: Colors.white,
+          child: WhiteCard(
             child: LineChartWidget(),
           ),
         ),
         SizedBox(height: 16.h),
         SizedBox(
             height: 350.h,
-            child: Card(color: Colors.white, child: BarChartWidget())),
+            child: WhiteCard(child: BarChartWidget())),
         SizedBox(
           height: 16.h,
         ),
         SizedBox(
             height: 350.h,
-            child: Card(
-              color: Colors.white,
+            child: WhiteCard(
               child: CircularhartWidget(),
             ))
       ],

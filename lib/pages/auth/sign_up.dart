@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:free_flutter_admin_dashboard/components/buttons/primary_btn.dart';
+import 'package:free_flutter_admin_dashboard/components/card/white_card.dart';
 
 class SignUpWidget extends StatelessWidget {
   const SignUpWidget({super.key});
@@ -10,15 +11,12 @@ class SignUpWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-          child: SizedBox(
-        width: ScreenUtil().screenWidth * 0.8,
-        height: ScreenUtil().screenHeight * 0.8,
-        child: Card(
-          color: Colors.white,
-          child: Padding(
-            padding: EdgeInsets.only(
-              top: 30.h,
-            ),
+        child: Container(
+          width: ScreenUtil().screenWidth * 0.8,
+          padding: EdgeInsets.only(top: 60.h),
+          child: WhiteCard(
+            isAutoHeight: true,
+            padding: EdgeInsets.symmetric(vertical: 60.h),
             child: Row(children: [
               Expanded(
                   child: Column(
@@ -124,16 +122,22 @@ class SignUpWidget extends StatelessWidget {
                     SizedBox(
                       height: 20.h,
                     ),
-                    PrimaryButton(btnText: 'Create Account', onTap: (){
-                      Navigator.of(context).popAndPushNamed("/");
-                    },),
+                    PrimaryButton(
+                      btnText: 'Create Account',
+                      onTap: () {
+                        Navigator.of(context).popAndPushNamed("/");
+                      },
+                    ),
                     SizedBox(
                       height: 12.h,
                     ),
-                    PrimaryButton(btnText: 'Sign up with Google', onTap: (){
-                      Navigator.of(context).popAndPushNamed("/");
-                    },isPrimary: false,),
-                    
+                    PrimaryButton(
+                      btnText: 'Sign up with Google',
+                      onTap: () {
+                        Navigator.of(context).popAndPushNamed("/");
+                      },
+                      isPrimary: false,
+                    ),
                     SizedBox(
                       height: 20.h,
                     ),
@@ -141,12 +145,15 @@ class SignUpWidget extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text('Already have an account?'),
-                        InkWell(child: Text(
-                          'Sign In',
-                          style: TextStyle(color: Colors.blue),
-                        ),onTap: (){
-                          Navigator.of(context).popAndPushNamed('/signIn');
-                        },)
+                        InkWell(
+                          child: Text(
+                            'Sign In',
+                            style: TextStyle(color: Colors.blue),
+                          ),
+                          onTap: () {
+                            Navigator.of(context).popAndPushNamed('/signIn');
+                          },
+                        )
                       ],
                     )
                   ],
@@ -155,7 +162,7 @@ class SignUpWidget extends StatelessWidget {
             ]),
           ),
         ),
-      )),
+      ),
     );
   }
 }

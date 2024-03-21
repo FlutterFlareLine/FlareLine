@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:free_flutter_admin_dashboard/components/card/white_card.dart';
 import 'package:free_flutter_admin_dashboard/components/charts/bar_chart.dart';
 import 'package:free_flutter_admin_dashboard/components/chats.dart';
 import 'package:free_flutter_admin_dashboard/components/charts/circular_chart.dart';
@@ -43,15 +44,13 @@ class EcommercePage extends StatelessWidget {
           child: Row(
             children: [
               Expanded(
-                child: Card(
-                  color: Colors.white,
+                child: WhiteCard(
                   child: CircularhartWidget(),
                 ),
                 flex: 2,
               ),
               Expanded(
-                child: Card(
-                  color: Colors.white,
+                child: WhiteCard(
                   child: MapChartWidget(),
                 ),
                 flex: 1,
@@ -94,8 +93,7 @@ class EcommercePage extends StatelessWidget {
   _itemCardWidget(IconData icons, String text, String subTitle,
       String percentText, bool isGrow) {
     return Expanded(
-        child: Card(
-      color: Colors.white,
+        child: WhiteCard(
       child: Padding(
         padding: EdgeInsets.all(16.w),
         child: Column(
@@ -150,13 +148,12 @@ class EcommercePage extends StatelessWidget {
   }
 
   _lineChart() {
-    return Card(
-      color: Colors.white,
+    return WhiteCard(
       child: LineChartWidget(),
     );
   }
 
   _barChart() {
-    return Card(color: Colors.white, child: BarChartWidget());
+    return WhiteCard(child: BarChartWidget());
   }
 }

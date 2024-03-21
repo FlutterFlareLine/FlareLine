@@ -4,6 +4,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:free_flutter_admin_dashboard/components/buttons/primary_btn.dart';
+import 'package:free_flutter_admin_dashboard/components/card/white_card.dart';
 import 'package:free_flutter_admin_dashboard/components/forms/form_file_picker.dart';
 import 'package:free_flutter_admin_dashboard/components/forms/outborder_text_form_field.dart';
 import 'package:free_flutter_admin_dashboard/pages/layout.dart';
@@ -57,8 +58,7 @@ class FormLayoutPage extends LayoutWidget {
   _leftWidget(BuildContext context) {
     return Column(
       children: [
-        Card(
-          color: Colors.white,
+        WhiteCard(
           child: _titleWidget(
               'Contact Form',
               Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
@@ -123,8 +123,7 @@ class FormLayoutPage extends LayoutWidget {
   }
 
   Widget _signInWidget(BuildContext context) {
-    return Card(
-      color: Colors.white,
+    return WhiteCard(
       child: _titleWidget(
           'Sign In Form',
           Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
@@ -165,8 +164,7 @@ class FormLayoutPage extends LayoutWidget {
   }
 
   Widget _signUpWidget(BuildContext context) {
-    return Card(
-      color: Colors.white,
+    return WhiteCard(
       child: _titleWidget(
           'Sign Up Form',
           Column(crossAxisAlignment: CrossAxisAlignment.start, children: [

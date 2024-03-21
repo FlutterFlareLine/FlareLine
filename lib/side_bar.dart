@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:free_flutter_admin_dashboard/sideMenu.dart';
+import 'package:free_flutter_admin_dashboard/side_menu.dart';
 
 class SideBarWidger extends StatelessWidget {
   SideBarWidger({super.key});

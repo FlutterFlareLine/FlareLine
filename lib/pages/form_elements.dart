@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:free_flutter_admin_dashboard/components/card/white_card.dart';
 import 'package:free_flutter_admin_dashboard/components/forms/form_file_picker.dart';
 import 'package:free_flutter_admin_dashboard/components/forms/outborder_text_form_field.dart';
 import 'package:free_flutter_admin_dashboard/pages/layout.dart';
@@ -56,8 +57,7 @@ class FormElementsPage extends LayoutWidget {
   _leftWidget(BuildContext context) {
     return Column(
       children: [
-        Card(
-          color: Colors.white,
+        WhiteCard(
           child: _titleWidget(
               'Input Fields',
               Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
@@ -81,8 +81,7 @@ class FormElementsPage extends LayoutWidget {
         SizedBox(
           height: 16,
         ),
-        Card(
-          color: Colors.white,
+        WhiteCard(
           child: _titleWidget(
               'Toggle switch input',
               Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
@@ -124,8 +123,7 @@ class FormElementsPage extends LayoutWidget {
         SizedBox(
           height: 16,
         ),
-        Card(
-          color: Colors.white,
+        WhiteCard(
           child: _titleWidget(
               'Time and date',
               Column(
@@ -236,8 +234,7 @@ class FormElementsPage extends LayoutWidget {
         SizedBox(
           height: 16,
         ),
-        Card(
-          color: Colors.white,
+        WhiteCard(
           child: _titleWidget(
               'File upload',
               Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
@@ -262,8 +259,7 @@ class FormElementsPage extends LayoutWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          Card(
-            color: Colors.white,
+          WhiteCard(
             child: _titleWidget(
                 'Textarea Fields',
                 Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
@@ -292,8 +288,7 @@ class FormElementsPage extends LayoutWidget {
           SizedBox(
             height: 16,
           ),
-          Card(
-            color: Colors.white,
+          WhiteCard(
             child: _titleWidget(
                 'Checkbox and radio',
                 Column(
@@ -346,8 +341,7 @@ class FormElementsPage extends LayoutWidget {
           SizedBox(
             height: 16,
           ),
-          Card(
-            color: Colors.white,
+          WhiteCard(
             child: _titleWidget(
                 'Select input',
                 Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
