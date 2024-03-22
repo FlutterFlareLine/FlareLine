@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:free_flutter_admin_dashboard/components/buttons/primary_btn.dart';
+import 'package:free_flutter_admin_dashboard/components/buttons/button_widget.dart';
 import 'package:free_flutter_admin_dashboard/components/card/white_card.dart';
 import 'package:free_flutter_admin_dashboard/pages/layout.dart';
 
@@ -173,14 +173,14 @@ class InvoicePage extends LayoutWidget {
                 Spacer(),
                 SizedBox(
                   width: 120.w,
-                  child: PrimaryButton(btnText: 'Download Invoice'),
+                  child: ButtonWidget(btnText: 'Download Invoice'),
                 ),
                 SizedBox(
                   width: 10.w,
                 ),
                 SizedBox(
                     width: 120.w,
-                    child: PrimaryButton(btnText: 'Send Invoice')),
+                    child: ButtonWidget(btnText: 'Send Invoice')),
               ]),
             )
           ]),

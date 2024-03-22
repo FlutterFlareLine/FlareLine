@@ -4,7 +4,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dropzone/flutter_dropzone.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:free_flutter_admin_dashboard/components/buttons/primary_btn.dart';
+import 'package:free_flutter_admin_dashboard/components/buttons/button_widget.dart';
 import 'package:free_flutter_admin_dashboard/components/card/white_card.dart';
 import 'package:free_flutter_admin_dashboard/components/forms/form_file_picker.dart';
 import 'package:free_flutter_admin_dashboard/pages/layout.dart';
@@ -119,13 +119,13 @@ class SettingsPage extends LayoutWidget {
                   children: [
                     SizedBox(
                         width: 60.w,
-                        child: PrimaryButton(
+                        child: ButtonWidget(
                           btnText: 'Cancel',
                           isPrimary: false,
                         )),
                     SizedBox(width: 12.w,),
                     SizedBox(
-                        width: 60.w, child: PrimaryButton(btnText: 'Save')),
+                        width: 60.w, child: ButtonWidget(btnText: 'Save')),
                   ],
                 )
               ])),
@@ -204,7 +204,7 @@ class SettingsPage extends LayoutWidget {
               children: [
                 SizedBox(
                   width: 60.w,
-                  child: PrimaryButton(
+                  child: ButtonWidget(
                     btnText: 'Cancel',
                     isPrimary: false,
                   ),
@@ -212,7 +212,7 @@ class SettingsPage extends LayoutWidget {
                 SizedBox(
                   width: 12.w,
                 ),
-                SizedBox(width: 60.w, child: PrimaryButton(btnText: 'Save')),
+                SizedBox(width: 60.w, child: ButtonWidget(btnText: 'Save')),
               ],
             )
           ])),

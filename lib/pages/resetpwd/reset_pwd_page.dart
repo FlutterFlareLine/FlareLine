@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:free_flutter_admin_dashboard/components/buttons/primary_btn.dart';
+import 'package:free_flutter_admin_dashboard/components/buttons/button_widget.dart';
 import 'package:free_flutter_admin_dashboard/components/card/white_card.dart';
 
 class ResetPwdWidget extends StatelessWidget {
@@ -85,7 +85,7 @@ class ResetPwdWidget extends StatelessWidget {
                   SizedBox(
                     height: 20.h,
                   ),
-                  PrimaryButton(
+                  ButtonWidget(
                     btnText: 'Send Password Reset Link',
                     onTap: () {
                       Navigator.of(context).popAndPushNamed("/");

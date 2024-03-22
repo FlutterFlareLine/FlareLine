@@ -66,6 +66,8 @@ dependencies:
 
   flutter_dropzone: ^3.0.7
 
+  hexcolor: ^3.0.1
+
 
 dev_dependencies:
   flutter_test:

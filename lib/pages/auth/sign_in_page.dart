@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:free_flutter_admin_dashboard/components/buttons/primary_btn.dart';
+import 'package:free_flutter_admin_dashboard/components/buttons/button_widget.dart';
 import 'package:free_flutter_admin_dashboard/components/card/white_card.dart';
 
 class SignInWidget extends StatelessWidget {
@@ -101,7 +101,7 @@ class SignInWidget extends StatelessWidget {
                   SizedBox(
                     height: 20.h,
                   ),
-                  PrimaryButton(
+                  ButtonWidget(
                     btnText: 'Sign In',
                     onTap: () {
                       Navigator.of(context).popAndPushNamed("/");
@@ -110,7 +110,7 @@ class SignInWidget extends StatelessWidget {
                   SizedBox(
                     height: 12.h,
                   ),
-                  PrimaryButton(
+                  ButtonWidget(
                     btnText: 'Sign in with Google',
                     onTap: () {
                       Navigator.of(context).popAndPushNamed("/");
