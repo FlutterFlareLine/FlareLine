@@ -9,6 +9,10 @@ With XAdmin Flutter, you get access to all the necessary dashboard UI components
 
 ### [🚀 Demo](https://free-flutter-admin-dashboard.vercel.app/)
 
+## Notice
+
+😀This project is not a stable version, but it has been continuously improving. If you are interested, you can view the demo or download it for free to use.😀
+
 
 ## Installation
 
@@ -29,6 +33,9 @@ flutter pub get
 ```
 flutter run -d chrome
 ```
+
+### 🔗 Thanks
+*   Nextjs-Free-Demo https://github.com/TailAdmin/free-nextjs-admin-dashboard Preview: https://nextjs-free-demo.tailadmin.com/
 
 ### 📄 License
 XAdmin Flutter Free is 100% free and open-source; feel free to use it with your personal and commercial projects.

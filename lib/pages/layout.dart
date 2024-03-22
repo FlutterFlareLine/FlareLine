@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:free_flutter_admin_dashboard/pages/breaktab.dart';
+import 'package:free_flutter_admin_dashboard/components/breaktab.dart';
 
 abstract class LayoutWidget extends StatelessWidget {
   String title();
