@@ -35,7 +35,7 @@ flutter run -d chrome
 ```
 
 ### 🔗 Thanks
-*   Nextjs-Free-Demo https://github.com/TailAdmin/free-nextjs-admin-dashboard Preview: https://nextjs-free-demo.tailadmin.com/
+*   Nextjs-Free-Demo https://github.com/TailAdmin/free-nextjs-admin-dashboard
 
 ### 📄 License
 XAdmin Flutter Free is 100% free and open-source; feel free to use it with your personal and commercial projects.
