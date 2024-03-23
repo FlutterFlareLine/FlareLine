@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:free_flutter_admin_dashboard/side_menu.dart';
+import 'package:hexcolor/hexcolor.dart';
 
 class SideBarWidger extends StatelessWidget {
   SideBarWidger({super.key});
@@ -105,8 +107,8 @@ class SideBarWidger extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
-      color: Colors.green,
-      width: 200.w,
+      color: HexColor('#333A48'),
+      width: 140.w,
       child: Column(children: [
         _logoWidget(),
         SizedBox(
@@ -120,22 +122,14 @@ class SideBarWidger extends StatelessWidget {
   _logoWidget() {
     return Row(
       children: [
-        ClipOval(
-          child: Container(
-            child: Image.asset(
-              'images/app_icon.png',
-              width: 26.w,
-              height: 26.w,
-            ),
-          ),
-        ),
+        SvgPicture.asset('images/logo/logo-icon.svg', height: 32,),
         SizedBox(
           width: 6.w,
         ),
         Expanded(
             child: Text(
           'XAdmin',
-          style: TextStyle(color: Colors.white, fontSize: 32.sp),
+          style: TextStyle(color: Colors.white, fontSize: 32),
         ))
       ],
     );

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:free_flutter_admin_dashboard/components/card/white_card.dart';
+import 'package:hexcolor/hexcolor.dart';
 import 'package:provider/provider.dart';
 
 class TopChannelWidget extends StatelessWidget {
@@ -43,7 +44,7 @@ class TopChannelWidget extends StatelessWidget {
               constraints: const BoxConstraints(minWidth: double.infinity),
               child: DataTable(
                   headingRowColor: MaterialStateProperty.resolveWith(
-                      (states) => Colors.green),
+                      (states) => HexColor('F7F9FC')),
                   horizontalMargin: 12.w,
                   showBottomBorder: true,
                   showCheckboxColumn: false,

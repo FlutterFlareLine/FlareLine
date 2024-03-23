@@ -7,10 +7,12 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:free_flutter_admin_dashboard/components/buttons/button_widget.dart';
 import 'package:free_flutter_admin_dashboard/components/card/white_card.dart';
 import 'package:free_flutter_admin_dashboard/components/forms/form_file_picker.dart';
+import 'package:free_flutter_admin_dashboard/components/forms/outborder_text_form_field.dart';
 import 'package:free_flutter_admin_dashboard/pages/layout.dart';
 import 'package:getwidget/components/checkbox/gf_checkbox.dart';
 import 'package:getwidget/components/dropdown/gf_dropdown.dart';
 import 'package:getwidget/getwidget.dart';
+import 'package:hexcolor/hexcolor.dart';
 
 class SettingsPage extends LayoutWidget {
   SettingsPage();
@@ -23,11 +25,10 @@ class SettingsPage extends LayoutWidget {
   @override
   Widget contentWidget(BuildContext context) {
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         _leftWidget(context),
         SizedBox(
-          height: 16.w,
+          height: 16.h,
         ),
         _rightWidget(context)
       ],
@@ -60,75 +61,68 @@ class SettingsPage extends LayoutWidget {
       children: [
         WhiteCard(
           child: _titleWidget(
-              'Personal Information',
-              Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                Row(
-                  children: [
-                    Expanded(
-                        child: TextFormField(
-                      decoration: InputDecoration(
-                          labelText: 'Full Name',
-                          floatingLabelBehavior: FloatingLabelBehavior.always,
-                          hintText: 'Enter your full name'),
-                    )),
-                    SizedBox(
-                      width: 12.w,
-                    ),
-                    Expanded(
-                        child: TextFormField(
-                      decoration: InputDecoration(
-                          labelText: 'Phone Number',
-                          floatingLabelBehavior: FloatingLabelBehavior.always,
-                          hintText: 'Enter your phone number'),
-                    ))
-                  ],
-                ),
-                SizedBox(
-                  height: 16.h,
-                ),
-                TextFormField(
-                  decoration: InputDecoration(
-                      labelText: 'Email Address',
-                      floatingLabelBehavior: FloatingLabelBehavior.always,
-                      hintText: 'Enter your email address'),
-                ),
-                SizedBox(
-                  height: 16.h,
-                ),
-                TextFormField(
-                  decoration: InputDecoration(
-                      labelText: 'Username',
-                      floatingLabelBehavior: FloatingLabelBehavior.always,
-                      hintText: 'Enter your username'),
-                ),
-                SizedBox(
-                  height: 16.h,
-                ),
-                TextFormField(
-                  maxLines: 5,
-                  decoration: InputDecoration(
-                      labelText: 'BIO',
-                      floatingLabelBehavior: FloatingLabelBehavior.always,
-                      hintText: 'Type your BIO'),
-                ),
-                SizedBox(
-                  height: 16.h,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    SizedBox(
-                        width: 60.w,
-                        child: ButtonWidget(
-                          btnText: 'Cancel',
-                          isPrimary: false,
-                        )),
-                    SizedBox(width: 12.w,),
-                    SizedBox(
-                        width: 60.w, child: ButtonWidget(btnText: 'Save')),
-                  ],
-                )
-              ])),
+            'Personal Information',
+            Padding(
+                padding: EdgeInsets.symmetric(horizontal: 16.w),
+                child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        children: [
+                          Expanded(
+                              child: OutBorderTextFormField(
+                                  labelText: 'Full Name',
+                                  hintText: 'Enter your full name')),
+                          SizedBox(
+                            width: 12.w,
+                          ),
+                          Expanded(
+                              child: OutBorderTextFormField(
+                                  labelText: 'Phone Number',
+                                  hintText: 'Enter your phone number'))
+                        ],
+                      ),
+                      SizedBox(
+                        height: 16.h,
+                      ),
+                      OutBorderTextFormField(
+                          labelText: 'Email Address',
+                          hintText: 'Enter your email address'),
+                      SizedBox(
+                        height: 16.h,
+                      ),
+                      OutBorderTextFormField(
+                          labelText: 'Username',
+                          hintText: 'Enter your username'),
+                      SizedBox(
+                        height: 16.h,
+                      ),
+                      OutBorderTextFormField(
+                          maxLines: 5,
+                          labelText: 'BIO',
+                          hintText: 'Type your BIO'),
+                      SizedBox(
+                        height: 16.h,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          SizedBox(
+                              width: 60.w,
+                              child: ButtonWidget(
+                                btnText: 'Cancel',
+                                isPrimary: false,
+                              )),
+                          SizedBox(
+                            width: 12.w,
+                          ),
+                          SizedBox(
+                              width: 60.w,
+                              child: ButtonWidget(btnText: 'Save')),
+                        ],
+                      )
+                    ])),
+          ),
         ),
       ],
     );
@@ -138,9 +132,12 @@ class SettingsPage extends LayoutWidget {
 
   _rightWidget(BuildContext context) {
     return WhiteCard(
-      child: _titleWidget(
-          'Your Photo',
-          Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+        child: _titleWidget(
+      'Your Photo',
+      Padding(
+          padding: EdgeInsets.symmetric(horizontal: 16.w),
+          child:
+              Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
             Row(
               children: [
                 CircleAvatar(
@@ -164,33 +161,48 @@ class SettingsPage extends LayoutWidget {
                 )
               ],
             ),
-            SizedBox(height: 16.h,),
+            SizedBox(
+              height: 16.h,
+            ),
             Container(
-              color: Colors.lightBlueAccent.shade100,
+              color: HexColor('#EFF4FB'),
               child: Stack(
                 children: [
                   DropzoneView(
                     operation: DragOperation.copy,
                     cursor: CursorType.grab,
-                    onCreated: (DropzoneViewController ctrl) => dropzoneViewController = ctrl,
+                    onCreated: (DropzoneViewController ctrl) =>
+                        dropzoneViewController = ctrl,
                     onLoaded: () => print('Zone loaded'),
                     onError: (String? ev) => print('Error: $ev'),
                     onHover: () => print('Zone hovered'),
                     onDrop: (dynamic ev) => print('Drop: $ev'),
-                    onDropMultiple: (List<dynamic>? ev) => print('Drop multiple: $ev'),
+                    onDropMultiple: (List<dynamic>? ev) =>
+                        print('Drop multiple: $ev'),
                     onLeave: () => print('Zone left'),
                   ),
-                  Center(child: Column(
+                  Center(
+                      child: Column(
                     children: [
-                      SizedBox(height: 20.h,),
+                      SizedBox(
+                        height: 20.h,
+                      ),
                       Icon(Icons.upload),
-                      SizedBox(height: 10.h,),
+                      SizedBox(
+                        height: 10.h,
+                      ),
                       Text('Click to upload or drag and drop'),
-                      SizedBox(height: 10.h,),
+                      SizedBox(
+                        height: 10.h,
+                      ),
                       Text('SVG,PNG,JPG or GIF'),
-                      SizedBox(height: 10.h,),
+                      SizedBox(
+                        height: 10.h,
+                      ),
                       Text('max,800 X 800px'),
-                      SizedBox(height: 20.h,),
+                      SizedBox(
+                        height: 20.h,
+                      ),
                     ],
                   )),
                 ],
@@ -216,6 +228,6 @@ class SettingsPage extends LayoutWidget {
               ],
             )
           ])),
-    );
+    ));
   }
 }
