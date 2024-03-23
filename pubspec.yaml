@@ -104,6 +104,7 @@ flutter:
     - images/task/
     - images/user/
     - images/signin/
+    - images/alert/
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
 

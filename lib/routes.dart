@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:free_flutter_admin_dashboard/home.dart';
+import 'package:free_flutter_admin_dashboard/pages/alerts/alert_page.dart';
 import 'package:free_flutter_admin_dashboard/pages/button/button_page.dart';
 import 'package:free_flutter_admin_dashboard/pages/form/form_elements_page.dart';
 import 'package:free_flutter_admin_dashboard/pages/form/form_layout_page.dart';
@@ -43,6 +44,7 @@ final List<Map<String, Object>> MAIN_PAGES = [
   {'routerPath': '/settings', 'widget': SettingsPage()},
   {'routerPath': '/basicChart', 'widget': ChartPage()},
   {'routerPath': '/buttons', 'widget': ButtonPage()},
+  {'routerPath': '/alerts', 'widget': AlertPage()},
 ];
 
 class RouteConfiguration {
