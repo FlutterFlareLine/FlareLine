@@ -68,6 +68,8 @@ dependencies:
 
   hexcolor: ^3.0.1
 
+  responsive_builder: ^0.7.0
+
 
 dev_dependencies:
   flutter_test:

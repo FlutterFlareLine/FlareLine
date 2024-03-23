@@ -80,6 +80,9 @@ class SideMenuWidget extends StatelessWidget {
   }
 
   pushOrJump(BuildContext context, e) {
+    if( Scaffold.of(context).isDrawerOpen){
+      Scaffold.of(context).closeDrawer();
+    }
     if (e['blank'] != null && true == e['blank']) {
       Navigator.of(context).pushNamed(e['path']);
       return;

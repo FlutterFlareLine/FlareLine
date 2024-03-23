@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:responsive_builder/responsive_builder.dart';
 
 class ToolBarWidget extends StatelessWidget {
   const ToolBarWidget({super.key});
@@ -14,6 +15,29 @@ class ToolBarWidget extends StatelessWidget {
       color: Colors.white,
       padding: EdgeInsets.all(10.w),
       child: Row(children: [
+        ResponsiveBuilder(builder: (context, sizingInformation) {
+          // Check the sizing information here and return your UI
+          if (sizingInformation.deviceScreenType != DeviceScreenType.desktop) {
+            return InkWell(
+              child: Container(
+                padding: EdgeInsets.all(5.w),
+                decoration: BoxDecoration(
+                    border: Border.all(color: Colors.grey.shade200,width: 1)),
+                alignment: Alignment.center,
+                child: Icon(Icons.more_vert),
+              ),
+              onTap: (){
+                if( Scaffold.of(context).isDrawerOpen){
+                  Scaffold.of(context).closeDrawer();
+                  return;
+                }
+                Scaffold.of(context).openDrawer();
+              },
+            );
+          }
+
+          return SizedBox();
+        }),
         SizedBox(
           width: 200.w,
           child: TextField(
@@ -62,11 +86,12 @@ class ToolBarWidget extends StatelessWidget {
             child: Icon(Icons.arrow_drop_down),
             margin: EdgeInsets.only(left: 6.w),
           ),
-          onTap: () async{
+          onTap: () async {
             await showMenu(
-              color: Colors.white,
+                color: Colors.white,
                 context: context,
-                position: RelativeRect.fromLTRB(MediaQuery.of(context).size.width-100.w, 80.h, 0, 0),
+                position: RelativeRect.fromLTRB(
+                    MediaQuery.of(context).size.width - 100.w, 80.h, 0, 0),
                 items: <PopupMenuItem<String>>[
                   new PopupMenuItem<String>(
                       value: 'value01', child: new Text('My Profile')),
