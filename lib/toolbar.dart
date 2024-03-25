@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:hexcolor/hexcolor.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
 class ToolBarWidget extends StatelessWidget {
@@ -22,12 +24,12 @@ class ToolBarWidget extends StatelessWidget {
               child: Container(
                 padding: EdgeInsets.all(5.w),
                 decoration: BoxDecoration(
-                    border: Border.all(color: Colors.grey.shade200,width: 1)),
+                    border: Border.all(color: Colors.grey.shade200, width: 1)),
                 alignment: Alignment.center,
                 child: Icon(Icons.more_vert),
               ),
-              onTap: (){
-                if( Scaffold.of(context).isDrawerOpen){
+              onTap: () {
+                if (Scaffold.of(context).isDrawerOpen) {
                   Scaffold.of(context).closeDrawer();
                   return;
                 }
@@ -55,17 +57,52 @@ class ToolBarWidget extends StatelessWidget {
           ),
         ),
         Spacer(),
-        Switch(value: false, onChanged: (check) {}),
+        InkWell(
+          child: SvgPicture.asset('images/toolbar/toggle.svg',
+              width: 56, height: 30),
+        ),
         SizedBox(
           width: 10.w,
         ),
-        Icon(Icons.notifications),
+        InkWell(
+          child: Container(
+            width: 34,
+            height: 34,
+            alignment: Alignment.center,
+            decoration: BoxDecoration(
+                color: HexColor('#E2E8F0'), shape: BoxShape.circle),
+            child: SvgPicture.asset('images/toolbar/alarm.svg',
+                width: 18, height: 18),
+          ),
+        ),
         SizedBox(
           width: 10.w,
         ),
-        Icon(Icons.message),
+        InkWell(
+          child: Stack(
+            alignment: Alignment.topRight,
+            children: [
+              Container(
+                  width: 34,
+                  height: 34,
+                  alignment: Alignment.center,
+                  decoration: BoxDecoration(
+                      color: HexColor('#E2E8F0'), shape: BoxShape.circle),
+                  child: SvgPicture.asset('images/toolbar/message.svg',
+                      width: 18, height: 18)),
+              Align(
+                child: Container(
+                  decoration: BoxDecoration(
+                      shape: BoxShape.circle, color: Colors.redAccent),
+                  width: 6,
+                  height: 6,
+                ),
+              )
+            ],
+          ),
+        ),
         SizedBox(
-          width: 10.w,
+          width: 20.w,
         ),
         Column(
           children: [
