@@ -42,11 +42,11 @@ class GlobalTheme {
   }
 
   static const ColorScheme lightColorScheme = ColorScheme(
-    primary: Color(0xFFB93C5D),
+    primary: Color(0xFF3C50E0),
     primaryContainer: Color(0xFF117378),
     secondary: Color(0xFFEFF3F3),
     secondaryContainer: Color(0xFFFAFBFB),
-    background: Color(0xFFE6EBEB),
+    background: Color(0xFFE2E8F0),
     surface: Color(0xFFFAFBFB),
     onBackground: Colors.white,
     error: _lightFillColor,

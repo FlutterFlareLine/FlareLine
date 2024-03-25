@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:free_flutter_admin_dashboard/components/buttons/button_widget.dart';
 import 'package:free_flutter_admin_dashboard/components/card/white_card.dart';
+import 'package:hexcolor/hexcolor.dart';
 
 class SignInWidget extends StatelessWidget {
   const SignInWidget({super.key});

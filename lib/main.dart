@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:free_flutter_admin_dashboard/provider/main_provider.dart';
 import 'package:free_flutter_admin_dashboard/routes.dart';
+import 'package:free_flutter_admin_dashboard/themes/global_theme.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:provider/provider.dart';
 
@@ -25,7 +26,7 @@ class MyApp extends StatelessWidget {
               title: 'XAdmin',
               debugShowCheckedModeBanner: false,
               // You can use the library anywhere in the app even in theme
-              // theme: GlobalTheme.lightThemeData,
+              theme: GlobalTheme.lightThemeData,
               // darkTheme: GlobalTheme.darkThemeData,
               initialRoute: '/',
               onGenerateRoute: (settings) =>
