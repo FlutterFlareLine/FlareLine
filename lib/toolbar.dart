@@ -40,22 +40,29 @@ class ToolBarWidget extends StatelessWidget {
 
           return SizedBox();
         }),
-        SizedBox(
-          width: 200,
-          child: TextField(
-            decoration: InputDecoration(
-              border: InputBorder.none,
-              fillColor: Colors.transparent,
-              prefixIcon: Icon(Icons.search_rounded),
-              // suffixIcon: Icon(Icons.clear),
-              hintStyle: TextStyle(fontSize: 10),
-              // labelText: 'Type to search...',
-              hintText: 'Type to search...',
-              // helperText: 'Type to search...',
-              filled: true,
-            ),
-          ),
-        ),
+        ResponsiveBuilder(builder: (context, sizingInformation) {
+          // Check the sizing information here and return your UI
+          if (sizingInformation.deviceScreenType == DeviceScreenType.desktop) {
+            return SizedBox(
+              width: 200,
+              child: TextField(
+                decoration: InputDecoration(
+                  border: InputBorder.none,
+                  fillColor: Colors.transparent,
+                  prefixIcon: Icon(Icons.search_rounded),
+                  // suffixIcon: Icon(Icons.clear),
+                  hintStyle: TextStyle(fontSize: 10),
+                  // labelText: 'Type to search...',
+                  hintText: 'Type to search...',
+                  // helperText: 'Type to search...',
+                  filled: true,
+                ),
+              ),
+            );
+          }
+
+          return SizedBox();
+        }),
         Spacer(),
         InkWell(
           child: SvgPicture.asset('images/toolbar/toggle.svg',

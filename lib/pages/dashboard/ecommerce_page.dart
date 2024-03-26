@@ -7,6 +7,7 @@ import 'package:free_flutter_admin_dashboard/components/charts/circular_chart.da
 import 'package:free_flutter_admin_dashboard/components/charts/line_chart.dart';
 import 'package:free_flutter_admin_dashboard/components/charts/map_chart.dart';
 import 'package:free_flutter_admin_dashboard/components/tables/TopChannel.dart';
+import 'package:free_flutter_admin_dashboard/pages/dashboard/grid_card.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
 class EcommercePage extends StatelessWidget {
@@ -18,7 +19,7 @@ class EcommercePage extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: 12, vertical: 10),
       child: SingleChildScrollView(
           child: Column(children: [
-            _cardPages(),
+            GridCard(),
             SizedBox(
               height: 16,
             ),
@@ -68,99 +69,18 @@ class EcommercePage extends StatelessWidget {
     return Column(
       children: [
         SizedBox(
-          height: 350,
+          height: 360,
           child: _lineChart(),
         ),
         SizedBox(
           height: 16,
         ),
         SizedBox(
-          height: 350,
+          height: 360,
           child: _barChart(),
         ),
       ],
     );
-  }
-
-  _cardPages() {
-    return Row(
-      children: [
-        _itemCardWidget(
-            Icons.data_object, '\$3.456K', 'Total views', '0.43%', true),
-        SizedBox(
-          width: 16,
-        ),
-        _itemCardWidget(
-            Icons.shopping_cart, '\$45.2K', 'Total Profit', '0.43%', true),
-        SizedBox(
-          width: 16,
-        ),
-        _itemCardWidget(Icons.group, '2.450', 'Total Product', '0.43%', true),
-        SizedBox(
-          width: 16,
-        ),
-        _itemCardWidget(
-            Icons.security_rounded, '3.456', 'Total Users', '0.43%', false),
-      ],
-    );
-  }
-
-  _itemCardWidget(IconData icons, String text, String subTitle,
-      String percentText, bool isGrow) {
-    return Expanded(
-        child: WhiteCard(
-          child: Padding(
-            padding: EdgeInsets.all(16),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                ClipOval(
-                  child: Container(
-                    width: 36,
-                    height: 36,
-                    alignment: Alignment.center,
-                    child: Icon(icons),
-                    color: Colors.grey.shade200,
-                  ),
-                ),
-                SizedBox(
-                  height: 12,
-                ),
-                Text(
-                  text,
-                  style: TextStyle(
-                      fontSize: 18, fontWeight: FontWeight.bold),
-                ),
-                SizedBox(
-                  height: 6,
-                ),
-                Row(
-                  children: [
-                    Text(
-                      subTitle,
-                      style: TextStyle(fontSize: 10, color: Colors.grey),
-                    ),
-                    Spacer(),
-                    Text(
-                      percentText,
-                      style: TextStyle(
-                          fontSize: 10,
-                          color: isGrow ? Colors.green : Colors.lightBlue),
-                    ),
-                    SizedBox(
-                      width: 3,
-                    ),
-                    Icon(
-                      isGrow ? Icons.arrow_upward : Icons.arrow_downward,
-                      color: isGrow ? Colors.green : Colors.lightBlue,
-                      size: 12,
-                    )
-                  ],
-                )
-              ],
-            ),
-          ),
-        ));
   }
 
   _lineChart() {

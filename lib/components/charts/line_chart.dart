@@ -43,12 +43,13 @@ class LineChartWidget extends StatelessWidget {
                                 return Radio<int>(
                                   value: 1,
                                   groupValue: option,
-                                  activeColor: Colors
-                                      .red, // Change the active radio button color here
-                                  fillColor: MaterialStateProperty.all(Colors
-                                      .red), // Change the fill color when selected
-                                  splashRadius:
-                                      20, // Change the splash radius when clicked
+                                  activeColor: Colors.red,
+                                  // Change the active radio button color here
+                                  fillColor:
+                                      MaterialStateProperty.all(Colors.red),
+                                  // Change the fill color when selected
+                                  splashRadius: 20,
+                                  // Change the splash radius when clicked
                                   onChanged: (int? value) {
                                     selectedOption.value = value!;
                                   },
@@ -73,12 +74,13 @@ class LineChartWidget extends StatelessWidget {
                                 return Radio<int>(
                                   value: 2,
                                   groupValue: option,
-                                  activeColor: Colors
-                                      .red, // Change the active radio button color here
-                                  fillColor: MaterialStateProperty.all(Colors
-                                      .red), // Change the fill color when selected
-                                  splashRadius:
-                                      20, // Change the splash radius when clicked
+                                  activeColor: Colors.red,
+                                  // Change the active radio button color here
+                                  fillColor:
+                                      MaterialStateProperty.all(Colors.red),
+                                  // Change the fill color when selected
+                                  splashRadius: 20,
+                                  // Change the splash radius when clicked
                                   onChanged: (int? value) {
                                     selectedOption.value = value!;
                                   },
@@ -88,7 +90,6 @@ class LineChartWidget extends StatelessWidget {
                   ],
                 )),
                 Container(
-
                   child:
                       Row(mainAxisAlignment: MainAxisAlignment.end, children: [
                     MaterialButton(
@@ -148,10 +149,12 @@ class LineChartWidget extends StatelessWidget {
           xValueMapper: (_ChartData sales, _) => sales.x,
           yValueMapper: (_ChartData sales, _) => sales.y,
           name: 'Germany',
+          isVisibleInLegend: false,
           markerSettings: const MarkerSettings(isVisible: true)),
       LineSeries<_ChartData, num>(
           dataSource: chartData,
           name: 'England',
+          isVisibleInLegend: false,
           xValueMapper: (_ChartData sales, _) => sales.x,
           yValueMapper: (_ChartData sales, _) => sales.y2,
           markerSettings: const MarkerSettings(isVisible: true))
@@ -161,6 +164,7 @@ class LineChartWidget extends StatelessWidget {
 
 class _ChartData {
   _ChartData(this.x, this.y, this.y2);
+
   final double x;
   final double y;
   final double y2;
