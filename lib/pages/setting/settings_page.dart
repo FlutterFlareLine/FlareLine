@@ -4,6 +4,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dropzone/flutter_dropzone.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:free_flutter_admin_dashboard/components/buttons/button_widget.dart';
 import 'package:free_flutter_admin_dashboard/components/card/white_card.dart';
 import 'package:free_flutter_admin_dashboard/components/forms/form_file_picker.dart';
@@ -13,6 +14,7 @@ import 'package:getwidget/components/checkbox/gf_checkbox.dart';
 import 'package:getwidget/components/dropdown/gf_dropdown.dart';
 import 'package:getwidget/getwidget.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:responsive_builder/responsive_builder.dart';
 
 class SettingsPage extends LayoutWidget {
   SettingsPage();
@@ -24,6 +26,33 @@ class SettingsPage extends LayoutWidget {
 
   @override
   Widget contentWidget(BuildContext context) {
+    return ScreenTypeLayout.builder(
+      desktop: _desktopWidget,
+      mobile: _mobileWidget,
+      tablet: _mobileWidget,
+    );
+  }
+
+  Widget _desktopWidget(BuildContext context) {
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Expanded(
+          child: _leftWidget(context),
+          flex: 3,
+        ),
+        SizedBox(
+          width: 16.w,
+        ),
+        Expanded(
+          child: _rightWidget(context),
+          flex: 2,
+        )
+      ],
+    );
+  }
+
+  Widget _mobileWidget(BuildContext context) {
     return Column(
       children: [
         _leftWidget(context),
@@ -71,6 +100,15 @@ class SettingsPage extends LayoutWidget {
                         children: [
                           Expanded(
                               child: OutBorderTextFormField(
+                                  icon: Container(
+                                    child: SvgPicture.asset(
+                                      'images/icon/user.svg',
+                                      width: 22,
+                                      height: 22,
+                                    ),
+                                    padding:
+                                        EdgeInsets.symmetric(horizontal: 5.w),
+                                  ),
                                   labelText: 'Full Name',
                                   hintText: 'Enter your full name')),
                           SizedBox(
@@ -86,8 +124,17 @@ class SettingsPage extends LayoutWidget {
                         height: 16.h,
                       ),
                       OutBorderTextFormField(
-                          labelText: 'Email Address',
-                          hintText: 'Enter your email address'),
+                        labelText: 'Email Address',
+                        hintText: 'Enter your email address',
+                        icon: Container(
+                          child: SvgPicture.asset(
+                            'images/signin/email.svg',
+                            width: 22,
+                            height: 22,
+                          ),
+                          padding: EdgeInsets.symmetric(horizontal: 5.w),
+                        ),
+                      ),
                       SizedBox(
                         height: 16.h,
                       ),
@@ -100,7 +147,16 @@ class SettingsPage extends LayoutWidget {
                       OutBorderTextFormField(
                           maxLines: 5,
                           labelText: 'BIO',
-                          hintText: 'Type your BIO'),
+                          icon: Container(
+                            child: SvgPicture.asset(
+                              'images/icon/edit.svg',
+                              width: 22,
+                              height: 22,
+                            ),
+                            padding: EdgeInsets.symmetric(horizontal: 5.w),
+                          ),
+                          hintText:
+                              'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque posuere fermentum urna, eu condimentum mauris tempus ut. Donec fermentum blandit aliquet.'),
                       SizedBox(
                         height: 16.h,
                       ),
@@ -144,6 +200,9 @@ class SettingsPage extends LayoutWidget {
                   backgroundImage: NetworkImage(
                       'https://nextjs-demo.tailadmin.com/_next/image?url=%2Fimages%2Fuser%2Fuser-01.png&w=256&q=75'),
                   radius: 22,
+                ),
+                SizedBox(
+                  width: 8.w,
                 ),
                 Column(
                   children: [

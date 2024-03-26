@@ -1,4 +1,4 @@
-import 'package:flutter/cupertino.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -12,6 +12,7 @@ class OutBorderTextFormField extends StatelessWidget {
   final Widget? suffixWidget;
   final bool? obscureText;
   final TextInputType? keyboardType;
+  final Widget? icon;
 
   OutBorderTextFormField(
       {this.labelText,
@@ -22,7 +23,8 @@ class OutBorderTextFormField extends StatelessWidget {
       this.controller,
       this.suffixWidget,
       this.obscureText,
-      this.keyboardType});
+      this.keyboardType,
+        this.icon});
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +38,7 @@ class OutBorderTextFormField extends StatelessWidget {
           ),
         Container(
           width: double.maxFinite,
-          height: 50,
+          height:maxLines==1? 50:null,
           child: Stack(
             children: [
               Align(
@@ -48,10 +50,12 @@ class OutBorderTextFormField extends StatelessWidget {
                   controller: controller,
                   maxLines: maxLines,
                   decoration: InputDecoration(
+                      prefixIcon: icon,
+                      prefixIconConstraints: BoxConstraints(maxWidth: 35,maxHeight: 22,),
                       labelText: '',
                       border: const OutlineInputBorder(),
                       contentPadding: const EdgeInsets.symmetric(
-                        horizontal: 12,
+                        horizontal: 2,
                         vertical: 6,
                       ),
                       floatingLabelBehavior: FloatingLabelBehavior.always,

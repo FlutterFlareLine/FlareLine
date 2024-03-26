@@ -18,6 +18,7 @@ class GlobalTheme {
 
   static ThemeData themeData(ColorScheme colorScheme, Color focusColor) {
     return ThemeData(
+      useMaterial3: true,
       colorScheme: colorScheme,
       textTheme: _textTheme,
       appBarTheme: AppBarTheme(
