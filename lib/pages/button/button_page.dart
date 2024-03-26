@@ -20,6 +20,9 @@ class ButtonPage extends LayoutWidget {
         TitleCard(
             title: 'Button With Icon',
             childWidget: _iconButtonsWidget(context)),
+        SizedBox(
+          height: 50,
+        ),
       ],
     );
   }
@@ -32,8 +35,12 @@ class ButtonPage extends LayoutWidget {
   Widget _normalButtonsWidget(BuildContext context) {
     return Column(
       children: [
-        SizedBox(height: 20,),
+        SizedBox(
+          height: 20,
+        ),
         Wrap(
+          spacing: 20,
+          runSpacing: 16,
           children: [
             SizedBox(
               width: 100,
@@ -44,9 +51,6 @@ class ButtonPage extends LayoutWidget {
               ),
             ),
             SizedBox(
-              width: 20,
-            ),
-            SizedBox(
               width: 100,
               child: ButtonWidget(
                 btnText: 'Button',
@@ -55,18 +59,12 @@ class ButtonPage extends LayoutWidget {
               ),
             ),
             SizedBox(
-              width: 20,
-            ),
-            SizedBox(
               width: 100,
               child: ButtonWidget(
                 btnText: 'Button',
                 color: primaryButtonColor,
                 borderRadius: 30,
               ),
-            ),
-            SizedBox(
-              width: 20,
             ),
             SizedBox(
               width: 100,
@@ -80,8 +78,12 @@ class ButtonPage extends LayoutWidget {
             )
           ],
         ),
-        SizedBox(height: 16,),
+        SizedBox(
+          height: 16,
+        ),
         Wrap(
+          spacing: 20,
+          runSpacing: 16,
           children: [
             SizedBox(
               width: 100,
@@ -92,9 +94,6 @@ class ButtonPage extends LayoutWidget {
               ),
             ),
             SizedBox(
-              width: 20,
-            ),
-            SizedBox(
               width: 100,
               child: ButtonWidget(
                 btnText: 'Button',
@@ -103,18 +102,12 @@ class ButtonPage extends LayoutWidget {
               ),
             ),
             SizedBox(
-              width: 20,
-            ),
-            SizedBox(
               width: 100,
               child: ButtonWidget(
                 btnText: 'Button',
                 color: secondButtonColor,
                 borderRadius: 30,
               ),
-            ),
-            SizedBox(
-              width: 20,
             ),
             SizedBox(
               width: 100,
@@ -128,8 +121,12 @@ class ButtonPage extends LayoutWidget {
             )
           ],
         ),
-        SizedBox(height: 16,),
+        SizedBox(
+          height: 16,
+        ),
         Wrap(
+          spacing: 20,
+          runSpacing: 16,
           children: [
             SizedBox(
               width: 100,
@@ -140,9 +137,6 @@ class ButtonPage extends LayoutWidget {
               ),
             ),
             SizedBox(
-              width: 20,
-            ),
-            SizedBox(
               width: 100,
               child: ButtonWidget(
                 btnText: 'Button',
@@ -151,18 +145,12 @@ class ButtonPage extends LayoutWidget {
               ),
             ),
             SizedBox(
-              width: 20,
-            ),
-            SizedBox(
               width: 100,
               child: ButtonWidget(
                 btnText: 'Button',
                 color: thirdButtonColor,
                 borderRadius: 30,
               ),
-            ),
-            SizedBox(
-              width: 20,
             ),
             SizedBox(
               width: 100,
@@ -176,7 +164,9 @@ class ButtonPage extends LayoutWidget {
             )
           ],
         ),
-        SizedBox(height: 20,),
+        SizedBox(
+          height: 20,
+        ),
       ],
     );
   }
@@ -184,49 +174,56 @@ class ButtonPage extends LayoutWidget {
   Widget _iconButtonsWidget(BuildContext context) {
     return Column(
       children: [
-        SizedBox(height: 20,),
+        SizedBox(
+          height: 20,
+        ),
         Wrap(
+          spacing: 20,
+          runSpacing: 16,
           children: [
             SizedBox(
               width: 150,
               child: ButtonWidget(
-                iconWidget: Icon(Icons.email_outlined, color: Colors.white,),
+                iconWidget: Icon(
+                  Icons.email_outlined,
+                  color: Colors.white,
+                ),
                 btnText: 'Button With Icon',
                 color: primaryButtonColor,
                 borderRadius: 0,
               ),
             ),
             SizedBox(
-              width: 20,
-            ),
-            SizedBox(
               width: 150,
               child: ButtonWidget(
-                iconWidget: Icon(Icons.email_outlined, color: Colors.white,),
+                iconWidget: Icon(
+                  Icons.email_outlined,
+                  color: Colors.white,
+                ),
                 btnText: 'Button With Icon',
                 color: primaryButtonColor,
                 borderRadius: 5,
               ),
             ),
             SizedBox(
-              width: 20,
-            ),
-            SizedBox(
               width: 150,
               child: ButtonWidget(
-                iconWidget: Icon(Icons.email_outlined, color: Colors.white,),
+                iconWidget: Icon(
+                  Icons.email_outlined,
+                  color: Colors.white,
+                ),
                 btnText: 'Button With Icon',
                 color: primaryButtonColor,
                 borderRadius: 30,
               ),
             ),
             SizedBox(
-              width: 20,
-            ),
-            SizedBox(
               width: 150,
               child: ButtonWidget(
-                iconWidget: Icon(Icons.email_outlined, color: primaryButtonColor,),
+                iconWidget: Icon(
+                  Icons.email_outlined,
+                  color: primaryButtonColor,
+                ),
                 btnText: 'Button With Icon',
                 color: Colors.white,
                 borderRadius: 5,
@@ -236,49 +233,56 @@ class ButtonPage extends LayoutWidget {
             )
           ],
         ),
-        SizedBox(height: 16,),
+        SizedBox(
+          height: 16,
+        ),
         Wrap(
+          spacing: 20,
+          runSpacing: 16,
           children: [
             SizedBox(
               width: 150,
               child: ButtonWidget(
-                iconWidget: Icon(Icons.shopping_cart_checkout, color: Colors.white,),
+                iconWidget: Icon(
+                  Icons.shopping_cart_checkout,
+                  color: Colors.white,
+                ),
                 btnText: 'Button With Icon',
                 color: secondButtonColor,
                 borderRadius: 0,
               ),
             ),
             SizedBox(
-              width: 20,
-            ),
-            SizedBox(
               width: 150,
               child: ButtonWidget(
-                iconWidget: Icon(Icons.shopping_cart_checkout, color: Colors.white,),
+                iconWidget: Icon(
+                  Icons.shopping_cart_checkout,
+                  color: Colors.white,
+                ),
                 btnText: 'Button With Icon',
                 color: secondButtonColor,
                 borderRadius: 5,
               ),
             ),
             SizedBox(
-              width: 20,
-            ),
-            SizedBox(
               width: 150,
               child: ButtonWidget(
-                iconWidget: Icon(Icons.shopping_cart_checkout, color: Colors.white,),
+                iconWidget: Icon(
+                  Icons.shopping_cart_checkout,
+                  color: Colors.white,
+                ),
                 btnText: 'Button With Icon',
                 color: secondButtonColor,
                 borderRadius: 30,
               ),
             ),
             SizedBox(
-              width: 20,
-            ),
-            SizedBox(
               width: 150,
               child: ButtonWidget(
-                iconWidget: Icon(Icons.shopping_cart_checkout, color: secondButtonColor,),
+                iconWidget: Icon(
+                  Icons.shopping_cart_checkout,
+                  color: secondButtonColor,
+                ),
                 btnText: 'Button With Icon',
                 color: Colors.white,
                 borderRadius: 5,
@@ -288,49 +292,56 @@ class ButtonPage extends LayoutWidget {
             )
           ],
         ),
-        SizedBox(height: 16,),
+        SizedBox(
+          height: 16,
+        ),
         Wrap(
+          spacing: 20,
+          runSpacing: 16,
           children: [
             SizedBox(
               width: 150,
               child: ButtonWidget(
-                iconWidget: Icon(Icons.favorite_border, color: Colors.white,),
+                iconWidget: Icon(
+                  Icons.favorite_border,
+                  color: Colors.white,
+                ),
                 btnText: 'Button With Icon',
                 color: thirdButtonColor,
                 borderRadius: 0,
               ),
             ),
             SizedBox(
-              width: 20,
-            ),
-            SizedBox(
               width: 150,
               child: ButtonWidget(
-                iconWidget: Icon(Icons.favorite_border, color: Colors.white,),
+                iconWidget: Icon(
+                  Icons.favorite_border,
+                  color: Colors.white,
+                ),
                 btnText: 'Button With Icon',
                 color: thirdButtonColor,
                 borderRadius: 5,
               ),
             ),
             SizedBox(
-              width: 20,
-            ),
-            SizedBox(
               width: 150,
               child: ButtonWidget(
-                iconWidget: Icon(Icons.favorite_border, color: Colors.white,),
+                iconWidget: Icon(
+                  Icons.favorite_border,
+                  color: Colors.white,
+                ),
                 btnText: 'Button With Icon',
                 color: thirdButtonColor,
                 borderRadius: 30,
               ),
             ),
             SizedBox(
-              width: 20,
-            ),
-            SizedBox(
               width: 150,
               child: ButtonWidget(
-                iconWidget: Icon(Icons.favorite_border, color: thirdButtonColor,),
+                iconWidget: Icon(
+                  Icons.favorite_border,
+                  color: thirdButtonColor,
+                ),
                 btnText: 'Button With Icon',
                 color: Colors.white,
                 borderRadius: 5,
@@ -340,7 +351,9 @@ class ButtonPage extends LayoutWidget {
             )
           ],
         ),
-        SizedBox(height: 20,),
+        SizedBox(
+          height: 20,
+        ),
       ],
     );
   }
