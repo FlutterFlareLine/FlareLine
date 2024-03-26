@@ -34,8 +34,11 @@ flutter pub get
 flutter run -d chrome
 ```
 
-### Build
-`flutter gen-l10n` generate localization files
+### Localization
+* add .arb file to lib/l10n, like app_es.arb/app_zh.arb/app_th.arb...
+* run `flutter gen-l10n` generate localization files
+* import package `import 'package:flutter_gen/gen_l10n/app_localizations.dart';`
+* use AppLocalizations.of(context)!.name to use it 
 
 ### 🔗 Thanks
 *   Nextjs-Free-Demo https://github.com/TailAdmin/free-nextjs-admin-dashboard
