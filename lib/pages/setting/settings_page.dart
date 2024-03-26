@@ -218,7 +218,8 @@ class SettingsPage extends LayoutWidget {
                       ],
                     )
                   ],
-                )
+                ),
+                Spacer()
               ],
             ),
             SizedBox(
@@ -228,19 +229,19 @@ class SettingsPage extends LayoutWidget {
               color: HexColor('#EFF4FB'),
               child: Stack(
                 children: [
-                  DropzoneView(
-                    operation: DragOperation.copy,
-                    cursor: CursorType.grab,
-                    onCreated: (DropzoneViewController ctrl) =>
-                        dropzoneViewController = ctrl,
-                    onLoaded: () => print('Zone loaded'),
-                    onError: (String? ev) => print('Error: $ev'),
-                    onHover: () => print('Zone hovered'),
-                    onDrop: (dynamic ev) => print('Drop: $ev'),
-                    onDropMultiple: (List<dynamic>? ev) =>
-                        print('Drop multiple: $ev'),
-                    onLeave: () => print('Zone left'),
-                  ),
+                  // DropzoneView(
+                  //   operation: DragOperation.copy,
+                  //   cursor: CursorType.grab,
+                  //   onCreated: (DropzoneViewController ctrl) =>
+                  //       dropzoneViewController = ctrl,
+                  //   onLoaded: () => print('Zone loaded'),
+                  //   onError: (String? ev) => print('Error: $ev'),
+                  //   onHover: () => print('Zone hovered'),
+                  //   onDrop: (dynamic ev) => print('Drop: $ev'),
+                  //   onDropMultiple: (List<dynamic>? ev) =>
+                  //       print('Drop multiple: $ev'),
+                  //   onLeave: () => print('Zone left'),
+                  // ),
                   Center(
                       child: Column(
                     children: [
@@ -274,6 +275,7 @@ class SettingsPage extends LayoutWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
+                Spacer(),
                 SizedBox(
                   width: 60,
                   child: ButtonWidget(
