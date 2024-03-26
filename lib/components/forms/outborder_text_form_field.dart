@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -8,8 +9,20 @@ class OutBorderTextFormField extends StatelessWidget {
   final int? maxLines;
   final TextEditingController? controller;
   final bool? enabled;
+  final Widget? suffixWidget;
+  final bool? obscureText;
+  final TextInputType? keyboardType;
 
-  OutBorderTextFormField({this.labelText, this.initialValue, this.hintText, this.maxLines = 1, this.enabled, this.controller});
+  OutBorderTextFormField(
+      {this.labelText,
+      this.initialValue,
+      this.hintText,
+      this.maxLines = 1,
+      this.enabled,
+      this.controller,
+      this.suffixWidget,
+      this.obscureText,
+      this.keyboardType});
 
   @override
   Widget build(BuildContext context) {
@@ -19,22 +32,43 @@ class OutBorderTextFormField extends StatelessWidget {
         Text(labelText ?? ''),
         if (labelText != null)
           SizedBox(
-            height: 10.h,
+            height: 8.h,
           ),
-        TextFormField(
-          enabled: enabled,
-          initialValue: initialValue,
-          controller: controller,
-          maxLines: maxLines,
-          decoration: InputDecoration(
-              labelText: '',
-              border: const OutlineInputBorder(),
-              contentPadding: const EdgeInsets.symmetric(
-                horizontal: 12,
-                vertical: 6,
+        Container(
+          width: double.maxFinite,
+          height: 50,
+          child: Stack(
+            children: [
+              Align(
+                child: TextFormField(
+                  keyboardType: keyboardType,
+                  obscureText:obscureText??false,
+                  enabled: enabled,
+                  initialValue: initialValue,
+                  controller: controller,
+                  maxLines: maxLines,
+                  decoration: InputDecoration(
+                      labelText: '',
+                      border: const OutlineInputBorder(),
+                      contentPadding: const EdgeInsets.symmetric(
+                        horizontal: 12,
+                        vertical: 6,
+                      ),
+                      floatingLabelBehavior: FloatingLabelBehavior.always,
+                      hintText: hintText),
+                ),
+                alignment: Alignment.center,
               ),
-              floatingLabelBehavior: FloatingLabelBehavior.always,
-              hintText: hintText),
+              if (suffixWidget != null)
+                Align(
+                  child: Container(
+                    child: suffixWidget,
+                    margin: EdgeInsets.only(right: 10.w),
+                  ),
+                  alignment: Alignment.centerRight,
+                )
+            ],
+          ),
         )
       ],
     );

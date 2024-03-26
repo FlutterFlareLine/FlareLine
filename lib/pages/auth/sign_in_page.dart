@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:free_flutter_admin_dashboard/components/buttons/button_widget.dart';
 import 'package:free_flutter_admin_dashboard/components/card/white_card.dart';
+import 'package:free_flutter_admin_dashboard/components/forms/outborder_text_form_field.dart';
 import 'package:hexcolor/hexcolor.dart';
 
 class SignInWidget extends StatelessWidget {
@@ -42,7 +43,8 @@ class SignInWidget extends StatelessWidget {
               ],
             )),
             VerticalDivider(
-              width: 1.w,
+              width: 1,
+              color: HexColor('#E2E8F0'),
             ),
             Expanded(
                 child: Padding(
@@ -62,41 +64,27 @@ class SignInWidget extends StatelessWidget {
                   SizedBox(
                     height: 20.h,
                   ),
-                  Text('Email'),
-                  SizedBox(
-                    height: 8.h,
-                  ),
-                  TextField(
-                    decoration: InputDecoration(
-                      border: InputBorder.none,
-                      fillColor: Colors.grey.shade200,
-                      suffixIcon: Icon(Icons.email),
-
-                      hintStyle: TextStyle(fontSize: 10.sp),
-                      // labelText: 'Type to search...',
-                      hintText: 'Enter your email',
-                      // helperText: 'Type to search...',
-                      filled: true,
+                  OutBorderTextFormField(
+                    labelText: 'Email',
+                    hintText: 'Enter your email',
+                    keyboardType: TextInputType.emailAddress,
+                    suffixWidget: SvgPicture.asset(
+                      'images/signin/email.svg',
+                      width: 22,
+                      height: 22,
                     ),
                   ),
                   SizedBox(
                     height: 16.h,
                   ),
-                  Text('Password'),
-                  SizedBox(
-                    height: 8.h,
-                  ),
-                  TextField(
+                  OutBorderTextFormField(
                     obscureText: true,
-                    decoration: InputDecoration(
-                      border: InputBorder.none,
-                      fillColor: Colors.grey.shade200,
-                      suffixIcon: Icon(Icons.password),
-                      hintStyle: TextStyle(fontSize: 10.sp),
-                      // labelText: 'Type to search...',
-                      hintText: '6+ Characters, 1 Capital letter',
-                      // helperText: 'Type to search...',
-                      filled: true,
+                    labelText: 'Password',
+                    hintText: '6+ Characters, 1 Capital letter',
+                    suffixWidget: SvgPicture.asset(
+                      'images/signin/lock.svg',
+                      width: 22,
+                      height: 22,
                     ),
                   ),
                   SizedBox(
@@ -112,6 +100,11 @@ class SignInWidget extends StatelessWidget {
                     height: 12.h,
                   ),
                   ButtonWidget(
+                    iconWidget: SvgPicture.asset(
+                      'images/brand/brand-01.svg',
+                      width: 20.w,
+                      height: 20.w,
+                    ),
                     btnText: 'Sign in with Google',
                     onTap: () {
                       Navigator.of(context).popAndPushNamed("/");

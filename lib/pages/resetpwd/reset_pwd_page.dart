@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:free_flutter_admin_dashboard/components/buttons/button_widget.dart';
 import 'package:free_flutter_admin_dashboard/components/card/white_card.dart';
+import 'package:free_flutter_admin_dashboard/components/forms/outborder_text_form_field.dart';
 
 class ResetPwdWidget extends StatelessWidget {
   const ResetPwdWidget({super.key});
@@ -52,6 +53,7 @@ class ResetPwdWidget extends StatelessWidget {
                   SizedBox(
                     height: 100.h,
                   ),
+
                   Text(
                     'Reset Password',
                     style:
@@ -65,21 +67,14 @@ class ResetPwdWidget extends StatelessWidget {
                   SizedBox(
                     height: 20.h,
                   ),
-                  Text('Email'),
-                  SizedBox(
-                    height: 8.h,
-                  ),
-                  TextField(
-                    decoration: InputDecoration(
-                      border: InputBorder.none,
-                      fillColor: Colors.grey.shade200,
-                      suffixIcon: Icon(Icons.email),
-
-                      hintStyle: TextStyle(fontSize: 10.sp),
-                      // labelText: 'Type to search...',
-                      hintText: 'Enter your email',
-                      // helperText: 'Type to search...',
-                      filled: true,
+                  OutBorderTextFormField(
+                    labelText: 'Email',
+                    hintText: 'Enter your email',
+                    keyboardType: TextInputType.emailAddress,
+                    suffixWidget: SvgPicture.asset(
+                      'images/signin/email.svg',
+                      width: 22,
+                      height: 22,
                     ),
                   ),
                   SizedBox(
