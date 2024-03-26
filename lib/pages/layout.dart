@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:free_flutter_admin_dashboard/components/breaktab.dart';
+import 'package:responsive_builder/responsive_builder.dart';
 
 abstract class LayoutWidget extends StatelessWidget {
   String title();
 
-  Widget contentWidget(BuildContext context);
+  Widget contentDesktopWidget(BuildContext context);
+
+  Widget contentMobileWidget(BuildContext context){
+    return contentDesktopWidget(context);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +23,11 @@ abstract class LayoutWidget extends StatelessWidget {
           SizedBox(
             height: 10.h,
           ),
-          contentWidget(context)
+          ScreenTypeLayout.builder(
+            desktop: contentDesktopWidget,
+            mobile: contentMobileWidget,
+            tablet: contentMobileWidget,
+          )
         ],
       )),
     );

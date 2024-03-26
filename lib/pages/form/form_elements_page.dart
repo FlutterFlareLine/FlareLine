@@ -20,7 +20,7 @@ class FormElementsPage extends LayoutWidget {
   }
 
   @override
-  Widget contentWidget(BuildContext context) {
+  Widget contentDesktopWidget(BuildContext context) {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -29,6 +29,20 @@ class FormElementsPage extends LayoutWidget {
           width: 16.w,
         ),
         Expanded(child: _rightWidget(context))
+      ],
+    );
+  }
+
+  @override
+  Widget contentMobileWidget(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        _leftWidget(context),
+        SizedBox(
+          height: 16.h,
+        ),
+        _rightWidget(context)
       ],
     );
   }

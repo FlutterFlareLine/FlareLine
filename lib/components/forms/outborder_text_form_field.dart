@@ -55,7 +55,7 @@ class OutBorderTextFormField extends StatelessWidget {
                       labelText: '',
                       border: const OutlineInputBorder(),
                       contentPadding: const EdgeInsets.symmetric(
-                        horizontal: 2,
+                        horizontal: 12,
                         vertical: 6,
                       ),
                       floatingLabelBehavior: FloatingLabelBehavior.always,

@@ -6,7 +6,7 @@ import 'package:hexcolor/hexcolor.dart';
 
 class AlertPage extends LayoutWidget {
   @override
-  Widget contentWidget(BuildContext context) {
+  Widget contentDesktopWidget(BuildContext context) {
     return WhiteCard(
       padding: EdgeInsets.all(30.w),
       child: Column(

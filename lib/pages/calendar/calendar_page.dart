@@ -11,7 +11,7 @@ class CalendarPage extends LayoutWidget {
   }
 
   @override
-  Widget contentWidget(BuildContext context) {
+  Widget contentDesktopWidget(BuildContext context) {
     return Container(
       color: Colors.white,
       child: SfCalendar(

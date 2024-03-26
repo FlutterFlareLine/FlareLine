@@ -1,3 +1,4 @@
+import 'package:bitsdojo_window/bitsdojo_window.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:free_flutter_admin_dashboard/provider/main_provider.dart';
@@ -5,10 +6,23 @@ import 'package:free_flutter_admin_dashboard/routes.dart';
 import 'package:free_flutter_admin_dashboard/themes/global_theme.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_web_plugins/url_strategy.dart';
 
 void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
   await GetStorage.init();
+
+  usePathUrlStrategy();
+
   runApp(MyApp());
+
+  doWhenWindowReady(() {
+    appWindow.minSize = Size(480, 360);
+    appWindow.size = Size.infinite;
+    appWindow.alignment = Alignment.center;
+    appWindow.show();
+  });
 }
 
 class MyApp extends StatelessWidget {

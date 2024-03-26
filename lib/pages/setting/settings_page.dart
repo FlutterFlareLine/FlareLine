@@ -25,7 +25,7 @@ class SettingsPage extends LayoutWidget {
   }
 
   @override
-  Widget contentWidget(BuildContext context) {
+  Widget contentDesktopWidget(BuildContext context) {
     return ScreenTypeLayout.builder(
       desktop: _desktopWidget,
       mobile: _mobileWidget,

@@ -12,7 +12,7 @@ class InvoicePage extends LayoutWidget {
   }
 
   @override
-  Widget contentWidget(BuildContext context) {
+  Widget contentDesktopWidget(BuildContext context) {
     return WhiteCard(
         child: Padding(
           padding: EdgeInsets.all(20.w),

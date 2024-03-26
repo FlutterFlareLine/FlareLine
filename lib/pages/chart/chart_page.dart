@@ -10,7 +10,7 @@ import 'package:free_flutter_admin_dashboard/pages/layout.dart';
 
 class ChartPage extends LayoutWidget {
   @override
-  Widget contentWidget(BuildContext context) {
+  Widget contentDesktopWidget(BuildContext context) {
     return Column(
       children: [
         SizedBox(

@@ -11,7 +11,7 @@ class InboxWidget extends LayoutWidget {
   }
 
   @override
-  Widget contentWidget(BuildContext context) {
+  Widget contentDesktopWidget(BuildContext context) {
     // TODO: implement contentWidget
     return WhiteCard(
       child: Row(children: [

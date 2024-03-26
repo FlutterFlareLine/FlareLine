@@ -10,7 +10,7 @@ class ProfilePage extends LayoutWidget {
   }
 
   @override
-  Widget contentWidget(BuildContext context) {
+  Widget contentDesktopWidget(BuildContext context) {
     return Container(
       color: Colors.white,
       child: Stack(children: [
@@ -96,7 +96,7 @@ class ProfilePage extends LayoutWidget {
                 height: 16.h,
               ),
               Container(
-                width: 220.w,
+                margin: EdgeInsets.symmetric(horizontal: 100.w),
                 padding: EdgeInsets.symmetric(vertical: 8.h),
                 decoration: BoxDecoration(
                     border: Border.all(color: Colors.grey, width: 1)),
@@ -105,7 +105,7 @@ class ProfilePage extends LayoutWidget {
                       child: Container(
                     child: Text.rich(
                       TextSpan(
-                          text: '259', children: [TextSpan(text: ' Posts')]),
+                          text: '259', children: [TextSpan(text: ' Posts'),],style: TextStyle(fontSize: 16)),
                     ),
                     alignment: Alignment.center,
                   )),
@@ -117,7 +117,7 @@ class ProfilePage extends LayoutWidget {
                     child: Text.rich(
                       TextSpan(
                           text: '129K',
-                          children: [TextSpan(text: ' Followers')]),
+                          children: [TextSpan(text: ' Followers')],style: TextStyle(fontSize: 16)),
                     ),
                     alignment: Alignment.center,
                   )),
@@ -128,7 +128,7 @@ class ProfilePage extends LayoutWidget {
                       child: Container(
                     child: Text.rich(
                       TextSpan(
-                          text: '2K', children: [TextSpan(text: ' Following')]),
+                          text: '2K', children: [TextSpan(text: ' Following')],style: TextStyle(fontSize: 16)),
                     ),
                     alignment: Alignment.center,
                   ))
@@ -139,7 +139,7 @@ class ProfilePage extends LayoutWidget {
               ),
               Text(
                 'About Me',
-                style: TextStyle(fontSize: 10.sp),
+                style: TextStyle(fontSize: 12),
               ),
               SizedBox(
                 height: 16.h,
@@ -149,7 +149,7 @@ class ProfilePage extends LayoutWidget {
                 width: 400.w,
                 child: Text(
                   'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque posuere fermentum urna, eu condimentum mauris tempus ut. Donec fermentum blandit aliquet. Etiam dictum dapibus ultricies. Sed vel aliquet libero. Nunc a augue fermentum, pharetra ligula sed, aliquam lacus.',
-                  style: TextStyle(fontSize: 10.sp),
+                  style: TextStyle(fontSize: 12),
                   textAlign: TextAlign.center,
                 ),
               ),

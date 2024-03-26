@@ -9,7 +9,7 @@ import 'package:free_flutter_admin_dashboard/themes/global_colors.dart';
 
 class ButtonPage extends LayoutWidget {
   @override
-  Widget contentWidget(BuildContext context) {
+  Widget contentDesktopWidget(BuildContext context) {
     return Column(
       children: [
         TitleCard(
