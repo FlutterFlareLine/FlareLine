@@ -6,7 +6,6 @@ import 'package:free_flutter_admin_dashboard/pages/form/form_elements_page.dart'
 import 'package:free_flutter_admin_dashboard/pages/form/form_layout_page.dart';
 import 'package:free_flutter_admin_dashboard/pages/kanban/kanban_page.dart';
 import 'package:free_flutter_admin_dashboard/pages/list/list_page.dart';
-import 'package:free_flutter_admin_dashboard/pages/analytics/analytics_page.dart';
 import 'package:free_flutter_admin_dashboard/pages/auth/sign_in_page.dart';
 import 'package:free_flutter_admin_dashboard/pages/auth/sign_up_page.dart';
 import 'package:free_flutter_admin_dashboard/pages/calendar/calendar_page.dart';
@@ -26,7 +25,6 @@ typedef PathWidgetBuilder = Widget Function(BuildContext, String?);
 final List<Map<String, Object>> MAIN_PAGES = [
   {'routerPath': '/', 'widget': HomePage()},
   {'routerPath': '/dashboard', 'widget': EcommercePage()},
-  {'routerPath': '/analytics', 'widget': AnalyticsPage()},
   {'routerPath': '/marketing', 'widget': MarketingPage()},
   {'routerPath': '/crm', 'widget': CrmPage()},
   {'routerPath': '/calendar', 'widget': CalendarPage()},

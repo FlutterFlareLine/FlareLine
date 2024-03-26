@@ -3,10 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:free_flutter_admin_dashboard/components/buttons/button_widget.dart';
 import 'package:free_flutter_admin_dashboard/components/card/white_card.dart';
 import 'package:free_flutter_admin_dashboard/pages/layout.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class InvoicePage extends LayoutWidget {
   @override
-  String title() {
+  String breakTabTitle(BuildContext context) {
     // TODO: implement title
     return 'Invoice';
   }
@@ -89,7 +90,7 @@ class InvoicePage extends LayoutWidget {
                   border: Border.all(color: Colors.grey, width: 1)),
               child: Row(children: [
                 Image.asset(
-                  'images/product/product-thumb.png',
+                  'assets/product/product-thumb.png',
                   width: 80,
                   height: 80,
                 ),

@@ -65,7 +65,7 @@ class ToolBarWidget extends StatelessWidget {
         }),
         Spacer(),
         InkWell(
-          child: SvgPicture.asset('images/toolbar/toggle.svg',
+          child: SvgPicture.asset('assets/toolbar/toggle.svg',
               width: 56, height: 30),
         ),
         SizedBox(
@@ -78,7 +78,7 @@ class ToolBarWidget extends StatelessWidget {
             alignment: Alignment.center,
             decoration: BoxDecoration(
                 color: HexColor('#E2E8F0'), shape: BoxShape.circle),
-            child: SvgPicture.asset('images/toolbar/alarm.svg',
+            child: SvgPicture.asset('assets/toolbar/alarm.svg',
                 width: 18, height: 18),
           ),
         ),
@@ -95,7 +95,7 @@ class ToolBarWidget extends StatelessWidget {
                   alignment: Alignment.center,
                   decoration: BoxDecoration(
                       color: HexColor('#E2E8F0'), shape: BoxShape.circle),
-                  child: SvgPicture.asset('images/toolbar/message.svg',
+                  child: SvgPicture.asset('assets/toolbar/message.svg',
                       width: 18, height: 18)),
               Align(
                 child: Container(

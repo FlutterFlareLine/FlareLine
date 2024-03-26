@@ -4,11 +4,13 @@ import 'package:free_flutter_admin_dashboard/components/breaktab.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
 abstract class LayoutWidget extends StatelessWidget {
+  const LayoutWidget({super.key});
+
   bool get isPage => false;
 
   bool get showTitle => true;
 
-  String title(){
+  String breakTabTitle(BuildContext context){
     return '';
   }
 
@@ -21,13 +23,13 @@ abstract class LayoutWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Widget contentWidget = Padding(
-      padding: EdgeInsets.symmetric(horizontal: 20, vertical: 16),
+      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
       child: SingleChildScrollView(
           child: Column(
         children: [
-          if (showTitle) BreakTab(title()),
+          if (showTitle) BreakTab(breakTabTitle(context)),
           if (showTitle)
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
           ScreenTypeLayout.builder(

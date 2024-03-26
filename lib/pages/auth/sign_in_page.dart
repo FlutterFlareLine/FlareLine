@@ -6,6 +6,7 @@ import 'package:free_flutter_admin_dashboard/components/card/white_card.dart';
 import 'package:free_flutter_admin_dashboard/components/forms/outborder_text_form_field.dart';
 import 'package:free_flutter_admin_dashboard/pages/layout.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class SignInWidget extends LayoutWidget {
   @override
@@ -21,20 +22,20 @@ class SignInWidget extends LayoutWidget {
               child: Column(
             children: [
               Text(
-                'XAdmin',
+                AppLocalizations.of(context)!.appName,
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
               SizedBox(
                 height: 16,
               ),
-              Text('Simple web, develop faster'),
+              Text(AppLocalizations.of(context)!.slogan),
               SizedBox(
                 height: 16,
               ),
               Container(
                 width: 200,
                 height: 300,
-                child: SvgPicture.asset('images/signin/main.svg',
+                child: SvgPicture.asset('assets/signin/main.svg',
                     semanticsLabel: ''),
               )
             ],
@@ -66,18 +67,18 @@ class SignInWidget extends LayoutWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'Sign In',
+              AppLocalizations.of(context)!.signIn,
               style: TextStyle(fontSize: 16),
             ),
             SizedBox(
               height: 20,
             ),
             OutBorderTextFormField(
-              labelText: 'Email',
-              hintText: 'Enter your email',
+              labelText: AppLocalizations.of(context)!.email,
+              hintText: AppLocalizations.of(context)!.emailHint,
               keyboardType: TextInputType.emailAddress,
               suffixWidget: SvgPicture.asset(
-                'images/signin/email.svg',
+                'assets/signin/email.svg',
                 width: 22,
                 height: 22,
               ),
@@ -87,10 +88,10 @@ class SignInWidget extends LayoutWidget {
             ),
             OutBorderTextFormField(
               obscureText: true,
-              labelText: 'Password',
-              hintText: '6+ Characters, 1 Capital letter',
+              labelText: AppLocalizations.of(context)!.password,
+              hintText: AppLocalizations.of(context)!.passwordHint,
               suffixWidget: SvgPicture.asset(
-                'images/signin/lock.svg',
+                'assets/signin/lock.svg',
                 width: 22,
                 height: 22,
               ),
@@ -99,7 +100,7 @@ class SignInWidget extends LayoutWidget {
               height: 20,
             ),
             ButtonWidget(
-              btnText: 'Sign In',
+              btnText: AppLocalizations.of(context)!.signIn,
               onTap: () {
                 Navigator.of(context).popAndPushNamed("/");
               },
@@ -109,11 +110,11 @@ class SignInWidget extends LayoutWidget {
             ),
             ButtonWidget(
               iconWidget: SvgPicture.asset(
-                'images/brand/brand-01.svg',
+                'assets/brand/brand-01.svg',
                 width: 20,
                 height: 20,
               ),
-              btnText: 'Sign in with Google',
+              btnText: AppLocalizations.of(context)!.signInWithGoogle,
               onTap: () {
                 Navigator.of(context).popAndPushNamed("/");
               },
@@ -125,10 +126,10 @@ class SignInWidget extends LayoutWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text('Don\'t have any account?'),
+                Text(AppLocalizations.of(context)!.dontHaveAccount),
                 InkWell(
                   child: Text(
-                    'Sign Up',
+                    AppLocalizations.of(context)!.signUp,
                     style: TextStyle(color: Colors.blue),
                   ),
                   onTap: () {

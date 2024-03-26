@@ -5,6 +5,7 @@ import 'package:free_flutter_admin_dashboard/components/buttons/button_widget.da
 import 'package:free_flutter_admin_dashboard/components/card/white_card.dart';
 import 'package:free_flutter_admin_dashboard/components/forms/outborder_text_form_field.dart';
 import 'package:free_flutter_admin_dashboard/pages/layout.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ResetPwdWidget extends LayoutWidget {
   @override
@@ -21,20 +22,20 @@ class ResetPwdWidget extends LayoutWidget {
               child: Column(
             children: [
               Text(
-                'XAdmin',
+                AppLocalizations.of(context)!.appName,
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
               SizedBox(
                 height: 16,
               ),
-              Text('Simple web, develop faster'),
+              Text(AppLocalizations.of(context)!.slogan),
               SizedBox(
                 height: 16,
               ),
               Container(
                 width: 200,
                 height: 300,
-                child: SvgPicture.asset('images/signin/main.svg',
+                child: SvgPicture.asset('assets/signin/main.svg',
                     semanticsLabel: ''),
               )
             ],
@@ -64,22 +65,22 @@ class ResetPwdWidget extends LayoutWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            'Reset Password',
+            AppLocalizations.of(context)!.resetPwd,
             style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
           ),
           SizedBox(
             height: 12,
           ),
-          Text('Enter your email address to receive a password reset link.'),
+          Text(AppLocalizations.of(context)!.emailReceiveResetLink),
           SizedBox(
             height: 20,
           ),
           OutBorderTextFormField(
-            labelText: 'Email',
-            hintText: 'Enter your email',
+            labelText: AppLocalizations.of(context)!.email,
+            hintText: AppLocalizations.of(context)!.emailHint,
             keyboardType: TextInputType.emailAddress,
             suffixWidget: SvgPicture.asset(
-              'images/signin/email.svg',
+              'assets/signin/email.svg',
               width: 22,
               height: 22,
             ),
@@ -88,7 +89,7 @@ class ResetPwdWidget extends LayoutWidget {
             height: 20,
           ),
           ButtonWidget(
-            btnText: 'Send Password Reset Link',
+            btnText: AppLocalizations.of(context)!.sendPwdResetLink,
             onTap: () {
               Navigator.of(context).popAndPushNamed("/");
             },

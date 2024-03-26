@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:free_flutter_admin_dashboard/components/card/white_card.dart';
 import 'package:responsive_builder/responsive_builder.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class GridCard extends StatelessWidget {
+  const GridCard({super.key});
+
   @override
   Widget build(BuildContext context) {
     return ScreenTypeLayout.builder(
@@ -17,25 +20,25 @@ class GridCard extends StatelessWidget {
       children: [
         Expanded(
             child: _itemCardWidget(
-                Icons.data_object, '\$3.456K', 'Total views', '0.43%', true)),
+                Icons.data_object, '\$3.456K', AppLocalizations.of(context)!.totalViews, '0.43%', true)),
         SizedBox(
           width: 16,
         ),
         Expanded(
             child: _itemCardWidget(
-                Icons.shopping_cart, '\$45.2K', 'Total Profit', '0.43%', true)),
+                Icons.shopping_cart, '\$45.2K', AppLocalizations.of(context)!.totalProfit, '0.43%', true)),
         SizedBox(
           width: 16,
         ),
         Expanded(
             child: _itemCardWidget(
-                Icons.group, '2.450', 'Total Product', '0.43%', true)),
+                Icons.group, '2.450', AppLocalizations.of(context)!.totalProduct, '0.43%', true)),
         SizedBox(
           width: 16,
         ),
         Expanded(
             child: _itemCardWidget(Icons.security_rounded, '3.456',
-                'Total Users', '0.43%', false)),
+                AppLocalizations.of(context)!.totalUsers, '0.43%', false)),
       ],
     );
   }
@@ -44,21 +47,21 @@ class GridCard extends StatelessWidget {
     return Column(
       children: [
         _itemCardWidget(
-            Icons.data_object, '\$3.456K', 'Total views', '0.43%', true),
+            Icons.data_object, '\$3.456K', AppLocalizations.of(context)!.totalViews, '0.43%', true),
         SizedBox(
           height: 16,
         ),
         _itemCardWidget(
-            Icons.shopping_cart, '\$45.2K', 'Total Profit', '0.43%', true),
+            Icons.shopping_cart, '\$45.2K', AppLocalizations.of(context)!.totalProfit, '0.43%', true),
         SizedBox(
           height: 16,
         ),
-        _itemCardWidget(Icons.group, '2.450', 'Total Product', '0.43%', true),
+        _itemCardWidget(Icons.group, '2.450', AppLocalizations.of(context)!.totalProduct, '0.43%', true),
         SizedBox(
           height: 16,
         ),
         _itemCardWidget(
-            Icons.security_rounded, '3.456', 'Total Users', '0.43%', false),
+            Icons.security_rounded, '3.456', AppLocalizations.of(context)!.totalUsers, '0.43%', false),
       ],
     );
   }

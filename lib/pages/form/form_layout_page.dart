@@ -11,13 +11,14 @@ import 'package:free_flutter_admin_dashboard/pages/layout.dart';
 import 'package:getwidget/components/checkbox/gf_checkbox.dart';
 import 'package:getwidget/components/dropdown/gf_dropdown.dart';
 import 'package:getwidget/getwidget.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class FormLayoutPage extends LayoutWidget {
   FormLayoutPage();
 
   @override
-  String title() {
-    return 'FormLayout';
+  String breakTabTitle(BuildContext context) {
+    return AppLocalizations.of(context)!.formLayoutPageTitle;
   }
 
   @override
@@ -75,50 +76,50 @@ class FormLayoutPage extends LayoutWidget {
       children: [
         WhiteCard(
           child: _titleWidget(
-              'Contact Form',
+              AppLocalizations.of(context)!.contactForm,
               Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
                 Row(
                   children: [
                     Expanded(
                         child: OutBorderTextFormField(
-                            labelText: 'First name',
-                            hintText: 'Enter your first name')),
+                            labelText: AppLocalizations.of(context)!.firstName,
+                            hintText: AppLocalizations.of(context)!.firstNameHint)),
                     SizedBox(
                       width: 12,
                     ),
                     Expanded(
                         child: OutBorderTextFormField(
-                            labelText: 'Last name',
-                            hintText: 'Enter your last name'))
+                            labelText: AppLocalizations.of(context)!.lastName,
+                            hintText: AppLocalizations.of(context)!.lastNameHint))
                   ],
                 ),
                 SizedBox(
                   height: 16,
                 ),
                 OutBorderTextFormField(
-                    labelText: 'Email', hintText: 'Enter your email address'),
+                    labelText: AppLocalizations.of(context)!.email, hintText: AppLocalizations.of(context)!.emailHint),
                 SizedBox(
                   height: 16,
                 ),
                 OutBorderTextFormField(
-                    labelText: 'Subject', hintText: 'Enter your subject'),
+                    labelText: AppLocalizations.of(context)!.subject, hintText: AppLocalizations.of(context)!.subjectHint),
                 SizedBox(
                   height: 16,
                 ),
                 OutBorderTextFormField(
-                    labelText: 'Subject', hintText: 'Select your subject'),
+                    labelText: AppLocalizations.of(context)!.subject, hintText: AppLocalizations.of(context)!.selectSubjectHint),
                 SizedBox(
                   height: 16,
                 ),
                 OutBorderTextFormField(
-                  labelText: 'Message',
-                  hintText: 'Type your message',
+                  labelText: AppLocalizations.of(context)!.message,
+                  hintText: AppLocalizations.of(context)!.messageHint,
                   maxLines: 5,
                 ),
                 SizedBox(
                   height: 16,
                 ),
-                ButtonWidget(btnText: 'Send Message')
+                ButtonWidget(btnText: AppLocalizations.of(context)!.sendMessage)
               ])),
         ),
       ],
@@ -140,15 +141,15 @@ class FormLayoutPage extends LayoutWidget {
   Widget _signInWidget(BuildContext context) {
     return WhiteCard(
       child: _titleWidget(
-          'Sign In Form',
+          AppLocalizations.of(context)!.signInForm,
           Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
             OutBorderTextFormField(
-                labelText: 'Email', hintText: 'Enter your email address'),
+                labelText: AppLocalizations.of(context)!.email, hintText: AppLocalizations.of(context)!.emailHint),
             SizedBox(
               height: 16,
             ),
             OutBorderTextFormField(
-                labelText: 'Password', hintText: 'Enter password'),
+                labelText: AppLocalizations.of(context)!.password, hintText: AppLocalizations.of(context)!.passwordHint),
             SizedBox(
               height: 16,
             ),
@@ -165,15 +166,15 @@ class FormLayoutPage extends LayoutWidget {
                         },
                       );
                     }),
-                Text('Remember me'),
+                Text(AppLocalizations.of(context)!.rememberMe),
                 Spacer(),
-                Text('Forget password?')
+                Text(AppLocalizations.of(context)!.forgetPwd)
               ],
             ),
             SizedBox(
               height: 16,
             ),
-            ButtonWidget(btnText: 'Sign In')
+            ButtonWidget(btnText: AppLocalizations.of(context)!.signIn)
           ])),
     );
   }
@@ -181,104 +182,30 @@ class FormLayoutPage extends LayoutWidget {
   Widget _signUpWidget(BuildContext context) {
     return WhiteCard(
       child: _titleWidget(
-          'Sign Up Form',
+          AppLocalizations.of(context)!.signUpForm,
           Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
             OutBorderTextFormField(
-                labelText: 'Name', hintText: 'Enter your full name'),
+                labelText: AppLocalizations.of(context)!.fullName, hintText:AppLocalizations.of(context)!.fullNameHint),
             SizedBox(
               height: 16,
             ),
             OutBorderTextFormField(
-                labelText: 'Email', hintText: 'Enter your email address'),
+                labelText: AppLocalizations.of(context)!.email, hintText:AppLocalizations.of(context)!.emailHint),
             SizedBox(
               height: 16,
             ),
             OutBorderTextFormField(
-                labelText: 'Password', hintText: 'Enter password'),
+                labelText: AppLocalizations.of(context)!.password, hintText: AppLocalizations.of(context)!.passwordHint),
             SizedBox(
               height: 16,
             ),
             OutBorderTextFormField(
-                labelText: 'Re-type Password', hintText: 'Re-enter password'),
+                labelText: AppLocalizations.of(context)!.retypePassword, hintText: AppLocalizations.of(context)!.retypePasswordHint),
             SizedBox(
               height: 16,
             ),
-            ButtonWidget(btnText: 'Sign Up')
+            ButtonWidget(btnText: AppLocalizations.of(context)!.signUp)
           ])),
-    );
-  }
-
-  ValueNotifier<String?> dropDownNotifier = ValueNotifier(null);
-
-  Widget _dropDownWidget(BuildContext context) {
-    return Container(
-      height: 50,
-      width: MediaQuery.of(context).size.width,
-      margin: EdgeInsets.all(20),
-      child: DropdownButtonHideUnderline(
-        child: ValueListenableBuilder(
-            valueListenable: dropDownNotifier,
-            builder: (ctx, res, widget) {
-              return GFDropdown(
-                borderRadius: BorderRadius.circular(5),
-                border: const BorderSide(color: Colors.black12, width: 1),
-                dropdownButtonColor: Colors.white,
-                value: res,
-                onChanged: (newValue) {
-                  dropDownNotifier.value = newValue;
-                },
-                items: [
-                  'FC Barcelona',
-                  'Real Madrid',
-                  'Villareal',
-                  'Manchester City'
-                ]
-                    .map((value) => DropdownMenuItem(
-                          value: value,
-                          child: Text(value),
-                        ))
-                    .toList(),
-              );
-            }),
-      ),
-    );
-  }
-
-  List<String> dropList = ['China', 'USA', 'England', "Russia", 'Japan'];
-
-  Widget _multiSelectWidget(BuildContext context) {
-    return GFMultiSelect(
-      items: dropList,
-      onSelect: (value) {
-        print('selected $value ');
-      },
-      dropdownTitleTileText: 'Messi, Griezmann, Coutinho ',
-      dropdownTitleTileMargin:
-          EdgeInsets.only(top: 22, left: 18, right: 18, bottom: 5),
-      dropdownTitleTilePadding: EdgeInsets.all(10),
-      dropdownUnderlineBorder:
-          const BorderSide(color: Colors.transparent, width: 2),
-      dropdownTitleTileBorder:
-          Border.all(color: Colors.grey.shade200, width: 1),
-      dropdownTitleTileBorderRadius: BorderRadius.circular(5),
-      expandedIcon: const Icon(
-        Icons.keyboard_arrow_down,
-        color: Colors.black54,
-      ),
-      collapsedIcon: const Icon(
-        Icons.keyboard_arrow_up,
-        color: Colors.black54,
-      ),
-      submitButton: Text('OK'),
-      cancelButton: Text('Cancel'),
-      dropdownTitleTileTextStyle:
-          const TextStyle(fontSize: 14, color: Colors.black54),
-      padding: const EdgeInsets.all(6),
-      margin: const EdgeInsets.all(6),
-      type: GFCheckboxType.basic,
-      activeBgColor: GFColors.SUCCESS,
-      activeBorderColor: GFColors.SUCCESS,
-      inactiveBorderColor: Colors.grey.shade200,
     );
   }
 }

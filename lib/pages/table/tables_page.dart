@@ -6,6 +6,7 @@ import 'package:free_flutter_admin_dashboard/components/tables/InvoiceTable.dart
 import 'package:free_flutter_admin_dashboard/components/tables/TopChannel.dart';
 import 'package:free_flutter_admin_dashboard/components/tables/TopProducts.dart';
 import 'package:free_flutter_admin_dashboard/pages/layout.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class TablesPage extends LayoutWidget {
   @override
@@ -26,7 +27,7 @@ class TablesPage extends LayoutWidget {
   }
 
   @override
-  String title() {
+  String breakTabTitle(BuildContext context) {
     return 'Tables';
   }
 }

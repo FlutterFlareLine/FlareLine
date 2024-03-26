@@ -34,6 +34,9 @@ flutter pub get
 flutter run -d chrome
 ```
 
+### Build
+`flutter gen-l10n` generate localization files
+
 ### 🔗 Thanks
 *   Nextjs-Free-Demo https://github.com/TailAdmin/free-nextjs-admin-dashboard
 

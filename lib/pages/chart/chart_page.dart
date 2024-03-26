@@ -7,8 +7,11 @@ import 'package:free_flutter_admin_dashboard/components/charts/bar_chart.dart';
 import 'package:free_flutter_admin_dashboard/components/charts/circular_chart.dart';
 import 'package:free_flutter_admin_dashboard/components/charts/line_chart.dart';
 import 'package:free_flutter_admin_dashboard/pages/layout.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ChartPage extends LayoutWidget {
+  const ChartPage({super.key});
+
   @override
   Widget contentDesktopWidget(BuildContext context) {
     return Column(
@@ -19,11 +22,11 @@ class ChartPage extends LayoutWidget {
             child: LineChartWidget(),
           ),
         ),
-        SizedBox(height: 16),
+        const SizedBox(height: 16),
         SizedBox(
             height: 350,
             child: WhiteCard(child: BarChartWidget())),
-        SizedBox(
+        const SizedBox(
           height: 16,
         ),
         SizedBox(
@@ -36,7 +39,7 @@ class ChartPage extends LayoutWidget {
   }
 
   @override
-  String title() {
-    return 'Chart';
+  String breakTabTitle(BuildContext context) {
+    return AppLocalizations.of(context)!.chartPageTitle;
   }
 }

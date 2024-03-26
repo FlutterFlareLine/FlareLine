@@ -1,0 +1,124 @@
+{
+   "alertsPageTitle": "警报",
+   "alertsTitle": "需要注意",
+   "alsertsMessage": "Lorem Ipsum 只是印刷和排版行业的虚拟文本",
+   “appName”：“XAdmin”，
+   "slogan": "简单的网络，开发更快",
+   "signIn": "登录",
+   “email”：“电子邮件”，
+   "emailHint": "输入您的电子邮件",
+   "password": "密码",
+   "passwordHint": "6+ 个字符，1 个大写字母",
+   "signIn": "登录",
+   "signInWithGoogle": "使用 Google 登录",
+   "dontHaveAccount": "没有账户？",
+   "signUp": "注册",
+   "startForFree": "免费开始",
+   "signUpTip": "注册 XAdmin",
+   "retypePassword": "重新输入密码",
+   "retypePasswordHint": "重新输入您的密码",
+   "createAccount": "创建帐户",
+   "signUpWithGoogle": "使用 Google 注册",
+   "haveAnAccount": "已有账户？",
+   "normalButton": "普通按钮",
+   "buttonWithIcon": "带图标的按钮",
+   "buttonsPageTitle": "按钮",
+   "btnName": "按钮",
+   "calendarPageTitle": "日历",
+   "chartPageTitle": "图表",
+   "totalViews": "总浏览次数",
+   "totalProfit": "总利润",
+   "totalProduct": "总产品",
+   "totalUsers": "总用户数",
+   "formElements": "FormElements",
+   "inputFields": "输入字段",
+   "defaultInput": "默认输入",
+   "activeInput": "活动输入",
+   "disabledLabel": "禁用标签",
+   "toggleSwitchInput": "切换开关输入",
+   "switchLabel": "切换标签",
+   "timeAndDate": "时间和日期",
+   "datePicker": "日期选择器",
+   "selectDate": "选择日期",
+   "fileUpload": "文件上传",
+   "attachFile": "附加文件",
+   "selectImage": "选择图片",
+   "textareaFields": "文本区域字段",
+   "defaultTextarea": "默认文本区域",
+   "activeTextarea": "活动文本区域",
+   "disabledTextarea": "禁用文本区域",
+   "checkboxAndRadis": "复选框和单选",
+   "selectInput": "选择输入",
+   "selectCountry": "选择国家",
+   "multiselect": "多选下拉菜单",
+   "ok": "确定",
+   "cancel": "取消",
+   "formLayoutPageTitle": "表单布局",
+   "contactForm": "联系表单",
+   "firstName": "名字",
+   "firstNameHint": "输入您的名字",
+   "lastName": "姓氏",
+   "lastNameHint": "'输入您的姓氏",
+   “subject”：“主题”，
+   "subjectHint": "输入你的主题",
+   "selectSubjectHint": "选择您的主题",
+   "message": "消息",
+   "messageHint": "输入您的消息",
+   "sendMessage": "发送消息",
+   "rememberMe": "记住我",
+   "forgetPwd": "忘记密码？",
+   "signInForm": "登录表单？",
+   "signUpForm": "注册表单？",
+   "fullName": "全名",
+   "fullNameHint": "输入您的全名",
+   "profile": "个人资料",
+   "edit": "编辑",
+   "posts": "帖子",
+   “followers”：“关注者”，
+   “following”：“正在关注”，
+   "aboutMe": "关于我",
+   "followMeOn": "关注我",
+   "resetPwd": "重置密码",
+   "emailReceiveResetLink": "输入您的电子邮件地址以接收密码重置链接。",
+   "sendPwdResetLink": "发送密码重置链接",
+   “settings”：“设置”，
+   "personalInfo": "个人信息",
+   "phoneNumber": "电话号码",
+   "phoneNumberHint": "请输入您的电话号码",
+   "userName": "用户名",
+   "userNameHint": "输入您的用户名",
+   "save": "保存",
+   "yourPhoto": "你的照片",
+   "editYourPhoto": "编辑你的照片",
+   “bio”：“生物”，
+   "delete": "删除",
+   “update”：“更新”，
+   "clickToUpload": "点击上传或拖放",
+   "topChannels": "热门频道",
+   “loading”：“正在加载”，
+   “visitors”：“访客”，
+   “source”：“来源”，
+   “revenues”：“收入”，
+   “sales”：“销售”，
+   “conversation”：“转换”，
+   "groupMenu": "菜单",
+   "dashboard": "仪表板",
+   "calendar": "日历",
+   “forms”：“表格”，
+   “tables”：“表”，
+   “settings”：“设置”，
+   “others”：“其他”，
+   “chart”：“图表”，
+   "ulElements": "用户界面元素",
+   “alerts”：“警报”，
+   "buttons": "按钮",
+   "uiElements": "用户界面元素",
+   "basicChart": "基本图表",
+   “eCommerce”：“电子商务”，
+   "buttons": "按钮",
+   “authentication”：“身份验证”
+
+
+
+
+}

@@ -10,13 +10,14 @@ import 'package:free_flutter_admin_dashboard/pages/layout.dart';
 import 'package:getwidget/components/checkbox/gf_checkbox.dart';
 import 'package:getwidget/components/dropdown/gf_dropdown.dart';
 import 'package:getwidget/getwidget.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class FormElementsPage extends LayoutWidget {
   FormElementsPage();
 
   @override
-  String title() {
-    return 'FormElements';
+  String breakTabTitle(BuildContext context) {
+    return AppLocalizations.of(context)!.formElements;
   }
 
   @override
@@ -73,21 +74,21 @@ class FormElementsPage extends LayoutWidget {
       children: [
         WhiteCard(
           child: _titleWidget(
-              'Input Fields',
+              AppLocalizations.of(context)!.inputFields,
               Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
                 OutBorderTextFormField(
-                    labelText: 'Default Input', hintText: 'Default Input'),
+                    labelText: AppLocalizations.of(context)!.defaultInput, hintText: AppLocalizations.of(context)!.defaultInput),
                 SizedBox(
                   height: 16,
                 ),
                 OutBorderTextFormField(
-                    labelText: 'Active Input', hintText: 'Active Input'),
+                    labelText: AppLocalizations.of(context)!.activeInput, hintText: AppLocalizations.of(context)!.activeInput),
                 SizedBox(
                   height: 16,
                 ),
                 OutBorderTextFormField(
-                  labelText: 'Disabled label',
-                  hintText: 'Disabled label',
+                  labelText: AppLocalizations.of(context)!.disabledLabel,
+                  hintText: AppLocalizations.of(context)!.disabledLabel,
                   enabled: false,
                 )
               ])),
@@ -97,14 +98,14 @@ class FormElementsPage extends LayoutWidget {
         ),
         WhiteCard(
           child: _titleWidget(
-              'Toggle switch input',
+              AppLocalizations.of(context)!.toggleSwitchInput,
               Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
                 Switch(value: false, onChanged: (r) {}),
                 SizedBox(
                   height: 16,
                 ),
                 SwitchListTile(
-                  title: Text('Switch Label'),
+                  title: Text(AppLocalizations.of(context)!.switchLabel),
                   value: false,
                   onChanged: (r) {},
                 ),
@@ -139,7 +140,7 @@ class FormElementsPage extends LayoutWidget {
         ),
         WhiteCard(
           child: _titleWidget(
-              'Time and date',
+              AppLocalizations.of(context)!.timeAndDate,
               Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.start,
@@ -148,7 +149,7 @@ class FormElementsPage extends LayoutWidget {
                         child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text('Date Picker'),
+                        Text(AppLocalizations.of(context)!.datePicker),
                         SizedBox(
                           height: 10,
                         ),
@@ -199,7 +200,7 @@ class FormElementsPage extends LayoutWidget {
                         child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text('Select date'),
+                        Text(AppLocalizations.of(context)!.selectDate),
                         SizedBox(
                           height: 10,
                         ),
@@ -250,16 +251,16 @@ class FormElementsPage extends LayoutWidget {
         ),
         WhiteCard(
           child: _titleWidget(
-              'File upload',
+              AppLocalizations.of(context)!.fileUpload,
               Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
                 FormFilePicker(
-                  title: 'Attach file',
+                  title: AppLocalizations.of(context)!.attachFile,
                 ),
                 SizedBox(
                   height: 16,
                 ),
                 FormFilePicker(
-                  title: 'Select Image',
+                  title: AppLocalizations.of(context)!.selectImage,
                   allowExtention: ['jpg', 'jpeg', 'png', 'gif'],
                 ),
               ])),
@@ -275,11 +276,11 @@ class FormElementsPage extends LayoutWidget {
         children: [
           WhiteCard(
             child: _titleWidget(
-                'Textarea Fields',
+                AppLocalizations.of(context)!.textareaFields,
                 Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
                   OutBorderTextFormField(
-                    labelText: 'Default textarea',
-                    hintText: 'Default textarea',
+                    labelText: AppLocalizations.of(context)!.defaultTextarea,
+                    hintText: AppLocalizations.of(context)!.defaultTextarea,
                     maxLines: 5,
                   ),
                   SizedBox(
@@ -287,16 +288,16 @@ class FormElementsPage extends LayoutWidget {
                   ),
                   OutBorderTextFormField(
                       maxLines: 5,
-                      labelText: 'Active textarea',
-                      hintText: 'Active textarea'),
+                      labelText: AppLocalizations.of(context)!.activeTextarea,
+                      hintText: AppLocalizations.of(context)!.activeTextarea),
                   SizedBox(
                     height: 16,
                   ),
                   OutBorderTextFormField(
                       enabled: false,
                       maxLines: 5,
-                      labelText: 'Disabled textarea',
-                      hintText: 'Disabled textarea')
+                      labelText: AppLocalizations.of(context)!.disabledTextarea,
+                      hintText: AppLocalizations.of(context)!.disabledTextarea)
                 ])),
           ),
           SizedBox(
@@ -304,7 +305,7 @@ class FormElementsPage extends LayoutWidget {
           ),
           WhiteCard(
             child: _titleWidget(
-                'Checkbox and radio',
+                AppLocalizations.of(context)!.checkboxAndRadis,
                 Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.start,
@@ -357,9 +358,9 @@ class FormElementsPage extends LayoutWidget {
           ),
           WhiteCard(
             child: _titleWidget(
-                'Select input',
+                AppLocalizations.of(context)!.selectInput,
                 Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                  Text('Select country'),
+                  Text(AppLocalizations.of(context)!.selectCountry),
                   SizedBox(
                     height: 12,
                   ),
@@ -367,7 +368,7 @@ class FormElementsPage extends LayoutWidget {
                   SizedBox(
                     height: 16,
                   ),
-                  Text('Multiselect Dropdown'),
+                  Text(AppLocalizations.of(context)!.multiselect),
                   SizedBox(
                     height: 12,
                   ),
@@ -438,8 +439,8 @@ class FormElementsPage extends LayoutWidget {
         Icons.keyboard_arrow_up,
         color: Colors.black54,
       ),
-      submitButton: Text('OK'),
-      cancelButton: Text('Cancel'),
+      submitButton: Text(AppLocalizations.of(context)!.ok),
+      cancelButton: Text(AppLocalizations.of(context)!.cancel),
       dropdownTitleTileTextStyle:
           const TextStyle(fontSize: 14, color: Colors.black54),
       padding: const EdgeInsets.all(6),

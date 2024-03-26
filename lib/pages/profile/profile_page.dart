@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 
 import 'package:free_flutter_admin_dashboard/pages/layout.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ProfilePage extends LayoutWidget {
   @override
-  String title() {
+  String breakTabTitle(BuildContext context) {
     // TODO: implement title
-    return 'Profile';
+    return AppLocalizations.of(context)!.profile;
   }
 
   @override
@@ -18,7 +19,7 @@ class ProfilePage extends LayoutWidget {
           height: 180,
           child: Stack(children: [
             Image.asset(
-              'images/cover/cover-01.png',
+              'assets/cover/cover-01.png',
               height: 180,
               width: double.maxFinite,
               fit: BoxFit.cover,
@@ -57,7 +58,7 @@ class ProfilePage extends LayoutWidget {
                   CircleAvatar(
                     radius: 72,
                     backgroundColor: Colors.greenAccent,
-                    child: Image.asset('images/user/user-01.png'),
+                    child: Image.asset('assets/user/user-01.png'),
                   ),
                   Align(
                     alignment: Alignment.bottomRight,
@@ -105,7 +106,7 @@ class ProfilePage extends LayoutWidget {
                       child: Container(
                     child: Text.rich(
                       TextSpan(
-                          text: '259', children: [TextSpan(text: ' Posts'),],style: TextStyle(fontSize: 16)),
+                          text: '259', children: [TextSpan(text: ' ${AppLocalizations.of(context)!.posts}'),],style: TextStyle(fontSize: 16)),
                     ),
                     alignment: Alignment.center,
                   )),
@@ -117,7 +118,7 @@ class ProfilePage extends LayoutWidget {
                     child: Text.rich(
                       TextSpan(
                           text: '129K',
-                          children: [TextSpan(text: ' Followers')],style: TextStyle(fontSize: 16)),
+                          children: [TextSpan(text: ' ${AppLocalizations.of(context)!.followers}')],style: TextStyle(fontSize: 16)),
                     ),
                     alignment: Alignment.center,
                   )),
@@ -138,7 +139,7 @@ class ProfilePage extends LayoutWidget {
                 height: 16,
               ),
               Text(
-                'About Me',
+                AppLocalizations.of(context)!.aboutMe,
                 style: TextStyle(fontSize: 12),
               ),
               SizedBox(
@@ -157,7 +158,7 @@ class ProfilePage extends LayoutWidget {
                 height: 16,
               ),
               Text(
-                'Follow me on',
+                AppLocalizations.of(context)!.followMeOn,
                 style: TextStyle(fontSize: 10),
               ),
               SizedBox(height: 30,)

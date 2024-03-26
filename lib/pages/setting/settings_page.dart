@@ -1,4 +1,3 @@
-import 'package:calendar_date_picker2/calendar_date_picker2.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -7,21 +6,18 @@ import 'package:flutter_dropzone/flutter_dropzone.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:free_flutter_admin_dashboard/components/buttons/button_widget.dart';
 import 'package:free_flutter_admin_dashboard/components/card/white_card.dart';
-import 'package:free_flutter_admin_dashboard/components/forms/form_file_picker.dart';
 import 'package:free_flutter_admin_dashboard/components/forms/outborder_text_form_field.dart';
 import 'package:free_flutter_admin_dashboard/pages/layout.dart';
-import 'package:getwidget/components/checkbox/gf_checkbox.dart';
-import 'package:getwidget/components/dropdown/gf_dropdown.dart';
-import 'package:getwidget/getwidget.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:responsive_builder/responsive_builder.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class SettingsPage extends LayoutWidget {
   SettingsPage();
 
   @override
-  String title() {
-    return 'Settings';
+  String breakTabTitle(BuildContext context) {
+    return AppLocalizations.of(context)!.settings;
   }
 
   @override
@@ -90,7 +86,7 @@ class SettingsPage extends LayoutWidget {
       children: [
         WhiteCard(
           child: _titleWidget(
-            'Personal Information',
+            AppLocalizations.of(context)!.personalInfo,
             Padding(
                 padding: EdgeInsets.symmetric(horizontal: 16),
                 child: Column(
@@ -102,33 +98,37 @@ class SettingsPage extends LayoutWidget {
                               child: OutBorderTextFormField(
                                   icon: Container(
                                     child: SvgPicture.asset(
-                                      'images/icon/user.svg',
+                                      'assets/icon/user.svg',
                                       width: 22,
                                       height: 22,
                                     ),
                                     padding:
                                         EdgeInsets.symmetric(horizontal: 5),
                                   ),
-                                  labelText: 'Full Name',
-                                  hintText: 'Enter your full name')),
+                                  labelText:
+                                      AppLocalizations.of(context)!.fullName,
+                                  hintText: AppLocalizations.of(context)!
+                                      .fullNameHint)),
                           SizedBox(
                             width: 12,
                           ),
                           Expanded(
                               child: OutBorderTextFormField(
-                                  labelText: 'Phone Number',
-                                  hintText: 'Enter your phone number'))
+                                  labelText:
+                                      AppLocalizations.of(context)!.phoneNumber,
+                                  hintText: AppLocalizations.of(context)!
+                                      .phoneNumberHint))
                         ],
                       ),
                       SizedBox(
                         height: 16,
                       ),
                       OutBorderTextFormField(
-                        labelText: 'Email Address',
-                        hintText: 'Enter your email address',
+                        labelText: AppLocalizations.of(context)!.email,
+                        hintText: AppLocalizations.of(context)!.emailHint,
                         icon: Container(
                           child: SvgPicture.asset(
-                            'images/signin/email.svg',
+                            'assets/signin/email.svg',
                             width: 22,
                             height: 22,
                           ),
@@ -139,17 +139,17 @@ class SettingsPage extends LayoutWidget {
                         height: 16,
                       ),
                       OutBorderTextFormField(
-                          labelText: 'Username',
-                          hintText: 'Enter your username'),
+                          labelText: AppLocalizations.of(context)!.userName,
+                          hintText: AppLocalizations.of(context)!.userNameHint),
                       SizedBox(
                         height: 16,
                       ),
                       OutBorderTextFormField(
                           maxLines: 5,
-                          labelText: 'BIO',
+                          labelText: AppLocalizations.of(context)!.bio,
                           icon: Container(
                             child: SvgPicture.asset(
-                              'images/icon/edit.svg',
+                              'assets/icon/edit.svg',
                               width: 22,
                               height: 22,
                             ),
@@ -166,7 +166,7 @@ class SettingsPage extends LayoutWidget {
                           SizedBox(
                               width: 60,
                               child: ButtonWidget(
-                                btnText: 'Cancel',
+                                btnText: AppLocalizations.of(context)!.cancel,
                                 isPrimary: false,
                               )),
                           SizedBox(
@@ -174,7 +174,8 @@ class SettingsPage extends LayoutWidget {
                           ),
                           SizedBox(
                               width: 60,
-                              child: ButtonWidget(btnText: 'Save')),
+                              child: ButtonWidget(
+                                  btnText: AppLocalizations.of(context)!.save)),
                         ],
                       )
                     ])),
@@ -189,7 +190,7 @@ class SettingsPage extends LayoutWidget {
   _rightWidget(BuildContext context) {
     return WhiteCard(
         child: _titleWidget(
-      'Your Photo',
+      AppLocalizations.of(context)!.yourPhoto,
       Padding(
           padding: EdgeInsets.symmetric(horizontal: 16),
           child:
@@ -206,14 +207,14 @@ class SettingsPage extends LayoutWidget {
                 ),
                 Column(
                   children: [
-                    Text('Edit your photo'),
+                    Text(AppLocalizations.of(context)!.editYourPhoto),
                     Row(
                       children: [
-                        Text('Delete'),
+                        Text(AppLocalizations.of(context)!.delete),
                         SizedBox(
                           width: 12,
                         ),
-                        Text('Update')
+                        Text(AppLocalizations.of(context)!.update)
                       ],
                     )
                   ],
@@ -250,7 +251,7 @@ class SettingsPage extends LayoutWidget {
                       SizedBox(
                         height: 10,
                       ),
-                      Text('Click to upload or drag and drop'),
+                      Text(AppLocalizations.of(context)!.clickToUpload),
                       SizedBox(
                         height: 10,
                       ),
@@ -276,14 +277,17 @@ class SettingsPage extends LayoutWidget {
                 SizedBox(
                   width: 60,
                   child: ButtonWidget(
-                    btnText: 'Cancel',
+                    btnText: AppLocalizations.of(context)!.cancel,
                     isPrimary: false,
                   ),
                 ),
                 SizedBox(
                   width: 12,
                 ),
-                SizedBox(width: 60, child: ButtonWidget(btnText: 'Save')),
+                SizedBox(
+                    width: 60,
+                    child: ButtonWidget(
+                        btnText: AppLocalizations.of(context)!.save)),
               ],
             )
           ])),

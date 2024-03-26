@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:free_flutter_admin_dashboard/components/card/white_card.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class TopChannelWidget extends StatelessWidget {
   const TopChannelWidget({super.key});
@@ -11,24 +12,25 @@ class TopChannelWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return WhiteCard(
         child: Padding(
-          padding: EdgeInsets.all(16),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                'Top Channels',
-                style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
-              ),
-              SizedBox(
-                height: 16,
-              ),
-              Expanded(child: ChangeNotifierProvider(
-                create: (context) => _DataProvider(),
-                builder: (ctx, child) => _buildWidget(ctx),
-              )),
-            ],
+      padding: EdgeInsets.all(16),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            AppLocalizations.of(context)!.topChannels,
+            style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
           ),
-        ));
+          SizedBox(
+            height: 16,
+          ),
+          Expanded(
+              child: ChangeNotifierProvider(
+            create: (context) => _DataProvider(),
+            builder: (ctx, child) => _buildWidget(ctx),
+          )),
+        ],
+      ),
+    ));
   }
 
   _buildWidget(BuildContext context) {
@@ -37,7 +39,7 @@ class TopChannelWidget extends StatelessWidget {
         builder: ((context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting ||
               snapshot.data == null) {
-            return Text('loading');
+            return Text(AppLocalizations.of(context)!.loading);
           }
 
           return ConstrainedBox(
@@ -53,15 +55,19 @@ class TopChannelWidget extends StatelessWidget {
                     color: Colors.black,
                   ),
                   columns: [
-                    DataColumn(label: Text('SOURCE')),
                     DataColumn(
-                      label: const Text('VISITORS'),
+                        label: Text(AppLocalizations.of(context)!.source)),
+                    DataColumn(
+                      label: Text(AppLocalizations.of(context)!.visitors),
                     ),
                     DataColumn(
-                      label: const Text('REVENUES'),
+                      label: Text(AppLocalizations.of(context)!.revenues),
                     ),
-                    const DataColumn(label: Text('SALES')),
-                    const DataColumn(label: Text('CONVERSION')),
+                    DataColumn(
+                        label: Text(AppLocalizations.of(context)!.sales)),
+                    DataColumn(
+                        label:
+                            Text(AppLocalizations.of(context)!.conversation)),
                   ],
                   rows: context
                       .watch<_DataProvider>()

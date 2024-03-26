@@ -63,7 +63,7 @@ class ChatsWidget extends StatelessWidget {
             child: Stack(
               children: [
                 CircleAvatar(
-                  backgroundImage: AssetImage('images${conversation.avatar}'),
+                  backgroundImage: AssetImage('assets${conversation.avatar}'),
                   radius: 22,
                 ),
                 Align(

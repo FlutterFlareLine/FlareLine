@@ -6,6 +6,7 @@ import 'package:free_flutter_admin_dashboard/components/card/white_card.dart';
 import 'package:free_flutter_admin_dashboard/components/forms/outborder_text_form_field.dart';
 import 'package:free_flutter_admin_dashboard/pages/layout.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class SignUpWidget extends LayoutWidget {
   @override
@@ -22,20 +23,20 @@ class SignUpWidget extends LayoutWidget {
                 child: Column(
               children: [
                 Text(
-                  'XAdmin',
+                  AppLocalizations.of(context)!.appName,
                   style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                 ),
                 SizedBox(
                   height: 16,
                 ),
-                Text('Simple web, develop faster'),
+                Text(AppLocalizations.of(context)!.slogan),
                 SizedBox(
                   height: 16,
                 ),
                 Container(
                   width: 200,
                   height: 300,
-                  child: SvgPicture.asset('images/signin/main.svg',
+                  child: SvgPicture.asset('assets/signin/main.svg',
                       semanticsLabel: ''),
                 )
               ],
@@ -65,23 +66,23 @@ class SignUpWidget extends LayoutWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text('Start for free'),
+          Text(AppLocalizations.of(context)!.startForFree),
           SizedBox(
             height: 12,
           ),
           Text(
-            'Sign Up to XAdmin',
+            AppLocalizations.of(context)!.startForFree,
             style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
           ),
           SizedBox(
             height: 16,
           ),
           OutBorderTextFormField(
-            labelText: 'Email',
-            hintText: 'Enter your email',
+            labelText: AppLocalizations.of(context)!.email,
+            hintText: AppLocalizations.of(context)!.emailHint,
             keyboardType: TextInputType.emailAddress,
             suffixWidget: SvgPicture.asset(
-              'images/signin/email.svg',
+              'assets/signin/email.svg',
               width: 22,
               height: 22,
             ),
@@ -91,10 +92,10 @@ class SignUpWidget extends LayoutWidget {
           ),
           OutBorderTextFormField(
             obscureText: true,
-            labelText: 'Password',
-            hintText: '6+ Characters, 1 Capital letter',
+            labelText: AppLocalizations.of(context)!.password,
+            hintText: AppLocalizations.of(context)!.passwordHint,
             suffixWidget: SvgPicture.asset(
-              'images/signin/lock.svg',
+              'assets/signin/lock.svg',
               width: 22,
               height: 22,
             ),
@@ -104,10 +105,10 @@ class SignUpWidget extends LayoutWidget {
           ),
           OutBorderTextFormField(
             obscureText: true,
-            labelText: 'Re-type Password',
-            hintText: 'Re-enter your password',
+            labelText: AppLocalizations.of(context)!.retypePassword,
+            hintText: AppLocalizations.of(context)!.retypePasswordHint,
             suffixWidget: SvgPicture.asset(
-              'images/signin/lock.svg',
+              'assets/signin/lock.svg',
               width: 22,
               height: 22,
             ),
@@ -116,7 +117,7 @@ class SignUpWidget extends LayoutWidget {
             height: 20,
           ),
           ButtonWidget(
-            btnText: 'Create Account',
+            btnText: AppLocalizations.of(context)!.createAccount,
             onTap: () {
               Navigator.of(context).popAndPushNamed("/");
             },
@@ -125,7 +126,7 @@ class SignUpWidget extends LayoutWidget {
             height: 12,
           ),
           ButtonWidget(
-            btnText: 'Sign up with Google',
+            btnText: AppLocalizations.of(context)!.signUpWithGoogle,
             onTap: () {
               Navigator.of(context).popAndPushNamed("/");
             },
@@ -137,10 +138,10 @@ class SignUpWidget extends LayoutWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text('Already have an account?'),
+              Text(AppLocalizations.of(context)!.haveAnAccount),
               InkWell(
                 child: Text(
-                  'Sign In',
+                  AppLocalizations.of(context)!.signIn,
                   style: TextStyle(color: Colors.blue),
                 ),
                 onTap: () {
