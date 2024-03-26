@@ -12,7 +12,7 @@ class SignInWidget extends LayoutWidget {
   Widget contentDesktopWidget(BuildContext context) {
     return Center(
         child: Container(
-          margin: EdgeInsets.only(left: 100,right: 100,top: 100),
+      margin: EdgeInsets.only(left: 100, right: 100, top: 100),
       child: WhiteCard(
         isAutoHeight: true,
         padding: EdgeInsets.symmetric(vertical: 100),
@@ -44,10 +44,8 @@ class SignInWidget extends LayoutWidget {
             color: HexColor('#E2E8F0'),
           ),
           Expanded(
-              child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 50),
             child: _signInFormWidget(context),
-          ))
+          )
         ]),
       ),
     ));
@@ -57,88 +55,90 @@ class SignInWidget extends LayoutWidget {
   Widget contentMobileWidget(BuildContext context) {
     return WhiteCard(
         isAutoHeight: true,
-        padding: EdgeInsets.symmetric(vertical: 60,horizontal: 50),
+        padding: EdgeInsets.symmetric(vertical: 60),
         child: _signInFormWidget(context));
   }
 
   Widget _signInFormWidget(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          'Sign In',
-          style: TextStyle(fontSize: 16),
-        ),
-        SizedBox(
-          height: 20,
-        ),
-        OutBorderTextFormField(
-          labelText: 'Email',
-          hintText: 'Enter your email',
-          keyboardType: TextInputType.emailAddress,
-          suffixWidget: SvgPicture.asset(
-            'images/signin/email.svg',
-            width: 22,
-            height: 22,
-          ),
-        ),
-        SizedBox(
-          height: 16,
-        ),
-        OutBorderTextFormField(
-          obscureText: true,
-          labelText: 'Password',
-          hintText: '6+ Characters, 1 Capital letter',
-          suffixWidget: SvgPicture.asset(
-            'images/signin/lock.svg',
-            width: 22,
-            height: 22,
-          ),
-        ),
-        SizedBox(
-          height: 20,
-        ),
-        ButtonWidget(
-          btnText: 'Sign In',
-          onTap: () {
-            Navigator.of(context).popAndPushNamed("/");
-          },
-        ),
-        SizedBox(
-          height: 12,
-        ),
-        ButtonWidget(
-          iconWidget: SvgPicture.asset(
-            'images/brand/brand-01.svg',
-            width: 20,
-            height: 20,
-          ),
-          btnText: 'Sign in with Google',
-          onTap: () {
-            Navigator.of(context).popAndPushNamed("/");
-          },
-          isPrimary: false,
-        ),
-        SizedBox(
-          height: 20,
-        ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
+    return Padding(
+        padding: EdgeInsets.symmetric(horizontal: 50),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text('Don\'t have any account?'),
-            InkWell(
-              child: Text(
-                'Sign Up',
-                style: TextStyle(color: Colors.blue),
+            Text(
+              'Sign In',
+              style: TextStyle(fontSize: 16),
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            OutBorderTextFormField(
+              labelText: 'Email',
+              hintText: 'Enter your email',
+              keyboardType: TextInputType.emailAddress,
+              suffixWidget: SvgPicture.asset(
+                'images/signin/email.svg',
+                width: 22,
+                height: 22,
               ),
+            ),
+            SizedBox(
+              height: 16,
+            ),
+            OutBorderTextFormField(
+              obscureText: true,
+              labelText: 'Password',
+              hintText: '6+ Characters, 1 Capital letter',
+              suffixWidget: SvgPicture.asset(
+                'images/signin/lock.svg',
+                width: 22,
+                height: 22,
+              ),
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            ButtonWidget(
+              btnText: 'Sign In',
               onTap: () {
-                Navigator.of(context).popAndPushNamed('/signUp');
+                Navigator.of(context).popAndPushNamed("/");
               },
+            ),
+            SizedBox(
+              height: 12,
+            ),
+            ButtonWidget(
+              iconWidget: SvgPicture.asset(
+                'images/brand/brand-01.svg',
+                width: 20,
+                height: 20,
+              ),
+              btnText: 'Sign in with Google',
+              onTap: () {
+                Navigator.of(context).popAndPushNamed("/");
+              },
+              isPrimary: false,
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text('Don\'t have any account?'),
+                InkWell(
+                  child: Text(
+                    'Sign Up',
+                    style: TextStyle(color: Colors.blue),
+                  ),
+                  onTap: () {
+                    Navigator.of(context).popAndPushNamed('/signUp');
+                  },
+                )
+              ],
             )
           ],
-        )
-      ],
-    );
+        ));
   }
 
   @override

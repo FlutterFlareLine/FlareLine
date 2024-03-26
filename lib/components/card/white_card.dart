@@ -12,6 +12,7 @@ class WhiteCard extends StatelessWidget {
   Widget build(BuildContext context) {
     Widget card = Container(
       padding: padding,
+      alignment: Alignment.center,
       decoration: BoxDecoration(
           color: Colors.white, borderRadius: BorderRadius.circular(6),
           boxShadow: [
