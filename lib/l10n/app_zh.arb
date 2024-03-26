@@ -2,13 +2,13 @@
    "alertsPageTitle": "警报",
    "alertsTitle": "需要注意",
    "alsertsMessage": "Lorem Ipsum 只是印刷和排版行业的虚拟文本",
-   “appName”：“XAdmin”，
-   "slogan": "简单的网络，开发更快",
-   "signIn": "登录",
-   “email”：“电子邮件”，
+   "appName":"XAdmin",
+   "slogan": "简单的网络,开发更快",
+   "signIn":"登录",
+   "email": "电子邮件",
    "emailHint": "输入您的电子邮件",
    "password": "密码",
-   "passwordHint": "6+ 个字符，1 个大写字母",
+   "passwordHint": "6+ 个字符,1 个大写字母",
    "signIn": "登录",
    "signInWithGoogle": "使用 Google 登录",
    "dontHaveAccount": "没有账户？",
@@ -59,7 +59,7 @@
    "firstNameHint": "输入您的名字",
    "lastName": "姓氏",
    "lastNameHint": "'输入您的姓氏",
-   “subject”：“主题”，
+   "subject": "主题",
    "subjectHint": "输入你的主题",
    "selectSubjectHint": "选择您的主题",
    "message": "消息",
@@ -74,14 +74,14 @@
    "profile": "个人资料",
    "edit": "编辑",
    "posts": "帖子",
-   “followers”：“关注者”，
-   “following”：“正在关注”，
+   "followers": "关注者",
+   "following": "正在关注",
    "aboutMe": "关于我",
    "followMeOn": "关注我",
    "resetPwd": "重置密码",
    "emailReceiveResetLink": "输入您的电子邮件地址以接收密码重置链接。",
    "sendPwdResetLink": "发送密码重置链接",
-   “settings”：“设置”，
+   "settings": "设置",
    "personalInfo": "个人信息",
    "phoneNumber": "电话号码",
    "phoneNumberHint": "请输入您的电话号码",
@@ -90,33 +90,33 @@
    "save": "保存",
    "yourPhoto": "你的照片",
    "editYourPhoto": "编辑你的照片",
-   “bio”：“生物”，
+   "bio": "生物",
    "delete": "删除",
-   “update”：“更新”，
+   "update": "更新",
    "clickToUpload": "点击上传或拖放",
    "topChannels": "热门频道",
-   “loading”：“正在加载”，
-   “visitors”：“访客”，
-   “source”：“来源”，
-   “revenues”：“收入”，
-   “sales”：“销售”，
-   “conversation”：“转换”，
+   "loading": "正在加载",
+   "visitors": "访客",
+   "source": "来源",
+   "revenues": "收入",
+   "sales": "销售",
+   "conversation": "转换",
    "groupMenu": "菜单",
    "dashboard": "仪表板",
    "calendar": "日历",
-   “forms”：“表格”，
-   “tables”：“表”，
-   “settings”：“设置”，
-   “others”：“其他”，
-   “chart”：“图表”，
+   "forms": "表格",
+   "tables": "表",
+   "settings": "设置",
+   "others": "其他",
+   "chart": "图表",
    "ulElements": "用户界面元素",
-   “alerts”：“警报”，
+   "alerts": "警报",
    "buttons": "按钮",
    "uiElements": "用户界面元素",
    "basicChart": "基本图表",
-   “eCommerce”：“电子商务”，
+   "eCommerce": "电子商务",
    "buttons": "按钮",
-   “authentication”：“身份验证”
+   "authentication": "身份验证"
 
 
 
