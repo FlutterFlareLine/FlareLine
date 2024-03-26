@@ -1,6 +1,6 @@
 
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 
 class OutBorderTextFormField extends StatelessWidget {
   final String? labelText;
@@ -34,7 +34,7 @@ class OutBorderTextFormField extends StatelessWidget {
         Text(labelText ?? ''),
         if (labelText != null)
           SizedBox(
-            height: 8.h,
+            height: 8,
           ),
         Container(
           width: double.maxFinite,
@@ -67,7 +67,7 @@ class OutBorderTextFormField extends StatelessWidget {
                 Align(
                   child: Container(
                     child: suffixWidget,
-                    margin: EdgeInsets.only(right: 10.w),
+                    margin: EdgeInsets.only(right: 10),
                   ),
                   alignment: Alignment.centerRight,
                 )

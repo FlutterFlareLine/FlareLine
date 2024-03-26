@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:responsive_builder/responsive_builder.dart';
@@ -15,14 +15,14 @@ class ToolBarWidget extends StatelessWidget {
   _toolsBarWidget(BuildContext context) {
     return Container(
       color: Colors.white,
-      padding: EdgeInsets.all(10.w),
+      padding: EdgeInsets.all(10),
       child: Row(children: [
         ResponsiveBuilder(builder: (context, sizingInformation) {
           // Check the sizing information here and return your UI
           if (sizingInformation.deviceScreenType != DeviceScreenType.desktop) {
             return InkWell(
               child: Container(
-                padding: EdgeInsets.all(5.w),
+                padding: EdgeInsets.all(5),
                 decoration: BoxDecoration(
                     border: Border.all(color: Colors.grey.shade200, width: 1)),
                 alignment: Alignment.center,
@@ -41,14 +41,14 @@ class ToolBarWidget extends StatelessWidget {
           return SizedBox();
         }),
         SizedBox(
-          width: 200.w,
+          width: 200,
           child: TextField(
             decoration: InputDecoration(
               border: InputBorder.none,
               fillColor: Colors.transparent,
               prefixIcon: Icon(Icons.search_rounded),
               // suffixIcon: Icon(Icons.clear),
-              hintStyle: TextStyle(fontSize: 10.sp),
+              hintStyle: TextStyle(fontSize: 10),
               // labelText: 'Type to search...',
               hintText: 'Type to search...',
               // helperText: 'Type to search...',
@@ -62,7 +62,7 @@ class ToolBarWidget extends StatelessWidget {
               width: 56, height: 30),
         ),
         SizedBox(
-          width: 10.w,
+          width: 10,
         ),
         InkWell(
           child: Container(
@@ -76,7 +76,7 @@ class ToolBarWidget extends StatelessWidget {
           ),
         ),
         SizedBox(
-          width: 10.w,
+          width: 10,
         ),
         InkWell(
           child: Stack(
@@ -102,7 +102,7 @@ class ToolBarWidget extends StatelessWidget {
           ),
         ),
         SizedBox(
-          width: 20.w,
+          width: 20,
         ),
         Column(
           children: [
@@ -111,7 +111,7 @@ class ToolBarWidget extends StatelessWidget {
           ],
         ),
         SizedBox(
-          width: 5.w,
+          width: 5,
         ),
         CircleAvatar(
           backgroundImage: NetworkImage(
@@ -121,14 +121,14 @@ class ToolBarWidget extends StatelessWidget {
         InkWell(
           child: Container(
             child: Icon(Icons.arrow_drop_down),
-            margin: EdgeInsets.only(left: 6.w),
+            margin: EdgeInsets.only(left: 6),
           ),
           onTap: () async {
             await showMenu(
                 color: Colors.white,
                 context: context,
                 position: RelativeRect.fromLTRB(
-                    MediaQuery.of(context).size.width - 100.w, 80.h, 0, 0),
+                    MediaQuery.of(context).size.width - 100, 80, 0, 0),
                 items: <PopupMenuItem<String>>[
                   new PopupMenuItem<String>(
                       value: 'value01', child: new Text('My Profile')),

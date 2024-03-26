@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import 'package:provider/provider.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
@@ -14,14 +14,14 @@ class BarChartWidget extends StatelessWidget {
   ValueNotifier<int> selectedOption = ValueNotifier(1);
 
   _lineChart(BuildContext context) {
-    return Padding(padding: EdgeInsets.all(12.w),child: Column(
+    return Padding(padding: EdgeInsets.all(12),child: Column(
       children: [
         Row(
           children: [
-            Text('Profit this week',style: TextStyle(fontSize: 14.sp,fontWeight: FontWeight.bold),)
+            Text('Profit this week',style: TextStyle(fontSize: 14,fontWeight: FontWeight.bold),)
           ],
         ),
-        SizedBox(height: 16.h,),
+        SizedBox(height: 16,),
         Expanded(
             child: Container(
           child: ChangeNotifierProvider(

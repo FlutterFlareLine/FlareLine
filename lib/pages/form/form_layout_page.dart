@@ -2,7 +2,7 @@ import 'package:calendar_date_picker2/calendar_date_picker2.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import 'package:free_flutter_admin_dashboard/components/buttons/button_widget.dart';
 import 'package:free_flutter_admin_dashboard/components/card/white_card.dart';
 import 'package:free_flutter_admin_dashboard/components/forms/form_file_picker.dart';
@@ -27,7 +27,7 @@ class FormLayoutPage extends LayoutWidget {
       children: [
         Expanded(child: _leftWidget(context)),
         SizedBox(
-          width: 16.w,
+          width: 16,
         ),
         Expanded(child: _rightWidget(context))
       ],
@@ -42,7 +42,7 @@ class FormLayoutPage extends LayoutWidget {
       children: [
         _leftWidget(context),
         SizedBox(
-          height: 16.h,
+          height: 16,
         ),
         _rightWidget(context)
       ],
@@ -84,7 +84,7 @@ class FormLayoutPage extends LayoutWidget {
                             labelText: 'First name',
                             hintText: 'Enter your first name')),
                     SizedBox(
-                      width: 12.w,
+                      width: 12,
                     ),
                     Expanded(
                         child: OutBorderTextFormField(
@@ -93,22 +93,22 @@ class FormLayoutPage extends LayoutWidget {
                   ],
                 ),
                 SizedBox(
-                  height: 16.h,
+                  height: 16,
                 ),
                 OutBorderTextFormField(
                     labelText: 'Email', hintText: 'Enter your email address'),
                 SizedBox(
-                  height: 16.h,
+                  height: 16,
                 ),
                 OutBorderTextFormField(
                     labelText: 'Subject', hintText: 'Enter your subject'),
                 SizedBox(
-                  height: 16.h,
+                  height: 16,
                 ),
                 OutBorderTextFormField(
                     labelText: 'Subject', hintText: 'Select your subject'),
                 SizedBox(
-                  height: 16.h,
+                  height: 16,
                 ),
                 OutBorderTextFormField(
                   labelText: 'Message',
@@ -116,7 +116,7 @@ class FormLayoutPage extends LayoutWidget {
                   maxLines: 5,
                 ),
                 SizedBox(
-                  height: 16.h,
+                  height: 16,
                 ),
                 ButtonWidget(btnText: 'Send Message')
               ])),
@@ -130,7 +130,7 @@ class FormLayoutPage extends LayoutWidget {
       children: [
         _signInWidget(context),
         SizedBox(
-          height: 20.h,
+          height: 20,
         ),
         _signUpWidget(context)
       ],
@@ -145,12 +145,12 @@ class FormLayoutPage extends LayoutWidget {
             OutBorderTextFormField(
                 labelText: 'Email', hintText: 'Enter your email address'),
             SizedBox(
-              height: 16.h,
+              height: 16,
             ),
             OutBorderTextFormField(
                 labelText: 'Password', hintText: 'Enter password'),
             SizedBox(
-              height: 16.h,
+              height: 16,
             ),
             Row(
               children: [
@@ -171,7 +171,7 @@ class FormLayoutPage extends LayoutWidget {
               ],
             ),
             SizedBox(
-              height: 16.h,
+              height: 16,
             ),
             ButtonWidget(btnText: 'Sign In')
           ])),
@@ -186,22 +186,22 @@ class FormLayoutPage extends LayoutWidget {
             OutBorderTextFormField(
                 labelText: 'Name', hintText: 'Enter your full name'),
             SizedBox(
-              height: 16.h,
+              height: 16,
             ),
             OutBorderTextFormField(
                 labelText: 'Email', hintText: 'Enter your email address'),
             SizedBox(
-              height: 16.h,
+              height: 16,
             ),
             OutBorderTextFormField(
                 labelText: 'Password', hintText: 'Enter password'),
             SizedBox(
-              height: 16.h,
+              height: 16,
             ),
             OutBorderTextFormField(
                 labelText: 'Re-type Password', hintText: 'Re-enter password'),
             SizedBox(
-              height: 16.h,
+              height: 16,
             ),
             ButtonWidget(btnText: 'Sign Up')
           ])),

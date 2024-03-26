@@ -2,7 +2,7 @@ import 'dart:io';
 
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 
 class FormFilePicker extends StatelessWidget {
   final String? title;
@@ -18,7 +18,7 @@ class FormFilePicker extends StatelessWidget {
       children: [
         Text(title ?? 'Select file'),
         SizedBox(
-          height: 10.h,
+          height: 10,
         ),
         Container(
           decoration: BoxDecoration(
@@ -29,13 +29,13 @@ class FormFilePicker extends StatelessWidget {
               children: [
                 Container(
                   padding:
-                      EdgeInsets.symmetric(horizontal: 16.w, vertical: 10.h),
+                      EdgeInsets.symmetric(horizontal: 16, vertical: 10),
                   color: Colors.grey.withOpacity(0.2),
                   child: Text('Select File'),
                 ),
                 VerticalDivider(),
                 SizedBox(
-                  width: 20.w,
+                  width: 20,
                 ),
                 ValueListenableBuilder(
                     valueListenable: valueNotifier,

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import 'package:provider/provider.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
@@ -15,12 +15,12 @@ class LineChartWidget extends StatelessWidget {
 
   _lineChart(BuildContext context) {
     return Padding(
-        padding: EdgeInsets.all(12.w),
+        padding: EdgeInsets.all(12),
         child: Column(
           children: [
             SizedBox(
               width: double.maxFinite,
-              height: 60.h,
+              height: 60,
               child: Row(children: [
                 Expanded(
                     child: Row(
@@ -33,7 +33,7 @@ class LineChartWidget extends StatelessWidget {
                               Text('Total Revenue'),
                               Text(
                                 '12.04.2022 - 12.05.2022',
-                                style: TextStyle(fontSize: 10.sp),
+                                style: TextStyle(fontSize: 10),
                               )
                             ],
                           ),
@@ -63,7 +63,7 @@ class LineChartWidget extends StatelessWidget {
                               Text('Total Sales'),
                               Text(
                                 '12.04.2022 - 12.05.2022',
-                                style: TextStyle(fontSize: 10.sp),
+                                style: TextStyle(fontSize: 10),
                               )
                             ],
                           ),
@@ -88,7 +88,7 @@ class LineChartWidget extends StatelessWidget {
                   ],
                 )),
                 Container(
-                  width: 200.w,
+
                   child:
                       Row(mainAxisAlignment: MainAxisAlignment.end, children: [
                     MaterialButton(

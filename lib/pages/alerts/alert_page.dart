@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import 'package:free_flutter_admin_dashboard/components/card/white_card.dart';
 import 'package:free_flutter_admin_dashboard/pages/layout.dart';
 import 'package:hexcolor/hexcolor.dart';
@@ -8,7 +8,7 @@ class AlertPage extends LayoutWidget {
   @override
   Widget contentDesktopWidget(BuildContext context) {
     return WhiteCard(
-      padding: EdgeInsets.all(30.w),
+      padding: EdgeInsets.all(30),
       child: Column(
         children: [
           _itemAlert(
@@ -21,7 +21,7 @@ class AlertPage extends LayoutWidget {
               titleColor: HexColor('#9D5425'),
               contentColor: HexColor('#D0915C')),
           SizedBox(
-            height: 20.h,
+            height: 20,
           ),
           _itemAlert(
               borderColor: HexColor('#34D399'),
@@ -33,7 +33,7 @@ class AlertPage extends LayoutWidget {
               titleColor: HexColor('#004434'),
               contentColor: HexColor('#637381')),
           SizedBox(
-            height: 20.h,
+            height: 20,
           ),
           _itemAlert(
               borderColor: HexColor('#F87171'),
@@ -63,22 +63,22 @@ class AlertPage extends LayoutWidget {
         required Color titleColor,
       required Color contentColor}) {
     return Container(
-      height: 120.h,
+      height: 120,
       color: color,
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Container(
-            width: 4.w,
+            width: 4,
             height: double.maxFinite,
             color: borderColor,
           ),
           SizedBox(
-            width: 20.w,
+            width: 20,
           ),
           icon,
           SizedBox(
-            width: 12.w,
+            width: 12,
           ),
           Expanded(
             child: Column(
@@ -86,22 +86,22 @@ class AlertPage extends LayoutWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 SizedBox(
-                  height: 30.h,
+                  height: 30,
                 ),
                 Text(
                   title,
                   style: TextStyle(
                       color: titleColor,
-                      fontSize: 12.sp,
+                      fontSize: 14,
                       fontWeight: FontWeight.bold),
                 ),
                 SizedBox(
-                  height: 10.h,
+                  height: 10,
                 ),
                 Text(content,
-                    style: TextStyle(color: contentColor, fontSize: 9.sp)),
+                    style: TextStyle(color: contentColor, fontSize: 12)),
                 SizedBox(
-                  height: 30.h,
+                  height: 30,
                 ),
               ],
             ),

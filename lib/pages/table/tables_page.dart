@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import 'package:free_flutter_admin_dashboard/components/tables/InvoiceTable.dart';
 import 'package:free_flutter_admin_dashboard/components/tables/TopChannel.dart';
 import 'package:free_flutter_admin_dashboard/components/tables/TopProducts.dart';
@@ -12,15 +12,15 @@ class TablesPage extends LayoutWidget {
   Widget contentDesktopWidget(BuildContext context) {
     return Column(
       children: [
-        Container(height: 450.h, width: double.maxFinite, child: TopChannelWidget()),
+        Container(height: 450, width: double.maxFinite, child: TopChannelWidget()),
         SizedBox(
-          height: 16.h,
+          height: 16,
         ),
-        Container(height: 450.h, width: double.maxFinite,  child:TopProductsWidget()),
+        Container(height: 450, width: double.maxFinite,  child:TopProductsWidget()),
         SizedBox(
-          height: 16.h,
+          height: 16,
         ),
-        Container(height: 450.h, width: double.maxFinite,  child:InvoiceTableWidget()),
+        Container(height: 450, width: double.maxFinite,  child:InvoiceTableWidget()),
       ],
     );
   }

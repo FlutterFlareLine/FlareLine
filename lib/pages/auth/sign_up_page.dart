@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import 'package:flutter_svg/svg.dart';
 import 'package:free_flutter_admin_dashboard/components/buttons/button_widget.dart';
 import 'package:free_flutter_admin_dashboard/components/card/white_card.dart';
@@ -14,11 +14,11 @@ class SignUpWidget extends StatelessWidget {
     return Scaffold(
       body: Center(
         child: Container(
-          width: ScreenUtil().screenWidth * 0.8,
-          padding: EdgeInsets.only(top: 60.h),
+          margin: EdgeInsets.symmetric(horizontal: 100),
+          padding: EdgeInsets.only(top: 60),
           child: WhiteCard(
             isAutoHeight: true,
-            padding: EdgeInsets.symmetric(vertical: 60.h),
+            padding: EdgeInsets.symmetric(vertical: 60),
             child: Row(children: [
               Expanded(
                   child: Column(
@@ -26,43 +26,43 @@ class SignUpWidget extends StatelessWidget {
                   Text(
                     'XAdmin',
                     style:
-                        TextStyle(fontSize: 20.sp, fontWeight: FontWeight.bold),
+                        TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                   ),
                   SizedBox(
-                    height: 16.h,
+                    height: 16,
                   ),
                   Text('Simple web, develop faster'),
                   SizedBox(
-                    height: 16.h,
+                    height: 16,
                   ),
                   Container(
-                    width: 200.w,
-                    height: 300.h,
+                    width: 200,
+                    height: 300,
                     child: SvgPicture.asset('images/signin/main.svg',
                         semanticsLabel: ''),
                   )
                 ],
               )),
               VerticalDivider(
-                width: 1.w,
+                width: 1,
               ),
               Expanded(
                   child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 50.w),
+                padding: EdgeInsets.symmetric(horizontal: 50),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text('Start for free'),
                     SizedBox(
-                      height: 12.h,
+                      height: 12,
                     ),
                     Text(
                       'Sign Up to XAdmin',
                       style: TextStyle(
-                          fontSize: 20.sp, fontWeight: FontWeight.bold),
+                          fontSize: 20, fontWeight: FontWeight.bold),
                     ),
                     SizedBox(
-                      height: 16.h,
+                      height: 16,
                     ),
                     OutBorderTextFormField(
                       labelText: 'Email',
@@ -75,7 +75,7 @@ class SignUpWidget extends StatelessWidget {
                       ),
                     ),
                     SizedBox(
-                      height: 16.h,
+                      height: 16,
                     ),
                     OutBorderTextFormField(
                       obscureText: true,
@@ -88,7 +88,7 @@ class SignUpWidget extends StatelessWidget {
                       ),
                     ),
                     SizedBox(
-                      height: 20.h,
+                      height: 20,
                     ),
                     OutBorderTextFormField(
                       obscureText: true,
@@ -101,7 +101,7 @@ class SignUpWidget extends StatelessWidget {
                       ),
                     ),
                     SizedBox(
-                      height: 20.h,
+                      height: 20,
                     ),
                     ButtonWidget(
                       btnText: 'Create Account',
@@ -110,7 +110,7 @@ class SignUpWidget extends StatelessWidget {
                       },
                     ),
                     SizedBox(
-                      height: 12.h,
+                      height: 12,
                     ),
                     ButtonWidget(
                       btnText: 'Sign up with Google',
@@ -120,7 +120,7 @@ class SignUpWidget extends StatelessWidget {
                       isPrimary: false,
                     ),
                     SizedBox(
-                      height: 20.h,
+                      height: 20,
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import 'package:free_flutter_admin_dashboard/components/card/white_card.dart';
 import 'package:provider/provider.dart';
 
@@ -10,16 +10,16 @@ class ChatsWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return WhiteCard(
         child: Padding(
-          padding: EdgeInsets.all(16.w),
+          padding: EdgeInsets.all(16),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
                 'Chats',
-                style: TextStyle(fontSize: 14.sp, fontWeight: FontWeight.bold),
+                style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
               ),
               SizedBox(
-                height: 16.h,
+                height: 16,
               ),
               Expanded(
                   child: ChangeNotifierProvider(
@@ -53,7 +53,7 @@ class ChatsWidget extends StatelessWidget {
   Widget itemBuilder(
       BuildContext context, int index, Conversation conversation) {
     return Container(
-      padding: EdgeInsets.symmetric(vertical: 8.h),
+      padding: EdgeInsets.symmetric(vertical: 8),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
@@ -80,7 +80,7 @@ class ChatsWidget extends StatelessWidget {
             ),
           ),
           SizedBox(
-            width: 16.w,
+            width: 16,
           ),
           Expanded(
               child: Column(
@@ -89,11 +89,11 @@ class ChatsWidget extends StatelessWidget {
             children: [
               Text(conversation.name),
               SizedBox(
-                height: 5.h,
+                height: 5,
               ),
               Text(
                 conversation.text,
-                style: TextStyle(fontSize: 8.sp),
+                style: TextStyle(fontSize: 8),
               ),
             ],
           )),

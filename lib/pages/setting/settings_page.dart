@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dropzone/flutter_dropzone.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:free_flutter_admin_dashboard/components/buttons/button_widget.dart';
 import 'package:free_flutter_admin_dashboard/components/card/white_card.dart';
@@ -42,7 +42,7 @@ class SettingsPage extends LayoutWidget {
           flex: 3,
         ),
         SizedBox(
-          width: 16.w,
+          width: 16,
         ),
         Expanded(
           child: _rightWidget(context),
@@ -57,7 +57,7 @@ class SettingsPage extends LayoutWidget {
       children: [
         _leftWidget(context),
         SizedBox(
-          height: 16.h,
+          height: 16,
         ),
         _rightWidget(context)
       ],
@@ -92,7 +92,7 @@ class SettingsPage extends LayoutWidget {
           child: _titleWidget(
             'Personal Information',
             Padding(
-                padding: EdgeInsets.symmetric(horizontal: 16.w),
+                padding: EdgeInsets.symmetric(horizontal: 16),
                 child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -107,12 +107,12 @@ class SettingsPage extends LayoutWidget {
                                       height: 22,
                                     ),
                                     padding:
-                                        EdgeInsets.symmetric(horizontal: 5.w),
+                                        EdgeInsets.symmetric(horizontal: 5),
                                   ),
                                   labelText: 'Full Name',
                                   hintText: 'Enter your full name')),
                           SizedBox(
-                            width: 12.w,
+                            width: 12,
                           ),
                           Expanded(
                               child: OutBorderTextFormField(
@@ -121,7 +121,7 @@ class SettingsPage extends LayoutWidget {
                         ],
                       ),
                       SizedBox(
-                        height: 16.h,
+                        height: 16,
                       ),
                       OutBorderTextFormField(
                         labelText: 'Email Address',
@@ -132,17 +132,17 @@ class SettingsPage extends LayoutWidget {
                             width: 22,
                             height: 22,
                           ),
-                          padding: EdgeInsets.symmetric(horizontal: 5.w),
+                          padding: EdgeInsets.symmetric(horizontal: 5),
                         ),
                       ),
                       SizedBox(
-                        height: 16.h,
+                        height: 16,
                       ),
                       OutBorderTextFormField(
                           labelText: 'Username',
                           hintText: 'Enter your username'),
                       SizedBox(
-                        height: 16.h,
+                        height: 16,
                       ),
                       OutBorderTextFormField(
                           maxLines: 5,
@@ -153,27 +153,27 @@ class SettingsPage extends LayoutWidget {
                               width: 22,
                               height: 22,
                             ),
-                            padding: EdgeInsets.symmetric(horizontal: 5.w),
+                            padding: EdgeInsets.symmetric(horizontal: 5),
                           ),
                           hintText:
                               'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque posuere fermentum urna, eu condimentum mauris tempus ut. Donec fermentum blandit aliquet.'),
                       SizedBox(
-                        height: 16.h,
+                        height: 16,
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
                           SizedBox(
-                              width: 60.w,
+                              width: 60,
                               child: ButtonWidget(
                                 btnText: 'Cancel',
                                 isPrimary: false,
                               )),
                           SizedBox(
-                            width: 12.w,
+                            width: 12,
                           ),
                           SizedBox(
-                              width: 60.w,
+                              width: 60,
                               child: ButtonWidget(btnText: 'Save')),
                         ],
                       )
@@ -191,7 +191,7 @@ class SettingsPage extends LayoutWidget {
         child: _titleWidget(
       'Your Photo',
       Padding(
-          padding: EdgeInsets.symmetric(horizontal: 16.w),
+          padding: EdgeInsets.symmetric(horizontal: 16),
           child:
               Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
             Row(
@@ -202,7 +202,7 @@ class SettingsPage extends LayoutWidget {
                   radius: 22,
                 ),
                 SizedBox(
-                  width: 8.w,
+                  width: 8,
                 ),
                 Column(
                   children: [
@@ -211,7 +211,7 @@ class SettingsPage extends LayoutWidget {
                       children: [
                         Text('Delete'),
                         SizedBox(
-                          width: 12.w,
+                          width: 12,
                         ),
                         Text('Update')
                       ],
@@ -221,7 +221,7 @@ class SettingsPage extends LayoutWidget {
               ],
             ),
             SizedBox(
-              height: 16.h,
+              height: 16,
             ),
             Container(
               color: HexColor('#EFF4FB'),
@@ -244,23 +244,23 @@ class SettingsPage extends LayoutWidget {
                       child: Column(
                     children: [
                       SizedBox(
-                        height: 20.h,
+                        height: 20,
                       ),
                       Icon(Icons.upload),
                       SizedBox(
-                        height: 10.h,
+                        height: 10,
                       ),
                       Text('Click to upload or drag and drop'),
                       SizedBox(
-                        height: 10.h,
+                        height: 10,
                       ),
                       Text('SVG,PNG,JPG or GIF'),
                       SizedBox(
-                        height: 10.h,
+                        height: 10,
                       ),
                       Text('max,800 X 800px'),
                       SizedBox(
-                        height: 20.h,
+                        height: 20,
                       ),
                     ],
                   )),
@@ -268,22 +268,22 @@ class SettingsPage extends LayoutWidget {
               ),
             ),
             SizedBox(
-              height: 16.h,
+              height: 16,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 SizedBox(
-                  width: 60.w,
+                  width: 60,
                   child: ButtonWidget(
                     btnText: 'Cancel',
                     isPrimary: false,
                   ),
                 ),
                 SizedBox(
-                  width: 12.w,
+                  width: 12,
                 ),
-                SizedBox(width: 60.w, child: ButtonWidget(btnText: 'Save')),
+                SizedBox(width: 60, child: ButtonWidget(btnText: 'Save')),
               ],
             )
           ])),

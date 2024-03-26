@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import 'package:free_flutter_admin_dashboard/components/card/white_card.dart';
 
 class TitleCard extends StatelessWidget {
@@ -16,15 +16,15 @@ class TitleCard extends StatelessWidget {
   _titleWidget(String title, Widget childWidget) {
     return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
       Container(
-        height: 50.h,
-        padding: EdgeInsets.only(left: 10.w),
+        height: 50,
+        padding: EdgeInsets.only(left: 10),
         alignment: Alignment.centerLeft,
         child: Text(title),
       ),
       Divider(
         height: 1,
       ),
-      Padding(padding: EdgeInsets.all(16.w), child: childWidget)
+      Padding(padding: EdgeInsets.all(16), child: childWidget)
     ]);
   }
 }

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import 'package:free_flutter_admin_dashboard/provider/main_provider.dart';
 import 'package:provider/provider.dart';
 
@@ -17,7 +17,7 @@ class SideMenuWidget extends StatelessWidget {
   Widget _itemMenuWidget(BuildContext context, e) {
     List? childList = e['childList'];
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: 6.h),
+      padding: EdgeInsets.symmetric(vertical: 6),
       child: Column(children: [
         InkWell(
           child: Row(
@@ -43,7 +43,7 @@ class SideMenuWidget extends StatelessWidget {
           },
         ),
         SizedBox(
-          height: 10.h,
+          height: 10,
         ),
         if (childList != null && childList.length > 0)
           ValueListenableBuilder(
@@ -62,7 +62,7 @@ class SideMenuWidget extends StatelessWidget {
   Widget _itemSubMenuWidget(BuildContext context, e) {
     return InkWell(
       child: Padding(
-        padding: EdgeInsets.only(left: 20.w, top: 5.h, bottom: 5.h),
+        padding: EdgeInsets.only(left: 20, top: 5, bottom: 5),
         child: Row(
           children: [
             Expanded(

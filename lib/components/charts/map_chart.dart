@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import 'package:provider/provider.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
@@ -15,14 +15,14 @@ class MapChartWidget extends StatelessWidget {
 
   _lineChart(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.all(12.w),
+      padding: EdgeInsets.all(12),
       child: Column(
         children: [
           Row(
-            children: [Text('Region labels',style: TextStyle(fontSize: 14.sp,fontWeight: FontWeight.bold),)],
+            children: [Text('Region labels',style: TextStyle(fontSize: 14,fontWeight: FontWeight.bold),)],
           ),
           SizedBox(
-            height: 16.h,
+            height: 16,
           ),
           Expanded(
               child: Container(

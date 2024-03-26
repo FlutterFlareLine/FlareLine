@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import 'package:free_flutter_admin_dashboard/components/card/white_card.dart';
 import 'package:provider/provider.dart';
 
@@ -10,7 +10,7 @@ class InvoiceTableWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return WhiteCard(
         child: Padding(
-          padding: EdgeInsets.all(16.w),
+          padding: EdgeInsets.all(16),
           child: ChangeNotifierProvider(
             create: (context) => _DataProvider(),
             builder: (ctx, child) => _buildWidget(ctx),
@@ -32,7 +32,7 @@ class InvoiceTableWidget extends StatelessWidget {
               child: DataTable(
                   headingRowColor: MaterialStateProperty.resolveWith(
                       (states) => Colors.green),
-                  horizontalMargin: 12.w,
+                  horizontalMargin: 12,
                   showBottomBorder: true,
                   showCheckboxColumn: false,
                   headingTextStyle: const TextStyle(

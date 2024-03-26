@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import 'package:hexcolor/hexcolor.dart';
 
 class ButtonWidget extends StatelessWidget {
@@ -29,7 +29,7 @@ class ButtonWidget extends StatelessWidget {
     return InkWell(
       child: Container(
         width: double.maxFinite,
-        height: 40.h,
+        height: 40,
         alignment: Alignment.center,
         decoration: BoxDecoration(
             border: borderColor != null
@@ -47,11 +47,11 @@ class ButtonWidget extends StatelessWidget {
             if(iconWidget!=null)
               iconWidget!,
             if(iconWidget!=null)
-              SizedBox(width: 5.w,),
+              SizedBox(width: 5,),
             Text(
               btnText,
               style:
-                  TextStyle(color: textColor ?? ((isPrimary??true)?Colors.white:HexColor('#64748B')), fontSize: 12.sp),
+                  TextStyle(color: textColor ?? ((isPrimary??true)?Colors.white:HexColor('#64748B')), fontSize: 12),
             )
           ],
         ),

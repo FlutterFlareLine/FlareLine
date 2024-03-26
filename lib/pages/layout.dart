@@ -1,28 +1,35 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import 'package:free_flutter_admin_dashboard/components/breaktab.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
 abstract class LayoutWidget extends StatelessWidget {
-  String title();
+  bool get isPage => false;
+
+  bool get showTitle => true;
+
+  String title(){
+    return '';
+  }
 
   Widget contentDesktopWidget(BuildContext context);
 
-  Widget contentMobileWidget(BuildContext context){
+  Widget contentMobileWidget(BuildContext context) {
     return contentDesktopWidget(context);
   }
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 16.h),
+    Widget contentWidget = Padding(
+      padding: EdgeInsets.symmetric(horizontal: 20, vertical: 16),
       child: SingleChildScrollView(
           child: Column(
         children: [
-          BreakTab(title()),
-          SizedBox(
-            height: 10.h,
-          ),
+          if (showTitle) BreakTab(title()),
+          if (showTitle)
+            SizedBox(
+              height: 10,
+            ),
           ScreenTypeLayout.builder(
             desktop: contentDesktopWidget,
             mobile: contentMobileWidget,
@@ -31,5 +38,10 @@ abstract class LayoutWidget extends StatelessWidget {
         ],
       )),
     );
+    return isPage
+        ? Scaffold(
+            body: contentWidget,
+          )
+        : contentWidget;
   }
 }

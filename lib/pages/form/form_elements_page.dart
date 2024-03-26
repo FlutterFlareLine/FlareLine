@@ -2,7 +2,7 @@ import 'package:calendar_date_picker2/calendar_date_picker2.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import 'package:free_flutter_admin_dashboard/components/card/white_card.dart';
 import 'package:free_flutter_admin_dashboard/components/forms/form_file_picker.dart';
 import 'package:free_flutter_admin_dashboard/components/forms/outborder_text_form_field.dart';
@@ -26,7 +26,7 @@ class FormElementsPage extends LayoutWidget {
       children: [
         Expanded(child: _leftWidget(context)),
         SizedBox(
-          width: 16.w,
+          width: 16,
         ),
         Expanded(child: _rightWidget(context))
       ],
@@ -40,7 +40,7 @@ class FormElementsPage extends LayoutWidget {
       children: [
         _leftWidget(context),
         SizedBox(
-          height: 16.h,
+          height: 16,
         ),
         _rightWidget(context)
       ],
@@ -78,12 +78,12 @@ class FormElementsPage extends LayoutWidget {
                 OutBorderTextFormField(
                     labelText: 'Default Input', hintText: 'Default Input'),
                 SizedBox(
-                  height: 16.h,
+                  height: 16,
                 ),
                 OutBorderTextFormField(
                     labelText: 'Active Input', hintText: 'Active Input'),
                 SizedBox(
-                  height: 16.h,
+                  height: 16,
                 ),
                 OutBorderTextFormField(
                   labelText: 'Disabled label',
@@ -193,7 +193,7 @@ class FormElementsPage extends LayoutWidget {
                       ],
                     )),
                     SizedBox(
-                      height: 16.h,
+                      height: 16,
                     ),
                     Container(
                         child: Column(
@@ -256,7 +256,7 @@ class FormElementsPage extends LayoutWidget {
                   title: 'Attach file',
                 ),
                 SizedBox(
-                  height: 16.h,
+                  height: 16,
                 ),
                 FormFilePicker(
                   title: 'Select Image',
@@ -283,14 +283,14 @@ class FormElementsPage extends LayoutWidget {
                     maxLines: 5,
                   ),
                   SizedBox(
-                    height: 16.h,
+                    height: 16,
                   ),
                   OutBorderTextFormField(
                       maxLines: 5,
                       labelText: 'Active textarea',
                       hintText: 'Active textarea'),
                   SizedBox(
-                    height: 16.h,
+                    height: 16,
                   ),
                   OutBorderTextFormField(
                       enabled: false,
@@ -361,15 +361,15 @@ class FormElementsPage extends LayoutWidget {
                 Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
                   Text('Select country'),
                   SizedBox(
-                    height: 12.h,
+                    height: 12,
                   ),
                   _dropDownWidget(context),
                   SizedBox(
-                    height: 16.h,
+                    height: 16,
                   ),
                   Text('Multiselect Dropdown'),
                   SizedBox(
-                    height: 12.h,
+                    height: 12,
                   ),
                   _multiSelectWidget(context)
                 ])),

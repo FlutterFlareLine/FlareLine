@@ -1,9 +1,7 @@
 import 'package:bitsdojo_window/bitsdojo_window.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:free_flutter_admin_dashboard/provider/main_provider.dart';
 import 'package:free_flutter_admin_dashboard/routes.dart';
-import 'package:free_flutter_admin_dashboard/themes/global_theme.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_web_plugins/url_strategy.dart';
@@ -28,11 +26,7 @@ void main() async {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return ScreenUtilInit(
-      designSize: const Size(1080, 720),
-      minTextAdapt: true,
-      splitScreenMode: true,
-      child: MultiProvider(
+    return  MultiProvider(
           providers: [ChangeNotifierProvider(create: (_) => MainProvider())],
           child: Builder(builder: (context) {
             return MaterialApp(
@@ -46,7 +40,6 @@ class MyApp extends StatelessWidget {
               onGenerateRoute: (settings) =>
                   RouteConfiguration.onGenerateRoute(settings),
             );
-          })),
-    );
+          }));
   }
 }

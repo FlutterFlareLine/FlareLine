@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import 'package:free_flutter_admin_dashboard/pages/layout.dart';
 
 class ProfilePage extends LayoutWidget {
@@ -15,18 +15,18 @@ class ProfilePage extends LayoutWidget {
       color: Colors.white,
       child: Stack(children: [
         SizedBox(
-          height: 180.h,
+          height: 180,
           child: Stack(children: [
             Image.asset(
               'images/cover/cover-01.png',
-              height: 180.h,
+              height: 180,
               width: double.maxFinite,
               fit: BoxFit.cover,
             ),
             Align(
               alignment: Alignment.bottomRight,
               child: Container(
-                margin: EdgeInsets.all(10.w),
+                margin: EdgeInsets.all(10),
                 child: TextButton.icon(
                     onPressed: () {},
                     icon: Icon(
@@ -48,7 +48,7 @@ class ProfilePage extends LayoutWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               SizedBox(
-                height: 130.h,
+                height: 130,
               ),
               Container(
                 width: 144,
@@ -63,8 +63,8 @@ class ProfilePage extends LayoutWidget {
                     alignment: Alignment.bottomRight,
                     child: Container(
                       alignment: Alignment.center,
-                      width: 22.w,
-                      height: 22.w,
+                      width: 22,
+                      height: 22,
                       decoration: BoxDecoration(
                           color: Colors.blueAccent,
                           borderRadius: BorderRadius.circular(45)),
@@ -73,31 +73,31 @@ class ProfilePage extends LayoutWidget {
                         color: Colors.white,
                         size: 18,
                       ),
-                      margin: EdgeInsets.all(2.w),
+                      margin: EdgeInsets.all(2),
                     ),
                   )
                 ]),
               ),
               SizedBox(
-                height: 16.h,
+                height: 16,
               ),
               Text(
                 'Danish Heilium',
-                style: TextStyle(fontSize: 16.sp),
+                style: TextStyle(fontSize: 16),
               ),
               SizedBox(
-                height: 16.h,
+                height: 16,
               ),
               Text(
                 'Ui/Ux Designer',
-                style: TextStyle(fontSize: 10.sp),
+                style: TextStyle(fontSize: 10),
               ),
               SizedBox(
-                height: 16.h,
+                height: 16,
               ),
               Container(
-                margin: EdgeInsets.symmetric(horizontal: 100.w),
-                padding: EdgeInsets.symmetric(vertical: 8.h),
+                margin: EdgeInsets.symmetric(horizontal: 100),
+                padding: EdgeInsets.symmetric(vertical: 8),
                 decoration: BoxDecoration(
                     border: Border.all(color: Colors.grey, width: 1)),
                 child: Row(children: [
@@ -135,18 +135,18 @@ class ProfilePage extends LayoutWidget {
                 ]),
               ),
               SizedBox(
-                height: 16.h,
+                height: 16,
               ),
               Text(
                 'About Me',
                 style: TextStyle(fontSize: 12),
               ),
               SizedBox(
-                height: 16.h,
+                height: 16,
               ),
               Container(
                 alignment: Alignment.center,
-                width: 400.w,
+                width: 400,
                 child: Text(
                   'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque posuere fermentum urna, eu condimentum mauris tempus ut. Donec fermentum blandit aliquet. Etiam dictum dapibus ultricies. Sed vel aliquet libero. Nunc a augue fermentum, pharetra ligula sed, aliquam lacus.',
                   style: TextStyle(fontSize: 12),
@@ -154,13 +154,13 @@ class ProfilePage extends LayoutWidget {
                 ),
               ),
               SizedBox(
-                height: 16.h,
+                height: 16,
               ),
               Text(
                 'Follow me on',
-                style: TextStyle(fontSize: 10.sp),
+                style: TextStyle(fontSize: 10),
               ),
-              SizedBox(height: 30.h,)
+              SizedBox(height: 30,)
             ],
           ),
         )

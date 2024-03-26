@@ -38,7 +38,7 @@ dependencies:
 
   getwidget: ^4.0.0
 
-  flutter_screenutil: ^5.9.0
+#  flutter_screenutil: ^5.9.0
 
   get_storage: ^2.1.1
 

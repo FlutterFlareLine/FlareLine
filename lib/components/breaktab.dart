@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 
 class BreakTab extends StatelessWidget {
   final String title;
@@ -12,28 +12,28 @@ class BreakTab extends StatelessWidget {
       child: Row(children: [
         Text(
           title,
-          style: TextStyle(fontSize: 14.sp),
+          style: TextStyle(fontSize: 14),
         ),
         Spacer(),
         InkWell(
           child: Text(
             'Dashboard',
-            style: TextStyle(fontSize: 10.sp),
+            style: TextStyle(fontSize: 10),
           ),
           onTap: () {
             Navigator.of(context).popAndPushNamed('/');
           },
         ),
         SizedBox(
-          width: 6.w,
+          width: 6,
         ),
         Text('/'),
         SizedBox(
-          width: 6.w,
+          width: 6,
         ),
         Text(
           title,
-          style: TextStyle(fontSize: 10.sp, color: Colors.blue),
+          style: TextStyle(fontSize: 10, color: Colors.blue),
         ),
       ]),
     );

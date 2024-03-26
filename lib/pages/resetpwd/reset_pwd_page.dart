@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import 'package:flutter_svg/svg.dart';
 import 'package:free_flutter_admin_dashboard/components/buttons/button_widget.dart';
 import 'package:free_flutter_admin_dashboard/components/card/white_card.dart';
@@ -12,60 +12,57 @@ class ResetPwdWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-          child: SizedBox(
-        width: ScreenUtil().screenWidth * 0.8,
+          child: Container(
+        margin: EdgeInsets.symmetric(horizontal: 100),
         child: WhiteCard(
           isAutoHeight: true,
-          padding: EdgeInsets.symmetric(vertical: 60.h),
+          padding: EdgeInsets.symmetric(vertical: 60),
           child: Row(children: [
             Expanded(
                 child: Column(
               children: [
                 Text(
                   'XAdmin',
-                  style:
-                      TextStyle(fontSize: 20.sp, fontWeight: FontWeight.bold),
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                 ),
                 SizedBox(
-                  height: 16.h,
+                  height: 16,
                 ),
                 Text('Simple web, develop faster'),
                 SizedBox(
-                  height: 16.h,
+                  height: 16,
                 ),
                 Container(
-                  width: 200.w,
-                  height: 300.h,
+                  width: 200,
+                  height: 300,
                   child: SvgPicture.asset('images/signin/main.svg',
                       semanticsLabel: ''),
                 )
               ],
             )),
             VerticalDivider(
-              width: 1.w,
+              width: 1,
             ),
             Expanded(
                 child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 50.w),
+              padding: EdgeInsets.symmetric(horizontal: 50),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   SizedBox(
-                    height: 100.h,
+                    height: 100,
                   ),
-
                   Text(
                     'Reset Password',
-                    style:
-                        TextStyle(fontSize: 20.sp, fontWeight: FontWeight.bold),
+                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                   ),
                   SizedBox(
-                    height: 12.h,
+                    height: 12,
                   ),
                   Text(
                       'Enter your email address to receive a password reset link.'),
                   SizedBox(
-                    height: 20.h,
+                    height: 20,
                   ),
                   OutBorderTextFormField(
                     labelText: 'Email',
@@ -78,7 +75,7 @@ class ResetPwdWidget extends StatelessWidget {
                     ),
                   ),
                   SizedBox(
-                    height: 20.h,
+                    height: 20,
                   ),
                   ButtonWidget(
                     btnText: 'Send Password Reset Link',

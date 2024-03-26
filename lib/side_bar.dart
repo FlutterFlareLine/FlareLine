@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:free_flutter_admin_dashboard/side_menu.dart';
 import 'package:hexcolor/hexcolor.dart';
@@ -106,13 +106,13 @@ class SideBarWidger extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
+      padding: EdgeInsets.symmetric(horizontal: 16, vertical: 16),
       color: HexColor('#333A48'),
-      width: 140.w,
+      width: 240,
       child: Column(children: [
         _logoWidget(),
         SizedBox(
-          height: 30.h,
+          height: 30,
         ),
         Expanded(child: _sideListWidget(context))
       ]),
@@ -124,7 +124,7 @@ class SideBarWidger extends StatelessWidget {
       children: [
         SvgPicture.asset('images/logo/logo-icon.svg', height: 32,),
         SizedBox(
-          width: 6.w,
+          width: 10,
         ),
         Expanded(
             child: Text(
@@ -152,7 +152,7 @@ class SideBarWidger extends StatelessWidget {
         children: [
           Text(
             groupElement['groupName'],
-            style: TextStyle(fontSize: 18.sp, color: Colors.white60),
+            style: TextStyle(fontSize: 18, color: Colors.white60),
           ),
           Column(
             children: menuList.map((e) => SideMenuWidget(e: e)).toList(),
@@ -164,6 +164,6 @@ class SideBarWidger extends StatelessWidget {
   }
 
   Widget separatorBuilder(BuildContext context, int index) {
-    return Divider(height: 10.h);
+    return Divider(height: 10);
   }
 }

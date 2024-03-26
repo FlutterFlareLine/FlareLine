@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import 'package:free_flutter_admin_dashboard/components/card/white_card.dart';
 import 'package:provider/provider.dart';
 
@@ -10,16 +10,16 @@ class TopProductsWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return WhiteCard(
         child: Padding(
-          padding: EdgeInsets.all(16.w),
+          padding: EdgeInsets.all(16),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
                 'Top Products',
-                style: TextStyle(fontSize: 14.sp, fontWeight: FontWeight.bold),
+                style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
               ),
               SizedBox(
-                height: 16.h,
+                height: 16,
               ),
               Expanded(child: ChangeNotifierProvider(
                 create: (context) => _DataProvider(),
@@ -44,7 +44,7 @@ class TopProductsWidget extends StatelessWidget {
               child: DataTable(
                   headingRowColor: MaterialStateProperty.resolveWith(
                       (states) => Colors.green),
-                  horizontalMargin: 12.w,
+                  horizontalMargin: 12,
                   showBottomBorder: true,
                   showCheckboxColumn: false,
                   headingTextStyle: const TextStyle(

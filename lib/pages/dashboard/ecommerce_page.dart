@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import 'package:free_flutter_admin_dashboard/components/card/white_card.dart';
 import 'package:free_flutter_admin_dashboard/components/charts/bar_chart.dart';
 import 'package:free_flutter_admin_dashboard/components/chats.dart';
@@ -15,20 +15,20 @@ class EcommercePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 10.h),
+      padding: EdgeInsets.symmetric(horizontal: 12, vertical: 10),
       child: SingleChildScrollView(
           child: Column(children: [
             _cardPages(),
             SizedBox(
-              height: 16.h,
+              height: 16,
             ),
             _revenueWidget(),
             SizedBox(
-              height: 16.h,
+              height: 16,
             ),
             _analytics(),
             SizedBox(
-              height: 16.h,
+              height: 16,
             ),
             _channels()
           ])),
@@ -45,7 +45,7 @@ class EcommercePage extends StatelessWidget {
 
   Widget _revenueWidgetDesktop(BuildContext context) {
     return SizedBox(
-      height: 350.h,
+      height: 350,
       child: Row(
         children: [
           Expanded(
@@ -53,7 +53,7 @@ class EcommercePage extends StatelessWidget {
             flex: 2,
           ),
           SizedBox(
-            width: 16.w,
+            width: 16,
           ),
           Expanded(
             child: _barChart(),
@@ -68,14 +68,14 @@ class EcommercePage extends StatelessWidget {
     return Column(
       children: [
         SizedBox(
-          height: 350.h,
+          height: 350,
           child: _lineChart(),
         ),
         SizedBox(
-          height: 16.h,
+          height: 16,
         ),
         SizedBox(
-          height: 350.h,
+          height: 350,
           child: _barChart(),
         ),
       ],
@@ -88,16 +88,16 @@ class EcommercePage extends StatelessWidget {
         _itemCardWidget(
             Icons.data_object, '\$3.456K', 'Total views', '0.43%', true),
         SizedBox(
-          width: 16.w,
+          width: 16,
         ),
         _itemCardWidget(
             Icons.shopping_cart, '\$45.2K', 'Total Profit', '0.43%', true),
         SizedBox(
-          width: 16.w,
+          width: 16,
         ),
         _itemCardWidget(Icons.group, '2.450', 'Total Product', '0.43%', true),
         SizedBox(
-          width: 16.w,
+          width: 16,
         ),
         _itemCardWidget(
             Icons.security_rounded, '3.456', 'Total Users', '0.43%', false),
@@ -110,50 +110,50 @@ class EcommercePage extends StatelessWidget {
     return Expanded(
         child: WhiteCard(
           child: Padding(
-            padding: EdgeInsets.all(16.w),
+            padding: EdgeInsets.all(16),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 ClipOval(
                   child: Container(
-                    width: 36.w,
-                    height: 36.w,
+                    width: 36,
+                    height: 36,
                     alignment: Alignment.center,
                     child: Icon(icons),
                     color: Colors.grey.shade200,
                   ),
                 ),
                 SizedBox(
-                  height: 12.h,
+                  height: 12,
                 ),
                 Text(
                   text,
                   style: TextStyle(
-                      fontSize: 18.sp, fontWeight: FontWeight.bold),
+                      fontSize: 18, fontWeight: FontWeight.bold),
                 ),
                 SizedBox(
-                  height: 6.h,
+                  height: 6,
                 ),
                 Row(
                   children: [
                     Text(
                       subTitle,
-                      style: TextStyle(fontSize: 10.sp, color: Colors.grey),
+                      style: TextStyle(fontSize: 10, color: Colors.grey),
                     ),
                     Spacer(),
                     Text(
                       percentText,
                       style: TextStyle(
-                          fontSize: 10.sp,
+                          fontSize: 10,
                           color: isGrow ? Colors.green : Colors.lightBlue),
                     ),
                     SizedBox(
-                      width: 3.w,
+                      width: 3,
                     ),
                     Icon(
                       isGrow ? Icons.arrow_upward : Icons.arrow_downward,
                       color: isGrow ? Colors.green : Colors.lightBlue,
-                      size: 12.w,
+                      size: 12,
                     )
                   ],
                 )
@@ -183,7 +183,7 @@ class EcommercePage extends StatelessWidget {
 
   Widget _analyticsWeb(BuildContext context) {
     return SizedBox(
-      height: 350.h,
+      height: 350,
       child: Row(
         children: [
           Expanded(
@@ -193,7 +193,7 @@ class EcommercePage extends StatelessWidget {
             flex: 2,
           ),
           SizedBox(
-            width: 16.w,
+            width: 16,
           ),
           Expanded(
             child: WhiteCard(
@@ -210,16 +210,16 @@ class EcommercePage extends StatelessWidget {
     return Column(
       children: [
         SizedBox(
-          height: 350.h,
+          height: 350,
           child: WhiteCard(
             child: CircularhartWidget(),
           ),
         ),
         SizedBox(
-          height: 16.h,
+          height: 16,
         ),
         SizedBox(
-          height: 350.h,
+          height: 350,
           child: WhiteCard(
             child: MapChartWidget(),
           ),
@@ -238,7 +238,7 @@ class EcommercePage extends StatelessWidget {
 
   Widget _channelsWeb(BuildContext context) {
     return SizedBox(
-        height: 380.h,
+        height: 380,
         child: Row(
           children: [
             Expanded(
@@ -246,7 +246,7 @@ class EcommercePage extends StatelessWidget {
               flex: 2,
             ),
             SizedBox(
-              width: 16.w,
+              width: 16,
             ),
             Expanded(child: ChatsWidget(), flex: 1),
           ],
@@ -257,14 +257,14 @@ class EcommercePage extends StatelessWidget {
     return Column(
       children: [
         SizedBox(
-          height: 380.h,
+          height: 380,
           child: TopChannelWidget(),
         ),
         SizedBox(
-          height: 16.h,
+          height: 16,
         ),
         SizedBox(
-            height: 380.h,
+            height: 380,
             child: ChatsWidget()),
       ],
     );
