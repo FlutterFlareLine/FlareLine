@@ -21,19 +21,19 @@ class GridCard extends StatelessWidget {
         Expanded(
             child: _itemCardWidget(
                 Icons.data_object, '\$3.456K', AppLocalizations.of(context)!.totalViews, '0.43%', true)),
-        SizedBox(
+        const SizedBox(
           width: 16,
         ),
         Expanded(
             child: _itemCardWidget(
                 Icons.shopping_cart, '\$45.2K', AppLocalizations.of(context)!.totalProfit, '0.43%', true)),
-        SizedBox(
+        const SizedBox(
           width: 16,
         ),
         Expanded(
             child: _itemCardWidget(
                 Icons.group, '2.450', AppLocalizations.of(context)!.totalProduct, '0.43%', true)),
-        SizedBox(
+        const SizedBox(
           width: 16,
         ),
         Expanded(
@@ -48,16 +48,16 @@ class GridCard extends StatelessWidget {
       children: [
         _itemCardWidget(
             Icons.data_object, '\$3.456K', AppLocalizations.of(context)!.totalViews, '0.43%', true),
-        SizedBox(
+        const SizedBox(
           height: 16,
         ),
         _itemCardWidget(
             Icons.shopping_cart, '\$45.2K', AppLocalizations.of(context)!.totalProfit, '0.43%', true),
-        SizedBox(
+        const SizedBox(
           height: 16,
         ),
         _itemCardWidget(Icons.group, '2.450', AppLocalizations.of(context)!.totalProduct, '0.43%', true),
-        SizedBox(
+        const SizedBox(
           height: 16,
         ),
         _itemCardWidget(
@@ -70,7 +70,7 @@ class GridCard extends StatelessWidget {
       String percentText, bool isGrow) {
     return WhiteCard(
       child: Padding(
-        padding: EdgeInsets.all(16),
+        padding: const EdgeInsets.all(16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -83,30 +83,30 @@ class GridCard extends StatelessWidget {
                 color: Colors.grey.shade200,
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 12,
             ),
             Text(
               text,
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
-            SizedBox(
+            const SizedBox(
               height: 6,
             ),
             Row(
               children: [
                 Text(
                   subTitle,
-                  style: TextStyle(fontSize: 10, color: Colors.grey),
+                  style: const TextStyle(fontSize: 10, color: Colors.grey),
                 ),
-                Spacer(),
+                const Spacer(),
                 Text(
                   percentText,
                   style: TextStyle(
                       fontSize: 10,
                       color: isGrow ? Colors.green : Colors.lightBlue),
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 3,
                 ),
                 Icon(

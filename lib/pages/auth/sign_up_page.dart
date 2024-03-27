@@ -9,31 +9,34 @@ import 'package:hexcolor/hexcolor.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class SignUpWidget extends LayoutWidget {
+  const SignUpWidget({super.key});
+
   @override
   Widget contentDesktopWidget(BuildContext context) {
     return Center(
       child: Container(
-        margin: EdgeInsets.symmetric(horizontal: 100),
-        padding: EdgeInsets.only(top: 60),
+        margin: const EdgeInsets.symmetric(horizontal: 100),
+        padding: const EdgeInsets.only(top: 60),
         child: WhiteCard(
           isAutoHeight: true,
-          padding: EdgeInsets.symmetric(vertical: 60),
+          padding: const EdgeInsets.symmetric(vertical: 60),
           child: Row(children: [
             Expanded(
                 child: Column(
               children: [
                 Text(
                   AppLocalizations.of(context)!.appName,
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                  style: const TextStyle(
+                      fontSize: 20, fontWeight: FontWeight.bold),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 16,
                 ),
                 Text(AppLocalizations.of(context)!.slogan),
-                SizedBox(
+                const SizedBox(
                   height: 16,
                 ),
-                Container(
+                SizedBox(
                   width: 200,
                   height: 300,
                   child: SvgPicture.asset('assets/signin/main.svg',
@@ -41,7 +44,7 @@ class SignUpWidget extends LayoutWidget {
                 )
               ],
             )),
-            VerticalDivider(
+            const VerticalDivider(
               width: 1,
             ),
             Expanded(child: _formWidget(context))
@@ -55,26 +58,26 @@ class SignUpWidget extends LayoutWidget {
   Widget contentMobileWidget(BuildContext context) {
     return WhiteCard(
       isAutoHeight: true,
-      padding: EdgeInsets.symmetric(vertical: 60),
+      padding: const EdgeInsets.symmetric(vertical: 60),
       child: _formWidget(context),
     );
   }
 
   Widget _formWidget(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 50),
+      padding: const EdgeInsets.symmetric(horizontal: 50),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(AppLocalizations.of(context)!.startForFree),
-          SizedBox(
+          const SizedBox(
             height: 12,
           ),
           Text(
             AppLocalizations.of(context)!.startForFree,
-            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
           ),
-          SizedBox(
+          const SizedBox(
             height: 16,
           ),
           OutBorderTextFormField(
@@ -87,7 +90,7 @@ class SignUpWidget extends LayoutWidget {
               height: 22,
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 16,
           ),
           OutBorderTextFormField(
@@ -100,7 +103,7 @@ class SignUpWidget extends LayoutWidget {
               height: 22,
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 20,
           ),
           OutBorderTextFormField(
@@ -113,7 +116,7 @@ class SignUpWidget extends LayoutWidget {
               height: 22,
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 20,
           ),
           ButtonWidget(
@@ -122,7 +125,7 @@ class SignUpWidget extends LayoutWidget {
               Navigator.of(context).popAndPushNamed("/");
             },
           ),
-          SizedBox(
+          const SizedBox(
             height: 12,
           ),
           ButtonWidget(
@@ -132,7 +135,7 @@ class SignUpWidget extends LayoutWidget {
             },
             isPrimary: false,
           ),
-          SizedBox(
+          const SizedBox(
             height: 20,
           ),
           Row(
@@ -142,7 +145,7 @@ class SignUpWidget extends LayoutWidget {
               InkWell(
                 child: Text(
                   AppLocalizations.of(context)!.signIn,
-                  style: TextStyle(color: Colors.blue),
+                  style: const TextStyle(color: Colors.blue),
                 ),
                 onTap: () {
                   Navigator.of(context).popAndPushNamed('/signIn');

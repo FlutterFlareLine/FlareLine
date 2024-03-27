@@ -82,11 +82,11 @@ class AlertPage extends LayoutWidget {
             height: double.maxFinite,
             color: borderColor,
           ),
-          SizedBox(
+          const SizedBox(
             width: 20,
           ),
           icon,
-          SizedBox(
+          const SizedBox(
             width: 12,
           ),
           Expanded(
@@ -94,7 +94,7 @@ class AlertPage extends LayoutWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                SizedBox(
+                const SizedBox(
                   height: 30,
                 ),
                 Text(
@@ -104,12 +104,12 @@ class AlertPage extends LayoutWidget {
                       fontSize: 14,
                       fontWeight: FontWeight.bold),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 Text(content,
                     style: TextStyle(color: contentColor, fontSize: 12)),
-                SizedBox(
+                const SizedBox(
                   height: 30,
                 ),
               ],

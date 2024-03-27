@@ -4,6 +4,8 @@ import 'package:free_flutter_admin_dashboard/pages/layout.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ProfilePage extends LayoutWidget {
+  const ProfilePage({super.key});
+
   @override
   String breakTabTitle(BuildContext context) {
     // TODO: implement title
@@ -27,18 +29,18 @@ class ProfilePage extends LayoutWidget {
             Align(
               alignment: Alignment.bottomRight,
               child: Container(
-                margin: EdgeInsets.all(10),
+                margin: const EdgeInsets.all(10),
+                color: Colors.blueAccent,
                 child: TextButton.icon(
                     onPressed: () {},
-                    icon: Icon(
+                    icon: const Icon(
                       Icons.camera,
                       color: Colors.white,
                     ),
-                    label: Text(
+                    label: const Text(
                       'Edit',
                       style: TextStyle(color: Colors.white),
                     )),
-                color: Colors.blueAccent,
               ),
             )
           ]),
@@ -48,10 +50,10 @@ class ProfilePage extends LayoutWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              SizedBox(
+              const SizedBox(
                 height: 130,
               ),
-              Container(
+              SizedBox(
                 width: 144,
                 height: 144,
                 child: Stack(children: [
@@ -69,99 +71,114 @@ class ProfilePage extends LayoutWidget {
                       decoration: BoxDecoration(
                           color: Colors.blueAccent,
                           borderRadius: BorderRadius.circular(45)),
-                      child: Icon(
+                      margin: EdgeInsets.all(2),
+                      child: const Icon(
                         Icons.camera_enhance,
                         color: Colors.white,
                         size: 18,
                       ),
-                      margin: EdgeInsets.all(2),
                     ),
                   )
                 ]),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 16,
               ),
-              Text(
+              const Text(
                 'Danish Heilium',
                 style: TextStyle(fontSize: 16),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 16,
               ),
-              Text(
+              const Text(
                 'Ui/Ux Designer',
                 style: TextStyle(fontSize: 10),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 16,
               ),
               Container(
-                margin: EdgeInsets.symmetric(horizontal: 100),
-                padding: EdgeInsets.symmetric(vertical: 8),
+                margin: const EdgeInsets.symmetric(horizontal: 100),
+                padding: const EdgeInsets.symmetric(vertical: 8),
                 decoration: BoxDecoration(
                     border: Border.all(color: Colors.grey, width: 1)),
                 child: Row(children: [
                   Expanded(
                       child: Container(
+                    alignment: Alignment.center,
                     child: Text.rich(
                       TextSpan(
-                          text: '259', children: [TextSpan(text: ' ${AppLocalizations.of(context)!.posts}'),],style: TextStyle(fontSize: 16)),
+                          text: '259',
+                          children: [
+                            TextSpan(
+                                text:
+                                    ' ${AppLocalizations.of(context)!.posts}'),
+                          ],
+                          style: TextStyle(fontSize: 16)),
                     ),
-                    alignment: Alignment.center,
                   )),
-                  VerticalDivider(
+                  const VerticalDivider(
                     width: 1,
                   ),
                   Expanded(
                       child: Container(
+                    alignment: Alignment.center,
                     child: Text.rich(
                       TextSpan(
                           text: '129K',
-                          children: [TextSpan(text: ' ${AppLocalizations.of(context)!.followers}')],style: TextStyle(fontSize: 16)),
+                          children: [
+                            TextSpan(
+                                text:
+                                    ' ${AppLocalizations.of(context)!.followers}')
+                          ],
+                          style: TextStyle(fontSize: 16)),
                     ),
-                    alignment: Alignment.center,
                   )),
-                  VerticalDivider(
+                  const VerticalDivider(
                     width: 1,
                   ),
                   Expanded(
                       child: Container(
+                    alignment: Alignment.center,
                     child: Text.rich(
                       TextSpan(
-                          text: '2K', children: [TextSpan(text: ' Following')],style: TextStyle(fontSize: 16)),
+                          text: '2K',
+                          children: [TextSpan(text: ' Following')],
+                          style: TextStyle(fontSize: 16)),
                     ),
-                    alignment: Alignment.center,
                   ))
                 ]),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 16,
               ),
               Text(
                 AppLocalizations.of(context)!.aboutMe,
-                style: TextStyle(fontSize: 12),
+                style: const TextStyle(fontSize: 12),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 16,
               ),
               Container(
                 alignment: Alignment.center,
                 width: 400,
-                child: Text(
+                child: const Text(
                   'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque posuere fermentum urna, eu condimentum mauris tempus ut. Donec fermentum blandit aliquet. Etiam dictum dapibus ultricies. Sed vel aliquet libero. Nunc a augue fermentum, pharetra ligula sed, aliquam lacus.',
                   style: TextStyle(fontSize: 12),
                   textAlign: TextAlign.center,
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 16,
               ),
               Text(
                 AppLocalizations.of(context)!.followMeOn,
-                style: TextStyle(fontSize: 10),
+                style: const TextStyle(fontSize: 10),
               ),
-              SizedBox(height: 30,)
+              const SizedBox(
+                height: 30,
+              )
             ],
           ),
         )

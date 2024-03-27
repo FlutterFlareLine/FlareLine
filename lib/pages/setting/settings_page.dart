@@ -13,7 +13,7 @@ import 'package:responsive_builder/responsive_builder.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class SettingsPage extends LayoutWidget {
-  SettingsPage();
+  SettingsPage({super.key});
 
   @override
   String breakTabTitle(BuildContext context) {
@@ -37,7 +37,7 @@ class SettingsPage extends LayoutWidget {
           child: _leftWidget(context),
           flex: 3,
         ),
-        SizedBox(
+        const SizedBox(
           width: 16,
         ),
         Expanded(
@@ -52,7 +52,7 @@ class SettingsPage extends LayoutWidget {
     return Column(
       children: [
         _leftWidget(context),
-        SizedBox(
+        const SizedBox(
           height: 16,
         ),
         _rightWidget(context)
@@ -64,14 +64,14 @@ class SettingsPage extends LayoutWidget {
     return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
       Container(
         height: 50,
-        padding: EdgeInsets.only(left: 10),
+        padding: const EdgeInsets.only(left: 10),
         alignment: Alignment.centerLeft,
         child: Text(title),
       ),
-      Divider(
+      const Divider(
         height: 1,
       ),
-      Padding(padding: EdgeInsets.all(16), child: childWidget)
+      Padding(padding: const EdgeInsets.all(16), child: childWidget)
     ]);
   }
 
@@ -88,7 +88,7 @@ class SettingsPage extends LayoutWidget {
           child: _titleWidget(
             AppLocalizations.of(context)!.personalInfo,
             Padding(
-                padding: EdgeInsets.symmetric(horizontal: 16),
+                padding: const EdgeInsets.symmetric(horizontal: 16),
                 child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -97,19 +97,19 @@ class SettingsPage extends LayoutWidget {
                           Expanded(
                               child: OutBorderTextFormField(
                                   icon: Container(
+                                    padding:
+                                        EdgeInsets.symmetric(horizontal: 5),
                                     child: SvgPicture.asset(
                                       'assets/icon/user.svg',
                                       width: 22,
                                       height: 22,
                                     ),
-                                    padding:
-                                        EdgeInsets.symmetric(horizontal: 5),
                                   ),
                                   labelText:
                                       AppLocalizations.of(context)!.fullName,
                                   hintText: AppLocalizations.of(context)!
                                       .fullNameHint)),
-                          SizedBox(
+                          const SizedBox(
                             width: 12,
                           ),
                           Expanded(
@@ -120,44 +120,44 @@ class SettingsPage extends LayoutWidget {
                                       .phoneNumberHint))
                         ],
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 16,
                       ),
                       OutBorderTextFormField(
                         labelText: AppLocalizations.of(context)!.email,
                         hintText: AppLocalizations.of(context)!.emailHint,
                         icon: Container(
+                          padding: EdgeInsets.symmetric(horizontal: 5),
                           child: SvgPicture.asset(
                             'assets/signin/email.svg',
                             width: 22,
                             height: 22,
                           ),
-                          padding: EdgeInsets.symmetric(horizontal: 5),
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 16,
                       ),
                       OutBorderTextFormField(
                           labelText: AppLocalizations.of(context)!.userName,
                           hintText: AppLocalizations.of(context)!.userNameHint),
-                      SizedBox(
+                      const SizedBox(
                         height: 16,
                       ),
                       OutBorderTextFormField(
                           maxLines: 5,
                           labelText: AppLocalizations.of(context)!.bio,
                           icon: Container(
+                            padding: EdgeInsets.symmetric(horizontal: 5),
                             child: SvgPicture.asset(
                               'assets/icon/edit.svg',
                               width: 22,
                               height: 22,
                             ),
-                            padding: EdgeInsets.symmetric(horizontal: 5),
                           ),
                           hintText:
                               'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque posuere fermentum urna, eu condimentum mauris tempus ut. Donec fermentum blandit aliquet.'),
-                      SizedBox(
+                      const SizedBox(
                         height: 16,
                       ),
                       Row(
@@ -169,7 +169,7 @@ class SettingsPage extends LayoutWidget {
                                 btnText: AppLocalizations.of(context)!.cancel,
                                 isPrimary: false,
                               )),
-                          SizedBox(
+                          const SizedBox(
                             width: 12,
                           ),
                           SizedBox(
@@ -192,17 +192,17 @@ class SettingsPage extends LayoutWidget {
         child: _titleWidget(
       AppLocalizations.of(context)!.yourPhoto,
       Padding(
-          padding: EdgeInsets.symmetric(horizontal: 16),
+          padding: const EdgeInsets.symmetric(horizontal: 16),
           child:
               Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
             Row(
               children: [
-                CircleAvatar(
+                const CircleAvatar(
                   backgroundImage: NetworkImage(
                       'https://nextjs-demo.tailadmin.com/_next/image?url=%2Fimages%2Fuser%2Fuser-01.png&w=256&q=75'),
                   radius: 22,
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 8,
                 ),
                 Column(
@@ -211,7 +211,7 @@ class SettingsPage extends LayoutWidget {
                     Row(
                       children: [
                         Text(AppLocalizations.of(context)!.delete),
-                        SizedBox(
+                        const SizedBox(
                           width: 12,
                         ),
                         Text(AppLocalizations.of(context)!.update)
@@ -222,7 +222,7 @@ class SettingsPage extends LayoutWidget {
                 Spacer()
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 16,
             ),
             Container(
@@ -245,23 +245,23 @@ class SettingsPage extends LayoutWidget {
                   Center(
                       child: Column(
                     children: [
-                      SizedBox(
+                      const SizedBox(
                         height: 20,
                       ),
                       Icon(Icons.upload),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
                       Text(AppLocalizations.of(context)!.clickToUpload),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
                       Text('SVG,PNG,JPG or GIF'),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
                       Text('max,800 X 800px'),
-                      SizedBox(
+                      const SizedBox(
                         height: 20,
                       ),
                     ],
@@ -269,13 +269,13 @@ class SettingsPage extends LayoutWidget {
                 ],
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 16,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                Spacer(),
+                const Spacer(),
                 SizedBox(
                   width: 60,
                   child: ButtonWidget(
@@ -283,7 +283,7 @@ class SettingsPage extends LayoutWidget {
                     isPrimary: false,
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 12,
                 ),
                 SizedBox(

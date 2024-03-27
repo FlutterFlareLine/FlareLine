@@ -5,6 +5,8 @@ import 'package:free_flutter_admin_dashboard/pages/layout.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class InboxWidget extends LayoutWidget {
+  const InboxWidget({super.key});
+
   @override
   String breakTabTitle(BuildContext context) {
     // TODO: implement title
@@ -19,7 +21,7 @@ class InboxWidget extends LayoutWidget {
         SizedBox(
           width: 150,
           child: ListView(
-            padding: EdgeInsets.all(16),
+            padding: const EdgeInsets.all(16),
             children: [
             Container(
               height: 30,
@@ -28,48 +30,48 @@ class InboxWidget extends LayoutWidget {
               child: Text('Compose',style: TextStyle(color: Colors.white),),
               decoration: BoxDecoration(color: Colors.blue,borderRadius: BorderRadius.circular(4)),
             ),
-            SizedBox(height: 10,),
-            ListTile(
+            const SizedBox(height: 10,),
+            const ListTile(
               title: Text('Inbox'),
             ),
-            SizedBox(height: 10,),
-            ListTile(
+            const SizedBox(height: 10,),
+            const ListTile(
               title: Text('Started'),
             ),
-            SizedBox(height: 10,),
-            ListTile(
+            const SizedBox(height: 10,),
+            const ListTile(
               title: Text('Snoozed'),
             ),
-            SizedBox(height: 10,),
-            ListTile(
+            const SizedBox(height: 10,),
+            const ListTile(
               title: Text('Sent'),
             ),
-            SizedBox(height: 10,),
-            ListTile(
+            const SizedBox(height: 10,),
+            const ListTile(
               title: Text('Drafts'),
             ),
-            SizedBox(height: 10,),
-            ListTile(
+            const SizedBox(height: 10,),
+            const ListTile(
               title: Text('Spam'),
             ),
             SizedBox(height: 10,),
-            ListTile(
+            const ListTile(
               title: Text('Trash'),
             ),
           ]),
         ),
-        VerticalDivider(),
+        const VerticalDivider(),
         Expanded(
             child: Column(
           children: [
-            SizedBox(
+            const SizedBox(
               height: 50,
             ),
-            Divider(),
-            SizedBox(
+            const Divider(),
+            const SizedBox(
               height: 50,
             ),
-            Divider(),
+            const Divider(),
             Expanded(
                 child: ListView.builder(
               itemBuilder: itemBuilder,
@@ -82,6 +84,6 @@ class InboxWidget extends LayoutWidget {
   }
 
   Widget itemBuilder(BuildContext context, int index) {
-    return ListTile();
+    return const ListTile();
   }
 }

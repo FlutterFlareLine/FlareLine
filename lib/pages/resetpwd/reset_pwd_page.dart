@@ -8,31 +8,33 @@ import 'package:free_flutter_admin_dashboard/pages/layout.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ResetPwdWidget extends LayoutWidget {
+  const ResetPwdWidget({super.key});
+
   @override
   Widget contentDesktopWidget(BuildContext context) {
     return Center(
         child: Container(
-      margin: EdgeInsets.symmetric(horizontal: 100),
-      padding: EdgeInsets.only(top: 60),
+      margin: const EdgeInsets.symmetric(horizontal: 100),
+      padding: const EdgeInsets.only(top: 60),
       child: WhiteCard(
         isAutoHeight: true,
-        padding: EdgeInsets.symmetric(vertical: 60),
+        padding: const EdgeInsets.symmetric(vertical: 60),
         child: Row(children: [
           Expanded(
               child: Column(
             children: [
               Text(
                 AppLocalizations.of(context)!.appName,
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 16,
               ),
               Text(AppLocalizations.of(context)!.slogan),
-              SizedBox(
+              const SizedBox(
                 height: 16,
               ),
-              Container(
+              SizedBox(
                 width: 200,
                 height: 300,
                 child: SvgPicture.asset('assets/signin/main.svg',
@@ -40,7 +42,7 @@ class ResetPwdWidget extends LayoutWidget {
               )
             ],
           )),
-          VerticalDivider(
+          const VerticalDivider(
             width: 1,
           ),
           Expanded(child: _formWidget(context))
@@ -53,26 +55,26 @@ class ResetPwdWidget extends LayoutWidget {
   Widget contentMobileWidget(BuildContext context) {
     return Center(child: WhiteCard(
       isAutoHeight: false,
-      padding: EdgeInsets.symmetric(vertical: 60),
+      padding: const EdgeInsets.symmetric(vertical: 60),
       child: _formWidget(context),
     ),);
   }
 
   Widget _formWidget(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 50),
+      padding: const EdgeInsets.symmetric(horizontal: 50),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
             AppLocalizations.of(context)!.resetPwd,
-            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
           ),
-          SizedBox(
+          const SizedBox(
             height: 12,
           ),
           Text(AppLocalizations.of(context)!.emailReceiveResetLink),
-          SizedBox(
+          const SizedBox(
             height: 20,
           ),
           OutBorderTextFormField(
@@ -85,7 +87,7 @@ class ResetPwdWidget extends LayoutWidget {
               height: 22,
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 20,
           ),
           ButtonWidget(

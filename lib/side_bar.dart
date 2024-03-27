@@ -64,12 +64,12 @@ class SideBarWidger extends StatelessWidget {
     ]);
 
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
       color: HexColor('#333A48'),
       width: 240,
       child: Column(children: [
         _logoWidget(context),
-        SizedBox(
+        const SizedBox(
           height: 30,
         ),
         Expanded(child: _sideListWidget(context))
@@ -81,13 +81,13 @@ class SideBarWidger extends StatelessWidget {
     return Row(
       children: [
         SvgPicture.asset('assets/logo/logo-icon.svg', height: 32,),
-        SizedBox(
+        const SizedBox(
           width: 10,
         ),
         Expanded(
             child: Text(
               AppLocalizations.of(context)!.appName,
-          style: TextStyle(color: Colors.white, fontSize: 32),
+          style: const TextStyle(color: Colors.white, fontSize: 32),
         ))
       ],
     );
@@ -105,23 +105,21 @@ class SideBarWidger extends StatelessWidget {
   Widget itemBuilder(BuildContext context, int index) {
     var groupElement = listMenu.elementAt(index);
     List menuList = groupElement['menuList'];
-    return Container(
-      child: Column(
-        children: [
-          Text(
-            groupElement['groupName'],
-            style: TextStyle(fontSize: 18, color: Colors.white60),
-          ),
-          Column(
-            children: menuList.map((e) => SideMenuWidget(e: e)).toList(),
-          )
-        ],
-        crossAxisAlignment: CrossAxisAlignment.start,
-      ),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          groupElement['groupName'],
+          style: const TextStyle(fontSize: 18, color: Colors.white60),
+        ),
+        Column(
+          children: menuList.map((e) => SideMenuWidget(e: e)).toList(),
+        )
+      ],
     );
   }
 
   Widget separatorBuilder(BuildContext context, int index) {
-    return Divider(height: 10);
+    return const Divider(height: 10);
   }
 }

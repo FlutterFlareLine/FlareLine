@@ -7,7 +7,10 @@ import 'package:free_flutter_admin_dashboard/components/charts/circular_chart.da
 import 'package:free_flutter_admin_dashboard/components/charts/line_chart.dart';
 import 'package:free_flutter_admin_dashboard/components/charts/map_chart.dart';
 import 'package:free_flutter_admin_dashboard/components/tables/TopChannel.dart';
+import 'package:free_flutter_admin_dashboard/pages/dashboard/analytics_widget.dart';
+import 'package:free_flutter_admin_dashboard/pages/dashboard/channel_widget.dart';
 import 'package:free_flutter_admin_dashboard/pages/dashboard/grid_card.dart';
+import 'package:free_flutter_admin_dashboard/pages/dashboard/revenue_widget.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
 class EcommercePage extends StatelessWidget {
@@ -15,7 +18,7 @@ class EcommercePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
+    return const Padding(
       padding: EdgeInsets.symmetric(horizontal: 12, vertical: 10),
       child: SingleChildScrollView(
           child: Column(children: [
@@ -23,170 +26,16 @@ class EcommercePage extends StatelessWidget {
             SizedBox(
               height: 16,
             ),
-            _revenueWidget(),
+            RevenueWidget(),
             SizedBox(
               height: 16,
             ),
-            _analytics(),
+            AnalyticsWidget(),
             SizedBox(
               height: 16,
             ),
-            _channels()
+            ChannelWidget()
           ])),
-    );
-  }
-
-  Widget _revenueWidget() {
-    return ScreenTypeLayout.builder(
-      desktop: _revenueWidgetDesktop,
-      mobile: _revenueWidgetMobile,
-      tablet: _revenueWidgetMobile,
-    );
-  }
-
-  Widget _revenueWidgetDesktop(BuildContext context) {
-    return SizedBox(
-      height: 350,
-      child: Row(
-        children: [
-          Expanded(
-            child: _lineChart(),
-            flex: 2,
-          ),
-          SizedBox(
-            width: 16,
-          ),
-          Expanded(
-            child: _barChart(),
-            flex: 1,
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget _revenueWidgetMobile(BuildContext context) {
-    return Column(
-      children: [
-        SizedBox(
-          height: 360,
-          child: _lineChart(),
-        ),
-        SizedBox(
-          height: 16,
-        ),
-        SizedBox(
-          height: 360,
-          child: _barChart(),
-        ),
-      ],
-    );
-  }
-
-  _lineChart() {
-    return WhiteCard(
-      child: LineChartWidget(),
-    );
-  }
-
-  _barChart() {
-    return WhiteCard(child: BarChartWidget());
-  }
-
-  _analytics() {
-    return ScreenTypeLayout.builder(
-      desktop: _analyticsWeb,
-      mobile: _analyticsMobile,
-      tablet: _analyticsMobile,
-    );
-  }
-
-  Widget _analyticsWeb(BuildContext context) {
-    return SizedBox(
-      height: 350,
-      child: Row(
-        children: [
-          Expanded(
-            child: WhiteCard(
-              child: CircularhartWidget(),
-            ),
-            flex: 2,
-          ),
-          SizedBox(
-            width: 16,
-          ),
-          Expanded(
-            child: WhiteCard(
-              child: MapChartWidget(),
-            ),
-            flex: 1,
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget _analyticsMobile(BuildContext context) {
-    return Column(
-      children: [
-        SizedBox(
-          height: 350,
-          child: WhiteCard(
-            child: CircularhartWidget(),
-          ),
-        ),
-        SizedBox(
-          height: 16,
-        ),
-        SizedBox(
-          height: 350,
-          child: WhiteCard(
-            child: MapChartWidget(),
-          ),
-        ),
-      ],
-    );
-  }
-
-  _channels() {
-    return ScreenTypeLayout.builder(
-      desktop: _channelsWeb,
-      mobile: _channelMobile,
-      tablet: _channelMobile,
-    );
-  }
-
-  Widget _channelsWeb(BuildContext context) {
-    return SizedBox(
-        height: 380,
-        child: Row(
-          children: [
-            Expanded(
-              child: TopChannelWidget(),
-              flex: 2,
-            ),
-            SizedBox(
-              width: 16,
-            ),
-            Expanded(child: ChatsWidget(), flex: 1),
-          ],
-        ));
-  }
-
-  Widget _channelMobile(BuildContext context) {
-    return Column(
-      children: [
-        SizedBox(
-          height: 380,
-          child: TopChannelWidget(),
-        ),
-        SizedBox(
-          height: 16,
-        ),
-        SizedBox(
-            height: 380,
-            child: ChatsWidget()),
-      ],
     );
   }
 }

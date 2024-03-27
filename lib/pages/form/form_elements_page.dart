@@ -13,7 +13,7 @@ import 'package:getwidget/getwidget.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class FormElementsPage extends LayoutWidget {
-  FormElementsPage();
+  FormElementsPage({super.key});
 
   @override
   String breakTabTitle(BuildContext context) {
@@ -26,7 +26,7 @@ class FormElementsPage extends LayoutWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Expanded(child: _leftWidget(context)),
-        SizedBox(
+        const SizedBox(
           width: 16,
         ),
         Expanded(child: _rightWidget(context))
@@ -40,7 +40,7 @@ class FormElementsPage extends LayoutWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         _leftWidget(context),
-        SizedBox(
+        const SizedBox(
           height: 16,
         ),
         _rightWidget(context)
@@ -52,14 +52,14 @@ class FormElementsPage extends LayoutWidget {
     return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
       Container(
         height: 50,
-        padding: EdgeInsets.only(left: 10),
+        padding: const EdgeInsets.only(left: 10),
         alignment: Alignment.centerLeft,
         child: Text(title),
       ),
-      Divider(
+      const Divider(
         height: 1,
       ),
-      Padding(padding: EdgeInsets.all(16), child: childWidget)
+      Padding(padding: const EdgeInsets.all(16), child: childWidget)
     ]);
   }
 
@@ -77,13 +77,15 @@ class FormElementsPage extends LayoutWidget {
               AppLocalizations.of(context)!.inputFields,
               Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
                 OutBorderTextFormField(
-                    labelText: AppLocalizations.of(context)!.defaultInput, hintText: AppLocalizations.of(context)!.defaultInput),
-                SizedBox(
+                    labelText: AppLocalizations.of(context)!.defaultInput,
+                    hintText: AppLocalizations.of(context)!.defaultInput),
+                const SizedBox(
                   height: 16,
                 ),
                 OutBorderTextFormField(
-                    labelText: AppLocalizations.of(context)!.activeInput, hintText: AppLocalizations.of(context)!.activeInput),
-                SizedBox(
+                    labelText: AppLocalizations.of(context)!.activeInput,
+                    hintText: AppLocalizations.of(context)!.activeInput),
+                const SizedBox(
                   height: 16,
                 ),
                 OutBorderTextFormField(
@@ -93,7 +95,7 @@ class FormElementsPage extends LayoutWidget {
                 )
               ])),
         ),
-        SizedBox(
+        const SizedBox(
           height: 16,
         ),
         WhiteCard(
@@ -101,7 +103,7 @@ class FormElementsPage extends LayoutWidget {
               AppLocalizations.of(context)!.toggleSwitchInput,
               Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
                 Switch(value: false, onChanged: (r) {}),
-                SizedBox(
+                const SizedBox(
                   height: 16,
                 ),
                 SwitchListTile(
@@ -109,7 +111,7 @@ class FormElementsPage extends LayoutWidget {
                   value: false,
                   onChanged: (r) {},
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 16,
                 ),
                 GFToggle(
@@ -117,7 +119,7 @@ class FormElementsPage extends LayoutWidget {
                   value: true,
                   type: GFToggleType.ios,
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 16,
                 ),
                 GFToggle(
@@ -125,7 +127,7 @@ class FormElementsPage extends LayoutWidget {
                   value: true,
                   type: GFToggleType.square,
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 16,
                 ),
                 GFToggle(
@@ -135,7 +137,7 @@ class FormElementsPage extends LayoutWidget {
                 ),
               ])),
         ),
-        SizedBox(
+        const SizedBox(
           height: 16,
         ),
         WhiteCard(
@@ -145,12 +147,11 @@ class FormElementsPage extends LayoutWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    Container(
-                        child: Column(
+                    Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(AppLocalizations.of(context)!.datePicker),
-                        SizedBox(
+                        const SizedBox(
                           height: 10,
                         ),
                         InkWell(
@@ -180,8 +181,8 @@ class FormElementsPage extends LayoutWidget {
                                   return Container(
                                       alignment: Alignment.centerLeft,
                                       height: 45,
-                                      padding:
-                                          EdgeInsets.symmetric(horizontal: 10),
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 10),
                                       width: double.maxFinite,
                                       decoration: BoxDecoration(
                                           color: Colors.white,
@@ -192,16 +193,15 @@ class FormElementsPage extends LayoutWidget {
                                       child: Text(val));
                                 }))
                       ],
-                    )),
-                    SizedBox(
+                    ),
+                    const SizedBox(
                       height: 16,
                     ),
-                    Container(
-                        child: Column(
+                    Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(AppLocalizations.of(context)!.selectDate),
-                        SizedBox(
+                        const SizedBox(
                           height: 10,
                         ),
                         InkWell(
@@ -214,9 +214,11 @@ class FormElementsPage extends LayoutWidget {
                                 dialogSize: const Size(325, 400),
                                 borderRadius: BorderRadius.circular(15),
                               );
-                              print(results);
+                              if (kDebugMode) {
+                                print(results);
+                              }
                               dateNotifier.value =
-                                  (results != null && results!.length > 0
+                                  (results != null && results!.isNotEmpty
                                       ? (results
                                               .elementAt(0)
                                               ?.toLocal()
@@ -243,10 +245,10 @@ class FormElementsPage extends LayoutWidget {
                                       child: Text(val));
                                 }))
                       ],
-                    )),
+                    ),
                   ])),
         ),
-        SizedBox(
+        const SizedBox(
           height: 16,
         ),
         WhiteCard(
@@ -256,7 +258,7 @@ class FormElementsPage extends LayoutWidget {
                 FormFilePicker(
                   title: AppLocalizations.of(context)!.attachFile,
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 16,
                 ),
                 FormFilePicker(
@@ -283,14 +285,14 @@ class FormElementsPage extends LayoutWidget {
                     hintText: AppLocalizations.of(context)!.defaultTextarea,
                     maxLines: 5,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 16,
                   ),
                   OutBorderTextFormField(
                       maxLines: 5,
                       labelText: AppLocalizations.of(context)!.activeTextarea,
                       hintText: AppLocalizations.of(context)!.activeTextarea),
-                  SizedBox(
+                  const SizedBox(
                     height: 16,
                   ),
                   OutBorderTextFormField(
@@ -300,7 +302,7 @@ class FormElementsPage extends LayoutWidget {
                       hintText: AppLocalizations.of(context)!.disabledTextarea)
                 ])),
           ),
-          SizedBox(
+          const SizedBox(
             height: 16,
           ),
           WhiteCard(
@@ -324,7 +326,7 @@ class FormElementsPage extends LayoutWidget {
                               ),
                             );
                           }),
-                      SizedBox(
+                      const SizedBox(
                         height: 16,
                       ),
                       ValueListenableBuilder(
@@ -338,7 +340,7 @@ class FormElementsPage extends LayoutWidget {
                               },
                             );
                           }),
-                      SizedBox(
+                      const SizedBox(
                         height: 16,
                       ),
                       ValueListenableBuilder(
@@ -353,7 +355,7 @@ class FormElementsPage extends LayoutWidget {
                           })
                     ])),
           ),
-          SizedBox(
+          const SizedBox(
             height: 16,
           ),
           WhiteCard(
@@ -361,15 +363,15 @@ class FormElementsPage extends LayoutWidget {
                 AppLocalizations.of(context)!.selectInput,
                 Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
                   Text(AppLocalizations.of(context)!.selectCountry),
-                  SizedBox(
+                  const SizedBox(
                     height: 12,
                   ),
                   _dropDownWidget(context),
-                  SizedBox(
+                  const SizedBox(
                     height: 16,
                   ),
                   Text(AppLocalizations.of(context)!.multiselect),
-                  SizedBox(
+                  const SizedBox(
                     height: 12,
                   ),
                   _multiSelectWidget(context)
@@ -384,7 +386,7 @@ class FormElementsPage extends LayoutWidget {
     return Container(
       height: 50,
       width: MediaQuery.of(context).size.width,
-      margin: EdgeInsets.all(20),
+      margin: const EdgeInsets.all(20),
       child: DropdownButtonHideUnderline(
         child: ValueListenableBuilder(
             valueListenable: dropDownNotifier,
@@ -420,11 +422,13 @@ class FormElementsPage extends LayoutWidget {
     return GFMultiSelect(
       items: dropList,
       onSelect: (value) {
-        print('selected $value ');
+        if (kDebugMode) {
+          print('selected $value ');
+        }
       },
       dropdownTitleTileText: 'Messi, Griezmann, Coutinho ',
       dropdownTitleTileMargin:
-          EdgeInsets.only(top: 22, left: 18, right: 18, bottom: 5),
+          const EdgeInsets.only(top: 22, left: 18, right: 18, bottom: 5),
       dropdownTitleTilePadding: EdgeInsets.all(10),
       dropdownUnderlineBorder:
           const BorderSide(color: Colors.transparent, width: 2),

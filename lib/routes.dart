@@ -60,9 +60,9 @@ class RouteConfiguration {
     }
     Widget targetPage = map['widget'];
 
-    PathWidgetBuilder builder = (context, match) {
+    builder(context, match) {
       return targetPage;
-    };
+    }
 
     return NoAnimationMaterialPageRoute<void>(
       builder: (context) => builder(context, null),

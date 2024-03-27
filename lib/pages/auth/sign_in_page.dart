@@ -9,30 +9,33 @@ import 'package:hexcolor/hexcolor.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class SignInWidget extends LayoutWidget {
+  const SignInWidget({super.key});
+
   @override
   Widget contentDesktopWidget(BuildContext context) {
     return Center(
         child: Container(
-      margin: EdgeInsets.only(left: 100, right: 100, top: 100),
+      margin: const EdgeInsets.only(left: 100, right: 100, top: 100),
       child: WhiteCard(
         isAutoHeight: true,
-        padding: EdgeInsets.symmetric(vertical: 100),
+        padding: const EdgeInsets.symmetric(vertical: 100),
         child: Row(children: [
           Expanded(
               child: Column(
             children: [
               Text(
                 AppLocalizations.of(context)!.appName,
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                style:
+                    const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 16,
               ),
               Text(AppLocalizations.of(context)!.slogan),
-              SizedBox(
+              const SizedBox(
                 height: 16,
               ),
-              Container(
+              SizedBox(
                 width: 200,
                 height: 300,
                 child: SvgPicture.asset('assets/signin/main.svg',
@@ -56,21 +59,21 @@ class SignInWidget extends LayoutWidget {
   Widget contentMobileWidget(BuildContext context) {
     return WhiteCard(
         isAutoHeight: true,
-        padding: EdgeInsets.symmetric(vertical: 60),
+        padding: const EdgeInsets.symmetric(vertical: 60),
         child: _signInFormWidget(context));
   }
 
   Widget _signInFormWidget(BuildContext context) {
     return Padding(
-        padding: EdgeInsets.symmetric(horizontal: 50),
+        padding: const EdgeInsets.symmetric(horizontal: 50),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
               AppLocalizations.of(context)!.signIn,
-              style: TextStyle(fontSize: 16),
+              style: const TextStyle(fontSize: 16),
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             OutBorderTextFormField(
@@ -83,7 +86,7 @@ class SignInWidget extends LayoutWidget {
                 height: 22,
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 16,
             ),
             OutBorderTextFormField(
@@ -96,7 +99,7 @@ class SignInWidget extends LayoutWidget {
                 height: 22,
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             ButtonWidget(
@@ -105,7 +108,7 @@ class SignInWidget extends LayoutWidget {
                 Navigator.of(context).popAndPushNamed("/");
               },
             ),
-            SizedBox(
+            const SizedBox(
               height: 12,
             ),
             ButtonWidget(
@@ -120,7 +123,7 @@ class SignInWidget extends LayoutWidget {
               },
               isPrimary: false,
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             Row(
@@ -130,7 +133,7 @@ class SignInWidget extends LayoutWidget {
                 InkWell(
                   child: Text(
                     AppLocalizations.of(context)!.signUp,
-                    style: TextStyle(color: Colors.blue),
+                    style: const TextStyle(color: Colors.blue),
                   ),
                   onTap: () {
                     Navigator.of(context).popAndPushNamed('/signUp');

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:free_flutter_admin_dashboard/components/card/white_card.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class TopProductsWidget extends StatelessWidget {
   const TopProductsWidget({super.key});
@@ -10,15 +11,15 @@ class TopProductsWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return WhiteCard(
         child: Padding(
-          padding: EdgeInsets.all(16),
+          padding: const EdgeInsets.all(16),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'Top Products',
-                style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+                AppLocalizations.of(context)!.topProducts,
+                style: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 16,
               ),
               Expanded(child: ChangeNotifierProvider(
@@ -36,14 +37,14 @@ class TopProductsWidget extends StatelessWidget {
         builder: ((context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting ||
               snapshot.data == null) {
-            return Text('loading');
+            return Text(AppLocalizations.of(context)!.loading);
           }
 
           return ConstrainedBox(
               constraints: const BoxConstraints(minWidth: double.infinity),
               child: DataTable(
-                  headingRowColor: MaterialStateProperty.resolveWith(
-                      (states) => Colors.green),
+                  // headingRowColor: MaterialStateProperty.resolveWith(
+                  //     (states) => Colors.green),
                   horizontalMargin: 12,
                   showBottomBorder: true,
                   showCheckboxColumn: false,
@@ -51,16 +52,16 @@ class TopProductsWidget extends StatelessWidget {
                     fontWeight: FontWeight.bold,
                     color: Colors.black,
                   ),
-                  columns: [
+                  columns: const [
                     DataColumn(label: Text('Product Name')),
                     DataColumn(
-                      label: const Text('Category'),
+                      label: Text('Category'),
                     ),
                     DataColumn(
-                      label: const Text('Price'),
+                      label: Text('Price'),
                     ),
-                    const DataColumn(label: Text('Sold')),
-                    const DataColumn(label: Text('Profit')),
+                    DataColumn(label: Text('Sold')),
+                    DataColumn(label: Text('Profit')),
                   ],
                   rows: context
                       .watch<_DataProvider>()
@@ -72,7 +73,7 @@ class TopProductsWidget extends StatelessWidget {
                                 Text(e.source),
                               ),
                               DataCell(
-                                Text('${e.visitors}'),
+                                Text(e.visitors),
                               ),
                               DataCell(
                                 Text(e.revenues),
@@ -123,19 +124,13 @@ class _DataProvider extends ChangeNotifier {
       Channel('Google', '3.5K', r'$5,768', '590', '4.8%'),
       Channel('Google', '3.5K', r'$5,768', '590', '4.8%'),
       Channel('Google', '3.5K', r'$5,768', '590', '4.8%'),
-      Channel('Google', '3.5K', r'$5,768', '590', '4.8%'),
-      Channel('Google', '3.5K', r'$5,768', '590', '4.8%'),
     ];
   }
 
   Future<List<Channel>> loadData() async {
-    await Future.delayed(Duration(seconds: 2));
+    await Future.delayed(const Duration(seconds: 2));
     channels = getEmployeeData();
     return channels;
   }
 
-  @override
-  void dispose() {
-    super.dispose();
-  }
 }

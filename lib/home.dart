@@ -9,6 +9,8 @@ import 'package:provider/provider.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
 class HomePage extends StatelessWidget {
+  HomePage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,7 +28,7 @@ class HomePage extends StatelessWidget {
       return _contentWidget(context);
     }), drawer: ResponsiveBuilder(builder: (context, sizingInformation) {
       if (sizingInformation.deviceScreenType == DeviceScreenType.desktop) {
-        return SizedBox();
+        return const SizedBox();
       }
       return Drawer(
         child: _sideBarWidget(context),
@@ -42,8 +44,8 @@ class HomePage extends StatelessWidget {
     return Container(
       color: Colors.grey.shade200,
       child: Column(children: [
-        ToolBarWidget(),
-        SizedBox(
+        const ToolBarWidget(),
+        const SizedBox(
           height: 16,
         ),
         Expanded(child: _mainContentWidget())
@@ -51,7 +53,7 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  PageController _pageController = PageController();
+  final PageController _pageController = PageController();
 
   _mainContentWidget() {
     return PageView.builder(

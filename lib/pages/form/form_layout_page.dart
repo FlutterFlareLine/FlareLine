@@ -14,7 +14,7 @@ import 'package:getwidget/getwidget.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class FormLayoutPage extends LayoutWidget {
-  FormLayoutPage();
+  FormLayoutPage({super.key});
 
   @override
   String breakTabTitle(BuildContext context) {
@@ -27,7 +27,7 @@ class FormLayoutPage extends LayoutWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Expanded(child: _leftWidget(context)),
-        SizedBox(
+        const SizedBox(
           width: 16,
         ),
         Expanded(child: _rightWidget(context))
@@ -35,14 +35,13 @@ class FormLayoutPage extends LayoutWidget {
     );
   }
 
-
   @override
   Widget contentMobileWidget(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         _leftWidget(context),
-        SizedBox(
+        const SizedBox(
           height: 16,
         ),
         _rightWidget(context)
@@ -54,14 +53,14 @@ class FormLayoutPage extends LayoutWidget {
     return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
       Container(
         height: 50,
-        padding: EdgeInsets.only(left: 10),
+        padding: const EdgeInsets.only(left: 10),
         alignment: Alignment.centerLeft,
         child: Text(title),
       ),
-      Divider(
+      const Divider(
         height: 1,
       ),
-      Padding(padding: EdgeInsets.all(16), child: childWidget)
+      Padding(padding: const EdgeInsets.all(16), child: childWidget)
     ]);
   }
 
@@ -83,32 +82,37 @@ class FormLayoutPage extends LayoutWidget {
                     Expanded(
                         child: OutBorderTextFormField(
                             labelText: AppLocalizations.of(context)!.firstName,
-                            hintText: AppLocalizations.of(context)!.firstNameHint)),
-                    SizedBox(
+                            hintText:
+                                AppLocalizations.of(context)!.firstNameHint)),
+                    const SizedBox(
                       width: 12,
                     ),
                     Expanded(
                         child: OutBorderTextFormField(
                             labelText: AppLocalizations.of(context)!.lastName,
-                            hintText: AppLocalizations.of(context)!.lastNameHint))
+                            hintText:
+                                AppLocalizations.of(context)!.lastNameHint))
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 16,
                 ),
                 OutBorderTextFormField(
-                    labelText: AppLocalizations.of(context)!.email, hintText: AppLocalizations.of(context)!.emailHint),
-                SizedBox(
+                    labelText: AppLocalizations.of(context)!.email,
+                    hintText: AppLocalizations.of(context)!.emailHint),
+                const SizedBox(
                   height: 16,
                 ),
                 OutBorderTextFormField(
-                    labelText: AppLocalizations.of(context)!.subject, hintText: AppLocalizations.of(context)!.subjectHint),
-                SizedBox(
+                    labelText: AppLocalizations.of(context)!.subject,
+                    hintText: AppLocalizations.of(context)!.subjectHint),
+                const SizedBox(
                   height: 16,
                 ),
                 OutBorderTextFormField(
-                    labelText: AppLocalizations.of(context)!.subject, hintText: AppLocalizations.of(context)!.selectSubjectHint),
-                SizedBox(
+                    labelText: AppLocalizations.of(context)!.subject,
+                    hintText: AppLocalizations.of(context)!.selectSubjectHint),
+                const SizedBox(
                   height: 16,
                 ),
                 OutBorderTextFormField(
@@ -116,7 +120,7 @@ class FormLayoutPage extends LayoutWidget {
                   hintText: AppLocalizations.of(context)!.messageHint,
                   maxLines: 5,
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 16,
                 ),
                 ButtonWidget(btnText: AppLocalizations.of(context)!.sendMessage)
@@ -130,7 +134,7 @@ class FormLayoutPage extends LayoutWidget {
     return Column(
       children: [
         _signInWidget(context),
-        SizedBox(
+        const SizedBox(
           height: 20,
         ),
         _signUpWidget(context)
@@ -144,13 +148,15 @@ class FormLayoutPage extends LayoutWidget {
           AppLocalizations.of(context)!.signInForm,
           Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
             OutBorderTextFormField(
-                labelText: AppLocalizations.of(context)!.email, hintText: AppLocalizations.of(context)!.emailHint),
-            SizedBox(
+                labelText: AppLocalizations.of(context)!.email,
+                hintText: AppLocalizations.of(context)!.emailHint),
+            const SizedBox(
               height: 16,
             ),
             OutBorderTextFormField(
-                labelText: AppLocalizations.of(context)!.password, hintText: AppLocalizations.of(context)!.passwordHint),
-            SizedBox(
+                labelText: AppLocalizations.of(context)!.password,
+                hintText: AppLocalizations.of(context)!.passwordHint),
+            const SizedBox(
               height: 16,
             ),
             Row(
@@ -167,11 +173,11 @@ class FormLayoutPage extends LayoutWidget {
                       );
                     }),
                 Text(AppLocalizations.of(context)!.rememberMe),
-                Spacer(),
+                const Spacer(),
                 Text(AppLocalizations.of(context)!.forgetPwd)
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 16,
             ),
             ButtonWidget(btnText: AppLocalizations.of(context)!.signIn)
@@ -185,23 +191,27 @@ class FormLayoutPage extends LayoutWidget {
           AppLocalizations.of(context)!.signUpForm,
           Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
             OutBorderTextFormField(
-                labelText: AppLocalizations.of(context)!.fullName, hintText:AppLocalizations.of(context)!.fullNameHint),
-            SizedBox(
+                labelText: AppLocalizations.of(context)!.fullName,
+                hintText: AppLocalizations.of(context)!.fullNameHint),
+            const SizedBox(
               height: 16,
             ),
             OutBorderTextFormField(
-                labelText: AppLocalizations.of(context)!.email, hintText:AppLocalizations.of(context)!.emailHint),
-            SizedBox(
+                labelText: AppLocalizations.of(context)!.email,
+                hintText: AppLocalizations.of(context)!.emailHint),
+            const SizedBox(
               height: 16,
             ),
             OutBorderTextFormField(
-                labelText: AppLocalizations.of(context)!.password, hintText: AppLocalizations.of(context)!.passwordHint),
-            SizedBox(
+                labelText: AppLocalizations.of(context)!.password,
+                hintText: AppLocalizations.of(context)!.passwordHint),
+            const SizedBox(
               height: 16,
             ),
             OutBorderTextFormField(
-                labelText: AppLocalizations.of(context)!.retypePassword, hintText: AppLocalizations.of(context)!.retypePasswordHint),
-            SizedBox(
+                labelText: AppLocalizations.of(context)!.retypePassword,
+                hintText: AppLocalizations.of(context)!.retypePasswordHint),
+            const SizedBox(
               height: 16,
             ),
             ButtonWidget(btnText: AppLocalizations.of(context)!.signUp)

@@ -12,15 +12,15 @@ class TopChannelWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return WhiteCard(
         child: Padding(
-      padding: EdgeInsets.all(16),
+      padding: const EdgeInsets.all(16),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
             AppLocalizations.of(context)!.topChannels,
-            style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+            style: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
           ),
-          SizedBox(
+          const SizedBox(
             height: 16,
           ),
           Expanded(
@@ -130,19 +130,12 @@ class _DataProvider extends ChangeNotifier {
       Channel('Google', '3.5K', r'$5,768', '590', '4.8%'),
       Channel('Google', '3.5K', r'$5,768', '590', '4.8%'),
       Channel('Google', '3.5K', r'$5,768', '590', '4.8%'),
-      Channel('Google', '3.5K', r'$5,768', '590', '4.8%'),
-      Channel('Google', '3.5K', r'$5,768', '590', '4.8%'),
     ];
   }
 
   Future<List<Channel>> loadData() async {
-    await Future.delayed(Duration(seconds: 2));
+    await Future.delayed(const Duration(seconds: 2));
     channels = getEmployeeData();
     return channels;
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
   }
 }

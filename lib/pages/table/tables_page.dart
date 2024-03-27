@@ -9,19 +9,21 @@ import 'package:free_flutter_admin_dashboard/pages/layout.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class TablesPage extends LayoutWidget {
+  const TablesPage({super.key});
+
   @override
   Widget contentDesktopWidget(BuildContext context) {
-    return Column(
+    return const Column(
       children: [
-        Container(height: 450, width: double.maxFinite, child: TopChannelWidget()),
+        SizedBox(height: 450, width: double.maxFinite, child: TopChannelWidget()),
         SizedBox(
           height: 16,
         ),
-        Container(height: 450, width: double.maxFinite,  child:TopProductsWidget()),
+        SizedBox(height: 450, width: double.maxFinite,  child:TopProductsWidget()),
         SizedBox(
           height: 16,
         ),
-        Container(height: 450, width: double.maxFinite,  child:InvoiceTableWidget()),
+        SizedBox(height: 450, width: double.maxFinite,  child:InvoiceTableWidget()),
       ],
     );
   }

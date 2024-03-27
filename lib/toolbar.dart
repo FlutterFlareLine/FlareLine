@@ -15,18 +15,18 @@ class ToolBarWidget extends StatelessWidget {
   _toolsBarWidget(BuildContext context) {
     return Container(
       color: Colors.white,
-      padding: EdgeInsets.all(10),
+      padding: const EdgeInsets.all(10),
       child: Row(children: [
         ResponsiveBuilder(builder: (context, sizingInformation) {
           // Check the sizing information here and return your UI
           if (sizingInformation.deviceScreenType != DeviceScreenType.desktop) {
             return InkWell(
               child: Container(
-                padding: EdgeInsets.all(5),
+                padding: const EdgeInsets.all(5),
                 decoration: BoxDecoration(
                     border: Border.all(color: Colors.grey.shade200, width: 1)),
                 alignment: Alignment.center,
-                child: Icon(Icons.more_vert),
+                child: const Icon(Icons.more_vert),
               ),
               onTap: () {
                 if (Scaffold.of(context).isDrawerOpen) {
@@ -38,12 +38,12 @@ class ToolBarWidget extends StatelessWidget {
             );
           }
 
-          return SizedBox();
+          return const SizedBox();
         }),
         ResponsiveBuilder(builder: (context, sizingInformation) {
           // Check the sizing information here and return your UI
           if (sizingInformation.deviceScreenType == DeviceScreenType.desktop) {
-            return SizedBox(
+            return const SizedBox(
               width: 200,
               child: TextField(
                 decoration: InputDecoration(
@@ -61,14 +61,14 @@ class ToolBarWidget extends StatelessWidget {
             );
           }
 
-          return SizedBox();
+          return const SizedBox();
         }),
-        Spacer(),
+        const Spacer(),
         InkWell(
           child: SvgPicture.asset('assets/toolbar/toggle.svg',
               width: 56, height: 30),
         ),
-        SizedBox(
+        const SizedBox(
           width: 10,
         ),
         InkWell(
@@ -82,7 +82,7 @@ class ToolBarWidget extends StatelessWidget {
                 width: 18, height: 18),
           ),
         ),
-        SizedBox(
+        const SizedBox(
           width: 10,
         ),
         InkWell(
@@ -99,7 +99,7 @@ class ToolBarWidget extends StatelessWidget {
                       width: 18, height: 18)),
               Align(
                 child: Container(
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                       shape: BoxShape.circle, color: Colors.redAccent),
                   width: 6,
                   height: 6,
@@ -108,27 +108,27 @@ class ToolBarWidget extends StatelessWidget {
             ],
           ),
         ),
-        SizedBox(
+        const SizedBox(
           width: 20,
         ),
-        Column(
+        const Column(
           children: [
             Text('Thomas Anree'),
             Text('Ux designer'),
           ],
         ),
-        SizedBox(
+        const SizedBox(
           width: 5,
         ),
-        CircleAvatar(
+        const CircleAvatar(
           backgroundImage: NetworkImage(
               'https://nextjs-demo.tailadmin.com/_next/image?url=%2Fimages%2Fuser%2Fuser-01.png&w=256&q=75'),
           radius: 22,
         ),
         InkWell(
           child: Container(
-            child: Icon(Icons.arrow_drop_down),
-            margin: EdgeInsets.only(left: 6),
+            margin: const EdgeInsets.only(left: 6),
+            child: const Icon(Icons.arrow_drop_down),
           ),
           onTap: () async {
             await showMenu(
@@ -137,13 +137,13 @@ class ToolBarWidget extends StatelessWidget {
                 position: RelativeRect.fromLTRB(
                     MediaQuery.of(context).size.width - 100, 80, 0, 0),
                 items: <PopupMenuItem<String>>[
-                  new PopupMenuItem<String>(
+                  PopupMenuItem<String>(
                       value: 'value01', child: new Text('My Profile')),
-                  new PopupMenuItem<String>(
+                  PopupMenuItem<String>(
                       value: 'value02', child: new Text('My Contacts')),
-                  new PopupMenuItem<String>(
+                  PopupMenuItem<String>(
                       value: 'value03', child: new Text('About Settings')),
-                  new PopupMenuItem<String>(
+                  PopupMenuItem<String>(
                       value: 'value04', child: new Text('Log out'))
                 ]);
           },

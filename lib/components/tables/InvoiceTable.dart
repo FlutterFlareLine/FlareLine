@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
 import 'package:free_flutter_admin_dashboard/components/card/white_card.dart';
+import 'package:hexcolor/hexcolor.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class InvoiceTableWidget extends StatelessWidget {
   const InvoiceTableWidget({super.key});
@@ -10,7 +12,7 @@ class InvoiceTableWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return WhiteCard(
         child: Padding(
-          padding: EdgeInsets.all(16),
+          padding: const EdgeInsets.all(16),
           child: ChangeNotifierProvider(
             create: (context) => _DataProvider(),
             builder: (ctx, child) => _buildWidget(ctx),
@@ -24,14 +26,14 @@ class InvoiceTableWidget extends StatelessWidget {
         builder: ((context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting ||
               snapshot.data == null) {
-            return Text('loading');
+            return Text(AppLocalizations.of(context)!.loading);
           }
 
           return ConstrainedBox(
               constraints: const BoxConstraints(minWidth: double.infinity),
               child: DataTable(
                   headingRowColor: MaterialStateProperty.resolveWith(
-                      (states) => Colors.green),
+                          (states) => HexColor('F7F9FC')),
                   horizontalMargin: 12,
                   showBottomBorder: true,
                   showCheckboxColumn: false,
@@ -39,15 +41,15 @@ class InvoiceTableWidget extends StatelessWidget {
                     fontWeight: FontWeight.bold,
                     color: Colors.black,
                   ),
-                  columns: [
+                  columns: const [
                     DataColumn(label: Text('Package')),
                     DataColumn(
-                      label: const Text('Invoice date'),
+                      label: Text('Invoice date'),
                     ),
                     DataColumn(
-                      label: const Text('Status'),
+                      label: Text('Status'),
                     ),
-                    const DataColumn(label: Text('Actions')),
+                    DataColumn(label: Text('Actions')),
                   ],
                   rows: context
                       .watch<_DataProvider>()
@@ -107,19 +109,13 @@ class _DataProvider extends ChangeNotifier {
       Channel('Google', '3.5K', r'$5,768', '590', '4.8%'),
       Channel('Google', '3.5K', r'$5,768', '590', '4.8%'),
       Channel('Google', '3.5K', r'$5,768', '590', '4.8%'),
-      Channel('Google', '3.5K', r'$5,768', '590', '4.8%'),
-      Channel('Google', '3.5K', r'$5,768', '590', '4.8%'),
     ];
   }
 
   Future<List<Channel>> loadData() async {
-    await Future.delayed(Duration(seconds: 2));
+    await Future.delayed(const Duration(seconds: 2));
     channels = getEmployeeData();
     return channels;
   }
 
-  @override
-  void dispose() {
-    super.dispose();
-  }
 }

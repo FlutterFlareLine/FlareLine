@@ -17,7 +17,7 @@ class SideMenuWidget extends StatelessWidget {
   Widget _itemMenuWidget(BuildContext context, e) {
     List? childList = e['childList'];
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: 6),
+      padding: const EdgeInsets.symmetric(vertical: 6),
       child: Column(children: [
         InkWell(
           child: Row(
@@ -25,27 +25,27 @@ class SideMenuWidget extends StatelessWidget {
               Expanded(
                   child: Text(
                 e['menuName'],
-                style: TextStyle(color: Colors.white),
+                style: const TextStyle(color: Colors.white),
               )),
-              if (childList != null && childList.length > 0)
-                Icon(
+              if (childList != null && childList.isNotEmpty)
+                const Icon(
                   Icons.expand_circle_down_sharp,
                   color: Colors.white,
                 )
             ],
           ),
           onTap: () {
-            if (childList != null && childList.length > 0) {
+            if (childList != null && childList.isNotEmpty) {
               expanded.value = !expanded.value;
             } else {
               pushOrJump(context, e);
             }
           },
         ),
-        SizedBox(
+        const SizedBox(
           height: 10,
         ),
-        if (childList != null && childList.length > 0)
+        if (childList != null && childList.isNotEmpty)
           ValueListenableBuilder(
               valueListenable: expanded,
               builder: (context, visible, child) => Visibility(
@@ -62,13 +62,13 @@ class SideMenuWidget extends StatelessWidget {
   Widget _itemSubMenuWidget(BuildContext context, e) {
     return InkWell(
       child: Padding(
-        padding: EdgeInsets.only(left: 20, top: 5, bottom: 5),
+        padding: const EdgeInsets.only(left: 20, top: 5, bottom: 5),
         child: Row(
           children: [
             Expanded(
                 child: Text(
               e['menuName'],
-              style: TextStyle(color: Colors.white60),
+              style: const TextStyle(color: Colors.white60),
             )),
           ],
         ),

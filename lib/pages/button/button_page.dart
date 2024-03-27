@@ -9,7 +9,7 @@ import 'package:free_flutter_admin_dashboard/themes/global_colors.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ButtonPage extends LayoutWidget {
-  ButtonPage({super.key});
+  const ButtonPage({super.key});
 
   @override
   Widget contentDesktopWidget(BuildContext context) {
