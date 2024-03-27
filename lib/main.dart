@@ -1,4 +1,5 @@
 import 'package:bitsdojo_window/bitsdojo_window.dart';
+import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:flutter/material.dart';
 import 'package:free_flutter_admin_dashboard/provider/localization_provider.dart';
 import 'package:free_flutter_admin_dashboard/provider/main_provider.dart';
@@ -44,6 +45,12 @@ class MyApp extends StatelessWidget {
             supportedLocales: AppLocalizations.supportedLocales,
             onGenerateRoute: (settings) =>
                 RouteConfiguration.onGenerateRoute(settings),
+            // The Mandy red, light theme.
+            // theme: FlexThemeData.light(scheme: FlexScheme.blueM3),
+            // // The Mandy red, dark theme.
+            // darkTheme: FlexThemeData.dark(scheme: FlexScheme.blueM3),
+            // // Use dark or light theme based on system setting.
+            // themeMode: ThemeMode.system,
             builder: (context, widget) {
               return MediaQuery(
                 data: MediaQuery.of(context)

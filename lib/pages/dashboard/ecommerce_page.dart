@@ -11,31 +11,34 @@ import 'package:free_flutter_admin_dashboard/pages/dashboard/analytics_widget.da
 import 'package:free_flutter_admin_dashboard/pages/dashboard/channel_widget.dart';
 import 'package:free_flutter_admin_dashboard/pages/dashboard/grid_card.dart';
 import 'package:free_flutter_admin_dashboard/pages/dashboard/revenue_widget.dart';
+import 'package:free_flutter_admin_dashboard/pages/layout.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
-class EcommercePage extends StatelessWidget {
+class EcommercePage extends LayoutWidget {
   const EcommercePage({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return const Padding(
-      padding: EdgeInsets.symmetric(horizontal: 12, vertical: 10),
-      child: SingleChildScrollView(
-          child: Column(children: [
-            GridCard(),
-            SizedBox(
-              height: 16,
-            ),
-            RevenueWidget(),
-            SizedBox(
-              height: 16,
-            ),
-            AnalyticsWidget(),
-            SizedBox(
-              height: 16,
-            ),
-            ChannelWidget()
-          ])),
-    );
+  String breakTabTitle(BuildContext context) {
+    // TODO: implement breakTabTitle
+    return 'Ecommerce';
   }
+  @override
+  Widget contentDesktopWidget(BuildContext context) {
+    return const Column(children: [
+      GridCard(),
+      SizedBox(
+        height: 16,
+      ),
+      RevenueWidget(),
+      SizedBox(
+        height: 16,
+      ),
+      AnalyticsWidget(),
+      SizedBox(
+        height: 16,
+      ),
+      ChannelWidget()
+    ]);
+  }
+
 }
