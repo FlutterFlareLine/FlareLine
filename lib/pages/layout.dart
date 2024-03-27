@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:free_flutter_admin_dashboard/components/breaktab.dart';
+import 'package:free_flutter_admin_dashboard/themes/global_colors.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
 abstract class LayoutWidget extends StatelessWidget {
@@ -10,7 +11,9 @@ abstract class LayoutWidget extends StatelessWidget {
 
   bool get showTitle => true;
 
-  String breakTabTitle(BuildContext context){
+  bool get isAlignCenter => false;
+
+  String breakTabTitle(BuildContext context) {
     return '';
   }
 
@@ -22,7 +25,11 @@ abstract class LayoutWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Widget contentWidget = Padding(
+    Widget contentWidget = Container(
+      width: double.maxFinite,
+      height: double.maxFinite,
+      color: gray,
+      alignment: isAlignCenter ? Alignment.center : null,
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
       child: SingleChildScrollView(
           child: Column(

@@ -5,13 +5,17 @@ class WhiteCard extends StatelessWidget {
   final Widget? child;
   final EdgeInsetsGeometry? padding;
   final bool? isAutoHeight;
+  final double? width;
+  final double? height;
 
-  WhiteCard({this.child, this.padding, this.isAutoHeight});
+  WhiteCard({this.child, this.padding, this.isAutoHeight,this.width, this.height});
 
   @override
   Widget build(BuildContext context) {
     Widget card = Container(
       padding: padding,
+      width: width,
+      height: height,
       alignment: Alignment.center,
       decoration: BoxDecoration(
           color: Colors.white, borderRadius: BorderRadius.circular(6),
@@ -26,11 +30,6 @@ class WhiteCard extends StatelessWidget {
       ),
       child: child,
     );
-    return (isAutoHeight ?? false)
-        ? Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [card],
-          )
-        : card;
+    return card;
   }
 }

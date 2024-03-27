@@ -13,19 +13,18 @@ class ResetPwdWidget extends LayoutWidget {
   @override
   Widget contentDesktopWidget(BuildContext context) {
     return Center(
-        child: Container(
-      margin: const EdgeInsets.symmetric(horizontal: 100),
-      padding: const EdgeInsets.only(top: 60),
       child: WhiteCard(
+        width: MediaQuery.of(context).size.width * 0.8,
         isAutoHeight: true,
-        padding: const EdgeInsets.symmetric(vertical: 60),
+        padding: const EdgeInsets.symmetric(vertical: 100),
         child: Row(children: [
           Expanded(
               child: Column(
             children: [
               Text(
                 AppLocalizations.of(context)!.appName,
-                style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                style:
+                    const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
               const SizedBox(
                 height: 16,
@@ -48,16 +47,18 @@ class ResetPwdWidget extends LayoutWidget {
           Expanded(child: _formWidget(context))
         ]),
       ),
-    ));
+    );
   }
 
   @override
   Widget contentMobileWidget(BuildContext context) {
-    return Center(child: WhiteCard(
-      isAutoHeight: false,
-      padding: const EdgeInsets.symmetric(vertical: 60),
-      child: _formWidget(context),
-    ),);
+    return Center(
+      child: WhiteCard(
+        isAutoHeight: false,
+        padding: const EdgeInsets.symmetric(vertical: 60),
+        child: _formWidget(context),
+      ),
+    );
   }
 
   Widget _formWidget(BuildContext context) {
@@ -102,10 +103,11 @@ class ResetPwdWidget extends LayoutWidget {
   }
 
   @override
-  // TODO: implement isPage
   bool get isPage => true;
 
   @override
-  // TODO: implement showTitle
   bool get showTitle => false;
+
+  @override
+  bool get isAlignCenter => true;
 }

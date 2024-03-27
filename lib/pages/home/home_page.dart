@@ -40,16 +40,13 @@ class HomePage extends StatelessWidget {
   }
 
   _contentWidget(BuildContext context) {
-    return Container(
-      color: Colors.grey.shade200,
-      child: Column(children: [
-        const ToolBarWidget(),
-        const SizedBox(
-          height: 16,
-        ),
-        Expanded(child: _mainContentWidget())
-      ]),
-    );
+    return Column(children: [
+      const ToolBarWidget(),
+      const SizedBox(
+        height: 16,
+      ),
+      Expanded(child: _mainContentWidget())
+    ]);
   }
 
   final PageController _pageController = PageController();

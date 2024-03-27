@@ -5,7 +5,6 @@ import 'package:free_flutter_admin_dashboard/components/buttons/button_widget.da
 import 'package:free_flutter_admin_dashboard/components/card/white_card.dart';
 import 'package:free_flutter_admin_dashboard/components/forms/outborder_text_form_field.dart';
 import 'package:free_flutter_admin_dashboard/pages/layout.dart';
-import 'package:hexcolor/hexcolor.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class SignUpWidget extends LayoutWidget {
@@ -14,42 +13,39 @@ class SignUpWidget extends LayoutWidget {
   @override
   Widget contentDesktopWidget(BuildContext context) {
     return Center(
-      child: Container(
-        margin: const EdgeInsets.symmetric(horizontal: 100),
-        padding: const EdgeInsets.only(top: 60),
-        child: WhiteCard(
-          isAutoHeight: true,
-          padding: const EdgeInsets.symmetric(vertical: 60),
-          child: Row(children: [
-            Expanded(
-                child: Column(
-              children: [
-                Text(
-                  AppLocalizations.of(context)!.appName,
-                  style: const TextStyle(
-                      fontSize: 20, fontWeight: FontWeight.bold),
-                ),
-                const SizedBox(
-                  height: 16,
-                ),
-                Text(AppLocalizations.of(context)!.slogan),
-                const SizedBox(
-                  height: 16,
-                ),
-                SizedBox(
-                  width: 200,
-                  height: 300,
-                  child: SvgPicture.asset('assets/signin/main.svg',
-                      semanticsLabel: ''),
-                )
-              ],
-            )),
-            const VerticalDivider(
-              width: 1,
-            ),
-            Expanded(child: _formWidget(context))
-          ]),
-        ),
+      child: WhiteCard(
+        width: MediaQuery.of(context).size.width * 0.8,
+        isAutoHeight: true,
+        padding: const EdgeInsets.symmetric(vertical: 100),
+        child: Row(children: [
+          Expanded(
+              child: Column(
+            children: [
+              Text(
+                AppLocalizations.of(context)!.appName,
+                style:
+                    const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              ),
+              const SizedBox(
+                height: 16,
+              ),
+              Text(AppLocalizations.of(context)!.slogan),
+              const SizedBox(
+                height: 16,
+              ),
+              SizedBox(
+                width: 200,
+                height: 300,
+                child: SvgPicture.asset('assets/signin/main.svg',
+                    semanticsLabel: ''),
+              )
+            ],
+          )),
+          const VerticalDivider(
+            width: 1,
+          ),
+          Expanded(child: _formWidget(context))
+        ]),
       ),
     );
   }
@@ -159,10 +155,11 @@ class SignUpWidget extends LayoutWidget {
   }
 
   @override
-  // TODO: implement isPage
   bool get isPage => true;
 
   @override
-  // TODO: implement showTitle
   bool get showTitle => false;
+
+  @override
+  bool get isAlignCenter => true;
 }
