@@ -2,9 +2,8 @@ import 'package:flutter/material.dart';
 
 import 'package:free_flutter_admin_dashboard/provider/main_provider.dart';
 import 'package:free_flutter_admin_dashboard/routes.dart';
-import 'package:free_flutter_admin_dashboard/side_bar.dart';
-import 'package:free_flutter_admin_dashboard/toolbar.dart';
-import 'package:hexcolor/hexcolor.dart';
+import 'package:free_flutter_admin_dashboard/components/sidebar/side_bar.dart';
+import 'package:free_flutter_admin_dashboard/components/toolbar/toolbar.dart';
 import 'package:provider/provider.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 

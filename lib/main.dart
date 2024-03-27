@@ -44,6 +44,13 @@ class MyApp extends StatelessWidget {
             supportedLocales: AppLocalizations.supportedLocales,
             onGenerateRoute: (settings) =>
                 RouteConfiguration.onGenerateRoute(settings),
+            builder: (context, widget) {
+              return MediaQuery(
+                data: MediaQuery.of(context)
+                    .copyWith(textScaler: TextScaler.noScaling),
+                child: widget!,
+              );
+            },
           );
         }));
   }

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:free_flutter_admin_dashboard/home.dart';
+import 'package:free_flutter_admin_dashboard/pages/home/home_page.dart';
 import 'package:free_flutter_admin_dashboard/pages/alerts/alert_page.dart';
 import 'package:free_flutter_admin_dashboard/pages/button/button_page.dart';
 import 'package:free_flutter_admin_dashboard/pages/form/form_elements_page.dart';
