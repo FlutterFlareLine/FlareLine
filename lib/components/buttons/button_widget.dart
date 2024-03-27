@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:free_flutter_admin_dashboard/themes/global_colors.dart';
 
 import 'package:hexcolor/hexcolor.dart';
 
@@ -37,8 +38,8 @@ class ButtonWidget extends StatelessWidget {
                 : null,
             color: color ??
                 ((isPrimary ?? true)
-                    ? Color(0xFF3C50E0)
-                    : HexColor('#E2E8F0')),
+                    ? primary
+                    : stroke),
             borderRadius: BorderRadius.circular(borderRadius ?? 4)),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -51,7 +52,7 @@ class ButtonWidget extends StatelessWidget {
             Text(
               btnText,
               style:
-                  TextStyle(color: textColor ?? ((isPrimary??true)?Colors.white:HexColor('#64748B')), fontSize: 12),
+                  TextStyle(color: textColor ?? ((isPrimary??true)?Colors.white:text), fontSize: 12),
             )
           ],
         ),

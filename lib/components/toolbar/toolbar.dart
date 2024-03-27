@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:free_flutter_admin_dashboard/components/buttons/button_widget.dart';
 import 'package:free_flutter_admin_dashboard/provider/localization_provider.dart';
+import 'package:free_flutter_admin_dashboard/themes/global_colors.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:provider/provider.dart';
 import 'package:responsive_builder/responsive_builder.dart';
@@ -81,7 +82,7 @@ class ToolBarWidget extends StatelessWidget {
             height: 34,
             alignment: Alignment.center,
             decoration: BoxDecoration(
-                color: HexColor('#E2E8F0'), shape: BoxShape.circle),
+                color: stroke, shape: BoxShape.circle),
             child: SvgPicture.asset('assets/toolbar/alarm.svg',
                 width: 18, height: 18),
           ),
@@ -98,7 +99,7 @@ class ToolBarWidget extends StatelessWidget {
                   height: 34,
                   alignment: Alignment.center,
                   decoration: BoxDecoration(
-                      color: HexColor('#E2E8F0'), shape: BoxShape.circle),
+                      color: stroke, shape: BoxShape.circle),
                   child: SvgPicture.asset('assets/toolbar/message.svg',
                       width: 18, height: 18)),
               Align(

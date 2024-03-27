@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:free_flutter_admin_dashboard/components/card/white_card.dart';
+import 'package:free_flutter_admin_dashboard/themes/global_colors.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -33,7 +34,7 @@ class InvoiceTableWidget extends StatelessWidget {
               constraints: const BoxConstraints(minWidth: double.infinity),
               child: DataTable(
                   headingRowColor: MaterialStateProperty.resolveWith(
-                          (states) => HexColor('F7F9FC')),
+                          (states) => lightGray),
                   horizontalMargin: 12,
                   showBottomBorder: true,
                   showCheckboxColumn: false,

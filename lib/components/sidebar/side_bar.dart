@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:free_flutter_admin_dashboard/components/sidebar/side_menu.dart';
+import 'package:free_flutter_admin_dashboard/themes/global_colors.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -65,7 +66,7 @@ class SideBarWidger extends StatelessWidget {
 
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
-      color: HexColor('#333A48'),
+      color: primary,
       width: 240,
       child: Column(children: [
         _logoWidget(context),

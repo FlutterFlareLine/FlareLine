@@ -5,6 +5,7 @@ import 'package:free_flutter_admin_dashboard/components/buttons/button_widget.da
 import 'package:free_flutter_admin_dashboard/components/card/white_card.dart';
 import 'package:free_flutter_admin_dashboard/components/forms/outborder_text_form_field.dart';
 import 'package:free_flutter_admin_dashboard/pages/layout.dart';
+import 'package:free_flutter_admin_dashboard/themes/global_colors.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -45,7 +46,7 @@ class SignInWidget extends LayoutWidget {
           )),
           VerticalDivider(
             width: 1,
-            color: HexColor('#E2E8F0'),
+            color: stroke,
           ),
           Expanded(
             child: _signInFormWidget(context),

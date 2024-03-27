@@ -8,6 +8,7 @@ import 'package:free_flutter_admin_dashboard/components/buttons/button_widget.da
 import 'package:free_flutter_admin_dashboard/components/card/white_card.dart';
 import 'package:free_flutter_admin_dashboard/components/forms/outborder_text_form_field.dart';
 import 'package:free_flutter_admin_dashboard/pages/layout.dart';
+import 'package:free_flutter_admin_dashboard/themes/global_colors.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -226,7 +227,7 @@ class SettingsPage extends LayoutWidget {
               height: 16,
             ),
             Container(
-              color: HexColor('#EFF4FB'),
+              color: gray,
               child: Stack(
                 children: [
                   // DropzoneView(
