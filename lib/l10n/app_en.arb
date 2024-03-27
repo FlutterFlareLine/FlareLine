@@ -58,7 +58,7 @@
   "firstName": "First name",
   "firstNameHint": "Enter your first name",
   "lastName": "Last name",
-  "lastNameHint": "'Enter your last name",
+  "lastNameHint": "Enter your last name",
   "subject": "Subject",
   "subjectHint": "Enter your subject",
   "selectSubjectHint": "Select your subject",
