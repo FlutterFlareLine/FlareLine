@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 import 'package:free_flutter_admin_dashboard/provider/main_provider.dart';
 import 'package:provider/provider.dart';
 
 class SideMenuWidget extends StatelessWidget {
   dynamic e;
+
   SideMenuWidget({super.key, this.e});
 
   ValueNotifier<bool> expanded = ValueNotifier(false);
@@ -22,6 +24,15 @@ class SideMenuWidget extends StatelessWidget {
         InkWell(
           child: Row(
             children: [
+              if (e['icon'] != null)
+                Container(
+                  margin: const EdgeInsets.only(right: 10),
+                  child: SvgPicture.asset(
+                    e['icon'],
+                    width: 18,
+                    height: 18,
+                  ),
+                ),
               Expanded(
                   child: Text(
                 e['menuName'],
@@ -80,7 +91,7 @@ class SideMenuWidget extends StatelessWidget {
   }
 
   pushOrJump(BuildContext context, e) {
-    if( Scaffold.of(context).isDrawerOpen){
+    if (Scaffold.of(context).isDrawerOpen) {
       Scaffold.of(context).closeDrawer();
     }
     if (e['blank'] != null && true == e['blank']) {

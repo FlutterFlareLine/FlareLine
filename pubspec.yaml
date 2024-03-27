@@ -118,6 +118,7 @@ flutter:
     - assets/signin/
     - assets/alert/
     - assets/toolbar/
+    - assets/sidebar/
   #   - assets/a_dot_burr.jpeg
   #   - assets/a_dot_ham.jpeg
 
