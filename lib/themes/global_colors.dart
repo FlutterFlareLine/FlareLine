@@ -22,4 +22,6 @@ const Color red = Color(0xFFFB5454);
 
 const Color dark = Color(0xFF1C2434);
 
+const Color sideBar = Color(0xFF333A48);
+
 const Color lightGray = Color(0xFFF7F9FC);

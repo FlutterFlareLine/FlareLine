@@ -66,7 +66,7 @@ class SideBarWidger extends StatelessWidget {
 
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
-      color: primary,
+      color: sideBar,
       width: 240,
       child: Column(children: [
         _logoWidget(context),
