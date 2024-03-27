@@ -2,30 +2,29 @@ import 'dart:convert';
 import 'dart:ui';
 
 import 'package:flutter/foundation.dart';
-import 'package:flutter/services.dart';
+import 'package:get_storage/get_storage.dart';
 
-class LocalizationProvider extends ChangeNotifier{
+class LocalizationProvider extends ChangeNotifier {
   static const Locale en = Locale('en');
 
-  Locale _locale = const Locale.fromSubtags(languageCode: 'en');
-
-  Locale get locale {
-    notifyListeners();
-    return _locale;
+  LocalizationProvider() {
+    String? languageCode = box.read("locale");
+    if (languageCode != null) {
+      _locale = Locale.fromSubtags(languageCode: languageCode);
+    }
   }
 
-  List<Locale> get supportedLocales => [en];
+  Locale? _locale;
 
-  late Map<String, dynamic> _localizedString;
+  Locale get locale => _locale ?? const Locale.fromSubtags(languageCode: 'en');
 
-  Future<bool> load() async {
-    try {
-      String jsonString = await rootBundle
-          .loadString('assets/localization/${locale.languageCode}.json');
-      _localizedString = jsonDecode(jsonString);
-      return true;
-    } catch (e) {
-      return false;
-    }
+  String get languageCode => locale.languageCode;
+
+  final box = GetStorage();
+
+  set locale(Locale locale) {
+    _locale = locale;
+    box.write("locale", locale.languageCode);
+    notifyListeners();
   }
 }

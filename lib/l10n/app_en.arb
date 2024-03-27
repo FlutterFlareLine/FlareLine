@@ -1,7 +1,7 @@
 {
   "alertsPageTitle": "Alerts",
   "alertsTitle": "Attention Needed",
-  "alsertsMessage": "Lorem Ipsum is simply dummy text of the printing and typesetting industry",
+  "alertsMessage": "Lorem Ipsum is simply dummy text of the printing and typesetting industry",
   "appName": "XAdmin",
   "slogan": "Simple web, develop faster",
   "signIn": "Sign In",
@@ -102,7 +102,7 @@
   "revenues": "REVENUES",
   "sales": "SALES",
   "conversation": "CONVERSION",
-  "gruopMenu": "MENU",
+  "groupMenu": "MENU",
   "dashboard": "Dashboard",
   "calendar": "Calendar",
   "forms": "Forms",

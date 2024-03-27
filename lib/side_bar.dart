@@ -14,7 +14,7 @@ class SideBarWidger extends StatelessWidget {
   Widget build(BuildContext context) {
     listMenu = List.from([
       {
-        'groupName': AppLocalizations.of(context)!.gruopMenu,
+        'groupName': AppLocalizations.of(context)!.groupMenu,
         'menuList': [
           {
             'menuName': AppLocalizations.of(context)!.dashboard,

@@ -18,7 +18,7 @@ void main() async {
   runApp(MyApp());
 
   doWhenWindowReady(() {
-    appWindow.minSize = Size(480, 360);
+    appWindow.minSize = const Size(480, 360);
     appWindow.size = Size.infinite;
     appWindow.alignment = Alignment.center;
     appWindow.show();
@@ -38,11 +38,9 @@ class MyApp extends StatelessWidget {
             restorationScopeId: 'rootXAdmin',
             title: 'XAdmin',
             debugShowCheckedModeBanner: false,
-            // You can use the library anywhere in the app even in theme
-            // theme: GlobalTheme.lightThemeData,
-            // darkTheme: GlobalTheme.darkThemeData,
             initialRoute: '/',
             localizationsDelegates: AppLocalizations.localizationsDelegates,
+            locale: context.watch<LocalizationProvider>().locale,
             supportedLocales: AppLocalizations.supportedLocales,
             onGenerateRoute: (settings) =>
                 RouteConfiguration.onGenerateRoute(settings),

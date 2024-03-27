@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:free_flutter_admin_dashboard/components/buttons/button_widget.dart';
+import 'package:free_flutter_admin_dashboard/provider/localization_provider.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:provider/provider.dart';
 import 'package:responsive_builder/responsive_builder.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ToolBarWidget extends StatelessWidget {
   const ToolBarWidget({super.key});
@@ -137,18 +141,45 @@ class ToolBarWidget extends StatelessWidget {
                 position: RelativeRect.fromLTRB(
                     MediaQuery.of(context).size.width - 100, 80, 0, 0),
                 items: <PopupMenuItem<String>>[
+                  const PopupMenuItem<String>(
+                      value: 'value01', child: Text('My Profile')),
+                  const PopupMenuItem<String>(
+                      value: 'value02', child: Text('My Contacts')),
+                  const PopupMenuItem<String>(
+                      value: 'value03', child: Text('About Settings')),
                   PopupMenuItem<String>(
-                      value: 'value01', child: new Text('My Profile')),
-                  PopupMenuItem<String>(
-                      value: 'value02', child: new Text('My Contacts')),
-                  PopupMenuItem<String>(
-                      value: 'value03', child: new Text('About Settings')),
-                  PopupMenuItem<String>(
-                      value: 'value04', child: new Text('Log out'))
+                      enabled: false,
+                      value: 'value04',
+                      child: _languagesWidget(context)),
+                  const PopupMenuItem<String>(
+                      value: 'value05', child: Text('Log out'))
                 ]);
           },
         )
       ]),
+    );
+  }
+
+  Widget _languagesWidget(BuildContext context) {
+    return Wrap(
+      spacing: 8,
+      runSpacing: 8,
+      children: AppLocalizations.supportedLocales.map((e) {
+        return SizedBox(
+          width: 50,
+          height: 20,
+          child:
+              Consumer<LocalizationProvider>(builder: (ctx, provider, child) {
+            return ButtonWidget(
+              btnText: e.languageCode,
+              isPrimary: e.languageCode == provider.languageCode,
+              onTap: () {
+                context.read<LocalizationProvider>().locale = e;
+              },
+            );
+          }),
+        );
+      }).toList(),
     );
   }
 }

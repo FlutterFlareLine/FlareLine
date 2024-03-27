@@ -22,7 +22,7 @@ class AlertPage extends LayoutWidget {
                 width: 32,
               ),
               title: AppLocalizations.of(context)!.alertsTitle,
-              content: AppLocalizations.of(context)!.alsertsMessage,
+              content: AppLocalizations.of(context)!.alertsMessage,
               titleColor: HexColor('#9D5425'),
               contentColor: HexColor('#D0915C')),
           const SizedBox(
@@ -36,7 +36,7 @@ class AlertPage extends LayoutWidget {
                 width: 32,
               ),
               title: AppLocalizations.of(context)!.alertsTitle,
-              content: AppLocalizations.of(context)!.alsertsMessage,
+              content: AppLocalizations.of(context)!.alertsMessage,
               titleColor: HexColor('#004434'),
               contentColor: HexColor('#637381')),
           const SizedBox(
@@ -50,7 +50,7 @@ class AlertPage extends LayoutWidget {
                 width: 32,
               ),
               title: AppLocalizations.of(context)!.alertsTitle,
-              content: AppLocalizations.of(context)!.alsertsMessage,
+              content: AppLocalizations.of(context)!.alertsMessage,
               titleColor: HexColor('#BC1C21'),
               contentColor: HexColor('#CD5D5D')),
         ],
