@@ -20,15 +20,15 @@ class ChannelWidget extends StatelessWidget {
   }
 
   Widget _channelsWeb(BuildContext context) {
-    return SizedBox(
+    return const SizedBox(
         height: 450,
         child: Row(
           children: [
-            const Expanded(
+            Expanded(
               flex: 2,
               child: TopChannelWidget(),
             ),
-            const SizedBox(
+            SizedBox(
               width: 16,
             ),
             Expanded(flex: 1, child: ChatsWidget()),
@@ -37,13 +37,13 @@ class ChannelWidget extends StatelessWidget {
   }
 
   Widget _channelMobile(BuildContext context) {
-    return Column(
+    return const Column(
       children: [
-        const SizedBox(
+        SizedBox(
           height: 380,
           child: TopChannelWidget(),
         ),
-        const SizedBox(
+        SizedBox(
           height: 16,
         ),
         SizedBox(

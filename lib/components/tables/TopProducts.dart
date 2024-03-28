@@ -52,6 +52,7 @@ class TopProductsWidget extends StatelessWidget {
                     fontWeight: FontWeight.bold,
                     color: Colors.black,
                   ),
+                  dividerThickness: 0.5,
                   columns: const [
                     DataColumn(label: Text('Product Name')),
                     DataColumn(

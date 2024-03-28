@@ -1,6 +1,5 @@
-
+import 'package:flareline/themes/global_colors.dart';
 import 'package:flutter/material.dart';
-
 
 class OutBorderTextFormField extends StatelessWidget {
   final String? labelText;
@@ -15,7 +14,8 @@ class OutBorderTextFormField extends StatelessWidget {
   final Widget? icon;
 
   OutBorderTextFormField(
-      {this.labelText,
+      {super.key,
+      this.labelText,
       this.initialValue,
       this.hintText,
       this.maxLines = 1,
@@ -24,7 +24,7 @@ class OutBorderTextFormField extends StatelessWidget {
       this.suffixWidget,
       this.obscureText,
       this.keyboardType,
-        this.icon});
+      this.icon});
 
   @override
   Widget build(BuildContext context) {
@@ -33,27 +33,34 @@ class OutBorderTextFormField extends StatelessWidget {
       children: [
         Text(labelText ?? ''),
         if (labelText != null)
-          SizedBox(
+          const SizedBox(
             height: 8,
           ),
-        Container(
+        SizedBox(
           width: double.maxFinite,
-          height:maxLines==1? 50:null,
+          height: maxLines == 1 ? 50 : null,
           child: Stack(
             children: [
               Align(
+                alignment: Alignment.center,
                 child: TextFormField(
                   keyboardType: keyboardType,
-                  obscureText:obscureText??false,
+                  obscureText: obscureText ?? false,
                   enabled: enabled,
                   initialValue: initialValue,
                   controller: controller,
                   maxLines: maxLines,
                   decoration: InputDecoration(
                       prefixIcon: icon,
-                      prefixIconConstraints: BoxConstraints(maxWidth: 35,maxHeight: 22,),
+                      prefixIconConstraints: const BoxConstraints(
+                        maxWidth: 35,
+                        maxHeight: 22,
+                      ),
                       labelText: '',
-                      border: const OutlineInputBorder(),
+                      border: const OutlineInputBorder(
+                          borderSide: BorderSide(width: 0.5, color: stroke)),
+                      focusedBorder: const OutlineInputBorder(
+                          borderSide: BorderSide(width: 0.5, color: primary)),
                       contentPadding: const EdgeInsets.symmetric(
                         horizontal: 12,
                         vertical: 6,
@@ -61,15 +68,14 @@ class OutBorderTextFormField extends StatelessWidget {
                       floatingLabelBehavior: FloatingLabelBehavior.always,
                       hintText: hintText),
                 ),
-                alignment: Alignment.center,
               ),
               if (suffixWidget != null)
                 Align(
-                  child: Container(
-                    child: suffixWidget,
-                    margin: EdgeInsets.only(right: 10),
-                  ),
                   alignment: Alignment.centerRight,
+                  child: Container(
+                    margin: const EdgeInsets.only(right: 10),
+                    child: suffixWidget,
+                  ),
                 )
             ],
           ),

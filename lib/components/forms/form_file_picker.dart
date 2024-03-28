@@ -17,7 +17,7 @@ class FormFilePicker extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(title ?? 'Select file'),
-        SizedBox(
+        const SizedBox(
           height: 10,
         ),
         Container(
@@ -29,12 +29,12 @@ class FormFilePicker extends StatelessWidget {
               children: [
                 Container(
                   padding:
-                      EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+                      const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
                   color: Colors.grey.withOpacity(0.2),
-                  child: Text('Select File'),
+                  child: const Text('Select File'),
                 ),
-                VerticalDivider(),
-                SizedBox(
+                const VerticalDivider(),
+                const SizedBox(
                   width: 20,
                 ),
                 ValueListenableBuilder(
@@ -46,14 +46,13 @@ class FormFilePicker extends StatelessWidget {
             ),
             onTap: () async {
               FilePickerResult? result = await FilePicker.platform.pickFiles(
-                type: this.allowExtention != null
+                type: allowExtention != null
                     ? FileType.custom
                     : FileType.any,
-                allowedExtensions: this.allowExtention,
+                allowedExtensions: allowExtention,
               );
 
               if (result != null) {
-                print(result.files.first);
                 valueNotifier.value = result.files.first.name;
               } else {
                 // User canceled the picker

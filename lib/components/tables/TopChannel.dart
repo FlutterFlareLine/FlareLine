@@ -55,6 +55,7 @@ class TopChannelWidget extends StatelessWidget {
                     fontWeight: FontWeight.bold,
                     color: Colors.black,
                   ),
+                  dividerThickness: 0.5,
                   columns: [
                     DataColumn(
                         label: Text(AppLocalizations.of(context)!.source)),
@@ -80,7 +81,7 @@ class TopChannelWidget extends StatelessWidget {
                                 Text(e.source),
                               ),
                               DataCell(
-                                Text('${e.visitors}'),
+                                Text(e.visitors),
                               ),
                               DataCell(
                                 Text(e.revenues),
