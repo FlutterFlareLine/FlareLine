@@ -1,8 +1,7 @@
-import 'package:flutter/cupertino.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flareline/themes/global_colors.dart';
 
-import 'package:hexcolor/hexcolor.dart';
 
 class ButtonWidget extends StatelessWidget {
   String btnText;
@@ -28,6 +27,7 @@ class ButtonWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
+      onTap: onTap,
       child: Container(
         width: double.maxFinite,
         height: 40,
@@ -38,7 +38,7 @@ class ButtonWidget extends StatelessWidget {
                 : null,
             color: color ??
                 ((isPrimary ?? true)
-                    ? primary
+                    ? Theme.of(context).colorScheme.primary
                     : stroke),
             borderRadius: BorderRadius.circular(borderRadius ?? 4)),
         child: Row(
@@ -57,7 +57,6 @@ class ButtonWidget extends StatelessWidget {
           ],
         ),
       ),
-      onTap: onTap,
     );
   }
 }

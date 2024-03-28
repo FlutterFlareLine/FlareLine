@@ -28,7 +28,6 @@ abstract class LayoutWidget extends StatelessWidget {
     Widget contentWidget = Container(
       width: double.maxFinite,
       height: double.maxFinite,
-      color: gray,
       alignment: isAlignCenter ? Alignment.center : null,
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
       child: SingleChildScrollView(

@@ -40,7 +40,7 @@ class SignInWidget extends LayoutWidget {
                 )
               ],
             )),
-        VerticalDivider(
+        const VerticalDivider(
           width: 1,
           color: stroke,
         ),

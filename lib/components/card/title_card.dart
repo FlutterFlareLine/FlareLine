@@ -17,14 +17,14 @@ class TitleCard extends StatelessWidget {
     return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
       Container(
         height: 50,
-        padding: EdgeInsets.only(left: 10),
+        padding: const EdgeInsets.only(left: 10),
         alignment: Alignment.centerLeft,
         child: Text(title),
       ),
-      Divider(
+      const Divider(
         height: 1,
       ),
-      Padding(padding: EdgeInsets.all(16), child: childWidget)
+      Padding(padding: const EdgeInsets.all(16), child: childWidget)
     ]);
   }
 }

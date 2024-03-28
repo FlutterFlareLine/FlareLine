@@ -49,7 +49,6 @@ class ButtonPage extends LayoutWidget {
               width: 100,
               child: ButtonWidget(
                 btnText: AppLocalizations.of(context)!.btnName,
-                color: primary,
                 borderRadius: 0,
               ),
             ),
@@ -57,7 +56,6 @@ class ButtonPage extends LayoutWidget {
               width: 100,
               child: ButtonWidget(
                 btnText: AppLocalizations.of(context)!.btnName,
-                color: primary,
                 borderRadius: 5,
               ),
             ),
@@ -65,7 +63,6 @@ class ButtonPage extends LayoutWidget {
               width: 100,
               child: ButtonWidget(
                 btnText: AppLocalizations.of(context)!.btnName,
-                color: primary,
                 borderRadius: 30,
               ),
             ),
@@ -75,8 +72,8 @@ class ButtonPage extends LayoutWidget {
                 btnText: AppLocalizations.of(context)!.btnName,
                 color: Colors.white,
                 borderRadius: 5,
-                borderColor: primary,
-                textColor: primary,
+                borderColor: Theme.of(context).colorScheme.primary,
+                textColor: Theme.of(context).colorScheme.primary,
               ),
             )
           ],
