@@ -1,3 +1,4 @@
+import 'package:flareline/components/badge/anim_badge.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_svg/flutter_svg.dart';
@@ -77,14 +78,21 @@ class ToolBarWidget extends StatelessWidget {
           width: 10,
         ),
         InkWell(
-          child: Container(
-            width: 34,
-            height: 34,
-            alignment: Alignment.center,
-            decoration: BoxDecoration(
-                color: stroke, shape: BoxShape.circle),
-            child: SvgPicture.asset('assets/toolbar/alarm.svg',
-                width: 18, height: 18),
+          child: Stack(
+            alignment: Alignment.topRight,
+            children: [
+              Container(
+                  width: 34,
+                  height: 34,
+                  alignment: Alignment.center,
+                  decoration: const BoxDecoration(
+                      color: stroke, shape: BoxShape.circle),
+                  child: SvgPicture.asset('assets/toolbar/alarm.svg',
+                      width: 18, height: 18)),
+              const Align(
+                child: AnimBadge(),
+              )
+            ],
           ),
         ),
         const SizedBox(
@@ -98,17 +106,12 @@ class ToolBarWidget extends StatelessWidget {
                   width: 34,
                   height: 34,
                   alignment: Alignment.center,
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                       color: stroke, shape: BoxShape.circle),
                   child: SvgPicture.asset('assets/toolbar/message.svg',
                       width: 18, height: 18)),
-              Align(
-                child: Container(
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.circle, color: Colors.redAccent),
-                  width: 6,
-                  height: 6,
-                ),
+              const Align(
+                child: AnimBadge(),
               )
             ],
           ),
@@ -118,16 +121,15 @@ class ToolBarWidget extends StatelessWidget {
         ),
         const Column(
           children: [
-            Text('Thomas Anree'),
-            Text('Ux designer'),
+            Text('Taylor'),
+            Text('Developer'),
           ],
         ),
         const SizedBox(
           width: 5,
         ),
         const CircleAvatar(
-          backgroundImage: NetworkImage(
-              'https://nextjs-demo.tailadmin.com/_next/image?url=%2Fimages%2Fuser%2Fuser-01.png&w=256&q=75'),
+          backgroundImage: AssetImage('assets/user/user-10.png'),
           radius: 22,
         ),
         InkWell(

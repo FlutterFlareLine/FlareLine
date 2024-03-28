@@ -1,3 +1,5 @@
+import 'package:flareline/components/badge/anim_badge.dart';
+import 'package:flareline/themes/global_colors.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flareline/components/card/white_card.dart';
@@ -10,25 +12,25 @@ class ChatsWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return WhiteCard(
         child: Padding(
-          padding: EdgeInsets.all(16),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                'Chats',
-                style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
-              ),
-              SizedBox(
-                height: 16,
-              ),
-              Expanded(
-                  child: ChangeNotifierProvider(
-                create: (context) => _DataProvider(),
-                builder: (ctx, child) => _buildWidget(ctx),
-              )),
-            ],
+      padding: const EdgeInsets.all(16),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const Text(
+            'Chats',
+            style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
           ),
-        ));
+          const SizedBox(
+            height: 16,
+          ),
+          Expanded(
+              child: ChangeNotifierProvider(
+            create: (context) => _DataProvider(),
+            builder: (ctx, child) => _buildWidget(ctx),
+          )),
+        ],
+      ),
+    ));
   }
 
   _buildWidget(BuildContext context) {
@@ -37,11 +39,11 @@ class ChatsWidget extends StatelessWidget {
         builder: ((context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting ||
               snapshot.data == null) {
-            return Text('loading');
+            return const Text('loading');
           }
 
           return ListView.builder(
-            physics: NeverScrollableScrollPhysics(),
+            physics: const NeverScrollableScrollPhysics(),
             itemBuilder: (c, index) {
               return itemBuilder(c, index, snapshot.data!.elementAt(index));
             },
@@ -53,7 +55,7 @@ class ChatsWidget extends StatelessWidget {
   Widget itemBuilder(
       BuildContext context, int index, Conversation conversation) {
     return Container(
-      padding: EdgeInsets.symmetric(vertical: 8),
+      padding: const EdgeInsets.symmetric(vertical: 8),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
@@ -67,19 +69,15 @@ class ChatsWidget extends StatelessWidget {
                   radius: 22,
                 ),
                 Align(
-                  child: ClipOval(
-                    child: Container(
-                      color: Colors.red,
-                      width: 10,
-                      height: 10,
-                    ),
-                  ),
                   alignment: Alignment.bottomRight,
+                  child: AnimBadge(
+                    color: conversation.badgeColor,
+                  ),
                 )
               ],
             ),
           ),
-          SizedBox(
+          const SizedBox(
             width: 16,
           ),
           Expanded(
@@ -88,12 +86,12 @@ class ChatsWidget extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(conversation.name),
-              SizedBox(
+              const SizedBox(
                 height: 5,
               ),
               Text(
                 conversation.text,
-                style: TextStyle(fontSize: 8),
+                style: const TextStyle(fontSize: 8),
               ),
             ],
           )),
@@ -102,10 +100,10 @@ class ChatsWidget extends StatelessWidget {
             alignment: Alignment.center,
             decoration: BoxDecoration(
                 color: Colors.blue, borderRadius: BorderRadius.circular(25)),
-            constraints: BoxConstraints(minWidth: 30),
+            constraints: const BoxConstraints(minWidth: 30),
             child: Text(
               '${conversation.dot > 999 ? '+99' : conversation.dot}',
-              style: TextStyle(color: Colors.white, fontSize: 12),
+              style: const TextStyle(color: Colors.white, fontSize: 12),
             ),
           ),
         ],
@@ -116,19 +114,13 @@ class ChatsWidget extends StatelessWidget {
 
 class Conversation {
   Conversation(
-      {required String name,
-      required String avatar,
-      required String text,
-      required int time,
-      required int textCount,
-      required int dot}) {
-    this.name = name;
-    this.avatar = avatar;
-    this.text = text;
-    this.time = time;
-    this.textCount = textCount;
-    this.dot = dot;
-  }
+      {required this.name,
+      required this.avatar,
+      required this.text,
+      required this.time,
+      required this.textCount,
+      required this.dot,
+      this.badgeColor});
 
   late String avatar;
 
@@ -141,6 +133,8 @@ class Conversation {
   late int textCount;
 
   late int dot;
+
+  Color? badgeColor;
 }
 
 class _DataProvider extends ChangeNotifier {
@@ -148,65 +142,60 @@ class _DataProvider extends ChangeNotifier {
 
   List<Conversation> chatData = [
     Conversation(
-      avatar: "/user/user-01.png",
-      name: "Devid Heilo",
-      text: "How are you?",
-      time: 12,
-      textCount: 3,
-      dot: 3,
-    ),
+        avatar: "/user/user-01.png",
+        name: "Devid Heilo",
+        text: "How are you?",
+        time: 12,
+        textCount: 3,
+        dot: 3,
+        badgeColor: red),
     Conversation(
-      avatar: "/user/user-02.png",
-      name: "Henry Fisher",
-      text: "Waiting for you!",
-      time: 12,
-      textCount: 0,
-      dot: 1,
-    ),
+        avatar: "/user/user-02.png",
+        name: "Henry Fisher",
+        text: "Waiting for you!",
+        time: 12,
+        textCount: 0,
+        dot: 1,
+        badgeColor: green),
     Conversation(
-      avatar: "/user/user-04.png",
-      name: "Jhon Doe",
-      text: "What's up?",
-      time: 32,
-      textCount: 0,
-      dot: 3,
-    ),
+        avatar: "/user/user-04.png",
+        name: "Jhon Doe",
+        text: "What's up?",
+        time: 32,
+        textCount: 0,
+        dot: 3,
+        badgeColor: yellow),
     Conversation(
-      avatar: "/user/user-05.png",
-      name: "Jane Doe",
-      text: "Great",
-      time: 32,
-      textCount: 2,
-      dot: 66,
-    ),
+        avatar: "/user/user-05.png",
+        name: "Jane Doe",
+        text: "Great",
+        time: 32,
+        textCount: 2,
+        dot: 66,
+        badgeColor: primary),
     Conversation(
-      avatar: "/user/user-01.png",
-      name: "Jhon Doe",
-      text: "How are you?",
-      time: 32,
-      textCount: 0,
-      dot: 3,
-    ),
+        avatar: "/user/user-01.png",
+        name: "Jhon Doe",
+        text: "How are you?",
+        time: 32,
+        textCount: 0,
+        dot: 3,
+        badgeColor: Colors.yellowAccent),
     Conversation(
-      avatar: "/user/user-03.png",
-      name: "Jhon Doe",
-      text: "How are you?",
-      time: 32,
-      textCount: 3,
-      dot: 6549,
-    ),
+        avatar: "/user/user-03.png",
+        name: "Jhon Doe",
+        text: "How are you?",
+        time: 32,
+        textCount: 3,
+        dot: 6549,
+        badgeColor: Colors.pink),
   ];
 
   Future<List<Conversation>> loadData() async {
-    await Future.delayed(Duration(seconds: 2));
+    await Future.delayed(const Duration(seconds: 2));
 
     employees = chatData;
 
     return employees;
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
   }
 }

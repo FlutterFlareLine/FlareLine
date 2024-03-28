@@ -17,6 +17,14 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "2.11.0"
+  avatar_glow:
+    dependency: "direct main"
+    description:
+      name: avatar_glow
+      sha256: "848d9a85065e398241d8ffae0dcc50902980c24490aef21fd4c6b6342d4c26b4"
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "3.0.1"
   bitsdojo_window:
     dependency: "direct main"
     description:
@@ -211,6 +219,14 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "2.0.17"
+  flutter_randomcolor:
+    dependency: "direct main"
+    description:
+      name: flutter_randomcolor
+      sha256: f11e88387fe741c9ed3e3b9cca876936b6d883d3e8eef0c11e931c0339195fae
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "1.0.15"
   flutter_svg:
     dependency: "direct main"
     description:
