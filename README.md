@@ -37,10 +37,10 @@ flutter run -d chrome
 ## Self-hosted
 You can use XAdmin Cloud for a fully managed solution. If you want to self-host XAdmin, we have guides on deploying XAdmin on Vercel, Cloudflare, and more.
 
-| Provider  | Host Cloud | Documentation |
-| :------------- | :------------- | :------------- |
-| Vercel | [Link](https://vercel.com/)  |  |
-| Cloudware  | [Link](https://www.cloudflare.com/)   |  |
+| Provider   | Host Cloud | Documentation |
+|:-----------| :------------- | :------------- |
+| Vercel     | [Link](https://vercel.com/)  |  |
+| Cloudflare | [Link](https://www.cloudflare.com/)   |  |
 
 ### Localization
 * add .arb file to lib/l10n, like app_es.arb/app_zh.arb/app_th.arb...
