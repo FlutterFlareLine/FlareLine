@@ -4,38 +4,36 @@ import 'package:flutter/material.dart';
 class BreakTab extends StatelessWidget {
   final String title;
 
-  BreakTab(this.title);
+  BreakTab(this.title, {super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Row(children: [
-        Text(
-          title,
+    return Row(children: [
+      Text(
+        title,
+        style: const TextStyle(fontSize: 20,fontWeight: FontWeight.bold),
+      ),
+      const Spacer(),
+      InkWell(
+        child: const Text(
+          'Dashboard',
           style: TextStyle(fontSize: 14),
         ),
-        Spacer(),
-        InkWell(
-          child: Text(
-            'Dashboard',
-            style: TextStyle(fontSize: 10),
-          ),
-          onTap: () {
-            Navigator.of(context).popAndPushNamed('/');
-          },
-        ),
-        SizedBox(
-          width: 6,
-        ),
-        Text('/'),
-        SizedBox(
-          width: 6,
-        ),
-        Text(
-          title,
-          style: TextStyle(fontSize: 10, color: Colors.blue),
-        ),
-      ]),
-    );
+        onTap: () {
+          Navigator.of(context).popAndPushNamed('/');
+        },
+      ),
+      const SizedBox(
+        width: 6,
+      ),
+      const Text('/'),
+      const SizedBox(
+        width: 6,
+      ),
+      Text(
+        title,
+        style: const TextStyle(fontSize: 14, color: Colors.blue),
+      ),
+    ]);
   }
 }
