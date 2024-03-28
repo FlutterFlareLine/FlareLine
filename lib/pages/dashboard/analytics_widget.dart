@@ -26,7 +26,7 @@ class AnalyticsWidget extends StatelessWidget {
       child: Row(
         children: [
           Expanded(
-            flex: 2,
+            flex: 3,
             child: WhiteCard(
               child: CircularhartWidget(),
             ),
@@ -35,9 +35,9 @@ class AnalyticsWidget extends StatelessWidget {
             width: 16,
           ),
           Expanded(
-            flex: 1,
+            flex: 4,
             child: WhiteCard(
-              child: MapChartWidget(),
+              child: const MapChartWidget(),
             ),
           ),
         ],
@@ -60,7 +60,7 @@ class AnalyticsWidget extends StatelessWidget {
         SizedBox(
           height: 350,
           child: WhiteCard(
-            child: MapChartWidget(),
+            child: const MapChartWidget(),
           ),
         ),
       ],
