@@ -1,10 +1,10 @@
-# XAdmin Flutter - Free Flutter Admin Dashboard Template
+# FlareLine Flutter - Free Flutter Admin Dashboard Template
 
-XAdmin is a free and open-source admin dashboard template built on **Flutter** providing developers with everything they need to create a feature-rich and data-driven: back-end, dashboard, or admin panel solution for any sort of web/mac/windows/android/iOS project.
+FlareLine is a free and open-source admin dashboard template built on **Flutter** providing developers with everything they need to create a feature-rich and data-driven: back-end, dashboard, or admin panel solution for any sort of web/mac/windows/android/iOS project.
 
 ![screenshot1.png](snapshots%2Fscreenshot1.png)
 
-With XAdmin Flutter, you get access to all the necessary dashboard UI components, elements, and pages required to build a high-quality and complete dashboard or admin panel. Whether you're building a dashboard or admin panel for a complex web application or a simple website. 
+With FlareLine Flutter, you get access to all the necessary dashboard UI components, elements, and pages required to build a high-quality and complete dashboard or admin panel. Whether you're building a dashboard or admin panel for a complex web application or a simple website. 
 
 
 ### [🚀 Demo](https://free-flutter-admin-dashboard.vercel.app/)
@@ -44,7 +44,7 @@ flutter run -d chrome
 *   Nextjs-Free-Demo https://github.com/TailAdmin/free-nextjs-admin-dashboard
 
 ### 📄 License
-XAdmin Flutter Free is 100% free and open-source; feel free to use it with your personal and commercial projects.
+FlareLine Flutter Free is 100% free and open-source; feel free to use it with your personal and commercial projects.
 
 ### 💜 Support
 If you like the template, please star this repository to inspire the team to create more stuff like this and reach more users like you!

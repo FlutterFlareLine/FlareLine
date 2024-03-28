@@ -36,8 +36,8 @@ class MyApp extends StatelessWidget {
         ],
         child: Builder(builder: (context) {
           return MaterialApp(
-            restorationScopeId: 'rootXAdmin',
-            title: 'XAdmin',
+            restorationScopeId: 'rootFlareLine',
+            title: 'FlareLine',
             debugShowCheckedModeBanner: false,
             initialRoute: '/',
             localizationsDelegates: AppLocalizations.localizationsDelegates,
