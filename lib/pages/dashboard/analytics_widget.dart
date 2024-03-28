@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:free_flutter_admin_dashboard/components/card/white_card.dart';
-import 'package:free_flutter_admin_dashboard/components/charts/circular_chart.dart';
-import 'package:free_flutter_admin_dashboard/components/charts/map_chart.dart';
+import 'package:flareline/components/card/white_card.dart';
+import 'package:flareline/components/charts/circular_chart.dart';
+import 'package:flareline/components/charts/map_chart.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
 class AnalyticsWidget extends StatelessWidget {

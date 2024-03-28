@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 
-import 'package:free_flutter_admin_dashboard/components/card/white_card.dart';
-import 'package:free_flutter_admin_dashboard/components/charts/bar_chart.dart';
-import 'package:free_flutter_admin_dashboard/components/chats.dart';
-import 'package:free_flutter_admin_dashboard/components/charts/circular_chart.dart';
-import 'package:free_flutter_admin_dashboard/components/charts/line_chart.dart';
-import 'package:free_flutter_admin_dashboard/components/charts/map_chart.dart';
-import 'package:free_flutter_admin_dashboard/components/tables/TopChannel.dart';
-import 'package:free_flutter_admin_dashboard/pages/dashboard/analytics_widget.dart';
-import 'package:free_flutter_admin_dashboard/pages/dashboard/channel_widget.dart';
-import 'package:free_flutter_admin_dashboard/pages/dashboard/grid_card.dart';
-import 'package:free_flutter_admin_dashboard/pages/dashboard/revenue_widget.dart';
-import 'package:free_flutter_admin_dashboard/pages/layout.dart';
+import 'package:flareline/components/card/white_card.dart';
+import 'package:flareline/components/charts/bar_chart.dart';
+import 'package:flareline/components/chats.dart';
+import 'package:flareline/components/charts/circular_chart.dart';
+import 'package:flareline/components/charts/line_chart.dart';
+import 'package:flareline/components/charts/map_chart.dart';
+import 'package:flareline/components/tables/TopChannel.dart';
+import 'package:flareline/pages/dashboard/analytics_widget.dart';
+import 'package:flareline/pages/dashboard/channel_widget.dart';
+import 'package:flareline/pages/dashboard/grid_card.dart';
+import 'package:flareline/pages/dashboard/revenue_widget.dart';
+import 'package:flareline/pages/layout.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
 class EcommercePage extends LayoutWidget {

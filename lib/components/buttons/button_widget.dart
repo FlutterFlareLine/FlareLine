@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:free_flutter_admin_dashboard/themes/global_colors.dart';
+import 'package:flareline/themes/global_colors.dart';
 
 import 'package:hexcolor/hexcolor.dart';
 

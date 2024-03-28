@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:free_flutter_admin_dashboard/components/sidebar/side_menu.dart';
-import 'package:free_flutter_admin_dashboard/themes/global_colors.dart';
+import 'package:flareline/components/sidebar/side_menu.dart';
+import 'package:flareline/themes/global_colors.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 

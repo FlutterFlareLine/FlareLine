@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:free_flutter_admin_dashboard/pages/layout.dart';
-import 'package:free_flutter_admin_dashboard/themes/global_colors.dart';
+import 'package:flareline/pages/layout.dart';
+import 'package:flareline/themes/global_colors.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:free_flutter_admin_dashboard/routes.dart';
+import 'package:flareline/routes.dart';
 
 class MainProvider with ChangeNotifier {
   String _selectedPath = '/dashboard';

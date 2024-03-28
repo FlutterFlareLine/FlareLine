@@ -2,10 +2,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 
-import 'package:free_flutter_admin_dashboard/components/buttons/button_widget.dart';
-import 'package:free_flutter_admin_dashboard/components/card/title_card.dart';
-import 'package:free_flutter_admin_dashboard/pages/layout.dart';
-import 'package:free_flutter_admin_dashboard/themes/global_colors.dart';
+import 'package:flareline/components/buttons/button_widget.dart';
+import 'package:flareline/components/card/title_card.dart';
+import 'package:flareline/pages/layout.dart';
+import 'package:flareline/themes/global_colors.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ButtonPage extends LayoutWidget {

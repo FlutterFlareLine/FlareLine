@@ -2,11 +2,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 
-import 'package:free_flutter_admin_dashboard/components/card/white_card.dart';
-import 'package:free_flutter_admin_dashboard/components/charts/bar_chart.dart';
-import 'package:free_flutter_admin_dashboard/components/charts/circular_chart.dart';
-import 'package:free_flutter_admin_dashboard/components/charts/line_chart.dart';
-import 'package:free_flutter_admin_dashboard/pages/layout.dart';
+import 'package:flareline/components/card/white_card.dart';
+import 'package:flareline/components/charts/bar_chart.dart';
+import 'package:flareline/components/charts/circular_chart.dart';
+import 'package:flareline/components/charts/line_chart.dart';
+import 'package:flareline/pages/layout.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ChartPage extends LayoutWidget {

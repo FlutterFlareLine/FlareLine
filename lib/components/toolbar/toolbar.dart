@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:free_flutter_admin_dashboard/components/buttons/button_widget.dart';
-import 'package:free_flutter_admin_dashboard/provider/localization_provider.dart';
-import 'package:free_flutter_admin_dashboard/themes/global_colors.dart';
+import 'package:flareline/components/buttons/button_widget.dart';
+import 'package:flareline/provider/localization_provider.dart';
+import 'package:flareline/themes/global_colors.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:provider/provider.dart';
 import 'package:responsive_builder/responsive_builder.dart';

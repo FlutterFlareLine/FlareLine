@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:free_flutter_admin_dashboard/components/card/white_card.dart';
+import 'package:flareline/components/card/white_card.dart';
 
 class TitleCard extends StatelessWidget {
   final String title;

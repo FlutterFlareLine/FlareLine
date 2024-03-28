@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:free_flutter_admin_dashboard/components/chats.dart';
-import 'package:free_flutter_admin_dashboard/components/tables/TopChannel.dart';
+import 'package:flareline/components/chats.dart';
+import 'package:flareline/components/tables/TopChannel.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
 class ChannelWidget extends StatelessWidget {

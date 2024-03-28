@@ -1,4 +1,4 @@
-package com.example.free_flutter_admin_dashboard
+package top.flareline.app
 
 import io.flutter.embedding.android.FlutterActivity
 

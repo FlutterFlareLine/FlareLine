@@ -1,9 +1,9 @@
 import 'package:bitsdojo_window/bitsdojo_window.dart';
 import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:flutter/material.dart';
-import 'package:free_flutter_admin_dashboard/provider/localization_provider.dart';
-import 'package:free_flutter_admin_dashboard/provider/main_provider.dart';
-import 'package:free_flutter_admin_dashboard/routes.dart';
+import 'package:flareline/provider/localization_provider.dart';
+import 'package:flareline/provider/main_provider.dart';
+import 'package:flareline/routes.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_web_plugins/url_strategy.dart';

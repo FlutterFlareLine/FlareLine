@@ -3,10 +3,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-import 'package:free_flutter_admin_dashboard/components/card/white_card.dart';
-import 'package:free_flutter_admin_dashboard/components/forms/form_file_picker.dart';
-import 'package:free_flutter_admin_dashboard/components/forms/outborder_text_form_field.dart';
-import 'package:free_flutter_admin_dashboard/pages/layout.dart';
+import 'package:flareline/components/card/white_card.dart';
+import 'package:flareline/components/forms/form_file_picker.dart';
+import 'package:flareline/components/forms/outborder_text_form_field.dart';
+import 'package:flareline/pages/layout.dart';
 import 'package:getwidget/components/checkbox/gf_checkbox.dart';
 import 'package:getwidget/components/dropdown/gf_dropdown.dart';
 import 'package:getwidget/getwidget.dart';

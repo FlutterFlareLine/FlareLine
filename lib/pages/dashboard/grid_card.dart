@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:free_flutter_admin_dashboard/components/card/white_card.dart';
+import 'package:flareline/components/card/white_card.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 

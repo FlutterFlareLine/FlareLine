@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-import 'package:free_flutter_admin_dashboard/provider/main_provider.dart';
+import 'package:flareline/provider/main_provider.dart';
 import 'package:provider/provider.dart';
 
 class SideMenuWidget extends StatelessWidget {

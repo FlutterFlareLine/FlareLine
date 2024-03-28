@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'package:free_flutter_admin_dashboard/components/breaktab.dart';
-import 'package:free_flutter_admin_dashboard/themes/global_colors.dart';
+import 'package:flareline/components/breaktab.dart';
+import 'package:flareline/themes/global_colors.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
 abstract class LayoutWidget extends StatelessWidget {

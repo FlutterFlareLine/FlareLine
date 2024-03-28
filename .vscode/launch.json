@@ -5,7 +5,7 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "free_flutter_admin_dashboard",
+            "name": "flareline",
             "request": "launch",
             "type": "dart",
             "args": [
@@ -13,13 +13,13 @@
             ]
         },
         {
-            "name": "free_flutter_admin_dashboard (profile mode)",
+            "name": "flareline (profile mode)",
             "request": "launch",
             "type": "dart",
             "flutterMode": "profile"
         },
         {
-            "name": "free_flutter_admin_dashboard (release mode)",
+            "name": "flareline (release mode)",
             "request": "launch",
             "type": "dart",
             "flutterMode": "release"
