@@ -554,6 +554,14 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "25.1.35"
+  syncfusion_flutter_maps:
+    dependency: "direct main"
+    description:
+      name: syncfusion_flutter_maps
+      sha256: "6a386067f08e6b72992486bb96b86002a27751d90f2e120fc376c3b5c777ae57"
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "25.1.35"
   term_glyph:
     dependency: transitive
     description:

@@ -1,3 +1,4 @@
+import 'package:flareline/themes/global_colors.dart';
 import 'package:flutter/material.dart';
 
 import 'package:provider/provider.dart';
@@ -6,114 +7,47 @@ import 'package:syncfusion_flutter_charts/charts.dart';
 class LineChartWidget extends StatelessWidget {
   LineChartWidget({super.key});
 
+  ValueNotifier<int> selectedOption = ValueNotifier(1);
+
   @override
   Widget build(BuildContext context) {
     return _lineChart(context);
   }
 
-  ValueNotifier<int> selectedOption = ValueNotifier(1);
-
   _lineChart(BuildContext context) {
     return Padding(
-        padding: EdgeInsets.all(12),
+        padding: const EdgeInsets.all(12),
         child: Column(
           children: [
             SizedBox(
               width: double.maxFinite,
               height: 60,
               child: Row(children: [
-                Expanded(
-                    child: Row(
-                  children: [
-                    Expanded(
-                      child: ListTile(
-                          title: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text('Total Revenue'),
-                              Text(
-                                '12.04.2022 - 12.05.2022',
-                                style: TextStyle(fontSize: 10),
-                              )
-                            ],
-                          ),
-                          leading: ValueListenableBuilder(
-                              valueListenable: selectedOption,
-                              builder: (ctx, option, widget) {
-                                return Radio<int>(
-                                  value: 1,
-                                  groupValue: option,
-                                  activeColor: Colors.red,
-                                  // Change the active radio button color here
-                                  fillColor:
-                                      MaterialStateProperty.all(Colors.red),
-                                  // Change the fill color when selected
-                                  splashRadius: 20,
-                                  // Change the splash radius when clicked
-                                  onChanged: (int? value) {
-                                    selectedOption.value = value!;
-                                  },
-                                );
-                              })),
-                    ),
-                    Expanded(
-                      child: ListTile(
-                          title: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text('Total Sales'),
-                              Text(
-                                '12.04.2022 - 12.05.2022',
-                                style: TextStyle(fontSize: 10),
-                              )
-                            ],
-                          ),
-                          leading: ValueListenableBuilder(
-                              valueListenable: selectedOption,
-                              builder: (ctx, option, widget) {
-                                return Radio<int>(
-                                  value: 2,
-                                  groupValue: option,
-                                  activeColor: Colors.red,
-                                  // Change the active radio button color here
-                                  fillColor:
-                                      MaterialStateProperty.all(Colors.red),
-                                  // Change the fill color when selected
-                                  splashRadius: 20,
-                                  // Change the splash radius when clicked
-                                  onChanged: (int? value) {
-                                    selectedOption.value = value!;
-                                  },
-                                );
-                              })),
-                    ),
-                  ],
-                )),
+                const Spacer(),
                 Container(
-                  child:
-                      Row(mainAxisAlignment: MainAxisAlignment.end, children: [
-                    MaterialButton(
-                      onPressed: () {},
-                      child: Text('Day'),
-                    ),
-                    MaterialButton(
-                      onPressed: () {},
-                      child: Text('Week'),
-                    ),
-                    MaterialButton(
-                      onPressed: () {},
-                      child: Text('Month'),
-                    )
-                  ]),
-                )
+                  padding: const EdgeInsets.symmetric(vertical: 6,horizontal: 8),
+                  color: gray,
+                  child: Row(mainAxisAlignment: MainAxisAlignment.end, children: [
+                  MaterialButton(
+                    color:Colors.white,
+                    onPressed: () {},
+                    child: const Text('Day'),
+                  ),
+                  MaterialButton(
+                    onPressed: () {},
+                    child: const Text('Week'),
+                  ),
+                  MaterialButton(
+                    onPressed: () {},
+                    child: const Text('Month'),
+                  )
+                ]),)
               ]),
             ),
             Expanded(
-                child: Container(
-              child: ChangeNotifierProvider(
-                create: (context) => _LineChartProvider(),
-                builder: (ctx, child) => _buildDefaultLineChart(ctx),
-              ),
+                child: ChangeNotifierProvider(
+              create: (context) => _LineChartProvider(),
+              builder: (ctx, child) => _buildDefaultLineChart(ctx),
             ))
           ],
         ));
@@ -122,9 +56,9 @@ class LineChartWidget extends StatelessWidget {
   SfCartesianChart _buildDefaultLineChart(BuildContext context) {
     return SfCartesianChart(
       plotAreaBorderWidth: 0,
-      title: ChartTitle(text: ''),
-      legend:
-          Legend(isVisible: true, overflowMode: LegendItemOverflowMode.wrap),
+      title: const ChartTitle(text: ''),
+      legend: const Legend(
+          isVisible: true, position: LegendPosition.top),
       primaryXAxis: const NumericAxis(
           edgeLabelPlacement: EdgeLabelPlacement.shift,
           interval: 1,
@@ -149,12 +83,12 @@ class LineChartWidget extends StatelessWidget {
           xValueMapper: (_ChartData sales, _) => sales.x,
           yValueMapper: (_ChartData sales, _) => sales.y,
           name: 'Germany',
-          isVisibleInLegend: false,
+          // isVisibleInLegend: false,
           markerSettings: const MarkerSettings(isVisible: true)),
       LineSeries<_ChartData, num>(
           dataSource: chartData,
           name: 'England',
-          isVisibleInLegend: false,
+          // isVisibleInLegend: false,
           xValueMapper: (_ChartData sales, _) => sales.x,
           yValueMapper: (_ChartData sales, _) => sales.y2,
           markerSettings: const MarkerSettings(isVisible: true))

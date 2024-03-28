@@ -15,10 +15,10 @@ class CircularhartWidget extends StatelessWidget {
 
   _lineChart(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.all(12),
+      padding: const EdgeInsets.all(12),
       child: Column(
         children: [
-          Row(
+          const Row(
             children: [
               Text(
                 'Visitors Analytics',
@@ -26,16 +26,14 @@ class CircularhartWidget extends StatelessWidget {
               )
             ],
           ),
-          SizedBox(
+          const SizedBox(
             height: 16,
           ),
           Expanded(
-              child: Container(
-            child: ChangeNotifierProvider(
-              create: (context) => _BarChartProvider(),
-              builder: (ctx, child) => _buildDefaultLineChart(ctx),
-            ),
-          ))
+              child: ChangeNotifierProvider(
+                create: (context) => _BarChartProvider(),
+                builder: (ctx, child) => _buildDefaultLineChart(ctx),
+              ))
         ],
       ),
     );
@@ -43,9 +41,9 @@ class CircularhartWidget extends StatelessWidget {
 
   Widget _buildDefaultLineChart(BuildContext context) {
     return SfCircularChart(
-      title: ChartTitle(text: ''),
+      title: const ChartTitle(text: ''),
       legend:
-          Legend(isVisible: true, overflowMode: LegendItemOverflowMode.wrap),
+          const Legend(isVisible: true, overflowMode: LegendItemOverflowMode.wrap),
       series: _getDefaultColumnSeries(context),
       tooltipBehavior: context.read<_BarChartProvider>().tooltipBehavior,
     );
@@ -60,7 +58,7 @@ class CircularhartWidget extends StatelessWidget {
       DoughnutSeries<_ChartData, String>(
           explode: false,
           dataSource: chartData,
-          xValueMapper: (_ChartData data, _) => data.x as String,
+          xValueMapper: (_ChartData data, _) => data.x,
           yValueMapper: (_ChartData data, _) => data.y,
           dataLabelMapper: (_ChartData data, _) => '${data.y}%',
           dataLabelSettings: const DataLabelSettings(
@@ -80,13 +78,13 @@ class _ChartData {
 
 class _BarChartProvider extends ChangeNotifier {
   List<_ChartData>? chartData = <_ChartData>[
-    _ChartData('M', 21, 28),
-    _ChartData('T', 24, 44),
-    _ChartData('W', 36, 48),
-    _ChartData('T', 38, 50),
-    _ChartData('F', 54, 66),
-    _ChartData('S', 57, 78),
-    _ChartData('S', 70, 84)
+    _ChartData('Mon', 21, 28),
+    _ChartData('Tus', 24, 44),
+    _ChartData('Wen', 36, 48),
+    _ChartData('Thr', 38, 50),
+    _ChartData('Fri', 54, 66),
+    _ChartData('Sat', 57, 78),
+    _ChartData('Sun', 70, 84)
   ];
 
   TooltipBehavior tooltipBehavior =

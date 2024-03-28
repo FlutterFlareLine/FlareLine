@@ -14,21 +14,19 @@ class BarChartWidget extends StatelessWidget {
   ValueNotifier<int> selectedOption = ValueNotifier(1);
 
   _lineChart(BuildContext context) {
-    return Padding(padding: EdgeInsets.all(12),child: Column(
+    return Padding(padding: const EdgeInsets.all(12),child: Column(
       children: [
-        Row(
+        const Row(
           children: [
             Text('Profit this week',style: TextStyle(fontSize: 14,fontWeight: FontWeight.bold),)
           ],
         ),
-        SizedBox(height: 16,),
+        const SizedBox(height: 16,),
         Expanded(
-            child: Container(
-          child: ChangeNotifierProvider(
-            create: (context) => _BarChartProvider(),
-            builder: (ctx, child) => _buildDefaultLineChart(ctx),
-          ),
-        ))
+            child: ChangeNotifierProvider(
+              create: (context) => _BarChartProvider(),
+              builder: (ctx, child) => _buildDefaultLineChart(ctx),
+            ))
       ],
     ),);
   }
@@ -37,7 +35,9 @@ class BarChartWidget extends StatelessWidget {
     return SfCartesianChart(
       plotAreaBorderWidth: 0,
       enableSideBySideSeriesPlacement: true,
-      title: ChartTitle(text: ''),
+      title: const ChartTitle(text: ''),
+      legend: const Legend(
+          isVisible: true, position: LegendPosition.top),
       primaryXAxis: const CategoryAxis(
         majorGridLines: MajorGridLines(width: 0),
       ),
@@ -45,7 +45,7 @@ class BarChartWidget extends StatelessWidget {
           axisLine: AxisLine(width: 0),
           labelFormat: '{value}%',
           majorTickLines: MajorTickLines(size: 0),
-          majorGridLines: const MajorGridLines(width: 1),
+          majorGridLines: MajorGridLines(width: 1),
           rangePadding: ChartRangePadding.additional),
       series: _getDefaultColumnSeries(context),
       tooltipBehavior: context.read<_BarChartProvider>().tooltipBehavior,
@@ -60,14 +60,14 @@ class BarChartWidget extends StatelessWidget {
     return <ColumnSeries<_ChartData, String>>[
       ColumnSeries<_ChartData, String>(
         dataSource: chartData,
-        xValueMapper: (_ChartData sales, _) => '${sales.x}',
+        xValueMapper: (_ChartData sales, _) => sales.x,
         yValueMapper: (_ChartData sales, _) => sales.y,
         dataLabelSettings: const DataLabelSettings(
             isVisible: true, textStyle: TextStyle(fontSize: 10)),
       ),
       ColumnSeries<_ChartData, String>(
         dataSource: chartData,
-        xValueMapper: (_ChartData sales, _) => '${sales.x}',
+        xValueMapper: (_ChartData sales, _) => sales.x,
         yValueMapper: (_ChartData sales, _) => sales.y2,
         dataLabelSettings: const DataLabelSettings(
             isVisible: true, textStyle: TextStyle(fontSize: 10)),
@@ -85,13 +85,13 @@ class _ChartData {
 
 class _BarChartProvider extends ChangeNotifier {
   List<_ChartData>? chartData = <_ChartData>[
-    _ChartData('M', 21, 28),
-    _ChartData('T', 24, 44),
-    _ChartData('W', 36, 48),
-    _ChartData('T', 38, 50),
-    _ChartData('F', 54, 66),
-    _ChartData('S', 57, 78),
-    _ChartData('S', 70, 84)
+    _ChartData('Mon', 21, 28),
+    _ChartData('Tus', 24, 44),
+    _ChartData('Wen', 36, 48),
+    _ChartData('Thr', 38, 50),
+    _ChartData('Fri', 54, 66),
+    _ChartData('Sat', 57, 78),
+    _ChartData('Sun', 70, 84)
   ];
 
   TooltipBehavior tooltipBehavior =

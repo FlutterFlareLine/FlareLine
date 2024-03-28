@@ -53,6 +53,8 @@ dependencies:
 
   syncfusion_flutter_datagrid: ^25.1.35
 
+  syncfusion_flutter_maps: any
+
   transparent_image: ^2.0.1
 
   dual_screen: ^1.0.4
@@ -119,6 +121,7 @@ flutter:
     - assets/alert/
     - assets/toolbar/
     - assets/sidebar/
+    - assets/australia.json
   #   - assets/a_dot_burr.jpeg
   #   - assets/a_dot_ham.jpeg
 
