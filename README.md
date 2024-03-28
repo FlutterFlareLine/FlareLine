@@ -2,7 +2,7 @@
 
 FlareLine is a free and open-source admin dashboard template built on **Flutter** providing developers with everything they need to create a feature-rich and data-driven: back-end, dashboard, or admin panel solution for any sort of web/mac/windows/android/iOS project.
 
-![screenshot1.png](snapshots%2Fscreenshot1.png)
+![screenshot.png](snapshots%2Fscreenshot.png)
 
 With FlareLine Flutter, you get access to all the necessary dashboard UI components, elements, and pages required to build a high-quality and complete dashboard or admin panel. Whether you're building a dashboard or admin panel for a complex web application or a simple website. 
 
