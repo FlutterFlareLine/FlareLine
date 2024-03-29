@@ -1,3 +1,4 @@
+import 'package:flareline/components/tags/tag_widget.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flareline/components/card/white_card.dart';
@@ -55,6 +56,7 @@ class TopChannelWidget extends StatelessWidget {
                     fontWeight: FontWeight.bold,
                     color: Colors.black,
                   ),
+
                   dividerThickness: 0.5,
                   columns: [
                     DataColumn(
@@ -84,13 +86,13 @@ class TopChannelWidget extends StatelessWidget {
                                 Text(e.visitors),
                               ),
                               DataCell(
-                                Text(e.revenues),
+                                TagWidget(text: e.revenues, tagType: TagType.Success,),
                               ),
                               DataCell(
                                 Text(e.sales),
                               ),
                               DataCell(
-                                Text(e.conversations),
+                                TagWidget(text: e.conversations, tagType: TagType.Secondary,),
                               ),
                             ],
                           ))
