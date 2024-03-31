@@ -57,9 +57,9 @@ dependencies:
 
   transparent_image: ^2.0.1
 
-  dual_screen: ^1.0.4
+  # dual_screen: ^1.0.4
 
-  google_fonts: ^6.2.1
+  # google_fonts: any
 
   flutter_svg: ^2.0.9
 
@@ -75,7 +75,7 @@ dependencies:
 
   responsive_builder: ^0.7.0
 
-  bitsdojo_window: ^0.1.6
+  window_manager: ^0.3.8
 
   intl: any
 
