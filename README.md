@@ -46,10 +46,7 @@ You can use XAdmin Cloud for a fully managed solution. If you want to self-host 
 * add .arb file to lib/l10n, like app_es.arb/app_zh.arb/app_th.arb...
 * run `flutter gen-l10n` generate localization files
 * import package `import 'package:flutter_gen/gen_l10n/app_localizations.dart';`
-* use `AppLocalizations.of(context)!.name` to use it 
-
-### 🔗 Thanks
-*   Nextjs-Free-Demo https://github.com/TailAdmin/free-nextjs-admin-dashboard
+* use `AppLocalizations.of(context)!.name` to use it
 
 ### 📄 License
 FlareLine Flutter Free is 100% free and open-source; feel free to use it with your personal and commercial projects.
