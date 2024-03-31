@@ -72,7 +72,7 @@ class AlertPage extends LayoutWidget {
       required Color titleColor,
       required Color contentColor}) {
     return Container(
-      height: 120,
+      height: 150,
       color: color,
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,

@@ -16,7 +16,6 @@ class CalendarPage extends LayoutWidget {
   Widget contentDesktopWidget(BuildContext context) {
     return Container(
       color: Colors.white,
-      margin: const EdgeInsets.symmetric(horizontal: 80),
       height: 800,
       child: SfCalendar(
         view: CalendarView.month,
@@ -25,15 +24,21 @@ class CalendarPage extends LayoutWidget {
         headerStyle: const CalendarHeaderStyle(
           backgroundColor: Colors.transparent,
         ),
-        monthViewSettings: const MonthViewSettings(showAgenda: true,dayFormat: 'EEEE',agendaViewHeight: 200, agendaStyle: AgendaStyle(
-          backgroundColor: Colors.white,
-          appointmentTextStyle: TextStyle(color: red)
-        ) ),
-        viewHeaderHeight:60,
+        monthViewSettings: const MonthViewSettings(
+            showAgenda: true,
+            // dayFormat: 'EEEE',
+            agendaViewHeight: 200,
+            agendaStyle: AgendaStyle(
+                backgroundColor: Colors.white,
+                appointmentTextStyle: TextStyle(color: red))),
+        viewHeaderHeight: 60,
         headerHeight: 60,
         viewHeaderStyle: const ViewHeaderStyle(
           backgroundColor: primary,
-          dayTextStyle: TextStyle(color: Colors.white, fontSize: 20,),
+          dayTextStyle: TextStyle(
+            color: Colors.white,
+            fontSize: 20,
+          ),
         ),
       ),
     );

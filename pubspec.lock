@@ -85,18 +85,18 @@ packages:
     dependency: transitive
     description:
       name: ffi
-      sha256: "7bf0adc28a23d395f19f3f1eb21dd7cfd1dd9f8e1c50051c069122e6853bc878"
+      sha256: "493f37e7df1804778ff3a53bd691d8692ddf69702cf4c1c1096a2e41b4779e21"
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "2.1.0"
+    version: "2.1.2"
   file_picker:
     dependency: "direct main"
     description:
       name: file_picker
-      sha256: caa6bc229eab3e32eb2f37b53a5f9d22a6981474afd210c512a7546c1e1a04f6
+      sha256: "1bbf65dd997458a08b531042ec3794112a6c39c07c37ff22113d2e7e4f81d4e4"
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "6.2.0"
+    version: "6.2.1"
   flex_color_scheme:
     dependency: "direct main"
     description:
@@ -217,10 +217,10 @@ packages:
     dependency: transitive
     description:
       name: http
-      sha256: a2bbf9d017fcced29139daa8ed2bba4ece450ab222871df93ca9eec6f80c34ba
+      sha256: "761a297c042deedc1ffbb156d6e2af13886bb305c2a343a4d972504cd67dd938"
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "1.2.0"
+    version: "1.2.1"
   http_parser:
     dependency: transitive
     description:
@@ -377,10 +377,10 @@ packages:
     dependency: transitive
     description:
       name: petitparser
-      sha256: cb3798bef7fc021ac45b308f4b51208a152792445cce0448c9a4ba5879dd8750
+      sha256: c15605cd28af66339f8eb6fbe0e541bfe2d1b72d5825efc6598f3e0a31b9ad27
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "5.4.0"
+    version: "6.0.2"
   platform:
     dependency: transitive
     description:
@@ -470,50 +470,50 @@ packages:
     dependency: "direct main"
     description:
       name: syncfusion_flutter_calendar
-      sha256: "2a41662f56368fc2dc63dd4b41e817470e031ee4cbc56121cd2edc6960ecf2f6"
+      sha256: "358fa20fb8e6348e10087d8bc610c470d74386e301bf13aa385460905f20d8b1"
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "25.1.35"
+    version: "25.1.37+1"
   syncfusion_flutter_charts:
     dependency: "direct main"
     description:
       name: syncfusion_flutter_charts
-      sha256: d3d06f23e6014c7fc591e4dc3c0646378a9affb38e366b9cf2537024d3f31b32
+      sha256: c702a611ebb21f13b7107a470d3751ed852a1ec5de0cae7ef9339ccb761b574f
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "25.1.35"
+    version: "25.1.37"
   syncfusion_flutter_core:
     dependency: transitive
     description:
       name: syncfusion_flutter_core
-      sha256: eac3cbf2278fa4993d9b97d92d050973025deebfbff970109843640dc770888c
+      sha256: d098e3cf5ee0c5a37b083f2efdb7c6bdfaabf871f68758bb491b10b61b3dd0d7
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "25.1.35"
+    version: "25.1.37"
   syncfusion_flutter_datagrid:
     dependency: "direct main"
     description:
       name: syncfusion_flutter_datagrid
-      sha256: "68d5f711c30fc3b74d070b6af05a16b1a6273dff74785acfb64668cfed0d3db1"
+      sha256: "4edf6a41ab6bc398a79a0a29aa67a3fca53dab492d6c844f4c28a94c030f1785"
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "25.1.35"
+    version: "25.1.37"
   syncfusion_flutter_datepicker:
     dependency: transitive
     description:
       name: syncfusion_flutter_datepicker
-      sha256: "37e0c694110d106aab43e6ab7b1823fc95db143c5038c6b7aaf3054b8f97db1d"
+      sha256: e5b41308be78c10fe90d7ca5cd60017d2b70bafb756a4cc18f43617c8eaeb069
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "25.1.35"
+    version: "25.1.37"
   syncfusion_flutter_maps:
     dependency: "direct main"
     description:
       name: syncfusion_flutter_maps
-      sha256: "6a386067f08e6b72992486bb96b86002a27751d90f2e120fc376c3b5c777ae57"
+      sha256: "3686bacedd728a518ed8d221eecbc6d07fbb20ab9b531d35d5ee86f997f01fde"
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "25.1.35"
+    version: "25.1.37"
   term_glyph:
     dependency: transitive
     description:
@@ -598,18 +598,18 @@ packages:
     dependency: transitive
     description:
       name: web
-      sha256: afe077240a270dcfd2aafe77602b4113645af95d0ad31128cc02bce5ac5d5152
+      sha256: "97da13628db363c635202ad97068d47c5b8aa555808e7a9411963c533b449b27"
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "0.3.0"
+    version: "0.5.1"
   win32:
     dependency: transitive
     description:
       name: win32
-      sha256: "464f5674532865248444b4c3daca12bd9bf2d7c47f759ce2617986e7229494a8"
+      sha256: "0a989dc7ca2bb51eac91e8fd00851297cfffd641aa7538b165c62637ca0eaa4a"
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "5.2.0"
+    version: "5.4.0"
   window_manager:
     dependency: "direct main"
     description:
@@ -630,10 +630,10 @@ packages:
     dependency: transitive
     description:
       name: xml
-      sha256: "5bc72e1e45e941d825fd7468b9b4cc3b9327942649aeb6fc5cdbf135f0a86e84"
+      sha256: b015a8ad1c488f66851d762d3090a21c600e479dc75e68328c52774040cf9226
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "6.3.0"
+    version: "6.5.0"
 sdks:
-  dart: ">=3.2.3 <4.0.0"
+  dart: ">=3.3.0 <4.0.0"
   flutter: ">=3.16.0"

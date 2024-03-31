@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flareline/provider/localization_provider.dart';
 import 'package:flareline/provider/main_provider.dart';
 import 'package:flareline/routes.dart';
@@ -12,30 +14,33 @@ import 'package:window_manager/window_manager.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  await windowManager.ensureInitialized();
-
   await GetStorage.init();
 
   usePathUrlStrategy();
 
-  WindowOptions windowOptions = const WindowOptions(
-    size: Size(1080, 720),
-    minimumSize: Size(480, 360),
-    center: true,
-    backgroundColor: Colors.transparent,
-    skipTaskbar: false,
-    titleBarStyle: TitleBarStyle.hidden,
-  );
-  windowManager.waitUntilReadyToShow(windowOptions, () async {
-    await windowManager.show();
-    await windowManager.focus();
-  });
+  if (!Platform.isAndroid && !Platform.isIOS) {
+    await windowManager.ensureInitialized();
 
+    WindowOptions windowOptions = const WindowOptions(
+      size: Size(1080, 720),
+      minimumSize: Size(480, 360),
+      center: true,
+      backgroundColor: Colors.transparent,
+      skipTaskbar: false,
+      // titleBarStyle: TitleBarStyle.hidden,
+    );
+    windowManager.waitUntilReadyToShow(windowOptions, () async {
+      await windowManager.show();
+      await windowManager.focus();
+    });
+  }
 
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MultiProvider(

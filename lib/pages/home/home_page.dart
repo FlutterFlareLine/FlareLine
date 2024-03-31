@@ -13,26 +13,28 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        appBar: AppBar(toolbarHeight: 0,),
         body: ResponsiveBuilder(builder: (context, sizingInformation) {
-      // Check the sizing information here and return your UI
-      if (sizingInformation.deviceScreenType == DeviceScreenType.desktop) {
-        return Row(
-          children: [
-            _sideBarWidget(context),
-            Expanded(child: _contentWidget(context))
-          ],
-        );
-      }
+          // Check the sizing information here and return your UI
+          if (sizingInformation.deviceScreenType == DeviceScreenType.desktop) {
+            return Row(
+              children: [
+                _sideBarWidget(context),
+                Expanded(child: _contentWidget(context))
+              ],
+            );
+          }
 
-      return _contentWidget(context);
-    }), drawer: ResponsiveBuilder(builder: (context, sizingInformation) {
-      if (sizingInformation.deviceScreenType == DeviceScreenType.desktop) {
-        return const SizedBox();
-      }
-      return Drawer(
-        child: _sideBarWidget(context),
-      );
-    }));
+          return _contentWidget(context);
+        }),
+        drawer: ResponsiveBuilder(builder: (context, sizingInformation) {
+          if (sizingInformation.deviceScreenType == DeviceScreenType.desktop) {
+            return const SizedBox();
+          }
+          return Drawer(
+            child: _sideBarWidget(context),
+          );
+        }));
   }
 
   _sideBarWidget(BuildContext context) {
