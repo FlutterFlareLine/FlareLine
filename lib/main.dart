@@ -7,9 +7,9 @@ import 'package:flareline/themes/global_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_web_plugins/url_strategy.dart';
+import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:provider/provider.dart';
-import 'package:universal_platform/universal_platform.dart';
 import 'package:window_manager/window_manager.dart';
 
 void main() async {
@@ -19,7 +19,7 @@ void main() async {
 
   usePathUrlStrategy();
 
-  if (UniversalPlatform.isDesktop && !UniversalPlatform.isWeb) {
+  if (GetPlatform.isDesktop && !GetPlatform.isWeb) {
     await windowManager.ensureInitialized();
 
     WindowOptions windowOptions = const WindowOptions(
