@@ -76,6 +76,13 @@ class SignInWidget extends LayoutWidget {
               labelText: AppLocalizations.of(context)!.email,
               hintText: AppLocalizations.of(context)!.emailHint,
               keyboardType: TextInputType.emailAddress,
+              validator: (value) {
+                if (value!.isEmpty || !value.contains('@')) {
+                  return 'Please enter a valid email address';
+                } else {
+                  return null;
+                }
+              },
               suffixWidget: SvgPicture.asset(
                 'assets/signin/email.svg',
                 width: 22,
@@ -89,6 +96,14 @@ class SignInWidget extends LayoutWidget {
               obscureText: true,
               labelText: AppLocalizations.of(context)!.password,
               hintText: AppLocalizations.of(context)!.passwordHint,
+              keyboardType: TextInputType.visiblePassword,
+              validator: (value) {
+                if (value!.isEmpty || value.length < 6) {
+                  return 'Please enter a valid password';
+                } else {
+                  return null;
+                }
+              },
               suffixWidget: SvgPicture.asset(
                 'assets/signin/lock.svg',
                 width: 22,

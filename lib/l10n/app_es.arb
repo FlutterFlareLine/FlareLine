@@ -8,7 +8,7 @@
    "email": "Correo electrónico",
    "emailHint": "Ingrese su correo electrónico",
    "password": "Contraseña",
-   "passwordHint": "6+ caracteres, 1 letra mayúscula",
+   "passwordHint": "6+ caracteres",
    "signIn": "Iniciar sesión",
    "signInWithGoogle": "Iniciar sesión con Google",
    "dontHaveAccount": "¿No tienes ninguna cuenta?",

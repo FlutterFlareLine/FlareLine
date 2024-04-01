@@ -8,7 +8,7 @@
   "email": "Email",
   "emailHint": "Enter your email",
   "password": "Password",
-  "passwordHint": "6+ Characters, 1 Capital letter",
+  "passwordHint": "6+ Characters",
   "signIn": "Sign In",
   "signInWithGoogle": "Sign in with Google",
   "dontHaveAccount": "Don\\'t have any account?",

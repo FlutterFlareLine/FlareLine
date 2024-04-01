@@ -5,11 +5,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flareline/components/sidebar/side_menu.dart';
 import 'package:flareline/themes/global_colors.dart';
-import 'package:hexcolor/hexcolor.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class SideBarWidger extends StatelessWidget {
-  SideBarWidger({super.key});
+  const SideBarWidger({super.key});
 
   @override
   Widget build(BuildContext context) {

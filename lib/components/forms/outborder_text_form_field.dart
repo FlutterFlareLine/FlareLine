@@ -12,6 +12,7 @@ class OutBorderTextFormField extends StatelessWidget {
   final bool? obscureText;
   final TextInputType? keyboardType;
   final Widget? icon;
+  final FormFieldValidator? validator;
 
   OutBorderTextFormField(
       {super.key,
@@ -24,7 +25,8 @@ class OutBorderTextFormField extends StatelessWidget {
       this.suffixWidget,
       this.obscureText,
       this.keyboardType,
-      this.icon});
+      this.icon,
+      this.validator});
 
   @override
   Widget build(BuildContext context) {
@@ -50,6 +52,7 @@ class OutBorderTextFormField extends StatelessWidget {
                   initialValue: initialValue,
                   controller: controller,
                   maxLines: maxLines,
+                  validator: validator,
                   decoration: InputDecoration(
                       prefixIcon: icon,
                       prefixIconConstraints: const BoxConstraints(
