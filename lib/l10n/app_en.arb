@@ -116,7 +116,8 @@
   "basicChart": "Basic Chart",
   "eCommerce": "eCommerce",
   "buttons": "Buttons",
-  "authentication": "Authentication"
+  "authentication": "Authentication",
+  "advanceTable":"AdvanceTable"
 
 
 

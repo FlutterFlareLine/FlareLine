@@ -7,7 +7,6 @@ import 'package:flareline/components/buttons/button_widget.dart';
 import 'package:flareline/components/card/white_card.dart';
 import 'package:flareline/components/forms/outborder_text_form_field.dart';
 import 'package:flareline/pages/layout.dart';
-import 'package:getwidget/getwidget.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class FormLayoutPage extends LayoutWidget {

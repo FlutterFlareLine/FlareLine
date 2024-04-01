@@ -84,6 +84,8 @@ dependencies:
   avatar_glow: ^3.0.1
 
   get: ^4.6.6
+
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -124,6 +126,7 @@ flutter:
     - assets/toolbar/
     - assets/sidebar/
     - assets/australia.json
+    - assets/routes/
   #   - assets/a_dot_burr.jpeg
   #   - assets/a_dot_ham.jpeg
 

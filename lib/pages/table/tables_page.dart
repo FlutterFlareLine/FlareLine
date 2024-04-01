@@ -30,6 +30,6 @@ class TablesPage extends LayoutWidget {
 
   @override
   String breakTabTitle(BuildContext context) {
-    return 'Tables';
+    return AppLocalizations.of(context)!.tables;
   }
 }
