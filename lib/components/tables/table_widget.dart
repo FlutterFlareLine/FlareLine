@@ -1,27 +1,29 @@
+import 'dart:convert';
+
 import 'package:flareline/components/loading/loading.dart';
 import 'package:flareline/components/tags/tag_widget.dart';
+import 'package:flareline/entity/table_data_entity.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flareline/components/card/white_card.dart';
 import 'package:flareline/themes/global_colors.dart';
+import 'package:flutter/services.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-class TableWidget<P extends TableWidgetProvider> extends StatelessWidget {
+class TableWidget extends StatelessWidget {
   TableWidget({super.key});
 
-  late P p;
 
-  List<String> get headersText => [];
 
-  dynamic viewModel() {
-    return null;
+  Future<TableDataEntity> loadData() {
+    return Future(() => TableDataEntity());
   }
+
 
   @override
   Widget build(BuildContext context) {
-    p = viewModel();
 
     return WhiteCard(
         child: Padding(
@@ -37,25 +39,24 @@ class TableWidget<P extends TableWidgetProvider> extends StatelessWidget {
             height: 16,
           ),
           Expanded(
-              child: ChangeNotifierProvider<P>(
-            create: (context) => p,
-            builder: (ctx, child) => _buildWidget(ctx, p),
-          )),
+              child: _buildWidget(context)),
         ],
       ),
     ));
   }
 
-  _buildWidget(BuildContext context, P p) {
-    return FutureBuilder<List<List<ColumnData>>>(
-        future: p.loadData(),
+  _buildWidget(BuildContext context) {
+    return FutureBuilder<TableDataEntity>(
+        future: loadData(),
         builder: ((context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting ||
               snapshot.data == null) {
             return const LoadingWidget();
           }
 
-          List<List<ColumnData>> list = snapshot.data ?? [];
+          List<String> headers = snapshot.data?.headers ?? [];
+
+          List<List<TableDataRowsTableDataRows>> rows = snapshot.data?.rows ?? [];
           return ConstrainedBox(
               constraints: const BoxConstraints(minWidth: double.infinity),
               child: DataTable(
@@ -69,38 +70,24 @@ class TableWidget<P extends TableWidgetProvider> extends StatelessWidget {
                     color: Colors.black,
                   ),
                   dividerThickness: 0.5,
-                  columns: headersText
-                      .map((e) => DataColumn(label: Text(e)))
-                      .toList(),
-                  rows: list
+                  columns:
+                      headers.map((e) => DataColumn(label: Text(e))).toList(),
+                  rows: rows
                       .map((e) => DataRow(
                             onSelectChanged: (selected) {},
                             cells: e
                                 .map((item) => DataCell(
-                                      item.customCellWidget != null
-                                          ? item.customCellWidget!
-                                          : Text(item.text ?? ''),
+                                      cellWidget(item),
                                     ))
                                 .toList(),
                           ))
                       .toList()));
         }));
   }
-}
 
-/// Custom business object class which contains properties to hold the detailed
-/// information about the employee which will be rendered in datagrid.
-class ColumnData {
-  String? text;
-
-  Widget? customCellWidget;
-
-  ColumnData({this.text, this.customCellWidget});
-}
-
-abstract class TableWidgetProvider<T extends ColumnData>
-    extends ChangeNotifier {
-  Future<List<List<ColumnData>>> loadData() {
-    return Future(() => []);
+  Widget cellWidget(TableDataRowsTableDataRows columnData) {
+    return Text(columnData.text ?? '');
   }
 }
+
+

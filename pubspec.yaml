@@ -85,6 +85,8 @@ dependencies:
 
   get: ^4.6.6
 
+  json_annotation: any
+
 
 dev_dependencies:
   flutter_test:
@@ -96,6 +98,8 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^2.0.0
+  build_runner: any
+  json_serializable: any
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -127,6 +131,7 @@ flutter:
     - assets/sidebar/
     - assets/australia.json
     - assets/routes/
+    - assets/api/
   #   - assets/a_dot_burr.jpeg
   #   - assets/a_dot_ham.jpeg
 

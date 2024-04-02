@@ -1,0 +1,116 @@
+{
+  "headers": [
+    "SOURCE",
+    "VISITORS",
+    "REVENUES",
+    "SALES",
+    "CONVERSATION"
+  ],
+  "rows": [
+    [
+      {
+        "text": "Google"
+      },
+      {
+        "text": "3.5K"
+      },
+      {
+        "text": "$5,768",
+        "dataType": "tag",
+        "tagType": "Success"
+      },
+      {
+        "text": "590"
+      },
+      {
+        "text": "4.8%",
+        "dataType": "tag",
+        "tagType": "Secondary"
+      }
+    ],
+    [
+      {
+        "text": "Google"
+      },
+      {
+        "text": "3.5K"
+      },
+      {
+        "text": "$5,768",
+        "dataType": "tag",
+        "tagType": "Success"
+      },
+      {
+        "text": "590"
+      },
+      {
+        "text": "4.8%",
+        "dataType": "tag",
+        "tagType": "Secondary"
+      }
+    ],
+    [
+      {
+        "text": "Google"
+      },
+      {
+        "text": "3.5K"
+      },
+      {
+        "text": "$5,768",
+        "dataType": "tag",
+        "tagType": "Success"
+      },
+      {
+        "text": "590"
+      },
+      {
+        "text": "4.8%",
+        "dataType": "tag",
+        "tagType": "Secondary"
+      }
+    ],
+    [
+      {
+        "text": "Google"
+      },
+      {
+        "text": "3.5K"
+      },
+      {
+        "text": "$5,768",
+        "dataType": "tag",
+        "tagType": "Success"
+      },
+      {
+        "text": "590"
+      },
+      {
+        "text": "4.8%",
+        "dataType": "tag",
+        "tagType": "Secondary"
+      }
+    ],
+    [
+      {
+        "text": "Google"
+      },
+      {
+        "text": "3.5K"
+      },
+      {
+        "text": "$5,768",
+        "dataType": "tag",
+        "tagType": "Success"
+      },
+      {
+        "text": "590"
+      },
+      {
+        "text": "4.8%",
+        "dataType": "tag",
+        "tagType": "Secondary"
+      }
+    ]
+  ]
+}
