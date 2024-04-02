@@ -17,56 +17,112 @@ class TopChannelWidget extends TableWidget<_DataProvider> {
 }
 
 class _DataProvider extends TableWidgetProvider {
-  List<List<ColumnData>> getEmployeeData() {
-    return [
-      [
-        ColumnData(text:'Google'),
-        ColumnData(text:'3.5K'),
-        ColumnData(customCellWidget: const TagWidget(text:r'$5,768', tagType: TagType.Success,),),
-        ColumnData(text:'590'),
-        ColumnData(customCellWidget: const TagWidget(text:'4.8%', tagType: TagType.Secondary,),),
-      ],
-      [
-        ColumnData(text:'Google'),
-        ColumnData(text:'3.5K'),
-        ColumnData(customCellWidget: const TagWidget(text:r'$5,768', tagType: TagType.Success,),),
-        ColumnData(text:'590'),
-        ColumnData(customCellWidget: const TagWidget(text:'4.8%', tagType: TagType.Secondary,),),
-      ],
-      [
-        ColumnData(text:'Google'),
-        ColumnData(text:'3.5K'),
-        ColumnData(customCellWidget: const TagWidget(text:r'$5,768', tagType: TagType.Success,),),
-        ColumnData(text:'590'),
-        ColumnData(customCellWidget: const TagWidget(text:'4.8%', tagType: TagType.Secondary,),),
-      ],
-      [
-        ColumnData(text:'Google'),
-        ColumnData(text:'3.5K'),
-        ColumnData(customCellWidget: const TagWidget(text:r'$5,768', tagType: TagType.Success,),),
-        ColumnData(text:'590'),
-        ColumnData(customCellWidget: const TagWidget(text:'4.8%', tagType: TagType.Secondary,),),
-      ],
-      [
-        ColumnData(text:'Google'),
-        ColumnData(text:'3.5K'),
-        ColumnData(customCellWidget: const TagWidget(text:r'$5,768', tagType: TagType.Success,),),
-        ColumnData(text:'590'),
-        ColumnData(customCellWidget: const TagWidget(text:'4.8%', tagType: TagType.Secondary,),),
-      ],
-      [
-        ColumnData(text:'Google'),
-        ColumnData(text:'3.5K'),
-        ColumnData(customCellWidget: const TagWidget(text:r'$5,768', tagType: TagType.Success,),),
-        ColumnData(text:'590'),
-        ColumnData(customCellWidget: const TagWidget(text:'4.8%', tagType: TagType.Secondary,),),
-      ],
-    ];
-  }
-
   @override
   Future<List<List<ColumnData>>> loadData() async {
     await Future.delayed(const Duration(seconds: 2));
-    return getEmployeeData();
+    return [
+      [
+        ColumnData(text: 'Google'),
+        ColumnData(text: '3.5K'),
+        ColumnData(
+          customCellWidget: const TagWidget(
+            text: r'$5,768',
+            tagType: TagType.Success,
+          ),
+        ),
+        ColumnData(text: '590'),
+        ColumnData(
+          customCellWidget: const TagWidget(
+            text: '4.8%',
+            tagType: TagType.Secondary,
+          ),
+        ),
+      ],
+      [
+        ColumnData(text: 'Google'),
+        ColumnData(text: '3.5K'),
+        ColumnData(
+          customCellWidget: const TagWidget(
+            text: r'$5,768',
+            tagType: TagType.Success,
+          ),
+        ),
+        ColumnData(text: '590'),
+        ColumnData(
+          customCellWidget: const TagWidget(
+            text: '4.8%',
+            tagType: TagType.Secondary,
+          ),
+        ),
+      ],
+      [
+        ColumnData(text: 'Google'),
+        ColumnData(text: '3.5K'),
+        ColumnData(
+          customCellWidget: const TagWidget(
+            text: r'$5,768',
+            tagType: TagType.Success,
+          ),
+        ),
+        ColumnData(text: '590'),
+        ColumnData(
+          customCellWidget: const TagWidget(
+            text: '4.8%',
+            tagType: TagType.Secondary,
+          ),
+        ),
+      ],
+      [
+        ColumnData(text: 'Google'),
+        ColumnData(text: '3.5K'),
+        ColumnData(
+          customCellWidget: const TagWidget(
+            text: r'$5,768',
+            tagType: TagType.Success,
+          ),
+        ),
+        ColumnData(text: '590'),
+        ColumnData(
+          customCellWidget: const TagWidget(
+            text: '4.8%',
+            tagType: TagType.Secondary,
+          ),
+        ),
+      ],
+      [
+        ColumnData(text: 'Google'),
+        ColumnData(text: '3.5K'),
+        ColumnData(
+          customCellWidget: const TagWidget(
+            text: r'$5,768',
+            tagType: TagType.Success,
+          ),
+        ),
+        ColumnData(text: '590'),
+        ColumnData(
+          customCellWidget: const TagWidget(
+            text: '4.8%',
+            tagType: TagType.Secondary,
+          ),
+        ),
+      ],
+      [
+        ColumnData(text: 'Google'),
+        ColumnData(text: '3.5K'),
+        ColumnData(
+          customCellWidget: const TagWidget(
+            text: r'$5,768',
+            tagType: TagType.Success,
+          ),
+        ),
+        ColumnData(text: '590'),
+        ColumnData(
+          customCellWidget: const TagWidget(
+            text: '4.8%',
+            tagType: TagType.Secondary,
+          ),
+        ),
+      ],
+    ];
   }
 }
