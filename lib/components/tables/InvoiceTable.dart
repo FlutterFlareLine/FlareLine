@@ -1,3 +1,4 @@
+import 'package:flareline/components/loading/loading.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flareline/components/card/white_card.dart';
@@ -27,7 +28,7 @@ class InvoiceTableWidget extends StatelessWidget {
         builder: ((context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting ||
               snapshot.data == null) {
-            return Text(AppLocalizations.of(context)!.loading);
+            return LoadingWidget();
           }
 
           return ConstrainedBox(

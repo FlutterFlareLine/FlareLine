@@ -13,17 +13,17 @@ class TablesPage extends LayoutWidget {
 
   @override
   Widget contentDesktopWidget(BuildContext context) {
-    return const Column(
+    return Column(
       children: [
         SizedBox(height: 450, width: double.maxFinite, child: TopChannelWidget()),
-        SizedBox(
+        const SizedBox(
           height: 16,
         ),
-        SizedBox(height: 450, width: double.maxFinite,  child:TopProductsWidget()),
-        SizedBox(
+        const SizedBox(height: 450, width: double.maxFinite,  child:TopProductsWidget()),
+        const SizedBox(
           height: 16,
         ),
-        SizedBox(height: 450, width: double.maxFinite,  child:InvoiceTableWidget()),
+        const SizedBox(height: 450, width: double.maxFinite,  child:InvoiceTableWidget()),
       ],
     );
   }

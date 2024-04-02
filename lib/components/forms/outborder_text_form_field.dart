@@ -56,7 +56,7 @@ class OutBorderTextFormField extends StatelessWidget {
                   decoration: InputDecoration(
                       prefixIcon: icon,
                       prefixIconConstraints: const BoxConstraints(
-                        maxWidth: 35,
+                        maxWidth: 40,
                         maxHeight: 22,
                       ),
                       labelText: '',

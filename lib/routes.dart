@@ -1,3 +1,4 @@
+import 'package:flareline/pages/table/contacts_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flareline/pages/home/home_page.dart';
 import 'package:flareline/pages/alerts/alert_page.dart';
@@ -24,25 +25,26 @@ typedef PathWidgetBuilder = Widget Function(BuildContext, String?);
 
 final List<Map<String, Object>> MAIN_PAGES = [
   {'routerPath': '/', 'widget': HomePage()},
-  {'routerPath': '/dashboard', 'widget': EcommercePage()},
-  {'routerPath': '/marketing', 'widget': MarketingPage()},
-  {'routerPath': '/crm', 'widget': CrmPage()},
-  {'routerPath': '/calendar', 'widget': CalendarPage()},
-  {'routerPath': '/profile', 'widget': ProfilePage()},
-  {'routerPath': '/list', 'widget': ListPage()},
-  {'routerPath': '/kanban', 'widget': KanbanPage()},
+  {'routerPath': '/dashboard', 'widget': const EcommercePage()},
+  {'routerPath': '/marketing', 'widget': const MarketingPage()},
+  {'routerPath': '/crm', 'widget': const CrmPage()},
+  {'routerPath': '/calendar', 'widget': const CalendarPage()},
+  {'routerPath': '/profile', 'widget': const ProfilePage()},
+  {'routerPath': '/list', 'widget': const ListPage()},
+  {'routerPath': '/kanban', 'widget': const KanbanPage()},
   {'routerPath': '/formElements', 'widget': FormElementsPage()},
   {'routerPath': '/formLayout', 'widget': FormLayoutPage()},
-  {'routerPath': '/signIn', 'widget': SignInWidget()},
-  {'routerPath': '/signUp', 'widget': SignUpWidget()},
-  {'routerPath': '/resetPwd', 'widget': ResetPwdWidget()},
-  {'routerPath': '/invoice', 'widget': InvoicePage()},
-  {'routerPath': '/inbox', 'widget': InboxWidget()},
-  {'routerPath': '/tables', 'widget': TablesPage()},
+  {'routerPath': '/signIn', 'widget': const SignInWidget()},
+  {'routerPath': '/signUp', 'widget': const SignUpWidget()},
+  {'routerPath': '/resetPwd', 'widget': const ResetPwdWidget()},
+  {'routerPath': '/invoice', 'widget': const InvoicePage()},
+  {'routerPath': '/inbox', 'widget': const InboxWidget()},
+  {'routerPath': '/tables', 'widget': const TablesPage()},
   {'routerPath': '/settings', 'widget': SettingsPage()},
-  {'routerPath': '/basicChart', 'widget': ChartPage()},
-  {'routerPath': '/buttons', 'widget': ButtonPage()},
-  {'routerPath': '/alerts', 'widget': AlertPage()},
+  {'routerPath': '/basicChart', 'widget': const ChartPage()},
+  {'routerPath': '/buttons', 'widget': const ButtonPage()},
+  {'routerPath': '/alerts', 'widget': const AlertPage()},
+  {'routerPath': '/contacts', 'widget': ContactsPage()},
 ];
 
 class RouteConfiguration {
