@@ -10,7 +10,7 @@ class TopChannelWidget extends TableWidget {
 
   @override
   Future<TableDataEntity> loadData() async {
-    String res = await rootBundle.loadString('api/channelTable.json');
+    String res = await rootBundle.loadString('assets/api/channelTable.json');
 
     Map<String, dynamic> map = json.decode(res);
     TableDataEntity tableDataEntity = TableDataEntity.fromJson(map);
