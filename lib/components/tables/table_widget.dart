@@ -86,6 +86,12 @@ class TableWidget extends StatelessWidget {
   }
 
   Widget cellWidget(TableDataRowsTableDataRows columnData) {
+    if (columnData.dataType == 'tag') {
+      return TagWidget(
+        text: columnData.text ?? '',
+        tagType: TagType.getTagType(columnData.tagType),
+      );
+    }
     return Text(columnData.text ?? '');
   }
 }
