@@ -55,15 +55,18 @@ class SideBarWidger extends StatelessWidget {
             future: DefaultAssetBundle.of(context)
                 .loadString('assets/routes/menu_route_en.json'),
             builder: (context, snapshot) {
-              // Decode the JSON
-              List listMenu = json.decode(snapshot.data.toString());
-              return ListView.separated(
-                  padding: const EdgeInsets.only(left: 20, right: 10),
-                  itemBuilder: (ctx, index) {
-                    return itemBuilder(ctx, index, listMenu);
-                  },
-                  separatorBuilder: separatorBuilder,
-                  itemCount: listMenu.length);
+              if(snapshot.hasData) {
+                // Decode the JSON
+                List listMenu = json.decode(snapshot.data.toString());
+                return ListView.separated(
+                    padding: const EdgeInsets.only(left: 20, right: 10),
+                    itemBuilder: (ctx, index) {
+                      return itemBuilder(ctx, index, listMenu);
+                    },
+                    separatorBuilder: separatorBuilder,
+                    itemCount: listMenu.length);
+              }
+              return const SizedBox.shrink();
             }));
   }
 
