@@ -62,11 +62,13 @@ class BarChartWidget extends StatelessWidget {
         dataSource: chartData,
         xValueMapper: (_ChartData sales, _) => sales.x,
         yValueMapper: (_ChartData sales, _) => sales.y,
+        color: Color(0xFFFE8111),
         dataLabelSettings: const DataLabelSettings(
             isVisible: true, textStyle: TextStyle(fontSize: 10)),
       ),
       ColumnSeries<_ChartData, String>(
         dataSource: chartData,
+        color: Color(0xFF12E3D7),
         xValueMapper: (_ChartData sales, _) => sales.x,
         yValueMapper: (_ChartData sales, _) => sales.y2,
         dataLabelSettings: const DataLabelSettings(

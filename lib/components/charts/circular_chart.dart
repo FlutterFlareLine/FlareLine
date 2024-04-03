@@ -42,6 +42,7 @@ class CircularhartWidget extends StatelessWidget {
   Widget _buildDefaultLineChart(BuildContext context) {
     return SfCircularChart(
       title: const ChartTitle(text: ''),
+      palette: <Color>[Color(0xFF316AFF), Color(0xFF01B7F9), Color(0xFF5ABE1C), Color(0xFF12E3D7),Color(0xFFFE8111)],
       legend:
           const Legend(isVisible: true, overflowMode: LegendItemOverflowMode.wrap),
       series: _getDefaultColumnSeries(context),
@@ -82,9 +83,7 @@ class _BarChartProvider extends ChangeNotifier {
     _ChartData('Tus', 24, 44),
     _ChartData('Wen', 36, 48),
     _ChartData('Thr', 38, 50),
-    _ChartData('Fri', 54, 66),
-    _ChartData('Sat', 57, 78),
-    _ChartData('Sun', 70, 84)
+    _ChartData('Thr', 38, 50),
   ];
 
   TooltipBehavior tooltipBehavior =
