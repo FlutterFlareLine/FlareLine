@@ -1,4 +1,5 @@
 import 'package:calendar_date_picker2/calendar_date_picker2.dart';
+import 'package:flareline/themes/global_colors.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -189,7 +190,7 @@ class FormElementsPage extends LayoutWidget {
                                           borderRadius:
                                               BorderRadius.circular(4),
                                           border: Border.all(
-                                              color: Colors.grey, width: 1)),
+                                              color: stroke, width: 0.5)),
                                       child: Text(val));
                                 }))
                       ],
@@ -241,7 +242,7 @@ class FormElementsPage extends LayoutWidget {
                                           borderRadius:
                                               BorderRadius.circular(4),
                                           border: Border.all(
-                                              color: Colors.grey, width: 1)),
+                                              color: stroke, width: 0.5)),
                                       child: Text(val));
                                 }))
                       ],

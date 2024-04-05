@@ -6,7 +6,7 @@ const Color secondary = Color(0xFF80CAEE);
 
 const Color text = Color(0xFF64748B);
 
-const Color stroke = Color(0xFFE2E8F0);
+const Color stroke = Color(0xFFE8EAEB);
 
 const Color darkText = Color(0xFFDEE4EE);
 

@@ -69,10 +69,12 @@ class GridCard extends StatelessWidget {
   _itemCardWidget(IconData icons, String text, String subTitle,
       String percentText, bool isGrow) {
     return WhiteCard(
+      height: 154,
       child: Padding(
         padding: const EdgeInsets.all(16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             ClipOval(
               child: Container(

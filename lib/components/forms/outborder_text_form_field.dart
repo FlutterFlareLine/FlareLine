@@ -14,7 +14,7 @@ class OutBorderTextFormField extends StatelessWidget {
   final Widget? icon;
   final FormFieldValidator? validator;
 
-  OutBorderTextFormField(
+  const OutBorderTextFormField(
       {super.key,
       this.labelText,
       this.initialValue,
@@ -55,15 +55,16 @@ class OutBorderTextFormField extends StatelessWidget {
                   validator: validator,
                   decoration: InputDecoration(
                       prefixIcon: icon,
-                      prefixIconConstraints: const BoxConstraints(
-                        maxWidth: 40,
-                        maxHeight: 22,
-                      ),
                       labelText: '',
                       border: const OutlineInputBorder(
-                          borderSide: BorderSide(width: 0.5, color: stroke)),
+                          borderSide:
+                          BorderSide(color: stroke, width: 0.5)),
+                      enabledBorder: const OutlineInputBorder(
+                          borderSide:
+                              BorderSide(color: stroke, width: 0.5)),
                       focusedBorder: const OutlineInputBorder(
-                          borderSide: BorderSide(width: 0.5, color: primary)),
+                          borderSide:
+                              BorderSide(color: primary, width: 1)),
                       contentPadding: const EdgeInsets.symmetric(
                         horizontal: 12,
                         vertical: 6,

@@ -1,4 +1,5 @@
 import 'package:flareline/components/badge/anim_badge.dart';
+import 'package:flareline/components/forms/outborder_text_form_field.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_svg/flutter_svg.dart';
@@ -50,19 +51,16 @@ class ToolBarWidget extends StatelessWidget {
           // Check the sizing information here and return your UI
           if (sizingInformation.deviceScreenType == DeviceScreenType.desktop) {
             return const SizedBox(
-              width: 200,
-              child: TextField(
-                decoration: InputDecoration(
-                  border: InputBorder.none,
-                  fillColor: Colors.transparent,
-                  prefixIcon: Icon(Icons.search_rounded),
-                  // suffixIcon: Icon(Icons.clear),
-                  hintStyle: TextStyle(fontSize: 10),
-                  // labelText: 'Type to search...',
-                  hintText: 'Type to search...',
-                  // helperText: 'Type to search...',
-                  filled: true,
+              width: 280,
+              child: OutBorderTextFormField(
+                icon: Icon(
+                  Icons.search_rounded,
+                  color: Color(
+                    0xFF68738D,
+                  ),
+                  size: 24,
                 ),
+                hintText: 'Search or type keyword',
               ),
             );
           }
@@ -70,10 +68,7 @@ class ToolBarWidget extends StatelessWidget {
           return const SizedBox();
         }),
         const Spacer(),
-        InkWell(
-          child: SvgPicture.asset('assets/toolbar/toggle.svg',
-              width: 56, height: 30),
-        ),
+        ToggleWidget(),
         const SizedBox(
           width: 10,
         ),
@@ -183,6 +178,52 @@ class ToolBarWidget extends StatelessWidget {
           }),
         );
       }).toList(),
+    );
+  }
+}
+
+class ToggleWidget extends StatelessWidget {
+  ToggleWidget({
+    super.key,
+  });
+
+  final ValueNotifier<bool> checked = ValueNotifier(true);
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      child: Container(
+        padding: EdgeInsets.all(2),
+        width: 78,
+        decoration: BoxDecoration(
+            color: stroke, borderRadius: BorderRadius.circular(25)),
+        child: ValueListenableBuilder(
+          valueListenable: checked,
+          builder: (ctx, res, child) {
+            return Row(
+              children: [
+                Expanded(child: CircleAvatar(
+                  child: SvgPicture.asset('assets/toolbar/sun.svg',
+                      width: 24,
+                      height: 24,
+                      color: res ? primary : darkTextBody),
+                  backgroundColor: res ? Colors.white:Colors.transparent,
+                )),
+                Expanded(child: CircleAvatar(
+                  child: SvgPicture.asset('assets/toolbar/moon.svg',
+                      width: 24,
+                      height: 24,
+                      color: res ? darkTextBody : primary),
+                  backgroundColor: res ? Colors.transparent:Colors.white,
+                )),
+              ],
+            );
+          },
+        ),
+      ),
+      onTap: () {
+        checked.value = !checked.value;
+      },
     );
   }
 }

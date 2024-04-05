@@ -40,6 +40,7 @@ class WhiteCard extends StatelessWidget {
         padding: padding,
         alignment: Alignment.center,
         width: width,
+        height: height,
         child: child,
       ),
     );
