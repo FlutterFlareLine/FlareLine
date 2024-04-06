@@ -26,52 +26,57 @@ abstract class LayoutWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Widget contentWidget = Container(
-      width: double.maxFinite,
-      height: double.maxFinite,
-      alignment: isAlignCenter ? Alignment.center : null,
-      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
-      child: SingleChildScrollView(
-          child: Column(
-        children: [
-          if (showTitle) BreakTab(breakTabTitle(context)),
-          if (showTitle)
-            const SizedBox(
-              height: 10,
-            ),
-          ScreenTypeLayout.builder(
-            desktop: contentDesktopWidget,
-            mobile: contentMobileWidget,
-            tablet: contentMobileWidget,
-          )
-        ],
-      )),
-    );
     return Scaffold(
       appBar: AppBar(
         toolbarHeight: 0,
       ),
-      body: ResponsiveBuilder(builder: (context, sizingInformation) {
-        // Check the sizing information here and return your UI
-        if (sizingInformation.deviceScreenType == DeviceScreenType.desktop) {
-          return Row(
-            children: [SideBarWidger(), rightContentWidget(contentWidget)],
-          );
-        }
+      body: ResponsiveBuilder(
+        builder: (context, sizingInformation) {
+          // Check the sizing information here and return your UI
+          if (sizingInformation.deviceScreenType == DeviceScreenType.desktop) {
+            return Row(
+              children: [
+                SideBarWidger(),
+                Expanded(child: rightContentWidget(context))
+              ],
+            );
+          }
 
-        return rightContentWidget(contentWidget);
-      }),
+          return rightContentWidget(context);
+        },
+      ),
+      drawer: SideBarWidger(),
     );
   }
 
-  Widget rightContentWidget(Widget contentWidget) {
-    return Expanded(
-        child: Column(children: [
+  Widget rightContentWidget(BuildContext context) {
+    return Column(children: [
       const ToolBarWidget(),
       const SizedBox(
         height: 16,
       ),
-      Expanded(child: contentWidget)
-    ]));
+      Expanded(
+          child: Container(
+        width: double.maxFinite,
+        height: double.maxFinite,
+        alignment: isAlignCenter ? Alignment.center : null,
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
+        child: SingleChildScrollView(
+            child: Column(
+          children: [
+            if (showTitle) BreakTab(breakTabTitle(context)),
+            if (showTitle)
+              const SizedBox(
+                height: 10,
+              ),
+            ScreenTypeLayout.builder(
+              desktop: contentDesktopWidget,
+              mobile: contentMobileWidget,
+              tablet: contentMobileWidget,
+            )
+          ],
+        )),
+      ))
+    ]);
   }
 }
