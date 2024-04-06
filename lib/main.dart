@@ -17,7 +17,7 @@ void main() async {
 
   await GetStorage.init();
 
-  usePathUrlStrategy();
+  // usePathUrlStrategy();
 
   if (GetPlatform.isDesktop && !GetPlatform.isWeb) {
     await windowManager.ensureInitialized();
