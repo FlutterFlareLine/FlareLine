@@ -1,6 +1,5 @@
 import 'package:flareline/pages/table/contacts_page.dart';
 import 'package:flutter/material.dart';
-import 'package:flareline/pages/home/home_page.dart';
 import 'package:flareline/pages/alerts/alert_page.dart';
 import 'package:flareline/pages/button/button_page.dart';
 import 'package:flareline/pages/form/form_elements_page.dart';
@@ -24,8 +23,7 @@ import 'package:flareline/pages/table/tables_page.dart';
 typedef PathWidgetBuilder = Widget Function(BuildContext, String?);
 
 final List<Map<String, Object>> MAIN_PAGES = [
-  {'routerPath': '/', 'widget': HomePage()},
-  {'routerPath': '/dashboard', 'widget': const EcommercePage()},
+  {'routerPath': '/', 'widget': const EcommercePage()},
   {'routerPath': '/marketing', 'widget': const MarketingPage()},
   {'routerPath': '/crm', 'widget': const CrmPage()},
   {'routerPath': '/calendar', 'widget': const CalendarPage()},
@@ -48,6 +46,12 @@ final List<Map<String, Object>> MAIN_PAGES = [
 ];
 
 class RouteConfiguration {
+
+  static final GlobalKey<NavigatorState> navigatorKey = new GlobalKey<NavigatorState>(debugLabel: 'Rex');
+
+  /// 可用于 跳转，overlay-insert（toast，loading） 使用
+  static BuildContext? get navigatorContext => navigatorKey.currentState?.context;
+
 
   static Route<dynamic>? onGenerateRoute(
     RouteSettings settings,

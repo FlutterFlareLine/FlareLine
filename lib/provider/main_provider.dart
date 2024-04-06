@@ -1,14 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:flareline/routes.dart';
+import 'package:get/utils.dart';
 
 class MainProvider with ChangeNotifier {
-  String _selectedPath = '/dashboard';
+  String _selectedPath = '/';
+  String _expandedMenuName = '';
 
   String get selectedPath => _selectedPath;
+
+  String get expandedMenuName => _expandedMenuName;
 
   int _index = 0;
 
   int get index => _index;
+
+  MainProvider() {
+    if (RouteConfiguration.navigatorContext != null) {
+      String? routePath =
+          ModalRoute.of(RouteConfiguration.navigatorContext!)?.settings?.name;
+      print('---------------> routerPath ${routePath}');
+      setSelectedPath(routePath ?? '');
+    }
+  }
 
   void setSelectedPath(String path) {
     _selectedPath = path;
@@ -16,20 +29,18 @@ class MainProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  bool isSelectedPath(String path) {
-    return _selectedPath == path;
+  void setExpandedMenuName(String expandedMenuName) {
+    _expandedMenuName = expandedMenuName;
+
+    notifyListeners();
   }
 
-  Widget getSelectedPage(String path) {
-    dynamic map = MAIN_PAGES
-        .where((element) => element['routerPath'] == path)
-        .firstOrNull;
-    if (map == null) {
-      return Container(
-        child: Text('404'),
-      );
-    }
-    return map['widget'];
+  bool isSelectedPath(String path) {
+    return selectedPath == path;
+  }
+
+  bool isExpanded(String menuName, List? childList) {
+    return expandedMenuName == menuName;
   }
 
   Widget getIndexPage(int page) {

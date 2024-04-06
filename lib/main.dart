@@ -51,6 +51,7 @@ class MyApp extends StatelessWidget {
         ],
         child: Builder(builder: (context) {
           return MaterialApp(
+            navigatorKey: RouteConfiguration.navigatorKey,
             restorationScopeId: 'rootFlareLine',
             title: 'FlareLine',
             debugShowCheckedModeBanner: false,

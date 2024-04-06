@@ -9,8 +9,6 @@ class SideMenuWidget extends StatelessWidget {
 
   SideMenuWidget({super.key, this.e});
 
-  ValueNotifier<bool> expanded = ValueNotifier(false);
-
   @override
   Widget build(BuildContext context) {
     return _itemMenuWidget(context, e);
@@ -47,7 +45,7 @@ class SideMenuWidget extends StatelessWidget {
           ),
           onTap: () {
             if (childList != null && childList.isNotEmpty) {
-              expanded.value = !expanded.value;
+              context.read<MainProvider>().setExpandedMenuName(e['menuName']);
             } else {
               pushOrJump(context, e);
             }
@@ -57,15 +55,13 @@ class SideMenuWidget extends StatelessWidget {
           height: 10,
         ),
         if (childList != null && childList.isNotEmpty)
-          ValueListenableBuilder(
-              valueListenable: expanded,
-              builder: (context, visible, child) => Visibility(
-                  visible: visible,
-                  child: Column(
-                    children: childList
-                        .map((e) => _itemSubMenuWidget(context, e))
-                        .toList(),
-                  )))
+          Visibility(
+              visible: context.watch<MainProvider>().isExpanded(e['menuName'],childList),
+              child: Column(
+                children: childList
+                    .map((e) => _itemSubMenuWidget(context, e))
+                    .toList(),
+              ))
       ]),
     );
   }
@@ -94,10 +90,9 @@ class SideMenuWidget extends StatelessWidget {
     if (Scaffold.of(context).isDrawerOpen) {
       Scaffold.of(context).closeDrawer();
     }
-    if (e['blank'] != null && true == e['blank']) {
-      Navigator.of(context).pushNamed(e['path']);
-      return;
-    }
-    context.read<MainProvider>().setSelectedPath(e['path']);
+
+    String path = e['path'];
+
+    Navigator.of(context).pushNamed(path);
   }
 }

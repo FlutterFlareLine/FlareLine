@@ -1,7 +1,8 @@
+import 'package:flareline/components/sidebar/side_bar.dart';
+import 'package:flareline/components/toolbar/toolbar.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flareline/components/breaktab.dart';
-import 'package:flareline/themes/global_colors.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
 abstract class LayoutWidget extends StatelessWidget {
@@ -46,10 +47,31 @@ abstract class LayoutWidget extends StatelessWidget {
         ],
       )),
     );
-    return isPage
-        ? Scaffold(
-            body: contentWidget,
-          )
-        : contentWidget;
+    return Scaffold(
+      appBar: AppBar(
+        toolbarHeight: 0,
+      ),
+      body: ResponsiveBuilder(builder: (context, sizingInformation) {
+        // Check the sizing information here and return your UI
+        if (sizingInformation.deviceScreenType == DeviceScreenType.desktop) {
+          return Row(
+            children: [SideBarWidger(), rightContentWidget(contentWidget)],
+          );
+        }
+
+        return rightContentWidget(contentWidget);
+      }),
+    );
+  }
+
+  Widget rightContentWidget(Widget contentWidget) {
+    return Expanded(
+        child: Column(children: [
+      const ToolBarWidget(),
+      const SizedBox(
+        height: 16,
+      ),
+      Expanded(child: contentWidget)
+    ]));
   }
 }
