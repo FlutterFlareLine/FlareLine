@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:flareline/components/card/white_card.dart';
+import 'package:flareline/components/card/common_card.dart';
 
 class TitleCard extends StatelessWidget {
   final String title;
@@ -10,7 +10,7 @@ class TitleCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return WhiteCard(child: _titleWidget(title, childWidget));
+    return CommonCard(child: _titleWidget(title, childWidget));
   }
 
   _titleWidget(String title, Widget childWidget) {

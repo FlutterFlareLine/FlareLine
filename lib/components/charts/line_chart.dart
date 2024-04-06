@@ -33,17 +33,17 @@ class LineChartWidget extends StatelessWidget {
                     color: gray,
                     child: Row(mainAxisAlignment: MainAxisAlignment.end, children: [
                       MaterialButton(
-                        color: Colors.white,
                         onPressed: () {},
                         child: const Text('Day'),
+                        color: Theme.of(context).appBarTheme.backgroundColor
                       ),
                       MaterialButton(
                         onPressed: () {},
-                        child: const Text('Week'),
+                        child: Text('Week', style: TextStyle(color: Theme.of(context).appBarTheme.backgroundColor),),
                       ),
                       MaterialButton(
                         onPressed: () {},
-                        child: const Text('Month'),
+                        child: Text('Month', style: TextStyle(color: Theme.of(context).appBarTheme.backgroundColor)),
                       )
                     ]),
                   )

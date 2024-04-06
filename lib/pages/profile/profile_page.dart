@@ -1,3 +1,4 @@
+import 'package:flareline/components/card/common_card.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flareline/pages/layout.dart';
@@ -14,8 +15,7 @@ class ProfilePage extends LayoutWidget {
 
   @override
   Widget contentDesktopWidget(BuildContext context) {
-    return Container(
-      color: Colors.white,
+    return CommonCard(
       child: Stack(children: [
         SizedBox(
           height: 180,

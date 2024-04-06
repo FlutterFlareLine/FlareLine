@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_svg/svg.dart';
 import 'package:flareline/components/buttons/button_widget.dart';
-import 'package:flareline/components/card/white_card.dart';
+import 'package:flareline/components/card/common_card.dart';
 import 'package:flareline/components/forms/outborder_text_form_field.dart';
 import 'package:flareline/pages/layout.dart';
 import 'package:flareline/themes/global_colors.dart';
@@ -13,7 +13,7 @@ class SignInWidget extends LayoutWidget {
 
   @override
   Widget contentDesktopWidget(BuildContext context) {
-    return WhiteCard(
+    return CommonCard(
       width: MediaQuery.of(context).size.width*0.8,
       isAutoHeight: true,
       padding: const EdgeInsets.symmetric(vertical: 100),
@@ -53,7 +53,7 @@ class SignInWidget extends LayoutWidget {
 
   @override
   Widget contentMobileWidget(BuildContext context) {
-    return WhiteCard(
+    return CommonCard(
         isAutoHeight: true,
         padding: const EdgeInsets.symmetric(vertical: 60),
         child: _signInFormWidget(context));

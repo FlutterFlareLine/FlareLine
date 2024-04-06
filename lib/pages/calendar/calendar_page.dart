@@ -1,3 +1,4 @@
+import 'package:flareline/components/card/common_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flareline/pages/layout.dart';
 import 'package:flareline/themes/global_colors.dart';
@@ -14,8 +15,7 @@ class CalendarPage extends LayoutWidget {
 
   @override
   Widget contentDesktopWidget(BuildContext context) {
-    return Container(
-      color: Colors.white,
+    return CommonCard(
       height: 800,
       child: SfCalendar(
         view: CalendarView.month,
@@ -29,7 +29,6 @@ class CalendarPage extends LayoutWidget {
             // dayFormat: 'EEEE',
             agendaViewHeight: 200,
             agendaStyle: AgendaStyle(
-                backgroundColor: Colors.white,
                 appointmentTextStyle: TextStyle(color: red))),
         viewHeaderHeight: 60,
         headerHeight: 60,

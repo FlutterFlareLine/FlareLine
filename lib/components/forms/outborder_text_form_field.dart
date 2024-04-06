@@ -70,7 +70,7 @@ class OutBorderTextFormField extends StatelessWidget {
                         vertical: 6,
                       ),
                       floatingLabelBehavior: FloatingLabelBehavior.always,
-                      hintText: hintText),
+                      hintText: hintText,),
                 ),
               ),
               if (suffixWidget != null)

@@ -1,5 +1,8 @@
+import 'package:flareline/provider/theme_provider.dart';
+import 'package:flareline/themes/global_colors.dart';
 import 'package:flutter/material.dart';
-import 'package:flareline/components/card/white_card.dart';
+import 'package:flareline/components/card/common_card.dart';
+import 'package:provider/provider.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -19,25 +22,25 @@ class GridCard extends StatelessWidget {
     return Row(
       children: [
         Expanded(
-            child: _itemCardWidget(
-                Icons.data_object, '\$3.456K', AppLocalizations.of(context)!.totalViews, '0.43%', true)),
+            child: _itemCardWidget(context,Icons.data_object, '\$3.456K',
+                AppLocalizations.of(context)!.totalViews, '0.43%', true)),
         const SizedBox(
           width: 16,
         ),
         Expanded(
-            child: _itemCardWidget(
-                Icons.shopping_cart, '\$45.2K', AppLocalizations.of(context)!.totalProfit, '0.43%', true)),
+            child: _itemCardWidget(context,Icons.shopping_cart, '\$45.2K',
+                AppLocalizations.of(context)!.totalProfit, '0.43%', true)),
         const SizedBox(
           width: 16,
         ),
         Expanded(
-            child: _itemCardWidget(
-                Icons.group, '2.450', AppLocalizations.of(context)!.totalProduct, '0.43%', true)),
+            child: _itemCardWidget(context,Icons.group, '2.450',
+                AppLocalizations.of(context)!.totalProduct, '0.43%', true)),
         const SizedBox(
           width: 16,
         ),
         Expanded(
-            child: _itemCardWidget(Icons.security_rounded, '3.456',
+            child: _itemCardWidget(context,Icons.security_rounded, '3.456',
                 AppLocalizations.of(context)!.totalUsers, '0.43%', false)),
       ],
     );
@@ -46,29 +49,30 @@ class GridCard extends StatelessWidget {
   Widget contentMobileWidget(BuildContext context) {
     return Column(
       children: [
-        _itemCardWidget(
-            Icons.data_object, '\$3.456K', AppLocalizations.of(context)!.totalViews, '0.43%', true),
+        _itemCardWidget(context, Icons.data_object, '\$3.456K',
+            AppLocalizations.of(context)!.totalViews, '0.43%', true),
         const SizedBox(
           height: 16,
         ),
-        _itemCardWidget(
-            Icons.shopping_cart, '\$45.2K', AppLocalizations.of(context)!.totalProfit, '0.43%', true),
+        _itemCardWidget(context, Icons.shopping_cart, '\$45.2K',
+            AppLocalizations.of(context)!.totalProfit, '0.43%', true),
         const SizedBox(
           height: 16,
         ),
-        _itemCardWidget(Icons.group, '2.450', AppLocalizations.of(context)!.totalProduct, '0.43%', true),
+        _itemCardWidget(context, Icons.group, '2.450',
+            AppLocalizations.of(context)!.totalProduct, '0.43%', true),
         const SizedBox(
           height: 16,
         ),
-        _itemCardWidget(
-            Icons.security_rounded, '3.456', AppLocalizations.of(context)!.totalUsers, '0.43%', false),
+        _itemCardWidget(context, Icons.security_rounded, '3.456',
+            AppLocalizations.of(context)!.totalUsers, '0.43%', false),
       ],
     );
   }
 
-  _itemCardWidget(IconData icons, String text, String subTitle,
-      String percentText, bool isGrow) {
-    return WhiteCard(
+  _itemCardWidget(BuildContext context, IconData icons, String text,
+      String subTitle, String percentText, bool isGrow) {
+    return CommonCard(
       height: 154,
       child: Padding(
         padding: const EdgeInsets.all(16),
@@ -81,7 +85,10 @@ class GridCard extends StatelessWidget {
                 width: 36,
                 height: 36,
                 alignment: Alignment.center,
-                child: Icon(icons),
+                child: Icon(
+                  icons,
+                  color:sideBar,
+                ),
                 color: Colors.grey.shade200,
               ),
             ),

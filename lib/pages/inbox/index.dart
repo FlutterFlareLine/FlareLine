@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:flareline/components/card/white_card.dart';
+import 'package:flareline/components/card/common_card.dart';
 import 'package:flareline/pages/layout.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -16,7 +16,7 @@ class InboxWidget extends LayoutWidget {
   @override
   Widget contentDesktopWidget(BuildContext context) {
     // TODO: implement contentWidget
-    return WhiteCard(
+    return CommonCard(
       child: Row(children: [
         SizedBox(
           width: 150,

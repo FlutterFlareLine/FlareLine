@@ -5,7 +5,7 @@ import 'package:flutter_dropzone/flutter_dropzone.dart';
 
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flareline/components/buttons/button_widget.dart';
-import 'package:flareline/components/card/white_card.dart';
+import 'package:flareline/components/card/common_card.dart';
 import 'package:flareline/components/forms/outborder_text_form_field.dart';
 import 'package:flareline/pages/layout.dart';
 import 'package:flareline/themes/global_colors.dart';
@@ -85,7 +85,7 @@ class SettingsPage extends LayoutWidget {
   _leftWidget(BuildContext context) {
     return Column(
       children: [
-        WhiteCard(
+        CommonCard(
           child: _titleWidget(
             AppLocalizations.of(context)!.personalInfo,
             Padding(
@@ -189,7 +189,7 @@ class SettingsPage extends LayoutWidget {
   DropzoneViewController? dropzoneViewController;
 
   _rightWidget(BuildContext context) {
-    return WhiteCard(
+    return CommonCard(
         child: _titleWidget(
       AppLocalizations.of(context)!.yourPhoto,
       Padding(

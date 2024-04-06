@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flareline/components/card/white_card.dart';
+import 'package:flareline/components/card/common_card.dart';
 import 'package:flareline/components/charts/circular_chart.dart';
 import 'package:flareline/components/charts/map_chart.dart';
 import 'package:responsive_builder/responsive_builder.dart';
@@ -27,7 +27,7 @@ class AnalyticsWidget extends StatelessWidget {
         children: [
           Expanded(
             flex: 3,
-            child: WhiteCard(
+            child: CommonCard(
               child: CircularhartWidget(),
             ),
           ),
@@ -36,7 +36,7 @@ class AnalyticsWidget extends StatelessWidget {
           ),
           Expanded(
             flex: 4,
-            child: WhiteCard(
+            child: CommonCard(
               child: const MapChartWidget(),
             ),
           ),
@@ -50,7 +50,7 @@ class AnalyticsWidget extends StatelessWidget {
       children: [
         SizedBox(
           height: 350,
-          child: WhiteCard(
+          child: CommonCard(
             child: CircularhartWidget(),
           ),
         ),
@@ -59,7 +59,7 @@ class AnalyticsWidget extends StatelessWidget {
         ),
         SizedBox(
           height: 350,
-          child: WhiteCard(
+          child: CommonCard(
             child: const MapChartWidget(),
           ),
         ),

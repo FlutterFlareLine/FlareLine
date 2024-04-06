@@ -4,7 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-import 'package:flareline/components/card/white_card.dart';
+import 'package:flareline/components/card/common_card.dart';
 import 'package:flareline/components/forms/form_file_picker.dart';
 import 'package:flareline/components/forms/outborder_text_form_field.dart';
 import 'package:flareline/pages/layout.dart';
@@ -73,7 +73,7 @@ class FormElementsPage extends LayoutWidget {
   _leftWidget(BuildContext context) {
     return Column(
       children: [
-        WhiteCard(
+        CommonCard(
           child: _titleWidget(
               AppLocalizations.of(context)!.inputFields,
               Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
@@ -99,7 +99,7 @@ class FormElementsPage extends LayoutWidget {
         const SizedBox(
           height: 16,
         ),
-        WhiteCard(
+        CommonCard(
           child: _titleWidget(
               AppLocalizations.of(context)!.toggleSwitchInput,
               Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
@@ -141,7 +141,7 @@ class FormElementsPage extends LayoutWidget {
         const SizedBox(
           height: 16,
         ),
-        WhiteCard(
+        CommonCard(
           child: _titleWidget(
               AppLocalizations.of(context)!.timeAndDate,
               Column(
@@ -252,7 +252,7 @@ class FormElementsPage extends LayoutWidget {
         const SizedBox(
           height: 16,
         ),
-        WhiteCard(
+        CommonCard(
           child: _titleWidget(
               AppLocalizations.of(context)!.fileUpload,
               Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
@@ -277,7 +277,7 @@ class FormElementsPage extends LayoutWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          WhiteCard(
+          CommonCard(
             child: _titleWidget(
                 AppLocalizations.of(context)!.textareaFields,
                 Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
@@ -306,7 +306,7 @@ class FormElementsPage extends LayoutWidget {
           const SizedBox(
             height: 16,
           ),
-          WhiteCard(
+          CommonCard(
             child: _titleWidget(
                 AppLocalizations.of(context)!.checkboxAndRadis,
                 Column(
@@ -359,7 +359,7 @@ class FormElementsPage extends LayoutWidget {
           const SizedBox(
             height: 16,
           ),
-          WhiteCard(
+          CommonCard(
             child: _titleWidget(
                 AppLocalizations.of(context)!.selectInput,
                 Column(crossAxisAlignment: CrossAxisAlignment.start, children: [

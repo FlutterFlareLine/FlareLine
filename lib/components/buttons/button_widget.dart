@@ -38,7 +38,7 @@ class ButtonWidget extends StatelessWidget {
                 : null,
             color: color ??
                 ((isPrimary ?? true)
-                    ? Theme.of(context).colorScheme.primary
+                    ? Theme.of(context).primaryColor
                     : stroke),
             borderRadius: BorderRadius.circular(borderRadius ?? 4)),
         child: Row(

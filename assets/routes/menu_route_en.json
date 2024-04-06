@@ -8,7 +8,7 @@
         "childList": [
           {
             "menuName": "eCommerce",
-            "path": "/dashboard"
+            "path": "/"
           }
         ]
       },

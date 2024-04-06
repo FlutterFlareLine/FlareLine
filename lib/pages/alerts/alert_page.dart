@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:flareline/components/card/white_card.dart';
+import 'package:flareline/components/card/common_card.dart';
 import 'package:flareline/pages/layout.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -10,7 +10,7 @@ class AlertPage extends LayoutWidget {
 
   @override
   Widget contentDesktopWidget(BuildContext context) {
-    return WhiteCard(
+    return CommonCard(
       padding: const EdgeInsets.all(30),
       child: Column(
         children: [

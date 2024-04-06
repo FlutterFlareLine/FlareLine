@@ -1,12 +1,13 @@
 import 'package:flareline/components/badge/anim_badge.dart';
 import 'package:flareline/components/forms/outborder_text_form_field.dart';
+import 'package:flareline/provider/theme_provider.dart';
+import 'package:flareline/themes/global_theme.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flareline/components/buttons/button_widget.dart';
 import 'package:flareline/provider/localization_provider.dart';
 import 'package:flareline/themes/global_colors.dart';
-import 'package:hexcolor/hexcolor.dart';
 import 'package:provider/provider.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -21,7 +22,7 @@ class ToolBarWidget extends StatelessWidget {
 
   _toolsBarWidget(BuildContext context) {
     return Container(
-      color: Colors.white,
+      color: Theme.of(context).appBarTheme.backgroundColor,
       padding: const EdgeInsets.all(10),
       child: Row(children: [
         ResponsiveBuilder(builder: (context, sizingInformation) {
@@ -187,42 +188,38 @@ class ToggleWidget extends StatelessWidget {
     super.key,
   });
 
-  final ValueNotifier<bool> checked = ValueNotifier(true);
-
   @override
   Widget build(BuildContext context) {
+    bool isDark = context.watch<ThemeProvider>().isDark;
     return InkWell(
       child: Container(
-        padding: EdgeInsets.all(2),
-        width: 78,
-        decoration: BoxDecoration(
-            color: stroke, borderRadius: BorderRadius.circular(25)),
-        child: ValueListenableBuilder(
-          valueListenable: checked,
-          builder: (ctx, res, child) {
-            return Row(
-              children: [
-                Expanded(child: CircleAvatar(
-                  child: SvgPicture.asset('assets/toolbar/sun.svg',
-                      width: 24,
-                      height: 24,
-                      color: res ? primary : darkTextBody),
-                  backgroundColor: res ? Colors.white:Colors.transparent,
-                )),
-                Expanded(child: CircleAvatar(
-                  child: SvgPicture.asset('assets/toolbar/moon.svg',
-                      width: 24,
-                      height: 24,
-                      color: res ? darkTextBody : primary),
-                  backgroundColor: res ? Colors.transparent:Colors.white,
-                )),
-              ],
-            );
-          },
-        ),
-      ),
+          padding: EdgeInsets.all(2),
+          width: 78,
+          decoration: BoxDecoration(
+              color: stroke, borderRadius: BorderRadius.circular(25)),
+          child: Row(
+            children: [
+              Expanded(
+                  child: CircleAvatar(
+                child: SvgPicture.asset('assets/toolbar/sun.svg',
+                    width: 24,
+                    height: 24,
+                    color: isDark ? darkTextBody : primary),
+                backgroundColor: isDark ? Colors.transparent : Colors.white,
+              )),
+              Expanded(
+                  child: CircleAvatar(
+                child: SvgPicture.asset('assets/toolbar/moon.svg',
+                    width: 24,
+                    height: 24,
+                    color: isDark ? primary : darkTextBody),
+                backgroundColor: isDark ? Colors.white : Colors.transparent,
+              )),
+            ],
+          )),
       onTap: () {
-        checked.value = !checked.value;
+        context.read<ThemeProvider>().isDark =
+            !context.read<ThemeProvider>().isDark;
       },
     );
   }

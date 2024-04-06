@@ -2,6 +2,10 @@ import 'dart:ui';
 
 const Color primary = Color(0xFF3C50E0);
 
+const Color darkBackgroundColor = Color(0xff1E1C2A);
+
+const Color darkAppBar = Color(0xff252837);
+
 const Color secondary = Color(0xFF80CAEE);
 
 const Color text = Color(0xFF64748B);

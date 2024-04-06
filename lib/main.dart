@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flareline/provider/localization_provider.dart';
 import 'package:flareline/provider/main_provider.dart';
+import 'package:flareline/provider/theme_provider.dart';
 import 'package:flareline/routes.dart';
 import 'package:flareline/themes/global_theme.dart';
 import 'package:flutter/material.dart';
@@ -16,8 +17,6 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   await GetStorage.init();
-
-  // usePathUrlStrategy();
 
   if (GetPlatform.isDesktop && !GetPlatform.isWeb) {
     await windowManager.ensureInitialized();
@@ -46,6 +45,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
         providers: [
+          ChangeNotifierProvider(create: (_) => ThemeProvider()),
           ChangeNotifierProvider(create: (_) => MainProvider()),
           ChangeNotifierProvider(create: (_) => LocalizationProvider())
         ],
@@ -61,7 +61,7 @@ class MyApp extends StatelessWidget {
             supportedLocales: AppLocalizations.supportedLocales,
             onGenerateRoute: (settings) =>
                 RouteConfiguration.onGenerateRoute(settings),
-            theme: GlobalTheme.theme(context, false),
+            theme: GlobalTheme.theme(context, context.watch<ThemeProvider>().isDark),
             builder: (context, widget) {
               return MediaQuery(
                 data: MediaQuery.of(context)

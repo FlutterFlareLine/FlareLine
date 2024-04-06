@@ -3,9 +3,10 @@ import 'dart:convert';
 import 'package:flareline/components/loading/loading.dart';
 import 'package:flareline/components/tags/tag_widget.dart';
 import 'package:flareline/entity/table_data_entity.dart';
+import 'package:flareline/provider/theme_provider.dart';
 import 'package:flutter/material.dart';
 
-import 'package:flareline/components/card/white_card.dart';
+import 'package:flareline/components/card/common_card.dart';
 import 'package:flareline/themes/global_colors.dart';
 import 'package:flutter/services.dart';
 import 'package:hexcolor/hexcolor.dart';
@@ -15,17 +16,13 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 class TableWidget extends StatelessWidget {
   TableWidget({super.key});
 
-
-
   Future<TableDataEntity> loadData() {
     return Future(() => TableDataEntity());
   }
 
-
   @override
   Widget build(BuildContext context) {
-
-    return WhiteCard(
+    return CommonCard(
         child: Padding(
       padding: const EdgeInsets.all(16),
       child: Column(
@@ -38,8 +35,7 @@ class TableWidget extends StatelessWidget {
           const SizedBox(
             height: 16,
           ),
-          Expanded(
-              child: _buildWidget(context)),
+          Expanded(child: _buildWidget(context)),
         ],
       ),
     ));
@@ -56,18 +52,23 @@ class TableWidget extends StatelessWidget {
 
           List<String> headers = snapshot.data?.headers ?? [];
 
-          List<List<TableDataRowsTableDataRows>> rows = snapshot.data?.rows ?? [];
+          List<List<TableDataRowsTableDataRows>> rows =
+              snapshot.data?.rows ?? [];
           return ConstrainedBox(
               constraints: const BoxConstraints(minWidth: double.infinity),
               child: DataTable(
-                  headingRowColor:
-                      MaterialStateProperty.resolveWith((states) => lightGray),
+                  headingRowColor: MaterialStateProperty.resolveWith((states) =>
+                      context.watch<ThemeProvider>().isDark
+                          ? sideBar
+                          : lightGray),
                   horizontalMargin: 12,
                   showBottomBorder: true,
                   showCheckboxColumn: false,
-                  headingTextStyle: const TextStyle(
+                  headingTextStyle: TextStyle(
                     fontWeight: FontWeight.bold,
-                    color: Colors.black,
+                    color: context.watch<ThemeProvider>().isDark
+                        ? Colors.white
+                        : Colors.black,
                   ),
                   dividerThickness: 0.5,
                   columns:
@@ -95,5 +96,3 @@ class TableWidget extends StatelessWidget {
     return Text(columnData.text ?? '');
   }
 }
-
-

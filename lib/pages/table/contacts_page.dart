@@ -1,4 +1,4 @@
-import 'package:flareline/components/card/white_card.dart';
+import 'package:flareline/components/card/common_card.dart';
 import 'package:flareline/components/forms/outborder_text_form_field.dart';
 import 'package:flareline/pages/layout.dart';
 import 'package:flutter/material.dart';
@@ -10,7 +10,7 @@ class ContactsPage extends LayoutWidget {
 
   @override
   Widget contentDesktopWidget(BuildContext context) {
-    return WhiteCard(
+    return CommonCard(
       padding: const EdgeInsets.symmetric(horizontal: 20),
       child: Column(
         children: [

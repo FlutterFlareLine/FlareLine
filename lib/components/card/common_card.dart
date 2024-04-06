@@ -1,13 +1,14 @@
+import 'package:flareline/themes/global_colors.dart';
 import 'package:flutter/material.dart';
 
-class WhiteCard extends StatelessWidget {
+class CommonCard extends StatelessWidget {
   final Widget? child;
   final EdgeInsetsGeometry? padding;
   final bool? isAutoHeight;
   final double? width;
   final double? height;
 
-  WhiteCard(
+  CommonCard(
       {super.key,
       this.child,
       this.padding,

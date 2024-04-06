@@ -1,7 +1,7 @@
 import 'package:flareline/components/loading/loading.dart';
 import 'package:flutter/material.dart';
 
-import 'package:flareline/components/card/white_card.dart';
+import 'package:flareline/components/card/common_card.dart';
 import 'package:flareline/themes/global_colors.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:provider/provider.dart';
@@ -12,7 +12,7 @@ class InvoiceTableWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return WhiteCard(
+    return CommonCard(
         child: Padding(
           padding: const EdgeInsets.all(16),
           child: ChangeNotifierProvider(
