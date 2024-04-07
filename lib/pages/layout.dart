@@ -36,7 +36,7 @@ abstract class LayoutWidget extends StatelessWidget {
           if (sizingInformation.deviceScreenType == DeviceScreenType.desktop) {
             return Row(
               children: [
-                SideBarWidger(),
+                const SideBarWidger(),
                 Expanded(child: rightContentWidget(context))
               ],
             );
@@ -45,7 +45,7 @@ abstract class LayoutWidget extends StatelessWidget {
           return rightContentWidget(context);
         },
       ),
-      drawer: SideBarWidger(),
+      drawer: const SideBarWidger(),
     );
   }
 
