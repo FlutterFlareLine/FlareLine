@@ -1,3 +1,5 @@
+import 'package:flareline/provider/theme_provider.dart';
+import 'package:flareline/themes/global_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -16,6 +18,7 @@ class SideMenuWidget extends StatelessWidget {
 
   Widget _itemMenuWidget(BuildContext context, e) {
     List? childList = e['childList'];
+    bool isDark = context.watch<ThemeProvider>().isDark;
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 6),
       child: Column(children: [
@@ -29,17 +32,18 @@ class SideMenuWidget extends StatelessWidget {
                     e['icon'],
                     width: 18,
                     height: 18,
+                    color: isDark ? Colors.white : darkBlackText,
                   ),
                 ),
               Expanded(
                   child: Text(
                 e['menuName'],
-                style: const TextStyle(color: Colors.white),
+                style: TextStyle(color: isDark ? Colors.white : darkBlackText),
               )),
               if (childList != null && childList.isNotEmpty)
-                const Icon(
+                Icon(
                   Icons.expand_circle_down_sharp,
-                  color: Colors.white,
+                  color: isDark ? Colors.white : darkBlackText,
                 )
             ],
           ),
@@ -56,17 +60,19 @@ class SideMenuWidget extends StatelessWidget {
         ),
         if (childList != null && childList.isNotEmpty)
           Visibility(
-              visible: context.watch<MainProvider>().isExpanded(e['menuName'],childList),
+              visible: context
+                  .watch<MainProvider>()
+                  .isExpanded(e['menuName'], childList),
               child: Column(
                 children: childList
-                    .map((e) => _itemSubMenuWidget(context, e))
+                    .map((e) => _itemSubMenuWidget(context, e, isDark))
                     .toList(),
               ))
       ]),
     );
   }
 
-  Widget _itemSubMenuWidget(BuildContext context, e) {
+  Widget _itemSubMenuWidget(BuildContext context, e, bool isDark) {
     return InkWell(
       child: Padding(
         padding: const EdgeInsets.only(left: 20, top: 5, bottom: 5),
@@ -75,7 +81,7 @@ class SideMenuWidget extends StatelessWidget {
             Expanded(
                 child: Text(
               e['menuName'],
-              style: const TextStyle(color: Colors.white60),
+              style: TextStyle(color: isDark ? Colors.white60 : darkBlackText),
             )),
           ],
         ),

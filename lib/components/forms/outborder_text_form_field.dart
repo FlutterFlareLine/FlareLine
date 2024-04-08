@@ -58,10 +58,10 @@ class OutBorderTextFormField extends StatelessWidget {
                       labelText: '',
                       border: const OutlineInputBorder(
                           borderSide:
-                          BorderSide(color: stroke, width: 0.5)),
+                          BorderSide(color: border, width: 0.5)),
                       enabledBorder: const OutlineInputBorder(
                           borderSide:
-                              BorderSide(color: stroke, width: 0.5)),
+                              BorderSide(color: border, width: 0.5)),
                       focusedBorder: const OutlineInputBorder(
                           borderSide:
                               BorderSide(color: primary, width: 1)),

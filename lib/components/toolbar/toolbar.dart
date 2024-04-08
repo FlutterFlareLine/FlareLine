@@ -69,7 +69,7 @@ class ToolBarWidget extends StatelessWidget {
           return const SizedBox();
         }),
         const Spacer(),
-        ToggleWidget(),
+        const ToggleWidget(),
         const SizedBox(
           width: 10,
         ),
@@ -184,7 +184,7 @@ class ToolBarWidget extends StatelessWidget {
 }
 
 class ToggleWidget extends StatelessWidget {
-  ToggleWidget({
+  const ToggleWidget({
     super.key,
   });
 
@@ -193,28 +193,28 @@ class ToggleWidget extends StatelessWidget {
     bool isDark = context.watch<ThemeProvider>().isDark;
     return InkWell(
       child: Container(
-          padding: EdgeInsets.all(2),
-          width: 78,
+          padding: const EdgeInsets.all(1),
+          width: 85,
+          height: 34,
           decoration: BoxDecoration(
-              color: stroke, borderRadius: BorderRadius.circular(25)),
+              color: stroke, borderRadius: BorderRadius.circular(40)),
           child: Row(
             children: [
-              Expanded(
-                  child: CircleAvatar(
-                child: SvgPicture.asset('assets/toolbar/sun.svg',
-                    width: 24,
-                    height: 24,
-                    color: isDark ? darkTextBody : primary),
+              CircleAvatar(
                 backgroundColor: isDark ? Colors.transparent : Colors.white,
-              )),
-              Expanded(
-                  child: CircleAvatar(
-                child: SvgPicture.asset('assets/toolbar/moon.svg',
-                    width: 24,
-                    height: 24,
-                    color: isDark ? primary : darkTextBody),
+                child: SvgPicture.asset('assets/toolbar/sun.svg',
+                    width: 18,
+                    height: 18,
+                    color: isDark ? darkTextBody : primary),
+              ),
+
+              CircleAvatar(
                 backgroundColor: isDark ? Colors.white : Colors.transparent,
-              )),
+                child: SvgPicture.asset('assets/toolbar/moon.svg',
+                    width: 18,
+                    height: 18,
+                    color: isDark ? primary : darkTextBody),
+              ),
             ],
           )),
       onTap: () {

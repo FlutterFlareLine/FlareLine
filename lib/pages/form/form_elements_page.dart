@@ -70,7 +70,12 @@ class FormElementsPage extends LayoutWidget {
   ValueNotifier<String> dateNotifier = ValueNotifier("");
 
   ValueNotifier<bool> checkNotifier1 = ValueNotifier(false);
+
   ValueNotifier<bool> checkNotifier3 = ValueNotifier(false);
+
+  ValueNotifier<bool> toggleNotifier = ValueNotifier(false);
+
+  ValueNotifier<bool> toggleNotifier2 = ValueNotifier(false);
 
   _leftWidget(BuildContext context) {
     return Column(
@@ -105,15 +110,31 @@ class FormElementsPage extends LayoutWidget {
           child: _titleWidget(
               AppLocalizations.of(context)!.toggleSwitchInput,
               Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                Switch(value: false, onChanged: (r) {}),
+                ValueListenableBuilder(
+                    valueListenable: toggleNotifier,
+                    builder: (ctx, checked, child) {
+                      return Switch(
+                          value: checked,
+                          activeColor: green,
+                          onChanged: (r) {
+                            toggleNotifier.value = !toggleNotifier.value;
+                          });
+                    }),
                 const SizedBox(
                   height: 16,
                 ),
-                SwitchListTile(
-                  title: Text(AppLocalizations.of(context)!.switchLabel),
-                  value: false,
-                  onChanged: (r) {},
-                ),
+                ValueListenableBuilder(
+                    valueListenable: toggleNotifier2,
+                    builder: (ctx, checked, child) {
+                      return SwitchListTile(
+                        title: Text(AppLocalizations.of(context)!.switchLabel),
+                        activeColor: red,
+                        value: checked,
+                        onChanged: (r) {
+                          toggleNotifier2.value = !toggleNotifier2.value;
+                        },
+                      );
+                    }),
                 const SizedBox(
                   height: 16,
                 ),
@@ -294,121 +315,129 @@ class FormElementsPage extends LayoutWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                     Row(
-                       children: [
-                         CheckBoxWidget(
-                           text: 'Success',
-                           color: green,
-                           size: 30,
-                           onChanged: (value) {
-
-                           },
-                         ),
-                         const SizedBox(width: 20,),
-                         CheckBoxWidget(
-                           text: 'Error',
-                           color: red,
-                           size: 30,
-                           onChanged: (value) {
-
-                           },
-                         ),
-                         const SizedBox(width: 20,),
-                         CheckBoxWidget(
-                           text: 'Warn',
-                           color: yellow,
-                           size: 30,
-                           onChanged: (value) {
-
-                           },
-                         ),
-                         const SizedBox(width: 20,),
-                         CheckBoxWidget(
-                           text: 'Primary',
-                           color: primary,
-                           size: 30,
-                           onChanged: (value) {
-
-                           },
-                         ),
-                         const SizedBox(width: 20,),
-                         CheckBoxWidget(
-                           text: 'Info',
-                           color: darkTextBody,
-                           size: 30,
-                           onChanged: (value) {
-
-                           },
-                         ),
-                       ],
-                     ),
+                      Row(
+                        children: [
+                          CheckBoxWidget(
+                            text: 'Success',
+                            color: green,
+                            size: 30,
+                            onChanged: (value) {},
+                          ),
+                          const SizedBox(
+                            width: 20,
+                          ),
+                          CheckBoxWidget(
+                            text: 'Error',
+                            color: red,
+                            size: 30,
+                            onChanged: (value) {},
+                          ),
+                          const SizedBox(
+                            width: 20,
+                          ),
+                          CheckBoxWidget(
+                            text: 'Warn',
+                            color: yellow,
+                            size: 30,
+                            onChanged: (value) {},
+                          ),
+                          const SizedBox(
+                            width: 20,
+                          ),
+                          CheckBoxWidget(
+                            text: 'Primary',
+                            color: primary,
+                            size: 30,
+                            onChanged: (value) {},
+                          ),
+                          const SizedBox(
+                            width: 20,
+                          ),
+                          CheckBoxWidget(
+                            text: 'Info',
+                            color: darkTextBody,
+                            size: 30,
+                            onChanged: (value) {},
+                          ),
+                        ],
+                      ),
                       const SizedBox(
                         height: 16,
                       ),
-                     Row(
-                       children: [
-                         ValueListenableBuilder(
-                             valueListenable: checkNotifier1,
-                             builder: (ctx, res, widget) {
-                               return Checkbox(
-                                 value: res,
-                                 activeColor:green, //选中时的颜色
-                                 onChanged: (value) {
-                                   checkNotifier1.value = value ?? false;
-                                 },
-                               );
-                             }),
-                         const SizedBox(width: 20,),
-                         ValueListenableBuilder(
-                             valueListenable: checkNotifier1,
-                             builder: (ctx, res, widget) {
-                               return Checkbox(
-                                 value: res,
-                                 activeColor: red, //选中时的颜色
-                                 onChanged: (value) {
-                                   checkNotifier1.value = value ?? false;
-                                 },
-                               );
-                             }),
-                         const SizedBox(width: 20,),
-                         ValueListenableBuilder(
-                             valueListenable: checkNotifier1,
-                             builder: (ctx, res, widget) {
-                               return Checkbox(
-                                 value: res,
-                                 activeColor: yellow, //选中时的颜色
-                                 onChanged: (value) {
-                                   checkNotifier1.value = value ?? false;
-                                 },
-                               );
-                             }),
-                         const SizedBox(width: 20,),
-                         ValueListenableBuilder(
-                             valueListenable: checkNotifier1,
-                             builder: (ctx, res, widget) {
-                               return Checkbox(
-                                 value: res,
-                                 activeColor: primary, //选中时的颜色
-                                 onChanged: (value) {
-                                   checkNotifier1.value = value ?? false;
-                                 },
-                               );
-                             }),
-                         const SizedBox(width: 20,),
-                         ValueListenableBuilder(
-                             valueListenable: checkNotifier1,
-                             builder: (ctx, res, widget) {
-                               return Checkbox(
-                                 value: res,
-                                 activeColor: darkTextBody, //选中时的颜色
-                                 onChanged: (value) {
-                                   checkNotifier1.value = value ?? false;
-                                 },
-                               );
-                             }),
-                         const SizedBox(width: 20,),
-                       ],
-                     ),
+                      Row(
+                        children: [
+                          ValueListenableBuilder(
+                              valueListenable: checkNotifier1,
+                              builder: (ctx, res, widget) {
+                                return Checkbox(
+                                  value: res,
+                                  activeColor: green, //选中时的颜色
+                                  onChanged: (value) {
+                                    checkNotifier1.value = value ?? false;
+                                  },
+                                );
+                              }),
+                          const SizedBox(
+                            width: 20,
+                          ),
+                          ValueListenableBuilder(
+                              valueListenable: checkNotifier1,
+                              builder: (ctx, res, widget) {
+                                return Checkbox(
+                                  value: res,
+                                  activeColor: red, //选中时的颜色
+                                  onChanged: (value) {
+                                    checkNotifier1.value = value ?? false;
+                                  },
+                                );
+                              }),
+                          const SizedBox(
+                            width: 20,
+                          ),
+                          ValueListenableBuilder(
+                              valueListenable: checkNotifier1,
+                              builder: (ctx, res, widget) {
+                                return Checkbox(
+                                  value: res,
+                                  activeColor: yellow, //选中时的颜色
+                                  onChanged: (value) {
+                                    checkNotifier1.value = value ?? false;
+                                  },
+                                );
+                              }),
+                          const SizedBox(
+                            width: 20,
+                          ),
+                          ValueListenableBuilder(
+                              valueListenable: checkNotifier1,
+                              builder: (ctx, res, widget) {
+                                return Checkbox(
+                                  value: res,
+                                  activeColor: primary, //选中时的颜色
+                                  onChanged: (value) {
+                                    checkNotifier1.value = value ?? false;
+                                  },
+                                );
+                              }),
+                          const SizedBox(
+                            width: 20,
+                          ),
+                          ValueListenableBuilder(
+                              valueListenable: checkNotifier1,
+                              builder: (ctx, res, widget) {
+                                return Checkbox(
+                                  value: res,
+                                  activeColor: darkTextBody, //选中时的颜色
+                                  onChanged: (value) {
+                                    checkNotifier1.value = value ?? false;
+                                  },
+                                );
+                              }),
+                          const SizedBox(
+                            width: 20,
+                          ),
+                        ],
+                      ),
                     ])),
           ),
           const SizedBox(

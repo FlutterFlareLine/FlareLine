@@ -12,9 +12,13 @@ const Color text = Color(0xFF64748B);
 
 const Color stroke = Color(0xFFE8EAEB);
 
+const Color border = Color(0xFFE5E8EC);
+
 const Color darkText = Color(0xFFDEE4EE);
 
 const Color darkTextBody = Color(0xFF8A99AF);
+
+const Color darkBlackText = Color(0xFF1C2434);
 
 const Color green = Color(0xFF10B981);
 

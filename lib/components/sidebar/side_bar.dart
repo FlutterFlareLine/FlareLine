@@ -1,32 +1,36 @@
 import 'dart:convert';
 
+import 'package:flareline/provider/theme_provider.dart';
+import 'package:flareline/themes/global_theme.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flareline/components/sidebar/side_menu.dart';
 import 'package:flareline/themes/global_colors.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:provider/provider.dart';
 
 class SideBarWidger extends StatelessWidget {
   const SideBarWidger({super.key});
 
   @override
   Widget build(BuildContext context) {
+    bool isDark = context.watch<ThemeProvider>().isDark;
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
-      color: sideBar,
+      color: isDark ? sideBar : Colors.white,
       width: 280,
       child: Column(children: [
-        _logoWidget(context),
+        _logoWidget(context,isDark),
         const SizedBox(
           height: 30,
         ),
-        Expanded(child: _sideListWidget(context))
+        Expanded(child: _sideListWidget(context, isDark))
       ]),
     );
   }
 
-  _logoWidget(BuildContext context) {
+  _logoWidget(BuildContext context, bool isDark) {
     return Row(
       children: [
         const SizedBox(
@@ -42,13 +46,13 @@ class SideBarWidger extends StatelessWidget {
         Expanded(
             child: Text(
           AppLocalizations.of(context)!.appName,
-          style: const TextStyle(color: Colors.white, fontSize: 32),
+          style: TextStyle(color: isDark?Colors.white:darkTextBody, fontSize: 32),
         ))
       ],
     );
   }
 
-  _sideListWidget(BuildContext context) {
+  _sideListWidget(BuildContext context, bool isDark) {
     return ScrollConfiguration(
         behavior: ScrollConfiguration.of(context).copyWith(scrollbars: false),
         child: FutureBuilder(
@@ -65,14 +69,14 @@ class SideBarWidger extends StatelessWidget {
               return ListView.separated(
                   padding: const EdgeInsets.only(left: 20, right: 10),
                   itemBuilder: (ctx, index) {
-                    return itemBuilder(ctx, index, listMenu);
+                    return itemBuilder(ctx, index, listMenu, isDark);
                   },
                   separatorBuilder: separatorBuilder,
                   itemCount: listMenu.length);
             }));
   }
 
-  Widget itemBuilder(BuildContext context, int index, List listMenu) {
+  Widget itemBuilder(BuildContext context, int index, List listMenu, bool isDark) {
     var groupElement = listMenu.elementAt(index);
     List menuList = groupElement['menuList'];
 
@@ -81,7 +85,7 @@ class SideBarWidger extends StatelessWidget {
       children: [
         Text(
           groupElement['groupName'],
-          style: const TextStyle(fontSize: 18, color: Colors.white60),
+          style: TextStyle(fontSize: 18, color: isDark?Colors.white60:darkTextBody),
         ),
         const SizedBox(
           height: 10,
