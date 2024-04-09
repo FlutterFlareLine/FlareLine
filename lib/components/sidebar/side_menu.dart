@@ -102,6 +102,12 @@ class SideMenuWidget extends StatelessWidget {
 
     String path = e['path'];
 
+    String currentPath = context.read<MainProvider>().selectedPath;
+
+    if(path==currentPath){
+      return;
+    }
+
     Navigator.of(context).pushNamed(path);
   }
 }

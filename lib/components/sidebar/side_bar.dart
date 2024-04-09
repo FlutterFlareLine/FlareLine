@@ -21,7 +21,7 @@ class SideBarWidger extends StatelessWidget {
       color: isDark ? sideBar : Colors.white,
       width: 280,
       child: Column(children: [
-        _logoWidget(context,isDark),
+        _logoWidget(context, isDark),
         const SizedBox(
           height: 30,
         ),
@@ -37,7 +37,7 @@ class SideBarWidger extends StatelessWidget {
           width: 8,
         ),
         SvgPicture.asset(
-          'assets/logo/logo_${isDark?'white':'dark'}.svg',
+          'assets/logo/logo_${isDark ? 'white' : 'dark'}.svg',
           height: 32,
         ),
         const SizedBox(
@@ -46,7 +46,8 @@ class SideBarWidger extends StatelessWidget {
         Expanded(
             child: Text(
           AppLocalizations.of(context)!.appName,
-          style: TextStyle(color: isDark?Colors.white:darkTextBody, fontSize: 32),
+          style: TextStyle(
+              color: isDark ? Colors.white : darkTextBody, fontSize: 32),
         ))
       ],
     );
@@ -69,32 +70,11 @@ class SideBarWidger extends StatelessWidget {
               return ListView.separated(
                   padding: const EdgeInsets.only(left: 20, right: 10),
                   itemBuilder: (ctx, index) {
-                    return itemBuilder(ctx, index, listMenu, isDark);
+                    return SideMenuWidget(e: listMenu.elementAt(index));
                   },
                   separatorBuilder: separatorBuilder,
                   itemCount: listMenu.length);
             }));
-  }
-
-  Widget itemBuilder(BuildContext context, int index, List listMenu, bool isDark) {
-    var groupElement = listMenu.elementAt(index);
-    List menuList = groupElement['menuList'];
-
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          groupElement['groupName'],
-          style: TextStyle(fontSize: 18, color: isDark?Colors.white60:darkTextBody),
-        ),
-        const SizedBox(
-          height: 10,
-        ),
-        Column(
-          children: menuList.map((e) => SideMenuWidget(e: e)).toList(),
-        )
-      ],
-    );
   }
 
   Widget separatorBuilder(BuildContext context, int index) {
