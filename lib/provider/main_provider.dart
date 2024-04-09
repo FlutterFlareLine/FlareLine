@@ -30,8 +30,11 @@ class MainProvider with ChangeNotifier {
   }
 
   void setExpandedMenuName(String expandedMenuName) {
-    _expandedMenuName = expandedMenuName;
-
+    if(_expandedMenuName==expandedMenuName){
+      _expandedMenuName='';
+    }else {
+      _expandedMenuName = expandedMenuName;
+    }
     notifyListeners();
   }
 

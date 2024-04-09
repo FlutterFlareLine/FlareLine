@@ -19,6 +19,9 @@ class SideMenuWidget extends StatelessWidget {
   Widget _itemMenuWidget(BuildContext context, e) {
     List? childList = e['childList'];
     bool isDark = context.watch<ThemeProvider>().isDark;
+    bool isExpanded =
+        context.watch<MainProvider>().isExpanded(e['menuName'], childList);
+
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 6),
       child: Column(children: [
@@ -42,7 +45,9 @@ class SideMenuWidget extends StatelessWidget {
               )),
               if (childList != null && childList.isNotEmpty)
                 Icon(
-                  Icons.expand_circle_down_sharp,
+                  isExpanded
+                      ? Icons.keyboard_arrow_up
+                      : Icons.keyboard_arrow_down,
                   color: isDark ? Colors.white : darkBlackText,
                 )
             ],
@@ -60,9 +65,7 @@ class SideMenuWidget extends StatelessWidget {
         ),
         if (childList != null && childList.isNotEmpty)
           Visibility(
-              visible: context
-                  .watch<MainProvider>()
-                  .isExpanded(e['menuName'], childList),
+              visible: isExpanded,
               child: Column(
                 children: childList
                     .map((e) => _itemSubMenuWidget(context, e, isDark))

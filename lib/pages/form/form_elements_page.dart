@@ -9,12 +9,7 @@ import 'package:flareline/components/card/common_card.dart';
 import 'package:flareline/components/forms/form_file_picker.dart';
 import 'package:flareline/components/forms/outborder_text_form_field.dart';
 import 'package:flareline/pages/layout.dart';
-import 'package:getwidget/colors/gf_color.dart';
-import 'package:getwidget/components/checkbox/gf_checkbox.dart';
-import 'package:getwidget/components/dropdown/gf_dropdown.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:getwidget/components/dropdown/gf_multiselect.dart';
-import 'package:getwidget/types/gf_checkbox_type.dart';
 
 class FormElementsPage extends LayoutWidget {
   FormElementsPage({super.key});
@@ -451,7 +446,7 @@ class FormElementsPage extends LayoutWidget {
                   const SizedBox(
                     height: 12,
                   ),
-                  _dropDownWidget(context),
+
                   const SizedBox(
                     height: 16,
                   ),
@@ -459,85 +454,9 @@ class FormElementsPage extends LayoutWidget {
                   const SizedBox(
                     height: 12,
                   ),
-                  _multiSelectWidget(context)
+
                 ])),
           ),
         ]);
-  }
-
-  ValueNotifier<String?> dropDownNotifier = ValueNotifier(null);
-
-  Widget _dropDownWidget(BuildContext context) {
-    return Container(
-      height: 50,
-      width: MediaQuery.of(context).size.width,
-      margin: const EdgeInsets.all(20),
-      child: DropdownButtonHideUnderline(
-        child: ValueListenableBuilder(
-            valueListenable: dropDownNotifier,
-            builder: (ctx, res, widget) {
-              return GFDropdown(
-                borderRadius: BorderRadius.circular(5),
-                border: const BorderSide(color: Colors.black12, width: 1),
-                dropdownButtonColor: Colors.white,
-                value: res,
-                onChanged: (newValue) {
-                  dropDownNotifier.value = newValue;
-                },
-                items: [
-                  'FC Barcelona',
-                  'Real Madrid',
-                  'Villareal',
-                  'Manchester City'
-                ]
-                    .map((value) => DropdownMenuItem(
-                          value: value,
-                          child: Text(value),
-                        ))
-                    .toList(),
-              );
-            }),
-      ),
-    );
-  }
-
-  List<String> dropList = ['China', 'USA', 'England', "Russia", 'Japan'];
-
-  Widget _multiSelectWidget(BuildContext context) {
-    return GFMultiSelect(
-      items: dropList,
-      onSelect: (value) {
-        if (kDebugMode) {
-          print('selected $value ');
-        }
-      },
-      dropdownTitleTileText: 'Messi, Griezmann, Coutinho ',
-      dropdownTitleTileMargin:
-          const EdgeInsets.only(top: 22, left: 18, right: 18, bottom: 5),
-      dropdownTitleTilePadding: EdgeInsets.all(10),
-      dropdownUnderlineBorder:
-          const BorderSide(color: Colors.transparent, width: 2),
-      dropdownTitleTileBorder:
-          Border.all(color: Colors.grey.shade200, width: 1),
-      dropdownTitleTileBorderRadius: BorderRadius.circular(5),
-      expandedIcon: const Icon(
-        Icons.keyboard_arrow_down,
-        color: Colors.black54,
-      ),
-      collapsedIcon: const Icon(
-        Icons.keyboard_arrow_up,
-        color: Colors.black54,
-      ),
-      submitButton: Text(AppLocalizations.of(context)!.ok),
-      cancelButton: Text(AppLocalizations.of(context)!.cancel),
-      dropdownTitleTileTextStyle:
-          const TextStyle(fontSize: 14, color: Colors.black54),
-      padding: const EdgeInsets.all(6),
-      margin: const EdgeInsets.all(6),
-      type: GFCheckboxType.basic,
-      activeBgColor: GFColors.SUCCESS,
-      activeBorderColor: GFColors.SUCCESS,
-      inactiveBorderColor: Colors.grey.shade200,
-    );
   }
 }

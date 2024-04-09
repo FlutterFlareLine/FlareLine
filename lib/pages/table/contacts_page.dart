@@ -3,7 +3,6 @@ import 'package:flareline/components/forms/outborder_text_form_field.dart';
 import 'package:flareline/pages/layout.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
-import 'package:getwidget/components/dropdown/gf_dropdown.dart';
 
 class ContactsPage extends LayoutWidget {
   ContactsPage({super.key});
@@ -57,21 +56,7 @@ class ContactsPage extends LayoutWidget {
         child: ValueListenableBuilder(
             valueListenable: dropDownNotifier,
             builder: (ctx, res, widget) {
-              return GFDropdown(
-                borderRadius: BorderRadius.circular(5),
-                border: const BorderSide(color: Colors.black12, width: 1),
-                dropdownButtonColor: Colors.white,
-                value: res,
-                onChanged: (newValue) {
-                  dropDownNotifier.value = newValue;
-                },
-                items: ['10', '20', '50', '100']
-                    .map((value) => DropdownMenuItem(
-                          value: value,
-                          child: Text(value),
-                        ))
-                    .toList(),
-              );
+              return SizedBox.shrink();
             }),
       ),
     );
