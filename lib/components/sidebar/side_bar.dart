@@ -37,7 +37,7 @@ class SideBarWidger extends StatelessWidget {
           width: 8,
         ),
         SvgPicture.asset(
-          'assets/logo/logo-icon.svg',
+          'assets/logo/logo_${isDark?'white':'dark'}.svg',
           height: 32,
         ),
         const SizedBox(

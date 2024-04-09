@@ -341,14 +341,6 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "2.1.1"
-  getwidget:
-    dependency: "direct main"
-    description:
-      name: getwidget
-      sha256: "91df14a8d80e21f3ec02759295b90cc8badb8a872b90d34ad4aeb4085d833b5c"
-      url: "https://pub.flutter-io.cn"
-    source: hosted
-    version: "4.0.0"
   glob:
     dependency: transitive
     description:
