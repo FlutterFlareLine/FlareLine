@@ -57,7 +57,6 @@ class RouteConfiguration {
     RouteSettings settings,
   ) {
     String path = settings.name!;
-    print(path);
 
     dynamic map =
         MAIN_PAGES.firstWhere((element) => element['routerPath'] == path);

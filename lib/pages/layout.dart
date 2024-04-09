@@ -1,5 +1,6 @@
 import 'package:flareline/components/sidebar/side_bar.dart';
 import 'package:flareline/components/toolbar/toolbar.dart';
+import 'package:flareline/routes.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flareline/components/breaktab.dart';

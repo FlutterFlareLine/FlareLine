@@ -2,12 +2,7 @@
   {
     "icon": "assets/sidebar/dashboard.svg",
     "menuName": "Dashboard",
-    "childList": [
-      {
-        "menuName": "eCommerce",
-        "path": "/"
-      }
-    ]
+    "path": "/"
   },
   {
     "icon": "assets/sidebar/calendar.svg",

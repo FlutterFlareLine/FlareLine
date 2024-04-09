@@ -19,7 +19,7 @@ class MainProvider with ChangeNotifier {
       String? routePath =
           ModalRoute.of(RouteConfiguration.navigatorContext!)?.settings?.name;
       print('---------------> routerPath ${routePath}');
-      setSelectedPath(routePath ?? '');
+      setSelectedPath(routePath == null || routePath == '' ? '/' : routePath);
     }
   }
 
@@ -30,9 +30,9 @@ class MainProvider with ChangeNotifier {
   }
 
   void setExpandedMenuName(String expandedMenuName) {
-    if(_expandedMenuName==expandedMenuName){
-      _expandedMenuName='';
-    }else {
+    if (_expandedMenuName == expandedMenuName) {
+      _expandedMenuName = '';
+    } else {
       _expandedMenuName = expandedMenuName;
     }
     notifyListeners();

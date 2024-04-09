@@ -1,4 +1,5 @@
 import 'package:flareline/provider/theme_provider.dart';
+import 'package:flareline/routes.dart';
 import 'package:flareline/themes/global_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -56,6 +57,7 @@ class SideMenuWidget extends StatelessWidget {
             if (childList != null && childList.isNotEmpty) {
               context.read<MainProvider>().setExpandedMenuName(e['menuName']);
             } else {
+              context.read<MainProvider>().setExpandedMenuName('');
               pushOrJump(context, e);
             }
           },
@@ -102,12 +104,12 @@ class SideMenuWidget extends StatelessWidget {
 
     String path = e['path'];
 
-    String currentPath = context.read<MainProvider>().selectedPath;
+    String? routePath =
+        ModalRoute.of(context)?.settings?.name;
 
-    if(path==currentPath){
+    if(path==routePath){
       return;
     }
-
     Navigator.of(context).pushNamed(path);
   }
 }
