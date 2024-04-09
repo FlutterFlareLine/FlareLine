@@ -52,7 +52,7 @@ class ButtonWidget extends StatelessWidget {
             Text(
               btnText,
               style:
-                  TextStyle(color: textColor ?? ((isPrimary??true)?Colors.white:text), fontSize: 12),
+                  TextStyle(color: textColor ?? ((isPrimary??true)?Colors.white:text), fontSize: 14),
             )
           ],
         ),

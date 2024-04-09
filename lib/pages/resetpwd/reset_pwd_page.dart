@@ -15,7 +15,6 @@ class ResetPwdWidget extends LayoutWidget {
     return Center(
       child: CommonCard(
         width: MediaQuery.of(context).size.width * 0.8,
-        isAutoHeight: true,
         padding: const EdgeInsets.symmetric(vertical: 100),
         child: Row(children: [
           Expanded(
@@ -54,7 +53,6 @@ class ResetPwdWidget extends LayoutWidget {
   Widget contentMobileWidget(BuildContext context) {
     return Center(
       child: CommonCard(
-        isAutoHeight: false,
         padding: const EdgeInsets.symmetric(vertical: 60),
         child: _formWidget(context),
       ),

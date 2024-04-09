@@ -1,3 +1,4 @@
+import 'package:flareline/themes/global_colors.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_svg/svg.dart';
@@ -6,16 +7,34 @@ import 'package:flareline/components/card/common_card.dart';
 import 'package:flareline/components/forms/outborder_text_form_field.dart';
 import 'package:flareline/pages/layout.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:responsive_builder/responsive_builder.dart';
 
-class SignUpWidget extends LayoutWidget {
+class SignUpWidget extends StatelessWidget {
   const SignUpWidget({super.key});
 
   @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: ResponsiveBuilder(
+        builder: (context, sizingInformation) {
+          // Check the sizing information here and return your UI
+          if (sizingInformation.deviceScreenType == DeviceScreenType.desktop) {
+            return Center(
+              child: contentDesktopWidget(context),
+            );
+          }
+
+          return contentMobileWidget(context);
+        },
+      ),
+    );
+  }
+
+  @override
   Widget contentDesktopWidget(BuildContext context) {
-    return Center(
-      child: CommonCard(
+    return Column(mainAxisSize: MainAxisSize.min, children: [
+      CommonCard(
         width: MediaQuery.of(context).size.width * 0.8,
-        isAutoHeight: true,
         padding: const EdgeInsets.symmetric(vertical: 100),
         child: Row(children: [
           Expanded(
@@ -34,9 +53,8 @@ class SignUpWidget extends LayoutWidget {
                 height: 16,
               ),
               SizedBox(
-                width: 200,
-                height: 300,
-                child: SvgPicture.asset('assets/signin/main.svg',
+                width: 350,
+                child: SvgPicture.asset('assets/signin/signup.svg',
                     semanticsLabel: ''),
               )
             ],
@@ -47,13 +65,12 @@ class SignUpWidget extends LayoutWidget {
           Expanded(child: _formWidget(context))
         ]),
       ),
-    );
+    ]);
   }
 
   @override
   Widget contentMobileWidget(BuildContext context) {
     return CommonCard(
-      isAutoHeight: true,
       padding: const EdgeInsets.symmetric(vertical: 60),
       child: _formWidget(context),
     );
@@ -125,6 +142,13 @@ class SignUpWidget extends LayoutWidget {
             height: 12,
           ),
           ButtonWidget(
+            color: Colors.white,
+            borderColor: border,
+            iconWidget: SvgPicture.asset(
+              'assets/brand/brand-01.svg',
+              width: 25,
+              height: 25,
+            ),
             btnText: AppLocalizations.of(context)!.signUpWithGoogle,
             onTap: () {
               Navigator.of(context).popAndPushNamed("/");

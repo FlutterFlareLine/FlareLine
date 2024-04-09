@@ -9,11 +9,13 @@ import 'package:responsive_builder/responsive_builder.dart';
 abstract class LayoutWidget extends StatelessWidget {
   const LayoutWidget({super.key});
 
-  bool get isPage => false;
-
   bool get showTitle => true;
 
   bool get isAlignCenter => false;
+
+  bool get showSideBar => true;
+
+  bool get showToolBar => true;
 
   String breakTabTitle(BuildContext context) {
     return '';
@@ -37,7 +39,7 @@ abstract class LayoutWidget extends StatelessWidget {
           if (sizingInformation.deviceScreenType == DeviceScreenType.desktop) {
             return Row(
               children: [
-                const SideBarWidger(),
+                if (showSideBar) const SideBarWidger(),
                 Expanded(child: rightContentWidget(context))
               ],
             );
@@ -51,33 +53,35 @@ abstract class LayoutWidget extends StatelessWidget {
   }
 
   Widget rightContentWidget(BuildContext context) {
-    return Column(children: [
-      const ToolBarWidget(),
-      const SizedBox(
-        height: 16,
-      ),
-      Expanded(
-          child: Container(
-        width: double.maxFinite,
-        height: double.maxFinite,
-        alignment: isAlignCenter ? Alignment.center : null,
-        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
-        child: SingleChildScrollView(
-            child: Column(
-          children: [
-            if (showTitle) BreakTab(breakTabTitle(context)),
-            if (showTitle)
-              const SizedBox(
-                height: 10,
-              ),
-            ScreenTypeLayout.builder(
-              desktop: contentDesktopWidget,
-              mobile: contentMobileWidget,
-              tablet: contentMobileWidget,
-            )
-          ],
-        )),
-      ))
-    ]);
+    return Column(
+        children: [
+          if (showToolBar) const ToolBarWidget(),
+          if (showToolBar)
+            const SizedBox(
+              height: 16,
+            ),
+          Expanded(
+              child: Container(
+            width: double.maxFinite,
+            height: double.maxFinite,
+            alignment: isAlignCenter ? Alignment.center : null,
+            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
+            child: SingleChildScrollView(
+                child: Column(
+              children: [
+                if (showTitle) BreakTab(breakTabTitle(context)),
+                if (showTitle)
+                  const SizedBox(
+                    height: 10,
+                  ),
+                ScreenTypeLayout.builder(
+                  desktop: contentDesktopWidget,
+                  mobile: contentMobileWidget,
+                  tablet: contentMobileWidget,
+                )
+              ],
+            )),
+          ))
+        ]);
   }
 }

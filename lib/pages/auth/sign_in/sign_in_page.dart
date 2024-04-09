@@ -4,26 +4,46 @@ import 'package:flutter_svg/svg.dart';
 import 'package:flareline/components/buttons/button_widget.dart';
 import 'package:flareline/components/card/common_card.dart';
 import 'package:flareline/components/forms/outborder_text_form_field.dart';
-import 'package:flareline/pages/layout.dart';
 import 'package:flareline/themes/global_colors.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:responsive_builder/responsive_builder.dart';
 
-class SignInWidget extends LayoutWidget {
+class SignInWidget extends StatelessWidget {
   const SignInWidget({super.key});
 
   @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: ResponsiveBuilder(
+        builder: (context, sizingInformation) {
+          // Check the sizing information here and return your UI
+          if (sizingInformation.deviceScreenType == DeviceScreenType.desktop) {
+            return Center(
+              child: contentDesktopWidget(context),
+            );
+          }
+
+          return contentMobileWidget(context);
+        },
+      ),
+    );
+  }
+
   Widget contentDesktopWidget(BuildContext context) {
-    return CommonCard(
-      width: MediaQuery.of(context).size.width*0.8,
-      isAutoHeight: true,
-      padding: const EdgeInsets.symmetric(vertical: 100),
-      child: Row(crossAxisAlignment: CrossAxisAlignment.center, children: [
-        Expanded(
-            child: Column(
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        CommonCard(
+          width: MediaQuery.of(context).size.width * 0.8,
+          padding: const EdgeInsets.symmetric(vertical: 100),
+          child: Row(crossAxisAlignment: CrossAxisAlignment.center, children: [
+            Expanded(
+                child: Column(
               children: [
                 Text(
                   AppLocalizations.of(context)!.appName,
-                  style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                  style: const TextStyle(
+                      fontSize: 20, fontWeight: FontWeight.bold),
                 ),
                 const SizedBox(
                   height: 16,
@@ -33,28 +53,28 @@ class SignInWidget extends LayoutWidget {
                   height: 16,
                 ),
                 SizedBox(
-                  width: 200,
-                  height: 300,
+                  width: 350,
                   child: SvgPicture.asset('assets/signin/main.svg',
                       semanticsLabel: ''),
                 )
               ],
             )),
-        const VerticalDivider(
-          width: 1,
-          color: stroke,
-        ),
-        Expanded(
-          child: _signInFormWidget(context),
+            const VerticalDivider(
+              width: 1,
+              color: stroke,
+            ),
+            Expanded(
+              child: _signInFormWidget(context),
+            )
+          ]),
         )
-      ]),
+      ],
     );
   }
 
   @override
   Widget contentMobileWidget(BuildContext context) {
     return CommonCard(
-        isAutoHeight: true,
         padding: const EdgeInsets.symmetric(vertical: 60),
         child: _signInFormWidget(context));
   }
@@ -67,7 +87,7 @@ class SignInWidget extends LayoutWidget {
           children: [
             Text(
               AppLocalizations.of(context)!.signIn,
-              style: const TextStyle(fontSize: 16),
+              style: const TextStyle(fontSize: 20),
             ),
             const SizedBox(
               height: 20,
@@ -120,15 +140,72 @@ class SignInWidget extends LayoutWidget {
               },
             ),
             const SizedBox(
-              height: 12,
+              height: 20,
+            ),
+            Row(
+              children: [
+                const Expanded(
+                    child: Divider(
+                  height: 1,
+                  color: border,
+                )),
+                Container(
+                  margin: EdgeInsets.symmetric(horizontal: 20),
+                  child: Text('OR'),
+                ),
+                const Expanded(
+                    child: Divider(
+                  height: 1,
+                  color: border,
+                )),
+              ],
+            ),
+            const SizedBox(
+              height: 20,
             ),
             ButtonWidget(
+              color: Colors.white,
+              borderColor: border,
               iconWidget: SvgPicture.asset(
                 'assets/brand/brand-01.svg',
-                width: 20,
-                height: 20,
+                width: 25,
+                height: 25,
               ),
               btnText: AppLocalizations.of(context)!.signInWithGoogle,
+              onTap: () {
+                Navigator.of(context).popAndPushNamed("/");
+              },
+              isPrimary: false,
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            ButtonWidget(
+              color: Colors.white,
+              borderColor: border,
+              iconWidget: SvgPicture.asset(
+                'assets/brand/brand-02.svg',
+                width: 25,
+                height: 25,
+              ),
+              btnText: AppLocalizations.of(context)!.signInWithTwitter,
+              onTap: () {
+                Navigator.of(context).popAndPushNamed("/");
+              },
+              isPrimary: false,
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            ButtonWidget(
+              color: Colors.white,
+              borderColor: border,
+              iconWidget: SvgPicture.asset(
+                'assets/brand/brand-03.svg',
+                width: 25,
+                height: 25,
+              ),
+              btnText: AppLocalizations.of(context)!.signInWithGithub,
               onTap: () {
                 Navigator.of(context).popAndPushNamed("/");
               },
@@ -155,13 +232,4 @@ class SignInWidget extends LayoutWidget {
           ],
         ));
   }
-
-  @override
-  bool get showTitle => false;
-
-  @override
-  bool get isPage => true;
-
-  @override
-  bool get isAlignCenter => true;
 }
