@@ -20,7 +20,6 @@ class SignInWidget extends StatelessWidget {
       body: ChangeNotifierProvider(
         create: (ctx) => SignInProvider(ctx),
         builder: (ctx, child) {
-
           return ResponsiveBuilder(
             builder: (context, sizingInformation) {
               // Check the sizing information here and return your UI
@@ -196,30 +195,13 @@ class SignInWidget extends StatelessWidget {
               color: Colors.white,
               borderColor: border,
               iconWidget: SvgPicture.asset(
-                'assets/brand/brand-02.svg',
-                width: 25,
-                height: 25,
-              ),
-              btnText: AppLocalizations.of(context)!.signInWithTwitter,
-              onTap: () {
-
-              },
-              isPrimary: false,
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            ButtonWidget(
-              color: Colors.white,
-              borderColor: border,
-              iconWidget: SvgPicture.asset(
                 'assets/brand/brand-03.svg',
                 width: 25,
                 height: 25,
               ),
               btnText: AppLocalizations.of(context)!.signInWithGithub,
               onTap: () {
-
+                context.read<SignInProvider>().signInWithGithub(context);
               },
               isPrimary: false,
             ),

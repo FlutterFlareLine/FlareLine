@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flareline/entity/user_entity.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:uuid/uuid.dart';
@@ -59,6 +60,14 @@ class FirebaseProvider extends ChangeNotifier {
     // return await FirebaseAuth.instance.signInWithRedirect(googleProvider);
   }
 
+  Future<UserCredential> signInWithGithub() async {
+    // Create a new provider
+    GithubAuthProvider githubProvider = GithubAuthProvider();
+
+    // Once signed in, return the UserCredential
+    return await FirebaseAuth.instance.signInWithPopup(githubProvider);
+  }
+
   Future<UserEntity> login(User user) async {
     UserEntity? userEntity = await getOne((user.email ?? ''));
     if (userEntity == null) {
@@ -100,4 +109,6 @@ class FirebaseProvider extends ChangeNotifier {
     }
     return null;
   }
+
+
 }

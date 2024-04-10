@@ -23,7 +23,21 @@ class SignInProvider with ChangeNotifier {
         await context.read<FirebaseProvider>().signInWithGoogle();
     User? user = userCredential.user;
     print('login user ${user}');
-    if (user != null && user.emailVerified) {
+    if (user != null) {
+      UserEntity userEntity = await context.read<FirebaseProvider>().login(user);
+      context.read<StoreProvider>().saveLogin(userEntity);
+      Navigator.of(context).popAndPushNamed('/');
+      return;
+    }
+    SnackBarUtil.showSnack(context, 'Sign In Fail');
+  }
+
+  Future<void> signInWithGithub(BuildContext context) async {
+    UserCredential userCredential =
+    await context.read<FirebaseProvider>().signInWithGithub();
+    User? user = userCredential.user;
+    print('login user ${user}');
+    if (user != null) {
       UserEntity userEntity = await context.read<FirebaseProvider>().login(user);
       context.read<StoreProvider>().saveLogin(userEntity);
       Navigator.of(context).popAndPushNamed('/');
