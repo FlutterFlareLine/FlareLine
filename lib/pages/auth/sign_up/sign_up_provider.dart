@@ -45,7 +45,6 @@ class SignUpProvider with ChangeNotifier {
       if (credential.user != null) {
         User? user = credential.user;
         if (user != null) {
-          context.read<FirebaseProvider>().register(user);
           context.read<StoreProvider>().saveEmail(user.email);
 
           await FirebaseAuth.instance.setLanguageCode(

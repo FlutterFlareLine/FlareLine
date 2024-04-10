@@ -13,12 +13,9 @@ class FirebaseProvider extends ChangeNotifier {
     init();
   }
 
-  late FirebaseFirestore db;
-
   final box = GetStorage();
 
   void init() {
-    db = FirebaseFirestore.instance;
 
     FirebaseAuth.instance.authStateChanges().listen((User? user) {
       if (user == null) {
@@ -69,16 +66,12 @@ class FirebaseProvider extends ChangeNotifier {
   }
 
   Future<UserEntity> login(User user) async {
-    UserEntity? userEntity = await getOne((user.email ?? ''));
-    if (userEntity == null) {
-      userEntity = await register(user);
-    } else {
-      userEntity.token = user.refreshToken;
-    }
+    UserEntity? userEntity = await generateUserEntity(user);
+    userEntity.token = user.refreshToken;
     return userEntity;
   }
 
-  Future<UserEntity> register(User user) async {
+  Future<UserEntity> generateUserEntity(User user) async {
     UserEntity userEntity = UserEntity();
     userEntity.uid = Uuid().v1();
     userEntity.email = user.email ?? '';
@@ -87,28 +80,8 @@ class FirebaseProvider extends ChangeNotifier {
     userEntity.phoneNumber = user.phoneNumber;
     userEntity.platformUid = user.providerData.first.uid;
     userEntity.platform = user.providerData.first.providerId;
-
-    DocumentReference doc =
-        await db.collection("users").add(userEntity.toJson());
-    print('DocumentSnapshot added with ID: ${doc.id}');
-
     userEntity.token = user.refreshToken;
     return userEntity;
   }
-
-  Future<UserEntity?> getOne(String email) async {
-    final citiesRef = db.collection("users");
-
-    // Create a query against the collection.
-    final query = citiesRef.where("email", isEqualTo: email).limit(1);
-    QuerySnapshot<Map<String, dynamic>> snapshot = await query.get();
-    if(snapshot.docs.isNotEmpty) {
-      Map<String, dynamic> data = snapshot.docs.elementAt(0).data();
-      UserEntity userEntity = UserEntity.fromJson(data);
-      return userEntity;
-    }
-    return null;
-  }
-
 
 }
