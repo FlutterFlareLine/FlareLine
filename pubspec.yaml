@@ -82,6 +82,11 @@ dependencies:
   get: ^4.6.6
 
   json_annotation: any
+  firebase_core: ^2.29.0
+  firebase_auth: any
+  firebase_ui_auth: any
+  cloud_firestore: ^4.16.1
+  uuid: ^4.4.0
 
 
 dev_dependencies:

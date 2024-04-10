@@ -1,10 +1,13 @@
 import 'dart:io';
 
+import 'package:flareline/provider/firebase_provider.dart';
 import 'package:flareline/provider/localization_provider.dart';
 import 'package:flareline/provider/main_provider.dart';
+import 'package:flareline/provider/store_provider.dart';
 import 'package:flareline/provider/theme_provider.dart';
 import 'package:flareline/routes.dart';
 import 'package:flareline/themes/global_theme.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_web_plugins/url_strategy.dart';
@@ -12,11 +15,22 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:provider/provider.dart';
 import 'package:window_manager/window_manager.dart';
+import 'package:firebase_auth/firebase_auth.dart' hide EmailAuthProvider;
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_ui_auth/firebase_ui_auth.dart';
+
+import 'firebase_options.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   await GetStorage.init();
+
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+
+  FirebaseUIAuth.configureProviders([
+    EmailAuthProvider(),
+  ]);
 
   if (GetPlatform.isDesktop && !GetPlatform.isWeb) {
     await windowManager.ensureInitialized();
@@ -47,6 +61,8 @@ class MyApp extends StatelessWidget {
         providers: [
           ChangeNotifierProvider(create: (_) => ThemeProvider()),
           ChangeNotifierProvider(create: (_) => MainProvider()),
+          ChangeNotifierProvider(create: (_) => StoreProvider()),
+          ChangeNotifierProvider(create: (_) => FirebaseProvider()),
           ChangeNotifierProvider(create: (_) => LocalizationProvider())
         ],
         child: Builder(builder: (context) {
@@ -55,7 +71,7 @@ class MyApp extends StatelessWidget {
             restorationScopeId: 'rootFlareLine',
             title: 'FlareLine',
             debugShowCheckedModeBanner: false,
-            initialRoute: '/',
+            initialRoute: '/signIn',
             localizationsDelegates: AppLocalizations.localizationsDelegates,
             locale: context.watch<LocalizationProvider>().locale,
             supportedLocales: AppLocalizations.supportedLocales,

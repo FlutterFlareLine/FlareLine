@@ -1,4 +1,5 @@
 import 'package:flareline/pages/table/contacts_page.dart';
+import 'package:flareline/provider/store_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flareline/pages/alerts/alert_page.dart';
 import 'package:flareline/pages/button/button_page.dart';
@@ -19,6 +20,7 @@ import 'package:flareline/pages/profile/profile_page.dart';
 import 'package:flareline/pages/resetpwd/reset_pwd_page.dart';
 import 'package:flareline/pages/setting/settings_page.dart';
 import 'package:flareline/pages/table/tables_page.dart';
+import 'package:provider/provider.dart';
 
 typedef PathWidgetBuilder = Widget Function(BuildContext, String?);
 
@@ -46,18 +48,28 @@ final List<Map<String, Object>> MAIN_PAGES = [
 ];
 
 class RouteConfiguration {
-
-  static final GlobalKey<NavigatorState> navigatorKey = new GlobalKey<NavigatorState>(debugLabel: 'Rex');
+  static final GlobalKey<NavigatorState> navigatorKey =
+      new GlobalKey<NavigatorState>(debugLabel: 'Rex');
 
   /// 可用于 跳转，overlay-insert（toast，loading） 使用
-  static BuildContext? get navigatorContext => navigatorKey.currentState?.context;
-
+  static BuildContext? get navigatorContext =>
+      navigatorKey.currentState?.context;
 
   static Route<dynamic>? onGenerateRoute(
     RouteSettings settings,
   ) {
-    String path = settings.name!;
+    bool? isLogin = navigatorContext?.read<StoreProvider>().isLogin();
 
+    String path = settings.name!;
+    if (path == '/signIn') {
+      if (isLogin != null && isLogin) {
+        path = '/';
+      }
+    } else {
+      if (isLogin == null || !isLogin) {
+        path = '/signIn';
+      }
+    }
     dynamic map =
         MAIN_PAGES.firstWhere((element) => element['routerPath'] == path);
     if (map == null) {

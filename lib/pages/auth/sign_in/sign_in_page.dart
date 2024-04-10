@@ -1,3 +1,5 @@
+import 'package:flareline/pages/auth/sign_in/sign_in_provider.dart';
+import 'package:flareline/provider/firebase_provider.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_svg/svg.dart';
@@ -6,6 +8,7 @@ import 'package:flareline/components/card/common_card.dart';
 import 'package:flareline/components/forms/outborder_text_form_field.dart';
 import 'package:flareline/themes/global_colors.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:provider/provider.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
 class SignInWidget extends StatelessWidget {
@@ -14,16 +17,22 @@ class SignInWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: ResponsiveBuilder(
-        builder: (context, sizingInformation) {
-          // Check the sizing information here and return your UI
-          if (sizingInformation.deviceScreenType == DeviceScreenType.desktop) {
-            return Center(
-              child: contentDesktopWidget(context),
-            );
-          }
+      body: ChangeNotifierProvider(
+        create: (_) => SignInProvider(),
+        builder: (ctx, child) {
+          return ResponsiveBuilder(
+            builder: (context, sizingInformation) {
+              // Check the sizing information here and return your UI
+              if (sizingInformation.deviceScreenType ==
+                  DeviceScreenType.desktop) {
+                return Center(
+                  child: contentDesktopWidget(context),
+                );
+              }
 
-          return contentMobileWidget(context);
+              return contentMobileWidget(context);
+            },
+          );
         },
       ),
     );
@@ -173,7 +182,7 @@ class SignInWidget extends StatelessWidget {
               ),
               btnText: AppLocalizations.of(context)!.signInWithGoogle,
               onTap: () {
-                Navigator.of(context).popAndPushNamed("/");
+                context.read<SignInProvider>().signInWithGoogle(context);
               },
               isPrimary: false,
             ),

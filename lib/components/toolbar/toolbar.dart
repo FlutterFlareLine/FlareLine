@@ -1,5 +1,8 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flareline/components/badge/anim_badge.dart';
 import 'package:flareline/components/forms/outborder_text_form_field.dart';
+import 'package:flareline/entity/user_entity.dart';
+import 'package:flareline/provider/store_provider.dart';
 import 'package:flareline/provider/theme_provider.dart';
 import 'package:flareline/themes/global_theme.dart';
 import 'package:flutter/material.dart';
@@ -115,19 +118,7 @@ class ToolBarWidget extends StatelessWidget {
         const SizedBox(
           width: 20,
         ),
-        const Column(
-          children: [
-            Text('Taylor'),
-            Text('Developer'),
-          ],
-        ),
-        const SizedBox(
-          width: 5,
-        ),
-        const CircleAvatar(
-          backgroundImage: AssetImage('assets/user/user-10.png'),
-          radius: 22,
-        ),
+        _userInfoWidget(context),
         InkWell(
           child: Container(
             margin: const EdgeInsets.only(left: 6),
@@ -135,24 +126,31 @@ class ToolBarWidget extends StatelessWidget {
           ),
           onTap: () async {
             await showMenu(
-                color: Colors.white,
-                context: context,
-                position: RelativeRect.fromLTRB(
-                    MediaQuery.of(context).size.width - 100, 80, 0, 0),
-                items: <PopupMenuItem<String>>[
-                  const PopupMenuItem<String>(
-                      value: 'value01', child: Text('My Profile')),
-                  const PopupMenuItem<String>(
-                      value: 'value02', child: Text('My Contacts')),
-                  const PopupMenuItem<String>(
-                      value: 'value03', child: Text('About Settings')),
-                  PopupMenuItem<String>(
-                      enabled: false,
-                      value: 'value04',
-                      child: _languagesWidget(context)),
-                  const PopupMenuItem<String>(
-                      value: 'value05', child: Text('Log out'))
-                ]);
+              color: Colors.white,
+              context: context,
+              position: RelativeRect.fromLTRB(
+                  MediaQuery.of(context).size.width - 100, 80, 0, 0),
+              items: <PopupMenuItem<String>>[
+                const PopupMenuItem<String>(
+                    value: 'value01', child: Text('My Profile')),
+                const PopupMenuItem<String>(
+                    value: 'value02', child: Text('My Contacts')),
+                const PopupMenuItem<String>(
+                    value: 'value03', child: Text('About Settings')),
+                PopupMenuItem<String>(
+                    enabled: false,
+                    value: 'value04',
+                    child: _languagesWidget(context)),
+                PopupMenuItem<String>(
+                  value: 'value05',
+                  child: Text('Log out'),
+                  onTap: () {
+                    context.read<StoreProvider>().logout();
+                    Navigator.of(context).popAndPushNamed('/signIn');
+                  },
+                )
+              ],
+            );
           },
         )
       ]),
@@ -181,6 +179,28 @@ class ToolBarWidget extends StatelessWidget {
       }).toList(),
     );
   }
+
+  Widget _userInfoWidget(BuildContext context) {
+    UserEntity? loginUser = context.watch<StoreProvider>().user;
+    String showName = loginUser != null ? (loginUser.displayName ?? '') : '';
+    String avatar = loginUser != null ? (loginUser.avatar ?? '') : '';
+    return Row(
+      children: [
+        Column(
+          children: [
+            Text(showName),
+          ],
+        ),
+        const SizedBox(
+          width: 10,
+        ),
+        CircleAvatar(
+          backgroundImage: NetworkImage(avatar),
+          radius: 22,
+        )
+      ],
+    );
+  }
 }
 
 class ToggleWidget extends StatelessWidget {
@@ -207,7 +227,6 @@ class ToggleWidget extends StatelessWidget {
                     height: 18,
                     color: isDark ? darkTextBody : primary),
               ),
-
               CircleAvatar(
                 backgroundColor: isDark ? Colors.white : Colors.transparent,
                 child: SvgPicture.asset('assets/toolbar/moon.svg',

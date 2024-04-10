@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "831118677352",
+    "project_id": "flareline",
+    "storage_bucket": "flareline.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:831118677352:android:bb6c79515ff1dea761f2dd",
+        "android_client_info": {
+          "package_name": "top.flareline.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "831118677352-k0999hve7nc16de4re8mmi25ph0k4otp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD2VU11u4dpTygmwhIFs7Tw_6aMCVuiIgY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "831118677352-k0999hve7nc16de4re8mmi25ph0k4otp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
