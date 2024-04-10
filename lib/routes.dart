@@ -35,8 +35,12 @@ final List<Map<String, Object>> MAIN_PAGES = [
   {'routerPath': '/formElements', 'widget': FormElementsPage()},
   {'routerPath': '/formLayout', 'widget': FormLayoutPage()},
   {'routerPath': '/signIn', 'widget': const SignInWidget()},
-  {'routerPath': '/signUp', 'widget': const SignUpWidget()},
-  {'routerPath': '/resetPwd', 'widget': const ResetPwdWidget()},
+  {'routerPath': '/signUp', 'widget': const SignUpWidget(), 'isWhite': true},
+  {
+    'routerPath': '/resetPwd',
+    'widget': const ResetPwdWidget(),
+    'isWhite': true
+  },
   {'routerPath': '/invoice', 'widget': const InvoicePage()},
   {'routerPath': '/inbox', 'widget': const InboxWidget()},
   {'routerPath': '/tables', 'widget': const TablesPage()},
@@ -61,17 +65,24 @@ class RouteConfiguration {
     bool? isLogin = navigatorContext?.read<StoreProvider>().isLogin();
 
     String path = settings.name!;
-    if (path == '/signIn') {
-      if (isLogin != null && isLogin) {
-        path = '/';
-      }
-    } else {
-      if (isLogin == null || !isLogin) {
-        path = '/signIn';
-      }
-    }
+
     dynamic map =
         MAIN_PAGES.firstWhere((element) => element['routerPath'] == path);
+    bool? isWhite = map['isWhite'];
+    if (isWhite == null || !isWhite) {
+      if (path == '/signIn') {
+        if (isLogin != null && isLogin) {
+          path = '/';
+        }
+      } else {
+        if (isLogin == null || !isLogin) {
+          path = '/signIn';
+        }
+      }
+
+      map = MAIN_PAGES.firstWhere((element) => element['routerPath'] == path);
+    }
+
     if (map == null) {
       return null;
     }
