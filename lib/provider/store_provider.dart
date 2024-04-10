@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flareline/entity/user_entity.dart';
 import 'package:flutter/material.dart';
 import 'package:get_storage/get_storage.dart';
@@ -10,6 +11,8 @@ class StoreProvider extends ChangeNotifier {
   UserEntity? _user;
 
   UserEntity? get user => _user ??= loginUser();
+
+  String get email => box.read("email")??'';
 
   bool isLogin() {
     dynamic loginUser = box.read("loginUser");
@@ -22,7 +25,16 @@ class StoreProvider extends ChangeNotifier {
     return userEntity;
   }
 
-  void logout() {
+  saveLogin(UserEntity userEntity) {
+    box.write("loginUser", userEntity.toString());
+  }
+
+  saveEmail(String? email){
+    box.write("email", email);
+  }
+
+  Future<void> logout() async {
     box.remove('loginUser');
+    await FirebaseAuth.instance.signOut();
   }
 }

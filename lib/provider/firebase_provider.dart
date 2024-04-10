@@ -4,6 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flareline/entity/user_entity.dart';
 import 'package:flutter/material.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:uuid/uuid.dart';
 
 class FirebaseProvider extends ChangeNotifier {
@@ -12,6 +13,8 @@ class FirebaseProvider extends ChangeNotifier {
   }
 
   late FirebaseFirestore db;
+
+  final box = GetStorage();
 
   void init() {
     db = FirebaseFirestore.instance;
@@ -73,14 +76,14 @@ class FirebaseProvider extends ChangeNotifier {
     userEntity.avatar = user.photoURL;
     userEntity.displayName = user.displayName;
     userEntity.phoneNumber = user.phoneNumber;
-    userEntity.avatar = user.photoURL;
-    userEntity.platformUid = user.uid;
-    userEntity.token = user.refreshToken;
-    userEntity.platform = 'google';
+    userEntity.platformUid = user.providerData.first.uid;
+    userEntity.platform = user.providerData.first.providerId;
 
     DocumentReference doc =
         await db.collection("users").add(userEntity.toJson());
     print('DocumentSnapshot added with ID: ${doc.id}');
+
+    userEntity.token = user.refreshToken;
     return userEntity;
   }
 

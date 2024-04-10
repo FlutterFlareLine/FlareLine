@@ -1,12 +1,22 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flareline/entity/user_entity.dart';
 import 'package:flareline/provider/firebase_provider.dart';
+import 'package:flareline/provider/store_provider.dart';
+import 'package:flareline/utils/snackbar_util.dart';
 import 'package:flutter/material.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:provider/provider.dart';
 
 class SignInProvider with ChangeNotifier {
   final box = GetStorage();
+  late TextEditingController emailController;
+  late TextEditingController passwordController;
+
+  SignInProvider(BuildContext ctx) {
+    emailController = TextEditingController();
+    passwordController = TextEditingController();
+    emailController.text = ctx.read<StoreProvider>().email;
+  }
 
   Future<void> signInWithGoogle(BuildContext context) async {
     UserCredential userCredential =
@@ -14,16 +24,53 @@ class SignInProvider with ChangeNotifier {
     User? user = userCredential.user;
     print('login user ${user}');
     if (user != null && user.emailVerified) {
-      UserEntity userEntity =
-          await context.read<FirebaseProvider>().login(user);
-      box.write("loginUser", userEntity.toString());
+      UserEntity userEntity = await context.read<FirebaseProvider>().login(user);
+      context.read<StoreProvider>().saveLogin(userEntity);
       Navigator.of(context).popAndPushNamed('/');
       return;
     }
-    showDialog(
-        context: context,
-        builder: (ctx) {
-          return SizedBox(child: Text('login fail'));
-        });
+    SnackBarUtil.showSnack(context, 'Sign In Fail');
+  }
+
+  Future<void> signIn(BuildContext context) async {
+    if (emailController.text.isEmpty || passwordController.text.isEmpty) {
+      SnackBarUtil.showSnack(context, 'Please enter your info');
+      return;
+    }
+    if (passwordController.text.trim().length < 6) {
+      SnackBarUtil.showSnack(context, 'Please enter 6+ Characters password');
+      return;
+    }
+
+    try {
+      UserCredential credential =
+          await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: emailController.text.trim(),
+        password: passwordController.text.trim(),
+      );
+      print('credential ${credential}');
+      if (credential.user != null) {
+        User? user = credential.user;
+        if (user != null) {
+          if(!user.emailVerified){
+            SnackBarUtil.showSnack(context, 'Please verify your email first');
+            return;
+          }
+          UserEntity userEntity = await context.read<FirebaseProvider>().login(user);
+          context.read<StoreProvider>().saveLogin(userEntity);
+          context.read<StoreProvider>().saveEmail(userEntity.email);
+          Navigator.of(context).popAndPushNamed('/');
+        }
+      }
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'user-not-found') {
+        SnackBarUtil.showSnack(context, 'No user found for that email.');
+      } else if (e.code == 'wrong-password') {
+        SnackBarUtil.showSnack(
+            context, 'Wrong password provided for that user.');
+      }
+    } catch (e) {
+      SnackBarUtil.showSnack(context, e.toString());
+    }
   }
 }

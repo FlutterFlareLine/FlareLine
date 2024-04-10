@@ -18,8 +18,9 @@ class SignInWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: ChangeNotifierProvider(
-        create: (_) => SignInProvider(),
+        create: (ctx) => SignInProvider(ctx),
         builder: (ctx, child) {
+
           return ResponsiveBuilder(
             builder: (context, sizingInformation) {
               // Check the sizing information here and return your UI
@@ -117,6 +118,7 @@ class SignInWidget extends StatelessWidget {
                 width: 22,
                 height: 22,
               ),
+              controller: context.read<SignInProvider>().emailController,
             ),
             const SizedBox(
               height: 16,
@@ -138,6 +140,7 @@ class SignInWidget extends StatelessWidget {
                 width: 22,
                 height: 22,
               ),
+              controller: context.read<SignInProvider>().passwordController,
             ),
             const SizedBox(
               height: 20,
@@ -145,7 +148,7 @@ class SignInWidget extends StatelessWidget {
             ButtonWidget(
               btnText: AppLocalizations.of(context)!.signIn,
               onTap: () {
-                Navigator.of(context).popAndPushNamed("/");
+                context.read<SignInProvider>().signIn(context);
               },
             ),
             const SizedBox(
@@ -159,8 +162,8 @@ class SignInWidget extends StatelessWidget {
                   color: border,
                 )),
                 Container(
-                  margin: EdgeInsets.symmetric(horizontal: 20),
-                  child: Text('OR'),
+                  margin: const EdgeInsets.symmetric(horizontal: 20),
+                  child: const Text('OR'),
                 ),
                 const Expanded(
                     child: Divider(
@@ -199,7 +202,7 @@ class SignInWidget extends StatelessWidget {
               ),
               btnText: AppLocalizations.of(context)!.signInWithTwitter,
               onTap: () {
-                Navigator.of(context).popAndPushNamed("/");
+
               },
               isPrimary: false,
             ),
@@ -216,7 +219,7 @@ class SignInWidget extends StatelessWidget {
               ),
               btnText: AppLocalizations.of(context)!.signInWithGithub,
               onTap: () {
-                Navigator.of(context).popAndPushNamed("/");
+
               },
               isPrimary: false,
             ),

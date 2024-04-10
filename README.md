@@ -48,6 +48,10 @@ You can use XAdmin Cloud for a fully managed solution. If you want to self-host 
 * import package `import 'package:flutter_gen/gen_l10n/app_localizations.dart';`
 * use `AppLocalizations.of(context)!.name` to use it
 
+### Feature
+* Firebase Auth
+* 
+
 ### 📄 License
 FlareLine Flutter Free is 100% free and open-source; feel free to use it with your personal and commercial projects.
 

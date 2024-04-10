@@ -144,8 +144,8 @@ class ToolBarWidget extends StatelessWidget {
                 PopupMenuItem<String>(
                   value: 'value05',
                   child: Text('Log out'),
-                  onTap: () {
-                    context.read<StoreProvider>().logout();
+                  onTap: () async {
+                    await context.read<StoreProvider>().logout();
                     Navigator.of(context).popAndPushNamed('/signIn');
                   },
                 )
