@@ -9,7 +9,7 @@ With FlareLine Flutter, you get access to all the necessary dashboard UI compone
 
 ### [🚀 Demo](https://flareline.vercel.app/)
 demo account:
-email: flare@gmail.com
+email: demo@flareline.com
 password: 123456
 
 or you can register
