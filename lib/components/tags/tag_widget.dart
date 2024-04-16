@@ -1,4 +1,4 @@
-import 'package:flareline/themes/global_colors.dart';
+import 'package:flareline/core/theme/global_colors.dart';
 import 'package:flutter/material.dart';
 
 enum TagType {
@@ -31,22 +31,22 @@ class TagWidget extends StatelessWidget {
     Color? textColor;
     switch (tagType) {
       case TagType.Success:
-        textColor = green;
+        textColor = GlobalColors.green;
         break;
       case TagType.Error:
-        textColor = red;
+        textColor = GlobalColors.red;
         break;
       case TagType.Warn:
-        textColor = yellow;
+        textColor = GlobalColors.yellow;
         break;
       case TagType.Primary:
-        textColor = primary;
+        textColor = GlobalColors.primary;
         break;
       case TagType.Secondary:
-        textColor = secondary;
+        textColor = GlobalColors.secondary;
         break;
       default:
-        textColor = color ?? red;
+        textColor = color ?? GlobalColors.red;
     }
     return textColor;
   }

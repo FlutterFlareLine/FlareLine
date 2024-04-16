@@ -1,6 +1,6 @@
 import 'package:flareline/provider/theme_provider.dart';
 import 'package:flareline/routes.dart';
-import 'package:flareline/themes/global_colors.dart';
+import 'package:flareline/core/theme/global_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -36,20 +36,20 @@ class SideMenuWidget extends StatelessWidget {
                     e['icon'],
                     width: 18,
                     height: 18,
-                    color: isDark ? Colors.white : darkBlackText,
+                    color: isDark ? Colors.white : GlobalColors.darkBlackText,
                   ),
                 ),
               Expanded(
                   child: Text(
                 e['menuName'],
-                style: TextStyle(color: isDark ? Colors.white : darkBlackText),
+                style: TextStyle(color: isDark ? Colors.white : GlobalColors.darkBlackText),
               )),
               if (childList != null && childList.isNotEmpty)
                 Icon(
                   isExpanded
                       ? Icons.keyboard_arrow_up
                       : Icons.keyboard_arrow_down,
-                  color: isDark ? Colors.white : darkBlackText,
+                  color: isDark ? Colors.white : GlobalColors.darkBlackText,
                 )
             ],
           ),
@@ -86,7 +86,7 @@ class SideMenuWidget extends StatelessWidget {
             Expanded(
                 child: Text(
               e['menuName'],
-              style: TextStyle(color: isDark ? Colors.white60 : darkBlackText),
+              style: TextStyle(color: isDark ? Colors.white60 : GlobalColors.darkBlackText),
             )),
           ],
         ),

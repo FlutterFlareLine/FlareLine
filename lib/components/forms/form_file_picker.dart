@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import 'package:file_picker/file_picker.dart';
-import 'package:flareline/themes/global_colors.dart';
+import 'package:flareline/core/theme/global_colors.dart';
 import 'package:flutter/material.dart';
 
 
@@ -23,7 +23,7 @@ class FormFilePicker extends StatelessWidget {
         ),
         Container(
           decoration: BoxDecoration(
-              border: Border.all(color: stroke, width: 0.5),
+              border: Border.all(color: GlobalColors.stroke, width: 0.5),
               borderRadius: BorderRadius.circular(2)),
           child: InkWell(
             child: Row(

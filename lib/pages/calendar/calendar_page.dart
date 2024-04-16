@@ -1,7 +1,7 @@
 import 'package:flareline/components/card/common_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flareline/pages/layout.dart';
-import 'package:flareline/themes/global_colors.dart';
+import 'package:flareline/core/theme/global_colors.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -19,7 +19,7 @@ class CalendarPage extends LayoutWidget {
       height: 800,
       child: SfCalendar(
         view: CalendarView.month,
-        todayTextStyle: const TextStyle(color: primary),
+        todayTextStyle: const TextStyle(color: GlobalColors.primary),
         todayHighlightColor: Colors.white,
         headerStyle: const CalendarHeaderStyle(
           backgroundColor: Colors.transparent,
@@ -29,11 +29,11 @@ class CalendarPage extends LayoutWidget {
             // dayFormat: 'EEEE',
             agendaViewHeight: 200,
             agendaStyle: AgendaStyle(
-                appointmentTextStyle: TextStyle(color: red))),
+                appointmentTextStyle: TextStyle(color: GlobalColors.red))),
         viewHeaderHeight: 60,
         headerHeight: 60,
         viewHeaderStyle: const ViewHeaderStyle(
-          backgroundColor: primary,
+          backgroundColor: GlobalColors.primary,
           dayTextStyle: TextStyle(
             color: Colors.white,
             fontSize: 20,

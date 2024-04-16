@@ -5,7 +5,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flareline/components/buttons/button_widget.dart';
 import 'package:flareline/components/card/title_card.dart';
 import 'package:flareline/pages/layout.dart';
-import 'package:flareline/themes/global_colors.dart';
+import 'package:flareline/core/theme/global_colors.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ButtonPage extends LayoutWidget {
@@ -89,7 +89,7 @@ class ButtonPage extends LayoutWidget {
               width: 100,
               child: ButtonWidget(
                 btnText: AppLocalizations.of(context)!.btnName,
-                color: green,
+                color: GlobalColors.green,
                 borderRadius: 0,
               ),
             ),
@@ -97,7 +97,7 @@ class ButtonPage extends LayoutWidget {
               width: 100,
               child: ButtonWidget(
                 btnText: AppLocalizations.of(context)!.btnName,
-                color: green,
+                color: GlobalColors.green,
                 borderRadius: 5,
               ),
             ),
@@ -105,7 +105,7 @@ class ButtonPage extends LayoutWidget {
               width: 100,
               child: ButtonWidget(
                 btnText: AppLocalizations.of(context)!.btnName,
-                color: green,
+                color: GlobalColors.green,
                 borderRadius: 30,
               ),
             ),
@@ -115,8 +115,8 @@ class ButtonPage extends LayoutWidget {
                 btnText: AppLocalizations.of(context)!.btnName,
                 color: Colors.white,
                 borderRadius: 5,
-                borderColor: green,
-                textColor: green,
+                borderColor: GlobalColors.green,
+                textColor: GlobalColors.green,
               ),
             )
           ],
@@ -132,7 +132,7 @@ class ButtonPage extends LayoutWidget {
               width: 100,
               child: ButtonWidget(
                 btnText: AppLocalizations.of(context)!.btnName,
-                color: dark,
+                color: GlobalColors.dark,
                 borderRadius: 0,
               ),
             ),
@@ -140,7 +140,7 @@ class ButtonPage extends LayoutWidget {
               width: 100,
               child: ButtonWidget(
                 btnText: AppLocalizations.of(context)!.btnName,
-                color: dark,
+                color: GlobalColors.dark,
                 borderRadius: 5,
               ),
             ),
@@ -148,7 +148,7 @@ class ButtonPage extends LayoutWidget {
               width: 100,
               child: ButtonWidget(
                 btnText: AppLocalizations.of(context)!.btnName,
-                color: dark,
+                color: GlobalColors.dark,
                 borderRadius: 30,
               ),
             ),
@@ -158,8 +158,8 @@ class ButtonPage extends LayoutWidget {
                 btnText: AppLocalizations.of(context)!.btnName,
                 color: Colors.white,
                 borderRadius: 5,
-                borderColor: dark,
-                textColor: dark,
+                borderColor: GlobalColors.dark,
+                textColor: GlobalColors.dark,
               ),
             )
           ],
@@ -184,51 +184,110 @@ class ButtonPage extends LayoutWidget {
             SizedBox(
               width: 150,
               child: ButtonWidget(
-                iconWidget: Icon(
+                iconWidget: const Icon(
                   Icons.email_outlined,
                   color: Colors.white,
                 ),
                 btnText: AppLocalizations.of(context)!.buttonWithIcon,
-                color: primary,
+                color: GlobalColors.primary,
                 borderRadius: 0,
               ),
             ),
             SizedBox(
               width: 150,
               child: ButtonWidget(
-                iconWidget: Icon(
+                iconWidget: const Icon(
                   Icons.email_outlined,
                   color: Colors.white,
                 ),
                 btnText: AppLocalizations.of(context)!.buttonWithIcon,
-                color: primary,
+                color: GlobalColors.primary,
                 borderRadius: 5,
               ),
             ),
             SizedBox(
               width: 150,
               child: ButtonWidget(
-                iconWidget: Icon(
+                iconWidget: const Icon(
                   Icons.email_outlined,
                   color: Colors.white,
                 ),
                 btnText: AppLocalizations.of(context)!.buttonWithIcon,
-                color: primary,
+                color: GlobalColors.primary,
                 borderRadius: 30,
               ),
             ),
             SizedBox(
               width: 150,
               child: ButtonWidget(
-                iconWidget: Icon(
+                iconWidget: const Icon(
                   Icons.email_outlined,
-                  color: primary,
+                  color: GlobalColors.primary,
                 ),
                 btnText: AppLocalizations.of(context)!.buttonWithIcon,
                 color: Colors.white,
                 borderRadius: 5,
-                borderColor: primary,
-                textColor: primary,
+                borderColor: GlobalColors.primary,
+                textColor: GlobalColors.primary,
+              ),
+            )
+          ],
+        ),
+        const SizedBox(
+          height: 16,
+        ),
+        Wrap(
+          spacing: 20,
+          runSpacing: 16,
+          children: [
+            SizedBox(
+              width: 150,
+              child: ButtonWidget(
+                iconWidget: const Icon(
+                  Icons.shopping_cart_checkout,
+                  color: Colors.white,
+                ),
+                btnText: AppLocalizations.of(context)!.buttonWithIcon,
+                color: GlobalColors.green,
+                borderRadius: 0,
+              ),
+            ),
+            SizedBox(
+              width: 150,
+              child: ButtonWidget(
+                iconWidget: const Icon(
+                  Icons.shopping_cart_checkout,
+                  color: Colors.white,
+                ),
+                btnText: AppLocalizations.of(context)!.buttonWithIcon,
+                color: GlobalColors.green,
+                borderRadius: 5,
+              ),
+            ),
+            SizedBox(
+              width: 150,
+              child: ButtonWidget(
+                iconWidget: const Icon(
+                  Icons.shopping_cart_checkout,
+                  color: Colors.white,
+                ),
+                btnText: AppLocalizations.of(context)!.buttonWithIcon,
+                color: GlobalColors.green,
+                borderRadius: 30,
+              ),
+            ),
+            SizedBox(
+              width: 150,
+              child: ButtonWidget(
+                iconWidget: const Icon(
+                  Icons.shopping_cart_checkout,
+                  color: GlobalColors.green,
+                ),
+                btnText: AppLocalizations.of(context)!.buttonWithIcon,
+                color: Colors.white,
+                borderRadius: 5,
+                borderColor: GlobalColors.green,
+                textColor: GlobalColors.green,
               ),
             )
           ],
@@ -244,70 +303,11 @@ class ButtonPage extends LayoutWidget {
               width: 150,
               child: ButtonWidget(
                 iconWidget: Icon(
-                  Icons.shopping_cart_checkout,
-                  color: Colors.white,
-                ),
-                btnText: AppLocalizations.of(context)!.buttonWithIcon,
-                color: green,
-                borderRadius: 0,
-              ),
-            ),
-            SizedBox(
-              width: 150,
-              child: ButtonWidget(
-                iconWidget: Icon(
-                  Icons.shopping_cart_checkout,
-                  color: Colors.white,
-                ),
-                btnText: AppLocalizations.of(context)!.buttonWithIcon,
-                color: green,
-                borderRadius: 5,
-              ),
-            ),
-            SizedBox(
-              width: 150,
-              child: ButtonWidget(
-                iconWidget: Icon(
-                  Icons.shopping_cart_checkout,
-                  color: Colors.white,
-                ),
-                btnText: AppLocalizations.of(context)!.buttonWithIcon,
-                color: green,
-                borderRadius: 30,
-              ),
-            ),
-            SizedBox(
-              width: 150,
-              child: ButtonWidget(
-                iconWidget: Icon(
-                  Icons.shopping_cart_checkout,
-                  color: green,
-                ),
-                btnText: AppLocalizations.of(context)!.buttonWithIcon,
-                color: Colors.white,
-                borderRadius: 5,
-                borderColor: green,
-                textColor: green,
-              ),
-            )
-          ],
-        ),
-        const SizedBox(
-          height: 16,
-        ),
-        Wrap(
-          spacing: 20,
-          runSpacing: 16,
-          children: [
-            SizedBox(
-              width: 150,
-              child: ButtonWidget(
-                iconWidget: Icon(
                   Icons.favorite_border,
                   color: Colors.white,
                 ),
                 btnText: AppLocalizations.of(context)!.buttonWithIcon,
-                color: dark,
+                color: GlobalColors.dark,
                 borderRadius: 0,
               ),
             ),
@@ -319,7 +319,7 @@ class ButtonPage extends LayoutWidget {
                   color: Colors.white,
                 ),
                 btnText: AppLocalizations.of(context)!.buttonWithIcon,
-                color: dark,
+                color: GlobalColors.dark,
                 borderRadius: 5,
               ),
             ),
@@ -331,7 +331,7 @@ class ButtonPage extends LayoutWidget {
                   color: Colors.white,
                 ),
                 btnText: AppLocalizations.of(context)!.buttonWithIcon,
-                color: dark,
+                color: GlobalColors.dark,
                 borderRadius: 30,
               ),
             ),
@@ -340,13 +340,13 @@ class ButtonPage extends LayoutWidget {
               child: ButtonWidget(
                 iconWidget: Icon(
                   Icons.favorite_border,
-                  color: dark,
+                  color: GlobalColors.dark,
                 ),
                 btnText: AppLocalizations.of(context)!.buttonWithIcon,
                 color: Colors.white,
                 borderRadius: 5,
-                borderColor: dark,
-                textColor: dark,
+                borderColor: GlobalColors.dark,
+                textColor: GlobalColors.dark,
               ),
             )
           ],

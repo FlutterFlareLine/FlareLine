@@ -1,6 +1,6 @@
 
 import 'package:flutter/material.dart';
-import 'package:flareline/themes/global_colors.dart';
+import 'package:flareline/core/theme/global_colors.dart';
 
 
 class ButtonWidget extends StatelessWidget {
@@ -39,7 +39,7 @@ class ButtonWidget extends StatelessWidget {
             color: color ??
                 ((isPrimary ?? true)
                     ? Theme.of(context).primaryColor
-                    : stroke),
+                    : GlobalColors.stroke),
             borderRadius: BorderRadius.circular(borderRadius ?? 4)),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -52,7 +52,7 @@ class ButtonWidget extends StatelessWidget {
             Text(
               btnText,
               style:
-                  TextStyle(color: textColor ?? ((isPrimary??true)?Colors.white:text), fontSize: 14),
+                  TextStyle(color: textColor ?? ((isPrimary??true)?Colors.white:GlobalColors.text), fontSize: 14),
             )
           ],
         ),

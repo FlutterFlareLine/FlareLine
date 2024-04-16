@@ -1,4 +1,4 @@
-import 'package:flareline/themes/global_colors.dart';
+import 'package:flareline/core/theme/global_colors.dart';
 import 'package:flutter/material.dart';
 
 class CommonCard extends StatelessWidget {

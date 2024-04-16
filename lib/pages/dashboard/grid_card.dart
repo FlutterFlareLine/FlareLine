@@ -1,5 +1,5 @@
 import 'package:flareline/provider/theme_provider.dart';
-import 'package:flareline/themes/global_colors.dart';
+import 'package:flareline/core/theme/global_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flareline/components/card/common_card.dart';
 import 'package:provider/provider.dart';
@@ -85,11 +85,11 @@ class GridCard extends StatelessWidget {
                 width: 36,
                 height: 36,
                 alignment: Alignment.center,
+                color: Colors.grey.shade200,
                 child: Icon(
                   icons,
-                  color:sideBar,
+                  color:GlobalColors.sideBar,
                 ),
-                color: Colors.grey.shade200,
               ),
             ),
             const SizedBox(

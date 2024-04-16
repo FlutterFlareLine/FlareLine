@@ -1,5 +1,5 @@
 import 'package:flareline/components/badge/anim_badge.dart';
-import 'package:flareline/themes/global_colors.dart';
+import 'package:flareline/core/theme/global_colors.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flareline/components/card/common_card.dart';
@@ -148,7 +148,7 @@ class _DataProvider extends ChangeNotifier {
         time: 12,
         textCount: 3,
         dot: 3,
-        badgeColor: red),
+        badgeColor: GlobalColors.red),
     Conversation(
         avatar: "/user/user-02.png",
         name: "Henry Fisher",
@@ -156,7 +156,7 @@ class _DataProvider extends ChangeNotifier {
         time: 12,
         textCount: 0,
         dot: 1,
-        badgeColor: green),
+        badgeColor: GlobalColors.green),
     Conversation(
         avatar: "/user/user-04.png",
         name: "Jhon Doe",
@@ -164,7 +164,7 @@ class _DataProvider extends ChangeNotifier {
         time: 32,
         textCount: 0,
         dot: 3,
-        badgeColor: yellow),
+        badgeColor: GlobalColors.yellow),
     Conversation(
         avatar: "/user/user-05.png",
         name: "Jane Doe",
@@ -172,7 +172,7 @@ class _DataProvider extends ChangeNotifier {
         time: 32,
         textCount: 2,
         dot: 66,
-        badgeColor: primary),
+        badgeColor: GlobalColors.primary),
     Conversation(
         avatar: "/user/user-01.png",
         name: "Jhon Doe",

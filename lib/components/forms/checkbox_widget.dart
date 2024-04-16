@@ -1,4 +1,4 @@
-import 'package:flareline/themes/global_colors.dart';
+import 'package:flareline/core/theme/global_colors.dart';
 import 'package:flutter/material.dart';
 
 class CheckBoxWidget extends StatelessWidget {
@@ -13,7 +13,7 @@ class CheckBoxWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Color checkedColor = color ?? primary;
+    Color checkedColor = color ?? GlobalColors.primary;
     return Row(mainAxisSize: MainAxisSize.min, children: [
       ValueListenableBuilder(
           valueListenable: isChecked,
@@ -23,10 +23,10 @@ class CheckBoxWidget extends StatelessWidget {
                 width: size,
                 height: size,
                 decoration: BoxDecoration(
-                    color: checked ? checkedColor : stroke,
+                    color: checked ? checkedColor : GlobalColors.stroke,
                     borderRadius: BorderRadius.circular(4),
                     border: Border.all(
-                        color: checked ? checkedColor : darkTextBody)),
+                        color: checked ? checkedColor : GlobalColors.darkTextBody)),
                 child: Icon(
                   Icons.check,
                   color: checked ? Colors.white : Colors.transparent,

@@ -1,5 +1,5 @@
 import 'package:flareline/pages/auth/sign_up/sign_up_provider.dart';
-import 'package:flareline/themes/global_colors.dart';
+import 'package:flareline/core/theme/global_colors.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_svg/svg.dart';

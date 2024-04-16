@@ -1,16 +1,14 @@
 import 'dart:io';
 
+import 'package:flareline/core/theme/global_theme.dart';
 import 'package:flareline/provider/firebase_provider.dart';
 import 'package:flareline/provider/localization_provider.dart';
 import 'package:flareline/provider/main_provider.dart';
 import 'package:flareline/provider/store_provider.dart';
 import 'package:flareline/provider/theme_provider.dart';
 import 'package:flareline/routes.dart';
-import 'package:flareline/themes/global_theme.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:flutter_web_plugins/url_strategy.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:provider/provider.dart';

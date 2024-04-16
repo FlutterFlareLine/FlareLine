@@ -1,12 +1,12 @@
 import 'dart:convert';
 
 import 'package:flareline/provider/theme_provider.dart';
-import 'package:flareline/themes/global_theme.dart';
+import 'package:flareline/core/theme/global_theme.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flareline/components/sidebar/side_menu.dart';
-import 'package:flareline/themes/global_colors.dart';
+import 'package:flareline/core/theme/global_colors.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
 
@@ -18,7 +18,7 @@ class SideBarWidger extends StatelessWidget {
     bool isDark = context.watch<ThemeProvider>().isDark;
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
-      color: isDark ? sideBar : Colors.white,
+      color: isDark ? GlobalColors.sideBar : Colors.white,
       width: 280,
       child: Column(children: [
         _logoWidget(context, isDark),
@@ -47,7 +47,7 @@ class SideBarWidger extends StatelessWidget {
             child: Text(
           AppLocalizations.of(context)!.appName,
           style: TextStyle(
-              color: isDark ? Colors.white : darkTextBody, fontSize: 32),
+              color: isDark ? Colors.white : GlobalColors.darkTextBody, fontSize: 32),
         ))
       ],
     );

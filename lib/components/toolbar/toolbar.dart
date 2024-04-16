@@ -1,16 +1,15 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
+
 import 'package:flareline/components/badge/anim_badge.dart';
 import 'package:flareline/components/forms/outborder_text_form_field.dart';
 import 'package:flareline/entity/user_entity.dart';
 import 'package:flareline/provider/store_provider.dart';
 import 'package:flareline/provider/theme_provider.dart';
-import 'package:flareline/themes/global_theme.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flareline/components/buttons/button_widget.dart';
 import 'package:flareline/provider/localization_provider.dart';
-import 'package:flareline/themes/global_colors.dart';
+import 'package:flareline/core/theme/global_colors.dart';
 import 'package:provider/provider.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -85,7 +84,7 @@ class ToolBarWidget extends StatelessWidget {
                   height: 34,
                   alignment: Alignment.center,
                   decoration: const BoxDecoration(
-                      color: stroke, shape: BoxShape.circle),
+                      color: GlobalColors.stroke, shape: BoxShape.circle),
                   child: SvgPicture.asset('assets/toolbar/alarm.svg',
                       width: 18, height: 18)),
               const Align(
@@ -106,7 +105,7 @@ class ToolBarWidget extends StatelessWidget {
                   height: 34,
                   alignment: Alignment.center,
                   decoration: const BoxDecoration(
-                      color: stroke, shape: BoxShape.circle),
+                      color: GlobalColors.stroke, shape: BoxShape.circle),
                   child: SvgPicture.asset('assets/toolbar/message.svg',
                       width: 18, height: 18)),
               const Align(
@@ -217,7 +216,7 @@ class ToggleWidget extends StatelessWidget {
           width: 85,
           height: 34,
           decoration: BoxDecoration(
-              color: stroke, borderRadius: BorderRadius.circular(40)),
+              color: GlobalColors.stroke, borderRadius: BorderRadius.circular(40)),
           child: Row(
             children: [
               CircleAvatar(
@@ -225,14 +224,14 @@ class ToggleWidget extends StatelessWidget {
                 child: SvgPicture.asset('assets/toolbar/sun.svg',
                     width: 18,
                     height: 18,
-                    color: isDark ? darkTextBody : primary),
+                    color: isDark ? GlobalColors.darkTextBody : GlobalColors.primary),
               ),
               CircleAvatar(
                 backgroundColor: isDark ? Colors.white : Colors.transparent,
                 child: SvgPicture.asset('assets/toolbar/moon.svg',
                     width: 18,
                     height: 18,
-                    color: isDark ? primary : darkTextBody),
+                    color: isDark ? GlobalColors.primary : GlobalColors.darkTextBody),
               ),
             ],
           )),

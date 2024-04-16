@@ -40,7 +40,7 @@ flutter run -d chrome
 ```
 
 ## Self-hosted
-You can use XAdmin Cloud for a fully managed solution. If you want to self-host XAdmin, we have guides on deploying XAdmin on Vercel, Cloudflare, and more.
+You can use FlareLine Cloud for a fully managed solution. If you want to self-host FlareLine, we have guides on deploying FlareLine on Vercel, Cloudflare, and more.
 
 | Provider   | Host Cloud | Documentation |
 |:-----------| :------------- | :------------- |

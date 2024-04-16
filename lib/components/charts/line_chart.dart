@@ -1,4 +1,4 @@
-import 'package:flareline/themes/global_colors.dart';
+import 'package:flareline/core/theme/global_colors.dart';
 import 'package:flutter/material.dart';
 
 import 'package:provider/provider.dart';
@@ -30,7 +30,7 @@ class LineChartWidget extends StatelessWidget {
                 children: [
                   Container(
                     padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 8),
-                    color: gray,
+                    color: GlobalColors.gray,
                     child: Row(mainAxisAlignment: MainAxisAlignment.end, children: [
                       MaterialButton(
                         onPressed: () {},

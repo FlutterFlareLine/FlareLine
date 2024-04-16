@@ -1,6 +1,6 @@
 import 'package:calendar_date_picker2/calendar_date_picker2.dart';
 import 'package:flareline/components/forms/checkbox_widget.dart';
-import 'package:flareline/themes/global_colors.dart';
+import 'package:flareline/core/theme/global_colors.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -110,7 +110,7 @@ class FormElementsPage extends LayoutWidget {
                     builder: (ctx, checked, child) {
                       return Switch(
                           value: checked,
-                          activeColor: green,
+                          activeColor: GlobalColors.green,
                           onChanged: (r) {
                             toggleNotifier.value = !toggleNotifier.value;
                           });
@@ -123,7 +123,7 @@ class FormElementsPage extends LayoutWidget {
                     builder: (ctx, checked, child) {
                       return SwitchListTile(
                         title: Text(AppLocalizations.of(context)!.switchLabel),
-                        activeColor: red,
+                        activeColor: GlobalColors.red,
                         value: checked,
                         onChanged: (r) {
                           toggleNotifier2.value = !toggleNotifier2.value;
@@ -187,7 +187,7 @@ class FormElementsPage extends LayoutWidget {
                                           borderRadius:
                                               BorderRadius.circular(4),
                                           border: Border.all(
-                                              color: stroke, width: 0.5)),
+                                              color: GlobalColors.stroke, width: 0.5)),
                                       child: Text(val));
                                 }))
                       ],
@@ -239,7 +239,7 @@ class FormElementsPage extends LayoutWidget {
                                           borderRadius:
                                               BorderRadius.circular(4),
                                           border: Border.all(
-                                              color: stroke, width: 0.5)),
+                                              color: GlobalColors.stroke, width: 0.5)),
                                       child: Text(val));
                                 }))
                       ],
@@ -314,7 +314,7 @@ class FormElementsPage extends LayoutWidget {
                         children: [
                           CheckBoxWidget(
                             text: 'Success',
-                            color: green,
+                            color: GlobalColors.green,
                             size: 30,
                             onChanged: (value) {},
                           ),
@@ -323,7 +323,7 @@ class FormElementsPage extends LayoutWidget {
                           ),
                           CheckBoxWidget(
                             text: 'Error',
-                            color: red,
+                            color: GlobalColors.red,
                             size: 30,
                             onChanged: (value) {},
                           ),
@@ -332,7 +332,7 @@ class FormElementsPage extends LayoutWidget {
                           ),
                           CheckBoxWidget(
                             text: 'Warn',
-                            color: yellow,
+                            color: GlobalColors.yellow,
                             size: 30,
                             onChanged: (value) {},
                           ),
@@ -341,7 +341,7 @@ class FormElementsPage extends LayoutWidget {
                           ),
                           CheckBoxWidget(
                             text: 'Primary',
-                            color: primary,
+                            color: GlobalColors.primary,
                             size: 30,
                             onChanged: (value) {},
                           ),
@@ -350,7 +350,7 @@ class FormElementsPage extends LayoutWidget {
                           ),
                           CheckBoxWidget(
                             text: 'Info',
-                            color: darkTextBody,
+                            color: GlobalColors.darkTextBody,
                             size: 30,
                             onChanged: (value) {},
                           ),
@@ -366,7 +366,7 @@ class FormElementsPage extends LayoutWidget {
                               builder: (ctx, res, widget) {
                                 return Checkbox(
                                   value: res,
-                                  activeColor: green, //选中时的颜色
+                                  activeColor: GlobalColors.green, //选中时的颜色
                                   onChanged: (value) {
                                     checkNotifier1.value = value ?? false;
                                   },
@@ -380,7 +380,7 @@ class FormElementsPage extends LayoutWidget {
                               builder: (ctx, res, widget) {
                                 return Checkbox(
                                   value: res,
-                                  activeColor: red, //选中时的颜色
+                                  activeColor: GlobalColors.red, //选中时的颜色
                                   onChanged: (value) {
                                     checkNotifier1.value = value ?? false;
                                   },
@@ -394,7 +394,7 @@ class FormElementsPage extends LayoutWidget {
                               builder: (ctx, res, widget) {
                                 return Checkbox(
                                   value: res,
-                                  activeColor: yellow, //选中时的颜色
+                                  activeColor: GlobalColors.yellow, //选中时的颜色
                                   onChanged: (value) {
                                     checkNotifier1.value = value ?? false;
                                   },
@@ -408,7 +408,7 @@ class FormElementsPage extends LayoutWidget {
                               builder: (ctx, res, widget) {
                                 return Checkbox(
                                   value: res,
-                                  activeColor: primary, //选中时的颜色
+                                  activeColor: GlobalColors.primary, //选中时的颜色
                                   onChanged: (value) {
                                     checkNotifier1.value = value ?? false;
                                   },
@@ -422,7 +422,7 @@ class FormElementsPage extends LayoutWidget {
                               builder: (ctx, res, widget) {
                                 return Checkbox(
                                   value: res,
-                                  activeColor: darkTextBody, //选中时的颜色
+                                  activeColor: GlobalColors.darkTextBody, //选中时的颜色
                                   onChanged: (value) {
                                     checkNotifier1.value = value ?? false;
                                   },

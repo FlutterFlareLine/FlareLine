@@ -7,7 +7,7 @@ import 'package:flareline/provider/theme_provider.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flareline/components/card/common_card.dart';
-import 'package:flareline/themes/global_colors.dart';
+import 'package:flareline/core/theme/global_colors.dart';
 import 'package:flutter/services.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:provider/provider.dart';
@@ -59,8 +59,8 @@ class TableWidget extends StatelessWidget {
               child: DataTable(
                   headingRowColor: MaterialStateProperty.resolveWith((states) =>
                       context.watch<ThemeProvider>().isDark
-                          ? sideBar
-                          : lightGray),
+                          ? GlobalColors.sideBar
+                          : GlobalColors.lightGray),
                   horizontalMargin: 12,
                   showBottomBorder: true,
                   showCheckboxColumn: false,

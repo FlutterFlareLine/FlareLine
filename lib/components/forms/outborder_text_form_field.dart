@@ -1,4 +1,4 @@
-import 'package:flareline/themes/global_colors.dart';
+import 'package:flareline/core/theme/global_colors.dart';
 import 'package:flutter/material.dart';
 
 class OutBorderTextFormField extends StatelessWidget {
@@ -62,13 +62,13 @@ class OutBorderTextFormField extends StatelessWidget {
                       labelText: '',
                       border: const OutlineInputBorder(
                           borderSide:
-                          BorderSide(color: border, width: 1)),
+                          BorderSide(color: GlobalColors.border, width: 1)),
                       enabledBorder: const OutlineInputBorder(
                           borderSide:
-                              BorderSide(color: border, width: 1)),
+                              BorderSide(color: GlobalColors.border, width: 1)),
                       focusedBorder: const OutlineInputBorder(
                           borderSide:
-                              BorderSide(color: primary, width: 1)),
+                              BorderSide(color: GlobalColors.primary, width: 1)),
                       contentPadding: const EdgeInsets.symmetric(
                         horizontal: 12,
                         vertical: 6,

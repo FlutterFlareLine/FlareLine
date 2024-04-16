@@ -6,7 +6,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:flareline/components/buttons/button_widget.dart';
 import 'package:flareline/components/card/common_card.dart';
 import 'package:flareline/components/forms/outborder_text_form_field.dart';
-import 'package:flareline/themes/global_colors.dart';
+import 'package:flareline/core/theme/global_colors.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
 import 'package:responsive_builder/responsive_builder.dart';
@@ -70,7 +70,7 @@ class SignInWidget extends StatelessWidget {
             )),
             const VerticalDivider(
               width: 1,
-              color: stroke,
+              color: GlobalColors.stroke,
             ),
             Expanded(
               child: _signInFormWidget(context),
@@ -158,7 +158,7 @@ class SignInWidget extends StatelessWidget {
                 const Expanded(
                     child: Divider(
                   height: 1,
-                  color: border,
+                  color: GlobalColors.border,
                 )),
                 Container(
                   margin: const EdgeInsets.symmetric(horizontal: 20),
@@ -167,7 +167,7 @@ class SignInWidget extends StatelessWidget {
                 const Expanded(
                     child: Divider(
                   height: 1,
-                  color: border,
+                  color: GlobalColors.border,
                 )),
               ],
             ),
@@ -176,7 +176,7 @@ class SignInWidget extends StatelessWidget {
             ),
             ButtonWidget(
               color: Colors.white,
-              borderColor: border,
+              borderColor: GlobalColors.border,
               iconWidget: SvgPicture.asset(
                 'assets/brand/brand-01.svg',
                 width: 25,
@@ -193,7 +193,7 @@ class SignInWidget extends StatelessWidget {
             ),
             ButtonWidget(
               color: Colors.white,
-              borderColor: border,
+              borderColor: GlobalColors.border,
               iconWidget: SvgPicture.asset(
                 'assets/brand/brand-03.svg',
                 width: 25,

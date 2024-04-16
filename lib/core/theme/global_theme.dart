@@ -1,4 +1,4 @@
-import 'package:flareline/themes/global_colors.dart';
+import 'package:flareline/core/theme/global_colors.dart';
 import 'package:flutter/material.dart';
 
 
@@ -10,20 +10,20 @@ class GlobalTheme {
   ) {
     return ThemeData(
         useMaterial3: true,
-        primaryColor: primary,
+        primaryColor: GlobalColors.primary,
         brightness: isDark ? Brightness.dark : Brightness.light,
-        scaffoldBackgroundColor: isDark ? darkBackgroundColor : gray,
+        scaffoldBackgroundColor: isDark ? GlobalColors.darkBackgroundColor : GlobalColors.gray,
         appBarTheme: AppBarTheme.of(context).copyWith(
-          backgroundColor: isDark ? sideBar : Colors.white,
+          backgroundColor: isDark ? GlobalColors.sideBar : Colors.white,
         ),
-        hintColor: isDark ? Colors.white : darkText,
+        hintColor: isDark ? Colors.white : GlobalColors.darkText,
         cardTheme: CardTheme.of(context).copyWith(
             margin: EdgeInsets.zero,
-            color: isDark ? darkAppBar : Colors.white,
-            surfaceTintColor: isDark ? darkAppBar : Colors.white,
+            color: isDark ? GlobalColors.darkAppBar : Colors.white,
+            surfaceTintColor: isDark ? GlobalColors.darkAppBar : Colors.white,
             shape:
                 RoundedRectangleBorder(borderRadius: BorderRadius.circular(4)),
             elevation: isDark ? 0 : 10,
-            shadowColor: gray.withOpacity(0.25)));
+            shadowColor: GlobalColors.gray.withOpacity(0.25)));
   }
 }
