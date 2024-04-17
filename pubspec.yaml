@@ -87,7 +87,9 @@ dependencies:
   firebase_ui_auth: any
   cloud_firestore: ^4.16.1
   uuid: ^4.4.0
-
+  http: ^1.2.1
+  html: ^0.15.4
+  flutter_inappwebview: ^6.0.0
 
 dev_dependencies:
   flutter_test:

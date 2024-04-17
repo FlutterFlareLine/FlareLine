@@ -9,7 +9,6 @@ import 'package:flutter/material.dart';
 import 'package:flareline/components/card/common_card.dart';
 import 'package:flareline/core/theme/global_colors.dart';
 import 'package:flutter/services.dart';
-import 'package:hexcolor/hexcolor.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 

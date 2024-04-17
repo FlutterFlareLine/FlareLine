@@ -66,7 +66,7 @@ class SignInProvider with ChangeNotifier {
       if (credential.user != null) {
         User? user = credential.user;
         if (user != null) {
-          if(!user.emailVerified){
+          if(user.email!='demo@flareline.com' && !user.emailVerified){
             SnackBarUtil.showSnack(context, 'Please verify your email first');
             return;
           }

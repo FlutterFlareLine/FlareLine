@@ -5,6 +5,11 @@
     "path": "/"
   },
   {
+    "icon": "assets/sidebar/dashboard.svg",
+    "menuName": "Scrapy",
+    "path": "/scrapy"
+  },
+  {
     "icon": "assets/sidebar/calendar.svg",
     "menuName": "Calendar",
     "path": "/calendar"

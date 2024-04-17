@@ -17,6 +17,8 @@ abstract class LayoutWidget extends StatelessWidget {
 
   bool get showToolBar => true;
 
+  bool get isContentScroll=>true;
+
   String breakTabTitle(BuildContext context) {
     return '';
   }
@@ -53,6 +55,25 @@ abstract class LayoutWidget extends StatelessWidget {
   }
 
   Widget rightContentWidget(BuildContext context) {
+    Widget contentWidget = Column(
+      children: [
+        if (showTitle) BreakTab(breakTabTitle(context)),
+        if (showTitle)
+          const SizedBox(
+            height: 10,
+          ),
+        isContentScroll?
+        ScreenTypeLayout.builder(
+          desktop: contentDesktopWidget,
+          mobile: contentMobileWidget,
+          tablet: contentMobileWidget,
+        ):Expanded(child: ScreenTypeLayout.builder(
+          desktop: contentDesktopWidget,
+          mobile: contentMobileWidget,
+          tablet: contentMobileWidget,
+        ))
+      ],
+    );
     return Column(
         children: [
           if (showToolBar) const ToolBarWidget(),
@@ -66,21 +87,8 @@ abstract class LayoutWidget extends StatelessWidget {
             height: double.maxFinite,
             alignment: isAlignCenter ? Alignment.center : null,
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
-            child: SingleChildScrollView(
-                child: Column(
-              children: [
-                if (showTitle) BreakTab(breakTabTitle(context)),
-                if (showTitle)
-                  const SizedBox(
-                    height: 10,
-                  ),
-                ScreenTypeLayout.builder(
-                  desktop: contentDesktopWidget,
-                  mobile: contentMobileWidget,
-                  tablet: contentMobileWidget,
-                )
-              ],
-            )),
+            child: isContentScroll? SingleChildScrollView(
+                child: contentWidget):contentWidget,
           ))
         ]);
   }
