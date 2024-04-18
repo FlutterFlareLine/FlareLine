@@ -93,6 +93,8 @@ dependencies:
   flutter_widget_from_html: ^0.14.11
   dart_openai: ^5.1.0
   markdown_widget: ^2.3.2+6
+  firebase_crashlytics: ^3.5.2
+  firebase_analytics: any
 
 dev_dependencies:
   flutter_test:

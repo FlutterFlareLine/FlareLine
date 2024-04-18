@@ -1,5 +1,7 @@
 import 'dart:io';
 
+import 'package:firebase_analytics/firebase_analytics.dart';
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flareline/core/theme/global_theme.dart';
 import 'package:flareline/provider/firebase_provider.dart';
 import 'package:flareline/provider/firebase_store_provider.dart';
@@ -20,13 +22,18 @@ import 'package:firebase_ui_auth/firebase_ui_auth.dart';
 
 import 'firebase_options.dart';
 
-
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   await GetStorage.init();
 
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+
+  FlutterError.onError = FirebaseCrashlytics.instance.recordFlutterFatalError;
+
+  FirebaseAnalytics analytics = FirebaseAnalytics.instance;
+  final FirebaseAnalyticsObserver observer =
+      FirebaseAnalyticsObserver(analytics: analytics);
 
   FirebaseUIAuth.configureProviders([
     EmailAuthProvider(),
@@ -49,11 +56,13 @@ void main() async {
     });
   }
 
-  runApp(const MyApp());
+  runApp(MyApp(observer: observer));
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  FirebaseAnalyticsObserver observer;
+
+  MyApp({super.key, required this.observer});
 
   @override
   Widget build(BuildContext context) {
@@ -78,7 +87,8 @@ class MyApp extends StatelessWidget {
             supportedLocales: AppLocalizations.supportedLocales,
             onGenerateRoute: (settings) =>
                 RouteConfiguration.onGenerateRoute(settings),
-            theme: GlobalTheme.theme(context, context.watch<ThemeProvider>().isDark),
+            theme: GlobalTheme.theme(
+                context, context.watch<ThemeProvider>().isDark),
             builder: (context, widget) {
               return MediaQuery(
                 data: MediaQuery.of(context)
@@ -86,6 +96,7 @@ class MyApp extends StatelessWidget {
                 child: widget!,
               );
             },
+            navigatorObservers: [observer],
           );
         }));
   }
