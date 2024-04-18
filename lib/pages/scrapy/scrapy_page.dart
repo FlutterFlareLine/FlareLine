@@ -4,6 +4,7 @@ import 'package:flareline/pages/layout.dart';
 import 'package:flareline/pages/scrapy/scrapy_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
 import 'package:provider/provider.dart';
 
 class ScrapyPage extends LayoutWidget {
@@ -53,7 +54,33 @@ class ScrapyPage extends LayoutWidget {
               Expanded(
                   child: Stack(
                 children: [
-                  Text(ctx.watch<ScrapyProvider>().text),
+                  HtmlWidget(
+                    ctx.watch<ScrapyProvider>().text,
+                    customStylesBuilder: (element) {
+                      if (element.classes.contains('foo')) {
+                        return {'color': 'red'};
+                      }
+
+                      return null;
+                    },
+
+                    customWidgetBuilder: (element) {
+                      return null;
+                    },
+
+                    // this callback will be triggered when user taps a link
+                    onTapUrl: (url) {
+                      return true;
+                    },
+
+                    // select the render mode for HTML body
+                    // by default, a simple `Column` is rendered
+                    // consider using `ListView` or `SliverList` for better performance
+                    renderMode: RenderMode.column,
+
+                    // set the default styling for text
+                    textStyle: TextStyle(fontSize: 14),
+                  ),
                   if (ctx.watch<ScrapyProvider>().isLoading)
                     Center(
                       child: SizedBox(
