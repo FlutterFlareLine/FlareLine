@@ -16,6 +16,10 @@ class SignInProvider with ChangeNotifier {
     emailController = TextEditingController();
     passwordController = TextEditingController();
     emailController.text = ctx.read<StoreProvider>().email;
+    if (emailController.text.isEmpty) {
+      emailController.text = 'demo@flareline.com';
+      passwordController.text = '123456';
+    }
   }
 
   Future<void> signInWithGoogle(BuildContext context) async {
@@ -24,7 +28,8 @@ class SignInProvider with ChangeNotifier {
     User? user = userCredential.user;
     print('login user ${user}');
     if (user != null) {
-      UserEntity userEntity = await context.read<FirebaseProvider>().login(user);
+      UserEntity userEntity =
+          await context.read<FirebaseProvider>().login(user);
       context.read<StoreProvider>().saveLogin(userEntity);
       Navigator.of(context).popAndPushNamed('/');
       return;
@@ -34,11 +39,12 @@ class SignInProvider with ChangeNotifier {
 
   Future<void> signInWithGithub(BuildContext context) async {
     UserCredential userCredential =
-    await context.read<FirebaseProvider>().signInWithGithub();
+        await context.read<FirebaseProvider>().signInWithGithub();
     User? user = userCredential.user;
     print('login user ${user}');
     if (user != null) {
-      UserEntity userEntity = await context.read<FirebaseProvider>().login(user);
+      UserEntity userEntity =
+          await context.read<FirebaseProvider>().login(user);
       context.read<StoreProvider>().saveLogin(userEntity);
       Navigator.of(context).popAndPushNamed('/');
       return;
@@ -66,11 +72,12 @@ class SignInProvider with ChangeNotifier {
       if (credential.user != null) {
         User? user = credential.user;
         if (user != null) {
-          if(user.email!='demo@flareline.com' && !user.emailVerified){
+          if (user.email != 'demo@flareline.com' && !user.emailVerified) {
             SnackBarUtil.showSnack(context, 'Please verify your email first');
             return;
           }
-          UserEntity userEntity = await context.read<FirebaseProvider>().login(user);
+          UserEntity userEntity =
+              await context.read<FirebaseProvider>().login(user);
           context.read<StoreProvider>().saveLogin(userEntity);
           context.read<StoreProvider>().saveEmail(userEntity.email);
           Navigator.of(context).popAndPushNamed('/');

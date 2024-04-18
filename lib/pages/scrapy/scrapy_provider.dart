@@ -1,8 +1,9 @@
-import 'package:flareline/pages/scrapy/flare_scrapy.dart';
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'package:flutter_inappwebview/src/in_app_webview/in_app_webview_controller.dart';
-import 'package:get/utils.dart';
+import 'package:http/http.dart' as http;
 
 class ScrapyProvider extends ChangeNotifier {
   late TextEditingController controller;
@@ -11,24 +12,39 @@ class ScrapyProvider extends ChangeNotifier {
 
   String get url => _url;
 
-  InAppWebViewController? _webViewController;
+  String _text = "";
+
+  String get text => _text;
+
+  bool _isLoading = false;
+
+  bool get isLoading => _isLoading;
 
   ScrapyProvider() {
     controller = TextEditingController();
   }
 
-  set webViewController(InAppWebViewController webViewController) {
-    this._webViewController = webViewController;
-  }
-
   Future<void> startScrapy() async {
-    if (controller.text.isEmpty ||
-        this._webViewController == null ||
-        !controller.text.startsWith("http")) {
+    if (controller.text.isEmpty || !controller.text.startsWith("http")) {
       return;
     }
 
-    _webViewController!
-        .loadUrl(urlRequest: URLRequest(url: WebUri(controller.text.trim())));
+    _isLoading = true;
+    notifyListeners();
+
+    try {
+      final response = await http.get(Uri.parse(controller.text));
+      if (response.statusCode == 200) {
+        _text = response.body;
+      } else {
+        _text = response.reasonPhrase ?? 'empty';
+      }
+    } catch (e) {
+      print(e);
+      _text = e.toString();
+    } finally {
+      _isLoading = false;
+      notifyListeners();
+    }
   }
 }
