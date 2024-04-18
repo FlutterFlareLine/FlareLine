@@ -162,7 +162,7 @@ class FormElementsPage extends LayoutWidget {
                                 dialogSize: const Size(325, 400),
                                 borderRadius: BorderRadius.circular(15),
                               );
-                              print(results);
+
                               dateNotifier.value =
                                   (results != null && results!.length > 0
                                       ? (results

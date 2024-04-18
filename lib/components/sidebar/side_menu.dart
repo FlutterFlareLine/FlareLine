@@ -22,71 +22,81 @@ class SideMenuWidget extends StatelessWidget {
     bool isDark = context.watch<ThemeProvider>().isDark;
     bool isExpanded =
         context.watch<MainProvider>().isExpanded(e['menuName'], childList);
+    bool isSelected = childList != null && childList.length > 0
+        ? false
+        : context.watch<MainProvider>().isSelectedPath(e['path'] ?? '');
 
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 6),
-      child: Column(children: [
-        InkWell(
-          child: Row(
-            children: [
-              if (e['icon'] != null)
-                Container(
-                  margin: const EdgeInsets.only(right: 10),
-                  child: SvgPicture.asset(
-                    e['icon'],
-                    width: 18,
-                    height: 18,
-                    color: isDark ? Colors.white : GlobalColors.darkBlackText,
+    return Column(children: [
+      InkWell(
+        child: Container(
+            padding: EdgeInsets.only(left: 20, top: 10, bottom: 10),
+            color: isSelected ? GlobalColors.gray : Colors.transparent,
+            child: Row(
+              children: [
+                if (e['icon'] != null)
+                  Container(
+                    margin: const EdgeInsets.only(right: 10),
+                    child: SvgPicture.asset(
+                      e['icon'],
+                      width: 18,
+                      height: 18,
+                      color: isDark ? Colors.white : GlobalColors.darkBlackText,
+                    ),
                   ),
-                ),
-              Expanded(
-                  child: Text(
-                e['menuName'],
-                style: TextStyle(color: isDark ? Colors.white : GlobalColors.darkBlackText),
-              )),
-              if (childList != null && childList.isNotEmpty)
-                Icon(
-                  isExpanded
-                      ? Icons.keyboard_arrow_up
-                      : Icons.keyboard_arrow_down,
-                  color: isDark ? Colors.white : GlobalColors.darkBlackText,
-                )
-            ],
-          ),
-          onTap: () {
-            if (childList != null && childList.isNotEmpty) {
-              context.read<MainProvider>().setExpandedMenuName(e['menuName']);
-            } else {
-              context.read<MainProvider>().setExpandedMenuName('');
-              pushOrJump(context, e);
-            }
-          },
-        ),
-        const SizedBox(
-          height: 10,
-        ),
-        if (childList != null && childList.isNotEmpty)
-          Visibility(
-              visible: isExpanded,
-              child: Column(
-                children: childList
-                    .map((e) => _itemSubMenuWidget(context, e, isDark))
-                    .toList(),
-              ))
-      ]),
-    );
+                Expanded(
+                    child: Text(
+                  e['menuName'],
+                  style: TextStyle(
+                      color:
+                          isDark ? Colors.white : GlobalColors.darkBlackText),
+                )),
+                if (childList != null && childList.isNotEmpty)
+                  Icon(
+                    isExpanded
+                        ? Icons.keyboard_arrow_up
+                        : Icons.keyboard_arrow_down,
+                    color: isDark ? Colors.white : GlobalColors.darkBlackText,
+                  )
+              ],
+            )),
+        onTap: () {
+          if (childList != null && childList.isNotEmpty) {
+            context.read<MainProvider>().setExpandedMenuName(e['menuName']);
+          } else {
+            context.read<MainProvider>().setExpandedMenuName('');
+            pushOrJump(context, e);
+          }
+        },
+      ),
+      const SizedBox(
+        height: 10,
+      ),
+      if (childList != null && childList.isNotEmpty)
+        Visibility(
+            visible: isExpanded,
+            child: Column(
+              children: childList
+                  .map((e) => _itemSubMenuWidget(context, e, isDark))
+                  .toList(),
+            ))
+    ]);
   }
 
   Widget _itemSubMenuWidget(BuildContext context, e, bool isDark) {
+    bool isSelected =
+        context.watch<MainProvider>().isSelectedPath(e['path'] ?? '');
+
     return InkWell(
-      child: Padding(
-        padding: const EdgeInsets.only(left: 20, top: 5, bottom: 5),
+      child: Container(
+        padding: EdgeInsets.only(left: 50, top: 10, bottom: 10),
+        color: isSelected ? GlobalColors.gray : Colors.transparent,
         child: Row(
           children: [
             Expanded(
                 child: Text(
               e['menuName'],
-              style: TextStyle(color: isDark ? Colors.white60 : GlobalColors.darkBlackText),
+              style: TextStyle(
+                  color: isDark ? Colors.white60 : GlobalColors.darkBlackText),
             )),
           ],
         ),
@@ -104,10 +114,9 @@ class SideMenuWidget extends StatelessWidget {
 
     String path = e['path'];
 
-    String? routePath =
-        ModalRoute.of(context)?.settings?.name;
+    String? routePath = ModalRoute.of(context)?.settings?.name;
 
-    if(path==routePath){
+    if (path == routePath) {
       return;
     }
     Navigator.of(context).pushNamed(path);

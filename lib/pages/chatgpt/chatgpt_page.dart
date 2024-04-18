@@ -8,7 +8,6 @@ import 'package:flareline/pages/chatgpt/chatgpt_provider.dart';
 import 'package:flareline/pages/layout.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
 import 'package:markdown_widget/markdown_widget.dart';
 import 'package:provider/provider.dart';
 
@@ -24,7 +23,7 @@ class ChatGptPage extends LayoutWidget {
         builder: (ctx, widget) {
           return Column(
             children: [
-              Text('Use OpenAI GPTBOT, Developing...'),
+              Text('Use OpenAI'),
               SizedBox(height: 20,),
               Container(
                   padding: EdgeInsets.symmetric(horizontal: 16),

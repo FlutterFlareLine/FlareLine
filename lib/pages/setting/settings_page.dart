@@ -235,13 +235,13 @@ class SettingsPage extends LayoutWidget {
                   //   cursor: CursorType.grab,
                   //   onCreated: (DropzoneViewController ctrl) =>
                   //       dropzoneViewController = ctrl,
-                  //   onLoaded: () => print('Zone loaded'),
-                  //   onError: (String? ev) => print('Error: $ev'),
-                  //   onHover: () => print('Zone hovered'),
-                  //   onDrop: (dynamic ev) => print('Drop: $ev'),
+                  //   onLoaded: () => debugPrint('Zone loaded'),
+                  //   onError: (String? ev) => debugPrint('Error: $ev'),
+                  //   onHover: () => debugPrint('Zone hovered'),
+                  //   onDrop: (dynamic ev) => debugPrint('Drop: $ev'),
                   //   onDropMultiple: (List<dynamic>? ev) =>
-                  //       print('Drop multiple: $ev'),
-                  //   onLeave: () => print('Zone left'),
+                  //       debugPrint('Drop multiple: $ev'),
+                  //   onLeave: () => debugPrint('Zone left'),
                   // ),
                   Center(
                       child: Column(

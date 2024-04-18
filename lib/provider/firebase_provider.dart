@@ -19,25 +19,25 @@ class FirebaseProvider extends ChangeNotifier {
 
     FirebaseAuth.instance.authStateChanges().listen((User? user) {
       if (user == null) {
-        print('authStateChanges User is currently signed out!');
+        debugPrint('authStateChanges User is currently signed out!');
       } else {
-        print('authStateChanges User is signed in!');
+        debugPrint('authStateChanges User is signed in!');
       }
     });
 
     FirebaseAuth.instance.idTokenChanges().listen((User? user) {
       if (user == null) {
-        print('idTokenChanges User is currently signed out!');
+        debugPrint('idTokenChanges User is currently signed out!');
       } else {
-        print('idTokenChanges User is signed in!');
+        debugPrint('idTokenChanges User is signed in!');
       }
     });
 
     FirebaseAuth.instance.userChanges().listen((User? user) {
       if (user == null) {
-        print('User is currently signed out!');
+        debugPrint('User is currently signed out!');
       } else {
-        print('User is signed in!');
+        debugPrint('User is signed in!');
       }
     });
   }

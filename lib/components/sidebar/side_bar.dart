@@ -47,7 +47,8 @@ class SideBarWidger extends StatelessWidget {
             child: Text(
           AppLocalizations.of(context)!.appName,
           style: TextStyle(
-              color: isDark ? Colors.white : GlobalColors.darkTextBody, fontSize: 32),
+              color: isDark ? Colors.white : GlobalColors.darkTextBody,
+              fontSize: 32),
         ))
       ],
     );
@@ -70,11 +71,42 @@ class SideBarWidger extends StatelessWidget {
               return ListView.separated(
                   padding: const EdgeInsets.only(left: 20, right: 10),
                   itemBuilder: (ctx, index) {
-                    return SideMenuWidget(e: listMenu.elementAt(index));
+                    return itemBuilder(ctx, index, listMenu, isDark);
                   },
                   separatorBuilder: separatorBuilder,
                   itemCount: listMenu.length);
             }));
+  }
+
+  Widget itemBuilder(
+      BuildContext context, int index, List listMenu, bool isDark) {
+    var groupElement = listMenu.elementAt(index);
+    List menuList = groupElement['menuList'];
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          groupElement['groupName'],
+          style: TextStyle(
+              fontSize: 20,
+              color: isDark ? Colors.white60 : GlobalColors.darkBlackText),
+        ),
+        const SizedBox(
+          height: 10,
+        ),
+        Column(
+          children: menuList.map((e) => SideMenuWidget(e: e)).toList(),
+        ),
+        SizedBox(
+          height: 10,
+        ),
+        if (index < listMenu.length - 1) Divider(),
+        SizedBox(
+          height: 10,
+        ),
+      ],
+    );
   }
 
   Widget separatorBuilder(BuildContext context, int index) {

@@ -26,7 +26,7 @@ class SignInProvider with ChangeNotifier {
     UserCredential userCredential =
         await context.read<FirebaseProvider>().signInWithGoogle();
     User? user = userCredential.user;
-    print('login user ${user}');
+    debugPrint('login user ${user}');
     if (user != null) {
       UserEntity userEntity =
           await context.read<FirebaseProvider>().login(user);
@@ -41,7 +41,7 @@ class SignInProvider with ChangeNotifier {
     UserCredential userCredential =
         await context.read<FirebaseProvider>().signInWithGithub();
     User? user = userCredential.user;
-    print('login user ${user}');
+    debugPrint('login user ${user}');
     if (user != null) {
       UserEntity userEntity =
           await context.read<FirebaseProvider>().login(user);
@@ -68,7 +68,7 @@ class SignInProvider with ChangeNotifier {
         email: emailController.text.trim(),
         password: passwordController.text.trim(),
       );
-      print('credential ${credential}');
+      debugPrint('credential ${credential}');
       if (credential.user != null) {
         User? user = credential.user;
         if (user != null) {

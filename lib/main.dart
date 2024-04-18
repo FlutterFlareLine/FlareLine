@@ -60,9 +60,9 @@ void main() async {
 }
 
 class MyApp extends StatelessWidget {
-  FirebaseAnalyticsObserver observer;
+  FirebaseAnalyticsObserver? observer;
 
-  MyApp({super.key, required this.observer});
+  MyApp({super.key, this.observer});
 
   @override
   Widget build(BuildContext context) {
@@ -96,7 +96,7 @@ class MyApp extends StatelessWidget {
                 child: widget!,
               );
             },
-            navigatorObservers: [observer],
+            navigatorObservers: [if (observer != null) observer!],
           );
         }));
   }

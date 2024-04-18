@@ -89,16 +89,15 @@ class ChatGptProvider extends ChangeNotifier {
 
           _text += content?.map((e) => e?.text??'').toList().join('') ?? '';
           notifyListeners();
-          print(_text);
+          debugPrint(_text);
         },
         onDone: () {
-          print("Done");
+          debugPrint("Done");
           // _isLoading = false;
           // notifyListeners();
         },
       );
     } catch (e) {
-      print(e);
       _text = e.toString();
       // _isLoading = false;
       notifyListeners();

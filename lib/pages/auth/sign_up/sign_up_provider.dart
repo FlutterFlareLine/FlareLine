@@ -41,7 +41,7 @@ class SignUpProvider with ChangeNotifier {
         email: emailController.text.trim(),
         password: passwordController.text.trim(),
       );
-      print('credential ${credential}');
+      debugPrint('credential ${credential}');
       if (credential.user != null) {
         User? user = credential.user;
         if (user != null) {

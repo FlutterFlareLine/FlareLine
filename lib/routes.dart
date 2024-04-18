@@ -1,5 +1,6 @@
 import 'package:flareline/pages/chat/chat_page.dart';
 import 'package:flareline/pages/chatgpt/chatgpt_page.dart';
+import 'package:flareline/pages/scrapy/scrapy_page.dart';
 import 'package:flareline/pages/table/contacts_page.dart';
 import 'package:flareline/provider/store_provider.dart';
 import 'package:flutter/material.dart';
@@ -53,13 +54,13 @@ final List<Map<String, Object>> MAIN_PAGES = [
   {'routerPath': '/contacts', 'widget': ContactsPage()},
   {'routerPath': '/chatGpt', 'widget': ChatGptPage()},
   {'routerPath': '/chat', 'widget': ChatPage()},
+  {'routerPath': '/scrapy', 'widget': ScrapyPage()},
 ];
 
 class RouteConfiguration {
   static final GlobalKey<NavigatorState> navigatorKey =
       new GlobalKey<NavigatorState>(debugLabel: 'Rex');
 
-  /// 可用于 跳转，overlay-insert（toast，loading） 使用
   static BuildContext? get navigatorContext =>
       navigatorKey.currentState?.context;
 
