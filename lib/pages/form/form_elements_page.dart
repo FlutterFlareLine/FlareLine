@@ -316,7 +316,7 @@ class FormElementsPage extends LayoutWidget {
                             text: 'Success',
                             color: GlobalColors.green,
                             size: 30,
-                            onChanged: (value) {},
+                            onChanged: (checked, v) {},
                           ),
                           const SizedBox(
                             width: 20,
@@ -325,7 +325,7 @@ class FormElementsPage extends LayoutWidget {
                             text: 'Error',
                             color: GlobalColors.red,
                             size: 30,
-                            onChanged: (value) {},
+                            onChanged: (checked, v) {},
                           ),
                           const SizedBox(
                             width: 20,
@@ -334,7 +334,7 @@ class FormElementsPage extends LayoutWidget {
                             text: 'Warn',
                             color: GlobalColors.yellow,
                             size: 30,
-                            onChanged: (value) {},
+                            onChanged: (checked, v) {},
                           ),
                           const SizedBox(
                             width: 20,
@@ -343,7 +343,7 @@ class FormElementsPage extends LayoutWidget {
                             text: 'Primary',
                             color: GlobalColors.primary,
                             size: 30,
-                            onChanged: (value) {},
+                            onChanged: (checked, v) {},
                           ),
                           const SizedBox(
                             width: 20,
@@ -352,7 +352,7 @@ class FormElementsPage extends LayoutWidget {
                             text: 'Info',
                             color: GlobalColors.darkTextBody,
                             size: 30,
-                            onChanged: (value) {},
+                            onChanged: (checked, v) {},
                           ),
                         ],
                       ),

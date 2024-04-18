@@ -91,7 +91,8 @@ dependencies:
   html: ^0.15.4
   flutter_inappwebview: ^6.0.0
   flutter_widget_from_html: ^0.14.11
-
+  dart_openai: ^5.1.0
+  markdown_widget: ^2.3.2+6
 
 dev_dependencies:
   flutter_test:

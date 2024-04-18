@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flareline/core/theme/global_theme.dart';
 import 'package:flareline/provider/firebase_provider.dart';
+import 'package:flareline/provider/firebase_store_provider.dart';
 import 'package:flareline/provider/localization_provider.dart';
 import 'package:flareline/provider/main_provider.dart';
 import 'package:flareline/provider/store_provider.dart';
@@ -18,6 +19,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_ui_auth/firebase_ui_auth.dart';
 
 import 'firebase_options.dart';
+
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -61,6 +63,7 @@ class MyApp extends StatelessWidget {
           ChangeNotifierProvider(create: (_) => MainProvider()),
           ChangeNotifierProvider(create: (_) => StoreProvider()),
           ChangeNotifierProvider(create: (_) => FirebaseProvider()),
+          ChangeNotifierProvider(create: (_) => FirebaseStoreProvider()),
           ChangeNotifierProvider(create: (_) => LocalizationProvider())
         ],
         child: Builder(builder: (context) {

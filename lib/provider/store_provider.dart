@@ -12,7 +12,7 @@ class StoreProvider extends ChangeNotifier {
 
   UserEntity? get user => _user ??= loginUser();
 
-  String get email => box.read("email")??'';
+  String get email => box.read("email") ?? 'demo@flareline.com';
 
   bool isLogin() {
     dynamic loginUser = box.read("loginUser");
@@ -29,7 +29,7 @@ class StoreProvider extends ChangeNotifier {
     box.write("loginUser", userEntity.toString());
   }
 
-  saveEmail(String? email){
+  saveEmail(String? email) {
     box.write("email", email);
   }
 

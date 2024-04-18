@@ -84,4 +84,6 @@ class FirebaseProvider extends ChangeNotifier {
     return userEntity;
   }
 
+
+
 }

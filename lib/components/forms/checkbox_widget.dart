@@ -1,45 +1,51 @@
 import 'package:flareline/core/theme/global_colors.dart';
 import 'package:flutter/material.dart';
 
+typedef ValueChanged<T, String> = void Function(T checked, String value);
+
 class CheckBoxWidget extends StatelessWidget {
+  final String? value;
   final String? text;
   final Color? color;
   final double? size;
-  final ValueChanged<bool?>? onChanged;
+  final bool? checked;
+  final ValueChanged<bool?, String?>? onChanged;
 
-  CheckBoxWidget({super.key, this.text, this.color, this.size, this.onChanged});
-
-  final ValueNotifier<bool> isChecked = ValueNotifier(false);
+  CheckBoxWidget(
+      {super.key,
+      this.text,
+      this.color,
+      this.size,
+      this.checked,
+      this.value,
+      this.onChanged}) {}
 
   @override
   Widget build(BuildContext context) {
     Color checkedColor = color ?? GlobalColors.primary;
     return Row(mainAxisSize: MainAxisSize.min, children: [
-      ValueListenableBuilder(
-          valueListenable: isChecked,
-          builder: (ctx, checked, child) {
-            return InkWell(
-              child: Container(
-                width: size,
-                height: size,
-                decoration: BoxDecoration(
-                    color: checked ? checkedColor : GlobalColors.stroke,
-                    borderRadius: BorderRadius.circular(4),
-                    border: Border.all(
-                        color: checked ? checkedColor : GlobalColors.darkTextBody)),
-                child: Icon(
-                  Icons.check,
-                  color: checked ? Colors.white : Colors.transparent,
-                ),
-              ),
-              onTap: () {
-                isChecked.value = !isChecked.value;
-                if(onChanged!=null) {
-                  onChanged!(isChecked.value);
-                }
-              },
-            );
-          }),
+      InkWell(
+        child: Container(
+          width: size,
+          height: size,
+          decoration: BoxDecoration(
+              color: (checked ?? false) ? checkedColor : GlobalColors.stroke,
+              borderRadius: BorderRadius.circular(4),
+              border: Border.all(
+                  color: (checked ?? false)
+                      ? checkedColor
+                      : GlobalColors.darkTextBody)),
+          child: Icon(
+            Icons.check,
+            color: (checked ?? false) ? Colors.white : Colors.transparent,
+          ),
+        ),
+        onTap: () {
+          if (onChanged != null) {
+            onChanged!(checked, value);
+          }
+        },
+      ),
       const SizedBox(
         width: 10,
       ),
