@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:provider/provider.dart';
 
-class ScrapyProvider extends ChangeNotifier {
+class ChatGptProvider extends ChangeNotifier {
   late TextEditingController controller;
   late TextEditingController keyController;
   late TextEditingController proxyController;
@@ -30,7 +30,7 @@ class ScrapyProvider extends ChangeNotifier {
 
   List<OpenAIModelModel> get models => _models ?? [];
 
-  ScrapyProvider(BuildContext ctx) {
+  ChatGptProvider(BuildContext ctx) {
     controller = TextEditingController();
     keyController = TextEditingController();
     proxyController = TextEditingController();

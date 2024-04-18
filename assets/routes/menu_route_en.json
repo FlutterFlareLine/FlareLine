@@ -6,8 +6,13 @@
   },
   {
     "icon": "assets/sidebar/dashboard.svg",
-    "menuName": "Scrapy",
-    "path": "/scrapy"
+    "menuName": "ChatGpt",
+    "path": "/chatGpt"
+  },
+  {
+    "icon": "assets/sidebar/dashboard.svg",
+    "menuName": "Chat",
+    "path": "/chat"
   },
   {
     "icon": "assets/sidebar/calendar.svg",

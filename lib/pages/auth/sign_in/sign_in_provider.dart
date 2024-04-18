@@ -16,7 +16,7 @@ class SignInProvider with ChangeNotifier {
     emailController = TextEditingController();
     passwordController = TextEditingController();
     emailController.text = ctx.read<StoreProvider>().email;
-    if (emailController.text.isEmpty) {
+    if (emailController.text.isEmpty||emailController.text=='demo@flareline.com') {
       emailController.text = 'demo@flareline.com';
       passwordController.text = '123456';
     }

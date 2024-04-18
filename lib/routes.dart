@@ -1,4 +1,5 @@
-import 'package:flareline/pages/scrapy/scrapy_page.dart';
+import 'package:flareline/pages/chat/chat_page.dart';
+import 'package:flareline/pages/chatgpt/chatgpt_page.dart';
 import 'package:flareline/pages/table/contacts_page.dart';
 import 'package:flareline/provider/store_provider.dart';
 import 'package:flutter/material.dart';
@@ -50,7 +51,8 @@ final List<Map<String, Object>> MAIN_PAGES = [
   {'routerPath': '/buttons', 'widget': const ButtonPage()},
   {'routerPath': '/alerts', 'widget': const AlertPage()},
   {'routerPath': '/contacts', 'widget': ContactsPage()},
-  {'routerPath': '/scrapy', 'widget': ScrapyPage()},
+  {'routerPath': '/chatGpt', 'widget': ChatGptPage()},
+  {'routerPath': '/chat', 'widget': ChatPage()},
 ];
 
 class RouteConfiguration {

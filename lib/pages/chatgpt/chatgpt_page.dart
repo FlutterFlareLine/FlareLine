@@ -4,15 +4,15 @@ import 'package:flareline/components/card/common_card.dart';
 import 'package:flareline/components/forms/checkbox_widget.dart';
 import 'package:flareline/components/forms/outborder_text_form_field.dart';
 import 'package:flareline/core/theme/global_colors.dart';
+import 'package:flareline/pages/chatgpt/chatgpt_provider.dart';
 import 'package:flareline/pages/layout.dart';
-import 'package:flareline/pages/scrapy/scrapy_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
 import 'package:markdown_widget/markdown_widget.dart';
 import 'package:provider/provider.dart';
 
-class ScrapyPage extends LayoutWidget {
+class ChatGptPage extends LayoutWidget {
   @override
   // TODO: implement isContentScroll
   bool get isContentScroll => false;
@@ -20,7 +20,7 @@ class ScrapyPage extends LayoutWidget {
   @override
   Widget contentDesktopWidget(BuildContext context) {
     return ChangeNotifierProvider(
-        create: (ctx) => ScrapyProvider(ctx),
+        create: (ctx) => ChatGptProvider(ctx),
         builder: (ctx, widget) {
           return Column(
             children: [
@@ -33,14 +33,14 @@ class ScrapyPage extends LayoutWidget {
                     children: [
                       OutBorderTextFormField(
                         hintText: 'openai key',
-                        controller: ctx.read<ScrapyProvider>().keyController,
+                        controller: ctx.read<ChatGptProvider>().keyController,
                       ),
                       SizedBox(
                         height: 10,
                       ),
                       OutBorderTextFormField(
                         hintText: 'proxy api',
-                        controller: ctx.read<ScrapyProvider>().proxyController,
+                        controller: ctx.read<ChatGptProvider>().proxyController,
                       ),
                       SizedBox(
                         height: 10,
@@ -49,7 +49,7 @@ class ScrapyPage extends LayoutWidget {
                         btnText: 'save',
                         color: GlobalColors.green,
                         onTap: () {
-                          ctx.read<ScrapyProvider>().saveKey(context);
+                          ctx.read<ChatGptProvider>().saveKey(context);
                         },
                       ),
                       SizedBox(
@@ -59,7 +59,7 @@ class ScrapyPage extends LayoutWidget {
                         spacing: 10,
                         runSpacing: 10,
                         children: ctx
-                            .watch<ScrapyProvider>()
+                            .watch<ChatGptProvider>()
                             .models
                             .map((e) => checkBoxWidget(e, ctx))
                             .toList(),
@@ -83,7 +83,7 @@ class ScrapyPage extends LayoutWidget {
                       Expanded(
                           child: OutBorderTextFormField(
                         hintText: 'start with http:// or https://',
-                        controller: ctx.read<ScrapyProvider>().controller,
+                        controller: ctx.read<ChatGptProvider>().controller,
                       )),
                       SizedBox(
                         width: 10,
@@ -93,7 +93,7 @@ class ScrapyPage extends LayoutWidget {
                         child: ButtonWidget(
                           btnText: 'start',
                           onTap: () {
-                            ctx.read<ScrapyProvider>().startScrapy(ctx);
+                            ctx.read<ChatGptProvider>().startScrapy(ctx);
                           },
                         ),
                       )
@@ -109,7 +109,7 @@ class ScrapyPage extends LayoutWidget {
                   alignment: Alignment.topCenter,
                   children: [
                     // HtmlWidget(
-                    //   ctx.watch<ScrapyProvider>().text,
+                    //   ctx.watch<ChatGptProvider>().text,
                     //   customStylesBuilder: (element) {
                     //     if (element.classes.contains('foo')) {
                     //       return {'color': 'red'};
@@ -139,8 +139,8 @@ class ScrapyPage extends LayoutWidget {
                         padding: EdgeInsets.all(10),
                         child: SingleChildScrollView(
                             child: MarkdownBlock(
-                                data: ctx.watch<ScrapyProvider>().text))),
-                    if (ctx.watch<ScrapyProvider>().isLoading)
+                                data: ctx.watch<ChatGptProvider>().text))),
+                    if (ctx.watch<ChatGptProvider>().isLoading)
                       Center(
                         child: SizedBox(
                           child: CircularProgressIndicator(),
@@ -158,7 +158,7 @@ class ScrapyPage extends LayoutWidget {
 
   CheckBoxWidget checkBoxWidget(OpenAIModelModel e, BuildContext ctx) {
     bool isChecked = ctx
-        .select<ScrapyProvider, bool>((provider) => provider.isChecked(e.id));
+        .select<ChatGptProvider, bool>((provider) => provider.isChecked(e.id));
     return CheckBoxWidget(
       size: 30,
       text: e.id,
@@ -166,13 +166,13 @@ class ScrapyPage extends LayoutWidget {
       color: GlobalColors.green,
       checked: isChecked,
       onChanged: (checked, v) {
-        ctx.read<ScrapyProvider>().checkedId = v;
+        ctx.read<ChatGptProvider>().checkedId = v;
       },
     );
   }
 
   @override
   String breakTabTitle(BuildContext context) {
-    return 'Scrapy';
+    return 'ChatGpt';
   }
 }
