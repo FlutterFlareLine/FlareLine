@@ -5,8 +5,10 @@
 list(APPEND FLUTTER_PLUGIN_LIST
   cloud_firestore
   desktop_webview_auth
+  file_selector_windows
   firebase_auth
   firebase_core
+  firebase_storage
   screen_retriever
   url_launcher_windows
   window_manager
