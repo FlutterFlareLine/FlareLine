@@ -40,13 +40,11 @@ class MainProvider with ChangeNotifier {
       var uri = Uri.dataFromString(href);
       String? routePath = uri.path;
 
-      debugPrint('---------------> web path ${routePath}  ${path}');
       return routePath.endsWith(path);
     }
     if (RouteConfiguration.navigatorContext != null) {
       String? routePath =
           ModalRoute.of(RouteConfiguration.navigatorContext!)?.settings?.name;
-      debugPrint('---------------> routerPath ${routePath}');
       return routePath == path;
     }
     return false;

@@ -1,4 +1,3 @@
-
 import 'package:flareline/components/badge/anim_badge.dart';
 import 'package:flareline/components/forms/outborder_text_form_field.dart';
 import 'package:flareline/entity/user_entity.dart';
@@ -130,12 +129,21 @@ class ToolBarWidget extends StatelessWidget {
               position: RelativeRect.fromLTRB(
                   MediaQuery.of(context).size.width - 100, 80, 0, 0),
               items: <PopupMenuItem<String>>[
-                const PopupMenuItem<String>(
-                    value: 'value01', child: Text('My Profile')),
-                const PopupMenuItem<String>(
-                    value: 'value02', child: Text('My Contacts')),
-                const PopupMenuItem<String>(
-                    value: 'value03', child: Text('About Settings')),
+                PopupMenuItem<String>(
+                    value: 'value01', child: Text('My Profile'),onTap: () async {
+                  Navigator.of(context).popAndPushNamed('/profile');
+                },),
+                PopupMenuItem<String>(
+                    value: 'value02', child: Text('My Contacts'),onTap: () async {
+                  Navigator.of(context).popAndPushNamed('/contacts');
+                },),
+                PopupMenuItem<String>(
+                  value: 'value03',
+                  child: Text('Settings'),
+                  onTap: () async {
+                    Navigator.of(context).popAndPushNamed('/settings');
+                  },
+                ),
                 PopupMenuItem<String>(
                     enabled: false,
                     value: 'value04',
@@ -216,7 +224,8 @@ class ToggleWidget extends StatelessWidget {
           width: 85,
           height: 34,
           decoration: BoxDecoration(
-              color: GlobalColors.background, borderRadius: BorderRadius.circular(40)),
+              color: GlobalColors.background,
+              borderRadius: BorderRadius.circular(40)),
           child: Row(
             children: [
               CircleAvatar(
@@ -224,14 +233,18 @@ class ToggleWidget extends StatelessWidget {
                 child: SvgPicture.asset('assets/toolbar/sun.svg',
                     width: 18,
                     height: 18,
-                    color: isDark ? GlobalColors.darkTextBody : GlobalColors.primary),
+                    color: isDark
+                        ? GlobalColors.darkTextBody
+                        : GlobalColors.primary),
               ),
               CircleAvatar(
                 backgroundColor: isDark ? Colors.white : Colors.transparent,
                 child: SvgPicture.asset('assets/toolbar/moon.svg',
                     width: 18,
                     height: 18,
-                    color: isDark ? GlobalColors.primary : GlobalColors.darkTextBody),
+                    color: isDark
+                        ? GlobalColors.primary
+                        : GlobalColors.darkTextBody),
               ),
             ],
           )),

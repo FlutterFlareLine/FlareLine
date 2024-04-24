@@ -9,8 +9,6 @@ import 'package:provider/provider.dart';
 
 class ChatGptProvider extends ChangeNotifier {
   late TextEditingController controller;
-  late TextEditingController keyController;
-  late TextEditingController proxyController;
 
   String _url = "";
 
@@ -32,8 +30,6 @@ class ChatGptProvider extends ChangeNotifier {
 
   ChatGptProvider(BuildContext ctx) {
     controller = TextEditingController();
-    keyController = TextEditingController();
-    proxyController = TextEditingController();
 
     initOpenApiConfig(ctx);
   }
@@ -87,7 +83,7 @@ class ChatGptProvider extends ChangeNotifier {
         (streamChatCompletion) {
           final content = streamChatCompletion.choices.first.delta.content;
 
-          _text += content?.map((e) => e?.text??'').toList().join('') ?? '';
+          _text += content?.map((e) => e?.text ?? '').toList().join('') ?? '';
           notifyListeners();
           debugPrint(_text);
         },
@@ -104,24 +100,6 @@ class ChatGptProvider extends ChangeNotifier {
     }
   }
 
-  saveKey(BuildContext ctx) {
-    if (keyController.text.isEmpty) {
-      SnackBarUtil.showSnack(ctx, 'please enter your key');
-      return;
-    }
-    String openAiKey = 'openAiKey';
-    String email = ctx.read<StoreProvider>().email;
-
-    Map<String, dynamic> data = {
-      'email': email,
-      'key': keyController.text.trim(),
-      'api': proxyController.text.trim(),
-    };
-    ctx.read<FirebaseStoreProvider>().save(openAiKey, email, data);
-    initOpenApiConfig(ctx);
-    SnackBarUtil.showSuccess(ctx, 'key saved success');
-  }
-
   Future<Map<String, dynamic>?> getOpenApiConfig(BuildContext ctx) async {
     String email = ctx.read<StoreProvider>().email;
     Map<String, dynamic>? data =
@@ -135,18 +113,19 @@ class ChatGptProvider extends ChangeNotifier {
       String key = config['key'];
       String proxy = config['api'];
 
-      keyController.text = config['key'];
-      proxyController.text = proxy;
-
       OpenAI.apiKey = key;
       OpenAI.baseUrl = proxy;
       OpenAI.showLogs = kDebugMode;
       OpenAI.showResponsesLogs = kDebugMode;
       OpenAI.includeHeaders({
-        'User-Agent':'Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; GPTBot/1.0; +https://openai.com/gptbot)'
+        'User-Agent':
+            'Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; GPTBot/1.0; +https://openai.com/gptbot)'
       });
 
       _models = await OpenAI.instance.model.list();
+      if (models.isNotEmpty) {
+        checkedId = models[0].id;
+      }
       notifyListeners();
     }
   }

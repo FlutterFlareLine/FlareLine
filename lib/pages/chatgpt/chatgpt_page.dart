@@ -24,35 +24,13 @@ class ChatGptPage extends LayoutWidget {
           return Column(
             children: [
               Text('Use OpenAI'),
-              SizedBox(height: 20,),
+              SizedBox(
+                height: 20,
+              ),
               CommonCard(
-                  padding: EdgeInsets.symmetric(horizontal: 16),
+                  padding: EdgeInsets.all(16),
                   child: Column(
                     children: [
-                      OutBorderTextFormField(
-                        hintText: 'openai key',
-                        controller: ctx.read<ChatGptProvider>().keyController,
-                      ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      OutBorderTextFormField(
-                        hintText: 'proxy api',
-                        controller: ctx.read<ChatGptProvider>().proxyController,
-                      ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      ButtonWidget(
-                        btnText: 'save',
-                        color: GlobalColors.green,
-                        onTap: () {
-                          ctx.read<ChatGptProvider>().saveKey(context);
-                        },
-                      ),
-                      SizedBox(
-                        height: 10,
-                      ),
                       Wrap(
                         spacing: 10,
                         runSpacing: 10,
@@ -61,9 +39,6 @@ class ChatGptPage extends LayoutWidget {
                             .models
                             .map((e) => checkBoxWidget(e, ctx))
                             .toList(),
-                      ),
-                      SizedBox(
-                        height: 20,
                       ),
                     ],
                   )),
@@ -88,7 +63,7 @@ class ChatGptPage extends LayoutWidget {
                       SizedBox(
                         width: 100,
                         child: ButtonWidget(
-                          btnText: 'start',
+                          btnText: 'Send',
                           onTap: () {
                             ctx.read<ChatGptProvider>().startScrapy(ctx);
                           },
@@ -105,33 +80,6 @@ class ChatGptPage extends LayoutWidget {
                 child: Stack(
                   alignment: Alignment.topCenter,
                   children: [
-                    // HtmlWidget(
-                    //   ctx.watch<ChatGptProvider>().text,
-                    //   customStylesBuilder: (element) {
-                    //     if (element.classes.contains('foo')) {
-                    //       return {'color': 'red'};
-                    //     }
-                    //
-                    //     return null;
-                    //   },
-                    //
-                    //   customWidgetBuilder: (element) {
-                    //     return null;
-                    //   },
-                    //
-                    //   // this callback will be triggered when user taps a link
-                    //   onTapUrl: (url) {
-                    //     return true;
-                    //   },
-                    //
-                    //   // select the render mode for HTML body
-                    //   // by default, a simple `Column` is rendered
-                    //   // consider using `ListView` or `SliverList` for better performance
-                    //   renderMode: RenderMode.column,
-                    //
-                    //   // set the default styling for text
-                    //   textStyle: TextStyle(fontSize: 14),
-                    // ),
                     CommonCard(
                         padding: EdgeInsets.all(10),
                         child: SingleChildScrollView(
