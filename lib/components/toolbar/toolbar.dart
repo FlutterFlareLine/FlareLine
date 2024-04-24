@@ -84,7 +84,7 @@ class ToolBarWidget extends StatelessWidget {
                   height: 34,
                   alignment: Alignment.center,
                   decoration: const BoxDecoration(
-                      color: GlobalColors.stroke, shape: BoxShape.circle),
+                      color: GlobalColors.background, shape: BoxShape.circle),
                   child: SvgPicture.asset('assets/toolbar/alarm.svg',
                       width: 18, height: 18)),
               const Align(
@@ -105,7 +105,7 @@ class ToolBarWidget extends StatelessWidget {
                   height: 34,
                   alignment: Alignment.center,
                   decoration: const BoxDecoration(
-                      color: GlobalColors.stroke, shape: BoxShape.circle),
+                      color: GlobalColors.background, shape: BoxShape.circle),
                   child: SvgPicture.asset('assets/toolbar/message.svg',
                       width: 18, height: 18)),
               const Align(
@@ -216,7 +216,7 @@ class ToggleWidget extends StatelessWidget {
           width: 85,
           height: 34,
           decoration: BoxDecoration(
-              color: GlobalColors.stroke, borderRadius: BorderRadius.circular(40)),
+              color: GlobalColors.background, borderRadius: BorderRadius.circular(40)),
           child: Row(
             children: [
               CircleAvatar(
@@ -236,8 +236,7 @@ class ToggleWidget extends StatelessWidget {
             ],
           )),
       onTap: () {
-        context.read<ThemeProvider>().isDark =
-            !context.read<ThemeProvider>().isDark;
+        context.read<ThemeProvider>().toggleThemeMode();
       },
     );
   }

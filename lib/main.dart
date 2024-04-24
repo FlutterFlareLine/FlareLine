@@ -87,8 +87,11 @@ class MyApp extends StatelessWidget {
             supportedLocales: AppLocalizations.supportedLocales,
             onGenerateRoute: (settings) =>
                 RouteConfiguration.onGenerateRoute(settings),
-            theme: GlobalTheme.theme(
-                context, context.watch<ThemeProvider>().isDark),
+            themeMode: context.watch<ThemeProvider>().isDark
+                ? ThemeMode.dark
+                : ThemeMode.light,
+            theme: GlobalTheme.lightThemeData,
+            darkTheme: GlobalTheme.darkThemeData,
             builder: (context, widget) {
               return MediaQuery(
                 data: MediaQuery.of(context)

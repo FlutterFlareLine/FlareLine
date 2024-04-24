@@ -142,6 +142,9 @@ class ChatGptProvider extends ChangeNotifier {
       OpenAI.baseUrl = proxy;
       OpenAI.showLogs = kDebugMode;
       OpenAI.showResponsesLogs = kDebugMode;
+      OpenAI.includeHeaders({
+        'User-Agent':'Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; GPTBot/1.0; +https://openai.com/gptbot)'
+      });
 
       _models = await OpenAI.instance.model.list();
       notifyListeners();

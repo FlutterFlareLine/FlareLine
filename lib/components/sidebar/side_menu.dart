@@ -30,7 +30,7 @@ class SideMenuWidget extends StatelessWidget {
       InkWell(
         child: Container(
             padding: EdgeInsets.only(left: 20, top: 10, bottom: 10),
-            color: isSelected ? GlobalColors.gray : Colors.transparent,
+            color: isSelected ? (isDark?GlobalColors.darkBackgroundColor:GlobalColors.gray) : Colors.transparent,
             child: Row(
               children: [
                 if (e['icon'] != null)
@@ -47,8 +47,9 @@ class SideMenuWidget extends StatelessWidget {
                     child: Text(
                   e['menuName'],
                   style: TextStyle(
-                      color:
-                          isDark ? Colors.white : GlobalColors.darkBlackText),
+                      color: isDark
+                          ? Colors.white
+                          : GlobalColors.darkBlackText),
                 )),
                 if (childList != null && childList.isNotEmpty)
                   Icon(
@@ -89,14 +90,16 @@ class SideMenuWidget extends StatelessWidget {
     return InkWell(
       child: Container(
         padding: EdgeInsets.only(left: 50, top: 10, bottom: 10),
-        color: isSelected ? GlobalColors.gray : Colors.transparent,
+        color: isSelected ? (isDark?GlobalColors.darkBackgroundColor:GlobalColors.gray) : Colors.transparent,
         child: Row(
           children: [
             Expanded(
                 child: Text(
               e['menuName'],
               style: TextStyle(
-                  color: isDark ? Colors.white60 : GlobalColors.darkBlackText),
+                  color: isDark
+                      ? Colors.white
+                      : GlobalColors.darkBlackText),
             )),
           ],
         ),

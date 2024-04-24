@@ -29,7 +29,7 @@ class CheckBoxWidget extends StatelessWidget {
           width: size,
           height: size,
           decoration: BoxDecoration(
-              color: (checked ?? false) ? checkedColor : GlobalColors.stroke,
+              color: (checked ?? false) ? checkedColor : GlobalColors.background,
               borderRadius: BorderRadius.circular(4),
               border: Border.all(
                   color: (checked ?? false)

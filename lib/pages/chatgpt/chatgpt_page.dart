@@ -25,9 +25,8 @@ class ChatGptPage extends LayoutWidget {
             children: [
               Text('Use OpenAI'),
               SizedBox(height: 20,),
-              Container(
+              CommonCard(
                   padding: EdgeInsets.symmetric(horizontal: 16),
-                  color: Colors.white,
                   child: Column(
                     children: [
                       OutBorderTextFormField(
@@ -73,15 +72,14 @@ class ChatGptPage extends LayoutWidget {
               ),
               SizedBox(
                 height: 80,
-                child: Container(
+                child: CommonCard(
                   padding: EdgeInsets.symmetric(horizontal: 16),
-                  color: Colors.white,
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Expanded(
                           child: OutBorderTextFormField(
-                        hintText: 'start with http:// or https://',
+                        hintText: 'enter your text',
                         controller: ctx.read<ChatGptProvider>().controller,
                       )),
                       SizedBox(

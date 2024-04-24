@@ -38,8 +38,8 @@ class ButtonWidget extends StatelessWidget {
                 : null,
             color: color ??
                 ((isPrimary ?? true)
-                    ? Theme.of(context).primaryColor
-                    : GlobalColors.stroke),
+                    ? Theme.of(context).colorScheme.primary
+                    : GlobalColors.background),
             borderRadius: BorderRadius.circular(borderRadius ?? 4)),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -48,7 +48,7 @@ class ButtonWidget extends StatelessWidget {
             if(iconWidget!=null)
               iconWidget!,
             if(iconWidget!=null)
-              SizedBox(width: 5,),
+              const SizedBox(width: 5,),
             Text(
               btnText,
               style:

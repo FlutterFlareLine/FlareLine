@@ -70,7 +70,7 @@ class SignInWidget extends StatelessWidget {
             )),
             const VerticalDivider(
               width: 1,
-              color: GlobalColors.stroke,
+              color: GlobalColors.background,
             ),
             Expanded(
               child: _signInFormWidget(context),

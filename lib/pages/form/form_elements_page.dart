@@ -187,7 +187,7 @@ class FormElementsPage extends LayoutWidget {
                                           borderRadius:
                                               BorderRadius.circular(4),
                                           border: Border.all(
-                                              color: GlobalColors.stroke, width: 0.5)),
+                                              color: GlobalColors.background, width: 0.5)),
                                       child: Text(val));
                                 }))
                       ],
@@ -239,7 +239,7 @@ class FormElementsPage extends LayoutWidget {
                                           borderRadius:
                                               BorderRadius.circular(4),
                                           border: Border.all(
-                                              color: GlobalColors.stroke, width: 0.5)),
+                                              color: GlobalColors.background, width: 0.5)),
                                       child: Text(val));
                                 }))
                       ],

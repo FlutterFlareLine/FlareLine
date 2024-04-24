@@ -182,7 +182,7 @@ class ButtonPage extends LayoutWidget {
           runSpacing: 16,
           children: [
             SizedBox(
-              width: 150,
+              width: 180,
               child: ButtonWidget(
                 iconWidget: const Icon(
                   Icons.email_outlined,
@@ -194,7 +194,7 @@ class ButtonPage extends LayoutWidget {
               ),
             ),
             SizedBox(
-              width: 150,
+              width: 180,
               child: ButtonWidget(
                 iconWidget: const Icon(
                   Icons.email_outlined,
@@ -206,7 +206,7 @@ class ButtonPage extends LayoutWidget {
               ),
             ),
             SizedBox(
-              width: 150,
+              width: 180,
               child: ButtonWidget(
                 iconWidget: const Icon(
                   Icons.email_outlined,
@@ -218,7 +218,7 @@ class ButtonPage extends LayoutWidget {
               ),
             ),
             SizedBox(
-              width: 150,
+              width: 180,
               child: ButtonWidget(
                 iconWidget: const Icon(
                   Icons.email_outlined,
@@ -241,7 +241,7 @@ class ButtonPage extends LayoutWidget {
           runSpacing: 16,
           children: [
             SizedBox(
-              width: 150,
+              width: 180,
               child: ButtonWidget(
                 iconWidget: const Icon(
                   Icons.shopping_cart_checkout,
@@ -253,7 +253,7 @@ class ButtonPage extends LayoutWidget {
               ),
             ),
             SizedBox(
-              width: 150,
+              width: 180,
               child: ButtonWidget(
                 iconWidget: const Icon(
                   Icons.shopping_cart_checkout,
@@ -265,7 +265,7 @@ class ButtonPage extends LayoutWidget {
               ),
             ),
             SizedBox(
-              width: 150,
+              width: 180,
               child: ButtonWidget(
                 iconWidget: const Icon(
                   Icons.shopping_cart_checkout,
@@ -277,7 +277,7 @@ class ButtonPage extends LayoutWidget {
               ),
             ),
             SizedBox(
-              width: 150,
+              width: 180,
               child: ButtonWidget(
                 iconWidget: const Icon(
                   Icons.shopping_cart_checkout,
@@ -300,7 +300,7 @@ class ButtonPage extends LayoutWidget {
           runSpacing: 16,
           children: [
             SizedBox(
-              width: 150,
+              width: 180,
               child: ButtonWidget(
                 iconWidget: Icon(
                   Icons.favorite_border,
@@ -312,7 +312,7 @@ class ButtonPage extends LayoutWidget {
               ),
             ),
             SizedBox(
-              width: 150,
+              width: 180,
               child: ButtonWidget(
                 iconWidget: Icon(
                   Icons.favorite_border,
@@ -324,7 +324,7 @@ class ButtonPage extends LayoutWidget {
               ),
             ),
             SizedBox(
-              width: 150,
+              width: 180,
               child: ButtonWidget(
                 iconWidget: Icon(
                   Icons.favorite_border,
@@ -336,7 +336,7 @@ class ButtonPage extends LayoutWidget {
               ),
             ),
             SizedBox(
-              width: 150,
+              width: 180,
               child: ButtonWidget(
                 iconWidget: Icon(
                   Icons.favorite_border,

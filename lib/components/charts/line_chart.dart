@@ -1,4 +1,5 @@
 import 'package:flareline/core/theme/global_colors.dart';
+import 'package:flareline/provider/theme_provider.dart';
 import 'package:flutter/material.dart';
 
 import 'package:provider/provider.dart';
@@ -23,41 +24,56 @@ class LineChartWidget extends StatelessWidget {
               create: (context) => _LineChartProvider(),
               builder: (ctx, child) => _buildDefaultLineChart(ctx),
             ),
-            Align(
-              alignment: Alignment.topRight,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  Container(
-                    padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 8),
-                    color: GlobalColors.gray,
-                    child: Row(mainAxisAlignment: MainAxisAlignment.end, children: [
-                      MaterialButton(
-                        onPressed: () {},
-                        child: const Text('Day'),
-                        color: Theme.of(context).appBarTheme.backgroundColor
-                      ),
-                      MaterialButton(
-                        onPressed: () {},
-                        child: Text('Week', style: TextStyle(color: Theme.of(context).appBarTheme.backgroundColor),),
-                      ),
-                      MaterialButton(
-                        onPressed: () {},
-                        child: Text('Month', style: TextStyle(color: Theme.of(context).appBarTheme.backgroundColor)),
-                      )
-                    ]),
-                  )
-                ],
-              ),
-            )
+            dateToggleWidget(context)
           ],
         ));
+  }
+
+  Widget dateToggleWidget(BuildContext context) {
+    bool isDark = context.watch<ThemeProvider>().isDark;
+    return Align(
+      alignment: Alignment.topRight,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: [
+          Container(
+            padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 8),
+            color: isDark
+                ? GlobalColors.darkBackgroundColor
+                : GlobalColors.gray,
+            child: Row(mainAxisAlignment: MainAxisAlignment.end, children: [
+              MaterialButton(
+                  onPressed: () {},
+                  child: const Text('Day'),
+                  color: Theme.of(context).appBarTheme.backgroundColor),
+              MaterialButton(
+                onPressed: () {},
+                child: Text(
+                  'Week',
+                  style: TextStyle(
+                      color: isDark?Colors.white:GlobalColors.darkBackgroundColor),
+                ),
+              ),
+              MaterialButton(
+                onPressed: () {},
+                child: Text('Month',
+                    style: TextStyle(
+                        color: isDark?Colors.white:GlobalColors.darkBackgroundColor)),
+              )
+            ]),
+          )
+        ],
+      ),
+    );
   }
 
   SfCartesianChart _buildDefaultLineChart(BuildContext context) {
     return SfCartesianChart(
       plotAreaBorderWidth: 0,
-      title: const ChartTitle(text: 'Revenue', textStyle: TextStyle(fontWeight: FontWeight.bold), alignment: ChartAlignment.near),
+      title: const ChartTitle(
+          text: 'Revenue',
+          textStyle: TextStyle(fontWeight: FontWeight.bold),
+          alignment: ChartAlignment.near),
       legend: const Legend(isVisible: true, position: LegendPosition.top),
       primaryXAxis: const NumericAxis(
           edgeLabelPlacement: EdgeLabelPlacement.shift,
@@ -68,7 +84,12 @@ class LineChartWidget extends StatelessWidget {
           axisLine: AxisLine(width: 0),
           majorTickLines: MajorTickLines(color: Colors.transparent)),
       series: _getDefaultLineSeries(context),
-      tooltipBehavior: TooltipBehavior(enable: true),
+      tooltipBehavior: TooltipBehavior(
+          enable: true,
+          textStyle: TextStyle(
+              color: context.watch<ThemeProvider>().isDark
+                  ? GlobalColors.darkBlackText
+                  : GlobalColors.gray)),
     );
   }
 

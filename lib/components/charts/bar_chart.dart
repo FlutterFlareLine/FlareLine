@@ -1,3 +1,5 @@
+import 'package:flareline/core/theme/global_colors.dart';
+import 'package:flareline/provider/theme_provider.dart';
 import 'package:flutter/material.dart';
 
 import 'package:provider/provider.dart';
@@ -14,30 +16,38 @@ class BarChartWidget extends StatelessWidget {
   ValueNotifier<int> selectedOption = ValueNotifier(1);
 
   _lineChart(BuildContext context) {
-    return Padding(padding: const EdgeInsets.all(12),child: Column(
-      children: [
-        const Row(
-          children: [
-            Text('Profit this week',style: TextStyle(fontSize: 14,fontWeight: FontWeight.bold),)
-          ],
-        ),
-        const SizedBox(height: 16,),
-        Expanded(
-            child: ChangeNotifierProvider(
-              create: (context) => _BarChartProvider(),
-              builder: (ctx, child) => _buildDefaultLineChart(ctx),
-            ))
-      ],
-    ),);
+    return Padding(
+      padding: const EdgeInsets.all(12),
+      child: Column(
+        children: [
+          const Row(
+            children: [
+              Text(
+                'Profit this week',
+                style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+              )
+            ],
+          ),
+          const SizedBox(
+            height: 16,
+          ),
+          Expanded(
+              child: ChangeNotifierProvider(
+            create: (context) => _BarChartProvider(),
+            builder: (ctx, child) => _buildDefaultLineChart(ctx),
+          ))
+        ],
+      ),
+    );
   }
 
   Widget _buildDefaultLineChart(BuildContext context) {
+    bool isDark = context.watch<ThemeProvider>().isDark;
     return SfCartesianChart(
       plotAreaBorderWidth: 0,
       enableSideBySideSeriesPlacement: true,
       title: const ChartTitle(text: ''),
-      legend: const Legend(
-          isVisible: true, position: LegendPosition.top),
+      legend: const Legend(isVisible: true, position: LegendPosition.top),
       primaryXAxis: const CategoryAxis(
         majorGridLines: MajorGridLines(width: 0),
       ),
@@ -48,7 +58,12 @@ class BarChartWidget extends StatelessWidget {
           majorGridLines: MajorGridLines(width: 1),
           rangePadding: ChartRangePadding.additional),
       series: _getDefaultColumnSeries(context),
-      tooltipBehavior: context.read<_BarChartProvider>().tooltipBehavior,
+      tooltipBehavior: TooltipBehavior(
+          enable: true,
+          header: '',
+          canShowMarker: false,
+          textStyle: TextStyle(
+              color: isDark ? GlobalColors.darkBlackText : GlobalColors.gray)),
     );
   }
 
@@ -80,6 +95,7 @@ class BarChartWidget extends StatelessWidget {
 
 class _ChartData {
   _ChartData(this.x, this.y, this.y2);
+
   final String x;
   final double y;
   final double y2;
@@ -95,9 +111,6 @@ class _BarChartProvider extends ChangeNotifier {
     _ChartData('Sat', 57, 78),
     _ChartData('Sun', 70, 84)
   ];
-
-  TooltipBehavior tooltipBehavior =
-      TooltipBehavior(enable: true, header: '', canShowMarker: false);
 
   void init() {}
 

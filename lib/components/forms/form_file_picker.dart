@@ -23,7 +23,7 @@ class FormFilePicker extends StatelessWidget {
         ),
         Container(
           decoration: BoxDecoration(
-              border: Border.all(color: GlobalColors.stroke, width: 0.5),
+              border: Border.all(color: GlobalColors.background, width: 0.5),
               borderRadius: BorderRadius.circular(2)),
           child: InkWell(
             child: Row(

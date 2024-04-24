@@ -55,7 +55,7 @@ dependencies:
 
   # dual_screen: ^1.0.4
 
-  # google_fonts: any
+  google_fonts: any
 
   flutter_svg: ^2.0.9
 

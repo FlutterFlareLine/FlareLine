@@ -1,29 +1,99 @@
 import 'package:flareline/core/theme/global_colors.dart';
 import 'package:flutter/material.dart';
-
+import 'package:google_fonts/google_fonts.dart';
 
 class GlobalTheme {
+  static const _lightFillColor = GlobalColors.darkBackgroundColor;
+  static const _darkFillColor = GlobalColors.gray;
 
-  static ThemeData theme(
-    BuildContext context,
-    bool isDark,
-  ) {
+  static final Color _lightFocusColor = Colors.black.withOpacity(0.12);
+  static final Color _darkFocusColor = Colors.white.withOpacity(0.12);
+
+  static ThemeData lightThemeData = theme(lightColorScheme, _lightFocusColor,
+      lightAppBarTheme, GlobalColors.darkText, lightCardTheme);
+  static ThemeData darkThemeData = theme(darkColorScheme, _darkFocusColor,
+      darkAppBarThemd, GlobalColors.darkText, darkCardTheme);
+
+  static ThemeData theme(ColorScheme colorScheme, Color focusColor,
+      AppBarTheme appBarTheme, Color hintColor, CardTheme cardTheme) {
     return ThemeData(
         useMaterial3: true,
-        primaryColor: GlobalColors.primary,
-        brightness: isDark ? Brightness.dark : Brightness.light,
-        scaffoldBackgroundColor: isDark ? GlobalColors.darkBackgroundColor : GlobalColors.gray,
-        appBarTheme: AppBarTheme.of(context).copyWith(
-          backgroundColor: isDark ? GlobalColors.sideBar : Colors.white,
-        ),
-        hintColor: isDark ? Colors.white : GlobalColors.darkText,
-        cardTheme: CardTheme.of(context).copyWith(
-            margin: EdgeInsets.zero,
-            color: isDark ? GlobalColors.darkAppBar : Colors.white,
-            surfaceTintColor: isDark ? GlobalColors.darkAppBar : Colors.white,
-            shape:
-                RoundedRectangleBorder(borderRadius: BorderRadius.circular(4)),
-            elevation: isDark ? 0 : 10,
-            shadowColor: GlobalColors.gray.withOpacity(0.25)));
+        colorScheme: colorScheme,
+        focusColor: focusColor,
+        appBarTheme: appBarTheme,
+        textTheme: _textTheme,
+        hintColor: hintColor,
+        cardTheme: cardTheme);
   }
+
+  static CardTheme lightCardTheme = CardTheme(
+      margin: EdgeInsets.zero,
+      color: Colors.white,
+      surfaceTintColor: Colors.white,
+      elevation: 0,);
+
+  static CardTheme darkCardTheme = const CardTheme(
+    margin: EdgeInsets.zero,
+    color: GlobalColors.darkAppBar,
+    surfaceTintColor: GlobalColors.darkAppBar,
+    elevation: 0,
+  );
+
+  static const AppBarTheme lightAppBarTheme = AppBarTheme(
+    backgroundColor: Colors.white,
+  );
+
+  static const AppBarTheme darkAppBarThemd =
+      AppBarTheme(backgroundColor: GlobalColors.sideBar);
+
+  static const ColorScheme lightColorScheme = ColorScheme(
+    primary: GlobalColors.primary,
+    primaryContainer: GlobalColors.gray,
+    secondary: GlobalColors.border,
+    secondaryContainer: GlobalColors.border,
+    background: GlobalColors.gray,
+    surface: Color(0xFFFAFBFB),
+    onBackground: Colors.white,
+    error: _lightFillColor,
+    onError: _lightFillColor,
+    onPrimary: _lightFillColor,
+    onSecondary: Color(0xFF322942),
+    onSurface: Color(0xFF241E30),
+    brightness: Brightness.light,
+  );
+
+  static const ColorScheme darkColorScheme = ColorScheme(
+    primary: GlobalColors.primary,
+    primaryContainer: Colors.white,
+    secondary: GlobalColors.primary,
+    secondaryContainer: GlobalColors.primary,
+    background: GlobalColors.darkBackgroundColor,
+    surface: Colors.white,
+    onBackground: Color(0x0DFFFFFF),
+    // White with 0.05 opacity
+    error: _darkFillColor,
+    onError: _darkFillColor,
+    onPrimary: _darkFillColor,
+    onSecondary: _darkFillColor,
+    onSurface: _darkFillColor,
+    brightness: Brightness.dark,
+  );
+
+  static const _regular = FontWeight.w400;
+  static const _medium = FontWeight.w500;
+  static const _semiBold = FontWeight.w600;
+  static const _bold = FontWeight.w700;
+
+  static final TextTheme _textTheme = TextTheme(
+    headlineMedium: GoogleFonts.montserrat(fontWeight: _bold, fontSize: 20.0),
+    bodySmall: GoogleFonts.oswald(fontWeight: _semiBold, fontSize: 16.0),
+    headlineSmall: GoogleFonts.oswald(fontWeight: _medium, fontSize: 16.0),
+    titleMedium: GoogleFonts.montserrat(fontWeight: _medium, fontSize: 16.0),
+    labelSmall: GoogleFonts.montserrat(fontWeight: _medium, fontSize: 12.0),
+    bodyLarge: GoogleFonts.montserrat(fontWeight: _regular, fontSize: 14.0),
+    titleSmall: GoogleFonts.montserrat(fontWeight: _medium, fontSize: 14.0),
+    bodyMedium: GoogleFonts.montserrat(fontWeight: _regular, fontSize: 16.0),
+    titleLarge: GoogleFonts.montserrat(fontWeight: _bold, fontSize: 16.0),
+    labelLarge: GoogleFonts.montserrat(fontWeight: _semiBold, fontSize: 14.0),
+  );
 }
