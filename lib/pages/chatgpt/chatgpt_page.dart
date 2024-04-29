@@ -6,6 +6,7 @@ import 'package:flareline/components/forms/outborder_text_form_field.dart';
 import 'package:flareline/core/theme/global_colors.dart';
 import 'package:flareline/pages/chatgpt/chatgpt_provider.dart';
 import 'package:flareline/pages/layout.dart';
+import 'package:flareline/pages/setting/open_ai_setting.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:markdown_widget/markdown_widget.dart';
@@ -23,59 +24,6 @@ class ChatGptPage extends LayoutWidget {
         builder: (ctx, widget) {
           return Column(
             children: [
-              Text('Use OpenAI'),
-              SizedBox(
-                height: 20,
-              ),
-              CommonCard(
-                  padding: EdgeInsets.all(16),
-                  child: Column(
-                    children: [
-                      Wrap(
-                        spacing: 10,
-                        runSpacing: 10,
-                        children: ctx
-                            .watch<ChatGptProvider>()
-                            .models
-                            .map((e) => checkBoxWidget(e, ctx))
-                            .toList(),
-                      ),
-                    ],
-                  )),
-              SizedBox(
-                height: 20,
-              ),
-              SizedBox(
-                height: 80,
-                child: CommonCard(
-                  padding: EdgeInsets.symmetric(horizontal: 16),
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Expanded(
-                          child: OutBorderTextFormField(
-                        hintText: 'enter your text',
-                        controller: ctx.read<ChatGptProvider>().controller,
-                      )),
-                      SizedBox(
-                        width: 10,
-                      ),
-                      SizedBox(
-                        width: 100,
-                        child: ButtonWidget(
-                          btnText: 'Send',
-                          onTap: () {
-                            ctx.read<ChatGptProvider>().startScrapy(ctx);
-                          },
-                        ),
-                      )
-                    ],
-                  ),
-                ),
-              ),
-              SizedBox(
-                height: 20,
-              ),
               Expanded(
                 child: Stack(
                   alignment: Alignment.topCenter,
@@ -95,26 +43,55 @@ class ChatGptPage extends LayoutWidget {
                       )
                   ],
                 ),
-              )
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              SizedBox(
+                child: CommonCard(
+                  padding: const EdgeInsets.all(16),
+                  child: Column(children: [
+                    if (ctx.watch<ChatGptProvider>().showSettings)
+                      Column(
+                        children: [
+                          const OpenAiSetting(),
+                          const SizedBox(height: 20,),
+                        ],
+                      ),
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        InkWell(
+                          child: Icon(Icons.settings),
+                          onTap: () {
+                            ctx.read<ChatGptProvider>().toggleSetting(ctx);
+                          },
+                        ),
+                        SizedBox(
+                          width: 10,
+                        ),
+                        Expanded(
+                          child: OutBorderTextFormField(
+                            hintText: 'Message ChatGPT...',
+                            controller: ctx.read<ChatGptProvider>().controller,
+                            suffixWidget: InkWell(
+                              child: Icon(Icons.send),
+                              onTap: () {
+                                ctx.read<ChatGptProvider>().send(context);
+                              },
+                            ),
+                          ),
+                        )
+                      ],
+                    ),
+                  ]),
+                ),
+              ),
             ],
           );
         });
   }
 
-  CheckBoxWidget checkBoxWidget(OpenAIModelModel e, BuildContext ctx) {
-    bool isChecked = ctx
-        .select<ChatGptProvider, bool>((provider) => provider.isChecked(e.id));
-    return CheckBoxWidget(
-      size: 30,
-      text: e.id,
-      value: e.id,
-      color: GlobalColors.green,
-      checked: isChecked,
-      onChanged: (checked, v) {
-        ctx.read<ChatGptProvider>().checkedId = v;
-      },
-    );
-  }
 
   @override
   String breakTabTitle(BuildContext context) {

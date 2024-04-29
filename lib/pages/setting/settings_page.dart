@@ -92,7 +92,6 @@ class SettingsPage extends LayoutWidget {
         SizedBox(
           height: 20,
         ),
-        OpenAiSetting()
       ],
     );
   }

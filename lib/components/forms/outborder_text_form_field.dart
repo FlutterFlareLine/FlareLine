@@ -33,7 +33,7 @@ class OutBorderTextFormField extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(labelText ?? ''),
+        if (labelText != null) Text(labelText ?? ''),
         if (labelText != null)
           const SizedBox(
             height: 8,
@@ -54,27 +54,28 @@ class OutBorderTextFormField extends StatelessWidget {
                   maxLines: maxLines,
                   validator: validator,
                   decoration: InputDecoration(
-                      prefixIcon: icon,
+                    prefixIcon: icon,
                     prefixIconConstraints: BoxConstraints(
                       maxWidth: 35,
                       maxHeight: 35,
                     ),
-                      labelText: '',
-                      border: const OutlineInputBorder(
-                          borderSide:
-                          BorderSide(color: GlobalColors.border, width: 1)),
-                      enabledBorder: const OutlineInputBorder(
-                          borderSide:
-                              BorderSide(color: GlobalColors.border, width: 1)),
-                      focusedBorder: const OutlineInputBorder(
-                          borderSide:
-                              BorderSide(color: GlobalColors.primary, width: 1)),
-                      contentPadding: const EdgeInsets.symmetric(
-                        horizontal: 12,
-                        vertical: 6,
-                      ),
-                      floatingLabelBehavior: FloatingLabelBehavior.always,
-                      hintText: hintText,),
+                    labelText: '',
+                    border: const OutlineInputBorder(
+                        borderSide:
+                            BorderSide(color: GlobalColors.border, width: 1)),
+                    enabledBorder: const OutlineInputBorder(
+                        borderSide:
+                            BorderSide(color: GlobalColors.border, width: 1)),
+                    focusedBorder: const OutlineInputBorder(
+                        borderSide:
+                            BorderSide(color: GlobalColors.primary, width: 1)),
+                    contentPadding: const EdgeInsets.symmetric(
+                      horizontal: 12,
+                      vertical: 6,
+                    ),
+                    floatingLabelBehavior: FloatingLabelBehavior.always,
+                    hintText: hintText,
+                  ),
                 ),
               ),
               if (suffixWidget != null)

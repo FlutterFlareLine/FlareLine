@@ -1,5 +1,7 @@
 import 'package:dart_openai/dart_openai.dart';
+import 'package:flareline/pages/setting/open_ai_setting.dart';
 import 'package:flareline/provider/firebase_store_provider.dart';
+import 'package:flareline/provider/openai_setting_provider.dart';
 import 'package:flareline/provider/store_provider.dart';
 import 'package:flareline/utils/snackbar_util.dart';
 import 'package:flutter/foundation.dart';
@@ -22,29 +24,17 @@ class ChatGptProvider extends ChangeNotifier {
 
   bool get isLoading => _isLoading;
 
-  String? _checkedId;
+  bool _showSettings = false;
 
-  List<OpenAIModelModel>? _models;
-
-  List<OpenAIModelModel> get models => _models ?? [];
+  bool get showSettings => _showSettings;
 
   ChatGptProvider(BuildContext ctx) {
     controller = TextEditingController();
-
-    initOpenApiConfig(ctx);
   }
 
-  set checkedId(String? cid) {
-    _checkedId = cid;
-    notifyListeners();
-  }
-
-  bool isChecked(String id) {
-    return _checkedId == id;
-  }
-
-  Future<void> startScrapy(BuildContext ctx) async {
-    if (_checkedId == null) {
+  Future<void> send(BuildContext ctx) async {
+    String? model = ctx.read<OpenAISettingProvider>().checkedId;
+    if (model == null) {
       SnackBarUtil.showSnack(ctx, 'please select model');
       return;
     }
@@ -71,7 +61,7 @@ class ChatGptProvider extends ChangeNotifier {
         role: OpenAIChatMessageRole.user,
       );
       final chatStream = OpenAI.instance.chat.createStream(
-        model: _checkedId!,
+        model: model!,
         messages: [
           userMessage,
         ],
@@ -100,33 +90,8 @@ class ChatGptProvider extends ChangeNotifier {
     }
   }
 
-  Future<Map<String, dynamic>?> getOpenApiConfig(BuildContext ctx) async {
-    String email = ctx.read<StoreProvider>().email;
-    Map<String, dynamic>? data =
-        await ctx.read<FirebaseStoreProvider>().getOne('openAiKey', email);
-    return data;
-  }
-
-  Future<void> initOpenApiConfig(BuildContext ctx) async {
-    Map<String, dynamic>? config = await getOpenApiConfig(ctx);
-    if (config != null) {
-      String key = config['key'];
-      String proxy = config['api'];
-
-      OpenAI.apiKey = key;
-      OpenAI.baseUrl = proxy;
-      OpenAI.showLogs = kDebugMode;
-      OpenAI.showResponsesLogs = kDebugMode;
-      OpenAI.includeHeaders({
-        'User-Agent':
-            'Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; GPTBot/1.0; +https://openai.com/gptbot)'
-      });
-
-      _models = await OpenAI.instance.model.list();
-      if (models.isNotEmpty) {
-        checkedId = models[0].id;
-      }
-      notifyListeners();
-    }
+  void toggleSetting(BuildContext ctx) {
+    _showSettings = !_showSettings;
+    notifyListeners();
   }
 }
