@@ -51,13 +51,17 @@ class ChatGptPage extends LayoutWidget {
                 child: CommonCard(
                   padding: const EdgeInsets.all(16),
                   child: Column(children: [
-                    if (ctx.watch<ChatGptProvider>().showSettings)
-                      Column(
+                    Visibility(
+                      child: Column(
                         children: [
                           const OpenAiSetting(),
-                          const SizedBox(height: 20,),
+                          const SizedBox(
+                            height: 20,
+                          ),
                         ],
                       ),
+                      visible: ctx.watch<ChatGptProvider>().showSettings,
+                    ),
                     Row(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
@@ -74,6 +78,10 @@ class ChatGptPage extends LayoutWidget {
                           child: OutBorderTextFormField(
                             hintText: 'Message ChatGPT...',
                             controller: ctx.read<ChatGptProvider>().controller,
+                            textInputAction: TextInputAction.send,
+                            onFieldSubmitted: (value){
+                              ctx.read<ChatGptProvider>().send(context);
+                            },
                             suffixWidget: InkWell(
                               child: Icon(Icons.send),
                               onTap: () {
@@ -91,7 +99,6 @@ class ChatGptPage extends LayoutWidget {
           );
         });
   }
-
 
   @override
   String breakTabTitle(BuildContext context) {

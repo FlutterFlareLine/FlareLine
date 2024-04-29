@@ -1,7 +1,7 @@
 import 'package:dart_openai/dart_openai.dart';
 import 'package:flareline/pages/setting/open_ai_setting.dart';
 import 'package:flareline/provider/firebase_store_provider.dart';
-import 'package:flareline/provider/openai_setting_provider.dart';
+import 'package:flareline/provider/openai_provider.dart';
 import 'package:flareline/provider/store_provider.dart';
 import 'package:flareline/utils/snackbar_util.dart';
 import 'package:flutter/foundation.dart';
@@ -33,9 +33,9 @@ class ChatGptProvider extends ChangeNotifier {
   }
 
   Future<void> send(BuildContext ctx) async {
-    String? model = ctx.read<OpenAISettingProvider>().checkedId;
+    String? model = ctx.read<StoreProvider>().openAiModel;
     if (model == null) {
-      SnackBarUtil.showSnack(ctx, 'please select model');
+      SnackBarUtil.showSnack(ctx, 'please set your model');
       return;
     }
     if (controller.text.isEmpty) {

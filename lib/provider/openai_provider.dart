@@ -6,10 +6,14 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class OpenAISettingProvider extends ChangeNotifier {
-  OpenAISettingProvider(BuildContext ctx) {
+class OpenAIProvider extends ChangeNotifier {
+  OpenAIProvider() {
     keyController = TextEditingController();
     proxyController = TextEditingController();
+
+  }
+
+  init(BuildContext ctx){
     initOpenApiConfig(ctx);
   }
 
@@ -21,7 +25,7 @@ class OpenAISettingProvider extends ChangeNotifier {
 
   String? _checkedId;
 
-  String? get checkedId => _checkedId;
+  String get checkedId => _checkedId??'gpt-3.5-turbo';
 
   set checkedId(String? cid) {
     _checkedId = cid;
@@ -29,7 +33,7 @@ class OpenAISettingProvider extends ChangeNotifier {
   }
 
   bool isChecked(String id) {
-    return _checkedId == id;
+    return checkedId == id;
   }
 
   saveKey(BuildContext ctx) {
@@ -37,29 +41,33 @@ class OpenAISettingProvider extends ChangeNotifier {
       SnackBarUtil.showSnack(ctx, 'please enter your key');
       return;
     }
-    String openAiKey = 'openAiKey';
     String email = ctx.read<StoreProvider>().email;
 
     Map<String, dynamic> data = {
       'email': email,
-      'usedModel': _checkedId,
+      'usedModel': checkedId,
       'key': keyController.text.trim(),
       'api': proxyController.text.trim(),
     };
-    ctx.read<FirebaseStoreProvider>().save(openAiKey, email, data);
+    ctx.read<StoreProvider>().saveOpenAi(data);
     initOpenApiConfig(ctx);
     SnackBarUtil.showSuccess(ctx, 'key saved success');
   }
 
   Future<Map<String, dynamic>?> getOpenApiConfig(BuildContext ctx) async {
-    String email = ctx.read<StoreProvider>().email;
+    String email = 'demo@flareline.com';
     Map<String, dynamic>? data =
     await ctx.read<FirebaseStoreProvider>().getOne('openAiKey', email);
     return data;
   }
 
   Future<void> initOpenApiConfig(BuildContext ctx) async {
-    Map<String, dynamic>? config = await getOpenApiConfig(ctx);
+    Map<String, dynamic>? config = ctx.read<StoreProvider>().openAiConfig;
+    if(config==null){
+      config = await getOpenApiConfig(ctx);
+    }
+    _checkedId = ctx.read<StoreProvider>().openAiModel;
+
     if (config != null) {
       String key = config['key'];
       String proxy = config['api'];
@@ -78,9 +86,8 @@ class OpenAISettingProvider extends ChangeNotifier {
 
       _models = await OpenAI.instance.model.list();
       if (models.isNotEmpty) {
-        checkedId = config['usedModel'];
-        if (checkedId == null) {
-          checkedId = models[0].id;
+        if (_checkedId == null) {
+          _checkedId = models[0].id;
         }
       }
       notifyListeners();

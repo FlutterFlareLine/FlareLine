@@ -8,7 +8,7 @@ import 'package:flareline/provider/firebase_provider.dart';
 import 'package:flareline/provider/firebase_store_provider.dart';
 import 'package:flareline/provider/localization_provider.dart';
 import 'package:flareline/provider/main_provider.dart';
-import 'package:flareline/provider/openai_setting_provider.dart';
+import 'package:flareline/provider/openai_provider.dart';
 import 'package:flareline/provider/store_provider.dart';
 import 'package:flareline/provider/theme_provider.dart';
 import 'package:flareline/routes.dart';
@@ -76,9 +76,10 @@ class MyApp extends StatelessWidget {
           ChangeNotifierProvider(create: (_) => FirebaseProvider()),
           ChangeNotifierProvider(create: (_) => FirebaseStoreProvider()),
           ChangeNotifierProvider(create: (_) => LocalizationProvider()),
-          ChangeNotifierProvider(create: (_) => OpenAISettingProvider(_))
+          ChangeNotifierProvider(create: (_) => OpenAIProvider()),
         ],
         child: Builder(builder: (context) {
+          context.read<OpenAIProvider>().init(context);
           return MaterialApp(
             navigatorKey: RouteConfiguration.navigatorKey,
             restorationScopeId: 'rootFlareLine',
