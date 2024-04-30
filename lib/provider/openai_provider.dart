@@ -10,10 +10,9 @@ class OpenAIProvider extends ChangeNotifier {
   OpenAIProvider() {
     keyController = TextEditingController();
     proxyController = TextEditingController();
-
   }
 
-  init(BuildContext ctx){
+  init(BuildContext ctx) {
     initOpenApiConfig(ctx);
   }
 
@@ -25,7 +24,7 @@ class OpenAIProvider extends ChangeNotifier {
 
   String? _checkedId;
 
-  String get checkedId => _checkedId??'gpt-3.5-turbo';
+  String get checkedId => _checkedId ?? 'gpt-3.5-turbo';
 
   set checkedId(String? cid) {
     _checkedId = cid;
@@ -57,13 +56,13 @@ class OpenAIProvider extends ChangeNotifier {
   Future<Map<String, dynamic>?> getOpenApiConfig(BuildContext ctx) async {
     String email = 'demo@flareline.com';
     Map<String, dynamic>? data =
-    await ctx.read<FirebaseStoreProvider>().getOne('openAiKey', email);
+        await ctx.read<FirebaseStoreProvider>().getOne('openAiKey', email);
     return data;
   }
 
   Future<void> initOpenApiConfig(BuildContext ctx) async {
     Map<String, dynamic>? config = ctx.read<StoreProvider>().openAiConfig;
-    if(config==null){
+    if (config == null) {
       config = await getOpenApiConfig(ctx);
     }
     _checkedId = ctx.read<StoreProvider>().openAiModel;
@@ -81,7 +80,7 @@ class OpenAIProvider extends ChangeNotifier {
       OpenAI.showResponsesLogs = kDebugMode;
       OpenAI.includeHeaders({
         'User-Agent':
-        'Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; GPTBot/1.0; +https://openai.com/gptbot)'
+            'Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; GPTBot/1.0; +https://openai.com/gptbot)'
       });
 
       _models = await OpenAI.instance.model.list();
