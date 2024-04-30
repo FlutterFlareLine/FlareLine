@@ -1,24 +1,21 @@
+
 import 'package:dart_openai/dart_openai.dart';
-import 'package:flareline/pages/setting/open_ai_setting.dart';
-import 'package:flareline/provider/firebase_store_provider.dart';
-import 'package:flareline/provider/openai_provider.dart';
+import 'package:flareline/entity/message_entity.dart';
+import 'package:flareline/provider/base_provider.dart';
 import 'package:flareline/provider/store_provider.dart';
 import 'package:flareline/utils/snackbar_util.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:provider/provider.dart';
+import 'package:uuid/uuid.dart';
 
-class ChatGptProvider extends ChangeNotifier {
+class ChatGptProvider extends BaseProvider {
   late TextEditingController controller;
 
   String _url = "";
 
   String get url => _url;
-
-  String _text = "";
-
-  String get text => _text;
 
   bool _isLoading = false;
 
@@ -28,8 +25,16 @@ class ChatGptProvider extends ChangeNotifier {
 
   bool get showSettings => _showSettings;
 
+  List<MessageEntity> messageList = [];
+
+  int get messageCount => messageList.length;
+
   ChatGptProvider(BuildContext ctx) {
     controller = TextEditingController();
+  }
+
+  MessageEntity getItemMessage(int index) {
+    return messageList.elementAt(index);
   }
 
   Future<void> send(BuildContext ctx) async {
@@ -43,19 +48,31 @@ class ChatGptProvider extends ChangeNotifier {
       return;
     }
 
-    // _isLoading = true;
+    if (_isLoading) {
+      return;
+    }
+
+    _isLoading = true;
     // notifyListeners();
-    String url = controller.text.trim();
+    String sendText = controller.text.trim();
+    String email = ctx.read<StoreProvider>().email;
+
+    controller.clear();
 
     try {
-      _text = '';
+      messageList.add(new MessageEntity()
+        ..id = Uuid().v1()
+        ..isUser = true
+        ..content = sendText
+        ..timestamp = DateTime.timestamp()
+        ..belongUid = email);
       notifyListeners();
 
       // The user message to be sent to the request.
       final userMessage = OpenAIChatCompletionChoiceMessageModel(
         content: [
           OpenAIChatCompletionChoiceMessageContentItemModel.text(
-            url,
+            sendText,
           ),
         ],
         role: OpenAIChatMessageRole.user,
@@ -69,23 +86,47 @@ class ChatGptProvider extends ChangeNotifier {
         n: 2,
       );
 
+      String responseId = Uuid().v1();
+
       chatStream.listen(
         (streamChatCompletion) {
           final content = streamChatCompletion.choices.first.delta.content;
 
-          _text += content?.map((e) => e?.text ?? '').toList().join('') ?? '';
+          String msgText =
+              content?.map((e) => e?.text ?? '').toList().join('') ?? '';
+
+          final index =
+              messageList.indexWhere((element) => element.id == responseId);
+          if (index == -1) {
+            MessageEntity responseMessage = new MessageEntity()
+              ..id = responseId
+              ..isUser = false
+              ..content = msgText
+              ..timestamp = DateTime.timestamp()
+              ..belongUid = email;
+            messageList.add(responseMessage);
+          } else {
+            messageList.elementAt(index).content += msgText;
+          }
+
           notifyListeners();
-          debugPrint(_text);
         },
         onDone: () {
-          debugPrint("Done");
-          // _isLoading = false;
-          // notifyListeners();
+          _isLoading = false;
+          notifyListeners();
         },
       );
     } catch (e) {
-      _text = e.toString();
-      // _isLoading = false;
+      MessageEntity responseMessage = new MessageEntity()
+        ..id = Uuid().v1()
+        ..isUser = false
+        ..content = e.toString()
+        ..timestamp = DateTime.timestamp()
+        ..belongUid = email;
+      responseMessage.content = e.toString();
+      messageList.add(responseMessage);
+
+      _isLoading = false;
       notifyListeners();
     }
   }

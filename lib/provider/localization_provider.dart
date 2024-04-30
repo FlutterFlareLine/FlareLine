@@ -1,10 +1,11 @@
 import 'dart:convert';
 import 'dart:ui';
 
+import 'package:flareline/provider/base_provider.dart';
 import 'package:flutter/foundation.dart';
 import 'package:get_storage/get_storage.dart';
 
-class LocalizationProvider extends ChangeNotifier {
+class LocalizationProvider extends BaseProvider {
   static const Locale en = Locale('en');
 
   LocalizationProvider() {

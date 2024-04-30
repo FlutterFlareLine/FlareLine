@@ -1,6 +1,7 @@
+import 'package:flareline/provider/base_provider.dart';
 import 'package:flutter/material.dart';
 
-class ThemeProvider extends ChangeNotifier {
+class ThemeProvider extends BaseProvider {
   ThemeMode _themeMode = ThemeMode.light;
 
   ThemeMode get themeMode => _themeMode;

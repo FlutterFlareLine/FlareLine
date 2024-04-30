@@ -1,15 +1,14 @@
-import 'package:dart_openai/src/core/models/model/model.dart';
-import 'package:flareline/components/buttons/button_widget.dart';
 import 'package:flareline/components/card/common_card.dart';
-import 'package:flareline/components/forms/checkbox_widget.dart';
 import 'package:flareline/components/forms/outborder_text_form_field.dart';
 import 'package:flareline/core/theme/global_colors.dart';
+import 'package:flareline/entity/message_entity.dart';
 import 'package:flareline/pages/chatgpt/chatgpt_provider.dart';
 import 'package:flareline/pages/layout.dart';
 import 'package:flareline/pages/setting/open_ai_setting.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:markdown_widget/markdown_widget.dart';
+import 'package:provider/provider.dart';
 import 'package:provider/provider.dart';
 
 class ChatGptPage extends LayoutWidget {
@@ -30,17 +29,7 @@ class ChatGptPage extends LayoutWidget {
                   children: [
                     CommonCard(
                         padding: EdgeInsets.all(10),
-                        child: SingleChildScrollView(
-                            child: MarkdownBlock(
-                                data: ctx.watch<ChatGptProvider>().text))),
-                    if (ctx.watch<ChatGptProvider>().isLoading)
-                      Center(
-                        child: SizedBox(
-                          child: CircularProgressIndicator(),
-                          width: 100,
-                          height: 100,
-                        ),
-                      )
+                        child: _gptMessageWidget(ctx)),
                   ],
                 ),
               ),
@@ -71,7 +60,7 @@ class ChatGptPage extends LayoutWidget {
                             ctx.read<ChatGptProvider>().toggleSetting(ctx);
                           },
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 10,
                         ),
                         Expanded(
@@ -79,11 +68,16 @@ class ChatGptPage extends LayoutWidget {
                             hintText: 'Message ChatGPT...',
                             controller: ctx.read<ChatGptProvider>().controller,
                             textInputAction: TextInputAction.send,
-                            onFieldSubmitted: (value){
+                            onFieldSubmitted: (value) {
                               ctx.read<ChatGptProvider>().send(context);
                             },
                             suffixWidget: InkWell(
-                              child: Icon(Icons.send),
+                              child: Icon(
+                                Icons.send,
+                                color: ctx.watch<ChatGptProvider>().isLoading
+                                    ? GlobalColors.border
+                                    : GlobalColors.primary,
+                              ),
                               onTap: () {
                                 ctx.read<ChatGptProvider>().send(context);
                               },
@@ -103,5 +97,30 @@ class ChatGptPage extends LayoutWidget {
   @override
   String breakTabTitle(BuildContext context) {
     return 'ChatGpt';
+  }
+
+  _gptMessageWidget(BuildContext ctx) {
+    return ListView.builder(
+      itemBuilder: itemBuilder,
+      itemCount: ctx.watch<ChatGptProvider>().messageCount,
+    );
+  }
+
+  Widget itemBuilder(BuildContext context, int index) {
+    MessageEntity messageEntity =
+        context.read<ChatGptProvider>().getItemMessage(index);
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(messageEntity.isUser ? 'Question:' : 'GPT Answer',style: TextStyle(fontWeight: FontWeight.bold),),
+        SizedBox(
+          height: 5,
+        ),
+        MarkdownBlock(data: messageEntity.content),
+        SizedBox(
+          height: 20,
+        ),
+      ],
+    );
   }
 }

@@ -1,4 +1,5 @@
 import 'package:dart_openai/dart_openai.dart';
+import 'package:flareline/provider/base_provider.dart';
 import 'package:flareline/provider/firebase_store_provider.dart';
 import 'package:flareline/provider/store_provider.dart';
 import 'package:flareline/utils/snackbar_util.dart';
@@ -6,7 +7,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class OpenAIProvider extends ChangeNotifier {
+class OpenAIProvider extends BaseProvider {
   OpenAIProvider() {
     keyController = TextEditingController();
     proxyController = TextEditingController();

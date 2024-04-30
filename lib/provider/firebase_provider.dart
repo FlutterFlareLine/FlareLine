@@ -3,12 +3,13 @@ import 'dart:convert';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flareline/entity/user_entity.dart';
+import 'package:flareline/provider/base_provider.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:uuid/uuid.dart';
 
-class FirebaseProvider extends ChangeNotifier {
+class FirebaseProvider extends BaseProvider {
   FirebaseProvider() {
     init();
   }
@@ -19,25 +20,25 @@ class FirebaseProvider extends ChangeNotifier {
 
     FirebaseAuth.instance.authStateChanges().listen((User? user) {
       if (user == null) {
-        debugPrint('authStateChanges User is currently signed out!');
+        log('authStateChanges User is currently signed out!');
       } else {
-        debugPrint('authStateChanges User is signed in!');
+        log('authStateChanges User is signed in!');
       }
     });
 
     FirebaseAuth.instance.idTokenChanges().listen((User? user) {
       if (user == null) {
-        debugPrint('idTokenChanges User is currently signed out!');
+        log('idTokenChanges User is currently signed out!');
       } else {
-        debugPrint('idTokenChanges User is signed in!');
+        log('idTokenChanges User is signed in!');
       }
     });
 
     FirebaseAuth.instance.userChanges().listen((User? user) {
       if (user == null) {
-        debugPrint('User is currently signed out!');
+        log('User is currently signed out!');
       } else {
-        debugPrint('User is signed in!');
+        log('User is signed in!');
       }
     });
   }

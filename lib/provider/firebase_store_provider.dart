@@ -1,9 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flareline/provider/base_provider.dart';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-class FirebaseStoreProvider extends ChangeNotifier {
+class FirebaseStoreProvider extends BaseProvider {
   FirebaseStoreProvider() {
     init();
   }

@@ -52,6 +52,7 @@ You can use FlareLine Cloud for a fully managed solution. If you want to self-ho
 * run `flutter gen-l10n` generate localization files
 * import package `import 'package:flutter_gen/gen_l10n/app_localizations.dart';`
 * use `AppLocalizations.of(context)!.name` to use it
+* generate JsonSerializable ` flutter pub run build_runner build --delete-conflicting-outputs`
 
 ### Feature
 * Firebase Auth

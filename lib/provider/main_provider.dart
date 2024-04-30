@@ -1,11 +1,12 @@
 import 'dart:html';
 
+import 'package:flareline/provider/base_provider.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flareline/routes.dart';
 import 'package:get/utils.dart';
 
-class MainProvider with ChangeNotifier {
+class MainProvider extends BaseProvider {
   String _selectedPath = '/';
   String _expandedMenuName = '';
 
