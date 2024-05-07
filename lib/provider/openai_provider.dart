@@ -54,18 +54,9 @@ class OpenAIProvider extends BaseProvider {
     SnackBarUtil.showSuccess(ctx, 'key saved success');
   }
 
-  Future<Map<String, dynamic>?> getOpenApiConfig(BuildContext ctx) async {
-    String email = 'demo@flareline.com';
-    Map<String, dynamic>? data =
-        await ctx.read<FirebaseStoreProvider>().getOne('openAiKey', email);
-    return data;
-  }
-
   Future<void> initOpenApiConfig(BuildContext ctx) async {
     Map<String, dynamic>? config = ctx.read<StoreProvider>().openAiConfig;
-    if (config == null) {
-      config = await getOpenApiConfig(ctx);
-    }
+
     _checkedId = ctx.read<StoreProvider>().openAiModel;
 
     if (config != null) {

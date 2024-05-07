@@ -15,7 +15,7 @@ class StoreProvider extends BaseProvider {
 
   UserEntity? get user => _user ??= loginUser();
 
-  String get email => box.read("email") ?? 'demo@flareline.com';
+  String get email => box.read("email") ?? '';
 
   Map<String, dynamic>? get openAiConfig {
     String? json = box.read("openAiConfig");
