@@ -194,7 +194,6 @@ class ChatGptProvider extends BaseProvider {
         .db
         .collection('conversation')
         .where('belongUid', isEqualTo: email)
-        .orderBy('timestamp',descending: true)
         .get();
     if (query.docs.isNotEmpty) {
       conversationList.clear();
@@ -232,7 +231,6 @@ class ChatGptProvider extends BaseProvider {
         .collection('messages')
         .where('belongUid', isEqualTo: email)
         .where('conversationId', isEqualTo: conversationId)
-        .orderBy('timestamp')
         .get();
     if (query.docs.isNotEmpty) {
       messageList.clear();
