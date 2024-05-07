@@ -209,7 +209,7 @@ class ChatGptProvider extends BaseProvider {
             .db.collection('messages')
             .where('belongUid', isEqualTo: email)
             .where('conversationId', isEqualTo: element.id)
-            .limit(1).get();
+            .limitToLast(1).get();
         if (queryMessage.docs.isNotEmpty) {
           Map<String, dynamic> msgMap = queryMessage.docs.elementAt(0).data();
           MessageEntity msg = MessageEntity.fromJson(msgMap);

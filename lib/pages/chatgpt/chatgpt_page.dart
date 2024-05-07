@@ -175,9 +175,19 @@ class ChatGptPage extends LayoutWidget {
       child: Container(
         child: Column(
           children: [
-            Text(title ?? ''),
-            Text(DateFormat('yyyy-MM-dd HH:mm:ss')
-                .format(conversationEntity.timestamp),style: TextStyle(fontSize: 10),)
+            Text(
+              title ?? '',
+              maxLines: 1,
+              style: TextStyle(
+                fontSize: 12,
+              ),
+              overflow: TextOverflow.ellipsis,
+            ),
+            Text(
+              DateFormat('yyyy-MM-dd HH:mm:ss')
+                  .format(conversationEntity.timestamp),
+              style: TextStyle(fontSize: 10),
+            )
           ],
         ),
         padding: EdgeInsets.symmetric(vertical: 8),
