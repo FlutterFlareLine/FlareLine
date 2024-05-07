@@ -97,7 +97,7 @@ class ChatGptProvider extends BaseProvider {
         ..conversationId = conversationEntity!.id
         ..belongUid = email;
       messageList.add(messageEntity);
-      addMessage(ctx,messageEntity);
+      addMessage(ctx, messageEntity);
       notifyListeners();
 
       // The user message to be sent to the request.
@@ -147,7 +147,7 @@ class ChatGptProvider extends BaseProvider {
         onDone: () {
           _isLoading = false;
           notifyListeners();
-          addMessage(ctx,messageList.last);
+          addMessage(ctx, messageList.last);
         },
       );
     } catch (e) {
@@ -194,6 +194,7 @@ class ChatGptProvider extends BaseProvider {
         .db
         .collection('conversation')
         .where('belongUid', isEqualTo: email)
+        .orderBy('timestamp',descending: true)
         .get();
     if (query.docs.isNotEmpty) {
       conversationList.clear();
@@ -206,10 +207,12 @@ class ChatGptProvider extends BaseProvider {
       conversationList.forEach((element) async {
         final queryMessage = await ctx
             .read<FirebaseStoreProvider>()
-            .db.collection('messages')
+            .db
+            .collection('messages')
             .where('belongUid', isEqualTo: email)
             .where('conversationId', isEqualTo: element.id)
-            .limitToLast(1).get();
+            .limitToLast(1)
+            .get();
         if (queryMessage.docs.isNotEmpty) {
           Map<String, dynamic> msgMap = queryMessage.docs.elementAt(0).data();
           MessageEntity msg = MessageEntity.fromJson(msgMap);
@@ -221,7 +224,6 @@ class ChatGptProvider extends BaseProvider {
   }
 
   fetchMessages(BuildContext ctx, String conversationId) async {
-
     String email = ctx.read<StoreProvider>().email;
     log('fetchMessages ${conversationId}  ${email}');
     final query = await ctx
@@ -230,6 +232,7 @@ class ChatGptProvider extends BaseProvider {
         .collection('messages')
         .where('belongUid', isEqualTo: email)
         .where('conversationId', isEqualTo: conversationId)
+        .orderBy('timestamp')
         .get();
     if (query.docs.isNotEmpty) {
       messageList.clear();
@@ -249,9 +252,7 @@ class ChatGptProvider extends BaseProvider {
         .add('conversation', conversationEntity!.toJson());
   }
 
-  addMessage(BuildContext ctx, MessageEntity messageEntity){
-    ctx
-        .read<FirebaseStoreProvider>()
-        .add('messages', messageEntity!.toJson());
+  addMessage(BuildContext ctx, MessageEntity messageEntity) {
+    ctx.read<FirebaseStoreProvider>().add('messages', messageEntity!.toJson());
   }
 }
