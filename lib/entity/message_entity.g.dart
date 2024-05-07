@@ -12,7 +12,8 @@ MessageEntity _$MessageEntityFromJson(Map<String, dynamic> json) =>
       ..content = json['content'] as String
       ..isUser = json['isUser'] as bool
       ..timestamp = DateTime.parse(json['timestamp'] as String)
-      ..belongUid = json['belongUid'] as String;
+      ..belongUid = json['belongUid'] as String
+      ..conversationId = json['conversationId'] as String;
 
 Map<String, dynamic> _$MessageEntityToJson(MessageEntity instance) =>
     <String, dynamic>{
@@ -21,4 +22,5 @@ Map<String, dynamic> _$MessageEntityToJson(MessageEntity instance) =>
       'isUser': instance.isUser,
       'timestamp': instance.timestamp.toIso8601String(),
       'belongUid': instance.belongUid,
+      'conversationId': instance.conversationId,
     };

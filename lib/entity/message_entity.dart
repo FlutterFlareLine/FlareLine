@@ -10,6 +10,7 @@ class MessageEntity {
   late bool isUser;
   late DateTime timestamp;
   late String belongUid;
+  late String conversationId;
 
   MessageEntity();
 

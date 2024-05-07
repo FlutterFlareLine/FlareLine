@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flareline/components/chats.dart';
 import 'package:flareline/provider/base_provider.dart';
 
 import 'package:flutter/foundation.dart';
@@ -17,6 +18,10 @@ class FirebaseStoreProvider extends BaseProvider {
 
   save(String collectionName, String docName, Map<String, dynamic> data) async {
     await db.collection(collectionName).doc(docName).set(data);
+  }
+
+  add(String collectionName, Map<String, dynamic> data) async {
+    await db.collection(collectionName).add(data);
   }
 
   Future<Map<String, dynamic>?> getOne(

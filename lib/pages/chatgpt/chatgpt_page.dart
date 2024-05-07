@@ -1,12 +1,14 @@
 import 'package:flareline/components/card/common_card.dart';
 import 'package:flareline/components/forms/outborder_text_form_field.dart';
 import 'package:flareline/core/theme/global_colors.dart';
+import 'package:flareline/entity/conversation_entity.dart';
 import 'package:flareline/entity/message_entity.dart';
 import 'package:flareline/pages/chatgpt/chatgpt_provider.dart';
 import 'package:flareline/pages/layout.dart';
 import 'package:flareline/pages/setting/open_ai_setting.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:intl/intl.dart';
 import 'package:markdown_widget/markdown_widget.dart';
 import 'package:provider/provider.dart';
 import 'package:provider/provider.dart';
@@ -29,7 +31,33 @@ class ChatGptPage extends LayoutWidget {
                   children: [
                     CommonCard(
                         padding: EdgeInsets.all(10),
-                        child: _gptMessageWidget(ctx)),
+                        child: Row(
+                          children: [
+                            SizedBox(
+                              width: 200,
+                              child: _conversationWidget(ctx),
+                            ),
+                            Padding(
+                              padding: EdgeInsets.symmetric(horizontal: 10),
+                              child: VerticalDivider(
+                                width: 1,
+                                color: GlobalColors.border,
+                              ),
+                            ),
+                            Expanded(child: _gptMessageWidget(ctx))
+                          ],
+                        )),
+                    Align(
+                      child: Container(
+                        child: IconButton(
+                            onPressed: () {
+                              ctx.read<ChatGptProvider>().startNewChat(ctx);
+                            },
+                            icon: Icon(Icons.add_circle_outline)),
+                        margin: EdgeInsets.all(10),
+                      ),
+                      alignment: Alignment.topRight,
+                    )
                   ],
                 ),
               ),
@@ -112,7 +140,10 @@ class ChatGptPage extends LayoutWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(messageEntity.isUser ? 'Question:' : 'GPT Answer',style: TextStyle(fontWeight: FontWeight.bold),),
+        Text(
+          messageEntity.isUser ? 'Question:' : 'GPT Answer:',
+          style: TextStyle(fontWeight: FontWeight.bold),
+        ),
         SizedBox(
           height: 5,
         ),
@@ -121,6 +152,48 @@ class ChatGptPage extends LayoutWidget {
           height: 20,
         ),
       ],
+    );
+  }
+
+  Widget _conversationWidget(BuildContext ctx) {
+    return ListView.separated(
+      itemBuilder: conversationItemBuilder,
+      itemCount: ctx.watch<ChatGptProvider>().conversationCount,
+      separatorBuilder: _dividerBuilder,
+    );
+  }
+
+  Widget conversationItemBuilder(BuildContext context, int index) {
+    ConversationEntity conversationEntity =
+        context.read<ChatGptProvider>().getConversation(index);
+    String? title =
+        conversationEntity.title ?? conversationEntity.latestMessage?.content;
+    if (title == 'New Chat' && conversationEntity.latestMessage != null) {
+      title = conversationEntity.latestMessage!.content;
+    }
+    return InkWell(
+      child: Container(
+        child: Column(
+          children: [
+            Text(title ?? ''),
+            Text(DateFormat('yyyy-MM-dd HH:mm:ss')
+                .format(conversationEntity.timestamp),style: TextStyle(fontSize: 10),)
+          ],
+        ),
+        padding: EdgeInsets.symmetric(vertical: 8),
+      ),
+      onTap: () {
+        context
+            .read<ChatGptProvider>()
+            .setConversationEntity(context, conversationEntity);
+      },
+    );
+  }
+
+  Widget _dividerBuilder(BuildContext context, int index) {
+    return Divider(
+      height: 1,
+      color: GlobalColors.border,
     );
   }
 }
