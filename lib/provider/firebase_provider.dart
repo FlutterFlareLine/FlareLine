@@ -16,8 +16,9 @@ class FirebaseProvider extends BaseProvider {
 
   FirebaseProvider(super.context);
 
+
   @override
-  void onViewCreated(BuildContext context) {
+  void init(BuildContext context) {
 
     FirebaseAuth.instance.authStateChanges().listen((User? user) {
       if (user == null) {

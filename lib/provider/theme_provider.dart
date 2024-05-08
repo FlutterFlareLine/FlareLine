@@ -21,7 +21,7 @@ class ThemeProvider extends BaseProvider {
   }
 
   @override
-  void onViewCreated(BuildContext context) {
+  void init(BuildContext context) {
     // TODO: implement init
   }
 }

@@ -2,7 +2,10 @@ import 'dart:convert';
 
 import 'package:flareline/components/loading/loading.dart';
 import 'package:flareline/components/tags/tag_widget.dart';
+import 'package:flareline/core/event/global_event.dart';
 import 'package:flareline/entity/table_data_entity.dart';
+import 'package:flareline/pages/base/base_stless_widget.dart';
+import 'package:flareline/provider/base_provider.dart';
 import 'package:flareline/provider/theme_provider.dart';
 import 'package:flutter/material.dart';
 
@@ -11,37 +14,82 @@ import 'package:flareline/core/theme/global_colors.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 
-enum CellDataType{
+enum CellDataType {
   TEXT('text'),
-
   TOGGLE('toggle'),
-
   TAG('tag'),
-
   CUSTOM('custom'),
   ;
-
 
   const CellDataType(this.type);
 
   final String type;
-
 }
 
-class TableWidget extends StatelessWidget {
-  TableWidget({super.key});
-
+abstract class TableWidget<S extends BaseTableProvider>
+    extends BaseStlessWidget<S> {
   String? title(BuildContext context) {
     return '';
   }
 
-  Future<TableDataEntity> loadData(BuildContext context) {
-    return Future(() => TableDataEntity());
+  Widget? toolsWidget(BuildContext context, S viewModel) {
+    return null;
+  }
+
+  _buildWidget(BuildContext context, S viewModel) {
+    bool isLoading = viewModel.isLoading;
+    TableDataEntity? tableDataEntity = viewModel.tableDataEntity;
+    List<String> headers = tableDataEntity?.headers ?? [];
+    if (isLoading || tableDataEntity == null || headers.isEmpty) {
+      return const LoadingWidget();
+    }
+
+    List<List<TableDataRowsTableDataRows>> rows = tableDataEntity?.rows ?? [];
+    return ConstrainedBox(
+        constraints: const BoxConstraints(minWidth: double.infinity),
+        child: DataTable(
+            headingRowColor: MaterialStateProperty.resolveWith((states) =>
+                context.watch<ThemeProvider>().isDark
+                    ? GlobalColors.sideBar
+                    : GlobalColors.lightGray),
+            horizontalMargin: 12,
+            showBottomBorder: true,
+            showCheckboxColumn: false,
+            headingTextStyle: TextStyle(
+              fontWeight: FontWeight.bold,
+              color: context.watch<ThemeProvider>().isDark
+                  ? Colors.white
+                  : Colors.black,
+            ),
+            dividerThickness: 0.5,
+            columns: headers.map((e) => DataColumn(label: Text(e))).toList(),
+            rows: rows
+                .map((e) => DataRow(
+                      onSelectChanged: (selected) {},
+                      cells: e
+                          .map((item) => DataCell(
+                                cellWidget(context, viewModel, item),
+                              ))
+                          .toList(),
+                    ))
+                .toList()));
+  }
+
+  Widget cellWidget(BuildContext context, S viewModel,
+      TableDataRowsTableDataRows columnData) {
+    if (columnData.dataType == CellDataType.TAG.type) {
+      return TagWidget(
+        text: columnData.text ?? '',
+        tagType: TagType.getTagType(columnData.tagType),
+      );
+    }
+    return Text(columnData.text ?? '');
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget bodyWidget(BuildContext context, S viewModel, Widget? child) {
     String? titleText = title(context);
+    Widget? tools = toolsWidget(context, viewModel);
     return CommonCard(
         child: Padding(
       padding: const EdgeInsets.all(16),
@@ -57,64 +105,54 @@ class TableWidget extends StatelessWidget {
             const SizedBox(
               height: 16,
             ),
-          Expanded(child: _buildWidget(context)),
+          if (tools != null)
+            Container(
+              child: tools,
+              margin: EdgeInsets.only(bottom: 16),
+            ),
+          Expanded(child: _buildWidget(context, viewModel)),
         ],
       ),
     ));
   }
 
-  _buildWidget(BuildContext context) {
-    return FutureBuilder<TableDataEntity>(
-        future: loadData(context),
-        builder: ((context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting ||
-              snapshot.data == null) {
-            return const LoadingWidget();
-          }
+  refresh(BuildContext context) {}
+}
 
-          List<String> headers = snapshot.data?.headers ?? [];
+abstract class BaseTableProvider extends BaseProvider {
+  BaseTableProvider(super.context);
 
-          List<List<TableDataRowsTableDataRows>> rows =
-              snapshot.data?.rows ?? [];
-          return ConstrainedBox(
-              constraints: const BoxConstraints(minWidth: double.infinity),
-              child: DataTable(
-                  headingRowColor: MaterialStateProperty.resolveWith((states) =>
-                      context.watch<ThemeProvider>().isDark
-                          ? GlobalColors.sideBar
-                          : GlobalColors.lightGray),
-                  horizontalMargin: 12,
-                  showBottomBorder: true,
-                  showCheckboxColumn: false,
-                  headingTextStyle: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    color: context.watch<ThemeProvider>().isDark
-                        ? Colors.white
-                        : Colors.black,
-                  ),
-                  dividerThickness: 0.5,
-                  columns:
-                      headers.map((e) => DataColumn(label: Text(e))).toList(),
-                  rows: rows
-                      .map((e) => DataRow(
-                            onSelectChanged: (selected) {},
-                            cells: e
-                                .map((item) => DataCell(
-                                      cellWidget(context, item),
-                                    ))
-                                .toList(),
-                          ))
-                      .toList()));
-        }));
+  TableDataEntity? _tableDataEntity;
+
+  TableDataEntity? get tableDataEntity => _tableDataEntity;
+
+  bool isLoading = false;
+
+  String get TAG => this.runtimeType.toString();
+
+  set tableDataEntity(TableDataEntity? tableDataEntity) {
+    this._tableDataEntity = tableDataEntity;
+    notifyListeners();
   }
 
-  Widget cellWidget(BuildContext context, TableDataRowsTableDataRows columnData) {
-    if (columnData.dataType == CellDataType.TAG.type) {
-      return TagWidget(
-        text: columnData.text ?? '',
-        tagType: TagType.getTagType(columnData.tagType),
-      );
+  @override
+  // TODO: implement isRegisterEventBus
+  bool get isRegisterEventBus => true;
+
+  @override
+  void init(BuildContext context) {
+    loadData(context);
+    super.init(context);
+  }
+
+  @override
+  void handleEventBus(BuildContext context, EventInfo eventInfo) {
+    super.handleEventBus(context, eventInfo);
+
+    if ('refresh_$TAG' == eventInfo.eventType) {
+      loadData(context);
     }
-    return Text(columnData.text ?? '');
   }
+
+  loadData(BuildContext context);
 }

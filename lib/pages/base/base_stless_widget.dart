@@ -9,13 +9,15 @@ abstract class BaseStlessWidget<VM extends BaseProvider>
 
   late VM _mViewMode;
 
-  VM viewModelBuilder(BuildContext context,{ Map<String, dynamic>? param});
+  VM viewModelBuilder(BuildContext context);
 
   BaseStlessWidget({this.params});
 
   @override
   Widget build(BuildContext context) {
-    _mViewMode = viewModelBuilder(context, param: params);
+    _mViewMode = viewModelBuilder(context);
+    _mViewMode.setArgs(params);
+    _mViewMode.onViewCreated(context);
 
     return ChangeNotifierProvider<VM>(
         create: (context) => _mViewMode,

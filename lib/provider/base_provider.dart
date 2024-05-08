@@ -17,19 +17,21 @@ abstract class BaseProvider extends ChangeNotifier {
 
   StreamSubscription? _eventBusFn;
 
-  BaseProvider(BuildContext context,{ Map<String, dynamic>? param}) {
-    this.param = param;
+  BaseProvider(BuildContext context) {
 
     if (isRegisterEventBus) {
       _registerEventBus(context);
     }
 
-    init(context, param:param);
+    init(context);
   }
 
+  void setArgs(Map<String, dynamic>? param){
+    this.param = param;
+  }
 
-  void init(BuildContext context,{ Map<String, dynamic>? param}){
-    onViewCreated(context);
+  void init(BuildContext context){
+
   }
 
   void onViewCreated(BuildContext context){
@@ -64,7 +66,9 @@ abstract class BaseProvider extends ChangeNotifier {
     }
   }
 
-  void handleEventBus(BuildContext context, EventInfo eventInfo) {}
+  void handleEventBus(BuildContext context, EventInfo eventInfo) {
+
+  }
 
   @override
   void notifyListeners() {

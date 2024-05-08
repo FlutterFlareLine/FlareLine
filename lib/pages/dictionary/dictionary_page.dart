@@ -20,6 +20,10 @@ import 'package:provider/provider.dart';
 
 class DictionaryPage extends LayoutWidget {
   @override
+  // TODO: implement isContentScroll
+  bool get isContentScroll => false;
+
+  @override
   String breakTabTitle(BuildContext context) {
     // TODO: implement breakTabTitle
     return 'Dictionary';
@@ -27,39 +31,95 @@ class DictionaryPage extends LayoutWidget {
 
   @override
   Widget contentDesktopWidget(BuildContext context) {
-    return Column(
-      children: [
-        SizedBox(
-          height: 60,
-          child: Row(
-            children: [
-              Spacer(),
-              SizedBox(
-                width: 120,
-                child: DictionaryEditPage(
-                  btnText: 'Add',
-                ),
-              )
-            ],
-          ),
-        ),
-        SizedBox(
-          height: 10,
-        ),
-        SizedBox(
-          child: DictionaryTableWidget(),
-          height: 600,
-        )
-      ],
-    );
+    return DictionaryTableWidget();
   }
 }
 
-class DictionaryTableWidget extends TableWidget {
-  DictionaryTableWidget({super.key});
+class DictionaryTableWidget extends TableWidget<DictionaryViewModel> {
 
   @override
-  Future<TableDataEntity> loadData(BuildContext context) async {
+  Widget? toolsWidget(BuildContext context, DictionaryViewModel viewModel) {
+    return SizedBox(
+      height: 60,
+      child: Row(
+        children: [
+          Spacer(),
+          SizedBox(
+            width: 120,
+            child: DictionaryEditPage(
+              btnText: 'Add',
+              title: 'Add Dictionary',
+            ),
+          ),
+          SizedBox(width: 20,),
+          SizedBox(
+            width: 120,
+            child: ButtonWidget(
+              btnText: 'Refresh',
+              onTap: () {
+                viewModel.loadData(context);
+              },
+            ),
+          )
+        ],
+      ),
+    );
+  }
+
+  @override
+  Widget cellWidget(
+      BuildContext context,DictionaryViewModel viewModel, TableDataRowsTableDataRows columnData) {
+    if (CellDataType.TOGGLE.type == columnData.dataType) {
+      return SwitchWidget(
+        checked: '1' == columnData.text,
+        onChanged: (checked) async {
+          final query = await context
+              .read<FirebaseStoreProvider>()
+              .db
+              .collection('dictionary')
+              .where('id', isEqualTo: columnData.id)
+              .get();
+          if (query.docs.isNotEmpty) {
+            String docId = query.docs.elementAt(0).id;
+            final doc = await context
+                .read<FirebaseStoreProvider>()
+                .db
+                .collection('dictionary')
+                .doc(docId);
+            doc.update({"status": checked ? 1 : 0}).then(
+                (value) => print("status successfully updated!"),
+                onError: (e) => print("Error updating document $e"));
+          }
+        },
+      );
+    } else if (CellDataType.CUSTOM.type == columnData.dataType) {
+      return Row(
+        children: [
+          SizedBox(
+            width: 60,
+            child: DictionaryEditPage(
+              btnText: 'Edit',
+              title: 'Edit Dictionary',
+              params: {'id': columnData.id},
+            ),
+          )
+        ],
+      );
+    }
+    return super.cellWidget(context,viewModel,  columnData);
+  }
+
+  @override
+  DictionaryViewModel viewModelBuilder(BuildContext context) {
+    return DictionaryViewModel(context);
+  }
+}
+
+class DictionaryViewModel extends BaseTableProvider{
+  DictionaryViewModel(super.context);
+
+  @override
+  loadData(BuildContext context) async {
     const headers = [
       "configKey",
       "text",
@@ -99,9 +159,8 @@ class DictionaryTableWidget extends TableWidget {
     }
 
     Map<String, dynamic> map = {'headers': headers, 'rows': rows};
-    TableDataEntity tableDataEntity = TableDataEntity.fromJson(map);
-
-    return tableDataEntity;
+    TableDataEntity data = TableDataEntity.fromJson(map);
+    this.tableDataEntity = data;
   }
 
   Map<String, dynamic> getItemValue(String key, Map item, {String? dataType}) {
@@ -119,45 +178,4 @@ class DictionaryTableWidget extends TableWidget {
     return column;
   }
 
-  @override
-  Widget cellWidget(
-      BuildContext context, TableDataRowsTableDataRows columnData) {
-    if (CellDataType.TOGGLE.type == columnData.dataType) {
-      return SwitchWidget(
-        checked: '1' == columnData.text,
-        onChanged: (checked) async {
-          final query = await context
-              .read<FirebaseStoreProvider>()
-              .db
-              .collection('dictionary')
-              .where('id', isEqualTo: columnData.id)
-              .get();
-          if (query.docs.isNotEmpty) {
-            String docId = query.docs.elementAt(0).id;
-            final doc = await context
-                .read<FirebaseStoreProvider>()
-                .db
-                .collection('dictionary')
-                .doc(docId);
-            doc.update({"status": checked ? 1 : 0}).then(
-                (value) => print("status successfully updated!"),
-                onError: (e) => print("Error updating document $e"));
-          }
-        },
-      );
-    } else if (CellDataType.CUSTOM.type == columnData.dataType) {
-      return Row(
-        children: [
-          SizedBox(
-            width: 60,
-            child: DictionaryEditPage(
-              btnText: 'Edit',
-              params: {'id': columnData.id},
-            ),
-          )
-        ],
-      );
-    }
-    return super.cellWidget(context, columnData);
-  }
 }

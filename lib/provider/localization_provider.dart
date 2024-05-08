@@ -12,7 +12,7 @@ class LocalizationProvider extends BaseProvider {
   LocalizationProvider(super.context);
 
   @override
-  void onViewCreated(BuildContext context) {
+  void init(BuildContext context) {
     String? languageCode = box.read("locale");
     if (languageCode != null) {
       _locale = Locale.fromSubtags(languageCode: languageCode);

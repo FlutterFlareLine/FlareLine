@@ -12,7 +12,7 @@ class FirebaseStoreProvider extends BaseProvider {
   FirebaseStoreProvider(super.context);
 
   @override
-  void onViewCreated(BuildContext context) {
+  void init(BuildContext context) {
     db = FirebaseFirestore.instance;
   }
 

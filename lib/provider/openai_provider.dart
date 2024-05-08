@@ -12,7 +12,7 @@ class OpenAIProvider extends BaseProvider {
 
 
   @override
-  void onViewCreated(BuildContext context) {
+  void init(BuildContext context) {
     keyController = TextEditingController();
     proxyController = TextEditingController();
   }

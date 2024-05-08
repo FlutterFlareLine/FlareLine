@@ -7,8 +7,6 @@ import 'package:flutter/services.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class TopChannelWidget extends TableWidget {
-  TopChannelWidget({super.key});
-
   @override
   String title(BuildContext context) {
     // TODO: implement title
@@ -16,12 +14,20 @@ class TopChannelWidget extends TableWidget {
   }
 
   @override
-  Future<TableDataEntity> loadData(BuildContext context) async {
+  BaseTableProvider viewModelBuilder(BuildContext context) {
+    return TopChannelViewModel(context);
+  }
+}
+
+class TopChannelViewModel extends BaseTableProvider {
+  TopChannelViewModel(super.context);
+
+  @override
+  loadData(BuildContext context) async {
     String res = await rootBundle.loadString('assets/api/channelTable.json');
 
     Map<String, dynamic> map = json.decode(res);
     TableDataEntity tableDataEntity = TableDataEntity.fromJson(map);
-
-    return tableDataEntity;
+    this.tableDataEntity = tableDataEntity;
   }
 }
