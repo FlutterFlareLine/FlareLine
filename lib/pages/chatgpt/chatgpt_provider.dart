@@ -14,6 +14,15 @@ import 'package:provider/provider.dart';
 import 'package:uuid/uuid.dart';
 
 class ChatGptProvider extends BaseProvider {
+  ChatGptProvider(super.context);
+
+  @override
+  void onViewCreated(BuildContext context) {
+    controller = TextEditingController();
+
+    fetchConversations(context!);
+  }
+
   late TextEditingController controller;
 
   String _url = "";
@@ -47,12 +56,6 @@ class ChatGptProvider extends BaseProvider {
       return;
     }
     fetchMessages(ctx, _conversationEntity!.id);
-  }
-
-  ChatGptProvider(BuildContext ctx) {
-    controller = TextEditingController();
-
-    fetchConversations(ctx);
   }
 
   MessageEntity getItemMessage(int index) {

@@ -6,13 +6,13 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 class FirebaseStoreProvider extends BaseProvider {
-  FirebaseStoreProvider() {
-    init();
-  }
 
   late FirebaseFirestore db;
 
-  void init() {
+  FirebaseStoreProvider(super.context);
+
+  @override
+  void onViewCreated(BuildContext context) {
     db = FirebaseFirestore.instance;
   }
 

@@ -6,6 +6,11 @@
         "icon": "assets/sidebar/dashboard.svg",
         "menuName": "ChatGpt",
         "path": "/chatGpt"
+      },
+      {
+        "icon": "assets/sidebar/dashboard.svg",
+        "menuName": "Dictionary",
+        "path": "/dictionary"
       }
     ]
   },

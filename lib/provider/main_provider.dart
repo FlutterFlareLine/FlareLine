@@ -10,6 +10,8 @@ class MainProvider extends BaseProvider {
   String _selectedPath = '/';
   String _expandedMenuName = '';
 
+  MainProvider(super.context);
+
   String get selectedPath => _selectedPath;
 
   String get expandedMenuName => _expandedMenuName;
@@ -18,7 +20,10 @@ class MainProvider extends BaseProvider {
 
   int get index => _index;
 
-  MainProvider() {}
+  @override
+  void onViewCreated(BuildContext context) {
+    // TODO: implement init
+  }
 
   void setSelectedPath(String path) {
     _selectedPath = path;

@@ -1373,14 +1373,22 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.7.0"
+  rx_event_bus:
+    dependency: "direct main"
+    description:
+      name: rx_event_bus
+      sha256: c4e6aa176dfe88ddbb6452c738406f5eddc7bcd3212ff2dd44dc1fac04b554f7
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.0.1"
   rxdart:
     dependency: transitive
     description:
       name: rxdart
-      sha256: "0c7c0cedd93788d996e33041ffecda924cc54389199cde4e6a34b440f50044cb"
+      sha256: "2ef8b4e91cb3b55d155e0e34eeae0ac7107974e451495c955ac04ddee8cc21fd"
       url: "https://pub.dev"
     source: hosted
-    version: "0.27.7"
+    version: "0.26.0"
   screen_retriever:
     dependency: transitive
     description:

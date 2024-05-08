@@ -13,6 +13,8 @@ class StoreProvider extends BaseProvider {
 
   UserEntity? _user;
 
+  StoreProvider(super.context);
+
   UserEntity? get user => _user ??= loginUser();
 
   String get email => box.read("email") ?? '';
@@ -57,6 +59,11 @@ class StoreProvider extends BaseProvider {
   Future<void> logout() async {
     box.remove('loginUser');
     await FirebaseAuth.instance.signOut();
+  }
+
+  @override
+  void onViewCreated(BuildContext context) {
+    // TODO: implement init
   }
 
 }

@@ -10,13 +10,14 @@ import 'package:get_storage/get_storage.dart';
 import 'package:uuid/uuid.dart';
 
 class FirebaseProvider extends BaseProvider {
-  FirebaseProvider() {
-    init();
-  }
+
 
   final box = GetStorage();
 
-  void init() {
+  FirebaseProvider(super.context);
+
+  @override
+  void onViewCreated(BuildContext context) {
 
     FirebaseAuth.instance.authStateChanges().listen((User? user) {
       if (user == null) {

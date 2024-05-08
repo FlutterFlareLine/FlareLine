@@ -10,30 +10,36 @@ import 'package:flareline/components/card/common_card.dart';
 import 'package:flareline/core/theme/global_colors.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class TableWidget extends StatelessWidget {
   TableWidget({super.key});
 
-  Future<TableDataEntity> loadData() {
+  String? title(BuildContext context) {
+    return '';
+  }
+
+  Future<TableDataEntity> loadData(BuildContext context) {
     return Future(() => TableDataEntity());
   }
 
   @override
   Widget build(BuildContext context) {
+    String? titleText = title(context);
     return CommonCard(
         child: Padding(
       padding: const EdgeInsets.all(16),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            AppLocalizations.of(context)!.topChannels,
-            style: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
-          ),
-          const SizedBox(
-            height: 16,
-          ),
+          if (titleText != null)
+            Text(
+              titleText,
+              style: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+            ),
+          if (titleText != null)
+            const SizedBox(
+              height: 16,
+            ),
           Expanded(child: _buildWidget(context)),
         ],
       ),
@@ -42,7 +48,7 @@ class TableWidget extends StatelessWidget {
 
   _buildWidget(BuildContext context) {
     return FutureBuilder<TableDataEntity>(
-        future: loadData(),
+        future: loadData(context),
         builder: ((context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting ||
               snapshot.data == null) {

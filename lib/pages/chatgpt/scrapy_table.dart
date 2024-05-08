@@ -12,7 +12,7 @@ class ScrapyTable extends TableWidget{
   }
 
   @override
-  Future<TableDataEntity> loadData() async {
+  Future<TableDataEntity> loadData(BuildContext context) async {
     String res = await rootBundle.loadString('assets/api/channelTable.json');
 
     Map<String, dynamic> map = json.decode(res);

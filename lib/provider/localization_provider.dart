@@ -3,12 +3,16 @@ import 'dart:ui';
 
 import 'package:flareline/provider/base_provider.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 import 'package:get_storage/get_storage.dart';
 
 class LocalizationProvider extends BaseProvider {
   static const Locale en = Locale('en');
 
-  LocalizationProvider() {
+  LocalizationProvider(super.context);
+
+  @override
+  void onViewCreated(BuildContext context) {
     String? languageCode = box.read("locale");
     if (languageCode != null) {
       _locale = Locale.fromSubtags(languageCode: languageCode);
@@ -28,4 +32,6 @@ class LocalizationProvider extends BaseProvider {
     box.write("locale", locale.languageCode);
     notifyListeners();
   }
+
+
 }

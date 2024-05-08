@@ -1,5 +1,6 @@
 import 'package:flareline/pages/chat/chat_page.dart';
 import 'package:flareline/pages/chatgpt/chatgpt_page.dart';
+import 'package:flareline/pages/dictionary/dictionary_page.dart';
 import 'package:flareline/pages/scrapy/scrapy_page.dart';
 import 'package:flareline/pages/table/contacts_page.dart';
 import 'package:flareline/provider/store_provider.dart';
@@ -55,6 +56,7 @@ final List<Map<String, Object>> MAIN_PAGES = [
   {'routerPath': '/chatGpt', 'widget': ChatGptPage()},
   {'routerPath': '/chat', 'widget': ChatPage()},
   {'routerPath': '/scrapy', 'widget': ScrapyPage()},
+  {'routerPath': '/dictionary', 'widget': DictionaryPage()},
 ];
 
 class RouteConfiguration {

@@ -8,13 +8,13 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class OpenAIProvider extends BaseProvider {
-  OpenAIProvider() {
+  OpenAIProvider(super.context);
+
+
+  @override
+  void onViewCreated(BuildContext context) {
     keyController = TextEditingController();
     proxyController = TextEditingController();
-  }
-
-  init(BuildContext ctx) {
-    initOpenApiConfig(ctx);
   }
 
   late TextEditingController keyController;

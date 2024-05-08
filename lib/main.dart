@@ -70,16 +70,16 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
         providers: [
-          ChangeNotifierProvider(create: (_) => ThemeProvider()),
-          ChangeNotifierProvider(create: (_) => MainProvider()),
-          ChangeNotifierProvider(create: (_) => StoreProvider()),
-          ChangeNotifierProvider(create: (_) => FirebaseProvider()),
-          ChangeNotifierProvider(create: (_) => FirebaseStoreProvider()),
-          ChangeNotifierProvider(create: (_) => LocalizationProvider()),
-          ChangeNotifierProvider(create: (_) => OpenAIProvider()),
+          ChangeNotifierProvider(create: (_) => ThemeProvider(_)),
+          ChangeNotifierProvider(create: (_) => MainProvider(_)),
+          ChangeNotifierProvider(create: (_) => StoreProvider(_)),
+          ChangeNotifierProvider(create: (_) => FirebaseProvider(_)),
+          ChangeNotifierProvider(create: (_) => FirebaseStoreProvider(_)),
+          ChangeNotifierProvider(create: (_) => LocalizationProvider(_)),
+          ChangeNotifierProvider(create: (_) => OpenAIProvider(_)),
         ],
         child: Builder(builder: (context) {
-          context.read<OpenAIProvider>().init(context);
+          context.read<OpenAIProvider>().initOpenApiConfig(context);
           return MaterialApp(
             navigatorKey: RouteConfiguration.navigatorKey,
             restorationScopeId: 'rootFlareLine',

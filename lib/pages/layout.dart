@@ -17,7 +17,7 @@ abstract class LayoutWidget extends StatelessWidget {
 
   bool get showToolBar => true;
 
-  bool get isContentScroll=>true;
+  bool get isContentScroll => true;
 
   String breakTabTitle(BuildContext context) {
     return '';
@@ -62,34 +62,36 @@ abstract class LayoutWidget extends StatelessWidget {
           const SizedBox(
             height: 10,
           ),
-        isContentScroll?
-        ScreenTypeLayout.builder(
-          desktop: contentDesktopWidget,
-          mobile: contentMobileWidget,
-          tablet: contentMobileWidget,
-        ):Expanded(child: ScreenTypeLayout.builder(
-          desktop: contentDesktopWidget,
-          mobile: contentMobileWidget,
-          tablet: contentMobileWidget,
-        ))
+        isContentScroll
+            ? ScreenTypeLayout.builder(
+                desktop: contentDesktopWidget,
+                mobile: contentMobileWidget,
+                tablet: contentMobileWidget,
+              )
+            : Expanded(
+                child: ScreenTypeLayout.builder(
+                desktop: contentDesktopWidget,
+                mobile: contentMobileWidget,
+                tablet: contentMobileWidget,
+              ))
       ],
     );
-    return Column(
-        children: [
-          if (showToolBar) const ToolBarWidget(),
-          if (showToolBar)
-            const SizedBox(
-              height: 16,
-            ),
-          Expanded(
-              child: Container(
-            width: double.maxFinite,
-            height: double.maxFinite,
-            alignment: isAlignCenter ? Alignment.center : null,
-            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
-            child: isContentScroll? SingleChildScrollView(
-                child: contentWidget):contentWidget,
-          ))
-        ]);
+    return Column(children: [
+      if (showToolBar) const ToolBarWidget(),
+      if (showToolBar)
+        const SizedBox(
+          height: 16,
+        ),
+      Expanded(
+          child: Container(
+        width: double.maxFinite,
+        height: double.maxFinite,
+        alignment: isAlignCenter ? Alignment.center : null,
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
+        child: isContentScroll
+            ? SingleChildScrollView(child: contentWidget)
+            : contentWidget,
+      ))
+    ]);
   }
 }

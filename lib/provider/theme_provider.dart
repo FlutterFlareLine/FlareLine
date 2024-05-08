@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 class ThemeProvider extends BaseProvider {
   ThemeMode _themeMode = ThemeMode.light;
 
+  ThemeProvider(super.context);
+
   ThemeMode get themeMode => _themeMode;
 
   set themeMode(ThemeMode mode) {
@@ -16,5 +18,10 @@ class ThemeProvider extends BaseProvider {
   void toggleThemeMode() {
     themeMode = themeMode == ThemeMode.light ? ThemeMode.dark : ThemeMode.light;
     notifyListeners();
+  }
+
+  @override
+  void onViewCreated(BuildContext context) {
+    // TODO: implement init
   }
 }

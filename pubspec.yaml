@@ -106,6 +106,7 @@ dependencies:
   path_provider: ^2.0.15
 
   logger: ^2.2.0
+  rx_event_bus: ^2.0.1
 
 dev_dependencies:
   flutter_test:
