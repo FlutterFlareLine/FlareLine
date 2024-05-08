@@ -2,8 +2,10 @@ import 'dart:convert';
 
 import 'package:flareline/components/buttons/button_widget.dart';
 import 'package:flareline/components/forms/outborder_text_form_field.dart';
+import 'package:flareline/components/forms/switch_widget.dart';
 import 'package:flareline/components/modal/modal_dialog.dart';
 import 'package:flareline/components/tables/table_widget.dart';
+import 'package:flareline/core/theme/global_colors.dart';
 import 'package:flareline/entity/table_data_entity.dart';
 import 'package:flareline/pages/dictionary/dictionary_edit_page.dart';
 import 'package:flareline/pages/layout.dart';
@@ -34,7 +36,9 @@ class DictionaryPage extends LayoutWidget {
               Spacer(),
               SizedBox(
                 width: 120,
-                child: DictionaryEditPage(),
+                child: DictionaryEditPage(
+                  btnText: 'Add',
+                ),
               )
             ],
           ),
@@ -84,58 +88,76 @@ class DictionaryTableWidget extends TableWidget {
         row.add(getItemValue('text', item));
         row.add(getItemValue('configValue', item));
         row.add(getItemValue('orderNum', item));
-        row.add(getItemValue('status', item));
+        row.add(
+            getItemValue('status', item, dataType: CellDataType.TOGGLE.type));
 
-        row.add({'text': 'edit'});
+        row.add(getItemValue('', item, dataType: CellDataType.CUSTOM.type));
         return row;
       }).toList();
 
       rows.addAll(list);
     }
 
-    print(rows);
     Map<String, dynamic> map = {'headers': headers, 'rows': rows};
     TableDataEntity tableDataEntity = TableDataEntity.fromJson(map);
 
     return tableDataEntity;
   }
 
-  Map<String, dynamic> getItemValue(String key, Map item) {
+  Map<String, dynamic> getItemValue(String key, Map item, {String? dataType}) {
     dynamic value = item[key];
     String text = value != null ? (value.toString()) : '';
     if (text.length > 50) {
       text = '${text.substring(0, 50)}...';
     }
-    Map<String, dynamic> column = {'text': text, 'key': key};
+    Map<String, dynamic> column = {
+      'text': text,
+      'key': key,
+      'dataType': dataType,
+      'id': item['id'],
+    };
     return column;
   }
-}
-
-class DictionaryProvider extends BaseProvider {
-  DictionaryProvider(super.context);
-
-  List<Map<String, dynamic>> list = [];
 
   @override
-  void onViewCreated(BuildContext context) {
-    // TODO: implement init
-  }
-
-  query(BuildContext context) async {
-    String email = context.read<StoreProvider>().email;
-    final query = await context
-        .read<FirebaseStoreProvider>()
-        .db
-        .collection('dictionary')
-        .where('belongUid', isEqualTo: email)
-        .get();
-    if (query.docs.isNotEmpty) {
-      list.clear();
-      List<Map<String, dynamic>> data = query.docs.map((element) {
-        return element.data();
-      }).toList();
-      list.addAll(data);
-      notifyListeners();
+  Widget cellWidget(
+      BuildContext context, TableDataRowsTableDataRows columnData) {
+    if (CellDataType.TOGGLE.type == columnData.dataType) {
+      return SwitchWidget(
+        checked: '1' == columnData.text,
+        onChanged: (checked) async {
+          final query = await context
+              .read<FirebaseStoreProvider>()
+              .db
+              .collection('dictionary')
+              .where('id', isEqualTo: columnData.id)
+              .get();
+          if (query.docs.isNotEmpty) {
+            String docId = query.docs.elementAt(0).id;
+            final doc = await context
+                .read<FirebaseStoreProvider>()
+                .db
+                .collection('dictionary')
+                .doc(docId);
+            doc.update({"status": checked ? 1 : 0}).then(
+                (value) => print("status successfully updated!"),
+                onError: (e) => print("Error updating document $e"));
+          }
+        },
+      );
+    } else if (CellDataType.CUSTOM.type == columnData.dataType) {
+      return Row(
+        children: [
+          SizedBox(
+            width: 60,
+            child: DictionaryEditPage(
+              btnText: 'Edit',
+              params: {'id': columnData.id},
+            ),
+          )
+        ],
+      );
     }
+    return super.cellWidget(context, columnData);
   }
 }

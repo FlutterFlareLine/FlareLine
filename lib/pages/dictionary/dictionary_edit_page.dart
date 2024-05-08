@@ -11,11 +11,15 @@ import 'package:provider/provider.dart';
 import 'package:uuid/uuid.dart';
 
 class DictionaryEditPage extends BaseStlessWidget<DictionaryEditProvider> {
+  final String btnText;
+
+  DictionaryEditPage({required this.btnText, super.params});
+
   @override
   Widget bodyWidget(
       BuildContext context, DictionaryEditProvider viewModel, Widget? child) {
     return ButtonWidget(
-      btnText: 'Add',
+      btnText: btnText,
       onTap: () {
         ModalDialog.show(
             context: context,
@@ -62,18 +66,21 @@ class DictionaryEditPage extends BaseStlessWidget<DictionaryEditProvider> {
   }
 
   @override
-  DictionaryEditProvider viewModelBuilder(BuildContext context) {
-    return DictionaryEditProvider(context);
+  DictionaryEditProvider viewModelBuilder(BuildContext context,
+      {Map<String, dynamic>? param}) {
+    return DictionaryEditProvider(
+      context,
+    );
   }
 }
 
 class DictionaryEditProvider extends BaseProvider {
-  DictionaryEditProvider(super.context);
-
   late TextEditingController configKeyController;
   late TextEditingController configValueController;
   late TextEditingController configTextController;
   late TextEditingController configOrderNumController;
+
+  DictionaryEditProvider(super.context);
 
   @override
   void onViewCreated(BuildContext context) {
@@ -103,10 +110,9 @@ class DictionaryEditProvider extends BaseProvider {
       'configValue': configValueController.text.trim(),
       'orderNum': configOrderNumController.text.trim(),
       'status': 1,
-      'belongUid':email
+      'belongUid': email
     };
     context.read<FirebaseStoreProvider>().add('dictionary', dic);
     SnackBarUtil.showSuccess(context, 'Save Success');
   }
-
 }

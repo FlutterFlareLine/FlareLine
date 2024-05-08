@@ -28,7 +28,8 @@ TableDataRowsTableDataRows _$TableDataRowsTableDataRowsFromJson(
     TableDataRowsTableDataRows()
       ..text = json['text'] as String?
       ..dataType = json['dataType'] as String?
-      ..tagType = json['tagType'] as String?;
+      ..tagType = json['tagType'] as String?
+      ..id = json['id'] as String?;
 
 Map<String, dynamic> _$TableDataRowsTableDataRowsToJson(
         TableDataRowsTableDataRows instance) =>
@@ -36,4 +37,5 @@ Map<String, dynamic> _$TableDataRowsTableDataRowsToJson(
       'text': instance.text,
       'dataType': instance.dataType,
       'tagType': instance.tagType,
+      'id': instance.id,
     };

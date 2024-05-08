@@ -5,13 +5,17 @@ import 'package:provider/provider.dart';
 abstract class BaseStlessWidget<VM extends BaseProvider>
     extends StatelessWidget {
 
+  final Map<String, dynamic>? params;
+
   late VM _mViewMode;
 
-  VM viewModelBuilder(BuildContext context);
+  VM viewModelBuilder(BuildContext context,{ Map<String, dynamic>? param});
+
+  BaseStlessWidget({this.params});
 
   @override
   Widget build(BuildContext context) {
-    _mViewMode = viewModelBuilder(context);
+    _mViewMode = viewModelBuilder(context, param: params);
 
     return ChangeNotifierProvider<VM>(
         create: (context) => _mViewMode,

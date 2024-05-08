@@ -11,6 +11,23 @@ import 'package:flareline/core/theme/global_colors.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 
+enum CellDataType{
+  TEXT('text'),
+
+  TOGGLE('toggle'),
+
+  TAG('tag'),
+
+  CUSTOM('custom'),
+  ;
+
+
+  const CellDataType(this.type);
+
+  final String type;
+
+}
+
 class TableWidget extends StatelessWidget {
   TableWidget({super.key});
 
@@ -83,7 +100,7 @@ class TableWidget extends StatelessWidget {
                             onSelectChanged: (selected) {},
                             cells: e
                                 .map((item) => DataCell(
-                                      cellWidget(item),
+                                      cellWidget(context, item),
                                     ))
                                 .toList(),
                           ))
@@ -91,8 +108,8 @@ class TableWidget extends StatelessWidget {
         }));
   }
 
-  Widget cellWidget(TableDataRowsTableDataRows columnData) {
-    if (columnData.dataType == 'tag') {
+  Widget cellWidget(BuildContext context, TableDataRowsTableDataRows columnData) {
+    if (columnData.dataType == CellDataType.TAG.type) {
       return TagWidget(
         text: columnData.text ?? '',
         tagType: TagType.getTagType(columnData.tagType),
