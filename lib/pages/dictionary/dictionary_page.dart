@@ -117,7 +117,7 @@ class DictionaryTableWidget extends TableWidget<DictionaryViewModel> {
 
 class DictionaryViewModel extends BaseTableProvider{
   @override
-  String get TAG => (DictionaryViewModel).toString();
+  String get TAG => 'DictionaryViewModel';
 
   DictionaryViewModel(super.context);
 

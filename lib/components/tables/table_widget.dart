@@ -148,8 +148,8 @@ abstract class BaseTableProvider extends BaseProvider {
   @override
   void handleEventBus(BuildContext context, EventInfo eventInfo) {
     super.handleEventBus(context, eventInfo);
-    print('tag ${this.runtimeType.toString()}');
-    if ('refresh_${this.runtimeType.toString()}' == eventInfo.eventType) {
+    print('---> tag ${TAG}');
+    if ('refresh_$TAG' == eventInfo.eventType) {
       loadData(context);
     }
   }
