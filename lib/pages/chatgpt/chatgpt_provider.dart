@@ -17,7 +17,7 @@ class ChatGptProvider extends BaseProvider {
   ChatGptProvider(super.context);
 
   @override
-  void onViewCreated(BuildContext context) {
+  void init(BuildContext context) {
     controller = TextEditingController();
 
     fetchConversations(context!);
