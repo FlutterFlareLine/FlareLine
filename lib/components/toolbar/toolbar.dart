@@ -14,7 +14,9 @@ import 'package:responsive_builder/responsive_builder.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ToolBarWidget extends StatelessWidget {
-  const ToolBarWidget({super.key});
+  bool? showMore;
+
+  ToolBarWidget({super.key, this.showMore});
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +30,8 @@ class ToolBarWidget extends StatelessWidget {
       child: Row(children: [
         ResponsiveBuilder(builder: (context, sizingInformation) {
           // Check the sizing information here and return your UI
-          if (sizingInformation.deviceScreenType != DeviceScreenType.desktop) {
+          if ((showMore ?? false) ||
+              sizingInformation.deviceScreenType != DeviceScreenType.desktop) {
             return InkWell(
               child: Container(
                 padding: const EdgeInsets.all(5),
@@ -51,7 +54,8 @@ class ToolBarWidget extends StatelessWidget {
         }),
         ResponsiveBuilder(builder: (context, sizingInformation) {
           // Check the sizing information here and return your UI
-          if (sizingInformation.deviceScreenType == DeviceScreenType.desktop) {
+          if (!(showMore ?? false) &&
+              sizingInformation.deviceScreenType == DeviceScreenType.desktop) {
             return const SizedBox(
               width: 280,
               child: OutBorderTextFormField(
@@ -130,13 +134,19 @@ class ToolBarWidget extends StatelessWidget {
                   MediaQuery.of(context).size.width - 100, 80, 0, 0),
               items: <PopupMenuItem<String>>[
                 PopupMenuItem<String>(
-                    value: 'value01', child: Text('My Profile'),onTap: () async {
-                  Navigator.of(context).popAndPushNamed('/profile');
-                },),
+                  value: 'value01',
+                  child: Text('My Profile'),
+                  onTap: () async {
+                    Navigator.of(context).popAndPushNamed('/profile');
+                  },
+                ),
                 PopupMenuItem<String>(
-                    value: 'value02', child: Text('My Contacts'),onTap: () async {
-                  Navigator.of(context).popAndPushNamed('/contacts');
-                },),
+                  value: 'value02',
+                  child: Text('My Contacts'),
+                  onTap: () async {
+                    Navigator.of(context).popAndPushNamed('/contacts');
+                  },
+                ),
                 PopupMenuItem<String>(
                   value: 'value03',
                   child: Text('Settings'),

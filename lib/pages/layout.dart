@@ -17,7 +17,11 @@ abstract class LayoutWidget extends StatelessWidget {
 
   bool get showToolBar => true;
 
+  bool get showDrawer => false;
+
   bool get isContentScroll => true;
+
+
 
   String breakTabTitle(BuildContext context) {
     return '';
@@ -77,7 +81,7 @@ abstract class LayoutWidget extends StatelessWidget {
       ],
     );
     return Column(children: [
-      if (showToolBar) const ToolBarWidget(),
+      if (showToolBar) ToolBarWidget(showMore: showDrawer,),
       if (showToolBar)
         const SizedBox(
           height: 16,

@@ -19,6 +19,18 @@ class ChatGptPage extends LayoutWidget {
   bool get isContentScroll => false;
 
   @override
+  // TODO: implement showSideBar
+  bool get showSideBar => false;
+
+  @override
+  // TODO: implement showToolBar
+  bool get showDrawer => true;
+
+  @override
+  // TODO: implement showTitle
+  bool get showTitle => false;
+
+  @override
   Widget contentDesktopWidget(BuildContext context) {
     return ChangeNotifierProvider(
         create: (ctx) => ChatGptProvider(ctx),

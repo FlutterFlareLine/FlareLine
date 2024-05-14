@@ -4,8 +4,8 @@
     "menuList":[
       {
         "icon": "assets/sidebar/dashboard.svg",
-        "menuName": "ChatGpt",
-        "path": "/chatGpt"
+        "menuName": "Tools",
+        "path": "/tools"
       },
       {
         "icon": "assets/sidebar/dashboard.svg",

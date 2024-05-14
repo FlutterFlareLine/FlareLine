@@ -108,6 +108,8 @@ dependencies:
   logger: ^2.2.0
   rx_event_bus: ^2.0.1
 
+  url_launcher: ^6.2.6
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -152,6 +154,7 @@ flutter:
     - assets/australia.json
     - assets/routes/
     - assets/api/
+    - assets/ai/
   #   - assets/a_dot_burr.jpeg
   #   - assets/a_dot_ham.jpeg
 
