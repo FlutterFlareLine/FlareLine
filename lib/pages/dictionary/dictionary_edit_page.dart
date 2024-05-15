@@ -157,7 +157,7 @@ class DictionaryEditProvider extends BaseProvider {
           if (query.docs.isNotEmpty) {
             docId = query.docs.elementAt(0).id;
             detail = query.docs.elementAt(0).data();
-            print(detail);
+
             if (detail != null) {
               configKeyController.text = detail!['configKey'] ?? '';
               configValueController.text = detail!['configValue'] ?? '';

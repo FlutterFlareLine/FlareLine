@@ -67,7 +67,7 @@ abstract class BaseProvider extends ChangeNotifier {
   }
 
   void handleEventBus(BuildContext context, EventInfo eventInfo) {
-    print('handleEventBus ${eventInfo.eventType}');
+
   }
 
   @override

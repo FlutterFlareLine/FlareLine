@@ -12,7 +12,7 @@ class FirebaseStorageUtils {
   static final storage = FirebaseStorage.instance;
 
   static Future<String>  uploadFile(String fileName,PlatformFile platformFile) async {
-    print('uploadFile ${fileName}');
+
     try {
       final storageRef = FirebaseStorage.instance.ref();
       final imageRef = storageRef.child('images/${fileName}');

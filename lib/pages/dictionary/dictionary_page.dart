@@ -103,11 +103,19 @@ class DictionaryTableWidget extends TableWidget<DictionaryViewModel> {
               title: 'Edit Dictionary',
               params: {'id': columnData.id},
             ),
+          ),
+          SizedBox(width: 12,),
+          SizedBox(
+            width: 60,
+            child: DictionaryEditPage(
+              btnText: 'Children',
+              title: 'Children',
+              params: {'id': columnData.id},
+            ),
           )
         ],
       );
     } else if (CellDataType.IMAGE.type == columnData.dataType) {
-      print('---> image ${columnData.text}');
       return SizedBox(
         width: 40,
         height: 40,
