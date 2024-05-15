@@ -35,7 +35,8 @@ class DictionaryPage extends LayoutWidget {
   }
 }
 
-class DictionaryTableWidget extends TableWidget<DictionaryViewModel> {
+class DictionaryTableWidget
+    extends TableWidget<DictionaryViewModel, DictionaryDataSource> {
   @override
   Widget? toolsWidget(BuildContext context, DictionaryViewModel viewModel) {
     return SizedBox(
@@ -67,9 +68,94 @@ class DictionaryTableWidget extends TableWidget<DictionaryViewModel> {
     );
   }
 
+  // @override
+  // Widget cellWidget(BuildContext context, DictionaryViewModel viewModel,
+  //     TableDataRowsTableDataRows columnData) {
+  //   if (CellDataType.TOGGLE.type == columnData.dataType) {
+  //     return SwitchWidget(
+  //       checked: '1' == columnData.text,
+  //       onChanged: (checked) async {
+  //         final query = await context
+  //             .read<FirebaseStoreProvider>()
+  //             .db
+  //             .collection('dictionary')
+  //             .where('id', isEqualTo: columnData.id)
+  //             .get();
+  //         if (query.docs.isNotEmpty) {
+  //           String docId = query.docs.elementAt(0).id;
+  //           final doc = await context
+  //               .read<FirebaseStoreProvider>()
+  //               .db
+  //               .collection('dictionary')
+  //               .doc(docId);
+  //           doc.update({"status": checked ? 1 : 0}).then(
+  //               (value) => print("status successfully updated!"),
+  //               onError: (e) => print("Error updating document $e"));
+  //         }
+  //       },
+  //     );
+  //   } else if (CellDataType.CUSTOM.type == columnData.dataType) {
+  //     return SizedBox(
+  //       width: 200,
+  //       child: Row(
+  //         children: [
+  //           SizedBox(
+  //             width: 60,
+  //             child: DictionaryEditPage(
+  //               btnText: 'Edit',
+  //               title: 'Edit Dictionary',
+  //               params: {'id': columnData.id},
+  //             ),
+  //           ),
+  //           // SizedBox(
+  //           //   width: 12,
+  //           // ),
+  //           // SizedBox(
+  //           //   width: 60,
+  //           //   child: DictionaryEditPage(
+  //           //     btnText: 'Children',
+  //           //     title: 'Children',
+  //           //     params: {'id': columnData.id},
+  //           //   ),
+  //           // ),
+  //         ],
+  //       ),
+  //     );
+  //   } else if (CellDataType.IMAGE.type == columnData.dataType) {
+  //     return SizedBox(
+  //       width: 40,
+  //       height: 40,
+  //       child: (columnData.text != null && columnData.text != ''
+  //           ? Image.network(
+  //               columnData.text!,
+  //               fit: BoxFit.fill,
+  //               errorBuilder: (context, exception, stacktrace) {
+  //                 return Text(stacktrace.toString());
+  //               },
+  //             )
+  //           : SizedBox.shrink()),
+  //     );
+  //   }
+  //   return super.cellWidget(context, viewModel, columnData);
+  // }
+
   @override
-  Widget cellWidget(BuildContext context, DictionaryViewModel viewModel,
-      TableDataRowsTableDataRows columnData) {
+  DictionaryViewModel viewModelBuilder(BuildContext context) {
+    return DictionaryViewModel(context);
+  }
+
+  @override
+  baseDataGridSource(BuildContext context,
+      List<List<TableDataRowsTableDataRows>> rows, viewModel) {
+    return DictionaryDataSource(context, rows, viewModel);
+  }
+}
+
+class DictionaryDataSource extends BaseDataGridSource {
+  DictionaryDataSource(super.context, super.list, super.viewModel);
+
+  @override
+  Widget cellWidget(TableDataRowsTableDataRows columnData) {
     if (CellDataType.TOGGLE.type == columnData.dataType) {
       return SwitchWidget(
         checked: '1' == columnData.text,
@@ -94,7 +180,9 @@ class DictionaryTableWidget extends TableWidget<DictionaryViewModel> {
         },
       );
     } else if (CellDataType.CUSTOM.type == columnData.dataType) {
-      return Row(
+      return Wrap(
+        spacing: 10,
+        runSpacing: 10,
         children: [
           SizedBox(
             width: 60,
@@ -104,25 +192,34 @@ class DictionaryTableWidget extends TableWidget<DictionaryViewModel> {
               params: {'id': columnData.id},
             ),
           ),
-          SizedBox(width: 12,),
           SizedBox(
-            width: 60,
+            width: 100,
             child: DictionaryEditPage(
               btnText: 'Children',
               title: 'Children',
               params: {'id': columnData.id},
             ),
-          )
+          ),
+          // SizedBox(
+          //   width: 10,
+          // ),
+          // SizedBox(
+          //   width: 60,
+          //   child: ButtonWidget(
+          //     btnText: 'Delete',
+          //     color: GlobalColors.red,
+          //   ),
+          // ),
         ],
       );
     } else if (CellDataType.IMAGE.type == columnData.dataType) {
       return SizedBox(
         width: 40,
         height: 40,
-        child: (columnData.text != null&&columnData.text!=''
+        child: (columnData.text != null && columnData.text != ''
             ? Image.network(
                 columnData.text!,
-                fit: BoxFit.fill,
+                fit: BoxFit.contain,
                 errorBuilder: (context, exception, stacktrace) {
                   return Text(stacktrace.toString());
                 },
@@ -130,12 +227,7 @@ class DictionaryTableWidget extends TableWidget<DictionaryViewModel> {
             : SizedBox.shrink()),
       );
     }
-    return super.cellWidget(context, viewModel, columnData);
-  }
-
-  @override
-  DictionaryViewModel viewModelBuilder(BuildContext context) {
-    return DictionaryViewModel(context);
+    return super.cellWidget(columnData);
   }
 }
 
@@ -200,6 +292,7 @@ class DictionaryViewModel extends BaseTableProvider {
       'text': text,
       'key': key,
       'dataType': dataType,
+      'columnName': key,
       'id': item['id'],
     };
     return column;

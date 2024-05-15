@@ -26,6 +26,7 @@ class TableDataRowsTableDataRows {
 	String? dataType;
 	String? tagType;
 	String? id;
+	String? columnName;
 
 	TableDataRowsTableDataRows();
 

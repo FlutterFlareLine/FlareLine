@@ -17,6 +17,16 @@ class TopChannelWidget extends TableWidget {
   BaseTableProvider viewModelBuilder(BuildContext context) {
     return TopChannelViewModel(context);
   }
+
+  @override
+  BaseDataGridSource baseDataGridSource(BuildContext context,
+      List<List<TableDataRowsTableDataRows>> rows, viewModel) {
+    return TopChannelDataSource(context, rows, viewModel);
+  }
+}
+
+class TopChannelDataSource extends BaseDataGridSource {
+  TopChannelDataSource(super.context, super.list, super.viewModel);
 }
 
 class TopChannelViewModel extends BaseTableProvider {
