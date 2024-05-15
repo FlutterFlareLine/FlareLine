@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:fast_cached_network_image/fast_cached_network_image.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flareline/core/theme/global_theme.dart';
@@ -40,6 +41,8 @@ void main() async {
   FirebaseUIAuth.configureProviders([
     EmailAuthProvider(),
   ]);
+
+  await FastCachedImageConfig.init(clearCacheAfter: const Duration(days: 365));
 
   if (GetPlatform.isDesktop && !GetPlatform.isWeb) {
     await windowManager.ensureInitialized();

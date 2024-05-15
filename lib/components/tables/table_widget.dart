@@ -18,6 +18,7 @@ enum CellDataType {
   TEXT('text'),
   TOGGLE('toggle'),
   TAG('tag'),
+  IMAGE('image'),
   CUSTOM('custom'),
   ;
 
@@ -83,7 +84,11 @@ abstract class TableWidget<S extends BaseTableProvider>
         tagType: TagType.getTagType(columnData.tagType),
       );
     }
-    return Text(columnData.text ?? '');
+    String text = columnData.text ?? '';
+    if (text.length > 50) {
+      text = '${text.substring(0, 50)}...';
+    }
+    return Text(text);
   }
 
   @override

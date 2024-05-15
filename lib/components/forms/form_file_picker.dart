@@ -4,11 +4,15 @@ import 'package:file_picker/file_picker.dart';
 import 'package:flareline/core/theme/global_colors.dart';
 import 'package:flutter/material.dart';
 
+typedef ValueChanged<PlatformFile> = void Function(PlatformFile value);
 
 class FormFilePicker extends StatelessWidget {
   final String? title;
   final List<String>? allowExtention;
-  FormFilePicker({super.key, this.title, this.allowExtention});
+
+  final ValueChanged<PlatformFile>? onSelected;
+
+  FormFilePicker({super.key, this.title, this.allowExtention, this.onSelected});
 
   ValueNotifier<String?> valueNotifier = ValueNotifier(null);
 
@@ -47,16 +51,17 @@ class FormFilePicker extends StatelessWidget {
             ),
             onTap: () async {
               FilePickerResult? result = await FilePicker.platform.pickFiles(
-                type: allowExtention != null
-                    ? FileType.custom
-                    : FileType.any,
+                type: allowExtention != null ? FileType.custom : FileType.any,
                 allowedExtensions: allowExtention,
               );
 
               if (result != null) {
                 valueNotifier.value = result.files.first.name;
+                if (onSelected != null) {
+                  onSelected!(result.files.first);
+                }
               } else {
-                // User canceled the picker
+                valueNotifier.value = '';
               }
             },
           ),

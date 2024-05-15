@@ -36,7 +36,6 @@ class DictionaryPage extends LayoutWidget {
 }
 
 class DictionaryTableWidget extends TableWidget<DictionaryViewModel> {
-
   @override
   Widget? toolsWidget(BuildContext context, DictionaryViewModel viewModel) {
     return SizedBox(
@@ -51,7 +50,9 @@ class DictionaryTableWidget extends TableWidget<DictionaryViewModel> {
               title: 'Add Dictionary',
             ),
           ),
-          SizedBox(width: 20,),
+          SizedBox(
+            width: 20,
+          ),
           SizedBox(
             width: 120,
             child: ButtonWidget(
@@ -67,8 +68,8 @@ class DictionaryTableWidget extends TableWidget<DictionaryViewModel> {
   }
 
   @override
-  Widget cellWidget(
-      BuildContext context,DictionaryViewModel viewModel, TableDataRowsTableDataRows columnData) {
+  Widget cellWidget(BuildContext context, DictionaryViewModel viewModel,
+      TableDataRowsTableDataRows columnData) {
     if (CellDataType.TOGGLE.type == columnData.dataType) {
       return SwitchWidget(
         checked: '1' == columnData.text,
@@ -105,8 +106,23 @@ class DictionaryTableWidget extends TableWidget<DictionaryViewModel> {
           )
         ],
       );
+    } else if (CellDataType.IMAGE.type == columnData.dataType) {
+      print('---> image ${columnData.text}');
+      return SizedBox(
+        width: 40,
+        height: 40,
+        child: (columnData.text != null&&columnData.text!=''
+            ? Image.network(
+                columnData.text!,
+                fit: BoxFit.fill,
+                errorBuilder: (context, exception, stacktrace) {
+                  return Text(stacktrace.toString());
+                },
+              )
+            : SizedBox.shrink()),
+      );
     }
-    return super.cellWidget(context,viewModel,  columnData);
+    return super.cellWidget(context, viewModel, columnData);
   }
 
   @override
@@ -115,7 +131,7 @@ class DictionaryTableWidget extends TableWidget<DictionaryViewModel> {
   }
 }
 
-class DictionaryViewModel extends BaseTableProvider{
+class DictionaryViewModel extends BaseTableProvider {
   @override
   String get TAG => 'DictionaryViewModel';
 
@@ -127,6 +143,7 @@ class DictionaryViewModel extends BaseTableProvider{
       "configKey",
       "text",
       "configValue",
+      "image",
       "orderNum",
       "status",
       "Edit"
@@ -150,6 +167,7 @@ class DictionaryViewModel extends BaseTableProvider{
         row.add(getItemValue('configKey', item));
         row.add(getItemValue('text', item));
         row.add(getItemValue('configValue', item));
+        row.add(getItemValue('image', item, dataType: CellDataType.IMAGE.type));
         row.add(getItemValue('orderNum', item));
         row.add(
             getItemValue('status', item, dataType: CellDataType.TOGGLE.type));
@@ -169,9 +187,7 @@ class DictionaryViewModel extends BaseTableProvider{
   Map<String, dynamic> getItemValue(String key, Map item, {String? dataType}) {
     dynamic value = item[key];
     String text = value != null ? (value.toString()) : '';
-    if (text.length > 50) {
-      text = '${text.substring(0, 50)}...';
-    }
+
     Map<String, dynamic> column = {
       'text': text,
       'key': key,
@@ -180,5 +196,4 @@ class DictionaryViewModel extends BaseTableProvider{
     };
     return column;
   }
-
 }
