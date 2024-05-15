@@ -64,5 +64,9 @@ FlareLine Flutter Free is 100% free and open-source; feel free to use it with yo
 ### 💜 Support
 If you like the template, please star this repository to inspire the team to create more stuff like this and reach more users like you!
 
+## Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=FlutterFlareLine/FlareLine&type=Date)](https://star-history.com/#FlutterFlareLine/FlareLine&Date)
+
 <a href="https://info.flagcounter.com/RW8W"><img src="https://s01.flagcounter.com/map/RW8W/size_s/txt_000000/border_3CCC08/pageviews_1/viewers_0/flags_0/" alt="Flag Counter" border="0"></a>
 
