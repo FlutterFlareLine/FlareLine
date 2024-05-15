@@ -7,6 +7,7 @@ import 'package:flareline/components/modal/modal_dialog.dart';
 import 'package:flareline/components/tables/table_widget.dart';
 import 'package:flareline/core/theme/global_colors.dart';
 import 'package:flareline/entity/table_data_entity.dart';
+import 'package:flareline/pages/dictionary/dictionary_child_page.dart';
 import 'package:flareline/pages/dictionary/dictionary_edit_page.dart';
 import 'package:flareline/pages/layout.dart';
 import 'package:flareline/provider/base_provider.dart';
@@ -17,6 +18,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:provider/provider.dart';
+import 'package:syncfusion_flutter_datagrid/datagrid.dart';
 
 class DictionaryPage extends LayoutWidget {
   @override
@@ -140,6 +142,14 @@ class DictionaryTableWidget
   // }
 
   @override
+  double gridColumnWidgetWidth(String e) {
+    if (e == 'Edit') {
+      return 260;
+    }
+    return super.gridColumnWidgetWidth(e);
+  }
+
+  @override
   DictionaryViewModel viewModelBuilder(BuildContext context) {
     return DictionaryViewModel(context);
   }
@@ -193,23 +203,20 @@ class DictionaryDataSource extends BaseDataGridSource {
             ),
           ),
           SizedBox(
-            width: 100,
-            child: DictionaryEditPage(
+            width: 80,
+            child: DictionaryChildPage(
               btnText: 'Children',
               title: 'Children',
               params: {'id': columnData.id},
             ),
           ),
-          // SizedBox(
-          //   width: 10,
-          // ),
-          // SizedBox(
-          //   width: 60,
-          //   child: ButtonWidget(
-          //     btnText: 'Delete',
-          //     color: GlobalColors.red,
-          //   ),
-          // ),
+          SizedBox(
+            width: 60,
+            child: ButtonWidget(
+              btnText: 'Delete',
+              color: GlobalColors.red,
+            ),
+          ),
         ],
       );
     } else if (CellDataType.IMAGE.type == columnData.dataType) {

@@ -62,12 +62,20 @@ abstract class TableWidget<S extends BaseTableProvider,
     return SfDataGrid(
       source: baseDataGridSource(context, rows, viewModel),
       footerFrozenColumnsCount: 1,
-      columnWidthMode: ColumnWidthMode.fill,
-      columns: headers
-          .map((e) => GridColumn(
-              columnName: e,
-              label: Text(e),))
-          .toList(),
+      isScrollbarAlwaysShown: true,
+      columns: headers.map((e) => gridColumnWidget(e)).toList(),
+    );
+  }
+
+  double gridColumnWidgetWidth(String e) {
+    return double.nan;
+  }
+
+  GridColumn gridColumnWidget(String e) {
+    return GridColumn(
+      width: gridColumnWidgetWidth(e),
+      columnName: e,
+      label: Text(e),
     );
   }
 
