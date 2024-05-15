@@ -183,6 +183,6 @@ class DictionaryViewModel extends BaseTableProvider {
 
     Map<String, dynamic> map = {'headers': headers, 'rows': rows};
     TableDataEntity data = TableDataEntity.fromJson(map);
-    this.tableDataEntity = data;
+    tableDataEntity = data;
   }
 }

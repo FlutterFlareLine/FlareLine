@@ -31,13 +31,30 @@ enum CellDataType {
 }
 
 abstract class TableWidget<S extends BaseTableProvider> extends BaseStlessWidget<S> {
+
+  /// title
   String? title(BuildContext context) {
     return '';
   }
 
+  ///tools widget
   Widget? toolsWidget(BuildContext context, S viewModel) {
     return null;
   }
+
+  ///action column width
+  double get actionColumnWidth => 200;
+
+  ///actions widget
+  Widget? actionWidgetsBuilder(
+      BuildContext context, TableDataRowsTableDataRows columnData) {
+    return null;
+  }
+
+  ///toggle changed event
+  onToggleChanged(BuildContext context, bool checked,
+      TableDataRowsTableDataRows columnData) {}
+
 
   _buildWidget(BuildContext context, S viewModel) {
     bool isLoading = viewModel.isLoading;
@@ -83,15 +100,6 @@ abstract class TableWidget<S extends BaseTableProvider> extends BaseStlessWidget
     );
   }
 
-  Widget? actionWidgetsBuilder(
-      BuildContext context, TableDataRowsTableDataRows columnData) {
-    return null;
-  }
-
-  onToggleChanged(BuildContext context, bool checked,
-      TableDataRowsTableDataRows columnData) {}
-
-  double get actionColumnWidth => 200;
 
   double gridColumnWidgetWidth(String e) {
     if (e == 'Action') {
