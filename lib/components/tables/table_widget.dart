@@ -30,8 +30,8 @@ enum CellDataType {
   final String type;
 }
 
-abstract class TableWidget<S extends BaseTableProvider> extends BaseStlessWidget<S> {
-
+abstract class TableWidget<S extends BaseTableProvider>
+    extends BaseStlessWidget<S> {
   /// title
   String? title(BuildContext context) {
     return '';
@@ -45,6 +45,12 @@ abstract class TableWidget<S extends BaseTableProvider> extends BaseStlessWidget
   ///action column width
   double get actionColumnWidth => 200;
 
+  //per pageSize
+  int get pageSize => 10;
+
+  //paging
+  bool get showPaging => true;
+
   ///actions widget
   Widget? actionWidgetsBuilder(
       BuildContext context, TableDataRowsTableDataRows columnData) {
@@ -54,7 +60,6 @@ abstract class TableWidget<S extends BaseTableProvider> extends BaseStlessWidget
   ///toggle changed event
   onToggleChanged(BuildContext context, bool checked,
       TableDataRowsTableDataRows columnData) {}
-
 
   _buildWidget(BuildContext context, S viewModel) {
     bool isLoading = viewModel.isLoading;
@@ -80,26 +85,49 @@ abstract class TableWidget<S extends BaseTableProvider> extends BaseStlessWidget
       Function(BuildContext context, bool checked,
               TableDataRowsTableDataRows columnData)
           onToggleChanged) {
-    return BaseDataGridSource(
-        context, rows, viewModel, actionWidgetsBuilder, onToggleChanged);
+    return BaseDataGridSource(context, rows, viewModel, actionWidgetsBuilder,
+        onToggleChanged, pageSize);
   }
 
   Widget _sfDataGrid(BuildContext context, List<String> headers,
       List<List<TableDataRowsTableDataRows>> rows, viewModel) {
-    return SfDataGrid(
-      source: baseDataGridSource(context, rows, viewModel,
-          (BuildContext context, TableDataRowsTableDataRows columnData) {
+    BaseDataGridSource dataGridSource = baseDataGridSource(
+      context,
+      rows,
+      viewModel,
+      (BuildContext context, TableDataRowsTableDataRows columnData) {
         return actionWidgetsBuilder(context, columnData);
-      }, (BuildContext context, bool checked,
-              TableDataRowsTableDataRows columnData) {
+      },
+      (BuildContext context, bool checked,
+          TableDataRowsTableDataRows columnData) {
         onToggleChanged(context, checked, columnData);
-      }),
-      footerFrozenColumnsCount: 1,
-      isScrollbarAlwaysShown: true,
-      columns: headers.map((e) => gridColumnWidget(e)).toList(),
+      },
+    );
+    int pageCount = rows.length % pageSize == 0
+        ? (rows.length / pageSize).toInt()
+        : (rows.length / pageSize).toInt() + 1;
+    print('rows length ${rows.length} pageCount ${pageCount}');
+
+    return Column(
+      children: [
+        Expanded(
+            child: SfDataGrid(
+          source: dataGridSource,
+          footerFrozenColumnsCount: 1,
+          isScrollbarAlwaysShown: true,
+          columns: headers.map((e) => gridColumnWidget(e)).toList(),
+        )),
+        if (showPaging)
+          Container(
+              height: 60,
+              child: SfDataPager(
+                delegate: dataGridSource,
+                pageCount: pageCount.toDouble(),
+                direction: Axis.horizontal,
+              ))
+      ],
     );
   }
-
 
   double gridColumnWidgetWidth(String e) {
     if (e == 'Action') {
@@ -172,14 +200,23 @@ class BaseDataGridSource<F extends BaseTableProvider> extends DataGridSource {
   final Function(BuildContext context, bool checked,
       TableDataRowsTableDataRows columnData) onToggleChanged;
 
-  BaseDataGridSource(
-      BuildContext context,
-      List<List<TableDataRowsTableDataRows>> list,
-      F viewModel,
-      this.actionWidgetsBuilder,
-      this.onToggleChanged) {
-    this.context = context;
+  late int pageSize;
+
+  late List<List<TableDataRowsTableDataRows>> list;
+
+  BaseDataGridSource(this.context, this.list, F viewModel,
+      this.actionWidgetsBuilder, this.onToggleChanged, this.pageSize) {
+    _loadPageData(0, pageSize);
+  }
+
+  void _loadPageData(int startIndex, int endIndex) {
+    if (endIndex >= list.length) {
+      endIndex = list.length - 1;
+    }
+    print('startIndex ${startIndex} endIndex ${endIndex}');
     _data = list
+        .getRange(startIndex, endIndex)
+        .toList(growable: false)
         .map<DataGridRow>((e) => DataGridRow(
             cells: e
                 .map<DataGridCell>((item) =>
@@ -200,6 +237,20 @@ class BaseDataGridSource<F extends BaseTableProvider> extends DataGridSource {
         cells: row.getCells().map<Widget>((dataGridCell) {
       return cellWidget(dataGridCell.value);
     }).toList());
+  }
+
+  @override
+  Future<bool> handlePageChange(int oldPageIndex, int newPageIndex) async {
+    int startIndex = newPageIndex * pageSize;
+    int endIndex = startIndex + pageSize;
+
+    if (startIndex < list.length) {
+      _loadPageData(startIndex, endIndex);
+      notifyListeners();
+    } else {
+      _data = [];
+    }
+    return true;
   }
 
   Widget cellWidget(TableDataRowsTableDataRows columnData) {
