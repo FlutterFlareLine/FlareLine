@@ -8,6 +8,10 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class TopChannelWidget extends TableWidget {
   @override
+  // TODO: implement showPaging
+  bool get showPaging => false;
+
+  @override
   String title(BuildContext context) {
     // TODO: implement title
     return AppLocalizations.of(context)!.topChannels;
@@ -17,10 +21,7 @@ class TopChannelWidget extends TableWidget {
   BaseTableProvider viewModelBuilder(BuildContext context) {
     return TopChannelViewModel(context);
   }
-
 }
-
-
 
 class TopChannelViewModel extends BaseTableProvider {
   TopChannelViewModel(super.context);
