@@ -1,24 +1,21 @@
 import 'dart:convert';
 
 import 'package:flareline/components/buttons/button_widget.dart';
-import 'package:flareline/components/forms/outborder_text_form_field.dart';
-import 'package:flareline/components/forms/switch_widget.dart';
-import 'package:flareline/components/modal/modal_dialog.dart';
+
 import 'package:flareline/components/tables/table_widget.dart';
 import 'package:flareline/core/theme/global_colors.dart';
 import 'package:flareline/entity/table_data_entity.dart';
 import 'package:flareline/pages/dictionary/dictionary_child_page.dart';
 import 'package:flareline/pages/dictionary/dictionary_edit_page.dart';
 import 'package:flareline/pages/layout.dart';
-import 'package:flareline/provider/base_provider.dart';
+
 import 'package:flareline/provider/firebase_store_provider.dart';
 import 'package:flareline/provider/store_provider.dart';
-import 'package:flutter/cupertino.dart';
+
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:provider/provider.dart';
-import 'package:syncfusion_flutter_datagrid/datagrid.dart';
 
 class DictionaryPage extends LayoutWidget {
   @override
@@ -38,7 +35,7 @@ class DictionaryPage extends LayoutWidget {
 }
 
 class DictionaryTableWidget
-    extends TableWidget<DictionaryViewModel, DictionaryDataSource> {
+    extends TableWidget<DictionaryViewModel> {
   @override
   Widget? toolsWidget(BuildContext context, DictionaryViewModel viewModel) {
     return SizedBox(
@@ -70,171 +67,69 @@ class DictionaryTableWidget
     );
   }
 
-  // @override
-  // Widget cellWidget(BuildContext context, DictionaryViewModel viewModel,
-  //     TableDataRowsTableDataRows columnData) {
-  //   if (CellDataType.TOGGLE.type == columnData.dataType) {
-  //     return SwitchWidget(
-  //       checked: '1' == columnData.text,
-  //       onChanged: (checked) async {
-  //         final query = await context
-  //             .read<FirebaseStoreProvider>()
-  //             .db
-  //             .collection('dictionary')
-  //             .where('id', isEqualTo: columnData.id)
-  //             .get();
-  //         if (query.docs.isNotEmpty) {
-  //           String docId = query.docs.elementAt(0).id;
-  //           final doc = await context
-  //               .read<FirebaseStoreProvider>()
-  //               .db
-  //               .collection('dictionary')
-  //               .doc(docId);
-  //           doc.update({"status": checked ? 1 : 0}).then(
-  //               (value) => print("status successfully updated!"),
-  //               onError: (e) => print("Error updating document $e"));
-  //         }
-  //       },
-  //     );
-  //   } else if (CellDataType.CUSTOM.type == columnData.dataType) {
-  //     return SizedBox(
-  //       width: 200,
-  //       child: Row(
-  //         children: [
-  //           SizedBox(
-  //             width: 60,
-  //             child: DictionaryEditPage(
-  //               btnText: 'Edit',
-  //               title: 'Edit Dictionary',
-  //               params: {'id': columnData.id},
-  //             ),
-  //           ),
-  //           // SizedBox(
-  //           //   width: 12,
-  //           // ),
-  //           // SizedBox(
-  //           //   width: 60,
-  //           //   child: DictionaryEditPage(
-  //           //     btnText: 'Children',
-  //           //     title: 'Children',
-  //           //     params: {'id': columnData.id},
-  //           //   ),
-  //           // ),
-  //         ],
-  //       ),
-  //     );
-  //   } else if (CellDataType.IMAGE.type == columnData.dataType) {
-  //     return SizedBox(
-  //       width: 40,
-  //       height: 40,
-  //       child: (columnData.text != null && columnData.text != ''
-  //           ? Image.network(
-  //               columnData.text!,
-  //               fit: BoxFit.fill,
-  //               errorBuilder: (context, exception, stacktrace) {
-  //                 return Text(stacktrace.toString());
-  //               },
-  //             )
-  //           : SizedBox.shrink()),
-  //     );
-  //   }
-  //   return super.cellWidget(context, viewModel, columnData);
-  // }
-
-  @override
-  double gridColumnWidgetWidth(String e) {
-    if (e == 'Edit') {
-      return 260;
-    }
-    return super.gridColumnWidgetWidth(e);
-  }
-
   @override
   DictionaryViewModel viewModelBuilder(BuildContext context) {
     return DictionaryViewModel(context);
   }
 
   @override
-  baseDataGridSource(BuildContext context,
-      List<List<TableDataRowsTableDataRows>> rows, viewModel) {
-    return DictionaryDataSource(context, rows, viewModel);
-  }
-}
-
-class DictionaryDataSource extends BaseDataGridSource {
-  DictionaryDataSource(super.context, super.list, super.viewModel);
+  // TODO: implement actionColumnWidth
+  double get actionColumnWidth => 260;
 
   @override
-  Widget cellWidget(TableDataRowsTableDataRows columnData) {
-    if (CellDataType.TOGGLE.type == columnData.dataType) {
-      return SwitchWidget(
-        checked: '1' == columnData.text,
-        onChanged: (checked) async {
-          final query = await context
-              .read<FirebaseStoreProvider>()
-              .db
-              .collection('dictionary')
-              .where('id', isEqualTo: columnData.id)
-              .get();
-          if (query.docs.isNotEmpty) {
-            String docId = query.docs.elementAt(0).id;
-            final doc = await context
-                .read<FirebaseStoreProvider>()
-                .db
-                .collection('dictionary')
-                .doc(docId);
-            doc.update({"status": checked ? 1 : 0}).then(
-                (value) => print("status successfully updated!"),
-                onError: (e) => print("Error updating document $e"));
-          }
-        },
-      );
-    } else if (CellDataType.CUSTOM.type == columnData.dataType) {
-      return Wrap(
-        spacing: 10,
-        runSpacing: 10,
-        children: [
-          SizedBox(
-            width: 60,
-            child: DictionaryEditPage(
-              btnText: 'Edit',
-              title: 'Edit Dictionary',
-              params: {'id': columnData.id},
-            ),
+  Widget? actionWidgetsBuilder(
+      BuildContext context, TableDataRowsTableDataRows columnData) {
+    // TODO: implement actionWidgetsBuilder
+    return Wrap(
+      spacing: 10,
+      runSpacing: 10,
+      children: [
+        SizedBox(
+          width: 60,
+          child: DictionaryEditPage(
+            btnText: 'Edit',
+            title: 'Edit Dictionary',
+            params: {'id': columnData.id},
           ),
-          SizedBox(
-            width: 80,
-            child: DictionaryChildPage(
-              btnText: 'Children',
-              title: 'Children',
-              params: {'id': columnData.id},
-            ),
+        ),
+        SizedBox(
+          width: 80,
+          child: DictionaryChildPage(
+            btnText: 'Children',
+            title: 'Children',
+            params: {'id': columnData.id},
           ),
-          SizedBox(
-            width: 60,
-            child: ButtonWidget(
-              btnText: 'Delete',
-              color: GlobalColors.red,
-            ),
+        ),
+        SizedBox(
+          width: 60,
+          child: ButtonWidget(
+            btnText: 'Delete',
+            color: GlobalColors.red,
           ),
-        ],
-      );
-    } else if (CellDataType.IMAGE.type == columnData.dataType) {
-      return SizedBox(
-        width: 40,
-        height: 40,
-        child: (columnData.text != null && columnData.text != ''
-            ? Image.network(
-                columnData.text!,
-                fit: BoxFit.contain,
-                errorBuilder: (context, exception, stacktrace) {
-                  return Text(stacktrace.toString());
-                },
-              )
-            : SizedBox.shrink()),
-      );
+        ),
+      ],
+    );
+  }
+
+  @override
+  onToggleChanged(BuildContext context, bool checked, TableDataRowsTableDataRows columnData) async {
+    final query = await context
+        .read<FirebaseStoreProvider>()
+        .db
+        .collection('dictionary')
+        .where('id', isEqualTo: columnData.id)
+        .get();
+    if (query.docs.isNotEmpty) {
+      String docId = query.docs.elementAt(0).id;
+      final doc = await context
+          .read<FirebaseStoreProvider>()
+          .db
+          .collection('dictionary')
+          .doc(docId);
+      doc.update({"status": checked ? 1 : 0}).then(
+              (value) => print("status successfully updated!"),
+          onError: (e) => print("Error updating document $e"));
     }
-    return super.cellWidget(columnData);
   }
 }
 
@@ -253,7 +148,7 @@ class DictionaryViewModel extends BaseTableProvider {
       "image",
       "orderNum",
       "status",
-      "Edit"
+      "Action"
     ];
 
     List rows = [];
@@ -279,7 +174,7 @@ class DictionaryViewModel extends BaseTableProvider {
         row.add(
             getItemValue('status', item, dataType: CellDataType.TOGGLE.type));
 
-        row.add(getItemValue('', item, dataType: CellDataType.CUSTOM.type));
+        row.add(getItemValue('', item, dataType: CellDataType.ACTION.type));
         return row;
       }).toList();
 
@@ -289,19 +184,5 @@ class DictionaryViewModel extends BaseTableProvider {
     Map<String, dynamic> map = {'headers': headers, 'rows': rows};
     TableDataEntity data = TableDataEntity.fromJson(map);
     this.tableDataEntity = data;
-  }
-
-  Map<String, dynamic> getItemValue(String key, Map item, {String? dataType}) {
-    dynamic value = item[key];
-    String text = value != null ? (value.toString()) : '';
-
-    Map<String, dynamic> column = {
-      'text': text,
-      'key': key,
-      'dataType': dataType,
-      'columnName': key,
-      'id': item['id'],
-    };
-    return column;
   }
 }

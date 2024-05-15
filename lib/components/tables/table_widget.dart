@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:flareline/components/forms/switch_widget.dart';
 import 'package:flareline/components/loading/loading.dart';
 import 'package:flareline/components/tags/tag_widget.dart';
 import 'package:flareline/core/event/global_event.dart';
@@ -21,6 +22,7 @@ enum CellDataType {
   TAG('tag'),
   IMAGE('image'),
   CUSTOM('custom'),
+  ACTION('action'),
   ;
 
   const CellDataType(this.type);
@@ -28,8 +30,7 @@ enum CellDataType {
   final String type;
 }
 
-abstract class TableWidget<S extends BaseTableProvider,
-    T extends BaseDataGridSource> extends BaseStlessWidget<S> {
+abstract class TableWidget<S extends BaseTableProvider> extends BaseStlessWidget<S> {
   String? title(BuildContext context) {
     return '';
   }
@@ -49,25 +50,53 @@ abstract class TableWidget<S extends BaseTableProvider,
     List<List<TableDataRowsTableDataRows>> rows = tableDataEntity?.rows ?? [];
     return ConstrainedBox(
         constraints: const BoxConstraints(minWidth: double.infinity),
-        child: _sfDataGrid(context, headers, rows, viewModel)
-        // _dataTableWidget(context, headers, rows, viewModel)
-        );
+        child: _sfDataGrid(context, headers, rows, viewModel));
   }
 
-  T baseDataGridSource(BuildContext context,
-      List<List<TableDataRowsTableDataRows>> rows, viewModel);
+  BaseDataGridSource baseDataGridSource(
+      BuildContext context,
+      List<List<TableDataRowsTableDataRows>> rows,
+      viewModel,
+      Widget? Function(
+              BuildContext context, TableDataRowsTableDataRows columnData)
+          actionWidgetsBuilder,
+      Function(BuildContext context, bool checked,
+              TableDataRowsTableDataRows columnData)
+          onToggleChanged) {
+    return BaseDataGridSource(
+        context, rows, viewModel, actionWidgetsBuilder, onToggleChanged);
+  }
 
   Widget _sfDataGrid(BuildContext context, List<String> headers,
       List<List<TableDataRowsTableDataRows>> rows, viewModel) {
     return SfDataGrid(
-      source: baseDataGridSource(context, rows, viewModel),
+      source: baseDataGridSource(context, rows, viewModel,
+          (BuildContext context, TableDataRowsTableDataRows columnData) {
+        return actionWidgetsBuilder(context, columnData);
+      }, (BuildContext context, bool checked,
+              TableDataRowsTableDataRows columnData) {
+        onToggleChanged(context, checked, columnData);
+      }),
       footerFrozenColumnsCount: 1,
       isScrollbarAlwaysShown: true,
       columns: headers.map((e) => gridColumnWidget(e)).toList(),
     );
   }
 
+  Widget? actionWidgetsBuilder(
+      BuildContext context, TableDataRowsTableDataRows columnData) {
+    return null;
+  }
+
+  onToggleChanged(BuildContext context, bool checked,
+      TableDataRowsTableDataRows columnData) {}
+
+  double get actionColumnWidth => 200;
+
   double gridColumnWidgetWidth(String e) {
+    if (e == 'Action') {
+      return actionColumnWidth;
+    }
     return double.nan;
   }
 
@@ -77,36 +106,6 @@ abstract class TableWidget<S extends BaseTableProvider,
       columnName: e,
       label: Text(e),
     );
-  }
-
-  Widget _dataTableWidget(BuildContext context, List<String> headers,
-      List<List<TableDataRowsTableDataRows>> rows, viewModel) {
-    return DataTable(
-        headingRowColor: MaterialStateProperty.resolveWith((states) =>
-            context.watch<ThemeProvider>().isDark
-                ? GlobalColors.sideBar
-                : GlobalColors.lightGray),
-        horizontalMargin: 12,
-        showBottomBorder: true,
-        showCheckboxColumn: false,
-        headingTextStyle: TextStyle(
-          fontWeight: FontWeight.bold,
-          color: context.watch<ThemeProvider>().isDark
-              ? Colors.white
-              : Colors.black,
-        ),
-        dividerThickness: 0.5,
-        columns: headers.map((e) => DataColumn(label: Text(e))).toList(),
-        rows: rows
-            .map((e) => DataRow(
-                  onSelectChanged: (selected) {},
-                  cells: e
-                      .map((item) => DataCell(
-                            cellWidget(context, viewModel, item),
-                          ))
-                      .toList(),
-                ))
-            .toList());
   }
 
   Widget cellWidget(BuildContext context, S viewModel,
@@ -157,11 +156,20 @@ abstract class TableWidget<S extends BaseTableProvider,
   refresh(BuildContext context) {}
 }
 
-abstract class BaseDataGridSource extends DataGridSource {
+class BaseDataGridSource<F extends BaseTableProvider> extends DataGridSource {
   late BuildContext context;
+  final Widget? Function(
+          BuildContext context, TableDataRowsTableDataRows columnData)
+      actionWidgetsBuilder;
+  final Function(BuildContext context, bool checked,
+      TableDataRowsTableDataRows columnData) onToggleChanged;
 
-  BaseDataGridSource(BuildContext context,
-      List<List<TableDataRowsTableDataRows>> list, dynamic viewModel) {
+  BaseDataGridSource(
+      BuildContext context,
+      List<List<TableDataRowsTableDataRows>> list,
+      F viewModel,
+      this.actionWidgetsBuilder,
+      this.onToggleChanged) {
     this.context = context;
     _data = list
         .map<DataGridRow>((e) => DataGridRow(
@@ -187,7 +195,25 @@ abstract class BaseDataGridSource extends DataGridSource {
   }
 
   Widget cellWidget(TableDataRowsTableDataRows columnData) {
-    if (columnData.dataType == CellDataType.TAG.type) {
+    if (CellDataType.TOGGLE.type == columnData.dataType) {
+      return SwitchWidget(
+          checked: '1' == columnData.text,
+          onChanged: (checked) async {
+            if (onToggleChanged != null) {
+              onToggleChanged(context, checked, columnData);
+            }
+          });
+    }
+
+    if (CellDataType.ACTION.type == columnData.dataType) {
+      return actionWidgetsBuilder(context, columnData)!;
+    }
+
+    if (CellDataType.IMAGE.type == columnData.dataType) {
+      return _imageCellWidget(columnData);
+    }
+
+    if (CellDataType.TAG.type == columnData.dataType) {
       return TagWidget(
         text: columnData.text ?? '',
         tagType: TagType.getTagType(columnData.tagType),
@@ -198,6 +224,22 @@ abstract class BaseDataGridSource extends DataGridSource {
       text = '${text.substring(0, 50)}...';
     }
     return Text(text);
+  }
+
+  Widget _imageCellWidget(TableDataRowsTableDataRows columnData) {
+    return SizedBox(
+      width: 40,
+      height: 40,
+      child: (columnData.text != null && columnData.text != ''
+          ? Image.network(
+              columnData.text!,
+              fit: BoxFit.contain,
+              errorBuilder: (context, exception, stacktrace) {
+                return Text(stacktrace.toString());
+              },
+            )
+          : SizedBox.shrink()),
+    );
   }
 }
 
@@ -236,4 +278,18 @@ abstract class BaseTableProvider extends BaseProvider {
   }
 
   loadData(BuildContext context);
+
+  Map<String, dynamic> getItemValue(String key, Map item, {String? dataType}) {
+    dynamic value = item[key];
+    String text = value != null ? (value.toString()) : '';
+
+    Map<String, dynamic> column = {
+      'text': text,
+      'key': key,
+      'dataType': dataType,
+      'columnName': key,
+      'id': item['id'],
+    };
+    return column;
+  }
 }
