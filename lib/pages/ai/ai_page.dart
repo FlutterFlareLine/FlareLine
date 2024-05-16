@@ -118,7 +118,7 @@ class GridMenuWidget extends StatelessWidget {
               const SizedBox(
                 width: 12,
               ),
-              Column(
+              Expanded(child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
@@ -133,7 +133,6 @@ class GridMenuWidget extends StatelessWidget {
                   ),
                   Text(
                     url ?? configValue,
-                    textAlign: TextAlign.center,
                     style: TextStyle(
                         color: isDark ? Colors.white : GlobalColors.success,
                         fontSize: 12),
@@ -143,14 +142,14 @@ class GridMenuWidget extends StatelessWidget {
                   ),
                   Text(
                     desc==null||desc=='' ? text:desc,
-                    textAlign: TextAlign.center,
+                    softWrap: true,
                     style: TextStyle(
                         color:
-                            isDark ? Colors.white : GlobalColors.darkTextBody,
+                        isDark ? Colors.white : GlobalColors.darkTextBody,
                         fontSize: 12),
                   )
                 ],
-              ),
+              ),)
             ],
           )),
       onTap: () {
@@ -172,7 +171,7 @@ class GridMenuWidget extends StatelessWidget {
     if (url == routePath) {
       return;
     }
-    
+
     Navigator.of(context).pushNamed(url);
   }
 }
