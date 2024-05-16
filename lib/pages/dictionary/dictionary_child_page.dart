@@ -29,12 +29,13 @@ class DictionaryChildPage extends BaseStlessWidget<DictionaryEditProvider> {
   final String btnText;
   final String? title;
 
-  DictionaryChildPage({required this.btnText, this.title, super.params});
+  DictionaryChildPage(
+      {required this.btnText, this.title, super.params, super.key});
 
   @override
   Widget bodyWidget(
       BuildContext context, DictionaryEditProvider viewModel, Widget? child) {
-    return  ButtonWidget(
+    return ButtonWidget(
       btnText: btnText,
       type: ButtonType.SUCCESS.type,
       onTap: () {
@@ -44,7 +45,13 @@ class DictionaryChildPage extends BaseStlessWidget<DictionaryEditProvider> {
             onSaveTap: () {
               // viewModel.save(context);
             },
-            child: SizedBox(height: 500, child: DictionaryTableWidget(params:params,key: UniqueKey(),),));
+            child: SizedBox(
+              height: 500,
+              child: DictionaryTableWidget(
+                params: params,
+                key: UniqueKey(),
+              ),
+            ));
       },
     );
   }
@@ -57,6 +64,4 @@ class DictionaryChildPage extends BaseStlessWidget<DictionaryEditProvider> {
 
 class DictionaryEditProvider extends BaseProvider {
   DictionaryEditProvider(super.context);
-
-
 }

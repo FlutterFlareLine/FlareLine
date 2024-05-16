@@ -88,6 +88,7 @@ class DictionaryTableWidget extends TableWidget<DictionaryViewModel> {
   @override
   Widget? actionWidgetsBuilder(BuildContext context,
       TableDataRowsTableDataRows columnData, DictionaryViewModel viewModel) {
+    print('columnData ${columnData} ${columnData.id}');
     return Wrap(
       spacing: 10,
       runSpacing: 10,
@@ -98,6 +99,7 @@ class DictionaryTableWidget extends TableWidget<DictionaryViewModel> {
             btnText: 'Edit',
             title: 'Edit Dictionary',
             params: {'id': columnData.id},
+            key: UniqueKey(),
           ),
         ),
         if (viewModel.parentId == null || viewModel.parentId == '0')
@@ -107,6 +109,7 @@ class DictionaryTableWidget extends TableWidget<DictionaryViewModel> {
               btnText: 'Children',
               title: 'Children',
               params: {'parentId': columnData.id},
+              key: UniqueKey(),
             ),
           ),
         SizedBox(

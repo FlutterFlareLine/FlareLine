@@ -241,6 +241,7 @@ class BaseDataGridSource<F extends BaseTableProvider> extends DataGridSource {
   DataGridRowAdapter? buildRow(DataGridRow row) {
     return DataGridRowAdapter(
         cells: row.getCells().map<Widget>((dataGridCell) {
+      print('dataGridCell ${dataGridCell.value}');
       return cellWidget(dataGridCell.value);
     }).toList());
   }

@@ -29,7 +29,8 @@ class DictionaryEditPage extends BaseStlessWidget<DictionaryEditProvider> {
   final String btnText;
   final String? title;
 
-  DictionaryEditPage({required this.btnText, this.title, super.params});
+  DictionaryEditPage(
+      {required this.btnText, this.title, super.params, super.key});
 
   @override
   Widget bodyWidget(
@@ -146,6 +147,7 @@ class DictionaryEditProvider extends BaseProvider {
     configOrderNumController = TextEditingController();
     configOrderNumController.text = '1';
 
+    print('param ${param}');
     if (param != null) {
       id = param!['id'];
       parentId = param!['parentId'];
