@@ -35,7 +35,16 @@ class ChatGptProvider extends BaseProvider {
 
   bool _showSettings = false;
 
+  bool _showConversation = false;
+
   bool get showSettings => _showSettings;
+
+  bool get showConversation => _showConversation;
+
+  set showConversation(bool show) {
+    _showConversation = show;
+    notifyListeners();
+  }
 
   List<MessageEntity> messageList = [];
 
@@ -174,6 +183,7 @@ class ChatGptProvider extends BaseProvider {
   }
 
   void startNewChat(BuildContext ctx, {String? title}) {
+    controller.clear();
     String email = ctx.read<StoreProvider>().email;
     _conversationEntity = ConversationEntity()
       ..id = const Uuid().v1()
@@ -247,5 +257,9 @@ class ChatGptProvider extends BaseProvider {
 
   addMessage(BuildContext ctx, MessageEntity messageEntity) async {
     await FirebaseStoreUtils.add('messages', messageEntity!.toJson());
+  }
+
+  void toggleConversation(BuildContext ctx) {
+    showConversation = !showConversation;
   }
 }

@@ -10,7 +10,6 @@ import 'package:provider/provider.dart';
 class OpenAIProvider extends BaseProvider {
   OpenAIProvider(super.context);
 
-
   @override
   void init(BuildContext context) {
     keyController = TextEditingController();
@@ -54,8 +53,16 @@ class OpenAIProvider extends BaseProvider {
     SnackBarUtil.showSuccess(ctx, 'key saved success');
   }
 
+  Future<Map<String, dynamic>?> getDemoOpenAiConfigKey(BuildContext ctx) async {
+    String email = 'demo@flareline.com';
+    Map<String, dynamic>? data =
+        await FirebaseStoreUtils.getOne('openAiKey', email);
+    return data;
+  }
+
   Future<void> initOpenApiConfig(BuildContext ctx) async {
     Map<String, dynamic>? config = ctx.read<StoreProvider>().openAiConfig;
+    config ??= await getDemoOpenAiConfigKey(ctx);
 
     _checkedId = ctx.read<StoreProvider>().openAiModel;
 
