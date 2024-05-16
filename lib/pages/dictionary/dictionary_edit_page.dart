@@ -13,7 +13,7 @@ import 'package:flareline/core/theme/global_colors.dart';
 import 'package:flareline/pages/base/base_stless_widget.dart';
 import 'package:flareline/pages/dictionary/dictionary_page.dart';
 import 'package:flareline/provider/base_provider.dart';
-import 'package:flareline/provider/firebase_store_provider.dart';
+import 'package:flareline/utils/firebase_store_utils.dart';
 import 'package:flareline/provider/store_provider.dart';
 import 'package:flareline/utils/firebase_storage_utils.dart';
 import 'package:flareline/utils/snackbar_util.dart';
@@ -126,6 +126,8 @@ class DictionaryEditProvider extends BaseProvider {
   Map<String, dynamic>? detail;
   String? docId;
 
+  String? parentId;
+
   PlatformFile? _platformFile;
 
   String? get imageUrl => detail != null ? detail!['image'] : null;
@@ -146,11 +148,10 @@ class DictionaryEditProvider extends BaseProvider {
 
     if (param != null) {
       id = param!['id'];
+      parentId = param!['parentId'];
       if (id != null) {
         //get detail
-        context
-            .read<FirebaseStoreProvider>()
-            .db
+        FirebaseStoreUtils.db
             .collection('dictionary')
             .where('id', isEqualTo: id)
             .get()
@@ -183,9 +184,7 @@ class DictionaryEditProvider extends BaseProvider {
 
     if (id != null && detail != null) {
       if (detail!['configKey'] != configKeyController.text.trim()) {
-        final query = await context
-            .read<FirebaseStoreProvider>()
-            .db
+        final query = await FirebaseStoreUtils.db
             .collection('dictionary')
             .where('configKey', isEqualTo: configKeyController.text.trim())
             .get();
@@ -195,18 +194,14 @@ class DictionaryEditProvider extends BaseProvider {
         }
       }
 
-      final doc = await context
-          .read<FirebaseStoreProvider>()
-          .db
-          .collection('dictionary')
-          .doc(docId);
+      final doc =
+          await FirebaseStoreUtils.db.collection('dictionary').doc(docId);
 
       var map = {
         'configKey': configKeyController.text.trim(),
         'text': configTextController.text.trim(),
         'configValue': configValueController.text.trim(),
         'orderNum': configOrderNumController.text.trim(),
-        'image': configOrderNumController.text.trim(),
       };
 
       if (_platformFile != null) {
@@ -222,9 +217,7 @@ class DictionaryEditProvider extends BaseProvider {
       return;
     }
 
-    final query = await context
-        .read<FirebaseStoreProvider>()
-        .db
+    final query = await FirebaseStoreUtils.db
         .collection('dictionary')
         .where('configKey', isEqualTo: configKeyController.text.trim())
         .get();
@@ -240,7 +233,8 @@ class DictionaryEditProvider extends BaseProvider {
       'configValue': configValueController.text.trim(),
       'orderNum': configOrderNumController.text.trim(),
       'status': 1,
-      'belongUid': email
+      'belongUid': email,
+      'parentId': parentId == null || parentId == '' ? '0' : parentId,
     };
 
     //check image
@@ -251,7 +245,7 @@ class DictionaryEditProvider extends BaseProvider {
       dic['image'] = url;
     }
 
-    context.read<FirebaseStoreProvider>().add('dictionary', dic);
+    FirebaseStoreUtils.add('dictionary', dic);
     onSuccess(context);
   }
 

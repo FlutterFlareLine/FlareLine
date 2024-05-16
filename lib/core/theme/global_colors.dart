@@ -21,7 +21,7 @@ class GlobalColors{
 
   static const Color darkBlackText = Color(0xFF1C2434);
 
-  static const Color normal = Color(0xFFEFF4FB);
+  static const Color normal = Color(0xFF606266);
 
   static const Color info = Color(0xFF8A99AF);
 

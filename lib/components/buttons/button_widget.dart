@@ -19,6 +19,7 @@ enum ButtonType {
 class ButtonWidget extends StatelessWidget {
   String btnText;
   GestureTapCallback? onTap;
+
   // bool? isPrimary;
   Color? color;
   double? borderRadius;
@@ -61,8 +62,7 @@ class ButtonWidget extends StatelessWidget {
               btnText,
               style: TextStyle(
                   color: textColor ??
-                      // ((isPrimary ?? true) ? Colors.white : GlobalColors.text),
-                      (type!=null ? Colors.white : GlobalColors.text),
+                      (type != null ? Colors.white : GlobalColors.normal),
                   fontSize: 14),
             )
           ],
@@ -73,16 +73,12 @@ class ButtonWidget extends StatelessWidget {
 
   BoxDecoration buildBoxDecoration(BuildContext context) {
     return BoxDecoration(
-        border: borderColor != null
+        border: (borderColor != null
             ? Border.all(color: borderColor!, width: borderWidth ?? 0)
-            : null,
-        color: color ?? getTypeColor(type)
-        // (type != null
-        //     ? getTypeColor(type)
-        //     : (((isPrimary ?? true)
-        //         ? Theme.of(context).colorScheme.primary
-        //         : GlobalColors.background)))
-        ,
+            : (type == null
+                ? Border.all(color: GlobalColors.normal, width: 1)
+                : null)),
+        color: color ?? getTypeColor(type),
         borderRadius: BorderRadius.circular(borderRadius ?? 4));
   }
 
@@ -105,6 +101,6 @@ class ButtonWidget extends StatelessWidget {
     if (type == ButtonType.DARK.type) {
       return GlobalColors.dark;
     }
-    return GlobalColors.normal;
+    return Colors.white;
   }
 }

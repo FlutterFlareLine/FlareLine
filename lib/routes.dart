@@ -1,3 +1,4 @@
+import 'package:flareline/pages/ai/ai_page.dart';
 import 'package:flareline/pages/chat/chat_page.dart';
 import 'package:flareline/pages/chatgpt/chatgpt_page.dart';
 import 'package:flareline/pages/dictionary/dictionary_page.dart';
@@ -59,6 +60,7 @@ final List<Map<String, Object>> MAIN_PAGES = [
   {'routerPath': '/scrapy', 'widget': ScrapyPage()},
   {'routerPath': '/dictionary', 'widget': DictionaryPage()},
   {'routerPath': '/tools', 'widget': ToolsPage()},
+  {'routerPath': '/ai', 'widget': AIPage()},
 ];
 
 class RouteConfiguration {

@@ -8,25 +8,5 @@
         "path": "/chatGpt"
       }
     ]
-  },
-  {
-    "groupName": "AI Tools",
-    "menuList":[
-      {
-        "icon": "assets/ai/openai.webp",
-        "menuName": "OpenAI",
-        "path": "https://chatgpt.com"
-      },
-      {
-        "icon": "assets/ai/Claude.png",
-        "menuName": "Claude",
-        "path": "https://www.anthropic.com/claude"
-      },
-      {
-        "icon": "assets/ai/GoogleBard.png",
-        "menuName": "Gemini",
-        "path": "https://gemini.google.com/app"
-      }
-    ]
   }
 ]

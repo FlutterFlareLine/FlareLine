@@ -36,7 +36,7 @@ flutter pub get
 3. Now run this command to start the developement server
 
 ```
-flutter run -d chrome
+flutter run -d chrome  --web-renderer html
 ```
 
 ## Self-hosted

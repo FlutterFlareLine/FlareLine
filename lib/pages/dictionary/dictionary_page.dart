@@ -1,16 +1,16 @@
 import 'dart:convert';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flareline/components/buttons/button_widget.dart';
 
 import 'package:flareline/components/tables/table_widget.dart';
-import 'package:flareline/core/theme/global_colors.dart';
 import 'package:flareline/entity/table_data_entity.dart';
 import 'package:flareline/pages/dictionary/dictionary_child_page.dart';
 import 'package:flareline/pages/dictionary/dictionary_edit_page.dart';
 import 'package:flareline/pages/layout.dart';
 
-import 'package:flareline/provider/firebase_store_provider.dart';
 import 'package:flareline/provider/store_provider.dart';
+import 'package:flareline/utils/firebase_store_utils.dart';
 
 import 'package:flutter/material.dart';
 
@@ -18,6 +18,10 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:provider/provider.dart';
 
 class DictionaryPage extends LayoutWidget {
+  final Map<String, dynamic>? params;
+
+  DictionaryPage({super.key, this.params});
+
   @override
   // TODO: implement isContentScroll
   bool get isContentScroll => false;
@@ -30,12 +34,15 @@ class DictionaryPage extends LayoutWidget {
 
   @override
   Widget contentDesktopWidget(BuildContext context) {
-    return DictionaryTableWidget();
+    return DictionaryTableWidget(
+      params: params,
+    );
   }
 }
 
-class DictionaryTableWidget
-    extends TableWidget<DictionaryViewModel> {
+class DictionaryTableWidget extends TableWidget<DictionaryViewModel> {
+  DictionaryTableWidget({super.params, super.key});
+
   @override
   Widget? toolsWidget(BuildContext context, DictionaryViewModel viewModel) {
     return SizedBox(
@@ -48,6 +55,7 @@ class DictionaryTableWidget
             child: DictionaryEditPage(
               btnText: 'Add',
               title: 'Add Dictionary',
+              params: params,
             ),
           ),
           SizedBox(
@@ -78,9 +86,8 @@ class DictionaryTableWidget
   double get actionColumnWidth => 260;
 
   @override
-  Widget? actionWidgetsBuilder(
-      BuildContext context, TableDataRowsTableDataRows columnData) {
-    // TODO: implement actionWidgetsBuilder
+  Widget? actionWidgetsBuilder(BuildContext context,
+      TableDataRowsTableDataRows columnData, DictionaryViewModel viewModel) {
     return Wrap(
       spacing: 10,
       runSpacing: 10,
@@ -93,14 +100,15 @@ class DictionaryTableWidget
             params: {'id': columnData.id},
           ),
         ),
-        SizedBox(
-          width: 80,
-          child: DictionaryChildPage(
-            btnText: 'Children',
-            title: 'Children',
-            params: {'id': columnData.id},
+        if (viewModel.parentId == null || viewModel.parentId == '0')
+          SizedBox(
+            width: 80,
+            child: DictionaryChildPage(
+              btnText: 'Children',
+              title: 'Children',
+              params: {'parentId': columnData.id},
+            ),
           ),
-        ),
         SizedBox(
           width: 60,
           child: ButtonWidget(
@@ -113,22 +121,18 @@ class DictionaryTableWidget
   }
 
   @override
-  onToggleChanged(BuildContext context, bool checked, TableDataRowsTableDataRows columnData) async {
-    final query = await context
-        .read<FirebaseStoreProvider>()
-        .db
+  onToggleChanged(BuildContext context, bool checked,
+      TableDataRowsTableDataRows columnData) async {
+    final query = await FirebaseStoreUtils.db
         .collection('dictionary')
         .where('id', isEqualTo: columnData.id)
         .get();
     if (query.docs.isNotEmpty) {
       String docId = query.docs.elementAt(0).id;
-      final doc = await context
-          .read<FirebaseStoreProvider>()
-          .db
-          .collection('dictionary')
-          .doc(docId);
+      final doc =
+          await FirebaseStoreUtils.db.collection('dictionary').doc(docId);
       doc.update({"status": checked ? 1 : 0}).then(
-              (value) => print("status successfully updated!"),
+          (value) => print("status successfully updated!"),
           onError: (e) => print("Error updating document $e"));
     }
   }
@@ -140,8 +144,21 @@ class DictionaryViewModel extends BaseTableProvider {
 
   DictionaryViewModel(super.context);
 
+  String? parentId;
+
   @override
-  loadData(BuildContext context) async {
+  void onViewCreated(BuildContext context) {
+    print('param -> ${param}');
+    if (param != null) {
+      parentId = param!['parentId'];
+    } else {
+      parentId = '0';
+    }
+    super.onViewCreated(context);
+  }
+
+  @override
+  Future loadData(BuildContext context) async {
     const headers = [
       "configKey",
       "text",
@@ -155,12 +172,13 @@ class DictionaryViewModel extends BaseTableProvider {
     List rows = [];
 
     String email = context.read<StoreProvider>().email;
-    final query = await context
-        .read<FirebaseStoreProvider>()
-        .db
+
+    final query = await FirebaseStoreUtils.db
         .collection('dictionary')
         .where('belongUid', isEqualTo: email)
+        .where('parentId', isEqualTo: parentId)
         .get();
+
     if (query.docs.isNotEmpty) {
       List list = query.docs.map((element) {
         Map<String, dynamic> item = element.data();

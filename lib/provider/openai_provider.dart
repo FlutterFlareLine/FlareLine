@@ -1,6 +1,6 @@
 import 'package:dart_openai/dart_openai.dart';
 import 'package:flareline/provider/base_provider.dart';
-import 'package:flareline/provider/firebase_store_provider.dart';
+import 'package:flareline/utils/firebase_store_utils.dart';
 import 'package:flareline/provider/store_provider.dart';
 import 'package:flareline/utils/snackbar_util.dart';
 import 'package:flutter/foundation.dart';

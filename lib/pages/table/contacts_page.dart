@@ -7,7 +7,7 @@ import 'package:flareline/entity/table_data_entity.dart';
 import 'package:flareline/pages/dictionary/dictionary_child_page.dart';
 import 'package:flareline/pages/dictionary/dictionary_edit_page.dart';
 import 'package:flareline/pages/layout.dart';
-import 'package:flareline/provider/firebase_store_provider.dart';
+import 'package:flareline/utils/firebase_store_utils.dart';
 import 'package:flareline/provider/store_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';

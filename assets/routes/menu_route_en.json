@@ -3,12 +3,17 @@
     "groupName": "Tools",
     "menuList":[
       {
-        "icon": "assets/sidebar/dashboard.svg",
+        "icon": "assets/sidebar/tools.svg",
         "menuName": "Tools",
         "path": "/tools"
       },
       {
-        "icon": "assets/sidebar/dashboard.svg",
+        "icon": "assets/sidebar/AI.svg",
+        "menuName": "AI",
+        "path": "/ai"
+      },
+      {
+        "icon": "assets/sidebar/dictionary.svg",
         "menuName": "Dictionary",
         "path": "/dictionary"
       }

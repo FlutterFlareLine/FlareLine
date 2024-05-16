@@ -3,7 +3,7 @@ import 'package:dart_openai/dart_openai.dart';
 import 'package:flareline/entity/conversation_entity.dart';
 import 'package:flareline/entity/message_entity.dart';
 import 'package:flareline/provider/base_provider.dart';
-import 'package:flareline/provider/firebase_store_provider.dart';
+import 'package:flareline/utils/firebase_store_utils.dart';
 import 'package:flareline/provider/store_provider.dart';
 import 'package:flareline/utils/snackbar_util.dart';
 import 'package:flutter/foundation.dart';
@@ -192,9 +192,7 @@ class ChatGptProvider extends BaseProvider {
 
   fetchConversations(BuildContext ctx) async {
     String email = ctx.read<StoreProvider>().email;
-    final query = await ctx
-        .read<FirebaseStoreProvider>()
-        .db
+    final query = await FirebaseStoreUtils.db
         .collection('conversation')
         .where('belongUid', isEqualTo: email)
         .get();
@@ -207,9 +205,7 @@ class ChatGptProvider extends BaseProvider {
       conversationList.addAll(list);
 
       conversationList.forEach((element) async {
-        final queryMessage = await ctx
-            .read<FirebaseStoreProvider>()
-            .db
+        final queryMessage = await FirebaseStoreUtils.db
             .collection('messages')
             .where('belongUid', isEqualTo: email)
             .where('conversationId', isEqualTo: element.id)
@@ -228,9 +224,7 @@ class ChatGptProvider extends BaseProvider {
   fetchMessages(BuildContext ctx, String conversationId) async {
     String email = ctx.read<StoreProvider>().email;
     log('fetchMessages ${conversationId}  ${email}');
-    final query = await ctx
-        .read<FirebaseStoreProvider>()
-        .db
+    final query = await FirebaseStoreUtils.db
         .collection('messages')
         .where('belongUid', isEqualTo: email)
         .where('conversationId', isEqualTo: conversationId)
@@ -248,12 +242,10 @@ class ChatGptProvider extends BaseProvider {
   }
 
   addConversation(BuildContext ctx, ConversationEntity conversationEntity) {
-    ctx
-        .read<FirebaseStoreProvider>()
-        .add('conversation', conversationEntity!.toJson());
+    FirebaseStoreUtils.add('conversation', conversationEntity!.toJson());
   }
 
-  addMessage(BuildContext ctx, MessageEntity messageEntity) {
-    ctx.read<FirebaseStoreProvider>().add('messages', messageEntity!.toJson());
+  addMessage(BuildContext ctx, MessageEntity messageEntity) async {
+    await FirebaseStoreUtils.add('messages', messageEntity!.toJson());
   }
 }

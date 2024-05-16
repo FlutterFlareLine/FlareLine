@@ -6,7 +6,7 @@ import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flareline/core/theme/global_theme.dart';
 import 'package:flareline/pages/setting/open_ai_setting.dart';
 import 'package:flareline/provider/firebase_provider.dart';
-import 'package:flareline/provider/firebase_store_provider.dart';
+import 'package:flareline/utils/firebase_store_utils.dart';
 import 'package:flareline/provider/localization_provider.dart';
 import 'package:flareline/provider/main_provider.dart';
 import 'package:flareline/provider/openai_provider.dart';
@@ -77,7 +77,6 @@ class MyApp extends StatelessWidget {
           ChangeNotifierProvider(create: (_) => MainProvider(_)),
           ChangeNotifierProvider(create: (_) => StoreProvider(_)),
           ChangeNotifierProvider(create: (_) => FirebaseProvider(_)),
-          ChangeNotifierProvider(create: (_) => FirebaseStoreProvider(_)),
           ChangeNotifierProvider(create: (_) => LocalizationProvider(_)),
           ChangeNotifierProvider(create: (_) => OpenAIProvider(_)),
         ],

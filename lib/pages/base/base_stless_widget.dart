@@ -11,7 +11,7 @@ abstract class BaseStlessWidget<VM extends BaseProvider>
 
   VM viewModelBuilder(BuildContext context);
 
-  BaseStlessWidget({this.params});
+  BaseStlessWidget({this.params,super.key});
 
   @override
   Widget build(BuildContext context) {

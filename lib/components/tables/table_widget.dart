@@ -32,6 +32,9 @@ enum CellDataType {
 
 abstract class TableWidget<S extends BaseTableProvider>
     extends BaseStlessWidget<S> {
+
+  TableWidget({super.params,super.key});
+
   /// title
   String? title(BuildContext context) {
     return '';
@@ -53,7 +56,7 @@ abstract class TableWidget<S extends BaseTableProvider>
 
   ///actions widget
   Widget? actionWidgetsBuilder(
-      BuildContext context, TableDataRowsTableDataRows columnData) {
+      BuildContext context, TableDataRowsTableDataRows columnData, S viewModel) {
     return null;
   }
 
@@ -96,7 +99,7 @@ abstract class TableWidget<S extends BaseTableProvider>
       rows,
       viewModel,
       (BuildContext context, TableDataRowsTableDataRows columnData) {
-        return actionWidgetsBuilder(context, columnData);
+        return actionWidgetsBuilder(context, columnData, viewModel);
       },
       (BuildContext context, bool checked,
           TableDataRowsTableDataRows columnData) {
@@ -117,7 +120,7 @@ abstract class TableWidget<S extends BaseTableProvider>
           isScrollbarAlwaysShown: true,
           columns: headers.map((e) => gridColumnWidget(e)).toList(),
         )),
-        if (showPaging)
+        if (showPaging && rows.isNotEmpty)
           Container(
               height: 60,
               child: SfDataPager(
@@ -211,19 +214,24 @@ class BaseDataGridSource<F extends BaseTableProvider> extends DataGridSource {
 
   void _loadPageData(int startIndex, int endIndex) {
     if (endIndex >= list.length) {
-      endIndex = list.length - 1;
+      endIndex = list.length;
     }
     print('startIndex ${startIndex} endIndex ${endIndex}');
-    _data = list
-        .getRange(startIndex, endIndex)
-        .toList(growable: false)
-        .map<DataGridRow>((e) => DataGridRow(
-            cells: e
-                .map<DataGridCell>((item) =>
-                    DataGridCell<TableDataRowsTableDataRows>(
-                        columnName: item.columnName ?? '', value: item))
-                .toList()))
-        .toList();
+    if(list!=null && list.isNotEmpty) {
+      _data = list
+          .getRange(startIndex, endIndex)
+          .toList(growable: false)
+          .map<DataGridRow>((e) =>
+          DataGridRow(
+              cells: e
+                  .map<DataGridCell>((item) =>
+                  DataGridCell<TableDataRowsTableDataRows>(
+                      columnName: item.columnName ?? '', value: item))
+                  .toList()))
+          .toList();
+    }else{
+      _data=[];
+    }
   }
 
   List<DataGridRow> _data = [];
@@ -324,8 +332,14 @@ abstract class BaseTableProvider extends BaseProvider {
 
   @override
   void init(BuildContext context) {
-    loadData(context);
+
     super.init(context);
+  }
+
+  @override
+  void onViewCreated(BuildContext context) {
+    loadData(context);
+    super.onViewCreated(context);
   }
 
   @override
@@ -336,7 +350,7 @@ abstract class BaseTableProvider extends BaseProvider {
     }
   }
 
-  loadData(BuildContext context);
+  Future loadData(BuildContext context);
 
   Map<String, dynamic> getItemValue(String key, Map item, {String? dataType}) {
     dynamic value = item[key];
