@@ -112,13 +112,6 @@ class DictionaryTableWidget extends TableWidget<DictionaryViewModel> {
               key: UniqueKey(),
             ),
           ),
-        SizedBox(
-          width: 60,
-          child: ButtonWidget(
-            btnText: 'Delete',
-            type: ButtonType.DANGER.type,
-          ),
-        ),
       ],
     );
   }

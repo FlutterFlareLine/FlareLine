@@ -37,7 +37,7 @@ class DictionaryChildPage extends BaseStlessWidget<DictionaryEditProvider> {
       BuildContext context, DictionaryEditProvider viewModel, Widget? child) {
     return ButtonWidget(
       btnText: btnText,
-      type: ButtonType.SUCCESS.type,
+      type: ButtonType.WARN.type,
       onTap: () {
         ModalDialog.show(
             context: context,
