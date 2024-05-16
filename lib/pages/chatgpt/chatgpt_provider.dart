@@ -8,6 +8,7 @@ import 'package:flareline/provider/store_provider.dart';
 import 'package:flareline/utils/snackbar_util.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/state_manager.dart';
 import 'package:http/http.dart' as http;
 import 'package:provider/provider.dart';
@@ -261,5 +262,21 @@ class ChatGptProvider extends BaseProvider {
 
   void toggleConversation(BuildContext ctx) {
     showConversation = !showConversation;
+  }
+
+  bool? _hasCopied;
+
+  bool get hasCopied => _hasCopied ?? false;
+
+  Future<void> copy(BuildContext context, String content) async {
+    if (hasCopied) return;
+    await Clipboard.setData(ClipboardData(text: content));
+    _hasCopied = true;
+    notifyListeners();
+
+    Future.delayed(Duration(seconds: 2), () {
+      _hasCopied = false;
+      notifyListeners();
+    });
   }
 }

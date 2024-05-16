@@ -21,7 +21,7 @@ abstract class LayoutWidget extends StatelessWidget {
 
   bool get isContentScroll => true;
 
-
+  Color? get backgroundColor => null;
 
   String breakTabTitle(BuildContext context) {
     return '';
@@ -36,6 +36,7 @@ abstract class LayoutWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: backgroundColor,
       appBar: AppBar(
         toolbarHeight: 0,
       ),
@@ -81,7 +82,10 @@ abstract class LayoutWidget extends StatelessWidget {
       ],
     );
     return Column(children: [
-      if (showToolBar) ToolBarWidget(showMore: showDrawer,),
+      if (showToolBar)
+        ToolBarWidget(
+          showMore: showDrawer,
+        ),
       if (showToolBar)
         const SizedBox(
           height: 16,

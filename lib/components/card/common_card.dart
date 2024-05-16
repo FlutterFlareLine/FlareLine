@@ -7,6 +7,7 @@ class CommonCard extends StatelessWidget {
   final double? width;
   final double? height;
   final String? title;
+  final Color? color;
 
   const CommonCard(
       {super.key,
@@ -14,7 +15,8 @@ class CommonCard extends StatelessWidget {
       this.padding,
       this.width,
       this.height,
-      this.title});
+      this.title,
+      this.color});
 
   @override
   Widget build(BuildContext context) {
@@ -28,6 +30,7 @@ class CommonCard extends StatelessWidget {
           child: child,
         ));
     return Card(
+      color: color,
       child: title != null
           ? _titleWidget(
               title ?? '',

@@ -1,4 +1,3 @@
-import 'package:flareline/components/card/common_card.dart';
 import 'package:flareline/components/forms/outborder_text_form_field.dart';
 import 'package:flareline/core/theme/global_colors.dart';
 import 'package:flareline/entity/conversation_entity.dart';
@@ -8,13 +7,11 @@ import 'package:flareline/pages/chatgpt/chatgpt_provider.dart';
 import 'package:flareline/pages/layout.dart';
 import 'package:flareline/pages/setting/open_ai_setting.dart';
 import 'package:flareline/provider/store_provider.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:intl/intl.dart';
-import 'package:markdown_widget/markdown_widget.dart';
 import 'package:provider/provider.dart';
 
 class ChatGptPage extends LayoutWidget {
@@ -35,6 +32,10 @@ class ChatGptPage extends LayoutWidget {
   bool get showTitle => false;
 
   final double margin = 180;
+
+  @override
+  // TODO: implement backgroundColor
+  Color? get backgroundColor => Color(0xFF2b2b35);
 
   @override
   Widget contentDesktopWidget(BuildContext context) {
@@ -65,41 +66,40 @@ class ChatGptPage extends LayoutWidget {
               Container(
                 margin: EdgeInsets.symmetric(horizontal: margin),
                 alignment: Alignment.center,
-                child: CommonCard(
-                  padding: const EdgeInsets.all(16),
-                  child: Column(children: [
-                    Visibility(
-                      child: Column(
-                        children: [
-                          const OpenAiSetting(),
-                          const SizedBox(
-                            height: 20,
-                          ),
-                        ],
-                      ),
-                      visible: ctx.watch<ChatGptProvider>().showSettings,
+                child: Column(children: [
+                  Visibility(
+                    child: Column(
+                      children: [
+                        const OpenAiSetting(),
+                        const SizedBox(
+                          height: 20,
+                        ),
+                      ],
                     ),
-                    OutBorderTextFormField(
-                      hintText: 'Message ChatGPT...',
-                      controller: ctx.read<ChatGptProvider>().controller,
-                      textInputAction: TextInputAction.send,
-                      onFieldSubmitted: (value) {
+                    visible: ctx.watch<ChatGptProvider>().showSettings,
+                  ),
+                  OutBorderTextFormField(
+                    hintText: 'Message ChatGPT...',
+                    controller: ctx.read<ChatGptProvider>().controller,
+                    textInputAction: TextInputAction.send,
+                    textStyle: TextStyle(color: Colors.white),
+                    focusColor: GlobalColors.success,
+                    onFieldSubmitted: (value) {
+                      ctx.read<ChatGptProvider>().send(context);
+                    },
+                    suffixWidget: InkWell(
+                      child: Icon(
+                        Icons.send,
+                        color: ctx.watch<ChatGptProvider>().isLoading
+                            ? GlobalColors.border
+                            : GlobalColors.success,
+                      ),
+                      onTap: () {
                         ctx.read<ChatGptProvider>().send(context);
                       },
-                      suffixWidget: InkWell(
-                        child: Icon(
-                          Icons.send,
-                          color: ctx.watch<ChatGptProvider>().isLoading
-                              ? GlobalColors.border
-                              : GlobalColors.primary,
-                        ),
-                        onTap: () {
-                          ctx.read<ChatGptProvider>().send(context);
-                        },
-                      ),
                     ),
-                  ]),
-                ),
+                  ),
+                ]),
               ),
             ],
           );
@@ -124,17 +124,75 @@ class ChatGptPage extends LayoutWidget {
   Widget itemBuilder(BuildContext context, int index) {
     MessageEntity messageEntity =
         context.read<ChatGptProvider>().getItemMessage(index);
+
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
+      crossAxisAlignment: messageEntity.isUser
+          ? CrossAxisAlignment.end
+          : CrossAxisAlignment.start,
       children: [
         Text(
           messageEntity.isUser ? 'Question:' : 'GPT Answer:',
-          style: TextStyle(fontWeight: FontWeight.bold),
+          style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
         ),
         SizedBox(
           height: 5,
         ),
-        MarkdownBlock(data: messageEntity.content),
+        Container(
+            padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+            decoration: BoxDecoration(
+                color: messageEntity.isUser
+                    ? GlobalColors.success
+                    : Color(0xFF45454e),
+                borderRadius: BorderRadius.circular(10)),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  messageEntity.content,
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold, color: Colors.white),
+                ),
+                if (!messageEntity.isUser)
+                  SizedBox(
+                    height: 18,
+                  ),
+                if (!messageEntity.isUser)
+                  Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      InkWell(
+                        child: AnimatedSwitcher(
+                          child: Icon(
+                              context.watch<ChatGptProvider>().hasCopied
+                                  ? Icons.check
+                                  : Icons.copy_rounded,
+                              color: GlobalColors.success,
+                              size: 16,
+                              key: UniqueKey()),
+                          duration: Duration(milliseconds: 200),
+                        ),
+                        onTap: () async {
+                          context
+                              .read<ChatGptProvider>()
+                              .copy(context, messageEntity.content);
+                        },
+                      ),
+                      // SizedBox(width: 10,),
+                      // InkWell(
+                      //   child: AnimatedSwitcher(
+                      //     child: Icon(
+                      //         Icons.wordpress,
+                      //         key: UniqueKey()),
+                      //     duration: Duration(milliseconds: 200),
+                      //   ),
+                      //   onTap: () async {
+                      //
+                      //   },
+                      // ),
+                    ],
+                  )
+              ],
+            )),
         SizedBox(
           height: 20,
         ),
@@ -219,7 +277,7 @@ class ChatGptPage extends LayoutWidget {
       width: 80,
       padding: EdgeInsets.symmetric(vertical: 30),
       decoration: BoxDecoration(
-          color: GlobalColors.dark,
+          color: Color(0xFF45454e),
           borderRadius: BorderRadius.circular(10),
           border: Border.all(color: GlobalColors.gray, width: 1)),
       child: Column(
@@ -231,14 +289,18 @@ class ChatGptPage extends LayoutWidget {
               width: 35,
               height: 35,
             ),
-            onTap: (){
+            onTap: () {
               Navigator.of(ctx).pop();
             },
           ),
           SizedBox(
             height: 10,
           ),
-          Divider(color: GlobalColors.border,indent: 20,endIndent: 20,),
+          Divider(
+            color: GlobalColors.border,
+            indent: 20,
+            endIndent: 20,
+          ),
           SizedBox(
             height: 10,
           ),
@@ -278,7 +340,11 @@ class ChatGptPage extends LayoutWidget {
           SizedBox(
             height: 10,
           ),
-          Divider(color: GlobalColors.border,indent: 20,endIndent: 20,),
+          Divider(
+            color: GlobalColors.border,
+            indent: 20,
+            endIndent: 20,
+          ),
           SizedBox(
             height: 10,
           ),
@@ -289,7 +355,7 @@ class ChatGptPage extends LayoutWidget {
                   : AssetImage('assets/user/user-02.png')) as ImageProvider,
               radius: 20,
             ),
-            onTap: (){
+            onTap: () {
               Navigator.of(ctx).pushNamed('/profile');
             },
           )

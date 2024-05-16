@@ -15,6 +15,8 @@ class OutBorderTextFormField extends StatelessWidget {
   final FormFieldValidator? validator;
   final TextInputAction? textInputAction;
   final ValueChanged<String>? onFieldSubmitted;
+  final TextStyle? textStyle;
+  final Color? focusColor;
 
   const OutBorderTextFormField(
       {super.key,
@@ -30,7 +32,9 @@ class OutBorderTextFormField extends StatelessWidget {
       this.icon,
       this.validator,
       this.textInputAction,
-      this.onFieldSubmitted});
+      this.onFieldSubmitted,
+      this.textStyle,
+      this.focusColor});
 
   @override
   Widget build(BuildContext context) {
@@ -59,6 +63,7 @@ class OutBorderTextFormField extends StatelessWidget {
                   validator: validator,
                   textInputAction: textInputAction,
                   onFieldSubmitted: onFieldSubmitted,
+                  style: textStyle,
                   decoration: InputDecoration(
                     prefixIcon: icon,
                     prefixIconConstraints: BoxConstraints(
@@ -72,9 +77,9 @@ class OutBorderTextFormField extends StatelessWidget {
                     enabledBorder: const OutlineInputBorder(
                         borderSide:
                             BorderSide(color: GlobalColors.border, width: 1)),
-                    focusedBorder: const OutlineInputBorder(
+                    focusedBorder: OutlineInputBorder(
                         borderSide:
-                            BorderSide(color: GlobalColors.primary, width: 1)),
+                            BorderSide(color: (focusColor?? GlobalColors.primary), width: 1)),
                     contentPadding: const EdgeInsets.symmetric(
                       horizontal: 12,
                       vertical: 6,
