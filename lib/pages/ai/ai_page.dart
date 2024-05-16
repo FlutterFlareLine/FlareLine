@@ -26,20 +26,22 @@ class AIPage extends LayoutWidget {
   _sideListWidget(BuildContext context, bool isDark) {
     return CommonCard(
         padding: EdgeInsets.symmetric(vertical: 20),
-        child: FutureBuilder(
-            future:
-                FirebaseStoreUtils.listDicChildren('dictionary', 'aiConfigKey'),
-            builder: (context, snapshot) {
-              if (snapshot.connectionState == ConnectionState.waiting ||
-                  !snapshot.hasData) {
-                return const SizedBox.shrink();
-              }
+        child:SingleChildScrollView(
+          child:  FutureBuilder(
+              future:
+              FirebaseStoreUtils.listDicChildren('dictionary', 'aiConfigKey'),
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting ||
+                    !snapshot.hasData) {
+                  return const SizedBox.shrink();
+                }
 
-              // Decode the JSON
-              List<Map<String, dynamic>> listMenu = snapshot.data ?? [];
+                // Decode the JSON
+                List<Map<String, dynamic>> listMenu = snapshot.data ?? [];
 
-              return itemBuilder(context, listMenu, isDark);
-            }));
+                return itemBuilder(context, listMenu, isDark);
+              }),
+        ));
   }
 
   Widget itemBuilder(BuildContext context, List listMenu, bool isDark) {
