@@ -27,7 +27,8 @@ class AIPage extends LayoutWidget {
     return CommonCard(
         padding: EdgeInsets.symmetric(vertical: 20),
         child: FutureBuilder(
-            future: FirebaseStoreUtils.listDicChildren('dictionary', 'aiConfigKey'),
+            future:
+                FirebaseStoreUtils.listDicChildren('dictionary', 'aiConfigKey'),
             builder: (context, snapshot) {
               if (snapshot.connectionState == ConnectionState.waiting ||
                   !snapshot.hasData) {
@@ -36,34 +37,12 @@ class AIPage extends LayoutWidget {
 
               // Decode the JSON
               List<Map<String, dynamic>> listMenu = snapshot.data ?? [];
-              // return ListView.separated(
-              //     padding: const EdgeInsets.only(left: 20, right: 10),
-              //     itemBuilder: (ctx, index) {
-              //       return itemBuilder(ctx, index, listMenu, isDark);
-              //     },
-              //     separatorBuilder: separatorBuilder,
-              //     itemCount: listMenu.length);
-              return itemBuilder(context, 0, listMenu, isDark);
+
+              return itemBuilder(context, listMenu, isDark);
             }));
   }
 
-  Widget itemBuilder(
-      BuildContext context, int index, List listMenu, bool isDark) {
-    // var groupElement = listMenu.elementAt(index);
-    // List menuList = groupElement['menuList'];
-    //
-    // return Column(
-    //   crossAxisAlignment: CrossAxisAlignment.start,
-    //   children: [
-    //     Text(
-    //       groupElement['groupName'],
-    //       style: TextStyle(
-    //           fontSize: 20,
-    //           color: isDark ? Colors.white60 : GlobalColors.darkBlackText),
-    //     ),
-    //     const SizedBox(
-    //       height: 10,
-    //     ),
+  Widget itemBuilder(BuildContext context, List listMenu, bool isDark) {
     return Container(
       width: double.maxFinite,
       height: double.maxFinite,
@@ -74,15 +53,6 @@ class AIPage extends LayoutWidget {
         children: listMenu.map((e) => GridMenuWidget(e: e)).toList(),
       ),
     );
-    //     SizedBox(
-    //       height: 10,
-    //     ),
-    //     if (index < listMenu.length - 1) Divider(),
-    //     SizedBox(
-    //       height: 10,
-    //     ),
-    //   ],
-    // );
   }
 
   Widget separatorBuilder(BuildContext context, int index) {
@@ -110,53 +80,99 @@ class GridMenuWidget extends StatelessWidget {
 
   Widget _itemMenuWidget(BuildContext context, e) {
     bool isDark = context.watch<ThemeProvider>().isDark;
+    String configValue = e['configValue'];
+    String text = e['text'];
+
+    String? url;
+    String? desc;
+    Map<String, dynamic>? configValueJson;
+    try {
+      configValueJson = jsonDecode(configValue);
+      if (configValueJson != null) {
+        url = configValueJson['url'];
+        desc = configValueJson['desc'];
+      }
+    } catch (e) {}
 
     return InkWell(
       child: Container(
-          width: 120,
-          height: 120,
-          alignment: Alignment.center,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
+          alignment: Alignment.topLeft,
+          width: 450,
+          height: 180,
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              if (e['image'] != null)
-                Image.network(
-                  e['image'],
-                  width: 60,
-                  height: 60,
-                ),
-              const SizedBox(
-                height: 12,
+              Container(
+                width: 80,
+                height: 80,
+                alignment: Alignment.center,
+                color: GlobalColors.lightGray,
+                child: e['image'] != null
+                    ? Image.network(
+                        e['image'],
+                        width: 60,
+                        height: 60,
+                      )
+                    : SizedBox.shrink(),
               ),
-              Text(
-                e['text'],
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                    color: isDark ? Colors.white : GlobalColors.darkBlackText),
+              const SizedBox(
+                width: 12,
+              ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    text,
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      color: isDark ? Colors.white : GlobalColors.darkBlackText,
+                    ),
+                  ),
+                  SizedBox(
+                    height: 5,
+                  ),
+                  Text(
+                    url ?? configValue,
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                        color: isDark ? Colors.white : GlobalColors.success,
+                        fontSize: 12),
+                  ),
+                  SizedBox(
+                    height: 5,
+                  ),
+                  Text(
+                    desc==null||desc=='' ? text:desc,
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                        color:
+                            isDark ? Colors.white : GlobalColors.darkTextBody,
+                        fontSize: 12),
+                  )
+                ],
               ),
             ],
           )),
       onTap: () {
-        pushOrJump(context, e);
+        pushOrJump(context, url);
       },
     );
   }
 
-  pushOrJump(BuildContext context, e) async {
-    String path = e['configValue'];
-
-    String? routePath = ModalRoute.of(context)?.settings?.name;
-
-    if (path == routePath) {
-      return;
-    }
-    if (path.startsWith('http')) {
-      if (!await launchUrl(Uri.parse(path))) {
-        throw Exception('Could not launch $path');
+  pushOrJump(BuildContext context, url) async {
+    if (url.startsWith('http')) {
+      if (!await launchUrl(Uri.parse(url))) {
+        throw Exception('Could not launch $url');
       }
       return;
     }
-    Navigator.of(context).pushNamed(path);
+
+    String? routePath = ModalRoute.of(context)?.settings?.name;
+
+    if (url == routePath) {
+      return;
+    }
+    
+    Navigator.of(context).pushNamed(url);
   }
 }
