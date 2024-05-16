@@ -32,8 +32,7 @@ enum CellDataType {
 
 abstract class TableWidget<S extends BaseTableProvider>
     extends BaseStlessWidget<S> {
-
-  TableWidget({super.params,super.key});
+  TableWidget({super.params, super.key});
 
   /// title
   String? title(BuildContext context) {
@@ -55,8 +54,8 @@ abstract class TableWidget<S extends BaseTableProvider>
   bool get showPaging => true;
 
   ///actions widget
-  Widget? actionWidgetsBuilder(
-      BuildContext context, TableDataRowsTableDataRows columnData, S viewModel) {
+  Widget? actionWidgetsBuilder(BuildContext context,
+      TableDataRowsTableDataRows columnData, S viewModel) {
     return null;
   }
 
@@ -217,20 +216,19 @@ class BaseDataGridSource<F extends BaseTableProvider> extends DataGridSource {
       endIndex = list.length;
     }
     print('startIndex ${startIndex} endIndex ${endIndex}');
-    if(list!=null && list.isNotEmpty) {
+    if (list != null && list.isNotEmpty) {
       _data = list
           .getRange(startIndex, endIndex)
           .toList(growable: false)
-          .map<DataGridRow>((e) =>
-          DataGridRow(
+          .map<DataGridRow>((e) => DataGridRow(
               cells: e
                   .map<DataGridCell>((item) =>
-                  DataGridCell<TableDataRowsTableDataRows>(
-                      columnName: item.columnName ?? '', value: item))
+                      DataGridCell<TableDataRowsTableDataRows>(
+                          columnName: item.columnName ?? '', value: item))
                   .toList()))
           .toList();
-    }else{
-      _data=[];
+    } else {
+      _data = [];
     }
   }
 
@@ -332,7 +330,6 @@ abstract class BaseTableProvider extends BaseProvider {
 
   @override
   void init(BuildContext context) {
-
     super.init(context);
   }
 

@@ -100,7 +100,7 @@ class GridMenuWidget extends StatelessWidget {
       child: Container(
           alignment: Alignment.topLeft,
           width: 450,
-          height: 220,
+          height: 100,
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
