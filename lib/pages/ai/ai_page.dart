@@ -98,12 +98,15 @@ class GridMenuWidget extends StatelessWidget {
 
     return InkWell(
       child: Container(
-          alignment: Alignment.topLeft,
+          alignment: Alignment.centerLeft,
           width: 450,
           height: 100,
           child: Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
+              const SizedBox(
+                width: 10,
+              ),
               Container(
                 width: 80,
                 height: 80,
@@ -118,10 +121,11 @@ class GridMenuWidget extends StatelessWidget {
                     : SizedBox.shrink(),
               ),
               const SizedBox(
-                width: 12,
+                width: 10,
               ),
               Expanded(child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
                     text,
