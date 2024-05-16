@@ -121,18 +121,17 @@ class GridMenuWidget extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               if (e['image'] != null)
-                Container(
-                  child: Image.network(
-                    e['image'],
-                    width: 60,
-                    height: 60,
-                  ),
+                Image.network(
+                  e['image'],
+                  width: 60,
+                  height: 60,
                 ),
-              SizedBox(
+              const SizedBox(
                 height: 12,
               ),
               Text(
                 e['text'],
+                textAlign: TextAlign.center,
                 style: TextStyle(
                     color: isDark ? Colors.white : GlobalColors.darkBlackText),
               ),
