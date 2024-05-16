@@ -175,7 +175,7 @@ class DictionaryViewModel extends BaseTableProvider {
 
     final query = await FirebaseStoreUtils.db
         .collection('dictionary')
-        .where('belongUid', isEqualTo: email)
+        // .where('belongUid', isEqualTo: email)
         .where('parentId', isEqualTo: parentId)
         .get();
 

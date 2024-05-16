@@ -39,6 +39,7 @@ class FirebaseStoreUtils {
 
     final query = await FirebaseStoreUtils.db
         .collection(collectionName)
+    // .where('belongUid', isEqualTo: email)
         .where('parentId', isEqualTo: configKeyData['id'])
         // .orderBy('orderNum')
         .get();
