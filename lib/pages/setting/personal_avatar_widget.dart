@@ -97,7 +97,6 @@ class PersonalAvatarWidget extends StatelessWidget {
                 width: 60,
                 child: ButtonWidget(
                   btnText: AppLocalizations.of(context)!.cancel,
-                  isPrimary: false,
                 ),
               ),
               const SizedBox(
@@ -106,6 +105,7 @@ class PersonalAvatarWidget extends StatelessWidget {
               SizedBox(
                   width: 60,
                   child: ButtonWidget(
+                      type: ButtonType.PRIMARY.type,
                       btnText: AppLocalizations.of(context)!.save)),
             ],
           )

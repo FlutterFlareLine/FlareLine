@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 class SnackBarUtil {
   static showSnack(BuildContext context, String msg, {Color? color}) {
     SnackBar snackBar = SnackBar(
-      backgroundColor: color ?? GlobalColors.red,
+      backgroundColor: color ?? GlobalColors.danger,
       content: Text(msg),
     );
 
@@ -12,6 +12,6 @@ class SnackBarUtil {
   }
 
   static showSuccess(BuildContext context, String msg) {
-    showSnack(context, msg, color: GlobalColors.green);
+    showSnack(context, msg, color: GlobalColors.success);
   }
 }

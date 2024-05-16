@@ -91,6 +91,7 @@ class ResetPwdWidget extends LayoutWidget {
           ),
           ButtonWidget(
             btnText: AppLocalizations.of(context)!.sendPwdResetLink,
+            type: ButtonType.PRIMARY.type,
             onTap: () {
               Navigator.of(context).popAndPushNamed("/");
             },

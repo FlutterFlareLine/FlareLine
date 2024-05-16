@@ -145,6 +145,7 @@ class SignInWidget extends StatelessWidget {
               height: 20,
             ),
             ButtonWidget(
+              type: ButtonType.PRIMARY.type,
               btnText: AppLocalizations.of(context)!.signIn,
               onTap: () {
                 context.read<SignInProvider>().signIn(context);
@@ -186,7 +187,6 @@ class SignInWidget extends StatelessWidget {
               onTap: () {
                 context.read<SignInProvider>().signInWithGoogle(context);
               },
-              isPrimary: false,
             ),
             const SizedBox(
               height: 20,
@@ -203,7 +203,6 @@ class SignInWidget extends StatelessWidget {
               onTap: () {
                 context.read<SignInProvider>().signInWithGithub(context);
               },
-              isPrimary: false,
             ),
             const SizedBox(
               height: 20,

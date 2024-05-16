@@ -52,7 +52,6 @@ class ModalDialog {
                                   width: 120,
                                   child: ButtonWidget(
                                     btnText: 'Cancel',
-                                    color: GlobalColors.gray,
                                     textColor: GlobalColors.darkBlackText,
                                     onTap: () {
                                       Navigator.of(context).pop();
@@ -68,6 +67,7 @@ class ModalDialog {
                                   child: ButtonWidget(
                                     btnText: 'Save',
                                     onTap: onSaveTap,
+                                    type: ButtonType.PRIMARY.type,
                                   ),
                                 )
                               ],

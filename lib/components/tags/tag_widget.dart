@@ -31,13 +31,13 @@ class TagWidget extends StatelessWidget {
     Color? textColor;
     switch (tagType) {
       case TagType.Success:
-        textColor = GlobalColors.green;
+        textColor = GlobalColors.success;
         break;
       case TagType.Error:
-        textColor = GlobalColors.red;
+        textColor = GlobalColors.danger;
         break;
       case TagType.Warn:
-        textColor = GlobalColors.yellow;
+        textColor = GlobalColors.warn;
         break;
       case TagType.Primary:
         textColor = GlobalColors.primary;
@@ -46,7 +46,7 @@ class TagWidget extends StatelessWidget {
         textColor = GlobalColors.secondary;
         break;
       default:
-        textColor = color ?? GlobalColors.red;
+        textColor = color ?? GlobalColors.danger;
     }
     return textColor;
   }

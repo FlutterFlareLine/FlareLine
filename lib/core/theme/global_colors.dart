@@ -21,19 +21,25 @@ class GlobalColors{
 
   static const Color darkBlackText = Color(0xFF1C2434);
 
-  static const Color green = Color(0xFF10B981);
+  static const Color normal = Color(0xFFEFF4FB);
 
-  static const Color yellow = Color(0xFFF0950C);
+  static const Color info = Color(0xFF8A99AF);
+
+  static const Color success = Color(0xFF10B981);
+
+  static const Color warn = Color(0xFFF0950C);
+
+  static const Color danger = Color(0xFFFB5454);
 
   static const Color gray = Color(0xFFEFF4FB);
-
-  static const Color red = Color(0xFFFB5454);
 
   static const Color dark = Color(0xFF1C2434);
 
   static const Color sideBar = Color(0xFF1C2434);
 
   static const Color lightGray = Color(0xFFF7F9FC);
+
+
 }
 
 

@@ -29,7 +29,7 @@ class CalendarPage extends LayoutWidget {
             // dayFormat: 'EEEE',
             agendaViewHeight: 200,
             agendaStyle: AgendaStyle(
-                appointmentTextStyle: TextStyle(color: GlobalColors.red))),
+                appointmentTextStyle: TextStyle(color: GlobalColors.danger))),
         viewHeaderHeight: 60,
         headerHeight: 60,
         viewHeaderStyle: const ViewHeaderStyle(

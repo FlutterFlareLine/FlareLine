@@ -1,4 +1,3 @@
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -119,7 +118,10 @@ class FormLayoutPage extends LayoutWidget {
                 const SizedBox(
                   height: 16,
                 ),
-                ButtonWidget(btnText: AppLocalizations.of(context)!.sendMessage)
+                ButtonWidget(
+                  btnText: AppLocalizations.of(context)!.sendMessage,
+                  type: ButtonType.PRIMARY.type,
+                )
               ])),
         ),
       ],
@@ -176,7 +178,7 @@ class FormLayoutPage extends LayoutWidget {
             const SizedBox(
               height: 16,
             ),
-            ButtonWidget(btnText: AppLocalizations.of(context)!.signIn)
+            ButtonWidget(btnText: AppLocalizations.of(context)!.signIn,type: ButtonType.PRIMARY.type,)
           ])),
     );
   }
@@ -210,7 +212,7 @@ class FormLayoutPage extends LayoutWidget {
             const SizedBox(
               height: 16,
             ),
-            ButtonWidget(btnText: AppLocalizations.of(context)!.signUp)
+            ButtonWidget(btnText: AppLocalizations.of(context)!.signUp,type: ButtonType.PRIMARY.type,)
           ])),
     );
   }

@@ -51,6 +51,7 @@ class OpenAiSetting extends StatelessWidget {
               ),
               ButtonWidget(
                 btnText: AppLocalizations.of(context)!.save,
+                type: ButtonType.PRIMARY.type,
                 onTap: () {
                   context.read<OpenAIProvider>().saveKey(context);
                 },
@@ -65,7 +66,7 @@ class OpenAiSetting extends StatelessWidget {
       size: 30,
       text: e.id,
       value: e.id,
-      color: GlobalColors.green,
+      color: GlobalColors.success,
       checked: isChecked,
       onChanged: (checked, v) {
         ctx.read<OpenAIProvider>().checkedId = v;

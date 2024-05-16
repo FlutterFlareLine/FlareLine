@@ -148,7 +148,7 @@ class _DataProvider extends ChangeNotifier {
         time: 12,
         textCount: 3,
         dot: 3,
-        badgeColor: GlobalColors.red),
+        badgeColor: GlobalColors.danger),
     Conversation(
         avatar: "/user/user-02.png",
         name: "Henry Fisher",
@@ -156,7 +156,7 @@ class _DataProvider extends ChangeNotifier {
         time: 12,
         textCount: 0,
         dot: 1,
-        badgeColor: GlobalColors.green),
+        badgeColor: GlobalColors.success),
     Conversation(
         avatar: "/user/user-04.png",
         name: "Jhon Doe",
@@ -164,7 +164,7 @@ class _DataProvider extends ChangeNotifier {
         time: 32,
         textCount: 0,
         dot: 3,
-        badgeColor: GlobalColors.yellow),
+        badgeColor: GlobalColors.warn),
     Conversation(
         avatar: "/user/user-05.png",
         name: "Jane Doe",

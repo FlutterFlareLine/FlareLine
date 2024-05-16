@@ -57,6 +57,7 @@ class DictionaryTableWidget
             width: 120,
             child: ButtonWidget(
               btnText: 'Refresh',
+              type: ButtonType.SUCCESS.type,
               onTap: () {
                 viewModel.loadData(context);
               },
@@ -104,7 +105,7 @@ class DictionaryTableWidget
           width: 60,
           child: ButtonWidget(
             btnText: 'Delete',
-            color: GlobalColors.red,
+            type: ButtonType.DANGER.type,
           ),
         ),
       ],

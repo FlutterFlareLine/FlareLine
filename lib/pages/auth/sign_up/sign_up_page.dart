@@ -144,6 +144,7 @@ class SignUpWidget extends StatelessWidget {
             height: 20,
           ),
           ButtonWidget(
+            type: ButtonType.PRIMARY.type,
             btnText: AppLocalizations.of(context)!.createAccount,
             onTap: () {
               context.read<SignUpProvider>().signUp(context);

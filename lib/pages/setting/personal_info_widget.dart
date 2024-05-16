@@ -74,15 +74,16 @@ class PersonalInfoWidget extends StatelessWidget {
                 width: 60,
                 child: ButtonWidget(
                   btnText: AppLocalizations.of(context)!.cancel,
-                  isPrimary: false,
                 )),
             const SizedBox(
               width: 12,
             ),
             SizedBox(
                 width: 60,
-                child:
-                    ButtonWidget(btnText: AppLocalizations.of(context)!.save)),
+                child: ButtonWidget(
+                  btnText: AppLocalizations.of(context)!.save,
+                  type: ButtonType.PRIMARY.type,
+                )),
           ],
         )
       ]),

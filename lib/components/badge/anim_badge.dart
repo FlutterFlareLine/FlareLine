@@ -12,12 +12,12 @@ class AnimBadge extends StatelessWidget {
   Widget build(BuildContext context) {
     return AvatarGlow(
       animate: true,
-      glowColor: color ?? GlobalColors.red,
+      glowColor: color ?? GlobalColors.danger,
       child: Material(
         elevation: 8.0,
         shape: const CircleBorder(),
         child: CircleAvatar(
-          backgroundColor: color ?? GlobalColors.red,
+          backgroundColor: color ?? GlobalColors.danger,
           radius: 4.0,
         ),
       ),

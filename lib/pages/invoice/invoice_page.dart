@@ -167,14 +167,14 @@ class InvoicePage extends LayoutWidget {
               const Spacer(),
               SizedBox(
                 width: 120,
-                child: ButtonWidget(btnText: 'Download Invoice'),
+                child: ButtonWidget(btnText: 'Download Invoice',type: ButtonType.PRIMARY.type,),
               ),
               const SizedBox(
                 width: 10,
               ),
               SizedBox(
                   width: 120,
-                  child: ButtonWidget(btnText: 'Send Invoice')),
+                  child: ButtonWidget(btnText: 'Send Invoice',type: ButtonType.PRIMARY.type,)),
             ])
           ]),
         ));

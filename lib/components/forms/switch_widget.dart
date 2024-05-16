@@ -17,7 +17,7 @@ class SwitchWidget extends StatelessWidget {
         builder: (ctx, checked, child) {
           return Switch(
               value: checked,
-              activeColor: GlobalColors.green,
+              activeColor: GlobalColors.success,
               inactiveThumbColor:GlobalColors.darkTextBody,
               inactiveTrackColor:GlobalColors.darkText,
               onChanged: (r) {

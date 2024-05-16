@@ -186,7 +186,7 @@ class ToolBarWidget extends StatelessWidget {
               Consumer<LocalizationProvider>(builder: (ctx, provider, child) {
             return ButtonWidget(
               btnText: e.languageCode,
-              isPrimary: e.languageCode == provider.languageCode,
+              type: e.languageCode == provider.languageCode?ButtonType.PRIMARY.type:null,
               onTap: () {
                 context.read<LocalizationProvider>().locale = e;
               },
