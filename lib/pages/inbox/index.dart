@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:flareline/components/card/common_card.dart';
+import 'package:flareline_uikit/components/card/common_card.dart';
 import 'package:flareline/pages/layout.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 

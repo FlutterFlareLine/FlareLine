@@ -1,105 +1,14 @@
-import 'package:flareline/components/sidebar/side_bar.dart';
 import 'package:flareline/components/toolbar/toolbar.dart';
-import 'package:flareline/routes.dart';
+import 'package:flareline_uikit/widget/flareline_layout.dart';
 import 'package:flutter/material.dart';
 
-import 'package:flareline/components/breaktab.dart';
-import 'package:responsive_builder/responsive_builder.dart';
-
-abstract class LayoutWidget extends StatelessWidget {
+abstract class LayoutWidget extends FlarelineLayoutWidget {
   const LayoutWidget({super.key});
 
-  bool get showTitle => true;
-
-  bool get isAlignCenter => false;
-
-  bool get showSideBar => true;
-
-  bool get showToolBar => true;
-
-  bool get showDrawer => false;
-
-  bool get isContentScroll => true;
-
-  Color? get backgroundColor => null;
-
-  String breakTabTitle(BuildContext context) {
-    return '';
-  }
-
-  Widget contentDesktopWidget(BuildContext context);
-
-  Widget contentMobileWidget(BuildContext context) {
-    return contentDesktopWidget(context);
-  }
-
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: backgroundColor,
-      appBar: AppBar(
-        toolbarHeight: 0,
-      ),
-      body: ResponsiveBuilder(
-        builder: (context, sizingInformation) {
-          // Check the sizing information here and return your UI
-          if (sizingInformation.deviceScreenType == DeviceScreenType.desktop) {
-            return Row(
-              children: [
-                if (showSideBar) const SideBarWidger(),
-                Expanded(child: rightContentWidget(context))
-              ],
-            );
-          }
-
-          return rightContentWidget(context);
-        },
-      ),
-      drawer: const SideBarWidger(),
+  Widget? toolbarWidget(BuildContext context, bool showDrawer) {
+    return ToolBarWidget(
+      showMore: showDrawer,
     );
-  }
-
-  Widget rightContentWidget(BuildContext context) {
-    Widget contentWidget = Column(
-      children: [
-        if (showTitle) BreakTab(breakTabTitle(context)),
-        if (showTitle)
-          const SizedBox(
-            height: 10,
-          ),
-        isContentScroll
-            ? ScreenTypeLayout.builder(
-                desktop: contentDesktopWidget,
-                mobile: contentMobileWidget,
-                tablet: contentMobileWidget,
-              )
-            : Expanded(
-                child: ScreenTypeLayout.builder(
-                desktop: contentDesktopWidget,
-                mobile: contentMobileWidget,
-                tablet: contentMobileWidget,
-              ))
-      ],
-    );
-    return Column(children: [
-      if (showToolBar)
-        ToolBarWidget(
-          showMore: showDrawer,
-        ),
-      if (showToolBar)
-        const SizedBox(
-          height: 16,
-        ),
-      Expanded(
-          child: Container(
-        width: double.maxFinite,
-        height: double.maxFinite,
-        alignment: isAlignCenter ? Alignment.center : null,
-        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
-        child: isContentScroll
-            ? SingleChildScrollView(child: contentWidget)
-            : contentWidget,
-      ))
-    ]);
   }
 }

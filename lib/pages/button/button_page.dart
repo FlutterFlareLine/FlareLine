@@ -2,8 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 
-import 'package:flareline/components/buttons/button_widget.dart';
-import 'package:flareline/components/card/title_card.dart';
+import 'package:flareline_uikit/components/buttons/button_widget.dart';
+import 'package:flareline_uikit/components/card/title_card.dart';
 import 'package:flareline/pages/layout.dart';
 import 'package:flareline/core/theme/global_colors.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -90,7 +90,7 @@ class ButtonPage extends LayoutWidget {
               child: ButtonWidget(
                 btnText: 'Primary',
                 borderRadius: 0,
-                type: ButtonType.PRIMARY.type,
+                type: ButtonType.primary.type,
               ),
             ),
             SizedBox(
@@ -98,7 +98,7 @@ class ButtonPage extends LayoutWidget {
               child: ButtonWidget(
                 btnText: 'Primary',
                 borderRadius: 5,
-                type: ButtonType.PRIMARY.type,
+                type: ButtonType.primary.type,
               ),
             ),
             SizedBox(
@@ -106,7 +106,7 @@ class ButtonPage extends LayoutWidget {
               child: ButtonWidget(
                 btnText: 'Primary',
                 borderRadius: 30,
-                type: ButtonType.PRIMARY.type,
+                type: ButtonType.primary.type,
               ),
             ),
             SizedBox(
@@ -132,7 +132,7 @@ class ButtonPage extends LayoutWidget {
               width: 100,
               child: ButtonWidget(
                 btnText: 'Success',
-                type: ButtonType.SUCCESS.type,
+                type: ButtonType.success.type,
                 borderRadius: 0,
               ),
             ),
@@ -140,7 +140,7 @@ class ButtonPage extends LayoutWidget {
               width: 100,
               child: ButtonWidget(
                 btnText: 'Success',
-                type: ButtonType.SUCCESS.type,
+                type: ButtonType.success.type,
                 borderRadius: 5,
               ),
             ),
@@ -148,7 +148,7 @@ class ButtonPage extends LayoutWidget {
               width: 100,
               child: ButtonWidget(
                 btnText: 'Success',
-                type: ButtonType.SUCCESS.type,
+                type: ButtonType.success.type,
                 borderRadius: 30,
               ),
             ),
@@ -175,7 +175,7 @@ class ButtonPage extends LayoutWidget {
               width: 100,
               child: ButtonWidget(
                 btnText: 'Info',
-                type: ButtonType.INFO.type,
+                type: ButtonType.info.type,
                 borderRadius: 0,
               ),
             ),
@@ -183,7 +183,7 @@ class ButtonPage extends LayoutWidget {
               width: 100,
               child: ButtonWidget(
                 btnText: 'Info',
-                type: ButtonType.INFO.type,
+                type: ButtonType.info.type,
                 borderRadius: 5,
               ),
             ),
@@ -191,7 +191,7 @@ class ButtonPage extends LayoutWidget {
               width: 100,
               child: ButtonWidget(
                 btnText: 'Info',
-                type: ButtonType.INFO.type,
+                type: ButtonType.info.type,
                 borderRadius: 30,
               ),
             ),
@@ -218,7 +218,7 @@ class ButtonPage extends LayoutWidget {
               width: 100,
               child: ButtonWidget(
                 btnText: 'Warn',
-                type: ButtonType.WARN.type,
+                type: ButtonType.warn.type,
                 borderRadius: 0,
               ),
             ),
@@ -226,7 +226,7 @@ class ButtonPage extends LayoutWidget {
               width: 100,
               child: ButtonWidget(
                 btnText: 'Warn',
-                type: ButtonType.WARN.type,
+                type: ButtonType.warn.type,
                 borderRadius: 5,
               ),
             ),
@@ -234,7 +234,7 @@ class ButtonPage extends LayoutWidget {
               width: 100,
               child: ButtonWidget(
                 btnText: 'Warn',
-                type: ButtonType.WARN.type,
+                type: ButtonType.warn.type,
                 borderRadius: 30,
               ),
             ),
@@ -261,7 +261,7 @@ class ButtonPage extends LayoutWidget {
               width: 100,
               child: ButtonWidget(
                 btnText: 'Danger',
-                type: ButtonType.DANGER.type,
+                type: ButtonType.danger.type,
                 borderRadius: 0,
               ),
             ),
@@ -269,7 +269,7 @@ class ButtonPage extends LayoutWidget {
               width: 100,
               child: ButtonWidget(
                 btnText: 'Danger',
-                type: ButtonType.DANGER.type,
+                type: ButtonType.danger.type,
                 borderRadius: 5,
               ),
             ),
@@ -277,7 +277,7 @@ class ButtonPage extends LayoutWidget {
               width: 100,
               child: ButtonWidget(
                 btnText: 'Danger',
-                type: ButtonType.DANGER.type,
+                type: ButtonType.danger.type,
                 borderRadius: 30,
               ),
             ),
@@ -304,7 +304,7 @@ class ButtonPage extends LayoutWidget {
               width: 100,
               child: ButtonWidget(
                 btnText: 'Dark',
-                type: ButtonType.DARK.type,
+                type: ButtonType.dark.type,
                 borderRadius: 0,
               ),
             ),
@@ -312,7 +312,7 @@ class ButtonPage extends LayoutWidget {
               width: 100,
               child: ButtonWidget(
                 btnText: 'Dark',
-                type: ButtonType.DARK.type,
+                type: ButtonType.dark.type,
                 borderRadius: 5,
               ),
             ),
@@ -320,7 +320,7 @@ class ButtonPage extends LayoutWidget {
               width: 100,
               child: ButtonWidget(
                 btnText: 'Dark',
-                type: ButtonType.DARK.type,
+                type: ButtonType.dark.type,
                 borderRadius: 30,
               ),
             ),
@@ -417,7 +417,7 @@ class ButtonPage extends LayoutWidget {
                   color: Colors.white,
                 ),
                 btnText: 'Primary With Icon',
-                type: ButtonType.PRIMARY.type,
+                type: ButtonType.primary.type,
                 borderRadius: 0,
               ),
             ),
@@ -429,7 +429,7 @@ class ButtonPage extends LayoutWidget {
                   color: Colors.white,
                 ),
                 btnText: 'Primary With Icon',
-                type: ButtonType.PRIMARY.type,
+                type: ButtonType.primary.type,
                 borderRadius: 5,
               ),
             ),
@@ -441,7 +441,7 @@ class ButtonPage extends LayoutWidget {
                   color: Colors.white,
                 ),
                 btnText: 'Primary With Icon',
-                type: ButtonType.PRIMARY.type,
+                type: ButtonType.primary.type,
                 borderRadius: 30,
               ),
             ),
@@ -476,7 +476,7 @@ class ButtonPage extends LayoutWidget {
                   color: Colors.white,
                 ),
                 btnText: 'Success With Icon',
-                type: ButtonType.SUCCESS.type,
+                type: ButtonType.success.type,
                 borderRadius: 0,
               ),
             ),
@@ -488,7 +488,7 @@ class ButtonPage extends LayoutWidget {
                   color: Colors.white,
                 ),
                 btnText: 'Success With Icon',
-                type: ButtonType.SUCCESS.type,
+                type: ButtonType.success.type,
                 borderRadius: 5,
               ),
             ),
@@ -500,7 +500,7 @@ class ButtonPage extends LayoutWidget {
                   color: Colors.white,
                 ),
                 btnText: 'Success With Icon',
-                type: ButtonType.SUCCESS.type,
+                type: ButtonType.success.type,
                 borderRadius: 30,
               ),
             ),
@@ -535,7 +535,7 @@ class ButtonPage extends LayoutWidget {
                   color: Colors.white,
                 ),
                 btnText: 'Info With Icon',
-                type: ButtonType.INFO.type,
+                type: ButtonType.info.type,
                 borderRadius: 0,
               ),
             ),
@@ -547,7 +547,7 @@ class ButtonPage extends LayoutWidget {
                   color: Colors.white,
                 ),
                 btnText: 'Info With Icon',
-                type: ButtonType.INFO.type,
+                type: ButtonType.info.type,
                 borderRadius: 5,
               ),
             ),
@@ -559,7 +559,7 @@ class ButtonPage extends LayoutWidget {
                   color: Colors.white,
                 ),
                 btnText: 'Info With Icon',
-                type: ButtonType.INFO.type,
+                type: ButtonType.info.type,
                 borderRadius: 30,
               ),
             ),
@@ -594,7 +594,7 @@ class ButtonPage extends LayoutWidget {
                   color: Colors.white,
                 ),
                 btnText: 'Warn With Icon',
-                type: ButtonType.WARN.type,
+                type: ButtonType.warn.type,
                 borderRadius: 0,
               ),
             ),
@@ -606,7 +606,7 @@ class ButtonPage extends LayoutWidget {
                   color: Colors.white,
                 ),
                 btnText: 'Warn With Icon',
-                type: ButtonType.WARN.type,
+                type: ButtonType.warn.type,
                 borderRadius: 5,
               ),
             ),
@@ -618,7 +618,7 @@ class ButtonPage extends LayoutWidget {
                   color: Colors.white,
                 ),
                 btnText: 'Warn With Icon',
-                type: ButtonType.WARN.type,
+                type: ButtonType.warn.type,
                 borderRadius: 30,
               ),
             ),
@@ -653,7 +653,7 @@ class ButtonPage extends LayoutWidget {
                   color: Colors.white,
                 ),
                 btnText: 'Danger With Icon',
-                type: ButtonType.DANGER.type,
+                type: ButtonType.danger.type,
                 borderRadius: 0,
               ),
             ),
@@ -665,7 +665,7 @@ class ButtonPage extends LayoutWidget {
                   color: Colors.white,
                 ),
                 btnText: 'Danger With Icon',
-                type: ButtonType.DANGER.type,
+                type: ButtonType.danger.type,
                 borderRadius: 5,
               ),
             ),
@@ -677,7 +677,7 @@ class ButtonPage extends LayoutWidget {
                   color: Colors.white,
                 ),
                 btnText: 'Danger With Icon',
-                type: ButtonType.DANGER.type,
+                type: ButtonType.danger.type,
                 borderRadius: 30,
               ),
             ),
@@ -712,7 +712,7 @@ class ButtonPage extends LayoutWidget {
                   color: Colors.white,
                 ),
                 btnText: 'Dark With Icon',
-                type: ButtonType.DARK.type,
+                type: ButtonType.dark.type,
                 borderRadius: 0,
               ),
             ),
@@ -724,7 +724,7 @@ class ButtonPage extends LayoutWidget {
                   color: Colors.white,
                 ),
                 btnText: 'Dark With Icon',
-                type: ButtonType.DARK.type,
+                type: ButtonType.dark.type,
                 borderRadius: 5,
               ),
             ),
@@ -736,7 +736,7 @@ class ButtonPage extends LayoutWidget {
                   color: Colors.white,
                 ),
                 btnText: 'Dark With Icon',
-                type: ButtonType.DARK.type,
+                type: ButtonType.dark.type,
                 borderRadius: 30,
               ),
             ),

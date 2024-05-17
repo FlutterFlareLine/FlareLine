@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flareline/components/card/common_card.dart';
+import 'package:flareline_uikit/components/card/common_card.dart';
 import 'package:flareline/components/charts/bar_chart.dart';
 import 'package:flareline/components/charts/line_chart.dart';
 import 'package:responsive_builder/responsive_builder.dart';

@@ -1,13 +1,13 @@
 import 'package:calendar_date_picker2/calendar_date_picker2.dart';
-import 'package:flareline/components/forms/checkbox_widget.dart';
+import 'package:flareline_uikit/components/forms/checkbox_widget.dart';
 import 'package:flareline/core/theme/global_colors.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-import 'package:flareline/components/card/common_card.dart';
-import 'package:flareline/components/forms/form_file_picker.dart';
-import 'package:flareline/components/forms/outborder_text_form_field.dart';
+import 'package:flareline_uikit/components/card/common_card.dart';
+import 'package:flareline_uikit/components/forms/form_file_picker.dart';
+import 'package:flareline_uikit/components/forms/outborder_text_form_field.dart';
 import 'package:flareline/pages/layout.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -312,7 +312,7 @@ class FormElementsPage extends LayoutWidget {
                         children: [
                           CheckBoxWidget(
                             text: 'Success',
-                            color: GlobalColors.success,
+                            checkedColor: GlobalColors.success,
                             size: 30,
                             onChanged: (checked, v) {},
                           ),
@@ -321,7 +321,7 @@ class FormElementsPage extends LayoutWidget {
                           ),
                           CheckBoxWidget(
                             text: 'Error',
-                            color: GlobalColors.danger,
+                            checkedColor: GlobalColors.danger,
                             size: 30,
                             onChanged: (checked, v) {},
                           ),
@@ -330,7 +330,7 @@ class FormElementsPage extends LayoutWidget {
                           ),
                           CheckBoxWidget(
                             text: 'Warn',
-                            color: GlobalColors.warn,
+                            checkedColor: GlobalColors.warn,
                             size: 30,
                             onChanged: (checked, v) {},
                           ),
@@ -339,7 +339,7 @@ class FormElementsPage extends LayoutWidget {
                           ),
                           CheckBoxWidget(
                             text: 'Primary',
-                            color: GlobalColors.primary,
+                            checkedColor: GlobalColors.primary,
                             size: 30,
                             onChanged: (checked, v) {},
                           ),
@@ -348,7 +348,7 @@ class FormElementsPage extends LayoutWidget {
                           ),
                           CheckBoxWidget(
                             text: 'Info',
-                            color: GlobalColors.darkTextBody,
+                            checkedColor: GlobalColors.darkTextBody,
                             size: 30,
                             onChanged: (checked, v) {},
                           ),

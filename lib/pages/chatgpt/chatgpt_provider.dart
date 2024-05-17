@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dart_openai/dart_openai.dart';
 import 'package:flareline/entity/conversation_entity.dart';
 import 'package:flareline/entity/message_entity.dart';
-import 'package:flareline/provider/base_provider.dart';
+import 'package:flareline_uikit/service/base_provider.dart';
 import 'package:flareline/utils/firebase_store_utils.dart';
 import 'package:flareline/provider/store_provider.dart';
 import 'package:flareline/utils/snackbar_util.dart';

@@ -1,14 +1,11 @@
 import 'dart:io';
 
-import 'package:fast_cached_network_image/fast_cached_network_image.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flareline/core/theme/global_theme.dart';
-import 'package:flareline/pages/setting/open_ai_setting.dart';
 import 'package:flareline/provider/firebase_provider.dart';
-import 'package:flareline/utils/firebase_store_utils.dart';
 import 'package:flareline/provider/localization_provider.dart';
-import 'package:flareline/provider/main_provider.dart';
+import 'package:flareline_uikit/service/main_provider.dart';
 import 'package:flareline/provider/openai_provider.dart';
 import 'package:flareline/provider/store_provider.dart';
 import 'package:flareline/provider/theme_provider.dart';
@@ -41,8 +38,6 @@ void main() async {
   FirebaseUIAuth.configureProviders([
     EmailAuthProvider(),
   ]);
-
-  await FastCachedImageConfig.init(clearCacheAfter: const Duration(days: 365));
 
   if (GetPlatform.isDesktop && !GetPlatform.isWeb) {
     await windowManager.ensureInitialized();

@@ -1,4 +1,4 @@
-import 'package:flareline/components/card/common_card.dart';
+import 'package:flareline_uikit/components/card/common_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flareline/pages/layout.dart';
 import 'package:flareline/core/theme/global_colors.dart';

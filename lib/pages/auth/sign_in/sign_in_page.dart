@@ -3,9 +3,9 @@ import 'package:flareline/provider/firebase_provider.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_svg/svg.dart';
-import 'package:flareline/components/buttons/button_widget.dart';
-import 'package:flareline/components/card/common_card.dart';
-import 'package:flareline/components/forms/outborder_text_form_field.dart';
+import 'package:flareline_uikit/components/buttons/button_widget.dart';
+import 'package:flareline_uikit/components/card/common_card.dart';
+import 'package:flareline_uikit/components/forms/outborder_text_form_field.dart';
 import 'package:flareline/core/theme/global_colors.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
@@ -145,7 +145,7 @@ class SignInWidget extends StatelessWidget {
               height: 20,
             ),
             ButtonWidget(
-              type: ButtonType.PRIMARY.type,
+              type: ButtonType.primary.type,
               btnText: AppLocalizations.of(context)!.signIn,
               onTap: () {
                 context.read<SignInProvider>().signIn(context);

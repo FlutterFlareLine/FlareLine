@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'package:flareline/components/buttons/button_widget.dart';
-import 'package:flareline/components/card/common_card.dart';
+import 'package:flareline_uikit/components/buttons/button_widget.dart';
+import 'package:flareline_uikit/components/card/common_card.dart';
 import 'package:flareline/pages/layout.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -167,14 +167,14 @@ class InvoicePage extends LayoutWidget {
               const Spacer(),
               SizedBox(
                 width: 120,
-                child: ButtonWidget(btnText: 'Download Invoice',type: ButtonType.PRIMARY.type,),
+                child: ButtonWidget(btnText: 'Download Invoice',type: ButtonType.primary.type,),
               ),
               const SizedBox(
                 width: 10,
               ),
               SizedBox(
                   width: 120,
-                  child: ButtonWidget(btnText: 'Send Invoice',type: ButtonType.PRIMARY.type,)),
+                  child: ButtonWidget(btnText: 'Send Invoice',type: ButtonType.primary.type,)),
             ])
           ]),
         ));

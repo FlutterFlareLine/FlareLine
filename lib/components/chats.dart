@@ -1,8 +1,9 @@
-import 'package:flareline/components/badge/anim_badge.dart';
+
 import 'package:flareline/core/theme/global_colors.dart';
+import 'package:flareline_uikit/components/badge/anim_badge.dart';
 import 'package:flutter/material.dart';
 
-import 'package:flareline/components/card/common_card.dart';
+import 'package:flareline_uikit/components/card/common_card.dart';
 import 'package:provider/provider.dart';
 
 class ChatsWidget extends StatelessWidget {
@@ -71,7 +72,7 @@ class ChatsWidget extends StatelessWidget {
                 Align(
                   alignment: Alignment.bottomRight,
                   child: AnimBadge(
-                    color: conversation.badgeColor,
+                    glowColor: conversation.badgeColor,
                   ),
                 )
               ],

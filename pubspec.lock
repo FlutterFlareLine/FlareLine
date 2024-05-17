@@ -313,14 +313,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.0.0"
-  dio:
-    dependency: transitive
-    description:
-      name: dio
-      sha256: "11e40df547d418cc0c4900a9318b26304e665da6fa4755399a9ff9efd09034b5"
-      url: "https://pub.dev"
-    source: hosted
-    version: "5.4.3+1"
   email_validator:
     dependency: transitive
     description:
@@ -353,14 +345,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.0"
-  fast_cached_network_image:
-    dependency: "direct main"
-    description:
-      name: fast_cached_network_image
-      sha256: "91f1d48d10e2916b83a1e7545c1eaf752f85b32acfb1473be1f9fa51d73afef0"
-      url: "https://pub.dev"
-    source: hosted
-    version: "1.2.9"
   fetch_api:
     dependency: transitive
     description:
@@ -601,6 +585,13 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.1.0"
+  flareline_uikit:
+    dependency: "direct main"
+    description:
+      path: flareline_uikit
+      relative: true
+    source: path
+    version: "0.0.1"
   flex_color_scheme:
     dependency: "direct main"
     description:
@@ -933,22 +924,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.7.0"
-  hive:
-    dependency: transitive
-    description:
-      name: hive
-      sha256: "8dcf6db979d7933da8217edcec84e9df1bdb4e4edc7fc77dbd5aa74356d6d941"
-      url: "https://pub.dev"
-    source: hosted
-    version: "2.2.3"
-  hive_flutter:
-    dependency: transitive
-    description:
-      name: hive_flutter
-      sha256: dca1da446b1d808a51689fb5d0c6c9510c0a2ba01e22805d492c73b68e33eecc
-      url: "https://pub.dev"
-    source: hosted
-    version: "1.1.0"
   html:
     dependency: "direct main"
     description:
@@ -1915,5 +1890,5 @@ packages:
     source: hosted
     version: "3.1.2"
 sdks:
-  dart: ">=3.3.0 <4.0.0"
+  dart: ">=3.3.1 <4.0.0"
   flutter: ">=3.19.2"

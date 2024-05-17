@@ -1,12 +1,13 @@
-import 'package:flareline/components/badge/anim_badge.dart';
-import 'package:flareline/components/forms/outborder_text_form_field.dart';
+
+import 'package:flareline_uikit/components/forms/outborder_text_form_field.dart';
 import 'package:flareline/entity/user_entity.dart';
 import 'package:flareline/provider/store_provider.dart';
 import 'package:flareline/provider/theme_provider.dart';
+import 'package:flareline_uikit/components/badge/anim_badge.dart';
+import 'package:flareline_uikit/components/buttons/button_widget.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:flareline/components/buttons/button_widget.dart';
 import 'package:flareline/provider/localization_provider.dart';
 import 'package:flareline/core/theme/global_colors.dart';
 import 'package:provider/provider.dart';
@@ -186,7 +187,7 @@ class ToolBarWidget extends StatelessWidget {
               Consumer<LocalizationProvider>(builder: (ctx, provider, child) {
             return ButtonWidget(
               btnText: e.languageCode,
-              type: e.languageCode == provider.languageCode?ButtonType.PRIMARY.type:null,
+              type: e.languageCode == provider.languageCode?ButtonType.primary.type:null,
               onTap: () {
                 context.read<LocalizationProvider>().locale = e;
               },

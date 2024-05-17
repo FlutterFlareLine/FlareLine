@@ -1,4 +1,4 @@
-import 'package:flareline/components/forms/outborder_text_form_field.dart';
+import 'package:flareline_uikit/components/forms/outborder_text_form_field.dart';
 import 'package:flareline/core/theme/global_colors.dart';
 import 'package:flareline/entity/conversation_entity.dart';
 import 'package:flareline/entity/message_entity.dart';

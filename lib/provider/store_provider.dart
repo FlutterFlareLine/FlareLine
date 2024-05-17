@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:dart_openai/dart_openai.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flareline/entity/user_entity.dart';
-import 'package:flareline/provider/base_provider.dart';
+import 'package:flareline_uikit/service/base_provider.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get_storage/get_storage.dart';

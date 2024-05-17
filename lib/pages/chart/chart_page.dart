@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 
-import 'package:flareline/components/card/common_card.dart';
+import 'package:flareline_uikit/components/card/common_card.dart';
 import 'package:flareline/components/charts/bar_chart.dart';
 import 'package:flareline/components/charts/circular_chart.dart';
 import 'package:flareline/components/charts/line_chart.dart';

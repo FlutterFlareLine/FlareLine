@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_svg/svg.dart';
-import 'package:flareline/components/buttons/button_widget.dart';
-import 'package:flareline/components/card/common_card.dart';
-import 'package:flareline/components/forms/outborder_text_form_field.dart';
+import 'package:flareline_uikit/components/buttons/button_widget.dart';
+import 'package:flareline_uikit/components/card/common_card.dart';
+import 'package:flareline_uikit/components/forms/outborder_text_form_field.dart';
 import 'package:flareline/pages/layout.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -91,7 +91,7 @@ class ResetPwdWidget extends LayoutWidget {
           ),
           ButtonWidget(
             btnText: AppLocalizations.of(context)!.sendPwdResetLink,
-            type: ButtonType.PRIMARY.type,
+            type: ButtonType.primary.type,
             onTap: () {
               Navigator.of(context).popAndPushNamed("/");
             },

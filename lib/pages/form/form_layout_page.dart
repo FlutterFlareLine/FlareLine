@@ -2,9 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-import 'package:flareline/components/buttons/button_widget.dart';
-import 'package:flareline/components/card/common_card.dart';
-import 'package:flareline/components/forms/outborder_text_form_field.dart';
+import 'package:flareline_uikit/components/buttons/button_widget.dart';
+import 'package:flareline_uikit/components/card/common_card.dart';
+import 'package:flareline_uikit/components/forms/outborder_text_form_field.dart';
 import 'package:flareline/pages/layout.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -120,7 +120,7 @@ class FormLayoutPage extends LayoutWidget {
                 ),
                 ButtonWidget(
                   btnText: AppLocalizations.of(context)!.sendMessage,
-                  type: ButtonType.PRIMARY.type,
+                  type: ButtonType.primary.type,
                 )
               ])),
         ),
@@ -178,7 +178,7 @@ class FormLayoutPage extends LayoutWidget {
             const SizedBox(
               height: 16,
             ),
-            ButtonWidget(btnText: AppLocalizations.of(context)!.signIn,type: ButtonType.PRIMARY.type,)
+            ButtonWidget(btnText: AppLocalizations.of(context)!.signIn,type: ButtonType.primary.type,)
           ])),
     );
   }
@@ -212,7 +212,7 @@ class FormLayoutPage extends LayoutWidget {
             const SizedBox(
               height: 16,
             ),
-            ButtonWidget(btnText: AppLocalizations.of(context)!.signUp,type: ButtonType.PRIMARY.type,)
+            ButtonWidget(btnText: AppLocalizations.of(context)!.signUp,type: ButtonType.primary.type,)
           ])),
     );
   }

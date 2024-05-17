@@ -7,9 +7,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_dropzone/flutter_dropzone.dart';
 
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:flareline/components/buttons/button_widget.dart';
-import 'package:flareline/components/card/common_card.dart';
-import 'package:flareline/components/forms/outborder_text_form_field.dart';
+import 'package:flareline_uikit/components/buttons/button_widget.dart';
+import 'package:flareline_uikit/components/card/common_card.dart';
+import 'package:flareline_uikit/components/forms/outborder_text_form_field.dart';
 import 'package:flareline/pages/layout.dart';
 import 'package:flareline/core/theme/global_colors.dart';
 import 'package:hexcolor/hexcolor.dart';

@@ -1,10 +1,8 @@
-import 'dart:convert';
 
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flareline/components/buttons/button_widget.dart';
+import 'package:flareline_uikit/components/buttons/button_widget.dart';
 
-import 'package:flareline/components/tables/table_widget.dart';
-import 'package:flareline/entity/table_data_entity.dart';
+import 'package:flareline_uikit/components/tables/table_widget.dart';
+import 'package:flareline_uikit/entity/table_data_entity.dart';
 import 'package:flareline/pages/dictionary/dictionary_child_page.dart';
 import 'package:flareline/pages/dictionary/dictionary_edit_page.dart';
 import 'package:flareline/pages/layout.dart';
@@ -65,7 +63,7 @@ class DictionaryTableWidget extends TableWidget<DictionaryViewModel> {
             width: 120,
             child: ButtonWidget(
               btnText: 'Refresh',
-              type: ButtonType.SUCCESS.type,
+              type: ButtonType.success.type,
               onTap: () {
                 viewModel.loadData(context);
               },

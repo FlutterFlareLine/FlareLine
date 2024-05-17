@@ -1,5 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flareline/components/card/common_card.dart';
+import 'package:flareline_uikit/components/card/common_card.dart';
 import 'package:flareline/pages/chat/chat_provider.dart';
 import 'package:flareline/pages/chat/chat_widget.dart';
 import 'package:flareline/pages/layout.dart';

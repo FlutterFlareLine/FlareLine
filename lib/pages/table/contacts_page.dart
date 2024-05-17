@@ -1,17 +1,9 @@
-import 'package:flareline/components/buttons/button_widget.dart';
-import 'package:flareline/components/card/common_card.dart';
-import 'package:flareline/components/forms/outborder_text_form_field.dart';
-import 'package:flareline/components/tables/table_widget.dart';
-import 'package:flareline/core/theme/global_colors.dart';
-import 'package:flareline/entity/table_data_entity.dart';
-import 'package:flareline/pages/dictionary/dictionary_child_page.dart';
-import 'package:flareline/pages/dictionary/dictionary_edit_page.dart';
+
+import 'package:flareline_uikit/components/tables/table_widget.dart';
+import 'package:flareline_uikit/entity/table_data_entity.dart';
 import 'package:flareline/pages/layout.dart';
-import 'package:flareline/utils/firebase_store_utils.dart';
-import 'package:flareline/provider/store_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
-import 'package:provider/provider.dart';
 
 class ContactsPage extends LayoutWidget {
   ContactsPage({super.key});

@@ -1,7 +1,7 @@
-import 'package:flareline/components/loading/loading.dart';
+import 'package:flareline_uikit/components/loading/loading.dart';
 import 'package:flutter/material.dart';
 
-import 'package:flareline/components/card/common_card.dart';
+import 'package:flareline_uikit/components/card/common_card.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 

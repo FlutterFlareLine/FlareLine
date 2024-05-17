@@ -1,7 +1,7 @@
 import 'package:flareline/provider/theme_provider.dart';
 import 'package:flareline/core/theme/global_colors.dart';
 import 'package:flutter/material.dart';
-import 'package:flareline/components/card/common_card.dart';
+import 'package:flareline_uikit/components/card/common_card.dart';
 import 'package:provider/provider.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
