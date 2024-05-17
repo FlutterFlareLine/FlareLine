@@ -1,4 +1,3 @@
-
 import 'package:flareline_uikit/components/buttons/button_widget.dart';
 
 import 'package:flareline_uikit/components/tables/table_widget.dart';
@@ -14,6 +13,7 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:provider/provider.dart';
+import 'package:syncfusion_flutter_datagrid/datagrid.dart';
 
 class DictionaryPage extends LayoutWidget {
   final Map<String, dynamic>? params;
@@ -82,6 +82,14 @@ class DictionaryTableWidget extends TableWidget<DictionaryViewModel> {
   @override
   // TODO: implement actionColumnWidth
   double get actionColumnWidth => 260;
+
+  @override
+  // TODO: implement isLastColumnFixed
+  bool get isLastColumnFixed => true;
+
+  @override
+  // TODO: implement columnWidthMode
+  ColumnWidthMode get columnWidthMode => ColumnWidthMode.none;
 
   @override
   Widget? actionWidgetsBuilder(BuildContext context,

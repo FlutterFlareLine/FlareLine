@@ -11,7 +11,6 @@ import 'package:flareline_uikit/widget/base/base_stless_widget.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter/services.dart';
-import 'package:provider/provider.dart';
 import 'package:syncfusion_flutter_datagrid/datagrid.dart';
 
 enum CellDataType {
@@ -89,6 +88,10 @@ abstract class TableWidget<S extends BaseTableProvider>
         onToggleChanged, pageSize);
   }
 
+  bool get isLastColumnFixed => false;
+
+  ColumnWidthMode get columnWidthMode => ColumnWidthMode.fill;
+
   Widget _sfDataGrid(BuildContext context, List<String> headers,
       List<List<TableDataRowsTableDataRows>> rows, viewModel) {
     BaseDataGridSource dataGridSource = baseDataGridSource(
@@ -106,15 +109,15 @@ abstract class TableWidget<S extends BaseTableProvider>
     int pageCount = rows.length % pageSize == 0
         ? (rows.length / pageSize).toInt()
         : (rows.length / pageSize).toInt() + 1;
-    print('rows length ${rows.length} pageCount ${pageCount}');
 
     return Column(
       children: [
         Expanded(
             child: SfDataGrid(
           source: dataGridSource,
-          footerFrozenColumnsCount: 1,
+          footerFrozenColumnsCount: isLastColumnFixed ? 1 : 0,
           isScrollbarAlwaysShown: true,
+          columnWidthMode: columnWidthMode,
           columns: headers.map((e) => gridColumnWidget(e)).toList(),
         )),
         if (showPaging && rows.isNotEmpty)
@@ -213,7 +216,6 @@ class BaseDataGridSource<F extends BaseTableProvider> extends DataGridSource {
     if (endIndex >= list.length) {
       endIndex = list.length;
     }
-    print('startIndex ${startIndex} endIndex ${endIndex}');
     if (list != null && list.isNotEmpty) {
       _data = list
           .getRange(startIndex, endIndex)
@@ -239,7 +241,6 @@ class BaseDataGridSource<F extends BaseTableProvider> extends DataGridSource {
   DataGridRowAdapter? buildRow(DataGridRow row) {
     return DataGridRowAdapter(
         cells: row.getCells().map<Widget>((dataGridCell) {
-      print('dataGridCell ${dataGridCell.value}');
       return cellWidget(dataGridCell.value);
     }).toList());
   }
