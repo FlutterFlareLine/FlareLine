@@ -14,7 +14,7 @@ class MainProvider extends BaseProvider {
 
   String get expandedMenuName => _expandedMenuName;
 
-  int _index = 0;
+  final int _index = 0;
 
   int get index => _index;
 

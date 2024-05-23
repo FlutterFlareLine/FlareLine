@@ -28,10 +28,8 @@ abstract class BaseStlessWidget<VM extends BaseProvider>
         ));
   }
 
-  ///业务widget
   Widget bodyWidget(BuildContext context, VM viewModel, Widget? child);
 
-  ///不会更新的widget
   Widget? staticChild() {
     return null;
   }

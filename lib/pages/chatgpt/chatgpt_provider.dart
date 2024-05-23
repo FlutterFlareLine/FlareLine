@@ -206,6 +206,7 @@ class ChatGptProvider extends BaseProvider {
     final query = await FirebaseStoreUtils.db
         .collection('conversation')
         .where('belongUid', isEqualTo: email)
+        // .orderBy("timestamp")
         .get();
     if (query.docs.isNotEmpty) {
       conversationList.clear();

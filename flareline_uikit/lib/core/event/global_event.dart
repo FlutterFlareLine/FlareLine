@@ -10,7 +10,6 @@ class GlobalEvent {
 class EventInfo{
   dynamic obj;
 
-  ///事件类型
   String eventType;
 
   EventInfo(this.obj, this.eventType);

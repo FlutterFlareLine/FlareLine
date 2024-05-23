@@ -7,6 +7,7 @@ import 'package:flareline/pages/chatgpt/chatgpt_provider.dart';
 import 'package:flareline/pages/layout.dart';
 import 'package:flareline/pages/setting/open_ai_setting.dart';
 import 'package:flareline/provider/store_provider.dart';
+import 'package:flareline_uikit/widget/base/base_stless_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/widgets.dart';
@@ -15,6 +16,8 @@ import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
 class ChatGptPage extends LayoutWidget {
+  const ChatGptPage({super.key});
+
   @override
   // TODO: implement isContentScroll
   bool get isContentScroll => false;
@@ -31,99 +34,110 @@ class ChatGptPage extends LayoutWidget {
   // TODO: implement showTitle
   bool get showTitle => false;
 
-  final double margin = 180;
-
   @override
   // TODO: implement backgroundColor
-  Color? get backgroundColor => Color(0xFF2b2b35);
+  Color? get backgroundColor => const Color(0xFF2b2b35);
 
   @override
   Widget contentDesktopWidget(BuildContext context) {
-    return ChangeNotifierProvider(
-        create: (ctx) => ChatGptProvider(ctx),
-        builder: (ctx, widget) {
-          return Column(
-            children: [
-              Expanded(
-                child: Stack(
-                  alignment: Alignment.topCenter,
-                  children: [
-                    _gptMessageWidget(ctx),
-                    Visibility(
-                      child: _conversationWidget(ctx),
-                      visible: ctx.watch<ChatGptProvider>().showConversation,
-                    ),
-                    Align(
-                      child: _toolsWidget(ctx),
-                      alignment: Alignment.centerLeft,
-                    ),
-                  ],
-                ),
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              Container(
-                margin: EdgeInsets.symmetric(horizontal: margin),
-                alignment: Alignment.center,
-                child: Column(children: [
-                  Visibility(
-                    child: Column(
-                      children: [
-                        const OpenAiSetting(),
-                        const SizedBox(
-                          height: 20,
-                        ),
-                      ],
-                    ),
-                    visible: ctx.watch<ChatGptProvider>().showSettings,
-                  ),
-                  OutBorderTextFormField(
-                    hintText: 'Message ChatGPT...',
-                    controller: ctx.read<ChatGptProvider>().controller,
-                    textInputAction: TextInputAction.send,
-                    textStyle: TextStyle(color: Colors.white),
-                    focusColor: GlobalColors.success,
-                    onFieldSubmitted: (value) {
-                      ctx.read<ChatGptProvider>().send(context);
-                    },
-                    suffixWidget: InkWell(
-                      child: Icon(
-                        Icons.send,
-                        color: ctx.watch<ChatGptProvider>().isLoading
-                            ? GlobalColors.border
-                            : GlobalColors.success,
-                      ),
-                      onTap: () {
-                        ctx.read<ChatGptProvider>().send(context);
-                      },
-                    ),
-                  ),
-                ]),
-              ),
-            ],
-          );
-        });
+    return ContentPage();
   }
 
   @override
   String breakTabTitle(BuildContext context) {
     return 'ChatGpt';
   }
+}
 
-  _gptMessageWidget(BuildContext ctx) {
+class ContentPage extends BaseStlessWidget<ChatGptProvider> {
+  final double margin = 180;
+
+  @override
+  Widget bodyWidget(
+      BuildContext context, ChatGptProvider viewModel, Widget? child) {
+    return Column(
+      children: [
+        Expanded(
+          child: Stack(
+            alignment: Alignment.topCenter,
+            children: [
+              _gptMessageWidget(context, viewModel),
+              Visibility(
+                visible: viewModel.showConversation,
+                child: _conversationWidget(context, viewModel),
+              ),
+              Align(
+                child: _toolsWidget(context, viewModel),
+                alignment: Alignment.centerLeft,
+              ),
+            ],
+          ),
+        ),
+        const SizedBox(
+          height: 20,
+        ),
+        Container(
+          margin: EdgeInsets.symmetric(horizontal: margin),
+          alignment: Alignment.center,
+          child: Column(children: [
+            Visibility(
+              visible: viewModel.showSettings,
+              child: const Column(
+                children: [
+                  OpenAiSetting(),
+                  SizedBox(
+                    height: 20,
+                  ),
+                ],
+              ),
+            ),
+            OutBorderTextFormField(
+              hintText: 'Message ChatGPT...',
+              controller: viewModel.controller,
+              textInputAction: TextInputAction.send,
+              textStyle: const TextStyle(color: Colors.white),
+              focusColor: GlobalColors.success,
+              onFieldSubmitted: (value) {
+                viewModel.send(context);
+              },
+              suffixWidget: InkWell(
+                child: Icon(
+                  Icons.send,
+                  color: viewModel.isLoading
+                      ? GlobalColors.border
+                      : GlobalColors.success,
+                ),
+                onTap: () {
+                  viewModel.send(context);
+                },
+              ),
+            ),
+          ]),
+        ),
+      ],
+    );
+  }
+
+  @override
+  ChatGptProvider viewModelBuilder(BuildContext context) {
+    return ChatGptProvider(context);
+  }
+
+  _gptMessageWidget(BuildContext ctx, ChatGptProvider viewModel) {
     return Container(
       margin: EdgeInsets.symmetric(horizontal: margin),
       child: ListView.builder(
-        itemBuilder: itemBuilder,
-        itemCount: ctx.watch<ChatGptProvider>().messageCount,
+        itemBuilder: (context, index) {
+          return itemBuilder(context, index, viewModel);
+        },
+        itemCount: viewModel.messageCount,
       ),
     );
   }
 
-  Widget itemBuilder(BuildContext context, int index) {
-    MessageEntity messageEntity =
-        context.read<ChatGptProvider>().getItemMessage(index);
+  Widget itemBuilder(
+      BuildContext context, int index, ChatGptProvider viewModel) {
+    MessageEntity messageEntity = viewModel.getItemMessage(index);
 
     return Column(
       crossAxisAlignment: messageEntity.isUser
@@ -132,28 +146,29 @@ class ChatGptPage extends LayoutWidget {
       children: [
         Text(
           messageEntity.isUser ? 'Question:' : 'GPT Answer:',
-          style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
+          style:
+              const TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
         ),
-        SizedBox(
+        const SizedBox(
           height: 5,
         ),
         Container(
-            padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
             decoration: BoxDecoration(
                 color: messageEntity.isUser
                     ? GlobalColors.success
-                    : Color(0xFF45454e),
+                    : const Color(0xFF45454e),
                 borderRadius: BorderRadius.circular(10)),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
                   messageEntity.content,
-                  style: TextStyle(
+                  style: const TextStyle(
                       fontWeight: FontWeight.bold, color: Colors.white),
                 ),
                 if (!messageEntity.isUser)
-                  SizedBox(
+                  const SizedBox(
                     height: 18,
                   ),
                 if (!messageEntity.isUser)
@@ -162,6 +177,7 @@ class ChatGptPage extends LayoutWidget {
                     children: [
                       InkWell(
                         child: AnimatedSwitcher(
+                          duration: const Duration(milliseconds: 200),
                           child: Icon(
                               context.watch<ChatGptProvider>().hasCopied
                                   ? Icons.check
@@ -169,7 +185,6 @@ class ChatGptPage extends LayoutWidget {
                               color: GlobalColors.success,
                               size: 16,
                               key: UniqueKey()),
-                          duration: Duration(milliseconds: 200),
                         ),
                         onTap: () async {
                           context
@@ -193,40 +208,42 @@ class ChatGptPage extends LayoutWidget {
                   )
               ],
             )),
-        SizedBox(
+        const SizedBox(
           height: 20,
         ),
       ],
     );
   }
 
-  Widget _conversationWidget(BuildContext ctx) {
+  Widget _conversationWidget(BuildContext ctx, ChatGptProvider viewModel) {
     return Container(
       width: double.maxFinite,
       height: double.maxFinite,
-      color: Colors.white,
-      margin: EdgeInsets.symmetric(horizontal: margin),
+      color: const Color(0xFF45454e).withOpacity(0.8),
+      margin: EdgeInsets.symmetric(horizontal: margin * 2),
       child: Stack(
         children: [
           ListView.separated(
-            padding: EdgeInsets.symmetric(horizontal: margin),
-            itemBuilder: conversationItemBuilder,
-            itemCount: ctx.watch<ChatGptProvider>().conversationCount,
+            padding: EdgeInsets.symmetric(horizontal: margin,vertical: 20),
+            itemBuilder: (context, index) {
+              return conversationItemBuilder(context, index, viewModel);
+            },
+            itemCount: viewModel.conversationCount,
             separatorBuilder: _dividerBuilder,
           ),
           IconButton(
               onPressed: () {
-                ctx.read<ChatGptProvider>().toggleConversation(ctx);
+                viewModel.toggleConversation(ctx);
               },
-              icon: Icon(Icons.close))
+              icon: const Icon(Icons.close, color: Colors.white,))
         ],
       ),
     );
   }
 
-  Widget conversationItemBuilder(BuildContext context, int index) {
-    ConversationEntity conversationEntity =
-        context.read<ChatGptProvider>().getConversation(index);
+  Widget conversationItemBuilder(
+      BuildContext context, int index, ChatGptProvider viewModel) {
+    ConversationEntity conversationEntity = viewModel.getConversation(index);
     String? title =
         conversationEntity.title ?? conversationEntity.latestMessage?.content;
     if (title == 'New Chat' && conversationEntity.latestMessage != null) {
@@ -234,50 +251,50 @@ class ChatGptPage extends LayoutWidget {
     }
     return InkWell(
       child: Container(
+        decoration: BoxDecoration(
+            border: Border.all(color: GlobalColors.lightGray, width: 1),
+            borderRadius: BorderRadius.circular(4)),
+        padding: const EdgeInsets.symmetric(vertical: 8,horizontal: 10),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
               title ?? '',
               maxLines: 1,
-              style: TextStyle(
-                fontSize: 12,
-              ),
+              style: const TextStyle(fontSize: 12, color: Colors.white),
               overflow: TextOverflow.ellipsis,
             ),
             Text(
               DateFormat('yyyy-MM-dd HH:mm:ss')
                   .format(conversationEntity.timestamp),
-              style: TextStyle(fontSize: 10),
+              style: const TextStyle(fontSize: 10, color: Colors.white),
             )
           ],
         ),
-        padding: EdgeInsets.symmetric(vertical: 8),
       ),
       onTap: () {
-        context.read<ChatGptProvider>().toggleConversation(context);
-        context
-            .read<ChatGptProvider>()
-            .setConversationEntity(context, conversationEntity);
+        viewModel.toggleConversation(context);
+        viewModel.setConversationEntity(context, conversationEntity);
       },
     );
   }
 
   Widget _dividerBuilder(BuildContext context, int index) {
-    return Divider(
-      height: 1,
-      color: GlobalColors.border,
+    return const Divider(
+      height: 10,
+      color: Colors.transparent,
     );
   }
 
-  _toolsWidget(BuildContext ctx) {
+  _toolsWidget(BuildContext ctx, ChatGptProvider viewModel) {
     UserEntity? loginUser = ctx.watch<StoreProvider>().user;
     String avatar = loginUser != null ? (loginUser.avatar ?? '') : '';
 
     return Container(
       width: 80,
-      padding: EdgeInsets.symmetric(vertical: 30),
+      padding: const EdgeInsets.symmetric(vertical: 30),
       decoration: BoxDecoration(
-          color: Color(0xFF45454e),
+          color: const Color(0xFF45454e),
           borderRadius: BorderRadius.circular(10),
           border: Border.all(color: GlobalColors.gray, width: 1)),
       child: Column(
@@ -293,66 +310,67 @@ class ChatGptPage extends LayoutWidget {
               Navigator.of(ctx).pop();
             },
           ),
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
-          Divider(
+          const Divider(
             color: GlobalColors.border,
             indent: 20,
             endIndent: 20,
           ),
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
           IconButton(
               onPressed: () {
                 ctx.read<ChatGptProvider>().startNewChat(ctx);
               },
-              icon: Icon(
+              icon: const Icon(
                 Icons.add_circle_outline,
                 color: Colors.white,
                 size: 30,
               )),
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
           IconButton(
               onPressed: () {
-                ctx.read<ChatGptProvider>().toggleConversation(ctx);
+                viewModel.toggleConversation(ctx);
               },
-              icon: Icon(
+              icon: const Icon(
                 Icons.history,
                 color: Colors.white,
                 size: 30,
               )),
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
           IconButton(
               onPressed: () {
-                ctx.read<ChatGptProvider>().toggleSetting(ctx);
+                viewModel.toggleSetting(ctx);
               },
-              icon: Icon(
+              icon: const Icon(
                 Icons.settings,
                 color: Colors.white,
                 size: 30,
               )),
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
-          Divider(
+          const Divider(
             color: GlobalColors.border,
             indent: 20,
             endIndent: 20,
           ),
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
           InkWell(
             child: CircleAvatar(
               backgroundImage: (avatar != null && avatar.isNotEmpty
-                  ? NetworkImage(avatar)
-                  : AssetImage('assets/user/user-02.png')) as ImageProvider,
+                      ? NetworkImage(avatar)
+                      : const AssetImage('assets/user/user-02.png'))
+                  as ImageProvider,
               radius: 20,
             ),
             onTap: () {
