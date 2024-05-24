@@ -192,7 +192,7 @@ class ChatGptProvider extends BaseProvider {
     _conversationEntity = ConversationEntity()
       ..id = const Uuid().v1()
       ..type = 'text'
-      ..title = title ?? 'New Chat'
+      ..title = title ?? ''
       ..timestamp = DateTime.timestamp().millisecondsSinceEpoch
       ..belongUid = email;
 

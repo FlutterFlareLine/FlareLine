@@ -52,11 +52,9 @@ class ConversationPage extends BaseStlessWidget<ConversationViewModel> {
   Widget conversationItemBuilder(
       BuildContext context, int index, ConversationViewModel viewModel) {
     ConversationEntity conversationEntity = viewModel.getConversation(index);
-    String? title =
-        conversationEntity.title ?? conversationEntity.latestMessage?.content;
-    if (title == 'New Chat' && conversationEntity.latestMessage != null) {
-      title = conversationEntity.latestMessage!.content;
-    }
+    String title =
+        conversationEntity.title ?? '';
+
     return InkWell(
       child: Container(
         decoration: BoxDecoration(
@@ -98,7 +96,8 @@ class ConversationPage extends BaseStlessWidget<ConversationViewModel> {
         if (onVisibleChanged != null) {
           onVisibleChanged!(false);
         }
-        GlobalEvent.eventBus.fire(EventInfo(conversationEntity, 'showConversation'));
+        GlobalEvent.eventBus
+            .fire(EventInfo(conversationEntity, 'showConversation'));
       },
     );
   }
@@ -157,12 +156,19 @@ class ConversationViewModel extends BaseProvider {
             .collection('messages')
             .where('belongUid', isEqualTo: email)
             .where('conversationId', isEqualTo: element.id)
+            .orderBy("timestamp",descending: true)
             .limitToLast(1)
             .get();
         if (queryMessage.docs.isNotEmpty) {
           Map<String, dynamic> msgMap = queryMessage.docs.elementAt(0).data();
+
           MessageEntity msg = MessageEntity.fromJson(msgMap);
           element.latestMessage = msg;
+   
+          if(element.title==null||element.title==''||element.title?.trim()==''){
+
+            element.title = element.latestMessage?.content;
+          }
         }
       });
       notifyListeners();
