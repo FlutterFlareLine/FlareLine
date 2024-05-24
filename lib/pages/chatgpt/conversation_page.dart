@@ -164,7 +164,7 @@ class ConversationViewModel extends BaseProvider {
 
           MessageEntity msg = MessageEntity.fromJson(msgMap);
           element.latestMessage = msg;
-   
+
           if(element.title==null||element.title==''||element.title?.trim()==''){
 
             element.title = element.latestMessage?.content;

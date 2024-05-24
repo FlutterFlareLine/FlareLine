@@ -149,10 +149,20 @@ class ContentPage extends BaseStlessWidget<ChatGptProvider> {
           ? CrossAxisAlignment.end
           : CrossAxisAlignment.start,
       children: [
-        Text(
-          messageEntity.isUser ? 'Question:' : 'GPT Answer:',
-          style:
-              const TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
+        Container(
+          width: 48,
+          height: 48,
+          padding: const EdgeInsets.all(4),
+          decoration: BoxDecoration(
+              color: messageEntity.isUser
+                  ? const Color(0xFF9aa37e)
+                  : GlobalColors.success,
+              borderRadius: BorderRadius.circular(4)),
+          alignment: Alignment.center,
+          child: Text(
+            messageEntity.isUser ? 'ME' : 'AI',
+            style: const TextStyle(color: Colors.white, fontSize: 20),
+          ),
         ),
         const SizedBox(
           height: 5,
@@ -180,35 +190,52 @@ class ContentPage extends BaseStlessWidget<ChatGptProvider> {
                   Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      InkWell(
-                        child: AnimatedSwitcher(
-                          duration: const Duration(milliseconds: 200),
-                          child: Icon(
-                              viewModel.hasCopied
-                                  ? Icons.check
-                                  : Icons.copy_rounded,
-                              color: GlobalColors.success,
-                              size: 16,
-                              key: UniqueKey()),
-                        ),
-                        onTap: () async {
-                          context
-                              .read<ChatGptProvider>()
-                              .copy(context, messageEntity.content);
-                        },
+                      TextButton.icon(
+                          onPressed: () async {
+                            viewModel.copy(context, messageEntity.content);
+                          },
+                          icon: AnimatedSwitcher(
+                            duration: const Duration(milliseconds: 200),
+                            child: Icon(
+                                viewModel.hasCopied
+                                    ? Icons.check
+                                    : Icons.copy_rounded,
+                                color: GlobalColors.success,
+                                size: 16,
+                                key: UniqueKey()),
+                          ),
+                          label: const Text(
+                            'Copy',
+                            style: TextStyle(color: Colors.white),
+                          )),
+                      const SizedBox(
+                        width: 10,
                       ),
-                      // SizedBox(width: 10,),
-                      // InkWell(
-                      //   child: AnimatedSwitcher(
-                      //     child: Icon(
-                      //         Icons.wordpress,
-                      //         key: UniqueKey()),
-                      //     duration: Duration(milliseconds: 200),
-                      //   ),
-                      //   onTap: () async {
-                      //
-                      //   },
-                      // ),
+                      TextButton.icon(
+                          onPressed: () async {},
+                          icon: const Icon(
+                            Icons.link,
+                            color: GlobalColors.success,
+                            size: 16,
+                          ),
+                          label: const Text(
+                            'Copy Link',
+                            style: TextStyle(color: Colors.white),
+                          )),
+                      const SizedBox(
+                        width: 10,
+                      ),
+                      TextButton.icon(
+                          onPressed: () async {},
+                          icon: const Icon(
+                            Icons.photo,
+                            color: GlobalColors.success,
+                            size: 16,
+                          ),
+                          label: const Text(
+                            'Save Image',
+                            style: TextStyle(color: Colors.white),
+                          ))
                     ],
                   )
               ],
