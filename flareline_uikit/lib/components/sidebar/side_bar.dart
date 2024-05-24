@@ -8,12 +8,12 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_svg/flutter_svg.dart';
 
-class SideBarWidger extends StatelessWidget {
+class SideBarWidget extends StatelessWidget {
   final Color? color;
   final double? width;
   final String? appName;
 
-  const SideBarWidger({super.key, this.color, this.width, this.appName});
+  const SideBarWidget({super.key, this.color, this.width, this.appName});
 
   @override
   Widget build(BuildContext context) {
@@ -49,7 +49,7 @@ class SideBarWidger extends StatelessWidget {
             child: Text(
           appName ?? '',
           style: TextStyle(
-              color: isDark ? Colors.white : FlarelineColors.darkTextBody,
+              color: isDark ? Colors.white : FlarelineColors.darkBlackText,
               fontSize: 32),
         ))
       ],

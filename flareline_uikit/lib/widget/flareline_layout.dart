@@ -1,4 +1,5 @@
 library flareline_uikit;
+
 import 'package:flareline_uikit/components/sidebar/side_bar.dart';
 import 'package:flutter/material.dart';
 
@@ -7,6 +8,8 @@ import 'package:responsive_builder/responsive_builder.dart';
 
 abstract class FlarelineLayoutWidget extends StatelessWidget {
   const FlarelineLayoutWidget({super.key});
+
+  String get appName => 'Flareline';
 
   bool get showTitle => true;
 
@@ -49,7 +52,10 @@ abstract class FlarelineLayoutWidget extends StatelessWidget {
           if (sizingInformation.deviceScreenType == DeviceScreenType.desktop) {
             return Row(
               children: [
-                if (showSideBar) const SideBarWidger(),
+                if (showSideBar)
+                  SideBarWidget(
+                    appName: appName,
+                  ),
                 Expanded(child: rightContentWidget(context))
               ],
             );
@@ -58,7 +64,7 @@ abstract class FlarelineLayoutWidget extends StatelessWidget {
           return rightContentWidget(context);
         },
       ),
-      drawer: const SideBarWidger(),
+      drawer: const SideBarWidget(),
     );
   }
 
