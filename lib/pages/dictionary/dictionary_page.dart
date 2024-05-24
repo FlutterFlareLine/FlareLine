@@ -173,7 +173,7 @@ class DictionaryViewModel extends BaseTableProvider {
 
     List rows = [];
 
-    String email = context.read<StoreProvider>().email;
+    // String email = context.read<StoreProvider>().email;
 
     final query = await FirebaseStoreUtils.db
         .collection('dictionary')

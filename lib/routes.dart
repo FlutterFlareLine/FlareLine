@@ -40,8 +40,8 @@ final List<Map<String, Object>> MAIN_PAGES = [
   {'routerPath': '/kanban', 'widget': const KanbanPage()},
   {'routerPath': '/formElements', 'widget': FormElementsPage()},
   {'routerPath': '/formLayout', 'widget': FormLayoutPage()},
-  {'routerPath': '/signIn', 'widget': const SignInWidget()},
-  {'routerPath': '/signUp', 'widget': const SignUpWidget(), 'isWhite': true},
+  {'routerPath': '/signIn', 'widget': SignInWidget()},
+  {'routerPath': '/signUp', 'widget': SignUpWidget(), 'isWhite': true},
   {
     'routerPath': '/resetPwd',
     'widget': const ResetPwdWidget(),

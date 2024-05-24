@@ -3,16 +3,17 @@ import 'package:flareline/entity/user_entity.dart';
 import 'package:flareline/provider/firebase_provider.dart';
 import 'package:flareline/provider/store_provider.dart';
 import 'package:flareline/utils/snackbar_util.dart';
+import 'package:flareline_uikit/service/base_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:provider/provider.dart';
 
-class SignInProvider with ChangeNotifier {
+class SignInProvider extends BaseProvider {
   final box = GetStorage();
   late TextEditingController emailController;
   late TextEditingController passwordController;
 
-  SignInProvider(BuildContext ctx) {
+  SignInProvider(BuildContext ctx) : super(ctx) {
     emailController = TextEditingController();
     passwordController = TextEditingController();
     emailController.text = ctx.read<StoreProvider>().email;

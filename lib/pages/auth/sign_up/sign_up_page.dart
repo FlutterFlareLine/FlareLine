@@ -1,5 +1,6 @@
 import 'package:flareline/pages/auth/sign_up/sign_up_provider.dart';
 import 'package:flareline/core/theme/global_colors.dart';
+import 'package:flareline_uikit/widget/base/base_stless_widget.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_svg/svg.dart';
@@ -11,35 +12,30 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
-class SignUpWidget extends StatelessWidget {
-  const SignUpWidget({super.key});
-
+class SignUpWidget extends BaseStlessWidget<SignUpProvider> {
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: ChangeNotifierProvider(
-        create: (_) => SignUpProvider(),
-        builder: (ctx, child) {
-          return ResponsiveBuilder(
-            builder: (context, sizingInformation) {
-              // Check the sizing information here and return your UI
-              if (sizingInformation.deviceScreenType ==
-                  DeviceScreenType.desktop) {
-                return Center(
-                  child: contentDesktopWidget(context),
-                );
-              }
-
-              return contentMobileWidget(context);
-            },
+  Widget bodyWidget(
+      BuildContext context, SignUpProvider viewModel, Widget? child) {
+    return Scaffold(body: ResponsiveBuilder(
+      builder: (context, sizingInformation) {
+        // Check the sizing information here and return your UI
+        if (sizingInformation.deviceScreenType == DeviceScreenType.desktop) {
+          return Center(
+            child: contentDesktopWidget(context,viewModel),
           );
-        },
-      ),
-    );
+        }
+
+        return contentMobileWidget(context,viewModel);
+      },
+    ));
   }
 
   @override
-  Widget contentDesktopWidget(BuildContext context) {
+  SignUpProvider viewModelBuilder(BuildContext context) {
+    return SignUpProvider(context);
+  }
+
+  Widget contentDesktopWidget(BuildContext context, SignUpProvider viewModel) {
     return Column(mainAxisSize: MainAxisSize.min, children: [
       CommonCard(
         width: MediaQuery.of(context).size.width * 0.8,
@@ -70,21 +66,20 @@ class SignUpWidget extends StatelessWidget {
           const VerticalDivider(
             width: 1,
           ),
-          Expanded(child: _formWidget(context))
+          Expanded(child: _formWidget(context,viewModel))
         ]),
       ),
     ]);
   }
 
-  @override
-  Widget contentMobileWidget(BuildContext context) {
+  Widget contentMobileWidget(BuildContext context, SignUpProvider viewModel) {
     return CommonCard(
       padding: const EdgeInsets.symmetric(vertical: 60),
-      child: _formWidget(context),
+      child: _formWidget(context,viewModel),
     );
   }
 
-  Widget _formWidget(BuildContext context) {
+  Widget _formWidget(BuildContext context, SignUpProvider viewModel) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 50),
       child: Column(
@@ -110,7 +105,7 @@ class SignUpWidget extends StatelessWidget {
               width: 22,
               height: 22,
             ),
-            controller: context.read<SignUpProvider>().emailController,
+            controller: viewModel.emailController,
           ),
           const SizedBox(
             height: 16,
@@ -124,7 +119,7 @@ class SignUpWidget extends StatelessWidget {
               width: 22,
               height: 22,
             ),
-            controller: context.read<SignUpProvider>().passwordController,
+            controller: viewModel.passwordController,
           ),
           const SizedBox(
             height: 20,
@@ -138,7 +133,7 @@ class SignUpWidget extends StatelessWidget {
               width: 22,
               height: 22,
             ),
-            controller: context.read<SignUpProvider>().rePasswordController,
+            controller: viewModel.rePasswordController,
           ),
           const SizedBox(
             height: 20,
@@ -147,10 +142,9 @@ class SignUpWidget extends StatelessWidget {
             type: ButtonType.primary.type,
             btnText: AppLocalizations.of(context)!.createAccount,
             onTap: () {
-              context.read<SignUpProvider>().signUp(context);
+              viewModel.signUp(context);
             },
           ),
-
           const SizedBox(
             height: 20,
           ),

@@ -179,7 +179,7 @@ class ContentPage extends BaseStlessWidget<ChatGptProvider> {
                         child: AnimatedSwitcher(
                           duration: const Duration(milliseconds: 200),
                           child: Icon(
-                              context.watch<ChatGptProvider>().hasCopied
+                              viewModel.hasCopied
                                   ? Icons.check
                                   : Icons.copy_rounded,
                               color: GlobalColors.success,

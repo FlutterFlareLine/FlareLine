@@ -1,5 +1,6 @@
 import 'package:flareline/pages/auth/sign_in/sign_in_provider.dart';
 import 'package:flareline/provider/firebase_provider.dart';
+import 'package:flareline_uikit/widget/base/base_stless_widget.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_svg/svg.dart';
@@ -11,34 +12,30 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
-class SignInWidget extends StatelessWidget {
-  const SignInWidget({super.key});
-
+class SignInWidget extends BaseStlessWidget<SignInProvider> {
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: ChangeNotifierProvider(
-        create: (ctx) => SignInProvider(ctx),
-        builder: (ctx, child) {
-          return ResponsiveBuilder(
-            builder: (context, sizingInformation) {
-              // Check the sizing information here and return your UI
-              if (sizingInformation.deviceScreenType ==
-                  DeviceScreenType.desktop) {
-                return Center(
-                  child: contentDesktopWidget(context),
-                );
-              }
-
-              return contentMobileWidget(context);
-            },
+  Widget bodyWidget(
+      BuildContext context, SignInProvider viewModel, Widget? child) {
+    return Scaffold(body: ResponsiveBuilder(
+      builder: (context, sizingInformation) {
+        // Check the sizing information here and return your UI
+        if (sizingInformation.deviceScreenType == DeviceScreenType.desktop) {
+          return Center(
+            child: contentDesktopWidget(context, viewModel),
           );
-        },
-      ),
-    );
+        }
+
+        return contentMobileWidget(context,viewModel);
+      },
+    ));
   }
 
-  Widget contentDesktopWidget(BuildContext context) {
+  @override
+  SignInProvider viewModelBuilder(BuildContext context) {
+    return SignInProvider(context);
+  }
+
+  Widget contentDesktopWidget(BuildContext context,SignInProvider viewModel) {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
@@ -73,7 +70,7 @@ class SignInWidget extends StatelessWidget {
               color: GlobalColors.background,
             ),
             Expanded(
-              child: _signInFormWidget(context),
+              child: _signInFormWidget(context,viewModel),
             )
           ]),
         )
@@ -82,13 +79,13 @@ class SignInWidget extends StatelessWidget {
   }
 
   @override
-  Widget contentMobileWidget(BuildContext context) {
+  Widget contentMobileWidget(BuildContext context,SignInProvider viewModel) {
     return CommonCard(
         padding: const EdgeInsets.symmetric(vertical: 60),
-        child: _signInFormWidget(context));
+        child: _signInFormWidget(context,viewModel));
   }
 
-  Widget _signInFormWidget(BuildContext context) {
+  Widget _signInFormWidget(BuildContext context,SignInProvider viewModel) {
     return Padding(
         padding: const EdgeInsets.symmetric(horizontal: 50),
         child: Column(
@@ -117,7 +114,7 @@ class SignInWidget extends StatelessWidget {
                 width: 22,
                 height: 22,
               ),
-              controller: context.read<SignInProvider>().emailController,
+              controller: viewModel.emailController,
             ),
             const SizedBox(
               height: 16,
@@ -139,7 +136,7 @@ class SignInWidget extends StatelessWidget {
                 width: 22,
                 height: 22,
               ),
-              controller: context.read<SignInProvider>().passwordController,
+              controller: viewModel.passwordController,
             ),
             const SizedBox(
               height: 20,
@@ -148,7 +145,7 @@ class SignInWidget extends StatelessWidget {
               type: ButtonType.primary.type,
               btnText: AppLocalizations.of(context)!.signIn,
               onTap: () {
-                context.read<SignInProvider>().signIn(context);
+                viewModel.signIn(context);
               },
             ),
             const SizedBox(
@@ -185,7 +182,7 @@ class SignInWidget extends StatelessWidget {
               ),
               btnText: AppLocalizations.of(context)!.signInWithGoogle,
               onTap: () {
-                context.read<SignInProvider>().signInWithGoogle(context);
+                viewModel.signInWithGoogle(context);
               },
             ),
             const SizedBox(
@@ -201,7 +198,7 @@ class SignInWidget extends StatelessWidget {
               ),
               btnText: AppLocalizations.of(context)!.signInWithGithub,
               onTap: () {
-                context.read<SignInProvider>().signInWithGithub(context);
+                viewModel.signInWithGithub(context);
               },
             ),
             const SizedBox(
