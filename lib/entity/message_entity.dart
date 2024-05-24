@@ -8,7 +8,7 @@ class MessageEntity {
   late String id;
   late String content;
   late bool isUser;
-  late DateTime timestamp;
+  late int timestamp;
   late String belongUid;
   late String conversationId;
 

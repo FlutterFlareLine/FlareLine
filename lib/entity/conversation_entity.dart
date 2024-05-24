@@ -10,7 +10,7 @@ class ConversationEntity {
   String? title;
   MessageEntity? latestMessage;
   late String belongUid;
-  late DateTime timestamp;
+  late int timestamp;
   late String type;
 
   ConversationEntity();

@@ -26,7 +26,7 @@ class FirebaseStoreUtils {
 
   static Future<List<Map<String, dynamic>>> listDicChildren(
       String collectionName, String configKey) async {
-    final configKeyQuery = await FirebaseStoreUtils.db
+    final configKeyQuery = await db
         .collection(collectionName)
         .where('configKey', isEqualTo: configKey)
         .limit(1)
@@ -37,7 +37,7 @@ class FirebaseStoreUtils {
     Map<String, dynamic> configKeyData =
         configKeyQuery.docs.elementAt(0).data();
 
-    final query = await FirebaseStoreUtils.db
+    final query = await db
         .collection(collectionName)
         // .where('belongUid', isEqualTo: email)
         .where('parentId', isEqualTo: configKeyData['id'])
@@ -51,5 +51,19 @@ class FirebaseStoreUtils {
       }).toList(growable: false);
     }
     return [];
+  }
+
+  static Future<void> delete(String collectionName, String id) async {
+    final queryMessage = await db
+        .collection(collectionName)
+        .where('id', isEqualTo: id)
+        .get();
+    if (queryMessage.docs.isNotEmpty) {
+      String docName = queryMessage.docs.elementAt(0).id;
+      return await db.collection(collectionName).doc(docName).delete().then(
+            (doc) => print("Document deleted"),
+            onError: (e) => print("Error updating document $e"),
+          );
+    }
   }
 }

@@ -15,7 +15,7 @@ ConversationEntity _$ConversationEntityFromJson(Map<String, dynamic> json) =>
           : MessageEntity.fromJson(
               json['latestMessage'] as Map<String, dynamic>)
       ..belongUid = json['belongUid'] as String
-      ..timestamp = DateTime.parse(json['timestamp'] as String)
+      ..timestamp = json['timestamp']
       ..type = json['type'] as String;
 
 Map<String, dynamic> _$ConversationEntityToJson(ConversationEntity instance) =>
@@ -24,6 +24,6 @@ Map<String, dynamic> _$ConversationEntityToJson(ConversationEntity instance) =>
       'title': instance.title,
       'latestMessage': instance.latestMessage,
       'belongUid': instance.belongUid,
-      'timestamp': instance.timestamp.toIso8601String(),
+      'timestamp': instance.timestamp,
       'type': instance.type,
     };

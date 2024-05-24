@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dart_openai/dart_openai.dart';
 import 'package:flareline/entity/conversation_entity.dart';
 import 'package:flareline/entity/message_entity.dart';
+import 'package:flareline_uikit/core/event/global_event.dart';
 import 'package:flareline_uikit/service/base_provider.dart';
 import 'package:flareline/utils/firebase_store_utils.dart';
 import 'package:flareline/provider/store_provider.dart';
@@ -20,8 +21,6 @@ class ChatGptProvider extends BaseProvider {
   @override
   void init(BuildContext context) {
     controller = TextEditingController();
-
-    fetchConversations(context!);
   }
 
   late TextEditingController controller;
@@ -36,9 +35,17 @@ class ChatGptProvider extends BaseProvider {
 
   bool _showSettings = false;
 
-  bool _showConversation = false;
-
   bool get showSettings => _showSettings;
+
+  List<MessageEntity> messageList = [];
+
+  int get messageCount => messageList.length;
+
+  ConversationEntity? _conversationEntity;
+
+  ConversationEntity? get conversationEntity => _conversationEntity;
+
+  bool _showConversation = false;
 
   bool get showConversation => _showConversation;
 
@@ -47,17 +54,17 @@ class ChatGptProvider extends BaseProvider {
     notifyListeners();
   }
 
-  List<MessageEntity> messageList = [];
+  @override
+  // TODO: implement isRegisterEventBus
+  bool get isRegisterEventBus => true;
 
-  List<ConversationEntity> conversationList = [];
-
-  int get messageCount => messageList.length;
-
-  int get conversationCount => conversationList.length;
-
-  ConversationEntity? _conversationEntity;
-
-  ConversationEntity? get conversationEntity => _conversationEntity;
+  @override
+  void handleEventBus(BuildContext context, EventInfo eventInfo) {
+    if (eventInfo.eventType == 'showConversation') {
+      setConversationEntity(context, eventInfo.obj);
+    }
+    super.handleEventBus(context, eventInfo);
+  }
 
   void setConversationEntity(BuildContext ctx, ConversationEntity? item) {
     _conversationEntity = item;
@@ -70,10 +77,6 @@ class ChatGptProvider extends BaseProvider {
 
   MessageEntity getItemMessage(int index) {
     return messageList.elementAt(index);
-  }
-
-  ConversationEntity getConversation(int index) {
-    return conversationList.elementAt(index);
   }
 
   Future<void> send(BuildContext ctx) async {
@@ -106,7 +109,7 @@ class ChatGptProvider extends BaseProvider {
         ..id = Uuid().v1()
         ..isUser = true
         ..content = sendText
-        ..timestamp = DateTime.timestamp()
+        ..timestamp = DateTime.timestamp().millisecondsSinceEpoch
         ..conversationId = conversationEntity!.id
         ..belongUid = email;
       messageList.add(messageEntity);
@@ -147,7 +150,7 @@ class ChatGptProvider extends BaseProvider {
               ..id = responseId
               ..isUser = false
               ..content = msgText
-              ..timestamp = DateTime.timestamp()
+              ..timestamp = DateTime.timestamp().millisecondsSinceEpoch
               ..conversationId = conversationEntity!.id
               ..belongUid = email;
             messageList.add(responseMessage);
@@ -168,7 +171,7 @@ class ChatGptProvider extends BaseProvider {
         ..id = const Uuid().v1()
         ..isUser = false
         ..content = e.toString()
-        ..timestamp = DateTime.timestamp()
+        ..timestamp = DateTime.timestamp().millisecondsSinceEpoch
         ..belongUid = email;
       responseMessage.content = e.toString();
       messageList.add(responseMessage);
@@ -190,47 +193,13 @@ class ChatGptProvider extends BaseProvider {
       ..id = const Uuid().v1()
       ..type = 'text'
       ..title = title ?? 'New Chat'
-      ..timestamp = DateTime.timestamp()
+      ..timestamp = DateTime.timestamp().millisecondsSinceEpoch
       ..belongUid = email;
 
     addConversation(ctx, conversationEntity!);
 
     messageList.clear();
     notifyListeners();
-
-    fetchConversations(ctx);
-  }
-
-  fetchConversations(BuildContext ctx) async {
-    String email = ctx.read<StoreProvider>().email;
-    final query = await FirebaseStoreUtils.db
-        .collection('conversation')
-        .where('belongUid', isEqualTo: email)
-        // .orderBy("timestamp")
-        .get();
-    if (query.docs.isNotEmpty) {
-      conversationList.clear();
-      List<ConversationEntity> list = query.docs.map((element) {
-        ConversationEntity entity = ConversationEntity.fromJson(element.data());
-        return entity;
-      }).toList();
-      conversationList.addAll(list);
-
-      conversationList.forEach((element) async {
-        final queryMessage = await FirebaseStoreUtils.db
-            .collection('messages')
-            .where('belongUid', isEqualTo: email)
-            .where('conversationId', isEqualTo: element.id)
-            .limitToLast(1)
-            .get();
-        if (queryMessage.docs.isNotEmpty) {
-          Map<String, dynamic> msgMap = queryMessage.docs.elementAt(0).data();
-          MessageEntity msg = MessageEntity.fromJson(msgMap);
-          element.latestMessage = msg;
-        }
-      });
-      notifyListeners();
-    }
   }
 
   fetchMessages(BuildContext ctx, String conversationId) async {
@@ -240,6 +209,7 @@ class ChatGptProvider extends BaseProvider {
         .collection('messages')
         .where('belongUid', isEqualTo: email)
         .where('conversationId', isEqualTo: conversationId)
+        .orderBy('timestamp')
         .get();
     if (query.docs.isNotEmpty) {
       messageList.clear();
@@ -261,10 +231,6 @@ class ChatGptProvider extends BaseProvider {
     await FirebaseStoreUtils.add('messages', messageEntity!.toJson());
   }
 
-  void toggleConversation(BuildContext ctx) {
-    showConversation = !showConversation;
-  }
-
   bool? _hasCopied;
 
   bool get hasCopied => _hasCopied ?? false;
@@ -275,9 +241,13 @@ class ChatGptProvider extends BaseProvider {
     _hasCopied = true;
     notifyListeners();
 
-    Future.delayed(Duration(seconds: 2), () {
+    Future.delayed(const Duration(seconds: 2), () {
       _hasCopied = false;
       notifyListeners();
     });
+  }
+
+  void toggleConversation(BuildContext ctx) {
+    showConversation = !showConversation;
   }
 }

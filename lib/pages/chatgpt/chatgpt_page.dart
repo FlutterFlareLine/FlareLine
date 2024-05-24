@@ -1,3 +1,4 @@
+import 'package:flareline/pages/chatgpt/conversation_page.dart';
 import 'package:flareline_uikit/components/forms/outborder_text_form_field.dart';
 import 'package:flareline/core/theme/global_colors.dart';
 import 'package:flareline/entity/conversation_entity.dart';
@@ -64,7 +65,11 @@ class ContentPage extends BaseStlessWidget<ChatGptProvider> {
               _gptMessageWidget(context, viewModel),
               Visibility(
                 visible: viewModel.showConversation,
-                child: _conversationWidget(context, viewModel),
+                child: ConversationPage(
+                  onVisibleChanged: (visible) {
+                    viewModel.showConversation = visible;
+                  },
+                ),
               ),
               Align(
                 child: _toolsWidget(context, viewModel),
@@ -212,77 +217,6 @@ class ContentPage extends BaseStlessWidget<ChatGptProvider> {
           height: 20,
         ),
       ],
-    );
-  }
-
-  Widget _conversationWidget(BuildContext ctx, ChatGptProvider viewModel) {
-    return Container(
-      width: double.maxFinite,
-      height: double.maxFinite,
-      color: const Color(0xFF45454e).withOpacity(0.8),
-      margin: EdgeInsets.symmetric(horizontal: margin * 2),
-      child: Stack(
-        children: [
-          ListView.separated(
-            padding: EdgeInsets.symmetric(horizontal: margin,vertical: 20),
-            itemBuilder: (context, index) {
-              return conversationItemBuilder(context, index, viewModel);
-            },
-            itemCount: viewModel.conversationCount,
-            separatorBuilder: _dividerBuilder,
-          ),
-          IconButton(
-              onPressed: () {
-                viewModel.toggleConversation(ctx);
-              },
-              icon: const Icon(Icons.close, color: Colors.white,))
-        ],
-      ),
-    );
-  }
-
-  Widget conversationItemBuilder(
-      BuildContext context, int index, ChatGptProvider viewModel) {
-    ConversationEntity conversationEntity = viewModel.getConversation(index);
-    String? title =
-        conversationEntity.title ?? conversationEntity.latestMessage?.content;
-    if (title == 'New Chat' && conversationEntity.latestMessage != null) {
-      title = conversationEntity.latestMessage!.content;
-    }
-    return InkWell(
-      child: Container(
-        decoration: BoxDecoration(
-            border: Border.all(color: GlobalColors.lightGray, width: 1),
-            borderRadius: BorderRadius.circular(4)),
-        padding: const EdgeInsets.symmetric(vertical: 8,horizontal: 10),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              title ?? '',
-              maxLines: 1,
-              style: const TextStyle(fontSize: 12, color: Colors.white),
-              overflow: TextOverflow.ellipsis,
-            ),
-            Text(
-              DateFormat('yyyy-MM-dd HH:mm:ss')
-                  .format(conversationEntity.timestamp),
-              style: const TextStyle(fontSize: 10, color: Colors.white),
-            )
-          ],
-        ),
-      ),
-      onTap: () {
-        viewModel.toggleConversation(context);
-        viewModel.setConversationEntity(context, conversationEntity);
-      },
-    );
-  }
-
-  Widget _dividerBuilder(BuildContext context, int index) {
-    return const Divider(
-      height: 10,
-      color: Colors.transparent,
     );
   }
 
