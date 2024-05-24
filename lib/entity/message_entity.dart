@@ -11,6 +11,7 @@ class MessageEntity {
   late int timestamp;
   late String belongUid;
   late String conversationId;
+  late String fromMessageId;
 
   MessageEntity();
 

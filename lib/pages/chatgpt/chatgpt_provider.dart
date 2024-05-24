@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dart_openai/dart_openai.dart';
+import 'package:flareline/core/theme/global_colors.dart';
 import 'package:flareline/entity/conversation_entity.dart';
 import 'package:flareline/entity/message_entity.dart';
 import 'package:flareline_uikit/core/event/global_event.dart';
@@ -18,9 +19,67 @@ import 'package:uuid/uuid.dart';
 class ChatGptProvider extends BaseProvider {
   ChatGptProvider(super.context);
 
+  final List<NavigationRailDestination> _destinations = const [
+    NavigationRailDestination(
+        padding: EdgeInsets.symmetric(vertical: 10),
+        icon: Icon(
+          Icons.add_circle_outline,
+        ),
+        label: Text(
+          "New Chat",
+        )),
+    NavigationRailDestination(
+        padding: EdgeInsets.symmetric(vertical: 10),
+        icon: Icon(Icons.history),
+        label: Text(
+          "History",
+        )),
+    NavigationRailDestination(
+        padding: EdgeInsets.symmetric(vertical: 10),
+        icon: Icon(Icons.edit_note),
+        label: Text(
+          "Write",
+        )),
+    // NavigationRailDestination(
+    //     padding: EdgeInsets.symmetric(vertical: 10),
+    //     icon: Icon(Icons.edit_note),
+    //     label: Text(
+    //       "Imitate",
+    //     )),
+    NavigationRailDestination(
+        padding: EdgeInsets.symmetric(vertical: 10),
+        icon: Icon(Icons.draw),
+        label: Text(
+          "Draw",
+        )),
+    NavigationRailDestination(
+        padding: EdgeInsets.symmetric(vertical: 10),
+        icon: Icon(Icons.more_vert),
+        label: Text(
+          "More",
+        )),
+    NavigationRailDestination(
+        padding: EdgeInsets.symmetric(vertical: 10),
+        icon: Icon(Icons.settings),
+        label: Text("Setting")),
+  ];
+
+  int _selectedIndex = 0;
+
+  List<NavigationRailDestination> get destinations => _destinations;
+
+  int get selectedIndex => _selectedIndex;
+
+  set selectedIndex(int i) {
+    _selectedIndex = i;
+    notifyListeners();
+  }
+
   @override
   void init(BuildContext context) {
     controller = TextEditingController();
+    setConversationEntity(
+        context, context.read<StoreProvider>().getConversation());
   }
 
   late TextEditingController controller;
@@ -72,6 +131,9 @@ class ChatGptProvider extends BaseProvider {
     if (_conversationEntity == null) {
       return;
     }
+
+    ctx.read<StoreProvider>().saveConversation(_conversationEntity!);
+
     fetchMessages(ctx, _conversationEntity!.id);
   }
 
@@ -104,9 +166,11 @@ class ChatGptProvider extends BaseProvider {
     if (conversationEntity == null) {
       startNewChat(ctx, title: sendText);
     }
+
+    String messageId = Uuid().v1();
     try {
       MessageEntity messageEntity = MessageEntity()
-        ..id = Uuid().v1()
+        ..id = messageId
         ..isUser = true
         ..content = sendText
         ..timestamp = DateTime.timestamp().millisecondsSinceEpoch
@@ -152,6 +216,7 @@ class ChatGptProvider extends BaseProvider {
               ..content = msgText
               ..timestamp = DateTime.timestamp().millisecondsSinceEpoch
               ..conversationId = conversationEntity!.id
+              ..fromMessageId = messageId
               ..belongUid = email;
             messageList.add(responseMessage);
           } else {
@@ -171,6 +236,8 @@ class ChatGptProvider extends BaseProvider {
         ..id = const Uuid().v1()
         ..isUser = false
         ..content = e.toString()
+        ..fromMessageId = messageId
+        ..conversationId = conversationEntity!.id
         ..timestamp = DateTime.timestamp().millisecondsSinceEpoch
         ..belongUid = email;
       responseMessage.content = e.toString();
@@ -200,6 +267,8 @@ class ChatGptProvider extends BaseProvider {
 
     messageList.clear();
     notifyListeners();
+
+    ctx.read<StoreProvider>().saveConversation(_conversationEntity!);
   }
 
   fetchMessages(BuildContext ctx, String conversationId) async {
@@ -249,5 +318,14 @@ class ChatGptProvider extends BaseProvider {
 
   void toggleConversation(BuildContext ctx) {
     showConversation = !showConversation;
+  }
+
+  void hideConversation(BuildContext context) {
+    showConversation = false;
+  }
+
+  void hideSetting(BuildContext context) {
+    _showSettings = false;
+    notifyListeners();
   }
 }

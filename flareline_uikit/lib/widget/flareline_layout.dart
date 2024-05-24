@@ -25,6 +25,9 @@ abstract class FlarelineLayoutWidget extends StatelessWidget {
 
   Color? get backgroundColor => null;
 
+  EdgeInsetsGeometry? get padding =>
+      const EdgeInsets.symmetric(horizontal: 20, vertical: 16);
+
   Widget? toolbarWidget(BuildContext context, bool showDrawer) {
     return null;
   }
@@ -107,7 +110,7 @@ abstract class FlarelineLayoutWidget extends StatelessWidget {
         width: double.maxFinite,
         height: double.maxFinite,
         alignment: isAlignCenter ? Alignment.center : null,
-        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
+        padding: padding,
         child: isContentScroll
             ? SingleChildScrollView(child: contentWidget)
             : contentWidget,

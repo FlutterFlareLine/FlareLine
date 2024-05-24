@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:dart_openai/dart_openai.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flareline/entity/conversation_entity.dart';
 import 'package:flareline/entity/user_entity.dart';
 import 'package:flareline_uikit/service/base_provider.dart';
 import 'package:flutter/foundation.dart';
@@ -40,8 +41,11 @@ class StoreProvider extends BaseProvider {
 
   UserEntity? loginUser() {
     dynamic loginUser = box.read("loginUser");
-    UserEntity? userEntity = UserEntity.fromJson(jsonDecode(loginUser));
-    return userEntity;
+    if(loginUser!=null) {
+      UserEntity? userEntity = UserEntity.fromJson(jsonDecode(loginUser));
+      return userEntity;
+    }
+    return null;
   }
 
   saveLogin(UserEntity userEntity) {
@@ -64,6 +68,20 @@ class StoreProvider extends BaseProvider {
   @override
   void init(BuildContext context) {
     // TODO: implement init
+  }
+
+  void saveConversation(ConversationEntity conversationEntity) {
+    box.write("conversation", jsonEncode(conversationEntity.toJson()));
+  }
+
+  ConversationEntity? getConversation(){
+    dynamic data = box.read("conversation");
+    if(data!=null) {
+      ConversationEntity? conversationEntity = ConversationEntity.fromJson(
+          jsonDecode(data));
+      return conversationEntity;
+    }
+    return null;
   }
 
 }
