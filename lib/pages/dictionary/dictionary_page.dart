@@ -179,7 +179,6 @@ class DictionaryViewModel extends BaseTableProvider {
         .collection('dictionary')
         // .where('belongUid', isEqualTo: email)
         .where('parentId', isEqualTo: parentId)
-        // .orderBy('orderNum', descending: true)
         .get();
 
     if (query.docs.isNotEmpty) {

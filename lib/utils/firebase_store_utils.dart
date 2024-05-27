@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flareline/components/chats.dart';
+import 'package:flareline/core/cache/disk_cache.dart';
 import 'package:flareline_uikit/service/base_provider.dart';
 
 import 'package:flutter/foundation.dart';
@@ -25,7 +26,16 @@ class FirebaseStoreUtils {
   }
 
   static Future<List<Map<String, dynamic>>> listDicChildren(
-      String collectionName, String configKey) async {
+      String collectionName, String configKey,
+      {bool? enableCache}) async {
+    if (enableCache != null && enableCache) {
+      String cacheKey = 'collection_${collectionName}_${configKey}';
+      List<Map<String, dynamic>>? cacheData = DiskCache.instance.read(cacheKey);
+      if (cacheData != null && cacheData.isNotEmpty) {
+        return cacheData;
+      }
+    }
+
     final configKeyQuery = await db
         .collection(collectionName)
         .where('configKey', isEqualTo: configKey)
@@ -46,23 +56,27 @@ class FirebaseStoreUtils {
         .get();
 
     if (query.docs.isNotEmpty) {
-      List<Map<String, dynamic>> data= query.docs.map((element) {
+      List<Map<String, dynamic>> data = query.docs.map((element) {
         return element.data();
       }).toList(growable: false);
       data.sort((a, b) {
         return a['orderNum'].compareTo(b['orderNum']);
       });
-      return data;
 
+      if (enableCache != null && enableCache) {
+        if (data != null && data.isNotEmpty) {
+          String cacheKey = 'collection_${collectionName}_${configKey}';
+          DiskCache.instance.write(cacheKey, data);
+        }
+      }
+      return data;
     }
     return [];
   }
 
   static Future<void> delete(String collectionName, String id) async {
-    final queryMessage = await db
-        .collection(collectionName)
-        .where('id', isEqualTo: id)
-        .get();
+    final queryMessage =
+        await db.collection(collectionName).where('id', isEqualTo: id).get();
     if (queryMessage.docs.isNotEmpty) {
       String docName = queryMessage.docs.elementAt(0).id;
       return await db.collection(collectionName).doc(docName).delete().then(

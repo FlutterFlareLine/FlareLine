@@ -26,7 +26,8 @@ class AIPage extends LayoutWidget {
         child: SingleChildScrollView(
           child: FutureBuilder(
               future: FirebaseStoreUtils.listDicChildren(
-                  'dictionary', 'aiConfigKey'),
+                  'dictionary', 'aiConfigKey',
+                  enableCache: true),
               builder: (context, snapshot) {
                 if (snapshot.connectionState == ConnectionState.waiting ||
                     !snapshot.hasData) {
