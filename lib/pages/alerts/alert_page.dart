@@ -289,22 +289,22 @@ class AlertPage extends LayoutWidget {
                       desc: "Flutter is more awesome with RFlutter Alert.",
                       buttons: [
                         DialogButton(
-                          child: Text(
+                          onPressed: () => Navigator.pop(context),
+                          width: 60,
+                          child: const Text(
                             "Cancel",
                             style: TextStyle(color: GlobalColors.primary, fontSize: 14),
                           ),
-                          onPressed: () => Navigator.pop(context),
-                          width: 60,
                         ),
                         DialogButton(
-                          child: Text(
-                            "Confirm",
-                            style: TextStyle(color: Colors.white, fontSize: 14),
-                          ),
                           onPressed: () => Navigator.pop(context),
                           width: 60,
                           color: GlobalColors.primary,
-                          margin: EdgeInsets.only(left: 10),
+                          margin: const EdgeInsets.only(left: 10),
+                          child: const Text(
+                            "Confirm",
+                            style: TextStyle(color: Colors.white, fontSize: 14),
+                          ),
                         )
                       ],
                     ).show();//

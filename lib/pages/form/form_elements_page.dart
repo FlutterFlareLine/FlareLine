@@ -1,7 +1,7 @@
 import 'package:calendar_date_picker2/calendar_date_picker2.dart';
 import 'package:flareline_uikit/components/forms/checkbox_widget.dart';
 import 'package:flareline/core/theme/global_colors.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
@@ -9,7 +9,10 @@ import 'package:flareline_uikit/components/card/common_card.dart';
 import 'package:flareline_uikit/components/forms/form_file_picker.dart';
 import 'package:flareline_uikit/components/forms/outborder_text_form_field.dart';
 import 'package:flareline/pages/layout.dart';
+import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:hexcolor/hexcolor.dart';
+import 'package:rflutter_alert/rflutter_alert.dart';
 
 class FormElementsPage extends LayoutWidget {
   FormElementsPage({super.key});
@@ -64,6 +67,8 @@ class FormElementsPage extends LayoutWidget {
 
   ValueNotifier<String> dateNotifier = ValueNotifier("");
 
+  ValueNotifier<String> colorPicker = ValueNotifier("#000000");
+
   ValueNotifier<bool> checkNotifier1 = ValueNotifier(false);
 
   ValueNotifier<bool> checkNotifier3 = ValueNotifier(false);
@@ -71,6 +76,8 @@ class FormElementsPage extends LayoutWidget {
   ValueNotifier<bool> toggleNotifier = ValueNotifier(false);
 
   ValueNotifier<bool> toggleNotifier2 = ValueNotifier(false);
+
+
 
   _leftWidget(BuildContext context) {
     return Column(
@@ -95,6 +102,52 @@ class FormElementsPage extends LayoutWidget {
                   labelText: AppLocalizations.of(context)!.disabledLabel,
                   hintText: AppLocalizations.of(context)!.disabledLabel,
                   enabled: false,
+                ),
+                const SizedBox(
+                  height: 16,
+                ),
+                const Text('Color picker'),
+                const SizedBox(
+                  height: 8,
+                ),
+                InkWell(
+                  onTap: () {
+                    Alert(
+                      context: context,
+                      type: AlertType.none,
+                      title: "Color Picker",
+                      content:  ColorPicker(
+                        pickerColor: HexColor(colorPicker.value),
+                        onColorChanged: (value) {
+                          colorPicker.value=value.hex;
+                        },
+                      ),
+                    ).show();//
+
+                  },
+                  child: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      border: Border.all(color: Colors.black,width: 1)
+                    ),
+                    height: 35,
+                    width: double.infinity,
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 6.0, horizontal: 12.0),
+                    child: ValueListenableBuilder(
+                      valueListenable: colorPicker,
+                      builder: (ctx, color, child){
+                        return Container(
+                          decoration: BoxDecoration(
+                            color: HexColor(color),
+                            border: Border.all(),
+                            borderRadius: BorderRadius.circular(4),
+                          ),
+                        );
+                      },
+                    )
+
+                  ),
                 )
               ])),
         ),
@@ -187,7 +240,8 @@ class FormElementsPage extends LayoutWidget {
                                           borderRadius:
                                               BorderRadius.circular(4),
                                           border: Border.all(
-                                              color: GlobalColors.background, width: 0.5)),
+                                              color: GlobalColors.background,
+                                              width: 0.5)),
                                       child: Text(val));
                                 }))
                       ],
@@ -237,7 +291,8 @@ class FormElementsPage extends LayoutWidget {
                                           borderRadius:
                                               BorderRadius.circular(4),
                                           border: Border.all(
-                                              color: GlobalColors.background, width: 0.5)),
+                                              color: GlobalColors.background,
+                                              width: 0.5)),
                                       child: Text(val));
                                 }))
                       ],
@@ -420,7 +475,8 @@ class FormElementsPage extends LayoutWidget {
                               builder: (ctx, res, widget) {
                                 return Checkbox(
                                   value: res,
-                                  activeColor: GlobalColors.darkTextBody, //选中时的颜色
+                                  activeColor: GlobalColors.darkTextBody,
+                                  //选中时的颜色
                                   onChanged: (value) {
                                     checkNotifier1.value = value ?? false;
                                   },
@@ -444,7 +500,6 @@ class FormElementsPage extends LayoutWidget {
                   const SizedBox(
                     height: 12,
                   ),
-
                   const SizedBox(
                     height: 16,
                   ),
@@ -452,7 +507,6 @@ class FormElementsPage extends LayoutWidget {
                   const SizedBox(
                     height: 12,
                   ),
-
                 ])),
           ),
         ]);

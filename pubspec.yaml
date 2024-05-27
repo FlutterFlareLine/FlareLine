@@ -118,6 +118,8 @@ dependencies:
   quickalert: ^1.1.0
   rflutter_alert: ^2.0.7
 
+  flutter_colorpicker: ^1.1.0
+
   flareline_uikit:
     path: flareline_uikit
 
