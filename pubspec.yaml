@@ -120,6 +120,8 @@ dependencies:
 
   flutter_colorpicker: ^1.1.0
 
+  multi_select_flutter: ^4.1.3
+
   flareline_uikit:
     path: flareline_uikit
 

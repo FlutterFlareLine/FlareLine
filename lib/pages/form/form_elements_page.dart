@@ -1,4 +1,7 @@
 import 'package:calendar_date_picker2/calendar_date_picker2.dart';
+import 'package:flareline/pages/form/multi_select_widget.dart';
+import 'package:flareline/pages/form/select_widget.dart';
+import 'package:flareline/pages/form/single_checkbox_widget.dart';
 import 'package:flareline_uikit/components/forms/checkbox_widget.dart';
 import 'package:flareline/core/theme/global_colors.dart';
 import 'package:flex_color_scheme/flex_color_scheme.dart';
@@ -12,6 +15,7 @@ import 'package:flareline/pages/layout.dart';
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:multi_select_flutter/multi_select_flutter.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 
 class FormElementsPage extends LayoutWidget {
@@ -77,8 +81,6 @@ class FormElementsPage extends LayoutWidget {
 
   ValueNotifier<bool> toggleNotifier2 = ValueNotifier(false);
 
-
-
   _leftWidget(BuildContext context) {
     return Column(
       children: [
@@ -116,38 +118,34 @@ class FormElementsPage extends LayoutWidget {
                       context: context,
                       type: AlertType.none,
                       title: "Color Picker",
-                      content:  ColorPicker(
+                      content: ColorPicker(
                         pickerColor: HexColor(colorPicker.value),
                         onColorChanged: (value) {
-                          colorPicker.value=value.hex;
+                          colorPicker.value = value.hex;
                         },
                       ),
-                    ).show();//
-
+                    ).show(); //
                   },
                   child: Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      border: Border.all(color: Colors.black,width: 1)
-                    ),
-                    height: 35,
-                    width: double.infinity,
-                    padding: const EdgeInsets.symmetric(
-                        vertical: 6.0, horizontal: 12.0),
-                    child: ValueListenableBuilder(
-                      valueListenable: colorPicker,
-                      builder: (ctx, color, child){
-                        return Container(
-                          decoration: BoxDecoration(
-                            color: HexColor(color),
-                            border: Border.all(),
-                            borderRadius: BorderRadius.circular(4),
-                          ),
-                        );
-                      },
-                    )
-
-                  ),
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          border: Border.all(color: Colors.black, width: 1)),
+                      height: 35,
+                      width: double.infinity,
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 6.0, horizontal: 12.0),
+                      child: ValueListenableBuilder(
+                        valueListenable: colorPicker,
+                        builder: (ctx, color, child) {
+                          return Container(
+                            decoration: BoxDecoration(
+                              color: HexColor(color),
+                              border: Border.all(),
+                              borderRadius: BorderRadius.circular(4),
+                            ),
+                          );
+                        },
+                      )),
                 )
               ])),
         ),
@@ -164,6 +162,8 @@ class FormElementsPage extends LayoutWidget {
                       return Switch(
                           value: checked,
                           activeColor: GlobalColors.success,
+                          inactiveThumbColor: GlobalColors.darkText,
+                          inactiveTrackColor: GlobalColors.lightGray,
                           onChanged: (r) {
                             toggleNotifier.value = !toggleNotifier.value;
                           });
@@ -176,7 +176,9 @@ class FormElementsPage extends LayoutWidget {
                     builder: (ctx, checked, child) {
                       return SwitchListTile(
                         title: Text(AppLocalizations.of(context)!.switchLabel),
-                        activeColor: GlobalColors.danger,
+                        activeColor: GlobalColors.success,
+                        inactiveThumbColor: GlobalColors.darkText,
+                        inactiveTrackColor: GlobalColors.lightGray,
                         value: checked,
                         onChanged: (r) {
                           toggleNotifier2.value = !toggleNotifier2.value;
@@ -357,138 +359,10 @@ class FormElementsPage extends LayoutWidget {
             height: 16,
           ),
           CommonCard(
-            child: _titleWidget(
-                AppLocalizations.of(context)!.checkboxAndRadis,
-                Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Row(
-                        children: [
-                          CheckBoxWidget(
-                            text: 'Success',
-                            checkedColor: GlobalColors.success,
-                            size: 30,
-                            onChanged: (checked, v) {},
-                          ),
-                          const SizedBox(
-                            width: 20,
-                          ),
-                          CheckBoxWidget(
-                            text: 'Error',
-                            checkedColor: GlobalColors.danger,
-                            size: 30,
-                            onChanged: (checked, v) {},
-                          ),
-                          const SizedBox(
-                            width: 20,
-                          ),
-                          CheckBoxWidget(
-                            text: 'Warn',
-                            checkedColor: GlobalColors.warn,
-                            size: 30,
-                            onChanged: (checked, v) {},
-                          ),
-                          const SizedBox(
-                            width: 20,
-                          ),
-                          CheckBoxWidget(
-                            text: 'Primary',
-                            checkedColor: GlobalColors.primary,
-                            size: 30,
-                            onChanged: (checked, v) {},
-                          ),
-                          const SizedBox(
-                            width: 20,
-                          ),
-                          CheckBoxWidget(
-                            text: 'Info',
-                            checkedColor: GlobalColors.darkTextBody,
-                            size: 30,
-                            onChanged: (checked, v) {},
-                          ),
-                        ],
-                      ),
-                      const SizedBox(
-                        height: 16,
-                      ),
-                      Row(
-                        children: [
-                          ValueListenableBuilder(
-                              valueListenable: checkNotifier1,
-                              builder: (ctx, res, widget) {
-                                return Checkbox(
-                                  value: res,
-                                  activeColor: GlobalColors.success, //选中时的颜色
-                                  onChanged: (value) {
-                                    checkNotifier1.value = value ?? false;
-                                  },
-                                );
-                              }),
-                          const SizedBox(
-                            width: 20,
-                          ),
-                          ValueListenableBuilder(
-                              valueListenable: checkNotifier1,
-                              builder: (ctx, res, widget) {
-                                return Checkbox(
-                                  value: res,
-                                  activeColor: GlobalColors.danger, //选中时的颜色
-                                  onChanged: (value) {
-                                    checkNotifier1.value = value ?? false;
-                                  },
-                                );
-                              }),
-                          const SizedBox(
-                            width: 20,
-                          ),
-                          ValueListenableBuilder(
-                              valueListenable: checkNotifier1,
-                              builder: (ctx, res, widget) {
-                                return Checkbox(
-                                  value: res,
-                                  activeColor: GlobalColors.warn, //选中时的颜色
-                                  onChanged: (value) {
-                                    checkNotifier1.value = value ?? false;
-                                  },
-                                );
-                              }),
-                          const SizedBox(
-                            width: 20,
-                          ),
-                          ValueListenableBuilder(
-                              valueListenable: checkNotifier1,
-                              builder: (ctx, res, widget) {
-                                return Checkbox(
-                                  value: res,
-                                  activeColor: GlobalColors.primary, //选中时的颜色
-                                  onChanged: (value) {
-                                    checkNotifier1.value = value ?? false;
-                                  },
-                                );
-                              }),
-                          const SizedBox(
-                            width: 20,
-                          ),
-                          ValueListenableBuilder(
-                              valueListenable: checkNotifier1,
-                              builder: (ctx, res, widget) {
-                                return Checkbox(
-                                  value: res,
-                                  activeColor: GlobalColors.darkTextBody,
-                                  //选中时的颜色
-                                  onChanged: (value) {
-                                    checkNotifier1.value = value ?? false;
-                                  },
-                                );
-                              }),
-                          const SizedBox(
-                            width: 20,
-                          ),
-                        ],
-                      ),
-                    ])),
-          ),
+              child: _titleWidget(
+            AppLocalizations.of(context)!.checkboxAndRadis,
+            SingleCheckboxWidget(),
+          )),
           const SizedBox(
             height: 16,
           ),
@@ -500,6 +374,7 @@ class FormElementsPage extends LayoutWidget {
                   const SizedBox(
                     height: 12,
                   ),
+                  SelectWidget(),
                   const SizedBox(
                     height: 16,
                   ),
@@ -507,6 +382,7 @@ class FormElementsPage extends LayoutWidget {
                   const SizedBox(
                     height: 12,
                   ),
+                  MultiSelectWidget()
                 ])),
           ),
         ]);

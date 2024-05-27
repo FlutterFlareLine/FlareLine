@@ -1,4 +1,5 @@
 library flareline_uikit;
+
 import 'package:flareline_uikit/core/theme/flareline_colors.dart';
 import 'package:flutter/material.dart';
 
@@ -38,14 +39,16 @@ class CheckBoxWidget extends StatelessWidget {
                   color: (checked ?? false)
                       ? checkedColor!
                       : FlarelineColors.darkBorder)),
-          child: Icon(
-            Icons.check,
-            color: (checked ?? false) ? Colors.white : Colors.transparent,
-          ),
+          child: (checked ?? false)
+              ? Icon(
+                  Icons.check,
+                  color: Colors.white,
+                )
+              : SizedBox.shrink(),
         ),
         onTap: () {
           if (onChanged != null) {
-            onChanged!(checked, value);
+            onChanged!(!(this.checked??false), value);
           }
         },
       ),
