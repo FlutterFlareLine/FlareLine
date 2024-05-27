@@ -4,6 +4,7 @@ import 'package:flareline/pages/chatgpt/chatgpt_page.dart';
 import 'package:flareline/pages/dictionary/dictionary_page.dart';
 import 'package:flareline/pages/scrapy/scrapy_page.dart';
 import 'package:flareline/pages/table/contacts_page.dart';
+import 'package:flareline/pages/toast/toast_page.dart';
 import 'package:flareline/pages/tools/tools_page.dart';
 import 'package:flareline/provider/store_provider.dart';
 import 'package:flutter/material.dart';
@@ -61,6 +62,7 @@ final List<Map<String, Object>> MAIN_PAGES = [
   {'routerPath': '/dictionary', 'widget': DictionaryPage()},
   {'routerPath': '/tools', 'widget': ToolsPage()},
   {'routerPath': '/ai', 'widget': AIPage()},
+  {'routerPath': '/toast', 'widget': ToastPage()},
 ];
 
 class RouteConfiguration {

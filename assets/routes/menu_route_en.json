@@ -91,6 +91,10 @@
           {
             "menuName": "Buttons",
             "path": "/buttons"
+          },
+          {
+            "menuName": "Toast",
+            "path": "/toast"
           }
         ]
       },

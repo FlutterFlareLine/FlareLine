@@ -18,18 +18,18 @@
 
     <meta charset="UTF-8">
     <meta content="IE=Edge" http-equiv="X-UA-Compatible">
-    <meta name="description" content="A new Flutter project.">
+    <meta name="description" content="Flareline-Free Flutter Dashboard">
 
     <!-- iOS meta tags & icons -->
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="apple-mobile-web-app-title" content="flareline">
+    <meta name="apple-mobile-web-app-title" content="Flareline">
     <link rel="apple-touch-icon" href="icons/Icon-192.png">
 
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="favicon.png"/>
 
-    <title>flareline</title>
+    <title>Flareline-Free Flutter Dashboard</title>
     <link rel="manifest" href="manifest.json">
 
     <style>
@@ -63,19 +63,8 @@
         }
 
     </style>
-    <script>
-        // The value below is injected by flutter build, do not touch.
-        const serviceWorkerVersion = null;
-    </script>
-    <!-- This script adds the flutter initialization JS code -->
-    <script src="flutter.js" defer></script>
-    <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs"
-            type="module"></script>
-    <script type="application/javascript" src="/assets/packages/flutter_inappwebview_web/assets/web/web_support.js" defer></script>
-</head>
 </head>
 <body>
-
 <div id="app_splash">
     <div class="preloader">
         <div class="cs-loader">
@@ -86,8 +75,16 @@
         </div>
     </div>
 </div>
+<script src="flutter_bootstrap.js" async></script>
+<script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs"
+        type="module"></script>
+<script type="application/javascript"
+        src="/assets/packages/flutter_inappwebview_web/assets/web/web_support.js" defer></script>
 <script>
-    var isLoadSuccess;
+    {{flutter_js}}
+{{flutter_build_config}}
+
+var isLoadSuccess;
     var hasTimeOut;
     setTimeout(function(){
         if(isLoadSuccess){
@@ -97,10 +94,7 @@
     },1000);
     window.addEventListener('load', function(ev) {
       // Download main.dart.js
-      _flutter.loader.loadEntrypoint({
-        serviceWorker: {
-          serviceWorkerVersion: serviceWorkerVersion,
-        },
+      _flutter.loader.load({
         onEntrypointLoaded: async function(engineInitializer) {
 
               engineInitializer.initializeEngine().then(function(appRunner) {

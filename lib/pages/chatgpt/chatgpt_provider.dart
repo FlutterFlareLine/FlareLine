@@ -40,12 +40,12 @@ class ChatGptProvider extends BaseProvider {
         label: Text(
           "Write",
         )),
-    // NavigationRailDestination(
-    //     padding: EdgeInsets.symmetric(vertical: 10),
-    //     icon: Icon(Icons.edit_note),
-    //     label: Text(
-    //       "Imitate",
-    //     )),
+    NavigationRailDestination(
+        padding: EdgeInsets.symmetric(vertical: 10),
+        icon: Icon(Icons.edit_note),
+        label: Text(
+          "Imitate",
+        )),
     NavigationRailDestination(
         padding: EdgeInsets.symmetric(vertical: 10),
         icon: Icon(Icons.draw),
