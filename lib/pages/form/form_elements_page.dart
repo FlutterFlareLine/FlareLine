@@ -1,4 +1,5 @@
 import 'package:calendar_date_picker2/calendar_date_picker2.dart';
+import 'package:flareline/pages/form/date_picker_widget.dart';
 import 'package:flareline/pages/form/multi_select_widget.dart';
 import 'package:flareline/pages/form/select_widget.dart';
 import 'package:flareline/pages/form/single_checkbox_widget.dart';
@@ -69,13 +70,7 @@ class FormElementsPage extends LayoutWidget {
     ]);
   }
 
-  ValueNotifier<String> dateNotifier = ValueNotifier("");
-
   ValueNotifier<String> colorPicker = ValueNotifier("#000000");
-
-  ValueNotifier<bool> checkNotifier1 = ValueNotifier(false);
-
-  ValueNotifier<bool> checkNotifier3 = ValueNotifier(false);
 
   ValueNotifier<bool> toggleNotifier = ValueNotifier(false);
 
@@ -200,104 +195,9 @@ class FormElementsPage extends LayoutWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(AppLocalizations.of(context)!.datePicker),
-                        const SizedBox(
-                          height: 10,
-                        ),
-                        InkWell(
-                            onTap: () async {
-                              List<DateTime?>? results =
-                                  await showCalendarDatePicker2Dialog(
-                                context: context,
-                                config:
-                                    CalendarDatePicker2WithActionButtonsConfig(),
-                                dialogSize: const Size(325, 400),
-                                borderRadius: BorderRadius.circular(15),
-                              );
-
-                              dateNotifier.value =
-                                  (results != null && results!.length > 0
-                                      ? (results
-                                              .elementAt(0)
-                                              ?.toLocal()
-                                              .toString()
-                                              .substring(0, 10) ??
-                                          '')
-                                      : "");
-                            },
-                            child: ValueListenableBuilder(
-                                valueListenable: dateNotifier,
-                                builder: (c, val, child) {
-                                  return Container(
-                                      alignment: Alignment.centerLeft,
-                                      height: 45,
-                                      padding: const EdgeInsets.symmetric(
-                                          horizontal: 10),
-                                      width: double.maxFinite,
-                                      decoration: BoxDecoration(
-                                          color: Colors.white,
-                                          borderRadius:
-                                              BorderRadius.circular(4),
-                                          border: Border.all(
-                                              color: GlobalColors.background,
-                                              width: 0.5)),
-                                      child: Text(val));
-                                }))
-                      ],
-                    ),
+                    DatePickerWidget(),
                     const SizedBox(
                       height: 16,
-                    ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(AppLocalizations.of(context)!.selectDate),
-                        const SizedBox(
-                          height: 10,
-                        ),
-                        InkWell(
-                            onTap: () async {
-                              List<DateTime?>? results =
-                                  await showCalendarDatePicker2Dialog(
-                                context: context,
-                                config:
-                                    CalendarDatePicker2WithActionButtonsConfig(),
-                                dialogSize: const Size(325, 400),
-                                borderRadius: BorderRadius.circular(15),
-                              );
-
-                              dateNotifier.value =
-                                  (results != null && results!.isNotEmpty
-                                      ? (results
-                                              .elementAt(0)
-                                              ?.toLocal()
-                                              .toString()
-                                              .substring(0, 10) ??
-                                          '')
-                                      : "");
-                            },
-                            child: ValueListenableBuilder(
-                                valueListenable: dateNotifier,
-                                builder: (c, val, child) {
-                                  return Container(
-                                      alignment: Alignment.centerLeft,
-                                      height: 45,
-                                      padding:
-                                          EdgeInsets.symmetric(horizontal: 10),
-                                      width: double.maxFinite,
-                                      decoration: BoxDecoration(
-                                          color: Colors.white,
-                                          borderRadius:
-                                              BorderRadius.circular(4),
-                                          border: Border.all(
-                                              color: GlobalColors.background,
-                                              width: 0.5)),
-                                      child: Text(val));
-                                }))
-                      ],
                     ),
                   ])),
         ),
