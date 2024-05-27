@@ -22,11 +22,11 @@ class AIPage extends LayoutWidget {
 
   _sideListWidget(BuildContext context, bool isDark) {
     return CommonCard(
-        padding: EdgeInsets.symmetric(vertical: 20),
-        child:SingleChildScrollView(
-          child:  FutureBuilder(
-              future:
-              FirebaseStoreUtils.listDicChildren('dictionary', 'aiConfigKey'),
+        padding: const EdgeInsets.symmetric(vertical: 20),
+        child: SingleChildScrollView(
+          child: FutureBuilder(
+              future: FirebaseStoreUtils.listDicChildren(
+                  'dictionary', 'aiConfigKey'),
               builder: (context, snapshot) {
                 if (snapshot.connectionState == ConnectionState.waiting ||
                     !snapshot.hasData) {
@@ -42,7 +42,7 @@ class AIPage extends LayoutWidget {
   }
 
   Widget itemBuilder(BuildContext context, List listMenu, bool isDark) {
-    return Container(
+    return SizedBox(
       width: double.maxFinite,
       height: double.maxFinite,
       child: Wrap(
@@ -115,44 +115,47 @@ class GridMenuWidget extends StatelessWidget {
                         width: 60,
                         height: 60,
                       )
-                    : SizedBox.shrink(),
+                    : const SizedBox.shrink(),
               ),
               const SizedBox(
                 width: 10,
               ),
-              Expanded(child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    text,
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      color: isDark ? Colors.white : GlobalColors.darkBlackText,
-                    ),
-                  ),
-                  SizedBox(
-                    height: 5,
-                  ),
-                  Text(
-                    url ?? configValue,
-                    style: TextStyle(
-                        color: isDark ? Colors.white : GlobalColors.success,
-                        fontSize: 12),
-                  ),
-                  SizedBox(
-                    height: 5,
-                  ),
-                  Text(
-                    desc==null||desc=='' ? text:desc,
-                    softWrap: true,
-                    style: TextStyle(
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      text,
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
                         color:
-                        isDark ? Colors.white : GlobalColors.darkTextBody,
-                        fontSize: 12),
-                  )
-                ],
-              ),)
+                            isDark ? Colors.white : GlobalColors.darkBlackText,
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 5,
+                    ),
+                    Text(
+                      url ?? configValue,
+                      style: TextStyle(
+                          color: isDark ? Colors.white : GlobalColors.success,
+                          fontSize: 12),
+                    ),
+                    const SizedBox(
+                      height: 5,
+                    ),
+                    Text(
+                      desc == null || desc == '' ? text : desc,
+                      softWrap: true,
+                      style: TextStyle(
+                          color:
+                              isDark ? Colors.white : GlobalColors.darkTextBody,
+                          fontSize: 12),
+                    )
+                  ],
+                ),
+              )
             ],
           )),
       onTap: () {

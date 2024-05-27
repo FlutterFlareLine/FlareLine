@@ -156,7 +156,7 @@ class DictionaryEditProvider extends BaseProvider {
               configKeyController.text = detail!['configKey'] ?? '';
               configValueController.text = detail!['configValue'] ?? '';
               configTextController.text = detail!['text'] ?? '';
-              configOrderNumController.text = detail!['orderNum'] ?? '';
+              configOrderNumController.text = '${detail!['orderNum'] ?? ''}';
             }
           }
         });
@@ -193,7 +193,7 @@ class DictionaryEditProvider extends BaseProvider {
         'configKey': configKeyController.text.trim(),
         'text': configTextController.text.trim(),
         'configValue': configValueController.text.trim(),
-        'orderNum': configOrderNumController.text.trim(),
+        'orderNum': int.tryParse(configOrderNumController.text.trim()),
       };
 
       if (_platformFile != null) {
@@ -223,7 +223,7 @@ class DictionaryEditProvider extends BaseProvider {
       'configKey': configKeyController.text.trim(),
       'text': configTextController.text.trim(),
       'configValue': configValueController.text.trim(),
-      'orderNum': configOrderNumController.text.trim(),
+      'orderNum': int.tryParse(configOrderNumController.text.trim()),
       'status': 1,
       'belongUid': email,
       'parentId': parentId == null || parentId == '' ? '0' : parentId,

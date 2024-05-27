@@ -46,9 +46,14 @@ class FirebaseStoreUtils {
         .get();
 
     if (query.docs.isNotEmpty) {
-      return query.docs.map((element) {
+      List<Map<String, dynamic>> data= query.docs.map((element) {
         return element.data();
       }).toList(growable: false);
+      data.sort((a, b) {
+        return a['orderNum'].compareTo(b['orderNum']);
+      });
+      return data;
+
     }
     return [];
   }
