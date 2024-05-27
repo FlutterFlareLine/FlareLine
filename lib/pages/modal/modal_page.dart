@@ -1,3 +1,4 @@
+import 'package:flareline/core/theme/global_colors.dart';
 import 'package:flareline/pages/layout.dart';
 import 'package:flareline/utils/snackbar_util.dart';
 import 'package:flareline_uikit/components/buttons/button_widget.dart';
@@ -5,6 +6,7 @@ import 'package:flareline_uikit/components/card/title_card.dart';
 import 'package:flareline_uikit/components/modal/modal_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 
 class ModalPage extends LayoutWidget {
   @override
@@ -30,7 +32,10 @@ class ModalPage extends LayoutWidget {
       children: [
         ButtonWidget(
           btnText: 'Simple Modal',
-          type: ButtonType.info.type,
+          color: Colors.white,
+          borderRadius: 5,
+          borderColor: GlobalColors.normal,
+          textColor: GlobalColors.normal,
           onTap: () {
             ModalDialog.show(
                 context: context,
@@ -47,7 +52,10 @@ class ModalPage extends LayoutWidget {
         ),
         ButtonWidget(
           btnText: 'Modal with footer',
-          type: ButtonType.success.type,
+          color: Colors.white,
+          borderRadius: 5,
+          borderColor: GlobalColors.normal,
+          textColor: GlobalColors.normal,
           onTap: () {
             ModalDialog.show(
                 context: context,
@@ -70,7 +78,10 @@ class ModalPage extends LayoutWidget {
         ),
         ButtonWidget(
           btnText: 'Medium Modal',
-          type: ButtonType.success.type,
+          color: Colors.white,
+          borderRadius: 5,
+          borderColor: GlobalColors.normal,
+          textColor: GlobalColors.normal,
           onTap: () {
             ModalDialog.show(
                 context: context,
@@ -87,7 +98,10 @@ class ModalPage extends LayoutWidget {
         ),
         ButtonWidget(
           btnText: 'Large Modal',
-          type: ButtonType.success.type,
+          color: Colors.white,
+          borderRadius: 5,
+          borderColor: GlobalColors.normal,
+          textColor: GlobalColors.normal,
           onTap: () {
             ModalDialog.show(
                 context: context,
@@ -102,19 +116,29 @@ class ModalPage extends LayoutWidget {
         const SizedBox(
           height: 20,
         ),
-        // ButtonWidget(
-        //   btnText: 'Large Modal Widget',
-        //   type: ButtonType.success.type,
-        //   onTap: () {
-        //     ModalDialog.show(
-        //         context: context,
-        //         title: 'Large Modal',
-        //         showFooter: false,
-        //         modalType: ModalType.large,
-        //         showTitleDivider: true,
-        //         child: );
-        //   },
-        // ),
+        ButtonWidget(
+          btnText: 'Large Modal Widget',
+          color: Colors.white,
+          borderRadius: 5,
+          borderColor: GlobalColors.normal,
+          textColor: GlobalColors.normal,
+          onTap: () {
+            ModalDialog.show(
+                context: context,
+                title: 'Large Modal',
+                showFooter: false,
+                modalType: ModalType.large,
+                showTitleDivider: true,
+                child: SizedBox(
+                  height: MediaQuery.of(context).size.height * 0.8,
+                  child: InAppWebView(
+                    initialUrlRequest: URLRequest(
+                        url: WebUri.uri(Uri.parse(
+                            'https://flutter.dev/'))),
+                  ),
+                ));
+          },
+        ),
       ],
     );
   }
