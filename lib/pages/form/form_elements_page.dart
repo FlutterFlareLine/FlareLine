@@ -1,5 +1,6 @@
 import 'package:calendar_date_picker2/calendar_date_picker2.dart';
 import 'package:flareline/pages/form/date_picker_widget.dart';
+import 'package:flareline/pages/form/drop_zone_widget.dart';
 import 'package:flareline/pages/form/multi_select_widget.dart';
 import 'package:flareline/pages/form/select_widget.dart';
 import 'package:flareline/pages/form/single_checkbox_widget.dart';
@@ -219,6 +220,18 @@ class FormElementsPage extends LayoutWidget {
                   allowExtention: ['jpg', 'jpeg', 'png', 'gif'],
                 ),
               ])),
+        ),
+        const SizedBox(
+          height: 16,
+        ),
+        CommonCard(
+          child: _titleWidget(
+              'Dropzone',
+              SizedBox(
+                height: 200,
+                width: double.maxFinite,
+                child: DropZoneWidget(),
+              )),
         )
       ],
     );
