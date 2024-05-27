@@ -23,9 +23,7 @@ class DictionaryChildPage extends BaseStlessWidget<DictionaryEditProvider> {
         ModalDialog.show(
             context: context,
             title: title ?? '',
-            onSaveTap: () {
-              // viewModel.save(context);
-            },
+            showFooter: false,
             child: SizedBox(
               height: 500,
               child: DictionaryTableWidget(

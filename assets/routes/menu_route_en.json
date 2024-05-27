@@ -1,7 +1,7 @@
 [
   {
     "groupName": "Tools",
-    "menuList":[
+    "menuList": [
       {
         "icon": "assets/sidebar/tools.svg",
         "menuName": "Tools",
@@ -21,7 +21,7 @@
   },
   {
     "groupName": "Widgets",
-    "menuList":[
+    "menuList": [
       {
         "icon": "assets/sidebar/dashboard.svg",
         "menuName": "Dashboard",
@@ -95,6 +95,10 @@
           {
             "menuName": "Toast",
             "path": "/toast"
+          },
+          {
+            "menuName": "Modal",
+            "path": "/modal"
           }
         ]
       },
