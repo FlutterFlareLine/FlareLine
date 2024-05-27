@@ -11,10 +11,10 @@ MessageEntity _$MessageEntityFromJson(Map<String, dynamic> json) =>
       ..id = json['id'] as String
       ..content = json['content'] as String
       ..isUser = json['isUser'] as bool
-      ..timestamp = json['timestamp']
+      ..timestamp = json['timestamp'] as int
       ..belongUid = json['belongUid'] as String
       ..conversationId = json['conversationId'] as String
-      ..fromMessageId = (json['fromMessageId']??'') as String;
+      ..fromMessageId = json['fromMessageId'] as String;
 
 Map<String, dynamic> _$MessageEntityToJson(MessageEntity instance) =>
     <String, dynamic>{

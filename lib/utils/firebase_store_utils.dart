@@ -1,10 +1,7 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flareline/components/chats.dart';
-import 'package:flareline/core/cache/disk_cache.dart';
-import 'package:flareline_uikit/service/base_provider.dart';
+import 'dart:convert';
 
-import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flareline/utils/cache_util.dart';
 
 class FirebaseStoreUtils {
   static FirebaseFirestore db = FirebaseFirestore.instance;
@@ -30,9 +27,13 @@ class FirebaseStoreUtils {
       {bool? enableCache}) async {
     if (enableCache != null && enableCache) {
       String cacheKey = 'collection_${collectionName}_${configKey}';
-      List<Map<String, dynamic>>? cacheData = DiskCache.instance.read(cacheKey);
-      if (cacheData != null && cacheData.isNotEmpty) {
-        return cacheData;
+      String? json = CacheUtil.instance.read(cacheKey);
+      if(json!=null && json!='') {
+        print('json data ${json}}');
+        List<Map<String, dynamic>> cacheData = jsonDecode(json);
+        if (cacheData != null && cacheData.isNotEmpty) {
+          return cacheData;
+        }
       }
     }
 
@@ -66,7 +67,7 @@ class FirebaseStoreUtils {
       if (enableCache != null && enableCache) {
         if (data != null && data.isNotEmpty) {
           String cacheKey = 'collection_${collectionName}_${configKey}';
-          DiskCache.instance.write(cacheKey, data);
+          CacheUtil.instance.write(cacheKey, jsonEncode(data));
         }
       }
       return data;
