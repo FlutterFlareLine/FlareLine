@@ -1388,6 +1388,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.2.3"
+  quickalert:
+    dependency: "direct main"
+    description:
+      name: quickalert
+      sha256: b5d62b1e20b08cc0ff5f40b6da519bdc7a5de6082f13d90572cf4e72eea56c5e
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.1.0"
   responsive_builder:
     dependency: "direct main"
     description:
@@ -1396,6 +1404,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.7.0"
+  rflutter_alert:
+    dependency: "direct main"
+    description:
+      name: rflutter_alert
+      sha256: "8ff35e3f9712ba24c746499cfa95bf320385edf38901a1a4eab0fe555867f66c"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.0.7"
   rx_event_bus:
     dependency: "direct main"
     description:

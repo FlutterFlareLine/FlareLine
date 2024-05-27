@@ -1,60 +1,338 @@
+import 'package:flareline/core/theme/global_colors.dart';
+import 'package:flareline_uikit/components/buttons/button_widget.dart';
+import 'package:flareline_uikit/components/card/title_card.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flareline_uikit/components/card/common_card.dart';
 import 'package:flareline/pages/layout.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:quickalert/models/quickalert_type.dart';
+import 'package:quickalert/widgets/quickalert_dialog.dart';
+import 'package:rflutter_alert/rflutter_alert.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class AlertPage extends LayoutWidget {
   const AlertPage({super.key});
 
   @override
   Widget contentDesktopWidget(BuildContext context) {
-    return CommonCard(
-      padding: const EdgeInsets.all(30),
-      child: Column(
-        children: [
-          _itemAlert(
-              borderColor: HexColor('#FBBF24'),
-              color: HexColor('#FEF5DE'),
-              icon: Image.asset(
-                'assets/alert/icon_warn.png',
-                width: 32,
-              ),
-              title: AppLocalizations.of(context)!.alertsTitle,
-              content: AppLocalizations.of(context)!.alertsMessage,
-              titleColor: HexColor('#9D5425'),
-              contentColor: HexColor('#D0915C')),
-          const SizedBox(
-            height: 20,
-          ),
-          _itemAlert(
-              borderColor: HexColor('#34D399'),
-              color: HexColor('#E1F9F0'),
-              icon: Image.asset(
-                'assets/alert/icon_success.png',
-                width: 32,
-              ),
-              title: AppLocalizations.of(context)!.alertsTitle,
-              content: AppLocalizations.of(context)!.alertsMessage,
-              titleColor: HexColor('#004434'),
-              contentColor: HexColor('#637381')),
-          const SizedBox(
-            height: 20,
-          ),
-          _itemAlert(
-              borderColor: HexColor('#F87171'),
-              color: HexColor('#FEEAEA'),
-              icon: Image.asset(
-                'assets/alert/icon_fail.png',
-                width: 32,
-              ),
-              title: AppLocalizations.of(context)!.alertsTitle,
-              content: AppLocalizations.of(context)!.alertsMessage,
-              titleColor: HexColor('#BC1C21'),
-              contentColor: HexColor('#CD5D5D')),
-        ],
-      ),
+    return Column(
+      children: [
+        TitleCard(
+            title: 'Alert Tips',
+            childWidget: Column(
+              children: [
+                _itemAlert(
+                    borderColor: HexColor('#FBBF24'),
+                    color: HexColor('#FEF5DE'),
+                    icon: Image.asset(
+                      'assets/alert/icon_warn.png',
+                      width: 32,
+                    ),
+                    title: AppLocalizations.of(context)!.alertsTitle,
+                    content: AppLocalizations.of(context)!.alertsMessage,
+                    titleColor: HexColor('#9D5425'),
+                    contentColor: HexColor('#D0915C')),
+                const SizedBox(
+                  height: 20,
+                ),
+                _itemAlert(
+                    borderColor: HexColor('#34D399'),
+                    color: HexColor('#E1F9F0'),
+                    icon: Image.asset(
+                      'assets/alert/icon_success.png',
+                      width: 32,
+                    ),
+                    title: AppLocalizations.of(context)!.alertsTitle,
+                    content: AppLocalizations.of(context)!.alertsMessage,
+                    titleColor: HexColor('#004434'),
+                    contentColor: HexColor('#637381')),
+                const SizedBox(
+                  height: 20,
+                ),
+                _itemAlert(
+                    borderColor: HexColor('#F87171'),
+                    color: HexColor('#FEEAEA'),
+                    icon: Image.asset(
+                      'assets/alert/icon_fail.png',
+                      width: 32,
+                    ),
+                    title: AppLocalizations.of(context)!.alertsTitle,
+                    content: AppLocalizations.of(context)!.alertsMessage,
+                    titleColor: HexColor('#BC1C21'),
+                    contentColor: HexColor('#CD5D5D')),
+              ],
+            )),
+        const SizedBox(
+          height: 20,
+        ),
+        TitleCard(
+            title: 'Alert Dialog',
+            childWidget: Column(
+              children: [
+                ButtonWidget(
+                  btnText: 'Info',
+                  type: ButtonType.info.type,
+                  onTap: () {
+                    QuickAlert.show(
+                      context: context,
+                      type: QuickAlertType.info,
+                    ); //
+                  },
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                ButtonWidget(
+                  btnText: 'Success',
+                  type: ButtonType.success.type,
+                  onTap: () {
+                    QuickAlert.show(
+                      context: context,
+                      type: QuickAlertType.success,
+                    );
+                  },
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                ButtonWidget(
+                  btnText: 'Warn',
+                  type: ButtonType.warn.type,
+                  onTap: () {
+                    QuickAlert.show(
+                      context: context,
+                      type: QuickAlertType.warning,
+                    );
+                  },
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                ButtonWidget(
+                  btnText: 'Danger',
+                  type: ButtonType.danger.type,
+                  onTap: () {
+                    QuickAlert.show(
+                      context: context,
+                      type: QuickAlertType.error,
+                    );
+                  },
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                ButtonWidget(
+                  btnText: 'Confirm',
+                  type: ButtonType.dark.type,
+                  onTap: () {
+                    QuickAlert.show(
+                      context: context,
+                      type: QuickAlertType.confirm,
+                    );
+                  },
+                ),
+
+                const SizedBox(
+                  height: 20,
+                ),
+              ],
+            )),
+        const SizedBox(
+          height: 20,
+        ),
+        TitleCard(
+            title: 'Simple Alert',
+            childWidget: Column(
+              children: [
+                ButtonWidget(
+                  btnText: 'Info',
+                  type: ButtonType.info.type,
+                  onTap: () {
+                    Alert(
+                      context: context,
+                      type: AlertType.info,
+                      title: "RFLUTTER ALERT",
+                      desc: "Flutter is more awesome with RFlutter Alert.",
+                      buttons: [
+                        DialogButton(
+                          child: Text(
+                            "COOL",
+                            style: TextStyle(color: Colors.white, fontSize: 20),
+                          ),
+                          onPressed: () => Navigator.pop(context),
+                          width: 120,
+                        )
+                      ],
+                    ).show();//
+                  },
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                ButtonWidget(
+                  btnText: 'Success',
+                  type: ButtonType.success.type,
+                  onTap: () {
+                    Alert(
+                      context: context,
+                      type: AlertType.success,
+                      title: "RFLUTTER ALERT",
+                      desc: "Flutter is more awesome with RFlutter Alert.",
+                      buttons: [
+                        DialogButton(
+                          child: Text(
+                            "COOL",
+                            style: TextStyle(color: Colors.white, fontSize: 20),
+                          ),
+                          onPressed: () => Navigator.pop(context),
+                          width: 120,
+                        )
+                      ],
+                    ).show();//
+                  },
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                ButtonWidget(
+                  btnText: 'Warn',
+                  type: ButtonType.warn.type,
+                  onTap: () {
+                    Alert(
+                      context: context,
+                      type: AlertType.warning,
+                      title: "RFLUTTER ALERT",
+                      desc: "Flutter is more awesome with RFlutter Alert.",
+                      buttons: [
+                        DialogButton(
+                          child: Text(
+                            "COOL",
+                            style: TextStyle(color: Colors.white, fontSize: 20),
+                          ),
+                          onPressed: () => Navigator.pop(context),
+                          width: 120,
+                        )
+                      ],
+                    ).show();//
+                  },
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                ButtonWidget(
+                  btnText: 'Danger',
+                  type: ButtonType.danger.type,
+                  onTap: () {
+                    Alert(
+                      context: context,
+                      type: AlertType.error,
+                      title: "RFLUTTER ALERT",
+                      desc: "Flutter is more awesome with RFlutter Alert.",
+                      buttons: [
+                        DialogButton(
+                          child: Text(
+                            "COOL",
+                            style: TextStyle(color: Colors.white, fontSize: 20),
+                          ),
+                          onPressed: () => Navigator.pop(context),
+                          width: 120,
+                        )
+                      ],
+                    ).show();//
+                  },
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                ButtonWidget(
+                  btnText: 'Simple',
+                  color: Colors.white,
+                  borderRadius: 5,
+                  borderColor: GlobalColors.normal,
+                  textColor: GlobalColors.normal,
+                  onTap: () {
+                    Alert(
+                      context: context,
+                      type: AlertType.none,
+                      title: "RFLUTTER ALERT",
+                      desc: "Flutter is more awesome with RFlutter Alert.",
+                      buttons: [
+                        DialogButton(
+                          child: Text(
+                            "COOL",
+                            style: TextStyle(color: Colors.white, fontSize: 20),
+                          ),
+                          onPressed: () => Navigator.pop(context),
+                          width: 120,
+                          color: GlobalColors.primary,
+                        )
+                      ],
+                    ).show();//
+                  },
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                ButtonWidget(
+                  btnText: 'Simple Confirm',
+                  color: Colors.white,
+                  borderRadius: 5,
+                  borderColor: GlobalColors.normal,
+                  textColor: GlobalColors.normal,
+                  onTap: () {
+                    Alert(
+                      context: context,
+                      type: AlertType.none,
+                      title: "RFLUTTER ALERT",
+                      desc: "Flutter is more awesome with RFlutter Alert.",
+                      buttons: [
+                        DialogButton(
+                          child: Text(
+                            "Cancel",
+                            style: TextStyle(color: GlobalColors.primary, fontSize: 14),
+                          ),
+                          onPressed: () => Navigator.pop(context),
+                          width: 60,
+                        ),
+                        DialogButton(
+                          child: Text(
+                            "Confirm",
+                            style: TextStyle(color: Colors.white, fontSize: 14),
+                          ),
+                          onPressed: () => Navigator.pop(context),
+                          width: 60,
+                          color: GlobalColors.primary,
+                          margin: EdgeInsets.only(left: 10),
+                        )
+                      ],
+                    ).show();//
+                  },
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                ButtonWidget(
+                  btnText: 'See Detail...',
+                  type: ButtonType.dark.type,
+                  onTap: () async {
+                    String url = 'https://quickalert.belovance.com/';
+                    Uri uri = Uri.parse(url);
+                    if (await canLaunchUrl(uri)) {
+                      launchUrl(uri);
+                    }
+                  },
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+              ],
+            )),
+        const SizedBox(
+          height: 20,
+        ),
+      ],
     );
   }
 

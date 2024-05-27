@@ -115,6 +115,9 @@ dependencies:
   toastification: ^2.0.0
   iconsax_flutter: ^1.0.0
 
+  quickalert: ^1.1.0
+  rflutter_alert: ^2.0.7
+
   flareline_uikit:
     path: flareline_uikit
 
