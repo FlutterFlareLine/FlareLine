@@ -8,9 +8,11 @@ import 'package:provider/provider.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
 class LineChartWidget extends BaseStlessWidget<LineChartProvider> {
-  LineChartWidget({super.key});
+  final String title;
 
-  ValueNotifier<int> selectedOption = ValueNotifier(1);
+  final List<Map<String, dynamic>> datas;
+
+  LineChartWidget({super.key, required this.title, required this.datas});
 
   @override
   Widget bodyWidget(
@@ -21,16 +23,13 @@ class LineChartWidget extends BaseStlessWidget<LineChartProvider> {
           children: [
             SfCartesianChart(
               plotAreaBorderWidth: 0,
-              title: const ChartTitle(
-                  text: 'Revenue',
-                  textStyle: TextStyle(fontWeight: FontWeight.bold),
+              title: ChartTitle(
+                  text: title,
+                  textStyle: const TextStyle(fontWeight: FontWeight.bold),
                   alignment: ChartAlignment.near),
               legend:
                   const Legend(isVisible: true, position: LegendPosition.top),
-              primaryXAxis: const NumericAxis(
-                  edgeLabelPlacement: EdgeLabelPlacement.shift,
-                  interval: 1,
-                  majorGridLines: MajorGridLines(width: 1)),
+              primaryXAxis: const CategoryAxis(),
               primaryYAxis: const NumericAxis(
                   labelFormat: '{value}%',
                   axisLine: AxisLine(width: 0),
@@ -39,7 +38,7 @@ class LineChartWidget extends BaseStlessWidget<LineChartProvider> {
               tooltipBehavior: TooltipBehavior(
                   enable: true,
                   textStyle: TextStyle(
-                      color: context.watch<ThemeProvider>().isDark
+                      color: Theme.of(context).brightness == Brightness.dark
                           ? GlobalColors.darkBlackText
                           : GlobalColors.gray)),
             ),
@@ -54,7 +53,7 @@ class LineChartWidget extends BaseStlessWidget<LineChartProvider> {
   }
 
   Widget dateToggleWidget(BuildContext context) {
-    bool isDark = context.watch<ThemeProvider>().isDark;
+    bool isDark = Theme.of(context).brightness == Brightness.dark;
     return Align(
       alignment: Alignment.topRight,
       child: Row(
@@ -95,54 +94,21 @@ class LineChartWidget extends BaseStlessWidget<LineChartProvider> {
   }
 
   /// The method returns line series to chart.
-  List<SplineSeries<_ChartData, num>> _getDefaultLineSeries(
+  List<SplineSeries<dynamic, String>> _getDefaultLineSeries(
       BuildContext context, LineChartProvider viewModel) {
-    List<_ChartData> chartData = viewModel.chartData ?? [];
-    return <SplineSeries<_ChartData, num>>[
-      SplineSeries<_ChartData, num>(
-          dataSource: chartData,
-          xValueMapper: (_ChartData sales, _) => sales.x,
-          yValueMapper: (_ChartData sales, _) => sales.y,
-          name: 'Germany',
-          color: const Color(0xFF01B7F9),
+    return datas.map((item) {
+      return SplineSeries<dynamic, String>(
+          dataSource: item['data'],
+          xValueMapper: (dynamic sales, _) => sales['x'],
+          yValueMapper: (dynamic sales, _) => sales['y'],
+          name: item['name'],
+          color: item['color'],
           // isVisibleInLegend: false,
-          markerSettings: const MarkerSettings(isVisible: true)),
-      SplineSeries<_ChartData, num>(
-          dataSource: chartData,
-          name: 'England',
-          color: const Color(0xFFFE8111),
-          // isVisibleInLegend: false,
-          xValueMapper: (_ChartData sales, _) => sales.x,
-          yValueMapper: (_ChartData sales, _) => sales.y2,
-          markerSettings: const MarkerSettings(isVisible: true))
-    ];
+          markerSettings: const MarkerSettings(isVisible: false));
+    }).toList();
   }
-}
-
-class _ChartData {
-  _ChartData(this.x, this.y, this.y2);
-
-  final double x;
-  final double y;
-  final double y2;
 }
 
 class LineChartProvider extends BaseProvider {
-  List<_ChartData>? chartData = <_ChartData>[
-    _ChartData(2005, 21, 28),
-    _ChartData(2006, 120, 44),
-    _ChartData(2007, 30, 150),
-    _ChartData(2008, 38, 50),
-    _ChartData(2009, 25, 200),
-    _ChartData(2010, 60, 78),
-    _ChartData(2011, 46, 84)
-  ];
-
   LineChartProvider(super.context);
-
-  @override
-  void dispose() {
-    chartData?.clear();
-    super.dispose();
-  }
 }
