@@ -107,8 +107,8 @@ abstract class TableWidget<S extends BaseTableProvider>
       },
     );
     int pageCount = rows.length % pageSize == 0
-        ? (rows.length / pageSize).toInt()
-        : (rows.length / pageSize).toInt() + 1;
+        ? rows.length ~/ pageSize
+        : rows.length ~/ pageSize + 1;
 
     return Column(
       children: [
@@ -121,7 +121,7 @@ abstract class TableWidget<S extends BaseTableProvider>
           columns: headers.map((e) => gridColumnWidget(e)).toList(),
         )),
         if (showPaging && rows.isNotEmpty)
-          Container(
+          SizedBox(
               height: 60,
               child: SfDataPager(
                 delegate: dataGridSource,

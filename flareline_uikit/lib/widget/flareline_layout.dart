@@ -2,6 +2,7 @@ library flareline_uikit;
 
 import 'package:flareline_uikit/components/sidebar/side_bar.dart';
 import 'package:flareline_uikit/core/theme/flareline_colors.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flareline_uikit/components/breaktab.dart';
@@ -92,6 +93,7 @@ abstract class FlarelineLayoutWidget extends StatelessWidget {
               children: [
                 if (showSideBar)
                   SideBarWidget(
+                    key: UniqueKey(),
                     isDark: isDarkTheme(context),
                     darkBg: sideBarDarkColor,
                     lightBg: sideBarLightColor,
@@ -107,7 +109,7 @@ abstract class FlarelineLayoutWidget extends StatelessWidget {
           return rightContentWidget(context);
         },
       ),
-      drawer: const SideBarWidget(),
+      drawer: SideBarWidget(key: UniqueKey(),),
     );
   }
 

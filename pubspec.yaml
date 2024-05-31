@@ -123,6 +123,7 @@ dependencies:
   multi_select_flutter: ^4.1.3
 
   desktop_drop: ^0.4.4
+  getwidget: ^4.0.0
 
   flareline_uikit:
     path: flareline_uikit
