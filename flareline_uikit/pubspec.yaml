@@ -52,16 +52,6 @@ dependencies:
 
   html: ^0.15.4
 
-  flutter_inappwebview: ^6.0.0
-
-  flutter_widget_from_html: ^0.14.11
-
-  markdown_widget: ^2.3.2+6
-
-  flutter_chat_ui: ^1.6.12
-
-  flutter_chat_types: ^3.6.2
-
   faker: ^2.1.0
 
   image_picker: ^0.8.7+5
@@ -79,6 +69,8 @@ dependencies:
   url_launcher: ^6.2.6
 
   json_annotation: any
+
+  window_location_href: ^1.0.1+2
 
 dev_dependencies:
   flutter_test:

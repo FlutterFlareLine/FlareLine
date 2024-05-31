@@ -83,14 +83,15 @@ dependencies:
 
   json_annotation: any
   firebase_core: ^2.29.0
-  firebase_auth: any
-  firebase_ui_auth: any
+  firebase_auth: ^4.20.0
+  firebase_ui_auth: ^1.14.0
   firebase_storage: ^11.7.5
   cloud_firestore: ^4.16.1
   uuid: ^4.4.0
   http: ^1.2.1
   html: ^0.15.4
   flutter_inappwebview: ^6.0.0
+  flutter_inappwebview_platform_interface: ^1.0.10
   flutter_widget_from_html: ^0.14.11
   dart_openai: ^5.1.0
   markdown_widget: ^2.3.2+6
@@ -124,6 +125,7 @@ dependencies:
 
   desktop_drop: ^0.4.4
   getwidget: ^4.0.0
+
 
   flareline_uikit:
     path: flareline_uikit

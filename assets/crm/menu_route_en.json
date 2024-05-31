@@ -72,7 +72,7 @@
         ]
       },
       {
-        "icon": "assets/crm/settings.svg",
+        "icon": "assets/crm/setting.svg",
         "menuName": "Settings",
         "childList": [
           {

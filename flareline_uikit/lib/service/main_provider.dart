@@ -1,8 +1,8 @@
-import 'dart:html';
 
 import 'package:flareline_uikit/service/base_provider.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:window_location_href/window_location_href.dart';
 
 class MainProvider extends BaseProvider {
   String _selectedPath = '/';
@@ -40,11 +40,13 @@ class MainProvider extends BaseProvider {
 
   bool isSelectedPath(BuildContext context, String path) {
     if (kIsWeb) {
-      String href = window.location.href;
-      var uri = Uri.dataFromString(href);
-      String? routePath = uri.path;
+      String? location = href;
+      if(location!=null) {
+        var uri = Uri.dataFromString(location);
+        String? routePath = uri.path;
 
-      return routePath.endsWith(path);
+        return routePath.endsWith(path);
+      }
     }
 
     String? routePath = ModalRoute.of(context)?.settings?.name;

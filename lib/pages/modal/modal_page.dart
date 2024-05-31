@@ -7,6 +7,7 @@ import 'package:flareline_uikit/components/modal/modal_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
+import 'package:flutter_inappwebview_platform_interface/flutter_inappwebview_platform_interface.dart';
 
 class ModalPage extends LayoutWidget {
   @override
