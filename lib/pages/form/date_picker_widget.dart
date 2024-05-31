@@ -1,5 +1,5 @@
 import 'package:calendar_date_picker2/calendar_date_picker2.dart';
-import 'package:flareline/core/theme/global_colors.dart';
+import 'package:flareline_uikit/core/theme/flareline_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -26,7 +26,7 @@ class DatePickerWidget extends StatelessWidget {
                 borderRadius: BorderRadius.circular(15),
               );
 
-              dateNotifier.value = (results != null && results!.length > 0
+              dateNotifier.value = (results != null && results!.isNotEmpty
                   ? (results
                           .elementAt(0)
                           ?.toLocal()
@@ -47,7 +47,7 @@ class DatePickerWidget extends StatelessWidget {
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(4),
                           border: Border.all(
-                              color: GlobalColors.background, width: 0.5)),
+                              color: FlarelineColors.border, width: 1)),
                       child: Stack(
                         alignment: Alignment.centerLeft,
                         children: [

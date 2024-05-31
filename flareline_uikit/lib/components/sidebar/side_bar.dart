@@ -9,25 +9,37 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class SideBarWidget extends StatelessWidget {
-  final Color? color;
   final double? width;
   final String? appName;
+  final String? sideBarAsset;
+  final Widget? logoWidget;
+  final bool? isDark;
+  final Color? darkBg;
+  final Color? lightBg;
 
-  const SideBarWidget({super.key, this.color, this.width, this.appName});
+  const SideBarWidget({super.key,
+    this.darkBg,
+    this.lightBg,
+    this.width,
+    this.appName,
+    this.sideBarAsset,
+    this.logoWidget,
+    this.isDark});
 
   @override
   Widget build(BuildContext context) {
-    bool isDark = Theme.of(context).brightness == Brightness.dark;
+    isDark ?? false;
+
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
-      color: color ?? (isDark ? FlarelineColors.darkBackground : Colors.white),
+      color: (isDark! ? darkBg : Colors.white),
       width: width ?? 280,
       child: Column(children: [
-        _logoWidget(context, isDark),
+        _logoWidget(context, isDark!),
         const SizedBox(
           height: 30,
         ),
-        Expanded(child: _sideListWidget(context, isDark))
+        Expanded(child: _sideListWidget(context, isDark!))
       ]),
     );
   }
@@ -38,30 +50,29 @@ class SideBarWidget extends StatelessWidget {
         const SizedBox(
           width: 8,
         ),
-        SvgPicture.asset(
-          'assets/logo/logo_${isDark ? 'white' : 'dark'}.svg',
-          height: 32,
-        ),
+        if (logoWidget != null) logoWidget!,
         const SizedBox(
           width: 10,
         ),
         Expanded(
             child: Text(
-          appName ?? '',
-          style: TextStyle(
-              color: isDark ? Colors.white : FlarelineColors.darkBlackText,
-              fontSize: 32),
-        ))
+              appName ?? '',
+              style: TextStyle(
+                  color: isDark ? Colors.white : FlarelineColors.darkBlackText,
+                  fontSize: 32),
+            ))
       ],
     );
   }
 
-  _sideListWidget(BuildContext context, bool isDark) {
+  Widget _sideListWidget(BuildContext context, bool isDark) {
+    if (sideBarAsset == null) {
+      return const SizedBox.shrink();
+    }
     return ScrollConfiguration(
         behavior: ScrollConfiguration.of(context).copyWith(scrollbars: false),
         child: FutureBuilder(
-            future: DefaultAssetBundle.of(context)
-                .loadString('assets/routes/menu_route_en.json'),
+            future: DefaultAssetBundle.of(context).loadString(sideBarAsset!),
             builder: (context, snapshot) {
               if (snapshot.connectionState == ConnectionState.waiting ||
                   !snapshot.hasData) {
@@ -80,25 +91,28 @@ class SideBarWidget extends StatelessWidget {
             }));
   }
 
-  Widget itemBuilder(
-      BuildContext context, int index, List listMenu, bool isDark) {
+  Widget itemBuilder(BuildContext context, int index, List listMenu,
+      bool isDark) {
     var groupElement = listMenu.elementAt(index);
     List menuList = groupElement['menuList'];
+    String groupName = groupElement['groupName'];
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          groupElement['groupName'],
-          style: TextStyle(
-              fontSize: 20,
-              color: isDark ? Colors.white60 : FlarelineColors.darkBlackText),
-        ),
-        const SizedBox(
-          height: 10,
-        ),
+        if (groupName != null && groupName.isNotEmpty)
+          Text(
+            groupElement['groupName'],
+            style: TextStyle(
+                fontSize: 20,
+                color: isDark ? Colors.white60 : FlarelineColors.darkBlackText),
+          ),
+        if (groupName != null && groupName.isNotEmpty)
+          const SizedBox(
+            height: 10,
+          ),
         Column(
-          children: menuList.map((e) => SideMenuWidget(e: e)).toList(),
+          children: menuList.map((e) => SideMenuWidget(e: e,isDark:isDark)).toList(),
         ),
         const SizedBox(
           height: 10,

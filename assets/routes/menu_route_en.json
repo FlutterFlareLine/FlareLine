@@ -33,6 +33,11 @@
         "path": "/calendar"
       },
       {
+        "icon": "assets/sidebar/invoice.svg",
+        "menuName": "Invoice",
+        "path": "/invoice"
+      },
+      {
         "icon": "assets/sidebar/profile.svg",
         "menuName": "Profile",
         "path": "/profile"

@@ -166,15 +166,15 @@ class InvoicePage extends LayoutWidget {
             Row(mainAxisAlignment: MainAxisAlignment.end, children: [
               const Spacer(),
               SizedBox(
-                width: 120,
+                width: 150,
                 child: ButtonWidget(btnText: 'Download Invoice',type: ButtonType.primary.type,),
               ),
               const SizedBox(
                 width: 10,
               ),
               SizedBox(
-                  width: 120,
-                  child: ButtonWidget(btnText: 'Send Invoice',type: ButtonType.primary.type,)),
+                  width: 150,
+                  child: ButtonWidget(btnText: 'Send Invoice',type: ButtonType.success.type,)),
             ])
           ]),
         ));

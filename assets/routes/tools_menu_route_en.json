@@ -8,5 +8,15 @@
         "path": "/chatGpt"
       }
     ]
+  },
+  {
+    "groupName": "Project",
+    "menuList":[
+      {
+        "icon": "assets/crm/crm.png",
+        "menuName": "CRM",
+        "path": "/crm"
+      }
+    ]
   }
 ]

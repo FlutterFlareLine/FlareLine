@@ -172,6 +172,7 @@ flutter:
     - assets/routes/
     - assets/api/
     - assets/ai/
+    - assets/crm/
   #   - assets/a_dot_burr.jpeg
   #   - assets/a_dot_ham.jpeg
 

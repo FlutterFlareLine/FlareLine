@@ -1,9 +1,9 @@
+import 'package:flareline/crm/home/crm_home_page.dart';
 import 'package:flareline/pages/ai/ai_page.dart';
 import 'package:flareline/pages/chat/chat_page.dart';
 import 'package:flareline/pages/chatgpt/chatgpt_page.dart';
 import 'package:flareline/pages/dictionary/dictionary_page.dart';
 import 'package:flareline/pages/modal/modal_page.dart';
-import 'package:flareline/pages/scrapy/scrapy_page.dart';
 import 'package:flareline/pages/table/contacts_page.dart';
 import 'package:flareline/pages/toast/toast_page.dart';
 import 'package:flareline/pages/tools/tools_page.dart';
@@ -13,17 +13,13 @@ import 'package:flareline/pages/alerts/alert_page.dart';
 import 'package:flareline/pages/button/button_page.dart';
 import 'package:flareline/pages/form/form_elements_page.dart';
 import 'package:flareline/pages/form/form_layout_page.dart';
-import 'package:flareline/pages/kanban/kanban_page.dart';
-import 'package:flareline/pages/list/list_page.dart';
 import 'package:flareline/pages/auth/sign_in/sign_in_page.dart';
 import 'package:flareline/pages/auth/sign_up/sign_up_page.dart';
 import 'package:flareline/pages/calendar/calendar_page.dart';
 import 'package:flareline/pages/chart/chart_page.dart';
-import 'package:flareline/pages/crm/crm_page.dart';
 import 'package:flareline/pages/dashboard/ecommerce_page.dart';
 import 'package:flareline/pages/inbox/index.dart';
 import 'package:flareline/pages/invoice/invoice_page.dart';
-import 'package:flareline/pages/marketing/marketing_page.dart';
 import 'package:flareline/pages/profile/profile_page.dart';
 import 'package:flareline/pages/resetpwd/reset_pwd_page.dart';
 import 'package:flareline/pages/setting/settings_page.dart';
@@ -34,12 +30,8 @@ typedef PathWidgetBuilder = Widget Function(BuildContext, String?);
 
 final List<Map<String, Object>> MAIN_PAGES = [
   {'routerPath': '/', 'widget': const EcommercePage()},
-  {'routerPath': '/marketing', 'widget': const MarketingPage()},
-  {'routerPath': '/crm', 'widget': const CrmPage()},
   {'routerPath': '/calendar', 'widget': const CalendarPage()},
   {'routerPath': '/profile', 'widget': const ProfilePage()},
-  {'routerPath': '/list', 'widget': const ListPage()},
-  {'routerPath': '/kanban', 'widget': const KanbanPage()},
   {'routerPath': '/formElements', 'widget': FormElementsPage()},
   {'routerPath': '/formLayout', 'widget': FormLayoutPage()},
   {'routerPath': '/signIn', 'widget': SignInWidget()},
@@ -59,12 +51,12 @@ final List<Map<String, Object>> MAIN_PAGES = [
   {'routerPath': '/contacts', 'widget': ContactsPage()},
   {'routerPath': '/chatGpt', 'widget': ChatGptPage()},
   {'routerPath': '/chat', 'widget': ChatPage()},
-  {'routerPath': '/scrapy', 'widget': ScrapyPage()},
   {'routerPath': '/dictionary', 'widget': DictionaryPage()},
   {'routerPath': '/tools', 'widget': ToolsPage()},
   {'routerPath': '/ai', 'widget': AIPage()},
   {'routerPath': '/toast', 'widget': ToastPage()},
   {'routerPath': '/modal', 'widget': ModalPage()},
+  {'routerPath': '/crm/dashboard', 'widget': CrmHomePage()},
 ];
 
 class RouteConfiguration {

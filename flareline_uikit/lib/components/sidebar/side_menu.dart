@@ -7,17 +7,19 @@ import 'package:provider/provider.dart';
 
 class SideMenuWidget extends StatelessWidget {
   dynamic e;
+  bool? isDark;
 
-  SideMenuWidget({super.key, this.e});
+  SideMenuWidget({super.key, this.e, this.isDark});
 
   @override
   Widget build(BuildContext context) {
-    return _itemMenuWidget(context, e);
+    isDark ?? false;
+    return _itemMenuWidget(context, e, isDark!);
   }
 
-  Widget _itemMenuWidget(BuildContext context, e) {
+  Widget _itemMenuWidget(BuildContext context, e, bool isDark) {
     List? childList = e['childList'];
-    bool isDark = Theme.of(context).brightness == Brightness.dark;
+
     bool isExpanded =
         context.watch<MainProvider>().isExpanded(e['menuName'], childList);
     bool isSelected = childList != null && childList.isNotEmpty
