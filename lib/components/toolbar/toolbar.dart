@@ -1,4 +1,3 @@
-
 import 'package:flareline_uikit/components/forms/outborder_text_form_field.dart';
 import 'package:flareline/entity/user_entity.dart';
 import 'package:flareline/provider/store_provider.dart';
@@ -16,8 +15,10 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ToolBarWidget extends StatelessWidget {
   bool? showMore;
+  bool? showChangeTheme;
+  final Widget? userInfoWidget;
 
-  ToolBarWidget({super.key, this.showMore});
+  ToolBarWidget({super.key, this.showMore, this.showChangeTheme,this.userInfoWidget});
 
   @override
   Widget build(BuildContext context) {
@@ -57,7 +58,8 @@ class ToolBarWidget extends StatelessWidget {
           // Check the sizing information here and return your UI
           if (!(showMore ?? false) &&
               sizingInformation.deviceScreenType == DeviceScreenType.desktop) {
-            return const SizedBox(
+            return Container(
+              margin: EdgeInsets.only(left: 10),
               width: 280,
               child: OutBorderTextFormField(
                 icon: Icon(
@@ -75,7 +77,7 @@ class ToolBarWidget extends StatelessWidget {
           return const SizedBox();
         }),
         const Spacer(),
-        const ToggleWidget(),
+        if (showChangeTheme ?? false) const ToggleWidget(),
         const SizedBox(
           width: 10,
         ),
@@ -121,7 +123,8 @@ class ToolBarWidget extends StatelessWidget {
         const SizedBox(
           width: 20,
         ),
-        _userInfoWidget(context),
+        if(userInfoWidget!=null)
+          userInfoWidget!,
         InkWell(
           child: Container(
             margin: const EdgeInsets.only(left: 6),
@@ -138,21 +141,21 @@ class ToolBarWidget extends StatelessWidget {
                   value: 'value01',
                   child: Text('My Profile'),
                   onTap: () async {
-                    Navigator.of(context).popAndPushNamed('/profile');
+                    onProfileClick(context);
                   },
                 ),
                 PopupMenuItem<String>(
                   value: 'value02',
                   child: Text('My Contacts'),
                   onTap: () async {
-                    Navigator.of(context).popAndPushNamed('/contacts');
+                    onContactClick(context);
                   },
                 ),
                 PopupMenuItem<String>(
                   value: 'value03',
                   child: Text('Settings'),
                   onTap: () async {
-                    Navigator.of(context).popAndPushNamed('/settings');
+
                   },
                 ),
                 PopupMenuItem<String>(
@@ -162,9 +165,8 @@ class ToolBarWidget extends StatelessWidget {
                 PopupMenuItem<String>(
                   value: 'value05',
                   child: Text('Log out'),
-                  onTap: () async {
-                    await context.read<StoreProvider>().logout();
-                    Navigator.of(context).popAndPushNamed('/signIn');
+                  onTap: () {
+                    onLogoutClick(context);
                   },
                 )
               ],
@@ -173,6 +175,23 @@ class ToolBarWidget extends StatelessWidget {
         )
       ]),
     );
+  }
+
+  void onProfileClick(BuildContext context){
+    Navigator.of(context).popAndPushNamed('/profile');
+  }
+
+  void onContactClick(BuildContext context){
+    Navigator.of(context).popAndPushNamed('/contacts');
+  }
+
+  void onSettingClick(BuildContext context){
+    Navigator.of(context).popAndPushNamed('/settings');
+  }
+
+  Future<void> onLogoutClick(BuildContext context) async {
+    await context.read<StoreProvider>().logout();
+    Navigator.of(context).popAndPushNamed('/signIn');
   }
 
   Widget _languagesWidget(BuildContext context) {
@@ -187,7 +206,9 @@ class ToolBarWidget extends StatelessWidget {
               Consumer<LocalizationProvider>(builder: (ctx, provider, child) {
             return ButtonWidget(
               btnText: e.languageCode,
-              type: e.languageCode == provider.languageCode?ButtonType.primary.type:null,
+              type: e.languageCode == provider.languageCode
+                  ? ButtonType.primary.type
+                  : null,
               onTap: () {
                 context.read<LocalizationProvider>().locale = e;
               },
@@ -198,27 +219,7 @@ class ToolBarWidget extends StatelessWidget {
     );
   }
 
-  Widget _userInfoWidget(BuildContext context) {
-    UserEntity? loginUser = context.watch<StoreProvider>().user;
-    String showName = loginUser != null ? (loginUser.displayName ?? '') : '';
-    String avatar = loginUser != null ? (loginUser.avatar ?? '') : '';
-    return Row(
-      children: [
-        Column(
-          children: [
-            Text(showName),
-          ],
-        ),
-        const SizedBox(
-          width: 10,
-        ),
-        CircleAvatar(
-          backgroundImage: NetworkImage(avatar),
-          radius: 22,
-        )
-      ],
-    );
-  }
+
 }
 
 class ToggleWidget extends StatelessWidget {

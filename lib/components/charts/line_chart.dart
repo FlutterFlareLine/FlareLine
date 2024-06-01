@@ -1,4 +1,5 @@
 import 'package:flareline/core/theme/global_colors.dart';
+import 'package:flareline/pages/form/select_widget.dart';
 import 'package:flareline/provider/theme_provider.dart';
 import 'package:flareline_uikit/service/base_provider.dart';
 import 'package:flareline_uikit/widget/base/base_stless_widget.dart';
@@ -12,7 +13,13 @@ class LineChartWidget extends BaseStlessWidget<LineChartProvider> {
 
   final List<Map<String, dynamic>> datas;
 
-  LineChartWidget({super.key, required this.title, required this.datas});
+  final bool? isDropdownToggle;
+
+  LineChartWidget(
+      {super.key,
+      required this.title,
+      required this.datas,
+      this.isDropdownToggle});
 
   @override
   Widget bodyWidget(
@@ -42,7 +49,8 @@ class LineChartWidget extends BaseStlessWidget<LineChartProvider> {
                           ? GlobalColors.darkBlackText
                           : GlobalColors.gray)),
             ),
-            dateToggleWidget(context)
+            if (!(isDropdownToggle ?? false)) dateToggleWidget(context),
+            if (isDropdownToggle ?? false) dropdownDateToggleWidget(context)
           ],
         ));
   }
@@ -50,6 +58,17 @@ class LineChartWidget extends BaseStlessWidget<LineChartProvider> {
   @override
   LineChartProvider viewModelBuilder(BuildContext context) {
     return LineChartProvider(context);
+  }
+
+  Widget dropdownDateToggleWidget(BuildContext context) {
+    return Align(
+        alignment: Alignment.topRight,
+        child: SizedBox(
+          width: 140,
+          child: SelectWidget(
+            selectionList: ['Daily', 'Monthly', 'Yearly'],
+          ),
+        ));
   }
 
   Widget dateToggleWidget(BuildContext context) {

@@ -287,7 +287,15 @@ class FormElementsPage extends LayoutWidget {
                   const SizedBox(
                     height: 12,
                   ),
-                  SelectWidget(),
+                  SelectWidget(
+                    selectionList: const [
+                      'America',
+                      'England',
+                      'Japan',
+                      'Russia',
+                      'China'
+                    ],
+                  ),
                   const SizedBox(
                     height: 16,
                   ),

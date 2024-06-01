@@ -35,8 +35,37 @@ abstract class CrmLayout extends FlarelineLayoutWidget {
 
   @override
   Widget? toolbarWidget(BuildContext context, bool showDrawer) {
-    return ToolBarWidget(
+    return CrmToolBarWidget(
       showMore: showDrawer,
+      userInfoWidget: const CircleAvatar(
+        backgroundImage: AssetImage('assets/user/user-02.png',),
+        radius: 22,
+      ),
     );
+  }
+}
+
+class CrmToolBarWidget extends ToolBarWidget {
+  CrmToolBarWidget(
+      {super.key, super.showChangeTheme, super.showMore, super.userInfoWidget});
+
+  @override
+  void onContactClick(BuildContext context) {
+    // TODO: implement onContactClick
+  }
+
+  @override
+  void onProfileClick(BuildContext context) {
+    // TODO: implement onProfileClick
+  }
+
+  @override
+  Future<void> onLogoutClick(BuildContext context) {
+    return Future.value(false);
+  }
+
+  @override
+  void onSettingClick(BuildContext context) {
+    // TODO: implement onSettingClick
   }
 }

@@ -2,20 +2,14 @@ import 'package:flareline_uikit/core/theme/flareline_colors.dart';
 import 'package:flutter/material.dart';
 
 class SelectWidget extends StatelessWidget {
-  SelectWidget({super.key});
+  final List<String> selectionList;
+  SelectWidget({super.key,required this.selectionList});
 
-  final List<String> _countryList = [
-    'America',
-    'England',
-    'Japan',
-    'Russia',
-    'China'
-  ];
-
-  ValueNotifier<String> countryNotifier = ValueNotifier('America');
+  ValueNotifier<String> countryNotifier = ValueNotifier('');
 
   @override
   Widget build(BuildContext context) {
+    countryNotifier.value = selectionList[0];
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 12),
       decoration: BoxDecoration(
@@ -32,7 +26,7 @@ class SelectWidget extends StatelessWidget {
                 focusColor: Colors.white,
                 dropdownColor: Colors.white,
                 value: country,
-                items: _countryList.map((String items) {
+                items: selectionList.map((String items) {
                   return DropdownMenuItem(
                     value: items,
                     child: Text(items),
