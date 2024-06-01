@@ -1,3 +1,4 @@
+import 'package:flareline/crm/crm_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flareline_uikit/components/card/common_card.dart';
 import 'package:flareline/components/charts/circular_chart.dart';
@@ -28,7 +29,25 @@ class AnalyticsWidget extends StatelessWidget {
           Expanded(
             flex: 3,
             child: CommonCard(
-              child: CircularhartWidget(),
+              child: CircularhartWidget(title: 'Visitors Analytics',palette: const [
+                CrmColors.orange,
+                CrmColors.secondary,
+                CrmColors.primary
+              ],
+                chartData: const [
+                  {
+                    'x': 'Social Media',
+                    'y': 33,
+                  },
+                  {
+                    'x': 'Direct Search',
+                    'y': 33,
+                  },
+                  {
+                    'x': 'Others',
+                    'y': 34,
+                  },
+                ],),
             ),
           ),
           const SizedBox(
@@ -51,7 +70,25 @@ class AnalyticsWidget extends StatelessWidget {
         SizedBox(
           height: 350,
           child: CommonCard(
-            child: CircularhartWidget(),
+            child: CircularhartWidget(title: 'Visitors Analytics',palette: const [
+              CrmColors.orange,
+              CrmColors.secondary,
+              CrmColors.primary
+            ],
+              chartData: const [
+                {
+                  'x': 'Social Media',
+                  'y': 33,
+                },
+                {
+                  'x': 'Direct Search',
+                  'y': 33,
+                },
+                {
+                  'x': 'Others',
+                  'y': 34,
+                },
+              ],),
           ),
         ),
         const SizedBox(

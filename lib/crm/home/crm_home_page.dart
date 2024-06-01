@@ -1,13 +1,12 @@
 import 'package:flareline/components/card/card_data_widget.dart';
+import 'package:flareline/components/charts/circular_chart.dart';
 import 'package:flareline/components/charts/line_chart.dart';
 import 'package:flareline/components/tables/TopChannel.dart';
 import 'package:flareline/crm/crm_colors.dart';
 import 'package:flareline/crm/crm_layout.dart';
-import 'package:flareline/pages/table/contacts_page.dart';
 import 'package:flareline_uikit/components/card/common_card.dart';
-import 'package:flareline_uikit/components/card/title_card.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:syncfusion_flutter_charts/charts.dart';
 
 class CrmHomePage extends CrmLayout {
   const CrmHomePage({super.key});
@@ -33,51 +32,7 @@ class CrmHomePage extends CrmLayout {
                   const SizedBox(
                     height: 20,
                   ),
-                  Expanded(
-                      child: CommonCard(
-                    child: LineChartWidget(
-                      isDropdownToggle: true,
-                      title: 'Sales Figures',
-                      datas: const [
-                        {
-                          'name': 'Marketing Sales',
-                          'color': Color(0xFFFE8111),
-                          'data': [
-                            {'x': 'Jan', 'y': 25},
-                            {'x': 'Fed', 'y': 75},
-                            {'x': 'Mar', 'y': 28},
-                            {'x': 'Apr', 'y': 32},
-                            {'x': 'May', 'y': 40},
-                            {'x': 'Jun', 'y': 48},
-                            {'x': 'Jul', 'y': 44},
-                            {'x': 'Aug', 'y': 42},
-                            {'x': 'Sep', 'y': 70},
-                            {'x': 'Oct', 'y': 65},
-                            {'x': 'Nov', 'y': 55},
-                            {'x': 'Dec', 'y': 78}
-                          ]
-                        },
-                        {
-                          'name': 'Cases Sales',
-                          'color': Color(0xFF01B7F9),
-                          'data': [
-                            {'x': 'Jan', 'y': 70},
-                            {'x': 'Fed', 'y': 30},
-                            {'x': 'Mar', 'y': 66},
-                            {'x': 'Apr', 'y': 44},
-                            {'x': 'May', 'y': 55},
-                            {'x': 'Jun', 'y': 51},
-                            {'x': 'Jul', 'y': 44},
-                            {'x': 'Aug', 'y': 30},
-                            {'x': 'Sep', 'y': 100},
-                            {'x': 'Oct', 'y': 87},
-                            {'x': 'Nov', 'y': 77},
-                            {'x': 'Dec', 'y': 20}
-                          ]
-                        },
-                      ],
-                    ),
-                  ))
+                  _lineChart()
                 ],
               )),
               const SizedBox(
@@ -85,9 +40,31 @@ class CrmHomePage extends CrmLayout {
               ),
               SizedBox(
                   width: 400,
-                  child: TitleCard(
-                    title: 'Sorce Of Purchases',
-                    childWidget: Text(''),
+                  child: CommonCard(
+                    child: CircularhartWidget(
+                      title: 'Sorce Of Purchases',
+                      position: LegendPosition.bottom,
+                      orientation: LegendItemOrientation.vertical,
+                      palette: const [
+                        CrmColors.orange,
+                        CrmColors.secondary,
+                        CrmColors.primary
+                      ],
+                      chartData: const [
+                        {
+                          'x': 'Social Media',
+                          'y': 33,
+                        },
+                        {
+                          'x': 'Direct Search',
+                          'y': 33,
+                        },
+                        {
+                          'x': 'Others',
+                          'y': 34,
+                        },
+                      ],
+                    ),
                   ))
             ],
           ),
@@ -101,6 +78,54 @@ class CrmHomePage extends CrmLayout {
         ),
       ],
     );
+  }
+
+  Widget _lineChart() {
+    return Expanded(
+        child: CommonCard(
+      child: LineChartWidget(
+        isDropdownToggle: true,
+        title: 'Sales Figures',
+        datas: const [
+          {
+            'name': 'Marketing Sales',
+            'color': Color(0xFFFE8111),
+            'data': [
+              {'x': 'Jan', 'y': 25},
+              {'x': 'Fed', 'y': 75},
+              {'x': 'Mar', 'y': 28},
+              {'x': 'Apr', 'y': 32},
+              {'x': 'May', 'y': 40},
+              {'x': 'Jun', 'y': 48},
+              {'x': 'Jul', 'y': 44},
+              {'x': 'Aug', 'y': 42},
+              {'x': 'Sep', 'y': 70},
+              {'x': 'Oct', 'y': 65},
+              {'x': 'Nov', 'y': 55},
+              {'x': 'Dec', 'y': 78}
+            ]
+          },
+          {
+            'name': 'Cases Sales',
+            'color': Color(0xFF01B7F9),
+            'data': [
+              {'x': 'Jan', 'y': 70},
+              {'x': 'Fed', 'y': 30},
+              {'x': 'Mar', 'y': 66},
+              {'x': 'Apr', 'y': 44},
+              {'x': 'May', 'y': 55},
+              {'x': 'Jun', 'y': 51},
+              {'x': 'Jul', 'y': 44},
+              {'x': 'Aug', 'y': 30},
+              {'x': 'Sep', 'y': 100},
+              {'x': 'Oct', 'y': 87},
+              {'x': 'Nov', 'y': 77},
+              {'x': 'Dec', 'y': 20}
+            ]
+          },
+        ],
+      ),
+    ));
   }
 
   final List<Map<String, dynamic>> datas = const [

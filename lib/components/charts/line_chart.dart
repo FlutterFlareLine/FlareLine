@@ -34,10 +34,15 @@ class LineChartWidget extends BaseStlessWidget<LineChartProvider> {
                   text: title,
                   textStyle: const TextStyle(fontWeight: FontWeight.bold),
                   alignment: ChartAlignment.near),
-              legend:
-                  const Legend(isVisible: true, position: LegendPosition.top),
-              primaryXAxis: const CategoryAxis(),
+              legend: const Legend(
+                  isVisible: true,
+                  position: LegendPosition.top,
+                  textStyle: TextStyle(fontWeight: FontWeight.normal)),
+              primaryXAxis: const CategoryAxis(
+                labelStyle: TextStyle(fontWeight: FontWeight.normal),
+              ),
               primaryYAxis: const NumericAxis(
+                  labelStyle: TextStyle(fontWeight: FontWeight.normal),
                   labelFormat: '{value}%',
                   axisLine: AxisLine(width: 0),
                   majorTickLines: MajorTickLines(color: Colors.transparent)),
@@ -66,7 +71,7 @@ class LineChartWidget extends BaseStlessWidget<LineChartProvider> {
         child: SizedBox(
           width: 140,
           child: SelectWidget(
-            selectionList: ['Daily', 'Monthly', 'Yearly'],
+            selectionList: const ['Daily', 'Monthly', 'Yearly'],
           ),
         ));
   }
@@ -85,8 +90,8 @@ class LineChartWidget extends BaseStlessWidget<LineChartProvider> {
             child: Row(mainAxisAlignment: MainAxisAlignment.end, children: [
               MaterialButton(
                   onPressed: () {},
-                  child: const Text('Day'),
-                  color: Theme.of(context).appBarTheme.backgroundColor),
+                  color: Theme.of(context).appBarTheme.backgroundColor,
+                  child: const Text('Day')),
               MaterialButton(
                 onPressed: () {},
                 child: Text(

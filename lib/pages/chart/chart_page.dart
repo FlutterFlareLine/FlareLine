@@ -1,3 +1,4 @@
+import 'package:flareline/crm/crm_colors.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -70,7 +71,28 @@ class ChartPage extends LayoutWidget {
         SizedBox(
             height: 350,
             child: CommonCard(
-              child: CircularhartWidget(),
+              child: CircularhartWidget(
+                title: 'Visitors Analytics',
+                palette: const [
+                  CrmColors.orange,
+                  CrmColors.secondary,
+                  CrmColors.primary
+                ],
+                chartData: const [
+                  {
+                    'x': 'Social Media',
+                    'y': 33,
+                  },
+                  {
+                    'x': 'Direct Search',
+                    'y': 33,
+                  },
+                  {
+                    'x': 'Others',
+                    'y': 34,
+                  },
+                ],
+              ),
             ))
       ],
     );
