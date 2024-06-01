@@ -56,7 +56,7 @@ final List<Map<String, Object>> MAIN_PAGES = [
   {'routerPath': '/ai', 'widget': AIPage()},
   {'routerPath': '/toast', 'widget': ToastPage()},
   {'routerPath': '/modal', 'widget': ModalPage()},
-  {'routerPath': '/crm/dashboard', 'widget': CrmHomePage()},
+  {'routerPath': '/crmPage', 'widget': CrmHomePage()},
 ];
 
 class RouteConfiguration {

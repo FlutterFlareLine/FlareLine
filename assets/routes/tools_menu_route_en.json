@@ -15,7 +15,7 @@
       {
         "icon": "assets/crm/crm.png",
         "menuName": "CRM",
-        "path": "/crm/dashboard"
+        "path": "/crmPage"
       }
     ]
   }
