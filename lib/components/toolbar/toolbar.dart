@@ -1,3 +1,4 @@
+import 'package:flareline/components/forms/search_widget.dart';
 import 'package:flareline_uikit/components/forms/outborder_text_form_field.dart';
 import 'package:flareline/entity/user_entity.dart';
 import 'package:flareline/provider/store_provider.dart';
@@ -61,16 +62,7 @@ class ToolBarWidget extends StatelessWidget {
             return Container(
               margin: EdgeInsets.only(left: 10),
               width: 280,
-              child: OutBorderTextFormField(
-                icon: Icon(
-                  Icons.search_rounded,
-                  color: Color(
-                    0xFF68738D,
-                  ),
-                  size: 24,
-                ),
-                hintText: 'Search or type keyword',
-              ),
+              child: SearchWidget(),
             );
           }
 

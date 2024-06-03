@@ -4,6 +4,7 @@ import 'package:flareline/components/charts/line_chart.dart';
 import 'package:flareline/components/tables/TopChannel.dart';
 import 'package:flareline/crm/crm_colors.dart';
 import 'package:flareline/crm/crm_layout.dart';
+import 'package:flareline/crm/home/contact_list_widget.dart';
 import 'package:flareline_uikit/components/card/common_card.dart';
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
@@ -74,7 +75,7 @@ class CrmHomePage extends CrmLayout {
         ),
         SizedBox(
           height: 500,
-          child: TopChannelWidget(),
+          child: ContactListWidget(),
         ),
       ],
     );

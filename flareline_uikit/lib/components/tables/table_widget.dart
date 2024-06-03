@@ -20,6 +20,7 @@ enum CellDataType {
   IMAGE('image'),
   CUSTOM('custom'),
   ACTION('action'),
+  IMAGE_TEXT('imageText'),
   ;
 
   const CellDataType(this.type);
@@ -270,11 +271,11 @@ class BaseDataGridSource<F extends BaseTableProvider> extends DataGridSource {
           });
     }
 
-    if (CellDataType.ACTION.type == columnData.dataType) {
+    if (CellDataType.ACTION.type == columnData.dataType && actionWidgetsBuilder!=null) {
       return actionWidgetsBuilder(context, columnData)!;
     }
 
-    if (CellDataType.IMAGE.type == columnData.dataType) {
+    if (CellDataType.IMAGE.type == columnData.dataType && _imageCellWidget!=null) {
       return _imageCellWidget(columnData);
     }
 
