@@ -29,11 +29,11 @@ import 'package:provider/provider.dart';
 typedef PathWidgetBuilder = Widget Function(BuildContext, String?);
 
 final List<Map<String, Object>> MAIN_PAGES = [
-  {'routerPath': '/', 'widget': const EcommercePage()},
-  {'routerPath': '/calendar', 'widget': const CalendarPage()},
+  {'routerPath': '/', 'widget': const EcommercePage(), 'isWhite': true},
+  {'routerPath': '/calendar', 'widget': const CalendarPage(), 'isWhite': true},
   {'routerPath': '/profile', 'widget': const ProfilePage()},
-  {'routerPath': '/formElements', 'widget': FormElementsPage()},
-  {'routerPath': '/formLayout', 'widget': FormLayoutPage()},
+  {'routerPath': '/formElements', 'widget': FormElementsPage(), 'isWhite': true},
+  {'routerPath': '/formLayout', 'widget': FormLayoutPage(), 'isWhite': true},
   {'routerPath': '/signIn', 'widget': SignInWidget()},
   {'routerPath': '/signUp', 'widget': SignUpWidget(), 'isWhite': true},
   {
@@ -41,22 +41,22 @@ final List<Map<String, Object>> MAIN_PAGES = [
     'widget': const ResetPwdWidget(),
     'isWhite': true
   },
-  {'routerPath': '/invoice', 'widget': const InvoicePage()},
-  {'routerPath': '/inbox', 'widget': const InboxWidget()},
-  {'routerPath': '/tables', 'widget': const TablesPage()},
+  {'routerPath': '/invoice', 'widget': const InvoicePage(), 'isWhite': true},
+  {'routerPath': '/inbox', 'widget': const InboxWidget(), 'isWhite': true},
+  {'routerPath': '/tables', 'widget': const TablesPage(), 'isWhite': true},
   {'routerPath': '/settings', 'widget': SettingsPage()},
-  {'routerPath': '/basicChart', 'widget': const ChartPage()},
-  {'routerPath': '/buttons', 'widget': const ButtonPage()},
-  {'routerPath': '/alerts', 'widget': const AlertPage()},
-  {'routerPath': '/contacts', 'widget': ContactsPage()},
+  {'routerPath': '/basicChart', 'widget': const ChartPage(), 'isWhite': true},
+  {'routerPath': '/buttons', 'widget': const ButtonPage(), 'isWhite': true},
+  {'routerPath': '/alerts', 'widget': const AlertPage(), 'isWhite': true},
+  {'routerPath': '/contacts', 'widget': ContactsPage(), 'isWhite': true},
   {'routerPath': '/chatGpt', 'widget': ChatGptPage()},
   {'routerPath': '/chat', 'widget': ChatPage()},
   {'routerPath': '/dictionary', 'widget': DictionaryPage()},
-  {'routerPath': '/tools', 'widget': ToolsPage()},
+  {'routerPath': '/tools', 'widget': ToolsPage(), 'isWhite': true},
   {'routerPath': '/ai', 'widget': AIPage()},
-  {'routerPath': '/toast', 'widget': ToastPage()},
-  {'routerPath': '/modal', 'widget': ModalPage()},
-  {'routerPath': '/crmPage', 'widget': CrmHomePage()},
+  {'routerPath': '/toast', 'widget': ToastPage(), 'isWhite': true},
+  {'routerPath': '/modal', 'widget': ModalPage(), 'isWhite': true},
+  {'routerPath': '/crmPage', 'widget': CrmHomePage(), 'isWhite': true},
 ];
 
 class RouteConfiguration {

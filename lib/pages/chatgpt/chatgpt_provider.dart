@@ -273,6 +273,9 @@ class ChatGptProvider extends BaseProvider {
 
   fetchMessages(BuildContext ctx, String conversationId) async {
     String email = ctx.read<StoreProvider>().email;
+    if(email==''){
+      return;
+    }
     log('fetchMessages ${conversationId}  ${email}');
     final query = await FirebaseStoreUtils.db
         .collection('messages')

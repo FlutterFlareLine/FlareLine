@@ -41,7 +41,9 @@ class OpenAIProvider extends BaseProvider {
       return;
     }
     String email = ctx.read<StoreProvider>().email;
-
+    if(email==''){
+      return;
+    }
     Map<String, dynamic> data = {
       'email': email,
       'usedModel': checkedId,

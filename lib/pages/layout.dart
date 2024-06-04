@@ -20,7 +20,7 @@ abstract class LayoutWidget extends FlarelineLayoutWidget {
   Widget _userInfoWidget(BuildContext context) {
     UserEntity? loginUser = context.watch<StoreProvider>().user;
     String showName = loginUser != null ? (loginUser.displayName ?? '') : '';
-    String avatar = loginUser != null ? (loginUser.avatar ?? '') : '';
+    String? avatar = loginUser?.avatar;
     return Row(
       children: [
         Column(
@@ -31,10 +31,11 @@ abstract class LayoutWidget extends FlarelineLayoutWidget {
         const SizedBox(
           width: 10,
         ),
-        CircleAvatar(
-          backgroundImage: NetworkImage(avatar),
-          radius: 22,
-        )
+        if (avatar != null)
+          CircleAvatar(
+            backgroundImage: NetworkImage(avatar),
+            radius: 22,
+          )
       ],
     );
   }

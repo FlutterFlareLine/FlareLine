@@ -133,6 +133,9 @@ class ConversationViewModel extends BaseProvider {
 
   fetchConversations(BuildContext ctx) async {
     String email = ctx.read<StoreProvider>().email;
+    if(email==''){
+      return;
+    }
     final query = await FirebaseStoreUtils.db
         .collection('conversation')
         .where('belongUid', isEqualTo: email)
