@@ -125,8 +125,9 @@ class GridMenuWidget extends StatelessWidget {
               const SizedBox(height: 12,),
               Text(
                 e['menuName'],
+                textAlign: TextAlign.center,
                 style: TextStyle(
-                    color: isDark ? Colors.white : GlobalColors.darkBlackText),
+                    color: isDark ? Colors.white : GlobalColors.darkBlackText,),
               ),
             ],
           )),
