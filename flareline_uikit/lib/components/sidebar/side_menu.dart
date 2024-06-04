@@ -1,5 +1,5 @@
 import 'package:flareline_uikit/core/theme/flareline_colors.dart';
-import 'package:flareline_uikit/service/main_provider.dart';
+import 'package:flareline_uikit/service/sidebar_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -21,11 +21,11 @@ class SideMenuWidget extends StatelessWidget {
     List? childList = e['childList'];
 
     bool isExpanded =
-        context.watch<MainProvider>().isExpanded(e['menuName'], childList);
+        context.watch<SideBarProvider>().isExpanded(e['menuName'], childList);
     bool isSelected = childList != null && childList.isNotEmpty
         ? false
         : context
-            .watch<MainProvider>()
+            .watch<SideBarProvider>()
             .isSelectedPath(context, e['path'] ?? '');
 
     return Column(children: [
@@ -83,9 +83,9 @@ class SideMenuWidget extends StatelessWidget {
             )),
         onTap: () {
           if (childList != null && childList.isNotEmpty) {
-            context.read<MainProvider>().setExpandedMenuName(e['menuName']);
+            context.read<SideBarProvider>().setExpandedMenuName(e['menuName']);
           } else {
-            context.read<MainProvider>().setExpandedMenuName('');
+            context.read<SideBarProvider>().setExpandedMenuName('');
             pushOrJump(context, e);
           }
         },
@@ -106,7 +106,7 @@ class SideMenuWidget extends StatelessWidget {
 
   Widget _itemSubMenuWidget(BuildContext context, e, bool isDark) {
     bool isSelected =
-        context.watch<MainProvider>().isSelectedPath(context, e['path'] ?? '');
+        context.watch<SideBarProvider>().isSelectedPath(context, e['path'] ?? '');
 
     return InkWell(
       child: Container(

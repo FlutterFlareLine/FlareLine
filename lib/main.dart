@@ -3,7 +3,7 @@ import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flareline/core/theme/global_theme.dart';
 import 'package:flareline/provider/localization_provider.dart';
 import 'package:flareline/utils/firebase_util.dart';
-import 'package:flareline_uikit/service/main_provider.dart';
+import 'package:flareline_uikit/service/sidebar_provider.dart';
 import 'package:flareline/provider/openai_provider.dart';
 import 'package:flareline/provider/login_status_provider.dart';
 import 'package:flareline/provider/theme_provider.dart';
@@ -53,11 +53,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
         providers: [
-          ChangeNotifierProvider(create: (_) => ThemeProvider(_)),
-          ChangeNotifierProvider(create: (_) => MainProvider(_)),
-          ChangeNotifierProvider(create: (_) => LoginStatusProvider(_)),
-          ChangeNotifierProvider(create: (_) => LocalizationProvider(_)),
-          ChangeNotifierProvider(create: (_) => OpenAIProvider(_)),
+          ChangeNotifierProvider(create: (_) => ThemeProvider(_)),//theme
+          ChangeNotifierProvider(create: (_) => SideBarProvider(_)),//sidebar
+          ChangeNotifierProvider(create: (_) => LoginStatusProvider(_)),//login status
+          ChangeNotifierProvider(create: (_) => LocalizationProvider(_)),//localization
+          ChangeNotifierProvider(create: (_) => OpenAIProvider(_)),//open ai
         ],
         child: Builder(builder: (context) {
           context.read<OpenAIProvider>().initOpenApiConfig(context);

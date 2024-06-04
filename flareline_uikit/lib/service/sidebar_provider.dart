@@ -4,11 +4,11 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:window_location_href/window_location_href.dart';
 
-class MainProvider extends BaseProvider {
+class SideBarProvider extends BaseProvider {
   String _selectedPath = '/';
   String _expandedMenuName = '';
 
-  MainProvider(super.context);
+  SideBarProvider(super.context);
 
   String get selectedPath => _selectedPath;
 
