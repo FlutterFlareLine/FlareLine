@@ -15,7 +15,7 @@ import 'package:flareline_uikit/components/forms/form_file_picker.dart';
 import 'package:flareline_uikit/components/forms/outborder_text_form_field.dart';
 import 'package:flareline/pages/layout.dart';
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flareline/flutter_gen/app_localizations.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:multi_select_flutter/multi_select_flutter.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';

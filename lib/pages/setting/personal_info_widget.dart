@@ -2,7 +2,7 @@ import 'package:flareline_uikit/components/buttons/button_widget.dart';
 import 'package:flareline_uikit/components/card/common_card.dart';
 import 'package:flareline_uikit/components/forms/outborder_text_form_field.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flareline/flutter_gen/app_localizations.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class PersonalInfoWidget extends StatelessWidget {

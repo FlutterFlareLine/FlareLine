@@ -1,10 +1,10 @@
 import 'dart:convert';
 
+import 'package:flareline/flutter_gen/app_localizations.dart';
 import 'package:flareline_uikit/components/tables/table_widget.dart';
 import 'package:flareline_uikit/entity/table_data_entity.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class TopChannelWidget extends TableWidget {
   @override

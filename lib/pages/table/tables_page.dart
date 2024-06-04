@@ -6,7 +6,7 @@ import 'package:flareline/components/tables/InvoiceTable.dart';
 import 'package:flareline/components/tables/TopChannel.dart';
 import 'package:flareline/components/tables/TopProducts.dart';
 import 'package:flareline/pages/layout.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flareline/flutter_gen/app_localizations.dart';
 
 class TablesPage extends LayoutWidget {
   const TablesPage({super.key});

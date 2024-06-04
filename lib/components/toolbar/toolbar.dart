@@ -13,7 +13,7 @@ import 'package:flareline/provider/localization_provider.dart';
 import 'package:flareline/core/theme/global_colors.dart';
 import 'package:provider/provider.dart';
 import 'package:responsive_builder/responsive_builder.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flareline/flutter_gen/app_localizations.dart';
 
 class ToolBarWidget extends StatelessWidget {
   bool? showMore;

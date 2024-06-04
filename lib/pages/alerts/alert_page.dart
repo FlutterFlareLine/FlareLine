@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flareline_uikit/components/card/common_card.dart';
 import 'package:flareline/pages/layout.dart';
 import 'package:hexcolor/hexcolor.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flareline/flutter_gen/app_localizations.dart';
 import 'package:quickalert/models/quickalert_type.dart';
 import 'package:quickalert/widgets/quickalert_dialog.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';

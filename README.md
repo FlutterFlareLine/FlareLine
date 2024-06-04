@@ -54,7 +54,7 @@ You can use FlareLine Cloud for a fully managed solution. If you want to self-ho
 ### Localization
 * add .arb file to lib/l10n, like app_es.arb/app_zh.arb/app_th.arb...
 * run `flutter gen-l10n` generate localization files
-* import package `import 'package:flutter_gen/gen_l10n/app_localizations.dart';`
+* import package `import 'package:flareline/flutter_gen/app_localizations.dart';`
 * use `AppLocalizations.of(context)!.name` to use it
 * generate JsonSerializable ` flutter pub run build_runner build --delete-conflicting-outputs`
 

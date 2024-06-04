@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flareline/pages/layout.dart';
 import 'package:flareline/core/theme/global_colors.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flareline/flutter_gen/app_localizations.dart';
 
 class CalendarPage extends LayoutWidget {
   const CalendarPage({super.key});

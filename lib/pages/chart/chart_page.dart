@@ -8,7 +8,7 @@ import 'package:flareline/components/charts/bar_chart.dart';
 import 'package:flareline/components/charts/circular_chart.dart';
 import 'package:flareline/components/charts/line_chart.dart';
 import 'package:flareline/pages/layout.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flareline/flutter_gen/app_localizations.dart';
 
 class ChartPage extends LayoutWidget {
   const ChartPage({super.key});
