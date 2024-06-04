@@ -122,7 +122,7 @@ class GridMenuWidget extends StatelessWidget {
                     height: 60,
                   ),
                 ),
-              SizedBox(height: 12,),
+              const SizedBox(height: 12,),
               Text(
                 e['menuName'],
                 style: TextStyle(

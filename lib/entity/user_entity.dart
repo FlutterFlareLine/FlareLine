@@ -25,6 +25,6 @@ class UserEntity {
 
 	@override
 	String toString() {
-		return jsonEncode(this);
+		return jsonEncode(this.toJson());
 	}
 }

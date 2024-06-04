@@ -1,21 +1,11 @@
 [
   {
-    "groupName": "Tools",
+    "groupName": "Project",
     "menuList": [
       {
         "icon": "assets/sidebar/tools.svg",
-        "menuName": "Tools",
+        "menuName": "Project",
         "path": "/tools"
-      },
-      {
-        "icon": "assets/sidebar/AI.svg",
-        "menuName": "AI",
-        "path": "/ai"
-      },
-      {
-        "icon": "assets/sidebar/dictionary.svg",
-        "menuName": "Dictionary",
-        "path": "/dictionary"
       }
     ]
   },

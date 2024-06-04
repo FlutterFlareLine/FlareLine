@@ -32,79 +32,10 @@
     <title>Flareline-Free Flutter Dashboard</title>
     <link rel="manifest" href="manifest.json">
 
-    <style>
-        .preloader {
-          position: fixed;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          overflow: hidden;
-          background: white;
-          z-index: 9999;
-          transition: opacity .65s;
-          display: flex;
-        }
-
-        .cs-loader {
-          position: absolute;
-          top: 0;
-          left: 0;
-          height: 100%;
-          width: 100%
-        }
-
-        .cs-loader-inner {
-          transform: translateY(-50%) translateX(-50%);
-          top: 50%;
-          left: 50%;
-          position: absolute;
-          text-align: center
-        }
-
-    </style>
 </head>
 <body>
-<div id="app_splash">
-    <div class="preloader">
-        <div class="cs-loader">
-            <div class="cs-loader-inner">
 
-                <img src="Ripple.gif"/>
-            </div>
-        </div>
-    </div>
-</div>
 <script src="flutter_bootstrap.js" async></script>
-<script type="application/javascript"
-        src="/assets/packages/flutter_inappwebview_web/assets/web/web_support.js" defer></script>
-<script>
-    {{flutter_js}}
-{{flutter_build_config}}
 
-var isLoadSuccess;
-    var hasTimeOut;
-    setTimeout(function(){
-        if(isLoadSuccess){
-            document.getElementById("app_splash")?.remove();
-        }
-        hasTimeOut=true;
-    },1000);
-    window.addEventListener('load', function(ev) {
-      // Download main.dart.js
-      _flutter.loader.load({
-        onEntrypointLoaded: async function(engineInitializer) {
-
-              engineInitializer.initializeEngine().then(function(appRunner) {
-                if(hasTimeOut){
-                    document.getElementById("app_splash")?.remove();
-                }
-                appRunner.runApp();
-                isLoadSuccess=true;
-              });
-        }
-      });
-    });
-</script>
 </body>
 </html>

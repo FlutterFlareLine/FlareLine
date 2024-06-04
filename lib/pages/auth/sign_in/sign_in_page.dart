@@ -43,26 +43,26 @@ class SignInWidget extends BaseStlessWidget<SignInProvider> {
           child: Row(crossAxisAlignment: CrossAxisAlignment.center, children: [
             Expanded(
                 child: Column(
-              children: [
-                Text(
-                  AppLocalizations.of(context)!.appName,
-                  style: const TextStyle(
-                      fontSize: 20, fontWeight: FontWeight.bold),
-                ),
-                const SizedBox(
-                  height: 16,
-                ),
-                Text(AppLocalizations.of(context)!.slogan),
-                const SizedBox(
-                  height: 16,
-                ),
-                SizedBox(
-                  width: 350,
-                  child: SvgPicture.asset('assets/signin/main.svg',
-                      semanticsLabel: ''),
-                )
-              ],
-            )),
+                  children: [
+                    Text(
+                      AppLocalizations.of(context)!.appName,
+                      style: const TextStyle(
+                          fontSize: 20, fontWeight: FontWeight.bold),
+                    ),
+                    const SizedBox(
+                      height: 16,
+                    ),
+                    Text(AppLocalizations.of(context)!.slogan),
+                    const SizedBox(
+                      height: 16,
+                    ),
+                    SizedBox(
+                      width: 350,
+                      child: SvgPicture.asset('assets/signin/main.svg',
+                          semanticsLabel: ''),
+                    )
+                  ],
+                )),
             const VerticalDivider(
               width: 1,
               color: GlobalColors.background,
@@ -153,18 +153,18 @@ class SignInWidget extends BaseStlessWidget<SignInProvider> {
               children: [
                 const Expanded(
                     child: Divider(
-                  height: 1,
-                  color: GlobalColors.border,
-                )),
+                      height: 1,
+                      color: GlobalColors.border,
+                    )),
                 Container(
                   margin: const EdgeInsets.symmetric(horizontal: 20),
                   child: const Text('OR'),
                 ),
                 const Expanded(
                     child: Divider(
-                  height: 1,
-                  color: GlobalColors.border,
-                )),
+                      height: 1,
+                      color: GlobalColors.border,
+                    )),
               ],
             ),
             const SizedBox(

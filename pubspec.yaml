@@ -82,22 +82,14 @@ dependencies:
   get: ^4.6.6
 
   json_annotation: any
-  firebase_core: ^2.29.0
-  firebase_auth: ^4.20.0
-  firebase_ui_auth: ^1.14.0
-  firebase_storage: ^11.7.5
-  cloud_firestore: ^4.16.1
+
   uuid: ^4.4.0
   http: ^1.2.1
   html: ^0.15.4
-  flutter_inappwebview: ^6.0.0
-  flutter_inappwebview_platform_interface: ^1.0.10
   flutter_widget_from_html: ^0.14.11
   dart_openai: ^5.1.0
   markdown_widget: ^2.3.2+6
-  firebase_crashlytics: ^3.5.2
-  firebase_analytics: any
-  flutter_firebase_chat_core: ^1.6.7
+
   flutter_chat_ui: ^1.6.12
   flutter_chat_types: ^3.6.2
   faker: ^2.1.0

@@ -1,17 +1,27 @@
 [
   {
-    "groupName": "My AI",
+    "groupName": "AI",
     "menuList":[
       {
         "icon": "assets/ai/openai.webp",
         "menuName": "My OpenAI",
         "path": "/chatGpt"
+      },
+      {
+        "icon": "assets/icon/ai.png",
+        "menuName": "AI Collection",
+        "path": "https://pro.flareline.top/#/ai"
       }
     ]
   },
   {
     "groupName": "Project",
     "menuList":[
+      {
+        "icon": "assets/icon/firebase.png",
+        "menuName": "Firebase Demo",
+        "path": "https://pro.flareline.top"
+      },
       {
         "icon": "assets/crm/crm.png",
         "menuName": "CRM",

@@ -1,6 +1,5 @@
 import 'dart:convert';
 
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flareline/entity/user_entity.dart';
 import 'package:flareline/utils/cache_util.dart';
 
@@ -24,6 +23,5 @@ class LoginUtil{
 
   static Future<void> logout() async {
     CacheUtil.instance.remove('loginUser');
-    await FirebaseAuth.instance.signOut();
   }
 }

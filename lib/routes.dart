@@ -1,13 +1,8 @@
 import 'package:flareline/crm/home/crm_home_page.dart';
-import 'package:flareline/pages/ai/ai_page.dart';
-import 'package:flareline/pages/chat/chat_page.dart';
-import 'package:flareline/pages/chatgpt/chatgpt_page.dart';
-import 'package:flareline/pages/dictionary/dictionary_page.dart';
 import 'package:flareline/pages/modal/modal_page.dart';
 import 'package:flareline/pages/table/contacts_page.dart';
 import 'package:flareline/pages/toast/toast_page.dart';
 import 'package:flareline/pages/tools/tools_page.dart';
-import 'package:flareline/provider/login_status_provider.dart';
 import 'package:flareline/utils/login_util.dart';
 import 'package:flutter/material.dart';
 import 'package:flareline/pages/alerts/alert_page.dart';
@@ -25,39 +20,36 @@ import 'package:flareline/pages/profile/profile_page.dart';
 import 'package:flareline/pages/resetpwd/reset_pwd_page.dart';
 import 'package:flareline/pages/setting/settings_page.dart';
 import 'package:flareline/pages/table/tables_page.dart';
-import 'package:provider/provider.dart';
 
 typedef PathWidgetBuilder = Widget Function(BuildContext, String?);
 
 final List<Map<String, Object>> MAIN_PAGES = [
-  {'routerPath': '/', 'widget': const EcommercePage(), 'isWhite': true},
-  {'routerPath': '/calendar', 'widget': const CalendarPage(), 'isWhite': true},
+  {'routerPath': '/', 'widget': const EcommercePage()},
+  {'routerPath': '/calendar', 'widget': const CalendarPage()},
   {'routerPath': '/profile', 'widget': const ProfilePage()},
-  {'routerPath': '/formElements', 'widget': FormElementsPage(), 'isWhite': true},
-  {'routerPath': '/formLayout', 'widget': FormLayoutPage(), 'isWhite': true},
+  {
+    'routerPath': '/formElements',
+    'widget': FormElementsPage(),
+  },
+  {'routerPath': '/formLayout', 'widget': FormLayoutPage()},
   {'routerPath': '/signIn', 'widget': SignInWidget()},
-  {'routerPath': '/signUp', 'widget': SignUpWidget(), 'isWhite': true},
+  {'routerPath': '/signUp', 'widget': SignUpWidget()},
   {
     'routerPath': '/resetPwd',
     'widget': const ResetPwdWidget(),
-    'isWhite': true
   },
-  {'routerPath': '/invoice', 'widget': const InvoicePage(), 'isWhite': true},
-  {'routerPath': '/inbox', 'widget': const InboxWidget(), 'isWhite': true},
-  {'routerPath': '/tables', 'widget': const TablesPage(), 'isWhite': true},
+  {'routerPath': '/invoice', 'widget': const InvoicePage()},
+  {'routerPath': '/inbox', 'widget': const InboxWidget()},
+  {'routerPath': '/tables', 'widget': const TablesPage()},
   {'routerPath': '/settings', 'widget': SettingsPage()},
-  {'routerPath': '/basicChart', 'widget': const ChartPage(), 'isWhite': true},
-  {'routerPath': '/buttons', 'widget': const ButtonPage(), 'isWhite': true},
-  {'routerPath': '/alerts', 'widget': const AlertPage(), 'isWhite': true},
-  {'routerPath': '/contacts', 'widget': ContactsPage(), 'isWhite': true},
-  {'routerPath': '/chatGpt', 'widget': ChatGptPage()},
-  {'routerPath': '/chat', 'widget': ChatPage()},
-  {'routerPath': '/dictionary', 'widget': DictionaryPage()},
-  {'routerPath': '/tools', 'widget': ToolsPage(), 'isWhite': true},
-  {'routerPath': '/ai', 'widget': AIPage()},
-  {'routerPath': '/toast', 'widget': ToastPage(), 'isWhite': true},
-  {'routerPath': '/modal', 'widget': ModalPage(), 'isWhite': true},
-  {'routerPath': '/crmPage', 'widget': CrmHomePage(), 'isWhite': true},
+  {'routerPath': '/basicChart', 'widget': const ChartPage()},
+  {'routerPath': '/buttons', 'widget': const ButtonPage()},
+  {'routerPath': '/alerts', 'widget': const AlertPage()},
+  {'routerPath': '/contacts', 'widget': ContactsPage()},
+  {'routerPath': '/tools', 'widget': ToolsPage()},
+  {'routerPath': '/toast', 'widget': ToastPage()},
+  {'routerPath': '/modal', 'widget': ModalPage()},
+  {'routerPath': '/crmPage', 'widget': CrmHomePage()},
 ];
 
 class RouteConfiguration {
@@ -70,26 +62,10 @@ class RouteConfiguration {
   static Route<dynamic>? onGenerateRoute(
     RouteSettings settings,
   ) {
-    bool? isLogin = LoginUtil.isLogin();
-
     String path = settings.name!;
 
     dynamic map =
         MAIN_PAGES.firstWhere((element) => element['routerPath'] == path);
-    bool? isWhite = map['isWhite'];
-    if (isWhite == null || !isWhite) {
-      if (path == '/signIn') {
-        if (isLogin != null && isLogin) {
-          path = '/';
-        }
-      } else {
-        if (isLogin == null || !isLogin) {
-          path = '/signIn';
-        }
-      }
-
-      map = MAIN_PAGES.firstWhere((element) => element['routerPath'] == path);
-    }
 
     if (map == null) {
       return null;

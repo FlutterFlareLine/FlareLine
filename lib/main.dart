@@ -1,10 +1,8 @@
 
-import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flareline/core/theme/global_theme.dart';
+import 'package:flareline/flareline.dart';
 import 'package:flareline/provider/localization_provider.dart';
-import 'package:flareline/utils/firebase_util.dart';
 import 'package:flareline_uikit/service/sidebar_provider.dart';
-import 'package:flareline/provider/openai_provider.dart';
 import 'package:flareline/provider/login_status_provider.dart';
 import 'package:flareline/provider/theme_provider.dart';
 import 'package:flareline/routes.dart';
@@ -38,29 +36,28 @@ void main() async {
     });
   }
 
-  ///firebase
-  FirebaseAnalyticsObserver observer = await FirebaseUtil.instance.init();
 
-  runApp(MyApp(observer: observer));
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  FirebaseAnalyticsObserver? observer;
 
-  MyApp({super.key, this.observer});
+  MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
         providers: [
-          ChangeNotifierProvider(create: (_) => ThemeProvider(_)),//theme
-          ChangeNotifierProvider(create: (_) => SideBarProvider(_)),//sidebar
-          ChangeNotifierProvider(create: (_) => LoginStatusProvider(_)),//login status
-          ChangeNotifierProvider(create: (_) => LocalizationProvider(_)),//localization
-          ChangeNotifierProvider(create: (_) => OpenAIProvider(_)),//open ai
+          ChangeNotifierProvider(create: (_) => ThemeProvider(_)),
+          //theme
+          ChangeNotifierProvider(create: (_) => SideBarProvider(_)),
+          //sidebar
+          ChangeNotifierProvider(create: (_) => LoginStatusProvider(_)),
+          //login status
+          ChangeNotifierProvider(create: (_) => LocalizationProvider(_)),
+          //localizationen ai
         ],
         child: Builder(builder: (context) {
-          context.read<OpenAIProvider>().initOpenApiConfig(context);
           return MaterialApp(
             navigatorKey: RouteConfiguration.navigatorKey,
             restorationScopeId: 'rootFlareLine',
@@ -84,7 +81,7 @@ class MyApp extends StatelessWidget {
                 child: widget!,
               );
             },
-            navigatorObservers: [if (observer != null) observer!],
+
           );
         }));
   }
