@@ -1,13 +1,11 @@
-import 'dart:io';
 
 import 'package:firebase_analytics/firebase_analytics.dart';
-import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flareline/core/theme/global_theme.dart';
-import 'package:flareline/provider/firebase_provider.dart';
 import 'package:flareline/provider/localization_provider.dart';
+import 'package:flareline/utils/firebase_util.dart';
 import 'package:flareline_uikit/service/main_provider.dart';
 import 'package:flareline/provider/openai_provider.dart';
-import 'package:flareline/provider/store_provider.dart';
+import 'package:flareline/provider/login_status_provider.dart';
 import 'package:flareline/provider/theme_provider.dart';
 import 'package:flareline/routes.dart';
 import 'package:flutter/material.dart';
@@ -16,28 +14,12 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:provider/provider.dart';
 import 'package:window_manager/window_manager.dart';
-import 'package:firebase_auth/firebase_auth.dart' hide EmailAuthProvider;
-import 'package:firebase_core/firebase_core.dart';
-import 'package:firebase_ui_auth/firebase_ui_auth.dart';
 
-import 'firebase_options.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   await GetStorage.init();
-
-  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-
-  FlutterError.onError = FirebaseCrashlytics.instance.recordFlutterFatalError;
-
-  FirebaseAnalytics analytics = FirebaseAnalytics.instance;
-  final FirebaseAnalyticsObserver observer =
-      FirebaseAnalyticsObserver(analytics: analytics);
-
-  FirebaseUIAuth.configureProviders([
-    EmailAuthProvider(),
-  ]);
 
   if (GetPlatform.isDesktop && !GetPlatform.isWeb) {
     await windowManager.ensureInitialized();
@@ -56,6 +38,9 @@ void main() async {
     });
   }
 
+  ///firebase
+  FirebaseAnalyticsObserver observer = await FirebaseUtil.instance.init();
+
   runApp(MyApp(observer: observer));
 }
 
@@ -70,8 +55,7 @@ class MyApp extends StatelessWidget {
         providers: [
           ChangeNotifierProvider(create: (_) => ThemeProvider(_)),
           ChangeNotifierProvider(create: (_) => MainProvider(_)),
-          ChangeNotifierProvider(create: (_) => StoreProvider(_)),
-          ChangeNotifierProvider(create: (_) => FirebaseProvider(_)),
+          ChangeNotifierProvider(create: (_) => LoginStatusProvider(_)),
           ChangeNotifierProvider(create: (_) => LocalizationProvider(_)),
           ChangeNotifierProvider(create: (_) => OpenAIProvider(_)),
         ],

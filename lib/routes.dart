@@ -7,7 +7,8 @@ import 'package:flareline/pages/modal/modal_page.dart';
 import 'package:flareline/pages/table/contacts_page.dart';
 import 'package:flareline/pages/toast/toast_page.dart';
 import 'package:flareline/pages/tools/tools_page.dart';
-import 'package:flareline/provider/store_provider.dart';
+import 'package:flareline/provider/login_status_provider.dart';
+import 'package:flareline/utils/login_util.dart';
 import 'package:flutter/material.dart';
 import 'package:flareline/pages/alerts/alert_page.dart';
 import 'package:flareline/pages/button/button_page.dart';
@@ -69,7 +70,7 @@ class RouteConfiguration {
   static Route<dynamic>? onGenerateRoute(
     RouteSettings settings,
   ) {
-    bool? isLogin = navigatorContext?.read<StoreProvider>().isLogin();
+    bool? isLogin = LoginUtil.isLogin();
 
     String path = settings.name!;
 

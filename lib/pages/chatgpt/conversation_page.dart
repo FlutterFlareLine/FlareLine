@@ -1,15 +1,14 @@
 import 'package:flareline/core/theme/global_colors.dart';
 import 'package:flareline/entity/conversation_entity.dart';
 import 'package:flareline/entity/message_entity.dart';
-import 'package:flareline/provider/store_provider.dart';
 import 'package:flareline/utils/firebase_store_utils.dart';
+import 'package:flareline/utils/login_util.dart';
 import 'package:flareline_uikit/core/event/global_event.dart';
 import 'package:flareline_uikit/service/base_provider.dart';
 import 'package:flareline_uikit/widget/base/base_stless_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:intl/intl.dart';
-import 'package:provider/provider.dart';
 
 class ConversationPage extends BaseStlessWidget<ConversationViewModel> {
   ValueChanged<bool>? onVisibleChanged;
@@ -52,8 +51,7 @@ class ConversationPage extends BaseStlessWidget<ConversationViewModel> {
   Widget conversationItemBuilder(
       BuildContext context, int index, ConversationViewModel viewModel) {
     ConversationEntity conversationEntity = viewModel.getConversation(index);
-    String title =
-        conversationEntity.title ?? '';
+    String title = conversationEntity.title ?? '';
 
     return InkWell(
       child: Container(
@@ -68,7 +66,7 @@ class ConversationPage extends BaseStlessWidget<ConversationViewModel> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  title ?? '',
+                  title,
                   maxLines: 1,
                   style: const TextStyle(fontSize: 12, color: Colors.white),
                   overflow: TextOverflow.ellipsis,
@@ -132,8 +130,8 @@ class ConversationViewModel extends BaseProvider {
   }
 
   fetchConversations(BuildContext ctx) async {
-    String email = ctx.read<StoreProvider>().email;
-    if(email==''){
+    String email = LoginUtil.email;
+    if (email == '') {
       return;
     }
     final query = await FirebaseStoreUtils.db
@@ -154,12 +152,12 @@ class ConversationViewModel extends BaseProvider {
       }).toList();
       conversationList.addAll(list);
 
-      conversationList.forEach((element) async {
+      for(ConversationEntity element in conversationList){
         final queryMessage = await FirebaseStoreUtils.db
             .collection('messages')
             .where('belongUid', isEqualTo: email)
             .where('conversationId', isEqualTo: element.id)
-            .orderBy("timestamp",descending: true)
+            .orderBy("timestamp", descending: true)
             .limitToLast(1)
             .get();
         if (queryMessage.docs.isNotEmpty) {
@@ -168,12 +166,13 @@ class ConversationViewModel extends BaseProvider {
           MessageEntity msg = MessageEntity.fromJson(msgMap);
           element.latestMessage = msg;
 
-          if(element.title==null||element.title==''||element.title?.trim()==''){
-
+          if (element.title == null ||
+              element.title == '' ||
+              element.title?.trim() == '') {
             element.title = element.latestMessage?.content;
           }
         }
-      });
+      }
       notifyListeners();
     }
   }

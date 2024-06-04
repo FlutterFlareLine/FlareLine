@@ -1,11 +1,13 @@
+import 'dart:convert';
+
 import 'package:dart_openai/dart_openai.dart';
+import 'package:flareline/utils/cache_util.dart';
+import 'package:flareline/utils/login_util.dart';
 import 'package:flareline_uikit/service/base_provider.dart';
 import 'package:flareline/utils/firebase_store_utils.dart';
-import 'package:flareline/provider/store_provider.dart';
 import 'package:flareline/utils/snackbar_util.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 class OpenAIProvider extends BaseProvider {
   OpenAIProvider(super.context);
@@ -31,6 +33,12 @@ class OpenAIProvider extends BaseProvider {
     notifyListeners();
   }
 
+  String? get openAiModel => openAiConfig == null
+      ? 'gpt-3.5-turbo'
+      : (openAiConfig!['usedModel'] == null || openAiConfig!['usedModel'] == ''
+      ? 'gpt-3.5-turbo'
+      : openAiConfig!['usedModel']);
+
   bool isChecked(String id) {
     return checkedId == id;
   }
@@ -40,7 +48,7 @@ class OpenAIProvider extends BaseProvider {
       SnackBarUtil.showSnack(ctx, 'please enter your key');
       return;
     }
-    String email = ctx.read<StoreProvider>().email;
+    String email = LoginUtil.email;
     if(email==''){
       return;
     }
@@ -50,7 +58,7 @@ class OpenAIProvider extends BaseProvider {
       'key': keyController.text.trim(),
       'api': proxyController.text.trim(),
     };
-    ctx.read<StoreProvider>().saveOpenAi(data);
+    CacheUtil.instance.write("openAiConfig", jsonEncode(data));
     initOpenApiConfig(ctx);
     SnackBarUtil.showSuccess(ctx, 'key saved success');
   }
@@ -62,11 +70,19 @@ class OpenAIProvider extends BaseProvider {
     return data;
   }
 
+  Map<String, dynamic>? get openAiConfig {
+    String? json = CacheUtil.instance.read("openAiConfig");
+    if (json == null) {
+      return null;
+    }
+    return jsonDecode(json);
+  }
+
   Future<void> initOpenApiConfig(BuildContext ctx) async {
-    Map<String, dynamic>? config = ctx.read<StoreProvider>().openAiConfig;
+    Map<String, dynamic>? config = openAiConfig;
     config ??= await getDemoOpenAiConfigKey(ctx);
 
-    _checkedId = ctx.read<StoreProvider>().openAiModel;
+    _checkedId = openAiModel;
 
     if (config != null) {
       String key = config['key'];

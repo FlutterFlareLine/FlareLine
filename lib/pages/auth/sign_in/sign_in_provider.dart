@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flareline/entity/user_entity.dart';
-import 'package:flareline/provider/firebase_provider.dart';
-import 'package:flareline/provider/store_provider.dart';
+import 'package:flareline/provider/login_status_provider.dart';
+import 'package:flareline/utils/firebase_util.dart';
+import 'package:flareline/utils/login_util.dart';
 import 'package:flareline/utils/snackbar_util.dart';
 import 'package:flareline_uikit/service/base_provider.dart';
 import 'package:flutter/material.dart';
@@ -16,22 +16,21 @@ class SignInProvider extends BaseProvider {
   SignInProvider(BuildContext ctx) : super(ctx) {
     emailController = TextEditingController();
     passwordController = TextEditingController();
-    emailController.text = ctx.read<StoreProvider>().email;
-    if (emailController.text.isEmpty||emailController.text=='demo@flareline.com') {
+    emailController.text = LoginUtil.email;
+    if (emailController.text.isEmpty ||
+        emailController.text == 'demo@flareline.com') {
       emailController.text = 'demo@flareline.com';
       passwordController.text = '123456';
     }
   }
 
   Future<void> signInWithGoogle(BuildContext context) async {
-    UserCredential userCredential =
-        await context.read<FirebaseProvider>().signInWithGoogle();
+    UserCredential userCredential = await FirebaseUtil.instance.signInWithGoogle();
     User? user = userCredential.user;
     debugPrint('login user ${user}');
     if (user != null) {
-      UserEntity userEntity =
-          await context.read<FirebaseProvider>().login(user);
-      context.read<StoreProvider>().saveLogin(userEntity);
+      await FirebaseUtil.instance.login(user);
+
       Navigator.of(context).popAndPushNamed('/');
       return;
     }
@@ -40,13 +39,12 @@ class SignInProvider extends BaseProvider {
 
   Future<void> signInWithGithub(BuildContext context) async {
     UserCredential userCredential =
-        await context.read<FirebaseProvider>().signInWithGithub();
+        await FirebaseUtil.instance.signInWithGithub();
     User? user = userCredential.user;
     debugPrint('login user ${user}');
     if (user != null) {
-      UserEntity userEntity =
-          await context.read<FirebaseProvider>().login(user);
-      context.read<StoreProvider>().saveLogin(userEntity);
+      await FirebaseUtil.instance.login(user);
+
       Navigator.of(context).popAndPushNamed('/');
       return;
     }
@@ -69,7 +67,7 @@ class SignInProvider extends BaseProvider {
         email: emailController.text.trim(),
         password: passwordController.text.trim(),
       );
-      debugPrint('credential ${credential}');
+
       if (credential.user != null) {
         User? user = credential.user;
         if (user != null) {
@@ -77,10 +75,8 @@ class SignInProvider extends BaseProvider {
             SnackBarUtil.showSnack(context, 'Please verify your email first');
             return;
           }
-          UserEntity userEntity =
-              await context.read<FirebaseProvider>().login(user);
-          context.read<StoreProvider>().saveLogin(userEntity);
-          context.read<StoreProvider>().saveEmail(userEntity.email);
+          await FirebaseUtil.instance.login(user);
+
           Navigator.of(context).popAndPushNamed('/');
         }
       }

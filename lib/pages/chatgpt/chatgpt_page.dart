@@ -7,7 +7,7 @@ import 'package:flareline/entity/user_entity.dart';
 import 'package:flareline/pages/chatgpt/chatgpt_provider.dart';
 import 'package:flareline/pages/layout.dart';
 import 'package:flareline/pages/setting/open_ai_setting.dart';
-import 'package:flareline/provider/store_provider.dart';
+import 'package:flareline/provider/login_status_provider.dart';
 import 'package:flareline_uikit/widget/base/base_stless_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -270,7 +270,7 @@ class ContentPage extends BaseStlessWidget<ChatGptProvider> {
   }
 
   _buildLeftNavigation(BuildContext context, ChatGptProvider viewModel) {
-    UserEntity? loginUser = context.watch<StoreProvider>().user;
+    UserEntity? loginUser = context.watch<LoginStatusProvider>().user;
     String avatar = loginUser != null ? (loginUser.avatar ?? '') : '';
 
     return NavigationRail(

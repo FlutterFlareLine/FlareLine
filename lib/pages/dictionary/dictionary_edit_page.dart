@@ -1,4 +1,5 @@
 import 'package:file_picker/file_picker.dart';
+import 'package:flareline/utils/login_util.dart';
 import 'package:flareline_uikit/components/buttons/button_widget.dart';
 import 'package:flareline_uikit/components/forms/form_file_picker.dart';
 import 'package:flareline_uikit/components/forms/outborder_text_form_field.dart';
@@ -7,11 +8,9 @@ import 'package:flareline_uikit/core/event/global_event.dart';
 import 'package:flareline_uikit/widget/base/base_stless_widget.dart';
 import 'package:flareline_uikit/service/base_provider.dart';
 import 'package:flareline/utils/firebase_store_utils.dart';
-import 'package:flareline/provider/store_provider.dart';
 import 'package:flareline/utils/firebase_storage_utils.dart';
 import 'package:flareline/utils/snackbar_util.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:uuid/uuid.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -217,7 +216,7 @@ class DictionaryEditProvider extends BaseProvider {
       SnackBarUtil.showSnack(context, 'Exists Same ConfigKey');
       return;
     }
-    String email = context.read<StoreProvider>().email;
+    String email = LoginUtil.email;
     Map<String, dynamic> dic = {
       'id': const Uuid().v1(),
       'configKey': configKeyController.text.trim(),

@@ -1,7 +1,8 @@
 import 'package:flareline/components/forms/search_widget.dart';
+import 'package:flareline/utils/login_util.dart';
 import 'package:flareline_uikit/components/forms/outborder_text_form_field.dart';
 import 'package:flareline/entity/user_entity.dart';
-import 'package:flareline/provider/store_provider.dart';
+import 'package:flareline/provider/login_status_provider.dart';
 import 'package:flareline/provider/theme_provider.dart';
 import 'package:flareline_uikit/components/badge/anim_badge.dart';
 import 'package:flareline_uikit/components/buttons/button_widget.dart';
@@ -182,7 +183,7 @@ class ToolBarWidget extends StatelessWidget {
   }
 
   Future<void> onLogoutClick(BuildContext context) async {
-    await context.read<StoreProvider>().logout();
+    await LoginUtil.logout();
     Navigator.of(context).popAndPushNamed('/signIn');
   }
 

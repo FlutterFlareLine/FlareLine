@@ -1,13 +1,10 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flareline/entity/user_entity.dart';
-import 'package:flareline/provider/firebase_provider.dart';
 import 'package:flareline/provider/localization_provider.dart';
-import 'package:flareline/provider/store_provider.dart';
+import 'package:flareline/utils/cache_util.dart';
 import 'package:flareline/utils/snackbar_util.dart';
 import 'package:flareline_uikit/service/base_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:get/utils.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:provider/provider.dart';
 
@@ -46,7 +43,7 @@ class SignUpProvider extends BaseProvider {
       if (credential.user != null) {
         User? user = credential.user;
         if (user != null) {
-          context.read<StoreProvider>().saveEmail(user.email);
+          CacheUtil.instance.write("email", user.email??'');
 
           await FirebaseAuth.instance.setLanguageCode(
               context.read<LocalizationProvider>().languageCode);

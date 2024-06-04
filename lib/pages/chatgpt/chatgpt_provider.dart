@@ -1,17 +1,17 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
+import 'dart:convert';
+
 import 'package:dart_openai/dart_openai.dart';
-import 'package:flareline/core/theme/global_colors.dart';
 import 'package:flareline/entity/conversation_entity.dart';
 import 'package:flareline/entity/message_entity.dart';
+import 'package:flareline/provider/openai_provider.dart';
+import 'package:flareline/utils/cache_util.dart';
+import 'package:flareline/utils/login_util.dart';
 import 'package:flareline_uikit/core/event/global_event.dart';
 import 'package:flareline_uikit/service/base_provider.dart';
 import 'package:flareline/utils/firebase_store_utils.dart';
-import 'package:flareline/provider/store_provider.dart';
 import 'package:flareline/utils/snackbar_util.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:get/state_manager.dart';
 import 'package:http/http.dart' as http;
 import 'package:provider/provider.dart';
 import 'package:uuid/uuid.dart';
@@ -75,16 +75,26 @@ class ChatGptProvider extends BaseProvider {
     notifyListeners();
   }
 
+  ConversationEntity? getConversation(){
+    dynamic data = CacheUtil.instance.read("conversation");
+    if(data!=null) {
+      ConversationEntity? conversationEntity = ConversationEntity.fromJson(
+          jsonDecode(data));
+      return conversationEntity;
+    }
+    return null;
+  }
+
   @override
   void init(BuildContext context) {
     controller = TextEditingController();
     setConversationEntity(
-        context, context.read<StoreProvider>().getConversation());
+        context, getConversation());
   }
 
   late TextEditingController controller;
 
-  String _url = "";
+  final String _url = "";
 
   String get url => _url;
 
@@ -132,9 +142,13 @@ class ChatGptProvider extends BaseProvider {
       return;
     }
 
-    ctx.read<StoreProvider>().saveConversation(_conversationEntity!);
+    saveConversation(_conversationEntity!);
 
     fetchMessages(ctx, _conversationEntity!.id);
+  }
+
+  void saveConversation(ConversationEntity conversationEntity) {
+    CacheUtil.instance.write("conversation", jsonEncode(conversationEntity.toJson()));
   }
 
   MessageEntity getItemMessage(int index) {
@@ -142,7 +156,7 @@ class ChatGptProvider extends BaseProvider {
   }
 
   Future<void> send(BuildContext ctx) async {
-    String? model = ctx.read<StoreProvider>().openAiModel;
+    String? model = ctx.read<OpenAIProvider>().openAiModel;
     if (model == null) {
       SnackBarUtil.showSnack(ctx, 'please set your model');
       return;
@@ -159,7 +173,7 @@ class ChatGptProvider extends BaseProvider {
     _isLoading = true;
     // notifyListeners();
     String sendText = controller.text.trim();
-    String email = ctx.read<StoreProvider>().email;
+    String email = LoginUtil.email;
 
     controller.clear();
 
@@ -167,7 +181,7 @@ class ChatGptProvider extends BaseProvider {
       startNewChat(ctx, title: sendText);
     }
 
-    String messageId = Uuid().v1();
+    String messageId = const Uuid().v1();
     try {
       MessageEntity messageEntity = MessageEntity()
         ..id = messageId
@@ -190,7 +204,7 @@ class ChatGptProvider extends BaseProvider {
         role: OpenAIChatMessageRole.user,
       );
       final chatStream = OpenAI.instance.chat.createStream(
-        model: model!,
+        model: model,
         messages: [
           userMessage,
         ],
@@ -198,7 +212,7 @@ class ChatGptProvider extends BaseProvider {
         n: 2,
       );
 
-      String responseId = Uuid().v1();
+      String responseId = const Uuid().v1();
 
       chatStream.listen(
         (streamChatCompletion) {
@@ -255,7 +269,7 @@ class ChatGptProvider extends BaseProvider {
 
   void startNewChat(BuildContext ctx, {String? title}) {
     controller.clear();
-    String email = ctx.read<StoreProvider>().email;
+    String email = LoginUtil.email;
     _conversationEntity = ConversationEntity()
       ..id = const Uuid().v1()
       ..type = 'text'
@@ -268,15 +282,14 @@ class ChatGptProvider extends BaseProvider {
     messageList.clear();
     notifyListeners();
 
-    ctx.read<StoreProvider>().saveConversation(_conversationEntity!);
+    saveConversation(_conversationEntity!);
   }
 
   fetchMessages(BuildContext ctx, String conversationId) async {
-    String email = ctx.read<StoreProvider>().email;
+    String email = LoginUtil.email;
     if(email==''){
       return;
     }
-    log('fetchMessages ${conversationId}  ${email}');
     final query = await FirebaseStoreUtils.db
         .collection('messages')
         .where('belongUid', isEqualTo: email)
@@ -296,11 +309,11 @@ class ChatGptProvider extends BaseProvider {
   }
 
   addConversation(BuildContext ctx, ConversationEntity conversationEntity) {
-    FirebaseStoreUtils.add('conversation', conversationEntity!.toJson());
+    FirebaseStoreUtils.add('conversation', conversationEntity.toJson());
   }
 
   addMessage(BuildContext ctx, MessageEntity messageEntity) async {
-    await FirebaseStoreUtils.add('messages', messageEntity!.toJson());
+    await FirebaseStoreUtils.add('messages', messageEntity.toJson());
   }
 
   bool? _hasCopied;

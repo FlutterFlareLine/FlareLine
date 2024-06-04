@@ -50,7 +50,7 @@ class CacheUtil {
     _box.write(
         key,
         jsonEncode(CacheEntity.create(value,
-                expire: _setExpiry(expire ?? Duration(hours: 1)))
+                expire: _setExpiry(expire))
             .toJson()));
   }
 
@@ -89,5 +89,9 @@ class CacheUtil {
       return false;
     }
     return true;
+  }
+
+  void remove(String key) {
+    _box.remove(key);
   }
 }

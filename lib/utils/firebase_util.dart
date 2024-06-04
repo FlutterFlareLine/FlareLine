@@ -1,24 +1,39 @@
-import 'dart:convert';
+import 'dart:developer';
 
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_analytics/firebase_analytics.dart';
+
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
+import 'package:firebase_ui_auth/firebase_ui_auth.dart';
 import 'package:flareline/entity/user_entity.dart';
-import 'package:flareline_uikit/service/base_provider.dart';
-import 'package:flutter/foundation.dart';
+import 'package:flareline/firebase_options.dart';
+import 'package:flareline_uikit/core/event/global_event.dart';
 import 'package:flutter/material.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:firebase_auth/firebase_auth.dart' hide EmailAuthProvider;
 import 'package:uuid/uuid.dart';
 
-class FirebaseProvider extends BaseProvider {
+class FirebaseUtil {
+  /// Private Constructor
+  FirebaseUtil._();
 
+  /// Singleton instance.
+  static final FirebaseUtil instance = FirebaseUtil._();
 
-  final box = GetStorage();
+  Future<FirebaseAnalyticsObserver> init() async {
+    await Firebase.initializeApp(
+        options: DefaultFirebaseOptions.currentPlatform);
 
-  FirebaseProvider(super.context);
+    FlutterError.onError = FirebaseCrashlytics.instance.recordFlutterFatalError;
 
+    FirebaseAnalytics analytics = FirebaseAnalytics.instance;
 
-  @override
-  void init(BuildContext context) {
+    final FirebaseAnalyticsObserver observer =
+        FirebaseAnalyticsObserver(analytics: analytics);
+
+    FirebaseUIAuth.configureProviders([
+      EmailAuthProvider(),
+    ]);
 
     FirebaseAuth.instance.authStateChanges().listen((User? user) {
       if (user == null) {
@@ -43,6 +58,8 @@ class FirebaseProvider extends BaseProvider {
         log('User is signed in!');
       }
     });
+
+    return observer;
   }
 
   Future<UserCredential> signInWithGoogle() async {
@@ -71,6 +88,7 @@ class FirebaseProvider extends BaseProvider {
   Future<UserEntity> login(User user) async {
     UserEntity? userEntity = await generateUserEntity(user);
     userEntity.token = user.refreshToken;
+    GlobalEvent.eventBus.fire(EventInfo(userEntity, 'loginSuccess'));
     return userEntity;
   }
 
@@ -86,7 +104,5 @@ class FirebaseProvider extends BaseProvider {
     userEntity.token = user.refreshToken;
     return userEntity;
   }
-
-
 
 }

@@ -1,5 +1,4 @@
 import 'package:flareline/pages/auth/sign_in/sign_in_provider.dart';
-import 'package:flareline/provider/firebase_provider.dart';
 import 'package:flareline_uikit/widget/base/base_stless_widget.dart';
 import 'package:flutter/material.dart';
 
@@ -9,7 +8,6 @@ import 'package:flareline_uikit/components/card/common_card.dart';
 import 'package:flareline_uikit/components/forms/outborder_text_form_field.dart';
 import 'package:flareline/core/theme/global_colors.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:provider/provider.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
 class SignInWidget extends BaseStlessWidget<SignInProvider> {
