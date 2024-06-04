@@ -388,9 +388,11 @@ packages:
   flareline_uikit:
     dependency: "direct main"
     description:
-      path: flareline_uikit
-      relative: true
-    source: path
+      path: "."
+      ref: HEAD
+      resolved-ref: "6788a920750356fdb49bddc86a359a774b8d7a87"
+      url: "https://github.com/FlutterFlareLine/FlareLine-UiKit.git"
+    source: git
     version: "0.0.1"
   flex_color_scheme:
     dependency: "direct main"
