@@ -1,0 +1,123 @@
+[
+  {
+    "groupName": "Proyek",
+    "menuList": [
+      {
+        "icon": "assets/sidebar/tools.svg",
+        "menuName": "Proyek",
+        "path": "/tools"
+      }
+    ]
+  },
+  {
+    "groupName": "Widget",
+    "menuList": [
+      {
+        "icon": "assets/sidebar/dashboard.svg",
+        "menuName": "Dasbor",
+        "path": "/"
+      },
+      {
+        "icon": "assets/sidebar/calendar.svg",
+        "menuName": "Kalender",
+        "path": "/calendar"
+      },
+      {
+        "icon": "assets/sidebar/invoice.svg",
+        "menuName": "Faktur",
+        "path": "/invoice"
+      },
+      {
+        "icon": "assets/sidebar/profile.svg",
+        "menuName": "Profil",
+        "path": "/profile"
+      },
+      {
+        "icon": "assets/sidebar/forms.svg",
+        "menuName": "Formulir",
+        "childList": [
+          {
+            "menuName": "Elemen Formulir",
+            "path": "/formElements"
+          },
+          {
+            "menuName": "Tata Letak Formulir",
+            "path": "/formLayout"
+          }
+        ]
+      },
+      {
+        "icon": "assets/sidebar/table.svg",
+        "menuName": "Tabel",
+        "childList": [
+          {
+            "menuName": "Tabel Dasar",
+            "path": "/tables"
+          },
+          {
+            "menuName": "Kontak",
+            "path": "/contacts"
+          }
+        ]
+      },
+      {
+        "icon": "assets/sidebar/setting.svg",
+        "menuName": "Pengaturan",
+        "path": "/settings"
+      },
+      {
+        "icon": "assets/sidebar/chart.svg",
+        "menuName": "Grafik",
+        "childList": [
+          {
+            "menuName": "Grafik Dasar",
+            "path": "/basicChart"
+          }
+        ]
+      },
+      {
+        "icon": "assets/sidebar/ui.svg",
+        "menuName": "Elemen UI",
+        "childList": [
+          {
+            "menuName": "Peringatan",
+            "path": "/alerts"
+          },
+          {
+            "menuName": "Tombol",
+            "path": "/buttons"
+          },
+          {
+            "menuName": "Toast",
+            "path": "/toast"
+          },
+          {
+            "menuName": "Modal",
+            "path": "/modal"
+          }
+        ]
+      },
+      {
+        "icon": "assets/sidebar/auth.svg",
+        "menuName": "Otentikasi",
+        "childList": [
+          {
+            "menuName": "Masuk",
+            "path": "/signIn",
+            "blank": true
+          },
+          {
+            "menuName": "Daftar",
+            "path": "/signUp",
+            "blank": true
+          },
+          {
+            "menuName": "Setel Ulang Kata Sandi",
+            "path": "/resetPwd",
+            "blank": true
+          }
+        ]
+      }
+    ]
+  }
+]

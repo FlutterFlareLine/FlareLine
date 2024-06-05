@@ -1,0 +1,123 @@
+[
+  {
+    "groupName": "โครงการ",
+    "menuList": [
+      {
+        "icon": "assets/sidebar/tools.svg",
+        "menuName": "โครงการ",
+        "path": "/tools"
+      }
+    ]
+  },
+  {
+    "groupName": "วิดเจ็ต",
+    "menuList": [
+      {
+        "icon": "assets/sidebar/dashboard.svg",
+        "menuName": "แดชบอร์ด",
+        "path": "/"
+      },
+      {
+        "icon": "assets/sidebar/calendar.svg",
+        "menuName": "ปฏิทิน",
+        "path": "/calendar"
+      },
+      {
+        "icon": "assets/sidebar/invoice.svg",
+        "menuName": "ใบแจ้งหนี้",
+        "path": "/invoice"
+      },
+      {
+        "icon": "assets/sidebar/profile.svg",
+        "menuName": "โปรไฟล์",
+        "path": "/profile"
+      },
+      {
+        "icon": "assets/sidebar/forms.svg",
+        "menuName": "แบบฟอร์ม",
+        "childList": [
+          {
+            "menuName": "องค์ประกอบแบบฟอร์ม",
+            "path": "/formElements"
+          },
+          {
+            "menuName": "โครงสร้างแบบฟอร์ม",
+            "path": "/formLayout"
+          }
+        ]
+      },
+      {
+        "icon": "assets/sidebar/table.svg",
+        "menuName": "ตาราง",
+        "childList": [
+          {
+            "menuName": "ตารางพื้นฐาน",
+            "path": "/tables"
+          },
+          {
+            "menuName": "ข้อมูลติดต่อ",
+            "path": "/contacts"
+          }
+        ]
+      },
+      {
+        "icon": "assets/sidebar/setting.svg",
+        "menuName": "การตั้งค่า",
+        "path": "/settings"
+      },
+      {
+        "icon": "assets/sidebar/chart.svg",
+        "menuName": "แผนภูมิ",
+        "childList": [
+          {
+            "menuName": "แผนภูมิพื้นฐาน",
+            "path": "/basicChart"
+          }
+        ]
+      },
+      {
+        "icon": "assets/sidebar/ui.svg",
+        "menuName": "องค์ประกอบ UI",
+        "childList": [
+          {
+            "menuName": "การแจ้งเตือน",
+            "path": "/alerts"
+          },
+          {
+            "menuName": "ปุ่ม",
+            "path": "/buttons"
+          },
+          {
+            "menuName": "トースト",
+            "path": "/toast"
+          },
+          {
+            "menuName": "โมดัล",
+            "path": "/modal"
+          }
+        ]
+      },
+      {
+        "icon": "assets/sidebar/auth.svg",
+        "menuName": "การยืนยันตัวตน",
+        "childList": [
+          {
+            "menuName": "เข้าสู่ระบบ",
+            "path": "/signIn",
+            "blank": true
+          },
+          {
+            "menuName": "ลงทะเบียน",
+            "path": "/signUp",
+            "blank": true
+          },
+          {
+            "menuName": "รีเซ็ตรหัสผ่าน",
+            "path": "/resetPwd",
+            "blank": true
+          }
+        ]
+      }
+    ]
+  }
+]
