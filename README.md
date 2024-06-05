@@ -9,6 +9,12 @@ With FlareLine Flutter, you get access to all the necessary dashboard UI compone
 ## FlareLine-UiKit
 https://github.com/FlutterFlareLine/FlareLine-UiKit
 
+## FlareLine-CRM
+https://flare-line-crm.vercel.app/
+
+## FlareLine-Firebase-Demo
+https://flare-line-firebase.vercel.app
+
 
 ### [🚀 Demo](https://flareline.vercel.app/)
 demo account:
