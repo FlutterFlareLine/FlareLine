@@ -1,0 +1,123 @@
+[
+  {
+    "groupName": "프로젝트",
+    "menuList": [
+      {
+        "icon": "assets/sidebar/tools.svg",
+        "menuName": "프로젝트",
+        "path": "/tools"
+      }
+    ]
+  },
+  {
+    "groupName": "위젯",
+    "menuList": [
+      {
+        "icon": "assets/sidebar/dashboard.svg",
+        "menuName": "대시보드",
+        "path": "/"
+      },
+      {
+        "icon": "assets/sidebar/calendar.svg",
+        "menuName": "달력",
+        "path": "/calendar"
+      },
+      {
+        "icon": "assets/sidebar/invoice.svg",
+        "menuName": "송장",
+        "path": "/invoice"
+      },
+      {
+        "icon": "assets/sidebar/profile.svg",
+        "menuName": "프로필",
+        "path": "/profile"
+      },
+      {
+        "icon": "assets/sidebar/forms.svg",
+        "menuName": "폼",
+        "childList": [
+          {
+            "menuName": "폼 요소",
+            "path": "/formElements"
+          },
+          {
+            "menuName": "폼 레이아웃",
+            "path": "/formLayout"
+          }
+        ]
+      },
+      {
+        "icon": "assets/sidebar/table.svg",
+        "menuName": "표",
+        "childList": [
+          {
+            "menuName": "기본 표",
+            "path": "/tables"
+          },
+          {
+            "menuName": "연락처",
+            "path": "/contacts"
+          }
+        ]
+      },
+      {
+        "icon": "assets/sidebar/setting.svg",
+        "menuName": "설정",
+        "path": "/settings"
+      },
+      {
+        "icon": "assets/sidebar/chart.svg",
+        "menuName": "차트",
+        "childList": [
+          {
+            "menuName": "기본 차트",
+            "path": "/basicChart"
+          }
+        ]
+      },
+      {
+        "icon": "assets/sidebar/ui.svg",
+        "menuName": "UI 요소",
+        "childList": [
+          {
+            "menuName": "알림",
+            "path": "/alerts"
+          },
+          {
+            "menuName": "버튼",
+            "path": "/buttons"
+          },
+          {
+            "menuName": "토스트",
+            "path": "/toast"
+          },
+          {
+            "menuName": "모달",
+            "path": "/modal"
+          }
+        ]
+      },
+      {
+        "icon": "assets/sidebar/auth.svg",
+        "menuName": "인증",
+        "childList": [
+          {
+            "menuName": "로그인",
+            "path": "/signIn",
+            "blank": true
+          },
+          {
+            "menuName": "회원가입",
+            "path": "/signUp",
+            "blank": true
+          },
+          {
+            "menuName": "비밀번호 재설정",
+            "path": "/resetPwd",
+            "blank": true
+          }
+        ]
+      }
+    ]
+  }
+]

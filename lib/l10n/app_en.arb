@@ -120,9 +120,30 @@
   "eCommerce": "eCommerce",
   "buttons": "Buttons",
   "authentication": "Authentication",
-  "advanceTable":"AdvanceTable"
-
-
-
+  "advanceTable":"AdvanceTable",
+  "profitThisWeek":"Profit this week",
+  "package":"Package",
+  "invoiceDate":"Invoice date",
+  "status":"Status",
+  "actions":"Actions",
+  "productName":"Product Name",
+  "category":"Category",
+  "price":"Price",
+  "sold":"Sold",
+  "profit":"Profit",
+  "alertTips":"Alert Tips",
+  "alertDialog":"Alert Dialog",
+  "info":"Info",
+  "success":"Success",
+  "warn":"Warn",
+  "danger":"Danger",
+  "confirm":"Confirm",
+  "simpleAlert":"Simple Alert",
+  "simple":"Simple",
+  "simpleConfirm":"Simple Confirm",
+  "rflutterAlert":"RFLUTTER ALERT",
+  "rflutterTip":"Flutter is more awesome with RFlutter Alert.",
+  "cool":"COOL",
+  "seeDetail":"See Detail..."
 
 }

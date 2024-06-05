@@ -360,4 +360,76 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get advanceTable => 'AdvanceTable';
+
+  @override
+  String get profitThisWeek => 'Profit this week';
+
+  @override
+  String get package => 'Package';
+
+  @override
+  String get invoiceDate => 'Invoice date';
+
+  @override
+  String get status => 'Status';
+
+  @override
+  String get actions => 'Actions';
+
+  @override
+  String get productName => 'Product Name';
+
+  @override
+  String get category => 'Category';
+
+  @override
+  String get price => 'Price';
+
+  @override
+  String get sold => 'Sold';
+
+  @override
+  String get profit => 'Profit';
+
+  @override
+  String get alertTips => 'Alert Tips';
+
+  @override
+  String get alertDialog => 'Alert Dialog';
+
+  @override
+  String get info => 'Info';
+
+  @override
+  String get success => 'Success';
+
+  @override
+  String get warn => 'Warn';
+
+  @override
+  String get danger => 'Danger';
+
+  @override
+  String get confirm => 'Confirm';
+
+  @override
+  String get simpleAlert => 'Simple Alert';
+
+  @override
+  String get simple => 'Simple';
+
+  @override
+  String get simpleConfirm => 'Simple Confirm';
+
+  @override
+  String get rflutterAlert => 'RFLUTTER ALERT';
+
+  @override
+  String get rflutterTip => 'Flutter is more awesome with RFlutter Alert.';
+
+  @override
+  String get cool => 'COOL';
+
+  @override
+  String get seeDetail => 'See Detail...';
 }

@@ -54,16 +54,16 @@ class TopProductsWidget extends StatelessWidget {
                     color: Colors.black,
                   ),
                   dividerThickness: 0.5,
-                  columns: const [
-                    DataColumn(label: Text('Product Name')),
+                  columns: [
+                    DataColumn(label: Text(AppLocalizations.of(context)!.productName)),
                     DataColumn(
-                      label: Text('Category'),
+                      label: Text(AppLocalizations.of(context)!.category),
                     ),
                     DataColumn(
-                      label: Text('Price'),
+                      label: Text(AppLocalizations.of(context)!.price),
                     ),
-                    DataColumn(label: Text('Sold')),
-                    DataColumn(label: Text('Profit')),
+                    DataColumn(label: Text(AppLocalizations.of(context)!.sold)),
+                    DataColumn(label: Text(AppLocalizations.of(context)!.profit)),
                   ],
                   rows: context
                       .watch<_DataProvider>()

@@ -1,5 +1,6 @@
 
 import 'package:flareline/core/theme/global_colors.dart';
+import 'package:flareline/flutter_gen/app_localizations.dart';
 import 'package:flareline_uikit/components/badge/anim_badge.dart';
 import 'package:flutter/material.dart';
 
@@ -40,7 +41,7 @@ class ChatsWidget extends StatelessWidget {
         builder: ((context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting ||
               snapshot.data == null) {
-            return const Text('loading');
+            return Text(AppLocalizations.of(context)!.loading);
           }
 
           return ListView.builder(

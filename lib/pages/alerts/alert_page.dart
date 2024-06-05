@@ -20,7 +20,7 @@ class AlertPage extends LayoutWidget {
     return Column(
       children: [
         TitleCard(
-            title: 'Alert Tips',
+            title: AppLocalizations.of(context)!.alertTips,
             childWidget: Column(
               children: [
                 _itemAlert(
@@ -68,11 +68,11 @@ class AlertPage extends LayoutWidget {
           height: 20,
         ),
         TitleCard(
-            title: 'Alert Dialog',
+            title: AppLocalizations.of(context)!.alertDialog,
             childWidget: Column(
               children: [
                 ButtonWidget(
-                  btnText: 'Info',
+                  btnText: AppLocalizations.of(context)!.info,
                   type: ButtonType.info.type,
                   onTap: () {
                     QuickAlert.show(
@@ -85,7 +85,7 @@ class AlertPage extends LayoutWidget {
                   height: 20,
                 ),
                 ButtonWidget(
-                  btnText: 'Success',
+                  btnText: AppLocalizations.of(context)!.success,
                   type: ButtonType.success.type,
                   onTap: () {
                     QuickAlert.show(
@@ -98,7 +98,7 @@ class AlertPage extends LayoutWidget {
                   height: 20,
                 ),
                 ButtonWidget(
-                  btnText: 'Warn',
+                  btnText: AppLocalizations.of(context)!.warn,
                   type: ButtonType.warn.type,
                   onTap: () {
                     QuickAlert.show(
@@ -111,7 +111,7 @@ class AlertPage extends LayoutWidget {
                   height: 20,
                 ),
                 ButtonWidget(
-                  btnText: 'Danger',
+                  btnText: AppLocalizations.of(context)!.danger,
                   type: ButtonType.danger.type,
                   onTap: () {
                     QuickAlert.show(
@@ -124,7 +124,7 @@ class AlertPage extends LayoutWidget {
                   height: 20,
                 ),
                 ButtonWidget(
-                  btnText: 'Confirm',
+                  btnText: AppLocalizations.of(context)!.confirm,
                   type: ButtonType.dark.type,
                   onTap: () {
                     QuickAlert.show(
@@ -143,22 +143,22 @@ class AlertPage extends LayoutWidget {
           height: 20,
         ),
         TitleCard(
-            title: 'Simple Alert',
+            title: AppLocalizations.of(context)!.simpleAlert,
             childWidget: Column(
               children: [
                 ButtonWidget(
-                  btnText: 'Info',
+                  btnText: AppLocalizations.of(context)!.info,
                   type: ButtonType.info.type,
                   onTap: () {
                     Alert(
                       context: context,
                       type: AlertType.info,
-                      title: "RFLUTTER ALERT",
-                      desc: "Flutter is more awesome with RFlutter Alert.",
+                      title: AppLocalizations.of(context)!.rflutterAlert,
+                      desc: AppLocalizations.of(context)!.rflutterTip,
                       buttons: [
                         DialogButton(
                           child: Text(
-                            "COOL",
+                            AppLocalizations.of(context)!.cool,
                             style: TextStyle(color: Colors.white, fontSize: 20),
                           ),
                           onPressed: () => Navigator.pop(context),
@@ -172,18 +172,18 @@ class AlertPage extends LayoutWidget {
                   height: 20,
                 ),
                 ButtonWidget(
-                  btnText: 'Success',
+                  btnText: AppLocalizations.of(context)!.success,
                   type: ButtonType.success.type,
                   onTap: () {
                     Alert(
                       context: context,
                       type: AlertType.success,
-                      title: "RFLUTTER ALERT",
-                      desc: "Flutter is more awesome with RFlutter Alert.",
+                      title: AppLocalizations.of(context)!.rflutterAlert,
+                      desc: AppLocalizations.of(context)!.rflutterTip,
                       buttons: [
                         DialogButton(
                           child: Text(
-                            "COOL",
+                            AppLocalizations.of(context)!.cool,
                             style: TextStyle(color: Colors.white, fontSize: 20),
                           ),
                           onPressed: () => Navigator.pop(context),
@@ -197,18 +197,18 @@ class AlertPage extends LayoutWidget {
                   height: 20,
                 ),
                 ButtonWidget(
-                  btnText: 'Warn',
+                  btnText: AppLocalizations.of(context)!.warn,
                   type: ButtonType.warn.type,
                   onTap: () {
                     Alert(
                       context: context,
                       type: AlertType.warning,
-                      title: "RFLUTTER ALERT",
-                      desc: "Flutter is more awesome with RFlutter Alert.",
+                      title: AppLocalizations.of(context)!.rflutterAlert,
+                      desc: AppLocalizations.of(context)!.rflutterTip,
                       buttons: [
                         DialogButton(
                           child: Text(
-                            "COOL",
+                            AppLocalizations.of(context)!.cool,
                             style: TextStyle(color: Colors.white, fontSize: 20),
                           ),
                           onPressed: () => Navigator.pop(context),
@@ -222,18 +222,18 @@ class AlertPage extends LayoutWidget {
                   height: 20,
                 ),
                 ButtonWidget(
-                  btnText: 'Danger',
+                  btnText: AppLocalizations.of(context)!.danger,
                   type: ButtonType.danger.type,
                   onTap: () {
                     Alert(
                       context: context,
                       type: AlertType.error,
-                      title: "RFLUTTER ALERT",
-                      desc: "Flutter is more awesome with RFlutter Alert.",
+                      title: AppLocalizations.of(context)!.rflutterAlert,
+                      desc: AppLocalizations.of(context)!.rflutterTip,
                       buttons: [
                         DialogButton(
                           child: Text(
-                            "COOL",
+                            AppLocalizations.of(context)!.cool,
                             style: TextStyle(color: Colors.white, fontSize: 20),
                           ),
                           onPressed: () => Navigator.pop(context),
@@ -247,7 +247,7 @@ class AlertPage extends LayoutWidget {
                   height: 20,
                 ),
                 ButtonWidget(
-                  btnText: 'Simple',
+                  btnText: AppLocalizations.of(context)!.simple,
                   color: Colors.white,
                   borderRadius: 5,
                   borderColor: GlobalColors.normal,
@@ -256,12 +256,12 @@ class AlertPage extends LayoutWidget {
                     Alert(
                       context: context,
                       type: AlertType.none,
-                      title: "RFLUTTER ALERT",
-                      desc: "Flutter is more awesome with RFlutter Alert.",
+                      title: AppLocalizations.of(context)!.rflutterAlert,
+                      desc: AppLocalizations.of(context)!.rflutterTip,
                       buttons: [
                         DialogButton(
                           child: Text(
-                            "COOL",
+                            AppLocalizations.of(context)!.cool,
                             style: TextStyle(color: Colors.white, fontSize: 20),
                           ),
                           onPressed: () => Navigator.pop(context),
@@ -276,7 +276,7 @@ class AlertPage extends LayoutWidget {
                   height: 20,
                 ),
                 ButtonWidget(
-                  btnText: 'Simple Confirm',
+                  btnText: AppLocalizations.of(context)!.simpleConfirm,
                   color: Colors.white,
                   borderRadius: 5,
                   borderColor: GlobalColors.normal,
@@ -285,14 +285,14 @@ class AlertPage extends LayoutWidget {
                     Alert(
                       context: context,
                       type: AlertType.none,
-                      title: "RFLUTTER ALERT",
-                      desc: "Flutter is more awesome with RFlutter Alert.",
+                      title: AppLocalizations.of(context)!.rflutterAlert,
+                      desc: AppLocalizations.of(context)!.rflutterTip,
                       buttons: [
                         DialogButton(
                           onPressed: () => Navigator.pop(context),
                           width: 60,
-                          child: const Text(
-                            "Cancel",
+                          child:  Text(
+                            AppLocalizations.of(context)!.cancel,
                             style: TextStyle(color: GlobalColors.primary, fontSize: 14),
                           ),
                         ),
@@ -301,8 +301,8 @@ class AlertPage extends LayoutWidget {
                           width: 60,
                           color: GlobalColors.primary,
                           margin: const EdgeInsets.only(left: 10),
-                          child: const Text(
-                            "Confirm",
+                          child: Text(
+                            AppLocalizations.of(context)!.confirm,
                             style: TextStyle(color: Colors.white, fontSize: 14),
                           ),
                         )
@@ -314,7 +314,7 @@ class AlertPage extends LayoutWidget {
                   height: 20,
                 ),
                 ButtonWidget(
-                  btnText: 'See Detail...',
+                  btnText: AppLocalizations.of(context)!.seeDetail,
                   type: ButtonType.dark.type,
                   onTap: () async {
                     String url = 'https://quickalert.belovance.com/';

@@ -1,4 +1,3 @@
-
 import 'package:flareline/core/theme/global_theme.dart';
 import 'package:flareline_uikit/service/localization_provider.dart';
 import 'package:flareline_uikit/service/sidebar_provider.dart';
@@ -11,7 +10,6 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:provider/provider.dart';
 import 'package:window_manager/window_manager.dart';
-
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -35,12 +33,10 @@ void main() async {
     });
   }
 
-
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-
   MyApp({super.key});
 
   @override
@@ -57,6 +53,8 @@ class MyApp extends StatelessWidget {
           //localizationen ai
         ],
         child: Builder(builder: (context) {
+          context.read<LocalizationProvider>().supportedLocales =
+              AppLocalizations.supportedLocales;
           return MaterialApp(
             navigatorKey: RouteConfiguration.navigatorKey,
             restorationScopeId: 'rootFlareLine',
@@ -80,7 +78,6 @@ class MyApp extends StatelessWidget {
                 child: widget!,
               );
             },
-
           );
         }));
   }

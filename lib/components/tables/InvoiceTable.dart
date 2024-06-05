@@ -1,3 +1,4 @@
+import 'package:flareline/flutter_gen/app_localizations.dart';
 import 'package:flareline_uikit/components/loading/loading.dart';
 import 'package:flutter/material.dart';
 
@@ -42,15 +43,15 @@ class InvoiceTableWidget extends StatelessWidget {
                     color: Colors.black,
                   ),
                   dividerThickness: 0.5,
-                  columns: const [
-                    DataColumn(label: Text('Package')),
+                  columns: [
+                    DataColumn(label: Text(AppLocalizations.of(context)!.package)),
                     DataColumn(
-                      label: Text('Invoice date'),
+                      label: Text(AppLocalizations.of(context)!.invoiceDate),
                     ),
                     DataColumn(
-                      label: Text('Status'),
+                      label: Text(AppLocalizations.of(context)!.status),
                     ),
-                    DataColumn(label: Text('Actions')),
+                    DataColumn(label: Text(AppLocalizations.of(context)!.actions)),
                   ],
                   rows: context
                       .watch<_DataProvider>()

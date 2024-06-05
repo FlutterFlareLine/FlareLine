@@ -1,4 +1,5 @@
 import 'package:flareline/core/theme/global_colors.dart';
+import 'package:flareline/flutter_gen/app_localizations.dart';
 import 'package:flutter/material.dart';
 
 import 'package:provider/provider.dart';
@@ -19,10 +20,10 @@ class BarChartWidget extends StatelessWidget {
       padding: const EdgeInsets.all(12),
       child: Column(
         children: [
-          const Row(
+          Row(
             children: [
               Text(
-                'Profit this week',
+                AppLocalizations.of(context)!.profitThisWeek,
                 style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
               )
             ],

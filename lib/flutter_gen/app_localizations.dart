@@ -7,6 +7,10 @@ import 'package:intl/intl.dart' as intl;
 
 import 'app_localizations_en.dart';
 import 'app_localizations_es.dart';
+import 'app_localizations_ja.dart';
+import 'app_localizations_ko.dart';
+import 'app_localizations_vi.dart';
+import 'app_localizations_zh.dart';
 
 /// Callers can lookup localized strings with an instance of AppLocalizations
 /// returned by `AppLocalizations.of(context)`.
@@ -90,7 +94,11 @@ abstract class AppLocalizations {
   /// A list of this localizations delegate's supported locales.
   static const List<Locale> supportedLocales = <Locale>[
     Locale('en'),
-    Locale('es')
+    Locale('es'),
+    Locale('ja'),
+    Locale('ko'),
+    Locale('vi'),
+    Locale('zh')
   ];
 
   /// No description provided for @alertsPageTitle.
@@ -806,6 +814,150 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'AdvanceTable'**
   String get advanceTable;
+
+  /// No description provided for @profitThisWeek.
+  ///
+  /// In en, this message translates to:
+  /// **'Profit this week'**
+  String get profitThisWeek;
+
+  /// No description provided for @package.
+  ///
+  /// In en, this message translates to:
+  /// **'Package'**
+  String get package;
+
+  /// No description provided for @invoiceDate.
+  ///
+  /// In en, this message translates to:
+  /// **'Invoice date'**
+  String get invoiceDate;
+
+  /// No description provided for @status.
+  ///
+  /// In en, this message translates to:
+  /// **'Status'**
+  String get status;
+
+  /// No description provided for @actions.
+  ///
+  /// In en, this message translates to:
+  /// **'Actions'**
+  String get actions;
+
+  /// No description provided for @productName.
+  ///
+  /// In en, this message translates to:
+  /// **'Product Name'**
+  String get productName;
+
+  /// No description provided for @category.
+  ///
+  /// In en, this message translates to:
+  /// **'Category'**
+  String get category;
+
+  /// No description provided for @price.
+  ///
+  /// In en, this message translates to:
+  /// **'Price'**
+  String get price;
+
+  /// No description provided for @sold.
+  ///
+  /// In en, this message translates to:
+  /// **'Sold'**
+  String get sold;
+
+  /// No description provided for @profit.
+  ///
+  /// In en, this message translates to:
+  /// **'Profit'**
+  String get profit;
+
+  /// No description provided for @alertTips.
+  ///
+  /// In en, this message translates to:
+  /// **'Alert Tips'**
+  String get alertTips;
+
+  /// No description provided for @alertDialog.
+  ///
+  /// In en, this message translates to:
+  /// **'Alert Dialog'**
+  String get alertDialog;
+
+  /// No description provided for @info.
+  ///
+  /// In en, this message translates to:
+  /// **'Info'**
+  String get info;
+
+  /// No description provided for @success.
+  ///
+  /// In en, this message translates to:
+  /// **'Success'**
+  String get success;
+
+  /// No description provided for @warn.
+  ///
+  /// In en, this message translates to:
+  /// **'Warn'**
+  String get warn;
+
+  /// No description provided for @danger.
+  ///
+  /// In en, this message translates to:
+  /// **'Danger'**
+  String get danger;
+
+  /// No description provided for @confirm.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm'**
+  String get confirm;
+
+  /// No description provided for @simpleAlert.
+  ///
+  /// In en, this message translates to:
+  /// **'Simple Alert'**
+  String get simpleAlert;
+
+  /// No description provided for @simple.
+  ///
+  /// In en, this message translates to:
+  /// **'Simple'**
+  String get simple;
+
+  /// No description provided for @simpleConfirm.
+  ///
+  /// In en, this message translates to:
+  /// **'Simple Confirm'**
+  String get simpleConfirm;
+
+  /// No description provided for @rflutterAlert.
+  ///
+  /// In en, this message translates to:
+  /// **'RFLUTTER ALERT'**
+  String get rflutterAlert;
+
+  /// No description provided for @rflutterTip.
+  ///
+  /// In en, this message translates to:
+  /// **'Flutter is more awesome with RFlutter Alert.'**
+  String get rflutterTip;
+
+  /// No description provided for @cool.
+  ///
+  /// In en, this message translates to:
+  /// **'COOL'**
+  String get cool;
+
+  /// No description provided for @seeDetail.
+  ///
+  /// In en, this message translates to:
+  /// **'See Detail...'**
+  String get seeDetail;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {
@@ -817,7 +969,7 @@ class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> 
   }
 
   @override
-  bool isSupported(Locale locale) => <String>['en', 'es'].contains(locale.languageCode);
+  bool isSupported(Locale locale) => <String>['en', 'es', 'ja', 'ko', 'vi', 'zh'].contains(locale.languageCode);
 
   @override
   bool shouldReload(_AppLocalizationsDelegate old) => false;
@@ -830,6 +982,10 @@ AppLocalizations lookupAppLocalizations(Locale locale) {
   switch (locale.languageCode) {
     case 'en': return AppLocalizationsEn();
     case 'es': return AppLocalizationsEs();
+    case 'ja': return AppLocalizationsJa();
+    case 'ko': return AppLocalizationsKo();
+    case 'vi': return AppLocalizationsVi();
+    case 'zh': return AppLocalizationsZh();
   }
 
   throw FlutterError(

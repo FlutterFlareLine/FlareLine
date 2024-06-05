@@ -8,22 +8,22 @@ class AppLocalizationsEs extends AppLocalizations {
   String get alertsPageTitle => 'Alertas';
 
   @override
-  String get alertsTitle => 'Se necesita atención';
+  String get alertsTitle => 'Atención Necesaria';
 
   @override
-  String get alertsMessage => 'Lorem Ipsum es simplemente texto de relleno de la industria de la impresión y la tipografía';
+  String get alertsMessage => 'Lorem Ipsum es simplemente texto ficticio de la industria de impresión y tipografía';
 
   @override
   String get appName => 'FlareLine';
 
   @override
-  String get slogan => 'Web simple, desarrollo más rápido';
+  String get slogan => 'Web simple, desarrolla más rápido';
 
   @override
-  String get signIn => 'Iniciar sesión';
+  String get signIn => 'Iniciar Sesión';
 
   @override
-  String get email => 'Correo electrónico';
+  String get email => 'Correo Electrónico';
 
   @override
   String get emailHint => 'Ingrese su correo electrónico';
@@ -32,43 +32,43 @@ class AppLocalizationsEs extends AppLocalizations {
   String get password => 'Contraseña';
 
   @override
-  String get passwordHint => '6+ caracteres';
+  String get passwordHint => '6+ Caracteres';
 
   @override
-  String get signInWithGithub => 'Sign in with Github';
+  String get signInWithGithub => 'Iniciar sesión con Github';
 
   @override
-  String get signInWithGoogle => 'Sign in with Google';
+  String get signInWithGoogle => 'Iniciar sesión con Google';
 
   @override
-  String get signInWithMicrosoft => 'Sign in with Microsoft';
+  String get signInWithMicrosoft => 'Iniciar sesión con Microsoft';
 
   @override
-  String get signInWithTwitter => 'Sign in with Twitter';
+  String get signInWithTwitter => 'Iniciar sesión con Twitter';
 
   @override
-  String get dontHaveAccount => '¿No tienes ninguna cuenta?';
+  String get dontHaveAccount => '¿No tienes una cuenta?';
 
   @override
-  String get signUp => 'Registrarse';
+  String get signUp => 'Regístrate';
 
   @override
-  String get startForFree => 'Empieza gratis';
+  String get startForFree => 'Comenzar gratis';
 
   @override
-  String get signUpTip => 'Regístrese en FlareLine';
+  String get signUpTip => 'Regístrate en FlareLine';
 
   @override
-  String get retypePassword => 'Vuelva a escribir la contraseña';
+  String get retypePassword => 'Vuelva a escribir la Contraseña';
 
   @override
   String get retypePasswordHint => 'Vuelva a ingresar su contraseña';
 
   @override
-  String get createAccount => 'Crear cuenta';
+  String get createAccount => 'Crear Cuenta';
 
   @override
-  String get signUpWithGoogle => 'Regístrate en Google';
+  String get signUpWithGoogle => 'Regístrate con Google';
 
   @override
   String get haveAnAccount => '¿Ya tienes una cuenta?';
@@ -77,7 +77,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get normalButton => 'Botón Normal';
 
   @override
-  String get buttonWithIcon => 'Botón con icono';
+  String get buttonWithIcon => 'Botón con Icono';
 
   @override
   String get buttonsPageTitle => 'Botones';
@@ -92,139 +92,139 @@ class AppLocalizationsEs extends AppLocalizations {
   String get chartPageTitle => 'Gráfico';
 
   @override
-  String get totalViews => 'Visitas totales';
+  String get totalViews => 'Vistas Totales';
 
   @override
-  String get totalProfit => 'Beneficio total';
+  String get totalProfit => 'Beneficio Total';
 
   @override
   String get totalProduct => 'Producto Total';
 
   @override
-  String get totalUsers => 'Usuarios totales';
+  String get totalUsers => 'Usuarios Totales';
 
   @override
-  String get formElements => 'FormElements';
+  String get formElements => 'Elementos del Formulario';
 
   @override
-  String get inputFields => 'Campos de entrada';
+  String get inputFields => 'Campos de Entrada';
 
   @override
-  String get defaultInput => 'Entrada predeterminada';
+  String get defaultInput => 'Entrada Predeterminada';
 
   @override
   String get activeInput => 'Entrada Activa';
 
   @override
-  String get disabledLabel => 'Etiqueta deshabilitada';
+  String get disabledLabel => 'Etiqueta Desactivada';
 
   @override
-  String get toggleSwitchInput => 'Entrada del interruptor de palanca';
+  String get toggleSwitchInput => 'Entrada de conmutación';
 
   @override
-  String get switchLabel => 'Cambiar etiqueta';
+  String get switchLabel => 'Etiqueta de Conmutación';
 
   @override
-  String get timeAndDate => 'Hora y fecha';
+  String get timeAndDate => 'Tiempo y Fecha';
 
   @override
-  String get datePicker => 'Selector de fecha';
+  String get datePicker => 'Selector de Fecha';
 
   @override
-  String get selectDate => 'Seleccionar fecha';
+  String get selectDate => 'Seleccione la fecha';
 
   @override
-  String get fileUpload => 'Carga de archivo';
+  String get fileUpload => 'Cargar Archivo';
 
   @override
-  String get attachFile => 'Adjuntar archivo';
+  String get attachFile => 'Adjuntar Archivo';
 
   @override
-  String get selectImage => 'Seleccionar imagen';
+  String get selectImage => 'Seleccione la Imagen';
 
   @override
-  String get textareaFields => 'Campos de área de texto';
+  String get textareaFields => 'Campos de Texto';
 
   @override
-  String get defaultTextarea => 'Área de texto predeterminada';
+  String get defaultTextarea => 'Área de Texto Predeterminada';
 
   @override
-  String get activeTextarea => 'Área de texto activa';
+  String get activeTextarea => 'Área de Texto Activa';
 
   @override
-  String get disabledTextarea => 'Área de texto deshabilitada';
+  String get disabledTextarea => 'Área de Texto Desactivada';
 
   @override
-  String get checkboxAndRadis => 'Casilla de verificación y radio';
+  String get checkboxAndRadis => 'Casilla de Verificación y Radio';
 
   @override
-  String get selectInput => 'Seleccionar entrada';
+  String get selectInput => 'Entrada de Selección';
 
   @override
-  String get selectCountry => 'Seleccionar país';
+  String get selectCountry => 'Seleccione el País';
 
   @override
-  String get multiselect => 'Menú desplegable de selección múltiple';
+  String get multiselect => 'Desplegable Multiselección';
 
   @override
-  String get ok => 'bien bien';
+  String get ok => 'Aceptar';
 
   @override
   String get cancel => 'Cancelar';
 
   @override
-  String get formLayoutPageTitle => 'FormLayout';
+  String get formLayoutPageTitle => 'Diseño del Formulario';
 
   @override
-  String get contactForm => 'Formulario de contacto';
+  String get contactForm => 'Formulario de Contacto';
 
   @override
-  String get firstName => 'nombre';
+  String get firstName => 'Nombre';
 
   @override
-  String get firstNameHint => 'Ingresa tu nombre';
+  String get firstNameHint => 'Ingrese su nombre';
 
   @override
-  String get lastName => 'ApellidoApellido';
+  String get lastName => 'Apellido';
 
   @override
-  String get lastNameHint => 'Ingresa tu apellido';
+  String get lastNameHint => 'Ingrese su apellido';
 
   @override
   String get subject => 'Asunto';
 
   @override
-  String get subjectHint => 'Ingresa tu asunto';
+  String get subjectHint => 'Ingrese su asunto';
 
   @override
-  String get selectSubjectHint => 'Selecciona tu tema';
+  String get selectSubjectHint => 'Seleccione su asunto';
 
   @override
   String get message => 'Mensaje';
 
   @override
-  String get messageHint => 'Escribe tu mensaje';
+  String get messageHint => 'Escriba su mensaje';
 
   @override
-  String get sendMessage => 'Enviar mensaje';
+  String get sendMessage => 'Enviar Mensaje';
 
   @override
   String get rememberMe => 'Recuérdame';
 
   @override
-  String get forgetPwd => '¿Olvidaste tu contraseña?';
+  String get forgetPwd => '¿Olvidaste la contraseña?';
 
   @override
-  String get signInForm => '¿Formulario de inicio de sesión?';
+  String get signInForm => '¿Formulario de Inicio de Sesión?';
 
   @override
-  String get signUpForm => '¿Formulario de registro?';
+  String get signUpForm => '¿Formulario de Registro?';
 
   @override
-  String get fullName => 'Nombre completo';
+  String get fullName => 'Nombre Completo';
 
   @override
-  String get fullNameHint => 'Ingresa tu nombre completo';
+  String get fullNameHint => 'Ingrese su nombre completo';
 
   @override
   String get profile => 'Perfil';
@@ -242,34 +242,34 @@ class AppLocalizationsEs extends AppLocalizations {
   String get following => 'Siguiendo';
 
   @override
-  String get aboutMe => 'Acerca de mí';
+  String get aboutMe => 'Acerca de Mí';
 
   @override
   String get followMeOn => 'Sígueme en';
 
   @override
-  String get resetPwd => 'Restablecer contraseña';
+  String get resetPwd => 'Restablecer Contraseña';
 
   @override
-  String get emailReceiveResetLink => 'Ingrese su dirección de correo electrónico para recibir un enlace para restablecer su contraseña.';
+  String get emailReceiveResetLink => 'Ingrese su dirección de correo electrónico para recibir un enlace de restablecimiento de contraseña.';
 
   @override
-  String get sendPwdResetLink => 'Enviar enlace para restablecer contraseña';
+  String get sendPwdResetLink => 'Enviar Enlace de Restablecimiento de Contraseña';
 
   @override
   String get settings => 'Configuración';
 
   @override
-  String get personalInfo => 'Información personal';
+  String get personalInfo => 'Información Personal';
 
   @override
-  String get phoneNumber => 'Número de teléfono';
+  String get phoneNumber => 'Número de Teléfono';
 
   @override
-  String get phoneNumberHint => 'Ingresa tu número de teléfono';
+  String get phoneNumberHint => 'Ingrese su número de teléfono';
 
   @override
-  String get userName => 'Nombre de usuario';
+  String get userName => 'Nombre de Usuario';
 
   @override
   String get userNameHint => 'Ingrese su nombre de usuario';
@@ -281,10 +281,10 @@ class AppLocalizationsEs extends AppLocalizations {
   String get yourPhoto => 'Tu Foto';
 
   @override
-  String get editYourPhoto => 'Edita tu foto';
+  String get editYourPhoto => 'Editar tu foto';
 
   @override
-  String get bio => 'BIO';
+  String get bio => 'Biografía';
 
   @override
   String get delete => 'Eliminar';
@@ -293,13 +293,13 @@ class AppLocalizationsEs extends AppLocalizations {
   String get update => 'Actualizar';
 
   @override
-  String get clickToUpload => 'Haga clic para cargar o arrastre y suelte';
+  String get clickToUpload => 'Haga clic para subir o arrastre y suelte';
 
   @override
-  String get topChannels => 'Canales principales';
+  String get topChannels => 'Canales Principales';
 
   @override
-  String get topProducts => 'Productos principales';
+  String get topProducts => 'Productos Principales';
 
   @override
   String get loading => 'cargando';
@@ -323,7 +323,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get groupMenu => 'MENÚ';
 
   @override
-  String get dashboard => 'Panel de control';
+  String get dashboard => 'Tablero';
 
   @override
   String get calendar => 'Calendario';
@@ -341,7 +341,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get chart => 'Gráfico';
 
   @override
-  String get uiElements => 'Elementos de la interfaz de usuario';
+  String get uiElements => 'Elementos de Interfaz de Usuario';
 
   @override
   String get alerts => 'Alertas';
@@ -353,11 +353,83 @@ class AppLocalizationsEs extends AppLocalizations {
   String get basicChart => 'Gráfico Básico';
 
   @override
-  String get eCommerce => 'comercio electrónico';
+  String get eCommerce => 'Comercio Electrónico';
 
   @override
   String get authentication => 'Autenticación';
 
   @override
-  String get advanceTable => 'Tabla avanzada';
+  String get advanceTable => 'Tabla Avanzada';
+
+  @override
+  String get profitThisWeek => 'Beneficio esta semana';
+
+  @override
+  String get package => 'Paquete';
+
+  @override
+  String get invoiceDate => 'Fecha de Factura';
+
+  @override
+  String get status => 'Estado';
+
+  @override
+  String get actions => 'Acciones';
+
+  @override
+  String get productName => 'Nombre del Producto';
+
+  @override
+  String get category => 'Categoría';
+
+  @override
+  String get price => 'Precio';
+
+  @override
+  String get sold => 'Vendido';
+
+  @override
+  String get profit => 'Beneficio';
+
+  @override
+  String get alertTips => 'Consejos de Alerta';
+
+  @override
+  String get alertDialog => 'Diálogo de Alerta';
+
+  @override
+  String get info => 'Información';
+
+  @override
+  String get success => 'Éxito';
+
+  @override
+  String get warn => 'Advertencia';
+
+  @override
+  String get danger => 'Peligro';
+
+  @override
+  String get confirm => 'Confirmar';
+
+  @override
+  String get simpleAlert => 'Alerta Simple';
+
+  @override
+  String get simple => 'Simple';
+
+  @override
+  String get simpleConfirm => 'Confirmación Simple';
+
+  @override
+  String get rflutterAlert => 'ALERTA DE RFLUTTER';
+
+  @override
+  String get rflutterTip => 'Flutter es aún más increíble con RFlutter Alert.';
+
+  @override
+  String get cool => 'GENIAL';
+
+  @override
+  String get seeDetail => 'Ver Detalles...';
 }
