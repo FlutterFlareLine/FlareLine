@@ -158,7 +158,7 @@ class SignInWidget extends BaseStlessWidget<SignInProvider> {
                     )),
                 Container(
                   margin: const EdgeInsets.symmetric(horizontal: 20),
-                  child: const Text('OR'),
+                  child: Text(AppLocalizations.of(context)!.or),
                 ),
                 const Expanded(
                     child: Divider(

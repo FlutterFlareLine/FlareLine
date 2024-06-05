@@ -432,4 +432,13 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get seeDetail => '查看详情';
+
+  @override
+  String get tryMore => '尝试更多...';
+
+  @override
+  String get colorPicker => '颜色选择器';
+
+  @override
+  String get or => '或者';
 }

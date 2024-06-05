@@ -144,5 +144,8 @@
   "rflutterAlert": "CẢNH BÁO RFLUTTER",
   "rflutterTip": "Flutter càng tuyệt vời với RFlutter Alert.",
   "cool": "THỜI",
-  "seeDetail": "Xem chi tiết..."
+  "seeDetail": "Xem chi tiết...",
+  "tryMore": "Thử Thêm...",
+    "colorPicker": "Chọn Màu",
+    "or": "HOẶC"
 }

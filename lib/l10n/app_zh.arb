@@ -144,5 +144,8 @@
   "rflutterAlert": "RFLUTTER警告",
   "rflutterTip": "有了RFlutter Alert，Flutter更加出色。",
   "cool": "酷",
-  "seeDetail": "查看详情"
+  "seeDetail": "查看详情",
+  "tryMore": "尝试更多...",
+    "colorPicker": "颜色选择器",
+    "or": "或者"
 }

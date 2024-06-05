@@ -432,4 +432,13 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String get seeDetail => '자세히 보기';
+
+  @override
+  String get tryMore => '더 시도해보세요...';
+
+  @override
+  String get colorPicker => '색상 선택기';
+
+  @override
+  String get or => '또는';
 }

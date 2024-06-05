@@ -432,4 +432,13 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get seeDetail => 'See Detail...';
+
+  @override
+  String get tryMore => 'Try More...';
+
+  @override
+  String get colorPicker => 'Color Picker';
+
+  @override
+  String get or => 'OR';
 }

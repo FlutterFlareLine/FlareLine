@@ -432,4 +432,13 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get seeDetail => 'Xem chi tiết...';
+
+  @override
+  String get tryMore => 'Thử Thêm...';
+
+  @override
+  String get colorPicker => 'Chọn Màu';
+
+  @override
+  String get or => 'HOẶC';
 }

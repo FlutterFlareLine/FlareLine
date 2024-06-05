@@ -5,10 +5,14 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:intl/intl.dart' as intl;
 
+import 'app_localizations_ar.dart';
 import 'app_localizations_en.dart';
 import 'app_localizations_es.dart';
+import 'app_localizations_fr.dart';
+import 'app_localizations_id.dart';
 import 'app_localizations_ja.dart';
 import 'app_localizations_ko.dart';
+import 'app_localizations_th.dart';
 import 'app_localizations_vi.dart';
 import 'app_localizations_zh.dart';
 
@@ -93,10 +97,14 @@ abstract class AppLocalizations {
 
   /// A list of this localizations delegate's supported locales.
   static const List<Locale> supportedLocales = <Locale>[
+    Locale('ar'),
     Locale('en'),
     Locale('es'),
+    Locale('fr'),
+    Locale('id'),
     Locale('ja'),
     Locale('ko'),
+    Locale('th'),
     Locale('vi'),
     Locale('zh')
   ];
@@ -958,6 +966,24 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'See Detail...'**
   String get seeDetail;
+
+  /// No description provided for @tryMore.
+  ///
+  /// In en, this message translates to:
+  /// **'Try More...'**
+  String get tryMore;
+
+  /// No description provided for @colorPicker.
+  ///
+  /// In en, this message translates to:
+  /// **'Color Picker'**
+  String get colorPicker;
+
+  /// No description provided for @or.
+  ///
+  /// In en, this message translates to:
+  /// **'OR'**
+  String get or;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {
@@ -969,7 +995,7 @@ class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> 
   }
 
   @override
-  bool isSupported(Locale locale) => <String>['en', 'es', 'ja', 'ko', 'vi', 'zh'].contains(locale.languageCode);
+  bool isSupported(Locale locale) => <String>['ar', 'en', 'es', 'fr', 'id', 'ja', 'ko', 'th', 'vi', 'zh'].contains(locale.languageCode);
 
   @override
   bool shouldReload(_AppLocalizationsDelegate old) => false;
@@ -980,10 +1006,14 @@ AppLocalizations lookupAppLocalizations(Locale locale) {
 
   // Lookup logic when only language code is specified.
   switch (locale.languageCode) {
+    case 'ar': return AppLocalizationsAr();
     case 'en': return AppLocalizationsEn();
     case 'es': return AppLocalizationsEs();
+    case 'fr': return AppLocalizationsFr();
+    case 'id': return AppLocalizationsId();
     case 'ja': return AppLocalizationsJa();
     case 'ko': return AppLocalizationsKo();
+    case 'th': return AppLocalizationsTh();
     case 'vi': return AppLocalizationsVi();
     case 'zh': return AppLocalizationsZh();
   }

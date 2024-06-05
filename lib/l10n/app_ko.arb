@@ -144,5 +144,8 @@
   "rflutterAlert": "RFLUTTER 알림",
   "rflutterTip": "RFlutter Alert를 사용하면 Flutter가 더욱 멋져집니다.",
   "cool": "쿨",
-  "seeDetail": "자세히 보기"
+  "seeDetail": "자세히 보기",
+   "tryMore": "더 시도해보세요...",
+    "colorPicker": "색상 선택기",
+    "or": "또는"
 }

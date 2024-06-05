@@ -102,7 +102,7 @@ class FormElementsPage extends LayoutWidget {
                 const SizedBox(
                   height: 16,
                 ),
-                const Text('Color picker'),
+                Text(AppLocalizations.of(context)!.colorPicker),
                 const SizedBox(
                   height: 8,
                 ),
@@ -111,7 +111,7 @@ class FormElementsPage extends LayoutWidget {
                     Alert(
                       context: context,
                       type: AlertType.none,
-                      title: "Color Picker",
+                      title: AppLocalizations.of(context)!.colorPicker,
                       content: ColorPicker(
                         pickerColor: HexColor(colorPicker.value),
                         onColorChanged: (value) {

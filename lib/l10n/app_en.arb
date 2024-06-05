@@ -144,6 +144,9 @@
   "rflutterAlert":"RFLUTTER ALERT",
   "rflutterTip":"Flutter is more awesome with RFlutter Alert.",
   "cool":"COOL",
-  "seeDetail":"See Detail..."
+  "seeDetail":"See Detail...",
+  "tryMore":"Try More...",
+  "colorPicker":"Color Picker",
+  "or":"OR"
 
 }

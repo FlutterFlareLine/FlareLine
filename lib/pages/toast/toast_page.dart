@@ -1,3 +1,4 @@
+import 'package:flareline/flutter_gen/app_localizations.dart';
 import 'package:flareline/pages/layout.dart';
 import 'package:flareline_uikit/components/buttons/button_widget.dart';
 import 'package:flareline_uikit/components/card/title_card.dart';
@@ -33,14 +34,14 @@ class ToastPage extends LayoutWidget {
     return Column(
       children: [
         ButtonWidget(
-          btnText: 'Info',
+          btnText: AppLocalizations.of(context)!.info,
           type: ButtonType.info.type,
           onTap: (){
             toastification.show(
               context: context,
               type: ToastificationType.info,
               style: ToastificationStyle.flat,
-              title: const Text('Info'),
+              title: Text(AppLocalizations.of(context)!.info),
               alignment: Alignment.topCenter,
               showProgressBar: false,
               autoCloseDuration: const Duration(seconds: 4),
@@ -49,14 +50,14 @@ class ToastPage extends LayoutWidget {
         ),
         const SizedBox(height: 20,),
         ButtonWidget(
-          btnText: 'Success',
+          btnText: AppLocalizations.of(context)!.success,
           type: ButtonType.success.type,
           onTap: (){
             toastification.show(
               context: context,
               type: ToastificationType.success,
               style: ToastificationStyle.flat,
-              title: const Text('Success'),
+              title:  Text(AppLocalizations.of(context)!.success),
               alignment: Alignment.topCenter,
               showProgressBar: false,
               autoCloseDuration: const Duration(seconds: 4),
@@ -65,14 +66,14 @@ class ToastPage extends LayoutWidget {
         ),
         const SizedBox(height: 20,),
         ButtonWidget(
-          btnText: 'Warn',
+          btnText: AppLocalizations.of(context)!.warn,
           type: ButtonType.warn.type,
           onTap: (){
             toastification.show(
               context: context,
               type: ToastificationType.warning,
               style: ToastificationStyle.flat,
-              title: const Text('Warn'),
+              title: Text(AppLocalizations.of(context)!.warn),
               alignment: Alignment.topCenter,
               showProgressBar: false,
               autoCloseDuration: const Duration(seconds: 4),
@@ -81,14 +82,14 @@ class ToastPage extends LayoutWidget {
         ),
         const SizedBox(height: 20,),
         ButtonWidget(
-          btnText: 'Danger',
+          btnText: AppLocalizations.of(context)!.danger,
           type: ButtonType.danger.type,
           onTap: (){
             toastification.show(
               context: context,
               type: ToastificationType.error,
               style: ToastificationStyle.flat,
-              title: const Text('Danger'),
+              title:  Text(AppLocalizations.of(context)!.danger),
               alignment: Alignment.topCenter,
               showProgressBar: false,
               autoCloseDuration: const Duration(seconds: 4),
@@ -97,7 +98,7 @@ class ToastPage extends LayoutWidget {
         ),
         const SizedBox(height: 20,),
         ButtonWidget(
-          btnText: 'Try More...',
+          btnText: AppLocalizations.of(context)!.tryMore,
           type: ButtonType.dark.type,
           onTap: () async {
             String url='https://payamzahedi.com/toastification/';

@@ -432,4 +432,13 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get seeDetail => 'Ver Detalles...';
+
+  @override
+  String get tryMore => 'Intenta más...';
+
+  @override
+  String get colorPicker => 'Selector de colores';
+
+  @override
+  String get or => 'O';
 }

@@ -432,4 +432,13 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get seeDetail => '詳細を見る';
+
+  @override
+  String get tryMore => 'もっと試して...';
+
+  @override
+  String get colorPicker => 'カラーピッカー';
+
+  @override
+  String get or => 'または';
 }

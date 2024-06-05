@@ -144,5 +144,8 @@
   "rflutterAlert": "RFLUTTERアラート",
   "rflutterTip": "RFlutter AlertでFlutterがより素晴らしい",
   "cool": "クール",
-  "seeDetail": "詳細を見る"
+  "seeDetail": "詳細を見る",
+  "tryMore": "もっと試して...",
+    "colorPicker": "カラーピッカー",
+    "or": "または"
 }

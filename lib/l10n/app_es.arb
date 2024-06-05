@@ -144,5 +144,8 @@
   "rflutterAlert": "ALERTA DE RFLUTTER",
   "rflutterTip": "Flutter es aún más increíble con RFlutter Alert.",
   "cool": "GENIAL",
-  "seeDetail": "Ver Detalles..."
+  "seeDetail": "Ver Detalles...",
+  "tryMore": "Intenta más...",
+    "colorPicker": "Selector de colores",
+    "or": "O"
 }

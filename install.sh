@@ -6,6 +6,6 @@ if cd flutter; then git pull && cd .. ; else git clone -b $FLUTTER_VERSION https
 
 #flutter/bin/flutter pub get
 
-flutter/bin/flutter gen-l10n
+#flutter/bin/flutter gen-l10n
 
 #flutter/bin/flutter build web --release --web-renderer html
