@@ -1,10 +1,9 @@
-import 'package:calendar_date_picker2/calendar_date_picker2.dart';
+
 import 'package:flareline/pages/form/date_picker_widget.dart';
 import 'package:flareline/pages/form/drop_zone_widget.dart';
 import 'package:flareline/pages/form/multi_select_widget.dart';
-import 'package:flareline/pages/form/select_widget.dart';
+import 'package:flareline_uikit/components/forms/select_widget.dart';
 import 'package:flareline/pages/form/single_checkbox_widget.dart';
-import 'package:flareline_uikit/components/forms/checkbox_widget.dart';
 import 'package:flareline/core/theme/global_colors.dart';
 import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:flutter/foundation.dart';
@@ -17,7 +16,6 @@ import 'package:flareline/pages/layout.dart';
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 import 'package:flareline/flutter_gen/app_localizations.dart';
 import 'package:hexcolor/hexcolor.dart';
-import 'package:multi_select_flutter/multi_select_flutter.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 
 class FormElementsPage extends LayoutWidget {

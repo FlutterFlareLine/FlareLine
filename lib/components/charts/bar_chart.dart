@@ -1,5 +1,4 @@
 import 'package:flareline/core/theme/global_colors.dart';
-import 'package:flareline/provider/theme_provider.dart';
 import 'package:flutter/material.dart';
 
 import 'package:provider/provider.dart';
@@ -42,7 +41,7 @@ class BarChartWidget extends StatelessWidget {
   }
 
   Widget _buildDefaultLineChart(BuildContext context) {
-    bool isDark = context.watch<ThemeProvider>().isDark;
+    bool isDark = Theme.of(context).brightness==Brightness.dark;
     return SfCartesianChart(
       plotAreaBorderWidth: 0,
       enableSideBySideSeriesPlacement: true,

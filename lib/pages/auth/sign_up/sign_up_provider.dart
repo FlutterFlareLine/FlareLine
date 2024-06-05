@@ -1,11 +1,9 @@
-import 'package:flareline/provider/localization_provider.dart';
-import 'package:flareline/utils/cache_util.dart';
-import 'package:flareline/utils/snackbar_util.dart';
+
 import 'package:flareline_uikit/service/base_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:provider/provider.dart';
+
 
 class SignUpProvider extends BaseProvider {
   final box = GetStorage();

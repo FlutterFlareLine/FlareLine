@@ -25,7 +25,7 @@
       {
         "icon": "assets/crm/crm.png",
         "menuName": "CRM",
-        "path": "/crmPage"
+        "path": "https://flare-line-crm.vercel.app"
       }
     ]
   }

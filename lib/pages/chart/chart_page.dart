@@ -1,12 +1,13 @@
-import 'package:flareline/crm/crm_colors.dart';
+
+import 'package:flareline/core/theme/global_colors.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 
 import 'package:flareline_uikit/components/card/common_card.dart';
 import 'package:flareline/components/charts/bar_chart.dart';
-import 'package:flareline/components/charts/circular_chart.dart';
-import 'package:flareline/components/charts/line_chart.dart';
+import 'package:flareline_uikit/components/charts/circular_chart.dart';
+import 'package:flareline_uikit/components/charts/line_chart.dart';
 import 'package:flareline/pages/layout.dart';
 import 'package:flareline/flutter_gen/app_localizations.dart';
 
@@ -74,9 +75,9 @@ class ChartPage extends LayoutWidget {
               child: CircularhartWidget(
                 title: 'Visitors Analytics',
                 palette: const [
-                  CrmColors.orange,
-                  CrmColors.secondary,
-                  CrmColors.primary
+                  GlobalColors.warn,
+                  GlobalColors.secondary,
+                  GlobalColors.primary
                 ],
                 chartData: const [
                   {

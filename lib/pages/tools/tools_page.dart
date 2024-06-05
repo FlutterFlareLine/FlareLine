@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:flareline_uikit/components/card/common_card.dart';
 import 'package:flareline/core/theme/global_colors.dart';
 import 'package:flareline/pages/layout.dart';
-import 'package:flareline/provider/theme_provider.dart';
+import 'package:flareline_uikit/service/theme_provider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -88,7 +88,7 @@ class ToolsPage extends LayoutWidget {
 
   @override
   Widget contentDesktopWidget(BuildContext context) {
-    return _sideListWidget(context, context.watch<ThemeProvider>().isDark);
+    return _sideListWidget(context, Theme.of(context).brightness==Brightness.dark);
   }
 }
 
@@ -103,7 +103,7 @@ class GridMenuWidget extends StatelessWidget {
   }
 
   Widget _itemMenuWidget(BuildContext context, e) {
-    bool isDark = context.watch<ThemeProvider>().isDark;
+    bool isDark = Theme.of(context).brightness==Brightness.dark;
 
     return InkWell(
       child: Container(
@@ -115,12 +115,10 @@ class GridMenuWidget extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               if (e['icon'] != null)
-                Container(
-                  child: Image.asset(
-                    e['icon'],
-                    width: 60,
-                    height: 60,
-                  ),
+                Image.asset(
+                  e['icon'],
+                  width: 60,
+                  height: 60,
                 ),
               const SizedBox(height: 12,),
               Text(

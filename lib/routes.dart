@@ -1,9 +1,8 @@
-import 'package:flareline/crm/home/crm_home_page.dart';
+
 import 'package:flareline/pages/modal/modal_page.dart';
 import 'package:flareline/pages/table/contacts_page.dart';
 import 'package:flareline/pages/toast/toast_page.dart';
 import 'package:flareline/pages/tools/tools_page.dart';
-import 'package:flareline/utils/login_util.dart';
 import 'package:flutter/material.dart';
 import 'package:flareline/pages/alerts/alert_page.dart';
 import 'package:flareline/pages/button/button_page.dart';
@@ -49,7 +48,6 @@ final List<Map<String, Object>> MAIN_PAGES = [
   {'routerPath': '/tools', 'widget': ToolsPage()},
   {'routerPath': '/toast', 'widget': ToastPage()},
   {'routerPath': '/modal', 'widget': ModalPage()},
-  {'routerPath': '/crmPage', 'widget': CrmHomePage()},
 ];
 
 class RouteConfiguration {

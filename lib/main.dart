@@ -1,11 +1,10 @@
 
 import 'package:flareline/core/theme/global_theme.dart';
-import 'package:flareline/flareline.dart';
-import 'package:flareline/provider/localization_provider.dart';
+import 'package:flareline_uikit/service/localization_provider.dart';
 import 'package:flareline_uikit/service/sidebar_provider.dart';
 import 'package:flareline/provider/login_status_provider.dart';
-import 'package:flareline/provider/theme_provider.dart';
 import 'package:flareline/routes.dart';
+import 'package:flareline_uikit/service/theme_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flareline/flutter_gen/app_localizations.dart';
 import 'package:get/get.dart';

@@ -1,7 +1,8 @@
-import 'package:flareline/crm/crm_colors.dart';
+
+import 'package:flareline/core/theme/global_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flareline_uikit/components/card/common_card.dart';
-import 'package:flareline/components/charts/circular_chart.dart';
+import 'package:flareline_uikit/components/charts/circular_chart.dart';
 import 'package:flareline/components/charts/map_chart.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
@@ -30,9 +31,9 @@ class AnalyticsWidget extends StatelessWidget {
             flex: 3,
             child: CommonCard(
               child: CircularhartWidget(title: 'Visitors Analytics',palette: const [
-                CrmColors.orange,
-                CrmColors.secondary,
-                CrmColors.primary
+                GlobalColors.warn,
+                GlobalColors.secondary,
+                GlobalColors.primary
               ],
                 chartData: const [
                   {
@@ -71,9 +72,9 @@ class AnalyticsWidget extends StatelessWidget {
           height: 350,
           child: CommonCard(
             child: CircularhartWidget(title: 'Visitors Analytics',palette: const [
-              CrmColors.orange,
-              CrmColors.secondary,
-              CrmColors.primary
+              GlobalColors.warn,
+              GlobalColors.secondary,
+              GlobalColors.primary
             ],
               chartData: const [
                 {
