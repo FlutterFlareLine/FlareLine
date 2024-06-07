@@ -23,6 +23,7 @@ class ChartPage extends LayoutWidget {
           child: CommonCard(
             child: LineChartWidget(
               title: 'Revenue',
+              dropdownItems: ['Daily', 'Monthly', 'Yearly'],
               datas: [
                 {
                   'name': 'Marketing Sales',

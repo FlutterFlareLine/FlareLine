@@ -391,7 +391,7 @@ packages:
       path: "../FlareLine-UiKit"
       relative: true
     source: path
-    version: "0.0.2"
+    version: "0.0.5"
   flex_color_scheme:
     dependency: "direct main"
     description:

@@ -26,16 +26,19 @@ class GlobalTheme {
         cardTheme: cardTheme);
   }
 
-  static CardTheme lightCardTheme = CardTheme(
-      margin: EdgeInsets.zero,
-      color: Colors.white,
-      surfaceTintColor: Colors.white,
-      elevation: 0,);
+  static CardTheme lightCardTheme = const CardTheme(
+    margin: EdgeInsets.zero,
+    color: Colors.white,
+    surfaceTintColor:  Color(0xFFE2E8F0),
+    shadowColor: Color(0x11000000),
+    elevation: 0,
+  );
 
-  static CardTheme darkCardTheme = const CardTheme(
+  static CardTheme darkCardTheme = CardTheme(
     margin: EdgeInsets.zero,
     color: GlobalColors.darkAppBar,
-    surfaceTintColor: GlobalColors.darkAppBar,
+    surfaceTintColor: GlobalColors.border.withOpacity(0.05),
+    shadowColor: GlobalColors.darkAppBar.withOpacity(0.2),
     elevation: 0,
   );
 

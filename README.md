@@ -33,7 +33,7 @@ or you can register
 
 Here are the steps you need to follow to install the dependencies.
 
-Flutter version is 3.22.1
+Flutter version is 3.22.2
 
 1. Download and extract the template from Templates.
 

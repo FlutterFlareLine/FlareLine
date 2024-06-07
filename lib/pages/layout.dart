@@ -37,11 +37,11 @@ abstract class LayoutWidget extends FlarelineLayoutWidget {
         const SizedBox(
           width: 10,
         ),
-        if (avatar != null)
-          CircleAvatar(
-            backgroundImage: NetworkImage(avatar),
-            radius: 22,
-          )
+        CircleAvatar(
+          backgroundImage:
+              avatar != null ? NetworkImage(avatar) : AssetImage('assets/user/user-02.png'),
+          radius: 22,
+        )
       ],
     );
   }
