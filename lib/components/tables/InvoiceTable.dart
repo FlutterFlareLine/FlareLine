@@ -13,12 +13,12 @@ class InvoiceTableWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return CommonCard(
         child: Padding(
-          padding: const EdgeInsets.all(16),
-          child: ChangeNotifierProvider(
-            create: (context) => _DataProvider(),
-            builder: (ctx, child) => _buildWidget(ctx),
-          ),
-        ));
+      padding: const EdgeInsets.all(16),
+      child: ChangeNotifierProvider(
+        create: (context) => _DataProvider(),
+        builder: (ctx, child) => _buildWidget(ctx),
+      ),
+    ));
   }
 
   _buildWidget(BuildContext context) {
@@ -34,7 +34,7 @@ class InvoiceTableWidget extends StatelessWidget {
               constraints: const BoxConstraints(minWidth: double.infinity),
               child: DataTable(
                   headingRowColor: MaterialStateProperty.resolveWith(
-                          (states) => GlobalColors.lightGray),
+                      (states) => GlobalColors.lightGray),
                   horizontalMargin: 12,
                   showBottomBorder: true,
                   showCheckboxColumn: false,
@@ -44,14 +44,16 @@ class InvoiceTableWidget extends StatelessWidget {
                   ),
                   dividerThickness: 0.5,
                   columns: [
-                    DataColumn(label: Text(AppLocalizations.of(context)!.package)),
+                    DataColumn(
+                        label: Text(AppLocalizations.of(context)!.package)),
                     DataColumn(
                       label: Text(AppLocalizations.of(context)!.invoiceDate),
                     ),
                     DataColumn(
                       label: Text(AppLocalizations.of(context)!.status),
                     ),
-                    DataColumn(label: Text(AppLocalizations.of(context)!.actions)),
+                    DataColumn(
+                        label: Text(AppLocalizations.of(context)!.actions)),
                   ],
                   rows: context
                       .watch<_DataProvider>()
@@ -66,7 +68,27 @@ class InvoiceTableWidget extends StatelessWidget {
                                 Text('${e.visitors}'),
                               ),
                               DataCell(
-                                Text(e.revenues),
+                                Container(
+                                  child: Text(
+                                    e.revenues,
+                                    style: TextStyle(
+                                        color: e.revenues == 'Unpaid'
+                                            ? Colors.red
+                                            : e.revenues == 'Peding'
+                                                ? Colors.orange
+                                                : Colors.green,
+                                        fontSize: 13),
+                                  ),
+                                  padding: EdgeInsets.symmetric(
+                                      horizontal: 10, vertical: 3),
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(45),
+                                      color: e.revenues == 'Unpaid'
+                                          ? Colors.red.shade50
+                                          : e.revenues == 'Peding'
+                                              ? Colors.orange.shade50
+                                              : Colors.green.shade50),
+                                ),
                               ),
                               DataCell(
                                 Text(e.sales),
@@ -82,8 +104,12 @@ class InvoiceTableWidget extends StatelessWidget {
 /// information about the employee which will be rendered in datagrid.
 class Channel {
   /// Creates the employee class with required details.
-  Channel(this.source, this.visitors, this.revenues, this.sales,
-      this.conversations);
+  Channel(
+    this.source,
+    this.visitors,
+    this.revenues,
+    this.sales,
+  );
 
   /// Id of an employee.
   final String source;
@@ -96,8 +122,6 @@ class Channel {
 
   /// Salary of an employee.
   final String sales;
-
-  final String conversations;
 }
 
 class _DataProvider extends ChangeNotifier {
@@ -105,12 +129,10 @@ class _DataProvider extends ChangeNotifier {
 
   List<Channel> getEmployeeData() {
     return [
-      Channel('Google', '3.5K', r'$5,768', '590', '4.8%'),
-      Channel('Google', '3.5K', r'$5,768', '590', '4.8%'),
-      Channel('Google', '3.5K', r'$5,768', '590', '4.8%'),
-      Channel('Google', '3.5K', r'$5,768', '590', '4.8%'),
-      Channel('Google', '3.5K', r'$5,768', '590', '4.8%'),
-      Channel('Google', '3.5K', r'$5,768', '590', '4.8%'),
+      Channel('Google', '3.5K', 'Paid', r'$5,768'),
+      Channel('Google', '3.5K', 'Paid', r'$5,768'),
+      Channel('Google', '3.5K', 'Unpaid', r'$5,768'),
+      Channel('Google', '3.5K', 'Peding', r'$5,768'),
     ];
   }
 
@@ -119,5 +141,4 @@ class _DataProvider extends ChangeNotifier {
     channels = getEmployeeData();
     return channels;
   }
-
 }

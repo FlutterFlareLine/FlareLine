@@ -28,9 +28,48 @@ class TopChannelViewModel extends BaseTableProvider {
 
   @override
   loadData(BuildContext context) async {
-    String res = await rootBundle.loadString('assets/api/channelTable.json');
+    // String res = await rootBundle.loadString('assets/api/channelTable.json');
 
-    Map<String, dynamic> map = json.decode(res);
+    Map<String, dynamic> map = {
+      "headers": ["SOURCE", "VISITORS", "REVENUES", "SALES", "CONVERSATION"],
+      "rows": [
+        [
+          {"text": "Google"},
+          {"text": "3.5K"},
+          {"text": r"$5,768", "dataType": "tag", "tagType": "success"},
+          {"text": "590"},
+          {"text": "4.8%", "dataType": "tag", "tagType": "secondary"}
+        ],
+        [
+          {"text": "Google"},
+          {"text": "3.5K"},
+          {"text": r"$5,768", "dataType": "tag", "tagType": "success"},
+          {"text": "590"},
+          {"text": "4.8%", "dataType": "tag", "tagType": "secondary"}
+        ],
+        [
+          {"text": "Google"},
+          {"text": "3.5K"},
+          {"text": r"$5,768", "dataType": "tag", "tagType": "success"},
+          {"text": "590"},
+          {"text": "4.8%", "dataType": "tag", "tagType": "secondary"}
+        ],
+        [
+          {"text": "Google"},
+          {"text": "3.5K"},
+          {"text": r"$5,768", "dataType": "tag", "tagType": "success"},
+          {"text": "590"},
+          {"text": "4.8%", "dataType": "tag", "tagType": "secondary"}
+        ],
+        [
+          {"text": "Google"},
+          {"text": "3.5K"},
+          {"text": r"$5,768", "dataType": "tag", "tagType": "success"},
+          {"text": "590"},
+          {"text": "4.8%", "dataType": "tag", "tagType": "secondary"}
+        ]
+      ]
+    };
     TableDataEntity tableDataEntity = TableDataEntity.fromJson(map);
     this.tableDataEntity = tableDataEntity;
   }

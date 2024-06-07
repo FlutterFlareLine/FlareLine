@@ -72,7 +72,7 @@ class GridCard extends StatelessWidget {
   _itemCardWidget(BuildContext context, IconData icons, String text,
       String subTitle, String percentText, bool isGrow) {
     return CommonCard(
-      height: 154,
+      height: 166,
       child: Padding(
         padding: const EdgeInsets.all(16),
         child: Column(

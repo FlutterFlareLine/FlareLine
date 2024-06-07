@@ -1,4 +1,5 @@
 import 'package:flareline_uikit/components/loading/loading.dart';
+import 'package:flareline_uikit/components/tags/tag_widget.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flareline_uikit/components/card/common_card.dart';
@@ -84,7 +85,7 @@ class TopProductsWidget extends StatelessWidget {
                                 Text(e.sales),
                               ),
                               DataCell(
-                                Text(e.conversations),
+                                TagWidget(text: e.conversations, tagType: TagType.success,),
                               ),
                             ],
                           ))

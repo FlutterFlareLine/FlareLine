@@ -16,13 +16,14 @@ class ProfilePage extends LayoutWidget {
   @override
   Widget contentDesktopWidget(BuildContext context) {
     return CommonCard(
+      margin: EdgeInsets.zero,
       child: Stack(children: [
         SizedBox(
-          height: 180,
+          height: 280,
           child: Stack(children: [
             Image.asset(
               'assets/cover/cover-01.png',
-              height: 180,
+              height: 280,
               width: double.maxFinite,
               fit: BoxFit.cover,
             ),
@@ -51,7 +52,7 @@ class ProfilePage extends LayoutWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               const SizedBox(
-                height: 130,
+                height: 230,
               ),
               SizedBox(
                 width: 144,
