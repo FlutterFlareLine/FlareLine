@@ -1,6 +1,5 @@
 import 'package:flareline/core/theme/global_theme.dart';
 import 'package:flareline_uikit/service/localization_provider.dart';
-import 'package:flareline_uikit/service/sidebar_provider.dart';
 import 'package:flareline/provider/login_status_provider.dart';
 import 'package:flareline/routes.dart';
 import 'package:flareline_uikit/service/theme_provider.dart';
@@ -45,8 +44,6 @@ class MyApp extends StatelessWidget {
         providers: [
           ChangeNotifierProvider(create: (_) => ThemeProvider(_)),
           //theme
-          ChangeNotifierProvider(create: (_) => SideBarProvider(_)),
-          //sidebar
           ChangeNotifierProvider(create: (_) => LoginStatusProvider(_)),
           //login status
           ChangeNotifierProvider(create: (_) => LocalizationProvider(_)),
