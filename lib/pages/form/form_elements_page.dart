@@ -1,7 +1,7 @@
 
 import 'package:flareline/pages/form/date_picker_widget.dart';
-import 'package:flareline/pages/form/drop_zone_widget.dart';
 import 'package:flareline/pages/form/multi_select_widget.dart';
+import 'package:flareline_uikit/components/forms/drop_zone_widget.dart';
 import 'package:flareline_uikit/components/forms/select_widget.dart';
 import 'package:flareline/pages/form/single_checkbox_widget.dart';
 import 'package:flareline/core/theme/global_colors.dart';
