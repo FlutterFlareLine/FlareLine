@@ -3,25 +3,15 @@
     "groupName": "AI",
     "menuList":[
       {
-        "icon": "assets/ai/openai.webp",
-        "menuName": "My OpenAI",
-        "path": "/chatGpt"
-      },
-      {
         "icon": "assets/icon/ai.png",
-        "menuName": "AI Collection",
-        "path": "https://flare-line-firebase.vercel.app/#/ai"
+        "menuName": "AI Tools",
+        "path": "https://flare-line-firebase.vercel.app"
       }
     ]
   },
   {
     "groupName": "Project",
     "menuList":[
-      {
-        "icon": "assets/icon/firebase.png",
-        "menuName": "Firebase Demo",
-        "path": "https://flare-line-firebase.vercel.app"
-      },
       {
         "icon": "assets/crm/crm.png",
         "menuName": "CRM",

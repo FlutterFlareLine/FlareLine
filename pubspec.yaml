@@ -117,8 +117,8 @@ dependencies:
 
 
   flareline_uikit:
-    git: https://github.com/FlutterFlareLine/FlareLine-UiKit.git
-#    path: ../FlareLine-UiKit
+#    git: https://github.com/FlutterFlareLine/FlareLine-UiKit.git
+    path: ../FlareLine-UiKit
 
 dev_dependencies:
   flutter_test:
