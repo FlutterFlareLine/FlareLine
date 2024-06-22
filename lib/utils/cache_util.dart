@@ -19,6 +19,12 @@ class CacheUtil {
 
   final _box = GetStorage();
 
+  final String cacheKeyPrefix = 'cache_';
+
+  String getCacheKey(String key){
+    return '${cacheKeyPrefix}${key}';
+  }
+
   /// Checks if cache is empty.
   // bool get isEmpty {
   //   _cache.removeWhere((key, value) => _isExpired(value));
@@ -31,24 +37,28 @@ class CacheUtil {
   /// If cache contains a value for the [key], returns the value.
   /// If cache does not contains a value for the [key], returns null.
   String? read(String key) {
-    String? json = _box.read(key);
+    print('read key ${key}');
+    print('read cachekey ${getCacheKey(key)}');
+    String? json = _box.read(getCacheKey(key));
+    print('read json ${json}');
     if (json == null||json.isEmpty) {
       return null;
     }
     CacheEntity item = CacheEntity.fromJson(jsonDecode(json));
+    print('read item ${item}');
     if (_isExpired(item)) {
       delete(key);
       return null;
     }
 
-    return null;
+    return item.value;
   }
 
   /// Sets the [value] to the cache.
   /// If cache contains a value for the [key], overrides the value in the cache.
   void write(String key, String value, {Duration? expire}) {
     _box.write(
-        key,
+        getCacheKey(key),
         jsonEncode(CacheEntity.create(value,
                 expire: _setExpiry(expire))
             .toJson()));
@@ -56,12 +66,12 @@ class CacheUtil {
 
   /// Removes value from cache.
   void delete(String key) {
-    _box.remove(key);
+    _box.remove(getCacheKey(key));
   }
 
   /// Returns true if cached value exists.
   bool contains(String key) {
-    return _expiryAwareContains(key);
+    return _expiryAwareContains(getCacheKey(key));
   }
 
   /// Adds [expire] to DateTime.now() and returns it.
@@ -81,7 +91,7 @@ class CacheUtil {
   /// Returns true if cached value exists but not expired.
   /// If cached value expired removes from cache.
   bool _expiryAwareContains(String key) {
-    final item = _box.read(key);
+    final item = _box.read(getCacheKey(key));
     if (item == null) {
       return false;
     } else if (_isExpired(item)) {
@@ -92,6 +102,6 @@ class CacheUtil {
   }
 
   void remove(String key) {
-    _box.remove(key);
+    _box.remove(getCacheKey(key));
   }
 }
