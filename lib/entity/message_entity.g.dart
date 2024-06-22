@@ -11,7 +11,11 @@ MessageEntity _$MessageEntityFromJson(Map<String, dynamic> json) =>
       ..id = json['id'] as String
       ..content = json['content'] as String
       ..isUser = json['isUser'] as bool
-      ..timestamp = json['timestamp'] as int
+      ..timestamp = (json['timestamp'] is int)
+          ? json['timestamp'] as int
+          : DateTime
+          .parse(json['timestamp'])
+          .millisecondsSinceEpoch
       ..belongUid = json['belongUid'] as String
       ..conversationId = json['conversationId'] as String
       ..fromMessageId = json['fromMessageId'] as String;

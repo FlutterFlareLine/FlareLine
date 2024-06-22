@@ -9,7 +9,7 @@ class LoginUtil{
   static String get email => CacheUtil.instance.read("email") ?? '';
 
   static bool isLogin() {
-    print('check login status');
+
     dynamic loginUser = CacheUtil.instance.read("loginUser");
 
     return loginUser != null;

@@ -37,15 +37,14 @@ class CacheUtil {
   /// If cache contains a value for the [key], returns the value.
   /// If cache does not contains a value for the [key], returns null.
   String? read(String key) {
-    print('read key ${key}');
-    print('read cachekey ${getCacheKey(key)}');
+
     String? json = _box.read(getCacheKey(key));
-    print('read json ${json}');
+
     if (json == null||json.isEmpty) {
       return null;
     }
     CacheEntity item = CacheEntity.fromJson(jsonDecode(json));
-    print('read item ${item}');
+
     if (_isExpired(item)) {
       delete(key);
       return null;
@@ -82,7 +81,7 @@ class CacheUtil {
   bool _isExpired(CacheEntity item) {
     if (item.expire != null &&
         item.expire! < (DateTime.now().millisecondsSinceEpoch)) {
-      print('_isExpired ${true}');
+
       return true;
     }
     return false;
