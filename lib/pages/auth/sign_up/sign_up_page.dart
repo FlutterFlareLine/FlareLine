@@ -1,18 +1,17 @@
 import 'package:flareline/pages/auth/sign_up/sign_up_provider.dart';
-import 'package:flareline/core/theme/global_colors.dart';
-import 'package:flareline_uikit/widget/base/base_stless_widget.dart';
+import 'package:flareline_uikit/core/mvvm/base_widget.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_svg/svg.dart';
 import 'package:flareline_uikit/components/buttons/button_widget.dart';
 import 'package:flareline_uikit/components/card/common_card.dart';
 import 'package:flareline_uikit/components/forms/outborder_text_form_field.dart';
-import 'package:flareline/pages/layout.dart';
 import 'package:flareline/flutter_gen/app_localizations.dart';
-import 'package:provider/provider.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
-class SignUpWidget extends BaseStlessWidget<SignUpProvider> {
+class SignUpWidget extends BaseWidget<SignUpProvider> {
+  SignUpWidget({super.key});
+
   @override
   Widget bodyWidget(
       BuildContext context, SignUpProvider viewModel, Widget? child) {

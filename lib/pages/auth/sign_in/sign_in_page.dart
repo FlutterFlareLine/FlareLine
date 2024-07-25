@@ -1,5 +1,6 @@
 import 'package:flareline/pages/auth/sign_in/sign_in_provider.dart';
-import 'package:flareline_uikit/widget/base/base_stless_widget.dart';
+import 'package:flareline_uikit/core/mvvm/base_widget.dart';
+
 import 'package:flutter/material.dart';
 
 import 'package:flutter_svg/svg.dart';
@@ -10,7 +11,7 @@ import 'package:flareline/core/theme/global_colors.dart';
 import 'package:flareline/flutter_gen/app_localizations.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
-class SignInWidget extends BaseStlessWidget<SignInProvider> {
+class SignInWidget extends BaseWidget<SignInProvider> {
   @override
   Widget bodyWidget(
       BuildContext context, SignInProvider viewModel, Widget? child) {

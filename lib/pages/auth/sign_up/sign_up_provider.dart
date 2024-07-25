@@ -1,10 +1,10 @@
 
-import 'package:flareline_uikit/service/base_provider.dart';
+import 'package:flareline_uikit/core/mvvm/base_viewmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 
-class SignUpProvider extends BaseProvider {
+class SignUpProvider extends BaseViewModel {
 
 
   late TextEditingController emailController;
